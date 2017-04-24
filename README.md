@@ -1,4 +1,8 @@
 # Intel® Manager for Lustre* 4.0 Online Help
+# help-docs
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/intel-hpdd/help-docs.svg)](https://greenkeeper.io/)
+Help Documentation for inclusion in GUI
 
 ### Table of Contents
 
