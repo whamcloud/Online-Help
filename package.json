@@ -1,13 +1,13 @@
 {
-  "name": "intel-help-docs",
+  "name": "@mfl/help-docs",
   "version": "1.3.0",
-  "description": "The IML GUI help docs",
+  "description": "The MFL GUI help docs",
   "publishConfig": {
-    "registry": "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-local"
+    "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.intel.com:IML/help-docs.git"
+    "url": "git@github.intel.com:MFL/help-docs.git"
   },
-  "author": "IML Team"
+  "author": "MFL Team"
 }
