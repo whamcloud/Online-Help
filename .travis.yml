@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+- 6
+- 7
+cache: yarn
+deploy:
+  provider: npm
+  email: joe.grund@intel.com
+  api_key:
+    secure: TwmHmMILlMz1/D+Uxd4nSU+DmpMuccClgHw5Yn6sZ5IqUEUmR1k8nU+eockCJr0u7pd7tuNSSkIbAHmaPh+Z04ewC0O+3S13fkMhKwE9CS7QHoH5Qi1evmGPu7Wh2Nnicgo2ehU76cUk0wkfBYc21V6JYtIl+2GZNplvnCZ/UbwmlAe/wrmTAQyLXTMyxpkpp/Q9/DcKPD73iHBAPhYqPuxTpwom0ORUsmcKT6klmipbmpYTc7sxqo3KZ2HCC0lUKi/M5nU732ze+UvbLYoOzNapBFlDgeOz8BnzutpUTldmuI9jFXKcvwTJ+ZAMxbJfsnhbdF4117f+KVq5kAv2Sq0r25BQvXFMoQNsrBEZCWwU+Hk2HRw8/BWjzxkSh81qt6MeZYKW+9DFEiRQ4P5bANv54FdtUEMuFFnUconFxmNth9xs9L2hKdShw234ItxR11P5H8CBgwtY4z2IdsItAREivDYQEpC7yrUn7YEfsNF2VtucH8HSfl/Qi02nJX7BQ8oTFkcJ94lP1rCxmlzsN6D6VZBDo1rQcduEoYoBrvDXYzLNfFu7H8q6HIGylOSShl7CHCoJizBOJ7gYtartKV30mMY6pQ1+Rda0l6xJEVE9WWNc85WCDVxOR2GWCq4UNHk2Q6Q8S3An6ziHf81Toprn6a47Nef+2+CaeJDDY3M=
+  on:
+    tags: true
+    repo: intel-hpdd/help-docs
