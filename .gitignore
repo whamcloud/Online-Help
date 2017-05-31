@@ -1,6 +1,2 @@
-*.hmskin
-*.mnl
-*.zip
-.idea
 node_modules
-npm-debug.log
+*.log
