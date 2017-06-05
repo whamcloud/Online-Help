@@ -1,5 +1,4 @@
-<a id="15.0"></a>
-# Legal Information
+# <a id="15.0"></a>Legal Information
 
 Copyright © 2017 Intel Corporation. All Rights Reserved.
 
