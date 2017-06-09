@@ -42,7 +42,7 @@ Generally, high availability (HA) means that the file system is able to tolerate
 To support automatic server failover, each HA server must have a dedicated crossover connection to the other server that will be its HA peer. During file system creation, each HA server is designated as a primary server for one or more targets, and as a failover, peer server for its peer server's targets. This crossover connection is configured as a redundant Corosync communications interface in order to reduce the likelihood of false failover events. Intel® Manager for Lustre* software uses a managed server profile to automatically configure Corosync and Pacemaker. The managed server profile is used to configure primary and failover servers. See the following figure.
 
 <a id="f3.1"></a>
-![./md_Graphics/lustre-configuration5_zoom40.png][f3.1]
+![md_Graphics/lustre-configuration5_zoom40.png][f3.1]
 
 Physically, HA peer servers must be cabled to provide equal access to the pool of storage targets allocated to those peers. For example: server 1 and server 2 are cabled as HA peers. Targets A and B have been configured with server 1 as their primary server and server 2 as their failover server. Targets C and D have been configured with server 2 as their primary server and server 1 as their failover server. If server 1 becomes unavailable, server 2 must have access to the block storage devices underlying targets A and B in order to mount them and make them available to Lustre clients. The end result is that server 1 is powered off and server 2 is now exporting targets A, B, C, and D to Lustre clients. 
 
@@ -107,7 +107,7 @@ Changes you select to make on this Volumes Configuration window will be updated 
     
 **Note:** There is currently no lock-out of one user's changes versus changes made by another user. The most-recently applied setting is the one in-force.
 
-Next, proceed to <a href="#3.7">Add power distribution units</a> or <a href="#3.8">Add power distribution units</a>Assign BMCs to servers</a>. It is important to remember these server/volume configurations for when configuring power distribution units (PDUs) and outlet-server assignments.
+Next, proceed to <a href="#3.7">Add power distribution units</a> or <a href="#3.8">Assign BMCs to servers</a>. It is important to remember these server/volume configurations for when configuring power distribution units (PDUs) and outlet-server assignments.
 
 
 ## <a id="3.6"></a>Add power distribution units
@@ -282,4 +282,4 @@ mount -t lustre <mgsnid>[:<mgsnid>]:/<fsname>/<subdir path> <mount point>
 
 
 
-[f3.1]: ./md_Graphics/lustre-configuration5_zoom40.png
+[f3.1]: md_Graphics/lustre-configuration5_zoom40.png
