@@ -1,7 +1,7 @@
 {
-  "name": "@mfl/help-docs",
+  "name": "@iml/help-docs",
   "version": "1.3.0",
-  "description": "The MFL GUI help docs",
+  "description": "The IML GUI help docs",
   "publishConfig": {
     "access": "public"
   },
@@ -9,5 +9,5 @@
     "type": "git",
     "url": "https://github.com/intel-hpdd/help-docs.git"
   },
-  "author": "MFL Team"
+  "author": "IML Team"
 }
