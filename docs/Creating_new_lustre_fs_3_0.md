@@ -1,4 +1,4 @@
-# <a id="3.0"></a>Creating a new Lustre\* file system
+# Creating a new Lustre\* file system<a id="3.0"></a>
 
 This chapter describes how to create a new Lustre* file system, to be managed from the Intel® Manager for Lustre\*, and how to mount file system clients.  
 
@@ -6,34 +6,43 @@ This chapter describes how to create a new Lustre* file system, to be managed fr
 
 **Note:** The procedure for creating a Lustre file system *based on ZFS zpools* is different. For that information see [Creating and Managing ZFS-based Lustre file systems](Create_and_manage_ZFS_based_LFS_8_0.md/#8.0).
 
-1. <a href="#3.1">Prerequisites for creating an HA file system</a>
-1. <a href="#3.2">Important information about reconfiguring your file system</a>
-1. <a href="#3.3">High-availability file system support</a> (overview)
-1. <a href="#3.4">Add one or more HA servers</a>
-1. <a href="#3.5">Configure primary and failover servers</a>
-1. <a href="#3.6">Add power distribution units</a> (alternate to BMC configuration)
-1. <a href="#3.7">Assign PDU outlets to servers</a>
-1. <a href="#3.8">Assign BMCs to servers</a> (alternate to power distribution units and outlets)
-1. <a href="#3.9">Create the new Lustre file system</a>
-1. <a href="#3.10">View the file system</a>
-1. <a href="#3.11">Mount the Lustre file system</a>
+**In this section:**
+
+- <a href="#3.1">IMPORTANT PREREQUISITES to creating an HA Lustre file system</a>
+- <a href="#3.2">IMPORTANT INFORMATION about reconfiguring your file system</a>
+- <a href="#3.3">High-availability file system support</a>
+- <a href="#3.4">Add one or more HA servers</a>
+- <a href="#3.5">Assign primary and failover servers to storage volumes</a>
+- <a href="#3.6">Add power distribution units</a>
+- <a href="#3.7">Assign PDU outlets to servers</a>
+- <a href="#3.8">Assign PDU outlets to servers</a>
+- <a href="#3.9">Create the new Lustre file system</a>
+- <a href="#3.10">View the new file system</a>
+- <a href="#3.11">Mount the Lustre file system</a>
+    - <a href="#3.11.1">Mount the entire file system</a>
+    - <a href="#3.11.2">Mount a file system sub-directory</a>
 
 
-## <a id="3.1"></a>IMPORTANT PREREQUISITES to creating an HA Lustre file system
+
+<a id="3.1"></a>
+
+## IMPORTANT PREREQUISITES to creating an HA Lustre file system
 
 A high-availability Lustre file system managed by Intel® Manager for Lustre* software requires that your entire storage system configuration and all  interfaces comply with a pre-defined configuration. Intel® Manager for Lustre* software performs LNet configuration assuming that each server is connected to a high-performance data network, which is the Lustre network LNet.  For detailed information, see the section *High Availability Configuration Specification* in the *Intel® Enterprise Edition for Lustre\* Software Installation Guide*. Also see the guide *Lustre\* Installation and Configuration using Intel® EE for Lustre\* Software and OpenZFS*.
 
 **Caution:** When initially setting up your storage system, take care in selecting block device names because these cannot be changed after the file system has been created using  Intel® Manager for Lustre* software. **You should NOT make configuration changes to file system servers or their respective volumes/targets outside of Intel® Manager for Lustre\* software**. Doing so will defeat the ability of Intel® Manager for Lustre* software to monitor or manage the file system, and will make the file system unavailable to clients. Re-labeling these device names during multipath configuration will break the HA configuration established by Intel® Manager for Lustre* software.
 
+<a id="3.2"></a>
 
-## <a id="3.2"></a>IMPORTANT INFORMATION about reconfiguring your file system
+## IMPORTANT INFORMATION about reconfiguring your file system
 
 **Caution:** When initially setting up your storage system, take care in selecting block device names because these cannot be changed after the file system has been created using  Intel® Manager for Lustre* software. **You should NOT make configuration changes to file system servers or their respective volumes/targets outside of Intel® Manager for Lustre\* software**. Doing so will defeat the ability of Intel® Manager for Lustre* software to monitor or manage the file system, and will make the file system unavailable to clients. Re-labeling these device names during multipath configuration will break the HA configuration established by Intel® Manager for Lustre* software.
 
 **Caution:** A known issue can result in a server being made unavailable. This can happen if the server has been added to a Lustre file system, (using Intel® Manager for Lustre* software) and then the user decides to Force Remove the server from the file system. The Force Remove command should only be performed if the Remove command has been unsuccessful. Force Remove will remove the server from the Intel® Manager for Lustre* configuration, but not remove Intel® Manager for Lustre* software from the server. All targets that depend on the server will also be removed without any attempt to unconfigure them. To completely remove the Intel® Manager for Lustre* software from the server (allowing it to be added to another Lustre file system), first contact technical support.
 
+<a id="3.3"></a>
 
-## <a id="3.3"></a>High-availability file system support
+## High-availability file system support
 
 Intel® Manager for Lustre* software includes several capabilities for configuring and managing highly-available Lustre* file systems.
 
@@ -50,8 +59,9 @@ To support HA failover, each HA server must be able to automatically power-off i
 
 **Note:** See the *Intel® Manager for Lustre\* Partner Installation Guide* for physical design and configuration guidelines required to support high availability. 
 
+<a id="3.4"></a>
 
-## <a id="3.4"></a>Add one or more HA servers
+## Add one or more HA servers
 
 This procedure adds one or more servers. They may be storage servers, HSM agent nodes, Robinhood policy engine servers, or they may perform another function dictated by a custom server profile. Note that at least two storage servers are required for HA file systems. 
 
@@ -88,8 +98,9 @@ To add a server to be used for the file system:
     **Caution:** For servers with incompatible profiles, you have the option of clicking **Override**, however, this is not encouraged or supported. Each server's configuration must be compatible with the selected profile, or the server will likely not function as required for the selected profile. The four available default server profiles are described above. For more information about the POSIX HSM Agent Node and Robinhood Policy Engine Server profiles, see <a href="Config_and_using_HSM_6_0.md/#1.0">Configuring and using Hierarchical Storage Management</a> herein.
 1. Click **Close**. This process is complete. For HA file systems, proceed to <a href="#3.5">Configure primary and failover servers</a>. 
 
+<a id="3.5"></a>
 
-## <a id="3.5"></a>Assign primary and failover servers to storage volumes
+## Assign primary and failover servers to storage volumes
 
 This section establishes the primary and failover storage servers for each volume, to support-high availability.
 
@@ -109,8 +120,9 @@ Changes you select to make on this Volumes Configuration window will be updated 
 
 Next, proceed to <a href="#3.7">Add power distribution units</a> or <a href="#3.8">Assign BMCs to servers</a>. It is important to remember these server/volume configurations for when configuring power distribution units (PDUs) and outlet-server assignments.
 
+<a id="3.6"></a>
 
-## <a id="3.6"></a>Add power distribution units
+## Add power distribution units
 
 This section configures power distribution units (PDUs) and assigns PDU outlets to servers to support high availability (HA).
 
@@ -141,8 +153,9 @@ To add PDUs:
 
 Proceed to <a href="#3.7">Assign PDU outlets to servers. 
 
+<a id="3.7"></a>
 
-## <a id="3.7"></a>Assign PDU outlets to servers
+## Assign PDU outlets to servers
 
 **Note:** Be sure that electrical connection between a given power distribution unit (PDU) outlet and a specific server is performed by a qualified technician before PDUs are configured and assigned by this software.
 
@@ -165,8 +178,9 @@ To assign PDU outlets to servers:
     
     d) To remove an outlet from a server, click the **X** next to the outlet name. It now becomes available to reassign.
 
+<a id="3.8"></a>
 
-## <a id="3.8"></a>Assign PDU outlets to servers
+## Assign PDU outlets to servers
 
 This section uses the Intelligent Management Platform Interface (IPMI) and associates baseboard management controllers (BMCs) with servers to support high availability.
 
@@ -193,8 +207,9 @@ To associate BMCs with servers:
 1. In the *New BMC* window, enter an IP address or hostname for this BMC. **Note:** This address is always stored as an IPv4 address, so if the mapping from hostname to IPv4 address later changes in DNS, it will need to be updated here as well. 
 1. Click **Save**.
 
+<a id="3.9"></a>
 
-## <a id="3.9"></a>Create the new Lustre file system
+## Create the new Lustre file system
 
 This section is the last procedure to create the Lustre file system, after performing the previous configuration tasks outlined in this chapter. In this section, you will select servers. 
 
@@ -236,8 +251,9 @@ this_MDT>/<subdirectory_name>
 
 **Note:** If you plan to enable HSM for this file system, see the chapter [Configuring and using Hierarchical Storage Management](Config_and_using_HSM_6_0.md/#6.0) to setup HSM.
 
+<a id="3.10"></a>
 
-## <a id="3.10"></a>View the new file system
+## View the new file system
 
 To view the file system configuration:
 
@@ -247,8 +263,9 @@ To view the file system configuration:
 
 **Note:** For a new file system, some of the dashboard charts may appear blank until the file system has been running long enough to collect performance data.
 
+<a id="3.11"></a>
 
-## <a id="3.11"></a>Mount the Lustre file system
+## Mount the Lustre file system
 
 A compute client must mount the Lustre* file system to be able to access data in the file system. Before attempting to mount the file system on your Lustre clients, make sure the Intel® Enterprise Edition for Lustre* client software has been installed on each client. For instructions, see the documentation provided by your storage solution provider. 
 
@@ -257,8 +274,9 @@ A client can mount the entire file system, or mount a file system sub-directory.
 - <a href="#3.11.1">Mount the entire file system</a>
 - <a href="#3.11.2">Mount a file system sub-directory</a>
 
+<a id="3.11.1"></a>
 
-### <a id="3.11.1"></a>Mount the entire file system
+### Mount the entire file system
 
 To obtain the command to use to mount an entire file system:
 
@@ -270,8 +288,9 @@ To obtain the command to use to mount an entire file system:
 ```
 1. On the client server, enter the actual command.
 
+<a id="3.11.2"></a>
 
-### <a id="3.11.2"></a>Mount a file system sub-directory
+### Mount a file system sub-directory
 
 To mount a file system, at the client computer, enter the following command at the command line.  This syntax is generic and there are other options not described here.
 

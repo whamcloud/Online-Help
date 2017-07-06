@@ -1,12 +1,13 @@
-# <a id="12.0"></a>Errors and troubleshooting
+<a id="12.0"></a>
+# Errors and troubleshooting
 
 The following topics are discussed in this chapter:
 
 - <a href="#12.1">Unexpected file system events</a>
 - <a href="#12.2">Running Intel® Manager for Lustre* diagnostics</a>
 
-
-## <a id="12.1"></a>Unexpected file system events
+<a id="12.1"></a>
+## Unexpected file system events
 
 This section discusses several unwanted file system events and how Intel® Manager for Lustre* software responds to them.
 
@@ -233,8 +234,8 @@ manually fail the target over to the peer server. </td>
     </tbody>
 </table>
 
-
-## <a id="12.2"></a>Running Intel® Manager for Lustre* diagnostics
+<a id="12.2"></a>
+## Running Intel® Manager for Lustre* diagnostics
 
 If Intel® Manager for Lustre* software is not operating normally and you require support from Intel® customer support, you may be asked to run chroma-diagnostics on any servers that are suspected of having problems, and/or on the server hosting the Intel® Manager for Lustre* dashboard. The results of running the diagnostics should be attached to the ticket you are filing describing the problem. These diagnostics are described next.
 

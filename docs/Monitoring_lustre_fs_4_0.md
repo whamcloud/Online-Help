@@ -1,6 +1,8 @@
-# <a id="4.0"></a>Monitoring Lustre* file systems
+# Monitoring Lustre* file systems<a id="4.0"></a>
 
 You can easily monitor one or more file systems at the Dashboard, and Status, and Logs windows. The Dashboard window displays a set of charts that provide usage and performance data at several levels in the file systems being monitored, while the Status and Logs windows keep you informed of file system activity relevant to current and past file system health and performance. 
+
+**In this section:**
 
 - <a href="#4.1">View charts on the Dashboard</a>
 - <a href="#4.2">Check file systems status</a>
@@ -10,8 +12,9 @@ You can easily monitor one or more file systems at the Dashboard, and Status, an
 - <a href="#4.6">View and change file system parameters</a>
 - <a href="#4.7">View a server's parameters</a>
 
+<a id="4.1"></a>
 
-## <a id="4.1"></a>View charts on the Dashboard
+## View charts on the Dashboard
 
 The Dashboard displays a set of graphical charts that provide real-time usage and performance data at several levels in the file systems being monitored. All Dashboards charts are available for both monitored-only and managed/monitored file systems.
 
@@ -34,8 +37,9 @@ See:
 - <a href="#4.1.2">View charts for one or all servers</a>
 - <a href="#4.1.3">View charts for an OST or MDT</a>
 
+<a id="4.1.1"></a>
 
-### <a id="4.1.1"></a>View charts for one or all file systems
+### View charts for one or all file systems
 
 When you first login, the Dashboard displays the following six charts for all file systems combined. Click on the links here to learn more.
 
@@ -53,8 +57,9 @@ To view these six charts for a single file system:
 1. Under **File System**, selected the file system you wish to view.
 1. Click **Update**.
 
+<a id="4.1.2"></a>
 
-### <a id="4.1.2"></a>View charts for one or all servers
+### View charts for one or all servers
 
 When you first login, the Dashboard displays six charts for all file systems combined. 
 
@@ -79,8 +84,9 @@ The following charts are displayed for an individual server. Click on the links 
 - [Memory Usage](Graphical_User_Interface_9_0.md/#9.2.8)
 
 
+<a id="4.1.3"></a>
 
-### <a id="4.1.3"></a>View charts for an OST or MDT
+### View charts for an OST or MDT
 
 To view charts for a specific OST or MDT:
 
@@ -101,8 +107,9 @@ The following charts are displayed for MDTs:
 - [Space Usage](Graphical_User_Interface_9_0.md/#9.2.9)
 - [File Usage](Graphical_User_Interface_9_0.md/#9.2.10)
 
+<a id="4.2"></a>
 
-## <a id="4.2"></a>Check file systems status
+## Check file systems status
 
 The file systems Status light ![md_Graphics/status_light.png][f4.1] provides a quick glance of the status and health of the all file systems managed by Intel® Manager for Lustre* software. This indicator is located along the top banner of the manager GUI. The indicator reflects the worst-case condition. For example, and Error message for any file system will always display a red Status light. Click **Status** to open the Status window and learn more about status.
 
@@ -112,8 +119,9 @@ The file systems Status light ![md_Graphics/status_light.png][f4.1] provides a q
 
 Click **Status** to open the Status window. See <a href="#4.6">View status messages on the Status window</a>.
 
+<a id="4.3"></a>
 
-## <a id="4.3"></a>View job stats
+## View job stats
 
 Job statistics are available from two locations:
 
@@ -173,18 +181,21 @@ To track job stats per process name and user ID (for debugging, or if no job sch
 $ lctl conf_param testfs.sys.jobid_var=procname_uid
 ```
 
+<a id="4.4"></a>
 
-## <a id="4.4"></a>View and manage file system parameters
+## View and manage file system parameters
 
 After you have created a file system, you can view its configuration and manage the file system at the [File System Details window](Graphical_User_Interface_9_0.md/#9.1.1). 
 
+<a id="4.5"></a>
 
-## <a id="4.5"></a>View a server's detail window
+## View a server's detail window
 
 To view all parameters available for a server, at the menu bar, click the Configuration drop-down menu and click Servers. Select the server to view the [Server Details window](Graphical_User_Interface_9_0.md/#9.3.1.1). 
 
+<a id="4.6"></a>
 
-## <a id="4.6"></a>View commands and status messages on the Status window
+## View commands and status messages on the Status window
 
 The Intel® Manager for Lustre* software provides status messages about the health of each managed file system.
 
@@ -200,16 +211,18 @@ Click **Status** to view all status messages. All messages are displayed most-re
 
 For more information see [Status window](Graphical_User_Interface_9_0.md/#9.3.4).
 
+<a id="4.7"></a>
 
-## <a id="4.7"></a>View Logs
+## View Logs
 
 Click **Logs** on the menu bar to view all system logs.  
 
 The Logs window displays log information and allows filtering of events by date range, host, service, and messages from Lustre or all sources. 
 The logs window also features querying with auto-complete and linkable host names.
 
+<a id="4.8"></a>
 
-## <a id="4.8"></a>View HSM Copytool activities
+## View HSM Copytool activities
 
 To view current copytool activities, click **Configuration** and select **HSM**. To learn about HSM capabilities supported in Intel® Enterprise Edition for Lustre* software, see [Configuring and using Hierarchical Storage Management](Config_and_using_HSM_6_0.md/#6.0).
 
