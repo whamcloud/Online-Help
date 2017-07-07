@@ -1,3 +1,4 @@
+[**Intel® Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
 # Creating a new Lustre\* file system<a id="3.0"></a>
 
 This chapter describes how to create a new Lustre* file system, to be managed from the Intel® Manager for Lustre\*, and how to mount file system clients.  
@@ -32,6 +33,8 @@ A high-availability Lustre file system managed by Intel® Manager for Lustre* so
 
 **Caution:** When initially setting up your storage system, take care in selecting block device names because these cannot be changed after the file system has been created using  Intel® Manager for Lustre* software. **You should NOT make configuration changes to file system servers or their respective volumes/targets outside of Intel® Manager for Lustre\* software**. Doing so will defeat the ability of Intel® Manager for Lustre* software to monitor or manage the file system, and will make the file system unavailable to clients. Re-labeling these device names during multipath configuration will break the HA configuration established by Intel® Manager for Lustre* software.
 
+<a href="#3.0">Top of page</a>
+
 <a id="3.2"></a>
 
 ## IMPORTANT INFORMATION about reconfiguring your file system
@@ -39,6 +42,8 @@ A high-availability Lustre file system managed by Intel® Manager for Lustre* so
 **Caution:** When initially setting up your storage system, take care in selecting block device names because these cannot be changed after the file system has been created using  Intel® Manager for Lustre* software. **You should NOT make configuration changes to file system servers or their respective volumes/targets outside of Intel® Manager for Lustre\* software**. Doing so will defeat the ability of Intel® Manager for Lustre* software to monitor or manage the file system, and will make the file system unavailable to clients. Re-labeling these device names during multipath configuration will break the HA configuration established by Intel® Manager for Lustre* software.
 
 **Caution:** A known issue can result in a server being made unavailable. This can happen if the server has been added to a Lustre file system, (using Intel® Manager for Lustre* software) and then the user decides to Force Remove the server from the file system. The Force Remove command should only be performed if the Remove command has been unsuccessful. Force Remove will remove the server from the Intel® Manager for Lustre* configuration, but not remove Intel® Manager for Lustre* software from the server. All targets that depend on the server will also be removed without any attempt to unconfigure them. To completely remove the Intel® Manager for Lustre* software from the server (allowing it to be added to another Lustre file system), first contact technical support.
+
+<a href="#3.0">Top of page</a>
 
 <a id="3.3"></a>
 
@@ -58,6 +63,8 @@ Physically, HA peer servers must be cabled to provide equal access to the pool o
 To support HA failover, each HA server must be able to automatically power-off its peer server if a failover is required. The process of powering off a faulty server is known as "node fencing" (also called "server fencing"), and ensures that a shared storage device is not mounted by more than one server at a time. Lustre includes protection against multiple simultaneous device mounts, but automatically powering off the faulty server ensures that failover works properly. Intel® Manager for Lustre* software supports the use of remotely-operable Power Distribution Units (PDUs) for this purpose. Alternative to the configuration of PDUs, Intel® Manager for Lustre* software also supports the Intelligent Management Platform Interface (IPMI) and associating baseboard management controllers (BMCs) with servers, to support server monitoring and control.
 
 **Note:** See the *Intel® Manager for Lustre\* Partner Installation Guide* for physical design and configuration guidelines required to support high availability. 
+
+<a href="#3.0">Top of page</a>
 
 <a id="3.4"></a>
 
@@ -98,6 +105,8 @@ To add a server to be used for the file system:
     **Caution:** For servers with incompatible profiles, you have the option of clicking **Override**, however, this is not encouraged or supported. Each server's configuration must be compatible with the selected profile, or the server will likely not function as required for the selected profile. The four available default server profiles are described above. For more information about the POSIX HSM Agent Node and Robinhood Policy Engine Server profiles, see <a href="Config_and_using_HSM_6_0.md/#1.0">Configuring and using Hierarchical Storage Management</a> herein.
 1. Click **Close**. This process is complete. For HA file systems, proceed to <a href="#3.5">Configure primary and failover servers</a>. 
 
+<a href="#3.0">Top of page</a>
+
 <a id="3.5"></a>
 
 ## Assign primary and failover servers to storage volumes
@@ -119,6 +128,8 @@ Changes you select to make on this Volumes Configuration window will be updated 
 **Note:** There is currently no lock-out of one user's changes versus changes made by another user. The most-recently applied setting is the one in-force.
 
 Next, proceed to <a href="#3.7">Add power distribution units</a> or <a href="#3.8">Assign BMCs to servers</a>. It is important to remember these server/volume configurations for when configuring power distribution units (PDUs) and outlet-server assignments.
+
+<a href="#3.0">Top of page</a>
 
 <a id="3.6"></a>
 
@@ -153,6 +164,8 @@ To add PDUs:
 
 Proceed to <a href="#3.7">Assign PDU outlets to servers. 
 
+<a href="#3.0">Top of page</a>
+
 <a id="3.7"></a>
 
 ## Assign PDU outlets to servers
@@ -177,6 +190,8 @@ To assign PDU outlets to servers:
     c) Move to the next server and assign outlets in the same way. Note that as an outlet is assigned to a server, it becomes unavailable for reassignment.
     
     d) To remove an outlet from a server, click the **X** next to the outlet name. It now becomes available to reassign.
+
+<a href="#3.0">Top of page</a>
 
 <a id="3.8"></a>
 
@@ -206,6 +221,8 @@ To associate BMCs with servers:
 1. Each row is one server. For the desired server, under IPMI, click **+ Add BMC**. 
 1. In the *New BMC* window, enter an IP address or hostname for this BMC. **Note:** This address is always stored as an IPv4 address, so if the mapping from hostname to IPv4 address later changes in DNS, it will need to be updated here as well. 
 1. Click **Save**.
+
+<a href="#3.0">Top of page</a>
 
 <a id="3.9"></a>
 
@@ -251,6 +268,8 @@ this_MDT>/<subdirectory_name>
 
 **Note:** If you plan to enable HSM for this file system, see the chapter [Configuring and using Hierarchical Storage Management](Config_and_using_HSM_6_0.md/#6.0) to setup HSM.
 
+<a href="#3.0">Top of page</a>
+
 <a id="3.10"></a>
 
 ## View the new file system
@@ -262,6 +281,8 @@ To view the file system configuration:
 1. To view the dashboard metrics for the file system, at the menu bar, click **Dashboard** window and select **File Systems**. Select the file system in the fields displayed at the top of the window.
 
 **Note:** For a new file system, some of the dashboard charts may appear blank until the file system has been running long enough to collect performance data.
+
+<a href="#3.0">Top of page</a>
 
 <a id="3.11"></a>
 
@@ -298,6 +319,8 @@ To mount a file system, at the client computer, enter the following command at t
 ```
 mount -t lustre <mgsnid>[:<mgsnid>]:/<fsname>/<subdir path> <mount point>
 ```
+
+<a href="#3.0">Top of page</a>
 
 
 

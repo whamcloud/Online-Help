@@ -1,3 +1,4 @@
+[**Intel® Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
 # Monitoring Lustre* file systems<a id="4.0"></a>
 
 You can easily monitor one or more file systems at the Dashboard, and Status, and Logs windows. The Dashboard window displays a set of charts that provide usage and performance data at several levels in the file systems being monitored, while the Status and Logs windows keep you informed of file system activity relevant to current and past file system health and performance. 
@@ -37,6 +38,7 @@ See:
 - <a href="#4.1.2">View charts for one or all servers</a>
 - <a href="#4.1.3">View charts for an OST or MDT</a>
 
+<a href="#4.0">Top of page</a>
 <a id="4.1.1"></a>
 
 ### View charts for one or all file systems
@@ -107,6 +109,8 @@ The following charts are displayed for MDTs:
 - [Space Usage](Graphical_User_Interface_9_0.md/#9.2.9)
 - [File Usage](Graphical_User_Interface_9_0.md/#9.2.10)
 
+<a href="#4.0">Top of page</a>
+
 <a id="4.2"></a>
 
 ## Check file systems status
@@ -118,6 +122,8 @@ The file systems Status light ![md_Graphics/status_light.png][f4.1] provides a q
 - A red Status light ![md_Graphics/red_status.png][f4.3] indicates that one or more errors alerts have been received. This file system may be down or is severely degraded. One or more file system components may be currently unavailable, for example, both the primary and secondary servers for a target are not running.
 
 Click **Status** to open the Status window. See <a href="#4.6">View status messages on the Status window</a>.
+
+<a href="#4.0">Top of page</a>
 
 <a id="4.3"></a>
 
@@ -181,17 +187,23 @@ To track job stats per process name and user ID (for debugging, or if no job sch
 $ lctl conf_param testfs.sys.jobid_var=procname_uid
 ```
 
+<a href="#4.0">Top of page</a>
+
 <a id="4.4"></a>
 
 ## View and manage file system parameters
 
 After you have created a file system, you can view its configuration and manage the file system at the [File System Details window](Graphical_User_Interface_9_0.md/#9.1.1). 
 
+<a href="#4.0">Top of page</a>
+
 <a id="4.5"></a>
 
 ## View a server's detail window
 
 To view all parameters available for a server, at the menu bar, click the Configuration drop-down menu and click Servers. Select the server to view the [Server Details window](Graphical_User_Interface_9_0.md/#9.3.1.1). 
+
+<a href="#4.0">Top of page</a>
 
 <a id="4.6"></a>
 
@@ -211,6 +223,8 @@ Click **Status** to view all status messages. All messages are displayed most-re
 
 For more information see [Status window](Graphical_User_Interface_9_0.md/#9.3.4).
 
+<a href="#4.0">Top of page</a>
+
 <a id="4.7"></a>
 
 ## View Logs
@@ -219,6 +233,8 @@ Click **Logs** on the menu bar to view all system logs.
 
 The Logs window displays log information and allows filtering of events by date range, host, service, and messages from Lustre or all sources. 
 The logs window also features querying with auto-complete and linkable host names.
+
+<a href="#4.0">Top of page</a>
 
 <a id="4.8"></a>
 
@@ -235,6 +251,8 @@ After HSM has setup for a file system, this HSM Copytool chart displays a moving
 - Click **Actions > Disable** to pause HSM for this file system. New requests will be scheduled and HSM activities will resume after the HSM coordinator is enabled. To enable again, click **Actions > Enable**. 
 - Click **Actions > Shutdown** to stop the HSM coordinator for this file system. No new requests will be scheduled.
 - Use **Change Duration** to change the time period for the range of data displayed on the HSM Copytool chart. chart. The chart begins at a start time set and ends now. You can set this to select **Minutes**, **Hours**, **Days** or **Weeks**, up to four weeks back in time and ending now. The most recent data displayed on the right. The number of data points will vary, based primarily on the duration.
+
+<a href="#4.0">Top of page</a>
 
 
 [f4.1]:md_Graphics/status_light.png

@@ -1,5 +1,5 @@
-<a id="10.0"></a>
-# Advanced Topics
+[**Intel® Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
+# <a id="10.0"></a>Advanced Topics
 
 The following procedures are provided in this chapter:
 
@@ -7,8 +7,8 @@ The following procedures are provided in this chapter:
 - <a href="#10.2">Configure a new management target</a>
 - <a href="#10.3">Detect and monitor existing Lustre* file systems</a>
 
-<a id="10.1"></a>
-## File system advanced settings
+
+## <a id="10.1"></a>File system advanced settings
 
 The following advanced settings are configurable for each file system. 
 
@@ -39,8 +39,9 @@ These setting are pre-set to default values. Most of these settings are automati
 - *Idlm_timeout* - Lustre distributed lock manager timeout: Time in seconds that a server will wait for a client to reply to an initial AST (local cancellation request). The default value is 20 seconds for an OST and 6 seconds for a MDT. 
 - *timeout* - Time in seconds that a client waits for a server to complete an RPC. The default value is 100.
 
-<a id="10.2"></a>
-## Configure a new Management Target
+<a href="#10.0">Top of page</a>
+
+## <a id="10.2"></a>Configure a new Management Target
 
 The MGT is normally configured while creating the file system and doesn't need to be created separately on MGT window. 
 
@@ -51,8 +52,9 @@ However, to configure the management target perform these steps:
     **Note:** The MGT and metadata target (MDT) can be located on the same server. However, they cannot be located on the same volume on a server.
 1. Click + Create new MGT to create the new MGT. 
 
-<a id="10.3"></a>
-## Add additional Metadata Targets
+<a href="#10.0">Top of page</a>
+
+## <a id="10.3"></a>Add additional Metadata Targets
 
 You can add additional MDTs when creating the file system and later, after the file system has been created. 
 
@@ -76,3 +78,5 @@ mkdir <lustre_mount_point>/<parent_folder_to_contain this_MDT>/<subdirectory_nam
 ```
 
 **Note:** Any added MDT you create will be unavailable for use as an OST.
+
+<a href="#10.0">Top of page</a>
