@@ -1,7 +1,7 @@
 [**Intel® Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
 # Introducing Intel® Manager for Lustre\*<a id="1.0"></a>
 
-** In this Chapter:**
+**In this Chapter:**
 
 - <a href="#1.1">Related Documentation</a>
 - <a href="#1.2">Overview of Intel® Enterprise Edition for Lustre* software</a>
