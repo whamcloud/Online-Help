@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- 6
+cache: yarn
+deploy:
+  provider: npm
+  email: joe.grund@intel.com
+  api_key:
+    secure: 
+  on:
+    tags: true
+    repo: intel-hpdd/online-help
