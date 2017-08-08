@@ -1,6 +1,16 @@
 language: ruby
 rvm: 2.1
-script: npm run postversion
+
+install:
+  - . $HOME/.nvm/nvm.sh
+  - nvm install 6
+  - nvm use 6
+  - bundle install --jobs=3 --retry=3
+
+script: 
+  - node --version
+  - npm --version
+  - npm run postversion
 
 deploy:
   provider: npm
