@@ -1,7 +1,7 @@
-language: node_js
-node_js:
-- 6
-cache: yarn
+language: ruby
+rvm: 2.1
+script: echo
+
 deploy:
   provider: npm
   email: joe.grund@intel.com
