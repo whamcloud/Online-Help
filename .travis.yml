@@ -1,6 +1,6 @@
 language: ruby
 rvm: 2.1
-script: echo
+script: npm run postversion
 
 deploy:
   provider: npm
