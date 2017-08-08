@@ -1,6 +1,6 @@
 {
   "name": "@iml/help-docs",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "The IML help docs",
   "scripts": {
     "build": "rm -rf dist && bundle exec jekyll build",
