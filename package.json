@@ -3,7 +3,7 @@
   "version": "2.0.3",
   "description": "The IML help docs",
   "scripts": {
-    "build": "rm -rf dist && bundle exec jekyll build",
+    "build": "rm -rf dist && bundle exec jekyll build --destination dist --baseurl '/help'",
     "start": "bundle exec jekyll serve",
     "postversion": "npm run build"
   },
