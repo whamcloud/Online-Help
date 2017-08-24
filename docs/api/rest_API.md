@@ -2,7 +2,7 @@
 
 ## <a name="1.1"></a>Introduction
 The manager server web interface and command line interface (CLI) included with the 
-Intel® Manager for Lustre\* software are built on the REST API, which is accessed
+Manager for Lustre\* software are built on the REST API, which is accessed
 via HTTP.  This API is available for integration with third party applications.  The 
 types of operations possible using the API include creating a file system, checking
 the system for alert conditions, and downloading performance metrics.  All functionality

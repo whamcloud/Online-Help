@@ -1,4 +1,4 @@
-# Intel® Manager for Lustre\* 4.0 API Documentation
+# Manager for Lustre\* 4.0 API Documentation
 
 ### List of Documents:
 
