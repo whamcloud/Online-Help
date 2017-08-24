@@ -35,7 +35,7 @@ Overall System Configuration
 The high-level configuration of an HA file system managed by Intel® EE
 for Lustre\* software consists of the following. See Figure 1.
 
--   A **dedicated manager server** hosts the Intel® Manager for Lustre\*
+-   A **dedicated manager server** hosts the Manager for Lustre\*
     software and dashboard.
 
 -   **Management server** (MGS): The MGS provides access to the
@@ -177,7 +177,7 @@ security vulnerabilities in the Red Hat software.
     repositories must be fully configured. Run yum update to verify that
     yum updates occur successfully.
 
- Intel® Manager for Lustre\* software is supported on:
+ Manager for Lustre\* software is supported on:
 
 -   Latest released Google Chrome browser.
 
@@ -238,7 +238,7 @@ Management Target
 -----------------
 
 -   For comparatively small file systems, the typical management target capacity might be 100 MB. See the *Lustre\* 2.X File System Operations Manual, Chapter 5, Setting up a Lustre File System* for more information.
-- Intel® Manager for Lustre\* software does *not* support an MGT larger than 10 Gbytes.
+- Manager for Lustre\* software does *not* support an MGT larger than 10 Gbytes.
 - RAID 1 is recommended. Software RAID (MDRAID) disk discovery is not supported.
 - As described above, the MGS and MDS servers are connected to the management storage in a primary/failover configuration.
 - All required multipath configuration between each storage server controller and its physical storage devices must be complete.
@@ -305,7 +305,7 @@ resources and allows administrators to troubleshoot it.
 After the failed server is repaired and ready for return-to-service, it
 is *not* automatically brought back online as the primary server
 (failed-back). Fail-back is performed manually, by the administrator at
-the Intel® Manager for Lustre\* software GUI.
+the Manager for Lustre\* software GUI.
 
 **Note**: See [Issues Regarding Power Loss to the BMC or
 PDU](#issues-regarding-power-loss-to-the-bmc-or-pdu)
@@ -325,7 +325,7 @@ control, be sure to note which PDUs and outlets are connected to which
 servers. Also, for redundancy, be sure that the primary and backup power
 outlets connected to each server reside on different PDUs. After
 configuring PDUs and noting PDU/server assignments, you will later
-configure these assignments on the Intel® Manager for Lustre\* Power
+configure these assignments on the Manager for Lustre\* Power
 Control tab.
 
 **Note**: See [Issues Regarding Power Loss to the BMC or

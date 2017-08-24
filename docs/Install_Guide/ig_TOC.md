@@ -17,7 +17,7 @@
 - [Updating the Operating System](ig_ch_12_updating.md)
 - [Installing Updates to Intel® EE for Lustre\* software](ig_ch_13_installing_updates.md)
 - [Appendix A - IPMI Checks](ig_ch_14_appA_IPMI.md)
-- [Appendix B - Backing up and Restoring Intel® Manager for Lustre\* Server Software](ig_ch_15_appB_backup_restore.md)
-- [Appendix C - Backup and Recovery of Servers Managed by Intel® Manager for Lustre\* Software](ig_ch_16_appC_backup_recovery.md)
+- [Appendix B - Backing up and Restoring Manager for Lustre\* Server Software](ig_ch_15_appB_backup_restore.md)
+- [Appendix C - Backup and Recovery of Servers Managed by Manager for Lustre\* Software](ig_ch_16_appC_backup_recovery.md)
 - [Getting Help](ig_ch_17_appD_getting_help.md)
 

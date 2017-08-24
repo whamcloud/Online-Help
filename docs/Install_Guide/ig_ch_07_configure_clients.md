@@ -11,8 +11,8 @@
 
 A client (compute node) accessing a storage appliance must be running
 Intel® EE for Lustre\* 3.1.1.0 client software. The Lustre file system
-must first be created or discovered at the Intel® Manager for Lustre\*
-dashboard (see the Intel® Manager for Lustre\* Online Help to do this).
+must first be created or discovered at the Manager for Lustre\*
+dashboard (see the Manager for Lustre\* Online Help to do this).
 The Lustre client software must be installed on the client, and then the
 Lustre file system can be mounted on the client as described on the
 Online Help.
@@ -31,9 +31,9 @@ or CentOS Linux, version 6.8 or 7.3.
 Intel® EE for Lustre\* software may be installed on file system
 *servers and clients* running SUSE Linux Enterprise version 11 with SP4,
 and on clients-only running SLES12 with SP1. However, for SLES
-installations, Intel® Manager for Lustre\* software is *not supported or
+installations, Manager for Lustre\* software is *not supported or
 installed.* As a result, automatic configuration and/or monitoring of
-high availability is not supported by Intel® Manager for Lustre\*
+high availability is not supported by Manager for Lustre\*
 software on installations running SUSE.
 
 For information about clients running SUSE, see [Installing Lustre on
@@ -88,7 +88,7 @@ before the Lustre client packages are installed.
 
 1. Configure LNET on the client.
 
-2.  Launch Intel® Manager for Lustre\* software and login as
+2.  Launch Manager for Lustre\* software and login as
     administrator. Go to the manager GUI to obtain mount point
     information:
 
@@ -151,7 +151,7 @@ perform these steps:**
 
     **Note**: Verify that the bootloader configuration file has been updated with an entry for the new kernel. Before you can boot to a  kernel, an entry for it must be included in the bootloader configuration file. Often it is added automatically when the kernel RPM is installed.
 
-1.  Launch Intel® Manager for Lustre\* software and login as
+1.  Launch Manager for Lustre\* software and login as
     administrator. Go to the manager GUI to obtain mount point
     information:
 

@@ -49,11 +49,11 @@ server and then all file system managed servers, do the following:
     installation.
 
 4.  After the updated Intel® EE for Lustre\* software is installed,
-    point your web browser to the Intel® Manager for Lustre\* dashboard.
+    point your web browser to the Manager for Lustre\* dashboard.
     Use Chrome\* or Firefox\*. Be sure to refresh the browser cache,
     i.e., force a fresh reload of the updated dashboard.
 
-5.  With the updated release of Intel® Manager for Lustre\* software
+5.  With the updated release of Manager for Lustre\* software
     installed at the manager server, a notification is displayed on the
     Servers page that an update is available for installation on managed
     servers. On the **Servers** page, click **Install Updates**.

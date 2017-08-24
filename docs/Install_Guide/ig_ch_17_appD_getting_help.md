@@ -3,7 +3,7 @@
 # Getting Help
 
 *For partners*: If you encounter a problem with Intel® EE for Lustre\*
-software, Intel® Manager for Lustre\* software, or storage, and you
+software, Manager for Lustre\* software, or storage, and you
 require support from your Intel® technical support representative, then
 to help expedite resolution of the problem, please do the following:
 
@@ -39,7 +39,7 @@ Listed installed packages
 Listed cibadmin --query
 Listed: pcs config show
 Listed: crm\_mon -1r
-Finger printed Intel® Manager for Lustre\* software installation
+Finger printed Manager for Lustre\* software installation
 Listed running processes
 listed PCI devices
 listed file system disk space.

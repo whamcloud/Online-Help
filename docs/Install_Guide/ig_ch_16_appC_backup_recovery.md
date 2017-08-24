@@ -1,5 +1,5 @@
 [**Intel® Enterprise Edition for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
-# Appendix C - Backup and Recovery of Servers Managed by Intel® Manager for Lustre\* Software
+# Appendix C - Backup and Recovery of Servers Managed by Manager for Lustre\* Software
 
 **In this Chapter:
 
@@ -13,7 +13,7 @@
 - [Security configuration](#security-configuration-1)
 - [Creating a Backup Manifest for a Metadata Server or Object Storage Server](#creating-a-backup-manifest-for-a-metadata-server-or-object-storage-server)
 - [Chroma Agent Configuration](#chroma-agent-configuration)
-- [Intel® Manager for Lustre\* YUM Repository Configuration](#intel-manager-for-lustre-yum-repository-configuration)
+- [Manager for Lustre\* YUM Repository Configuration](#intel-manager-for-lustre-yum-repository-configuration)
 - [Network Configuration](#network-configuration)
 - [SELinux Configuration](#selinux-configuration)
 - [Lustre LNET Configuration](#lustre-lnet-configuration)
@@ -42,14 +42,14 @@ compatible with their own environments.
 **Note**: Backup and restoration of file system data is beyond the scope
 of this procedure.
 
-Intel® Manager for Lustre\* software provides a way to configure Lustre
+Manager for Lustre\* software provides a way to configure Lustre
 servers as metadata and object storage servers. Such servers are
 configured into high availability cluster pairs as defined in this
 section: [Building the System – The High Availability Configuration
 Spec](ig_ch_03_building.md/#building-the-system-the-high-availability-configuration-spec).
 
 For a high-availability Lustre file system configured and managed by
-Intel® Manager for Lustre\* software, there must be at least one cluster
+Manager for Lustre\* software, there must be at least one cluster
 pair hosting the Management Server (MGS) and a Metadata Server (MDS) for
 the file system. With the introduction of Distributed Namespace (DNE),
 there may be additional metadata server pairs, hosting further MDS
@@ -59,7 +59,7 @@ In such an HA file system, there must also be at least one Object
 Storage Server (OSS) high availability cluster pair. There may be a
 large number of OSS pairs in a single Lustre file system.
 
-The process described herein assumes that Intel® Manager for Lustre\*
+The process described herein assumes that Manager for Lustre\*
 software has provisioned Lustre servers and that a Lustre file system
 has been successfully created. This process is restricted to coverage of
 managed servers and applies equally to Metadata and Object Storage
@@ -139,7 +139,7 @@ bandwidth-constrained).
 
 The following is an example checklist of high level tasks to perform in
 executing a backup. Perform these tasks after creating an Intel® EE for
-Lustre\* file system using the Intel® Manager for Lustre\* dashboard.
+Lustre\* file system using the Manager for Lustre\* dashboard.
 
 -   Save Kickstart Template from OS Installation (or create one)
 
@@ -156,7 +156,7 @@ Lustre\* file system using the Intel® Manager for Lustre\* dashboard.
 
 -   Save NTP configuration
 
--   Save Intel® Manager for Lustre\* agent configuration
+-   Save Manager for Lustre\* agent configuration
 
 -   Save the LNET configuration
 
@@ -253,7 +253,7 @@ network; include a copy of this file in the manifest as well.
 
 The YUM configuration file /etc/yum.conf and files located at
 /etc/yum.repos.d/\* must be configured so that package dependencies for
-Intel® Manager for Lustre\* software can be automatically installed.
+Manager for Lustre\* software can be automatically installed.
 
 ### Identity configuration
 
@@ -283,7 +283,7 @@ an example server configuration, for the purpose of demonstration.
 Procedures for copying the resulting data off the server to a reliable
 medium are not covered here, but can be a simple secure copy (e.g. scp)
 from the source to a destination system (such as the server running the
-Intel® Manager for Lustre\* GUI), or an integrated enterprise backup
+Manager for Lustre\* GUI), or an integrated enterprise backup
 platform.
 
 Backups must be run for each server in the file system and, minimally,
@@ -291,7 +291,7 @@ must be run each time a configuration change is made.
 
 ### Chroma Agent Configuration
 
-The Intel® Manager for Lustre\* client agent, called chroma-agent, keeps
+The Manager for Lustre\* client agent, called chroma-agent, keeps
 a set of configuration files in /var/lib/chroma. It is essential that
 all files in this directory are saved. In addition to SSL authentication
 keys, the directory contains configuration information pertinent to the
@@ -302,7 +302,7 @@ configuration used to manage the resources in Pacemaker.
 
 /var/lib/chroma/\*
 
-### Intel® Manager for Lustre\* YUM Repository Configuration
+### Manager for Lustre\* YUM Repository Configuration
 
 Intel® EE for Lustre\* software is distributed as RPM packages. These
 are hosted in YUM repositories on the manager server running the Intel®
@@ -631,7 +631,7 @@ Resource: demo-MDT0000\_ae5915 successfully cleaned up
 
 1.  If the resources are running on their non-preferred servers (i.e.,
     on the failover hosts), then use the following commands to force a
-    failback (or use Intel® Manager for Lustre\* GUI to manage the
+    failback (or use Manager for Lustre\* GUI to manage the
     resources):
 
     pcs resource move &lt;resource name&gt;

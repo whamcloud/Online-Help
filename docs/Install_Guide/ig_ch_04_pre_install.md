@@ -21,7 +21,7 @@ others) are performed automatically, or will conflict with the software:
 - Do **not** install or configure Lustre, Corosync, or Pacemaker. Install Intel® EE for Lustre\* software only as described in this guide.
 - Do **not** configure NTP on storage servers.
 - When installing Red Hat Enterprise Linux or CentOS Linux, do **not** use the EPEL repositories. Uninstall EPEL-release on all systems if it is installed.
-- Do **not** install CMAN (Cluster Manager) or other packages that use the Red Hat fence agents. Intel® Manager for Lustre\* software will have package conflicts. Remove all such packages from all systems.
+- Do **not** install CMAN (Cluster Manager) or other packages that use the Red Hat fence agents. Manager for Lustre\* software will have package conflicts. Remove all such packages from all systems.
 
 LNET Configuration
 ------------------
@@ -69,7 +69,7 @@ lost*.
     systems if it is installed.
 
     -   Do **not** install CMAN (Cluster Manager) or other packages that use
-    the Red Hat fence agents. Intel® Manager for Lustre\* software will
+    the Red Hat fence agents. Manager for Lustre\* software will
     have package conflicts. Remove all such packages from all systems.
 
 1.  For servers running Red Hat Linux, each server must be registered
@@ -123,7 +123,7 @@ yum-config-manager --enable rhel-7-server-optional-rpms
     software will manage NTP.
 
 4.  Ensure that ssh root access “ssh -l root &lt;hostname&gt;” works
-    from the server that will be hosting the Intel® Manager for Lustre\*
+    from the server that will be hosting the Manager for Lustre\*
     dashboard, to all other file system servers.
 
 5.  Properly configure the firewall to allow access to your
@@ -169,7 +169,7 @@ installed with Intel® EE for Lustre\* software.
 Firewall Considerations
 -----------------------
 
-Intel® Manager for Lustre\* software runs on
+Manager for Lustre\* software runs on
 servers running RHEL or CentOS, version 7.3. The *firewalled* package
 needs to be installed and configured for *all file system servers
 before* installing Intel® EE for Lustre\* software. The Intel® EE for

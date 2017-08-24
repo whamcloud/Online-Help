@@ -17,7 +17,7 @@ Enterprise Edition for Lustre\* software. This document:
 
 -   Introduces Intel® Enterprise Edition for Lustre\* software and its capabilities
 
--   Introduces Intel® Manager for Lustre\* software and its
+-   Introduces Manager for Lustre\* software and its
      capabilities to configure and support real-time management of
      Lustre file systems, using a GUI-based dashboard
 
@@ -35,7 +35,7 @@ Enterprise Edition for Lustre\* software. This document:
 -   Describes how to install Intel® Enterprise Edition for Lustre\*
      software
 
--   Describes how to configure Intel® Manager for Lustre\* software
+-   Describes how to configure Manager for Lustre\* software
 
 -   Describes how to add storage servers to the Lustre file system
 
@@ -83,10 +83,10 @@ Related Documentation
 -   *Intel® Enterprise Edition for Lustre\* Software, Version 3.1.1.0
     Release Notes*
 
--   *Intel® Manager for Lustre\* Software Online Help* (accessible from
+-   *Manager for Lustre\* Software Online Help* (accessible from
     within the GUI)
 
--   *Intel® Manager for Lustre\* Software User Guide* (a PDF verion on
+-   *Manager for Lustre\* Software User Guide* (a PDF verion on
     the online Help)
 
 -   *Lustre\* Installation and Configuration using Intel® EE for

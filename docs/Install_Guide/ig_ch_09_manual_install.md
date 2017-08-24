@@ -2,9 +2,9 @@
 # Installing and Configuring Lustre Manually
 
 Some installations may opt to deploy and configure a Lustre file system
-manually, without Intel® Manager for Lustre\* software. Other
+manually, without Manager for Lustre\* software. Other
 installations may opt to deploy and configure a Lustre file system and
-then later install Intel® Manager for Lustre\* software to be used in
+then later install Manager for Lustre\* software to be used in
 Monitor-only- mode.
 
 The overall release tarball is ee-3.1.1.0.tar.gz. To deploy and

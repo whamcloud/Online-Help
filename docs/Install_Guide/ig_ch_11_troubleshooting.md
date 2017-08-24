@@ -105,7 +105,7 @@ these steps in the Command Center Manager user interface:
     menu **Failback** button.
 
 For more details about manually performing failover and failback
-operations, see the Intel® Manager for Lustre\* online Help topic,
+operations, see the Manager for Lustre\* online Help topic,
 *Managing storage*.
 
 ***Problem:*** **You need to restart cleanly after a power outage to

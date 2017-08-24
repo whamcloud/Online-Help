@@ -4,15 +4,85 @@ Installation Guide
 Partner Guide\
 High Performance Data Division
 
-Software Version: 4.0.0.0
+Software Version: 3.1.0.3
 
-Copyright (c) 2017 Intel Corporation. All rights reserved.
- Use of this source code is governed by a MIT-style
- license that can be found in the LICENSE file.
-Copyright (c) 2017 Intel Corporation. All rights reserved.
- Use of this source code is governed by a MIT-style
- license that can be found in the LICENSE file.
+World Wide Web:
 
+http://www.intel.com
+
+February 28, 2017
+
+Disclaimer and legal information
+
+Copyright 2017 Intel® Corporation. All Rights Reserved.
+
+The source code contained or described herein and all documents related
+to the source code ("Material") are owned by Intel® Corporation or its
+suppliers or licensors. Title to the Material remains with Intel®
+Corporation or its suppliers and licensors. The Material contains trade
+secrets and proprietary and confidential information of Intel® or its
+suppliers and licensors. The Material is protected by worldwide
+copyright and trade secret laws and treaty provisions. No part of the
+Material may be used, copied, reproduced, modified, published, uploaded,
+posted, transmitted, distributed, or disclosed in any way without
+Intel’s prior express written permission.
+
+No license under any patent, copyright, trade secret or other
+intellectual property right is granted to or conferred upon you by
+disclosure or delivery of the Materials, either expressly, by
+implication, inducement, estoppel or otherwise. Any license under such
+intellectual property rights must be express and approved by Intel® in
+writing.
+
+INFORMATION IN THIS DOCUMENT IS PROVIDED IN CONNECTION WITH INTEL®
+PRODUCTS. NO LICENSE, EXPRESS OR IMPLIED, BY ESTOPPEL OR OTHERWISE, TO
+ANY INTELLECTUAL PROPERTY RIGHTS IS GRANTED BY THIS DOCUMENT. EXCEPT AS
+PROVIDED IN INTEL'S TERMS AND CONDITIONS OF SALE FOR SUCH PRODUCTS,
+INTEL® ASSUMES NO LIABILITY WHATSOEVER AND INTEL® DISCLAIMS ANY EXPRESS
+OR IMPLIED WARRANTY, RELATING TO SALE AND/OR USE OF INTEL® PRODUCTS
+INCLUDING LIABILITY OR WARRANTIES RELATING TO FITNESS FOR A PARTICULAR
+PURPOSE, MERCHANTABILITY, OR INFRINGEMENT OF ANY PATENT, COPYRIGHT OR
+OTHER INTELLECTUAL PROPERTY RIGHT.
+
+A "Mission Critical Application" is any application in which failure of
+the Intel® Product could result, directly or indirectly, in personal
+injury or death. SHOULD YOU PURCHASE OR USE INTEL'S PRODUCTS FOR ANY
+SUCH MISSION CRITICAL APPLICATION, YOU SHALL INDEMNIFY AND HOLD INTEL®
+AND ITS SUBSIDIARIES, SUBCONTRACTORS AND AFFILIATES, AND THE DIRECTORS,
+OFFICERS, AND EMPLOYEES OF EACH, HARMLESS AGAINST ALL CLAIMS COSTS,
+DAMAGES, AND EXPENSES AND REASONABLE ATTORNEYS' FEES ARISING OUT OF,
+DIRECTLY OR INDIRECTLY, ANY CLAIM OF PRODUCT LIABILITY, PERSONAL INJURY,
+OR DEATH ARISING IN ANY WAY OUT OF SUCH MISSION CRITICAL APPLICATION,
+WHETHER OR NOT INTEL® OR ITS SUBCONTRACTOR WAS NEGLIGENT IN THE DESIGN,
+MANUFACTURE, OR WARNING OF THE INTEL® PRODUCT OR ANY OF ITS PARTS.
+
+Intel® may make changes to specifications and product descriptions at
+any time, without notice. Designers must not rely on the absence or
+characteristics of any features or instructions marked "reserved" or
+"undefined". Intel® reserves these for future definition and shall have
+no responsibility whatsoever for conflicts or incompatibilities arising
+from future changes to them. The information here is subject to change
+without notice. Do not finalize a design with this information.
+
+The products described in this document may contain design defects or
+errors known as errata which may cause the product to deviate from
+published specifications. Current characterized errata are available on
+request.
+
+Before using any third party software referenced herein, please refer to
+the third party software provider’s website for more information,
+including without limitation, information regarding the mitigation of
+potential security vulnerabilities in the third party software.
+
+Contact your local Intel® sales office or your distributor to obtain the
+latest specifications and before placing your product order.\
+\
+Copies of documents which have an order number and are referenced in
+this document, or other Intel® literature, may be obtained by calling
+1-800-548-4725, or go to: http://www.intel.com/design/literature.htm.
+
+Intel® and the Intel® logo are trademarks of Intel® Corporation in the
+U.S. and/or other countries.
 
 \* Other names and brands may be claimed as the property of others.
 
@@ -35,7 +105,7 @@ Contents {#contents .TOCHeading1}
 [Introducing the Intel® Enterprise Edition for Lustre\* Software
 1](#introducing-the-intel-enterprise-edition-for-lustre-software)
 
-[What is Intel® Manager for Lustre\* Software?
+[What is Manager for Lustre\* Software?
 1](#what-is-intel-manager-for-lustre-software)
 
 [What is Management Mode? 1](#what-is-management-mode)
@@ -97,10 +167,10 @@ Contents {#contents .TOCHeading1}
 [Installing Intel® EE for Lustre\* software
 17](#installing-intel-ee-for-lustre-software)
 
-[Intel® Manager for Lustre\* Software Configuration Settings
+[Manager for Lustre\* Software Configuration Settings
 18](#intel-manager-for-lustre-software-configuration-settings)
 
-[Editing Intel® Manager for Lustre\* Software Configuration Settings
+[Editing Manager for Lustre\* Software Configuration Settings
 20](#editing-intel-manager-for-lustre-software-configuration-settings)
 
 [Creating a Managed Lustre File System
@@ -147,7 +217,7 @@ Coprocessors
 
 [IPMI Platform Check 32](#ipmi-platform-check)
 
-[Appendix B - Backing up and Restoring Intel® Manager for Lustre\*
+[Appendix B - Backing up and Restoring Manager for Lustre\*
 Server Software
 33](#appendix-b---backing-up-and-restoring-intel-manager-for-lustre-server-software)
 
@@ -166,10 +236,10 @@ Server Software
 
 [Security configuration 37](#security-configuration)
 
-[Intel® Manager for Lustre\* software
+[Manager for Lustre\* software
 37](#intel-manager-for-lustre-software)
 
-[Creating a Backup Manifest for the Intel® Manager for Lustre\* Server
+[Creating a Backup Manifest for the Manager for Lustre\* Server
 38](#creating-a-backup-manifest-for-the-intel-manager-for-lustre-server)
 
 [Network Configuration Files 38](#network-configuration-files)
@@ -184,29 +254,29 @@ Server Software
 
 [NTP Configuration 39](#ntp-configuration)
 
-[Intel® Manager for Lustre\* SSL Certificates
+[Manager for Lustre\* SSL Certificates
 39](#intel-manager-for-lustre-ssl-certificates)
 
-[Intel® Manager for Lustre\* Database
+[Manager for Lustre\* Database
 40](#intel-manager-for-lustre-database)
 
-[Restoring the Intel® Manager for Lustre\* Service
+[Restoring the Manager for Lustre\* Service
 41](#restoring-the-intel-manager-for-lustre-service)
 
 [Re-install OS and Restore System Configuration
 41](#re-install-os-and-restore-system-configuration)
 
-[Re-install Intel® Manager for Lustre\* software
+[Re-install Manager for Lustre\* software
 42](#re-install-intel-manager-for-lustre-software)
 
 [Restore the NTP Configuration 42](#restore-the-ntp-configuration)
 
-[Restore the Intel® Manager for Lustre\* SSL certificates
+[Restore the Manager for Lustre\* SSL certificates
 42](#restore-the-intel-manager-for-lustre-ssl-certificates)
 
 [Restore the PostgresSQL Database 42](#restore-the-postgressql-database)
 
-[Restart Intel® Manager for Lustre\* software
+[Restart Manager for Lustre\* software
 43](#restart-intel-manager-for-lustre-software)
 
 [Potential Issues 43](#potential-issues)
@@ -238,7 +308,7 @@ Server
 
 [Chroma Agent Configuration 49](#chroma-agent-configuration)
 
-[Intel® Manager for Lustre\* YUM Repository Configuration
+[Manager for Lustre\* YUM Repository Configuration
 50](#intel-manager-for-lustre-yum-repository-configuration)
 
 [Network Configuration 50](#network-configuration)
@@ -276,7 +346,7 @@ Enterprise Edition for Lustre\* software. This document:
 
 -   Introduces Intel® Enterprise Edition for Lustre\* software and its capabilities
 
--   Introduces Intel® Manager for Lustre\* software and its
+-   Introduces Manager for Lustre\* software and its
      capabilities to configure and support real-time management of
      Lustre file systems, using a GUI-based dashboard
 
@@ -294,7 +364,7 @@ Enterprise Edition for Lustre\* software. This document:
 -   Describes how to install Intel® Enterprise Edition for Lustre\*
      software
 
--   Describes how to configure Intel® Manager for Lustre\* software
+-   Describes how to configure Manager for Lustre\* software
 
 -   Describes how to add storage servers to the Lustre file system
 
@@ -342,10 +412,10 @@ Related Documentation
 -   *Intel® Enterprise Edition for Lustre\* Software, Version 3.1.0.3
     Release Notes*
 
--   *Intel® Manager for Lustre\* Software Online Help* (accessible from
+-   *Manager for Lustre\* Software Online Help* (accessible from
     within the GUI)
 
--   *Intel® Manager for Lustre\* Software User Guide* (a PDF verion on
+-   *Manager for Lustre\* Software User Guide* (a PDF verion on
     the online Help)
 
 -   *Lustre\* Installation and Configuration using Intel® EE for
@@ -411,7 +481,7 @@ regarding the configuration and interconnect requirements to achieve the
 maximum benefits of an HA file system managed by Intel® EE for
 Lustre\* software.
 
-What is Intel® Manager for Lustre\* Software?
+What is Manager for Lustre\* Software?
 -----------------------------------------------
 
 Intel® EE for Lustre\* software includes the Intel® Manager for
@@ -424,21 +494,21 @@ plugins might include real-time storage monitoring that let you track
 Lustre file system usage, performance metrics, events, and errors at the
 Lustre level. Please contact Intel® for more information.
 
-Intel® Manager for Lustre\* software is a part of the Intel® EE for
+Manager for Lustre\* software is a part of the Intel® EE for
 Lustre\* software product.
 
 What is Management Mode?
 ------------------------
 
-The Intel® Manager for Lustre\* software lets you create and manage
+The Manager for Lustre\* software lets you create and manage
 new high-availability (HA) Lustre file systems from its GUI. For each HA
 file system, the GUI and dashboard let you create, monitor, and manage
 all servers and their respective targets. The software lets you define
 failover servers to support HA. RAID-based fault tolerance for storage
-devices is implemented independent of Intel® Manager for Lustre\*
+devices is implemented independent of Manager for Lustre\*
 software. Software RAID (MDRAID) disk discovery is not supported.
 
-To provide robust HA support, Intel® Manager for Lustre\* software
+To provide robust HA support, Manager for Lustre\* software
 automatically configures Corosync and Pacemaker, and takes advantage of
 IPMI or PDUs to support server failover. Note that Logical Volume
 Manager (LVM) is not supported in [Management
@@ -455,8 +525,8 @@ What is Monitor-only Mode?
 --------------------------
 
 Monitor-only mode allows you to “discover” a working Lustre file system.
-Using Intel® Manager for Lustre\* software, you can then monitor the
-file system at the Intel® Manager for Lustre\* dashboard. All of the
+Using Manager for Lustre\* software, you can then monitor the
+file system at the Manager for Lustre\* dashboard. All of the
 charts presented on the manager dashboard to monitor performance and
 statistics, are also available in monitor-only mode.
 
@@ -464,14 +534,14 @@ Monitor-only mode is for file systems that do not fully conform to the
 High Availability Configuration Specification. In this situation, the
 Corosync and Pacemaker configuration modules provided with Intel®
 Manager for Lustre\* software are not automatically deployed. This means
-that Intel® Manager for Lustre\* software cannot configure the file
+that Manager for Lustre\* software cannot configure the file
 system for server failover. Note that Logical Volume Manager (LVM) is
 not supported in [Management mode](#what-is-management-mode), but is
 supported in [Monitor mode](#what-is-monitor-only-mode).
 
 ### The Configuration Page in Monitor-only mode
 
-The Configuration page presented by Intel® Manager for Lustre\*
+The Configuration page presented by Manager for Lustre\*
 software is designed primarily to enable designers to create Lustre file
 systems with server failover capability, but this capability is not
 supported in monitor-only mode. However, many of the features provided
@@ -512,7 +582,7 @@ Overall System Configuration
 The high-level configuration of an HA file system managed by Intel® EE
 for Lustre\* software consists of the following. See Figure 1.
 
--   A **dedicated manager server** hosts the Intel® Manager for Lustre\*
+-   A **dedicated manager server** hosts the Manager for Lustre\*
     software and dashboard.
 
 -   **Management server** (MGS): The MGS provides access to the
@@ -658,7 +728,7 @@ security vulnerabilities in the Red Hat software.
     repositories must be fully configured. Run yum update to verify that
     yum updates occur successfully.
 
- Intel® Manager for Lustre\* software is supported on:
+ Manager for Lustre\* software is supported on:
 
 -   Latest released Google Chrome browser.
 
@@ -751,7 +821,7 @@ Management Target
     Operations Manual, Chapter 5, Setting up a Lustre File System* for
     more information.
 
--   Intel® Manager for Lustre\* software does *not* support an MGT
+-   Manager for Lustre\* software does *not* support an MGT
     larger than 10 Gbytes.
 
 -   RAID 1 is recommended. Software RAID (MDRAID) disk discovery is not
@@ -885,7 +955,7 @@ resources and allows administrators to troubleshoot it.
 After the failed server is repaired and ready for return-to-service, it
 is *not* automatically brought back online as the primary server
 (failed-back). Fail-back is performed manually, by the administrator at
-the Intel® Manager for Lustre\* software GUI.
+the Manager for Lustre\* software GUI.
 
 **Note**: See [Issues Regarding Power Loss to the BMC or
 PDU](#issues-regarding-power-loss-to-the-bmc-or-pdu)
@@ -905,7 +975,7 @@ control, be sure to note which PDUs and outlets are connected to which
 servers. Also, for redundancy, be sure that the primary and backup power
 outlets connected to each server reside on different PDUs. After
 configuring PDUs and noting PDU/server assignments, you will later
-configure these assignments on the Intel® Manager for Lustre\* Power
+configure these assignments on the Manager for Lustre\* Power
 Control tab.
 
 **Note**: See [Issues Regarding Power Loss to the BMC or
@@ -961,7 +1031,7 @@ others) are performed automatically, or will conflict with the software:
     it is installed.
 
 -   Do **not** install CMAN (Cluster Manager) or other packages that use
-    the Red Hat fence agents. Intel® Manager for Lustre\* software will
+    the Red Hat fence agents. Manager for Lustre\* software will
     have package conflicts. Remove all such packages from all systems.
 
 LNET Configuration
@@ -1010,7 +1080,7 @@ lost*.
     systems if it is installed.
 
     -   Do **not** install CMAN (Cluster Manager) or other packages that use
-    the Red Hat fence agents. Intel® Manager for Lustre\* software will
+    the Red Hat fence agents. Manager for Lustre\* software will
     have package conflicts. Remove all such packages from all systems.
 
 1.  For servers running Red Hat Linux, each server must be registered
@@ -1064,7 +1134,7 @@ yum-config-manager --enable rhel-7-server-optional-rpms
     software will manage NTP.
 
 4.  Ensure that ssh root access “ssh -l root &lt;hostname&gt;” works
-    from the server that will be hosting the Intel® Manager for Lustre\*
+    from the server that will be hosting the Manager for Lustre\*
     dashboard, to all other file system servers.
 
 5.  Properly configure the firewall to allow access to your
@@ -1110,7 +1180,7 @@ installed with Intel® EE for Lustre\* software.
 Firewall Considerations
 -----------------------
 
-[]{#_Toc402946281 .anchor}Intel® Manager for Lustre\* software runs on
+[]{#_Toc402946281 .anchor}Manager for Lustre\* software runs on
 servers running RHEL or CentOS, version 7.3. The *firewalld* package
 needs to be installed and configured for *all file system servers
 before* installing Intel® EE for Lustre\* software. The Intel® EE for
@@ -1121,26 +1191,26 @@ Intel® EE for Lustre\* Software Installation
 ==============================================
 
 This section describes how to install the Intel® EE for Lustre\*
-software and the Intel® Manager for Lustre\* software on the *manager
+software and the Manager for Lustre\* software on the *manager
 server.*
 
-After Intel® EE for Lustre\* and Intel® Manager for Lustre\* software is
-installed, point your web browser to the Intel® Manager for Lustre\*
+After Intel® EE for Lustre\* and Manager for Lustre\* software is
+installed, point your web browser to the Manager for Lustre\*
 dashboard. Use Chrome\* or Firefox\*. A display monitor with a minimum
 resolution of 1024 X 768 pixels is recommended, to adequately display
-the Intel® Manager for Lustre\* software GUI.
+the Manager for Lustre\* software GUI.
 
 **Note**: Later, when adding storage servers to your Lustre file system,
-the Intel® Manager for Lustre\* agent, Intel® EE for Lustre\*
+the Manager for Lustre\* agent, Intel® EE for Lustre\*
 software, and specific dependencies (e.g.: for Corosync and Pacemaker)
 are automatically deployed to the storage server. This avoids the need
 to manually install the Intel® EE for Lustre\* software on storage
 servers and avoids possible errors.
 
 **Note**: Some installations may opt to deploy and configure a Lustre
-file system manually, without Intel® Manager for Lustre\* software.
+file system manually, without Manager for Lustre\* software.
 Other installations may opt to deploy and configure a Lustre file system
-and then later install Intel® Manager for Lustre\* software to be used
+and then later install Manager for Lustre\* software to be used
 in Monitor-only mode. The overall release tarball is ee-3.1.0.3.tar.gz.
 To deploy and configure Lustre manually, see [Installing and Configuring
 Lustre Manually](#installing-and-configuring-lustre-manually).
@@ -1158,12 +1228,12 @@ Installing Intel® EE for Lustre\* software
 You will need the following information to perform this installation:
 
 -   The name, email address, and password you wish to use for the first
-    Intel® Manager for Lustre\* software superuser. The email address
+    Manager for Lustre\* software superuser. The email address
     must use an FQDN.
 
 -   (Optional) The fully qualified domain name (FQDN) of the NTP server
     (internal or external) used for your site. If no NTP server is set,
-    the Intel® Manager for Lustre\* server's clock will act as the
+    the Manager for Lustre\* server's clock will act as the
     time source for the entire storage cluster.
 
 To install the software, complete these steps:
@@ -1188,7 +1258,7 @@ To install the software, complete these steps:
 
 
 1.  []{#_Ref336418703 .anchor}When the prompts below appear, enter your
-    parameters for the first superuser of Intel® Manager for Lustre\*:
+    parameters for the first superuser of Manager for Lustre\*:
 
     **Username:** *&lt;Enter the name of the superuser&gt;*
 
@@ -1201,7 +1271,7 @@ To install the software, complete these steps:
     
 
 
-    **Note**: Additional Intel® Manager for Lustre\* software superusers as well as file system administrators and users can be created in the manager GUI.
+    **Note**: Additional Manager for Lustre\* software superusers as well as file system administrators and users can be created in the manager GUI.
 
 When configuration is complete, a message is displayed indicating the installation was successful.
 
@@ -1212,15 +1282,15 @@ When configuration is complete, a message is displayed indicating the installati
     for your site, enter the FQDN or IP address of the NTP server and
     press the **&lt;Enter&gt;** key.
 
-    -   *Option 2:* To use the Intel® Manager for Lustre\* software
+    -   *Option 2:* To use the Manager for Lustre\* software
     server’s clock as the time source, press the **&lt;Enter&gt;** key.
 
 1.  Using ifconfig, obtain the IP address of the administrative network
-    interface for the server hosting Intel® Manager for Lustre\*
+    interface for the server hosting Manager for Lustre\*
     software. The default network interface for Intel® Manager for
     Lustre\* software is eth0.
 
-2.  Open a web browser and access the Intel® Manager for Lustre\*
+2.  Open a web browser and access the Manager for Lustre\*
     software GUI using the server IP address obtained in the previous
     step. Enter in the address field of your browser:
     
@@ -1228,7 +1298,7 @@ When configuration is complete, a message is displayed indicating the installati
 https://<command_center_server_IP_address>/
 ```
 
-    **Note**: If the IP address of the server has an associated FQDN, you can connect to the Intel® Manager for Lustre\* GUI user interface using:
+    **Note**: If the IP address of the server has an associated FQDN, you can connect to the Manager for Lustre\* GUI user interface using:
 
 ```
     https://<command_center_server_fqdn>/
@@ -1242,13 +1312,13 @@ Lustre\* GUI. A certificate can be downloaded from (example only):\
 https://&lt;manager-addr&gt;/certificate/
 
 After Intel® EE for Lustre\* software is installed, point your web
-browser to the Intel® Manager for Lustre\* dashboard. Use Chrome\* or
+browser to the Manager for Lustre\* dashboard. Use Chrome\* or
 Firefox\*.
 
-Intel® Manager for Lustre\* Software Configuration Settings
+Manager for Lustre\* Software Configuration Settings
 -------------------------------------------------------------
 
-The following Intel® Manager for Lustre\* software configuration
+The following Manager for Lustre\* software configuration
 settings can be modified. See the instructions for modifying these
 settings following the descriptions.
 
@@ -1278,13 +1348,13 @@ monitoring of power control devices. When set to True, this setting
 disables the manager software’s monitoring of your power control devices
 (eg, BMC, PDU outlets, etc.) This is necessary for sites where the
 manager server does not have access to the power control devices itself.
-However, Intel® Manager for Lustre\* software will then NO LONGER REPORT
+However, Manager for Lustre\* software will then NO LONGER REPORT
 ANY FAILURE IN ANY POWER CONTROL DEVICES. If power control becomes
 non-operational, automatic failover will not occur on failure, and
 manual intervention will be required to restore service to your file
 system. If you chose to make this setting to True, we recommend
 implementing an alternate mechanism to monitor of power control devices,
-outside of Intel® Manager for Lustre\* software.
+outside of Manager for Lustre\* software.
 
 |Setting|Default|Description|
 |---|---|---|
@@ -1295,7 +1365,7 @@ outside of Intel® Manager for Lustre\* software.
 |**```EMAIL\_USE\_TLS```**|False (Uppercase first letter required.)|True indicates that TLS/SSL is to be used. False indicates it is not to be used.|
 |**```EMAIL\_SENDER```**|'noreply\@\<command_center server_fqdn>'|The address that appears in the *From* field on alert emails.
 
-### Editing Intel® Manager for Lustre\* Software Configuration Settings
+### Editing Manager for Lustre\* Software Configuration Settings
 
 To change these configuration settings:
 
@@ -1315,10 +1385,10 @@ In this example, the first letter of False must be capitalized.
 
     **Note**: Entries must follow Python\* syntax rules. For example, all strings must be enclosed in single or double quotes (double quotes must be used if the string includes a single quote). For example, EMAIL\_HOST=server1.test.com will result in an error, while EMAIL\_HOST='server1.test.com' is a valid entry.
 
-    **Warning**: If you edit the file settings.py instead of creating a local\_settings.py file, your changes will be overwritten without warning when the Intel® Manager for Lustre\* software is updated.
+    **Warning**: If you edit the file settings.py instead of creating a local\_settings.py file, your changes will be overwritten without warning when the Manager for Lustre\* software is updated.
 
 1.  To configure email alerts, complete one of the options below. By
-    default, email alerts from the Intel® Manager for Lustre\*
+    default, email alerts from the Manager for Lustre\*
     software are disabled (EMAIL\_HOST set to None).
 
     -   *Option 1: Set up an external mail server.* Create or modify the
@@ -1332,7 +1402,7 @@ In this example, the first letter of False must be capitalized.
 
     -   []{#Option2%3Alocalmailserver .anchor}*Option 2: Use a local mail
     server.* If a suitable SMTP server is not available, you can
-    configure the Intel® Manager for Lustre\* software server to act
+    configure the Manager for Lustre\* software server to act
     as an SMTP server:
 
         a.  Set EMAIL\_SENDER to an address suitable for your site.
@@ -1360,26 +1430,26 @@ Creating a Managed Lustre File System
 =====================================
 
 After Intel® EE for Lustre\* software is installed, point your web
-browser to the Intel® Manager for Lustre\* dashboard. Use Chrome\* or
+browser to the Manager for Lustre\* dashboard. Use Chrome\* or
 Firefox\*.
 
 For complete instructions on adding servers, configuring LNET, assigning
 primary and failover servers, configuring PDUs or IPMI, and creating a
-Lustre file system, see the Intel® Manager for Lustre\* online Help.
+Lustre file system, see the Manager for Lustre\* online Help.
 
 Adding Storage Servers to a Lustre File System
 ----------------------------------------------
 
 Adding a storage server consists of identifying that server to Intel®
 Manager for Lustre\* software, using either the manager GUI or the
-Intel® Manager for Lustre\* command line interface. A server can be
+Manager for Lustre\* command line interface. A server can be
 added to an existing file system that was previously discovered and is
-visible to Intel® Manager for Lustre\* software in monitor-only mode,
+visible to Manager for Lustre\* software in monitor-only mode,
 or a server can be added to a managed, HA file system created using
-Intel® Manager for Lustre\* software.
+Manager for Lustre\* software.
 
 For managed, HA file systems, when the server is identified, the
-Intel® Manager for Lustre\* agent, Intel® EE for Lustre\* software,
+Manager for Lustre\* agent, Intel® EE for Lustre\* software,
 and specific dependencies (e.g. for Corosync and Pacemaker) are
 automatically deployed to the new storage server. This simplifies
 software installation and avoids possible errors.
@@ -1390,7 +1460,7 @@ targets like the MGT, MDT, and OSTs, thereby acting as a gateway between
 these targets and the network.
 
 The Lustre file system on the storage servers is configured from the
-Intel® Manager for Lustre\* software GUI, or the supported command
+Manager for Lustre\* software GUI, or the supported command
 line interface.
 
 Storage servers are typically deployed in a high availability (HA)
@@ -1400,7 +1470,7 @@ on another server attached to the same storage (known as “failover”).
 
 For complete instructions on adding servers, assigning primary and
 failover servers, configuring PDUs or IPMI, and creating a Lustre file
-system, see the Intel® Manager for Lustre\* online Help.
+system, see the Manager for Lustre\* online Help.
 
 **Note**: Installing Intel® EE for Lustre\* software automatically
 disables SELinux on all storage servers, because the Lustre file system
@@ -1420,7 +1490,7 @@ Lustre\* software to manage and monitor the file system. *
 
 []{#_Toc325378096 .anchor}Storage servers created in the manager GUI can
 be managed using the manager GUI or the command line interface. For
-information about using the CLI, see the Intel® Manager for Lustre\*
+information about using the CLI, see the Manager for Lustre\*
 online Help topic*, Using the command line interface*.
 
 Configuring Clients 
@@ -1428,8 +1498,8 @@ Configuring Clients
 
 A client (compute node) accessing a storage appliance must be running
 Intel® EE for Lustre\* 3.1.0.3 client software. The Lustre file system
-must first be created or discovered at the Intel® Manager for Lustre\*
-dashboard (see the Intel® Manager for Lustre\* Online Help to do this).
+must first be created or discovered at the Manager for Lustre\*
+dashboard (see the Manager for Lustre\* Online Help to do this).
 The Lustre client software must be installed on the client, and then the
 Lustre file system can be mounted on the client as described on the
 Online Help.
@@ -1454,9 +1524,9 @@ or CentOS Linux, version 6.8 or 7.3.
 Intel® EE for Lustre\* software may be installed on file system
 *servers and clients* running SUSE Linux Enterprise version 11 with SP4,
 and on clients-only running SLES12 with SP1. However, for SLES
-installations, Intel® Manager for Lustre\* software is *not supported or
+installations, Manager for Lustre\* software is *not supported or
 installed.* As a result, automatic configuration and/or monitoring of
-high availability is not supported by Intel® Manager for Lustre\*
+high availability is not supported by Manager for Lustre\*
 software on installations running SUSE.
 
 For information about clients running SUSE, see [Installing Lustre on
@@ -1521,7 +1591,7 @@ before the Lustre client packages are installed.
 
 1.  Configure LNET on the client.
 
-2.  Launch Intel® Manager for Lustre\* software and login as
+2.  Launch Manager for Lustre\* software and login as
     administrator. Go to the manager GUI to obtain mount point
     information:
 
@@ -1584,7 +1654,7 @@ perform these steps:**
 
     **Note**: Verify that the bootloader configuration file has been updated with an entry for the new kernel. Before you can boot to a  kernel, an entry for it must be included in the bootloader configuration file. Often it is added automatically when the kernel RPM is installed.
 
-1.  Launch Intel® Manager for Lustre\* software and login as
+1.  Launch Manager for Lustre\* software and login as
     administrator. Go to the manager GUI to obtain mount point
     information:
 
@@ -1647,9 +1717,9 @@ Installing and Configuring Lustre Manually
 ==========================================
 
 Some installations may opt to deploy and configure a Lustre file system
-manually, without Intel® Manager for Lustre\* software. Other
+manually, without Manager for Lustre\* software. Other
 installations may opt to deploy and configure a Lustre file system and
-then later install Intel® Manager for Lustre\* software to be used in
+then later install Manager for Lustre\* software to be used in
 Monitor-only- mode.
 
 The overall release tarball is ee-3.1.0.3.tar.gz. To deploy and
@@ -1832,7 +1902,7 @@ these steps in the Command Center Manager user interface:
     menu **Failback** button.
 
 For more details about manually performing failover and failback
-operations, see the Intel® Manager for Lustre\* online Help topic,
+operations, see the Manager for Lustre\* online Help topic,
 *Managing storage*.
 
 ***Problem:*** **You need to restart cleanly after a power outage to
@@ -1927,11 +1997,11 @@ server and then all file system managed servers, do the following:
     installation.
 
 4.  After the updated Intel® EE for Lustre\* software is installed,
-    point your web browser to the Intel® Manager for Lustre\* dashboard.
+    point your web browser to the Manager for Lustre\* dashboard.
     Use Chrome\* or Firefox\*. Be sure to refresh the browser cache,
     i.e., force a fresh reload of the updated dashboard.
 
-5.  With the updated release of Intel® Manager for Lustre\* software
+5.  With the updated release of Manager for Lustre\* software
     installed at the manager server, a notification is displayed on the
     Servers page that an update is available for installation on managed
     servers. On the **Servers** page, click **Install Updates**.
@@ -1995,7 +2065,7 @@ This process could run some combination of these commands over an
 extended period (e.g., monitor every 30 seconds or so with periodic
 power commands), for each BMC.
 
-Appendix B - Backing up and Restoring Intel® Manager for Lustre\* Server Software
+Appendix B - Backing up and Restoring Manager for Lustre\* Server Software
 =================================================================================
 
 An effective system recovery strategy requires that the administrator
@@ -2003,10 +2073,10 @@ maintains a current backup of critical files and implements a reliable
 and repeatable method for restoring the platform to working condition.
 
 This chapter provides guidance on how to conduct a full recovery of the
-Intel® Manager for Lustre\* server from a combination of the original
+Manager for Lustre\* server from a combination of the original
 installation media and a backup manifest of the Intel® Manager for
 Lustre\* software. The manifest will describe the essential files
-required in order to restore Intel® Manager for Lustre\* software
+required in order to restore Manager for Lustre\* software
 (referred to herein as “manager software”) and its management of
 existing file systems to the point of the last successful backup. From
 these instructions, administrators can define a recovery process that is
@@ -2081,7 +2151,7 @@ following components:
 
         -   SSH keys (host and user)
 
--   Intel® Manager for Lustre\* software installation and
+-   Manager for Lustre\* software installation and
     configuration
 
     -   Additional packages required by IML (installation will attempt
@@ -2133,7 +2203,7 @@ Manager for Lustre\* service.
 
 -   Save NTP configuration
 
--   Save Intel® Manager for Lustre\* server SSL Certificates
+-   Save Manager for Lustre\* server SSL Certificates
 
 -   Execute PostgreSQL Backup (execute on a regular schedule)
 
@@ -2240,7 +2310,7 @@ copy of this file in the manifest as well.
 
 The YUM configuration file /etc/yum.conf and files located at
 /etc/yum.repos.d/\* must be configured so that package dependencies for
-Intel® Manager for Lustre\* software can be automatically installed.
+Manager for Lustre\* software can be automatically installed.
 
 ### Identity configuration
 
@@ -2261,16 +2331,16 @@ provisioning or backup manifest, including firewall rules (IPTables),
 Security Enhanced Linux (must be disabled), pluggable authentication
 modules (PAMs) and SSH (including Host and User keys).
 
-### Intel® Manager for Lustre\* software
+### Manager for Lustre\* software
 
-The Intel® Manager for Lustre\* software is distributed with an
+The Manager for Lustre\* software is distributed with an
 installation program that makes deployment straightforward, predictable,
 and repeatable. The installer works to automatically resolve any
 software package dependencies, and also initializes the platform and
 configures essential services, such as the PostgreSQL database used for
 recording information, and the RabbitMQ messaging system.
 
-To support the restoration of the Intel® Manager for Lustre\*
+To support the restoration of the Manager for Lustre\*
 software, be sure to regularly back-up of the PostgresSQL database. This
 is necessary because the database persistently records Intel® Manager
 for Lustre\* software configuration information.
@@ -2290,7 +2360,7 @@ level of risk of data loss. We strongly recommend that a point-in-time
 backup is taken directly after completing any major change management
 activity, such as adding new servers or file systems.
 
-Creating a Backup Manifest for the Intel® Manager for Lustre\* Server
+Creating a Backup Manifest for the Manager for Lustre\* Server
 -----------------------------------------------------------------------
 
 This section provides a subset of the information required to rebuild a
@@ -2360,7 +2430,7 @@ cp -p /etc/ssh/ssh\_host\*key\* \$HOME/backup/etc/ssh/.
 
 ### SSH user keys (Optional)
 
-Intel® Manager for Lustre\* software has several mechanisms available
+Manager for Lustre\* software has several mechanisms available
 for establishing trust between itself and the servers that it manages.
 One of the most common mechanisms used during server discovery, is to
 create a passphrase-less SSH public/private key pair for the root
@@ -2390,7 +2460,7 @@ or regenerated and the public keys redistributed to all targets.
 
 ### NTP Configuration
 
-The Intel® Manager for Lustre\* software installation program will
+The Manager for Lustre\* software installation program will
 generate an NTP configuration file. After installation completes, create
 a backup of the resulting file:
 
@@ -2398,17 +2468,17 @@ mkdir -p \$HOME/backup/etc
 
 cp /etc/ntp.conf \$HOME/backup/etc/.
 
-### Intel® Manager for Lustre\* SSL Certificates
+### Manager for Lustre\* SSL Certificates
 
-Intel® Manager for Lustre\* software uses SSL certificates to
+Manager for Lustre\* software uses SSL certificates to
 establish trusted communications between the manager server (running the
-Intel® Manager for Lustre\* software GUI) and the agents running
+Manager for Lustre\* software GUI) and the agents running
 Intel® EE for Lustre\* software, including the metadata servers,
 object storage servers, etc. Without these certificates, trust cannot be
-established and the Intel® Manager for Lustre\* software will not be
+established and the Manager for Lustre\* software will not be
 able to manage or receive monitoring telemetry from those agents.
 
-The SSL certificates are generated by the Intel® Manager for Lustre\*
+The SSL certificates are generated by the Manager for Lustre\*
 installation program and are re-generated each time the installer is
 run. The SSL certificates are randomly generated, so no two sets of keys
 are the same. To support successfully restoring Intel® Manager for
@@ -2427,9 +2497,9 @@ cp /var/lib/chroma/manager.crt \~/backup/var/lib/chroma/.
 
 cp /var/lib/chroma/manager.pem \~/backup/var/lib/chroma/.
 
-### Intel® Manager for Lustre\* Database
+### Manager for Lustre\* Database
 
-Intel® Manager for Lustre\* software employs a PostgreSQL RDBMS to
+Manager for Lustre\* software employs a PostgreSQL RDBMS to
 record configuration data and file system telemetry for all Lustre
 servers connected to the manager server. Data collection is continuous
 and regular backups of the database are required in order to be able to
@@ -2478,7 +2548,7 @@ around this limitation by feeding the output into the split command.
 For other database backup strategies and discussions on the merits of
 the different approaches, refer to the PostgreSQL project documentation.
 
-Restoring the Intel® Manager for Lustre\* Service
+Restoring the Manager for Lustre\* Service
 ---------------------------------------------------
 
 Most of the effort expended in developing a recovery strategy for IT
@@ -2516,20 +2586,20 @@ in [Operating System](#example-backup-checklist), template-driven
 automated provisioning platforms such as Kickstart are very effective
 ways to implement consistent operating system deployment.
 
-### Re-install Intel® Manager for Lustre\* software
+### Re-install Manager for Lustre\* software
 
-There is no automated installer for the Intel® Manager for Lustre\*
+There is no automated installer for the Manager for Lustre\*
 software but it is fortunately straightforward to re-run the
 installation program. This has the added benefit of guaranteeing that
 the core infrastructure is correctly installed and configured and that
 all package dependencies are appropriately satisfied. Re-running the
 installation program creates a new, unpopulated, instance of the
-Intel® Manager for Lustre\* software. Note that it does not matter
+Manager for Lustre\* software. Note that it does not matter
 what answer you provide to the questions asked by the installation
 program; this information will be overwritten when the database backup
 is restored.
 
-When installation completes, shutdown the Intel® Manager for Lustre\*
+When installation completes, shutdown the Manager for Lustre\*
 software and its related services immediately, but keep the PostgreSQL
 database server running:
 
@@ -2542,7 +2612,7 @@ service httpd stop
 **Caution**: Do not conduct any further configuration of Intel®
 Manager for Lustre\* software. Do not attempt to re-discover Intel® EE
 for Lustre\* assets or add any servers or storage to the instance until
-the recovery is complete and the Intel® Manager for Lustre\* software
+the recovery is complete and the Manager for Lustre\* software
 installation is verified as working to your satisfaction.
 
 ### Restore the NTP Configuration
@@ -2553,7 +2623,7 @@ cp \$HOME/backup/etc/ntp.conf /etc/ntp.conf
 
 service ntpd restart
 
-### Restore the Intel® Manager for Lustre\* SSL certificates
+### Restore the Manager for Lustre\* SSL certificates
 
 The following commands must be run after the initial installation
 program has been run; otherwise, the SSL certificates will be
@@ -2573,7 +2643,7 @@ overwritten.
 
 Run the restore command for PostgresSQL, assuming that the backup was
 created using the pg\_dumpall command as described in "Creating a Backup
-Manifest [– Intel® Manager for Lustre\*
+Manifest [– Manager for Lustre\*
 Database](#intel-manager-for-lustre-database)". Warning, this command
 will erase all existing database content:
 
@@ -2588,7 +2658,7 @@ ERROR: current user cannot be dropped
 
 ERROR: role "postgres" already exists
 
-### Restart Intel® Manager for Lustre\* software
+### Restart Manager for Lustre\* software
 
 When the PostgreSQL database restore has completed, restart the services
 that were shut down:
@@ -2599,15 +2669,15 @@ service httpd start
 
 service chroma-supervisor start
 
-Alternatively, reboot the Intel® Manager for Lustre\* server. The
+Alternatively, reboot the Manager for Lustre\* server. The
 service will restart automatically.
 
 ### Potential Issues
 
-#### Internal Server Error Reported by Browser on Connection to the Intel® Manager for Lustre\* GUI
+#### Internal Server Error Reported by Browser on Connection to the Manager for Lustre\* GUI
 
 After the restore is complete and the services have been started, the
-Intel® Manager for Lustre\* software may report the following error
+Manager for Lustre\* software may report the following error
 when an attempt is made to connect through the client browser:
 
 > **Internal Server Error**
@@ -2635,13 +2705,13 @@ page.
 #### Graph Data Missing After Restore
 
 It has been noticed that occasionally, after a complete restore of the
-Intel® Manager for Lustre\* server, some of the data points may not be
+Manager for Lustre\* server, some of the data points may not be
 updated. One of the obvious symptoms of this is the graphs on the
-Intel® Manager for Lustre\* dashboard may display as blank, without
+Manager for Lustre\* dashboard may display as blank, without
 data, even when the file system is known to be busy. Similarly, OST
 capacity may be incorrectly reported.
 
-This is caused by one or more of the Intel® Manager for Lustre\*
+This is caused by one or more of the Manager for Lustre\*
 client agents losing contact with the manager and refusing to reconnect
 after the service has been restored. To restore the connection, log into
 the affected Intel® EE for Lustre\* asset (e.g., the MDS or OSS) and
@@ -2649,7 +2719,7 @@ restart the client agent service as follows. This is a one-time fix.
 
 service chroma-agent restart 
 
-Appendix C - Backup and Recovery of Servers Managed by Intel® Manager for Lustre\* Software
+Appendix C - Backup and Recovery of Servers Managed by Manager for Lustre\* Software
 ===========================================================================================
 
 []{#_Toc402946326 .anchor}**Note**: This appendix is outdated and in
@@ -2671,14 +2741,14 @@ compatible with their own environments.
 **Note**: Backup and restoration of file system data is beyond the scope
 of this procedure.
 
-Intel® Manager for Lustre\* software provides a way to configure Lustre
+Manager for Lustre\* software provides a way to configure Lustre
 servers as metadata and object storage servers. Such servers are
 configured into high availability cluster pairs as defined in this
 section: [Building the System – The High Availability Configuration
 Spec](#building-the-system-the-high-availability-configuration-spec).
 
 For a high-availability Lustre file system configured and managed by
-Intel® Manager for Lustre\* software, there must be at least one cluster
+Manager for Lustre\* software, there must be at least one cluster
 pair hosting the Management Server (MGS) and a Metadata Server (MDS) for
 the file system. With the introduction of Distributed Namespace (DNE),
 there may be additional metadata server pairs, hosting further MDS
@@ -2688,7 +2758,7 @@ In such an HA file system, there must also be at least one Object
 Storage Server (OSS) high availability cluster pair. There may be a
 large number of OSS pairs in a single Lustre file system.
 
-The process described herein assumes that Intel® Manager for Lustre\*
+The process described herein assumes that Manager for Lustre\*
 software has provisioned Lustre servers and that a Lustre file system
 has been successfully created. This process is restricted to coverage of
 managed servers and applies equally to Metadata and Object Storage
@@ -2768,7 +2838,7 @@ bandwidth-constrained).
 
 The following is an example checklist of high level tasks to perform in
 executing a backup. Perform these tasks after creating an Intel® EE for
-Lustre\* file system using the Intel® Manager for Lustre\* dashboard.
+Lustre\* file system using the Manager for Lustre\* dashboard.
 
 -   Save Kickstart Template from OS Installation (or create one)
 
@@ -2785,7 +2855,7 @@ Lustre\* file system using the Intel® Manager for Lustre\* dashboard.
 
 -   Save NTP configuration
 
--   Save Intel® Manager for Lustre\* agent configuration
+-   Save Manager for Lustre\* agent configuration
 
 -   Save the LNET configuration
 
@@ -2899,7 +2969,7 @@ network; include a copy of this file in the manifest as well.
 
 The YUM configuration file /etc/yum.conf and files located at
 /etc/yum.repos.d/\* must be configured so that package dependencies for
-Intel® Manager for Lustre\* software can be automatically installed.
+Manager for Lustre\* software can be automatically installed.
 
 ### Identity configuration
 
@@ -2929,7 +2999,7 @@ an example server configuration, for the purpose of demonstration.
 Procedures for copying the resulting data off the server to a reliable
 medium are not covered here, but can be a simple secure copy (e.g. scp)
 from the source to a destination system (such as the server running the
-Intel® Manager for Lustre\* GUI), or an integrated enterprise backup
+Manager for Lustre\* GUI), or an integrated enterprise backup
 platform.
 
 Backups must be run for each server in the file system and, minimally,
@@ -2937,7 +3007,7 @@ must be run each time a configuration change is made.
 
 ### Chroma Agent Configuration
 
-The Intel® Manager for Lustre\* client agent, called chroma-agent, keeps
+The Manager for Lustre\* client agent, called chroma-agent, keeps
 a set of configuration files in /var/lib/chroma. It is essential that
 all files in this directory are saved. In addition to SSL authentication
 keys, the directory contains configuration information pertinent to the
@@ -2948,7 +3018,7 @@ configuration used to manage the resources in Pacemaker.
 
 /var/lib/chroma/\*
 
-### Intel® Manager for Lustre\* YUM Repository Configuration
+### Manager for Lustre\* YUM Repository Configuration
 
 Intel® EE for Lustre\* software is distributed as RPM packages. These
 are hosted in YUM repositories on the manager server running the Intel®
@@ -3277,7 +3347,7 @@ Resource: demo-MDT0000\_ae5915 successfully cleaned up
 
 1.  If the resources are running on their non-preferred servers (i.e.,
     on the failover hosts), then use the following commands to force a
-    failback (or use Intel® Manager for Lustre\* GUI to manage the
+    failback (or use Manager for Lustre\* GUI to manage the
     resources):
 
 pcs resource move &lt;resource name&gt;
@@ -3309,7 +3379,7 @@ Getting Help
 ============
 
 *For partners*: If you encounter a problem with Intel® EE for Lustre\*
-software, Intel® Manager for Lustre\* software, or storage, and you
+software, Manager for Lustre\* software, or storage, and you
 require support from your Intel® technical support representative, then
 to help expedite resolution of the problem, please do the following:
 
@@ -3353,7 +3423,7 @@ To run chroma-diagnostics:
 >
 > Listed: crm\_mon -1r
 >
-> Finger printed Intel® Manager for Lustre\* software installation
+> Finger printed Manager for Lustre\* software installation
 >
 > Listed running processes
 >

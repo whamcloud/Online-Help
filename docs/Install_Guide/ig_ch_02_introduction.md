@@ -3,7 +3,7 @@
 
 **In this Chapter:**
 
-- [What is Intel® Manager for Lustre\* Software?](#what-is-intel-manager-for-lustre-software)
+- [What is Manager for Lustre\* Software?](#what-is-intel-manager-for-lustre-software)
 - [What is Management Mode?](#what-is-management-mode)
 - [What is Monitor-only Mode?](#what-is-monitor-only-mode)
 - [The Configuration Page in Monitor-only mode](#the-configuration-page-in-monitor-only-mode)
@@ -38,7 +38,7 @@ regarding the configuration and interconnect requirements to achieve the
 maximum benefits of an HA file system managed by Intel® EE for
 Lustre\* software.
 
-What is Intel® Manager for Lustre\* Software?
+What is Manager for Lustre\* Software?
 -----------------------------------------------
 
 Intel® EE for Lustre\* software includes the Intel® Manager for
@@ -51,21 +51,21 @@ plugins might include real-time storage monitoring that let you track
 Lustre file system usage, performance metrics, events, and errors at the
 Lustre level. Please contact Intel® for more information.
 
-Intel® Manager for Lustre\* software is a part of the Intel® EE for
+Manager for Lustre\* software is a part of the Intel® EE for
 Lustre\* software product.
 
 What is Management Mode?
 ------------------------
 
-The Intel® Manager for Lustre\* software lets you create and manage
+The Manager for Lustre\* software lets you create and manage
 new high-availability (HA) Lustre file systems from its GUI. For each HA
 file system, the GUI and dashboard let you create, monitor, and manage
 all servers and their respective targets. The software lets you define
 failover servers to support HA. RAID-based fault tolerance for storage
-devices is implemented independent of Intel® Manager for Lustre\*
+devices is implemented independent of Manager for Lustre\*
 software. Software RAID (MDRAID) disk discovery is not supported.
 
-To provide robust HA support, Intel® Manager for Lustre\* software
+To provide robust HA support, Manager for Lustre\* software
 automatically configures Corosync and Pacemaker, and takes advantage of
 IPMI or PDUs to support server failover. Note that Logical Volume
 Manager (LVM) is not supported in [Management
@@ -81,8 +81,8 @@ What is Monitor-only Mode?
 --------------------------
 
 Monitor-only mode allows you to “discover” a working Lustre file system.
-Using Intel® Manager for Lustre\* software, you can then monitor the
-file system at the Intel® Manager for Lustre\* dashboard. All of the
+Using Manager for Lustre\* software, you can then monitor the
+file system at the Manager for Lustre\* dashboard. All of the
 charts presented on the manager dashboard to monitor performance and
 statistics, are also available in monitor-only mode.
 
@@ -90,14 +90,14 @@ Monitor-only mode is for file systems that do not fully conform to the
 High Availability Configuration Specification. In this situation, the
 Corosync and Pacemaker configuration modules provided with Intel®
 Manager for Lustre\* software are not automatically deployed. This means
-that Intel® Manager for Lustre\* software cannot configure the file
+that Manager for Lustre\* software cannot configure the file
 system for server failover. Note that Logical Volume Manager (LVM) is
 not supported in [Management mode](#what-is-management-mode), but is
 supported in [Monitor mode](#what-is-monitor-only-mode).
 
 ### The Configuration Page in Monitor-only mode
 
-The Configuration page presented by Intel® Manager for Lustre\*
+The Configuration page presented by Manager for Lustre\*
 software is designed primarily to enable designers to create Lustre file
 systems with server failover capability, but this capability is not
 supported in monitor-only mode. However, many of the features provided
