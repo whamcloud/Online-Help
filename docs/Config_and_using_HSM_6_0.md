@@ -1,4 +1,4 @@
-[**Intel® Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
+[**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
 # <a id="6.0"></a>Configuring and using Hierarchical Storage Management
 
 **In this chapter:**

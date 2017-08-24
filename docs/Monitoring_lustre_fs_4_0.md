@@ -1,4 +1,4 @@
-[**Intel® Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
+[**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
 # Monitoring Lustre* file systems<a id="4.0"></a>
 
 You can easily monitor one or more file systems at the Dashboard, and Status, and Logs windows. The Dashboard window displays a set of charts that provide usage and performance data at several levels in the file systems being monitored, while the Status and Logs windows keep you informed of file system activity relevant to current and past file system health and performance. 
@@ -138,17 +138,13 @@ Job statistics are available from two locations:
 
 1. Before viewing job statistics, you will need to run a command to enable this feature. Run this command for each file system. The following command is an example, to run on the management server (MGS):
 
-```
-    lctl conf_param <test1>.sys.jobid_var=procname_uid
-```
-
-where `<test1>` is the file system name (refer to Using jobstats with other job schedulers for more information.
+	lctl conf_param <test1>.sys.jobid_var=procname_uid
+	
+	where <test1> is the file system name (refer to Using jobstats with other job schedulers for more information.
 1. The variable testfs.mdt.job_cleanup_interval sets the period after which collected statistics are cleared out. If this interval is to short, statistics may get cleared while you're viewing job statistics. Set this interval to a value greater than your collection/viewing period. As an example, you could set this interval to 70 minutes (4200 seconds) using the following command:
-
 ```
     lctl conf_param testfs.mdt.job_cleanup_interval=4200
 ```
-
 1. View the Read/Write Heat Map chart on the dashboard window. 
 1. Each row on the Read/Write Heat Map corresponds to an OST, with consecutive columns from left-to-right, corresponding to consecutive time intervals. Mouse over a cell to find an OST and time interval of interest, and click on the desired cell.
 
@@ -164,8 +160,9 @@ The job stats code extracts the job identifier from an environment variable set 
 ```
 $ lctl conf_param testfs.sys.jobid_var=<environment variable>
 ```
-where `<environment variable>`
-
+where ```
+<environment variable>
+```
  is one of the following:
 
 |Job Scheduler|Environment Variable|
@@ -243,7 +240,7 @@ The logs window also features querying with auto-complete and linkable host name
 
 ## View HSM Copytool activities
 
-To view current copytool activities, click **Configuration** and select **HSM**. To learn about HSM capabilities supported in Intel® Manager for Lustre* software, see [Configuring and using Hierarchical Storage Management](Config_and_using_HSM_6_0.md/#6.0).
+To view current copytool activities, click **Configuration** and select **HSM**. To learn about HSM capabilities supported in Intel® Enterprise Edition for Lustre* software, see [Configuring and using Hierarchical Storage Management](Config_and_using_HSM_6_0.md/#6.0).
 
 After HSM has setup for a file system, this HSM Copytool chart displays a moving time-line of waiting copytool requests, current copytool operations, and the number of idle copytool workers.
 

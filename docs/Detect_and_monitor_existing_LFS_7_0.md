@@ -1,4 +1,4 @@
-[**Intel® Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
+[**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
 # <a id="7.0"></a>Detecting and monitoring existing Lustre file systems
 
 A Lustre file system that was created without using Intel® Manager for Lustre* software can be monitored, *but not managed*, from the manager GUI. 

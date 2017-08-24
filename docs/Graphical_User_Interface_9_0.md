@@ -1,4 +1,4 @@
-[**Intel® Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
+[**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
 # <a id="9.0"></a>Graphical User Interface
 
 This section details the Intel® Manager for Lustre* graphical user interface.  Click the desired topic.

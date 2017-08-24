@@ -1,4 +1,4 @@
-[**Intel® Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
+[**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
 # <a id="12.0"></a>Errors and troubleshooting
 
 The following topics are discussed in this chapter:

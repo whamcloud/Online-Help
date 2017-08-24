@@ -1,4 +1,4 @@
-[**Intel® Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
+[**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
 # <a id="8.0"></a>Creating and Managing ZFS-based Lustre file systems
 
 Intel® Manager for Lustre* software is able to create and manage Lustre file systems that are based on OpenZFS object storage device (OSD) volumes. The software installs the necessary packages, formats Lustre targets from ZFS pools, and creates the high-availability software framework for managing availability for Lustre + ZFS servers.  The following topics are covered:
@@ -19,7 +19,7 @@ To create and manage an OpenZFS-based Lustre file system that is highly-availabl
 
 1. Add all of the physical servers that will comprise your ZFS-based Lustre file system. To do this, perform the steps in [Add one or more HA servers](Creating_new_lustre_fs_3_0.md/#3.4). Add each server as a *Managed Storage Server*.
     
-    **Note:**  Steps 2 and 3 below are performed automatically by Intel® Manager for Lustre\* software and do not need to be performed.  They are included here for topic coverage only. Continue with Step 4.
+    **Note:**  Steps 2 and 3 below are performed automatically by Manager for Lustre\* software and do not need to be performed.  They are included here for topic coverage only. Continue with Step 4.
 
 1. Having added the servers, you now need to ensure that the server hostids are set before creating any zpools. Each server requires a unique hostid to be configured. Setting the hostid on each server will allow ZFS to apply an attribute on each zpool indicating which host currently has the pool imported. This provides some protection in ZFS against multiple simultaneous imports of zpools when the storage is connected to more than one server. To set the hostid, run the genhostid command on each host and reboot. In the document *Lustre\* Installation and Configuration using Intel® EE for Lustre\* Software and OpenZFS*, see the section *Protecting File System Volumes from Concurrent Access* for more information.
 
@@ -95,7 +95,7 @@ To create and manage an OpenZFS-based Lustre file system that is highly-availabl
 
 **Note:** See the document *Lustre\* Installation and Configuration using Intel® EE for Lustre\* Software and OpenZFS* for descriptions of the ashift and recordsize properties. RAIDZ2 is the preferred vdev configuration for OSTs, and we recommend an arrangement of at least 11 disks (9+2) per RAIDZ2 vdev for best performance. The pool naming convention is based on the Lustre file system name and OST index number, starting at 0 (zero).
 
-   The remainder of this procedure is performed at the Intel® Manager for Lustre\* software GUI. 
+   The remainder of this procedure is performed at the Manager for Lustre\* software GUI. 
 1. For high-availability, configure your servers as primary and fail-over servers for each zpool.  Perform the steps in [Configure primary and fail-over servers<](Creating_new_lustre_fs_3_0.md/#3.5).
 1. If you are using power distribution units (PDUs) for power control, then for each server, perform the steps in [Add power distribution units](Creating_new_lustre_fs_3_0.md/#3.6).  Then perform the steps in [Assign PDU outlets to servers](Creating_new_lustre_fs_3_0.md/#3.7) for each server.
 1. If you are using Baseboard Management Controllers (BMCs) for power control, then perform the steps in [Assign BMCs to servers](Creating_new_lustre_fs_3_0.md/#3.8)for each server.  
@@ -176,10 +176,10 @@ In the example, there are two exported pools. Note that the second pool in the l
 <a id="8.3"></a>
 ## Removing a ZFS-based Lustre file system
 
-When removing a Lustre file system, the Intel® Manager for Lustre\* software does not destroy the data content held on Lustre OSDs. This allows the operator an opportunity to recover data from the OSDs if the file system was removed from IML accidentally. As a consequence, after the file system is removed from the manager, the OSD volumes may need to be cleaned up as a separate operation before they are ready to be re-used.
+When removing a Lustre file system, the Manager for Lustre\* software does not destroy the data content held on Lustre OSDs. This allows the operator an opportunity to recover data from the OSDs if the file system was removed from IML accidentally. As a consequence, after the file system is removed from the manager, the OSD volumes may need to be cleaned up as a separate operation before they are ready to be re-used.
 
-LDISKFS volumes do not require any special treatment; they can simply be reformatted, either by hand or by re-adding the volumes into a new Lustre file system via  Intel® Manager for Lustre\* software. The manager software will detect the pre-existing Lustre data, and ask the user to confirm that the volume is to be re-used.
-ZFS OSDs require some additional work. ZFS OSDs are file system datasets inside zpools. After a file system is removed using Intel® Manager for Lustre\* software, any ZFS OSDs from that file system will still be present in the ZFS storage pools (zpools), and cannot be re-used directly. To reuse the storage in a zpool, the existing OSD datasets must first be removed, using the zfs destroy command.  This is described in these sections:
+LDISKFS volumes do not require any special treatment; they can simply be reformatted, either by hand or by re-adding the volumes into a new Lustre file system via  Manager for Lustre\* software. The manager software will detect the pre-existing Lustre data, and ask the user to confirm that the volume is to be re-used.
+ZFS OSDs require some additional work. ZFS OSDs are file system datasets inside zpools. After a file system is removed using Manager for Lustre\* software, any ZFS OSDs from that file system will still be present in the ZFS storage pools (zpools), and cannot be re-used directly. To reuse the storage in a zpool, the existing OSD datasets must first be removed, using the zfs destroy command.  This is described in these sections:
 
 - <a href="#8.4">Destroy an individual zpool</a>
 - <a href="#8.5">Destroy all of the ZFS pools in a shared-storage high-availability cluster

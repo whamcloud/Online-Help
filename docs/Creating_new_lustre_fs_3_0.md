@@ -1,7 +1,7 @@
-[**Intel® Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
+[**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
 # Creating a new Lustre\* file system<a id="3.0"></a>
 
-This chapter describes how to create a new Lustre* file system, to be managed from the Intel® Manager for Lustre\*, and how to mount file system clients.  
+This chapter describes how to create a new Lustre* file system, to be managed from the Manager for Lustre\*, and how to mount file system clients.  
 
 **Note:** All references herein to the manager refer to the Intel® Manager for Lustre* software.
 
@@ -31,7 +31,7 @@ This chapter describes how to create a new Lustre* file system, to be managed fr
 
 A high-availability Lustre file system managed by Intel® Manager for Lustre* software requires that your entire storage system configuration and all  interfaces comply with a pre-defined configuration. Intel® Manager for Lustre* software performs LNet configuration assuming that each server is connected to a high-performance data network, which is the Lustre network LNet.  For detailed information, see the section *High Availability Configuration Specification* in the *Intel® Enterprise Edition for Lustre\* Software Installation Guide*. Also see the guide *Lustre\* Installation and Configuration using Intel® EE for Lustre\* Software and OpenZFS*.
 
-**Caution:** When initially setting up your storage system, take care in selecting block device names because these cannot be changed after the file system has been created using  Intel® Manager for Lustre* software. **You should NOT make configuration changes to file system servers or their respective volumes/targets outside of Intel® Manager for Lustre\* software**. Doing so will defeat the ability of Intel® Manager for Lustre* software to monitor or manage the file system, and will make the file system unavailable to clients. Re-labeling these device names during multipath configuration will break the HA configuration established by Intel® Manager for Lustre* software.
+**Caution:** When initially setting up your storage system, take care in selecting block device names because these cannot be changed after the file system has been created using  Intel® Manager for Lustre* software. **You should NOT make configuration changes to file system servers or their respective volumes/targets outside of Manager for Lustre\* software**. Doing so will defeat the ability of Intel® Manager for Lustre* software to monitor or manage the file system, and will make the file system unavailable to clients. Re-labeling these device names during multipath configuration will break the HA configuration established by Intel® Manager for Lustre* software.
 
 <a href="#3.0">Top of page</a>
 
@@ -39,7 +39,7 @@ A high-availability Lustre file system managed by Intel® Manager for Lustre* so
 
 ## IMPORTANT INFORMATION about reconfiguring your file system
 
-**Caution:** When initially setting up your storage system, take care in selecting block device names because these cannot be changed after the file system has been created using  Intel® Manager for Lustre* software. **You should NOT make configuration changes to file system servers or their respective volumes/targets outside of Intel® Manager for Lustre\* software**. Doing so will defeat the ability of Intel® Manager for Lustre* software to monitor or manage the file system, and will make the file system unavailable to clients. Re-labeling these device names during multipath configuration will break the HA configuration established by Intel® Manager for Lustre* software.
+**Caution:** When initially setting up your storage system, take care in selecting block device names because these cannot be changed after the file system has been created using  Intel® Manager for Lustre* software. **You should NOT make configuration changes to file system servers or their respective volumes/targets outside of Manager for Lustre\* software**. Doing so will defeat the ability of Intel® Manager for Lustre* software to monitor or manage the file system, and will make the file system unavailable to clients. Re-labeling these device names during multipath configuration will break the HA configuration established by Intel® Manager for Lustre* software.
 
 **Caution:** A known issue can result in a server being made unavailable. This can happen if the server has been added to a Lustre file system, (using Intel® Manager for Lustre* software) and then the user decides to Force Remove the server from the file system. The Force Remove command should only be performed if the Remove command has been unsuccessful. Force Remove will remove the server from the Intel® Manager for Lustre* configuration, but not remove Intel® Manager for Lustre* software from the server. All targets that depend on the server will also be removed without any attempt to unconfigure them. To completely remove the Intel® Manager for Lustre* software from the server (allowing it to be added to another Lustre file system), first contact technical support.
 
@@ -62,7 +62,7 @@ Physically, HA peer servers must be cabled to provide equal access to the pool o
 
 To support HA failover, each HA server must be able to automatically power-off its peer server if a failover is required. The process of powering off a faulty server is known as "node fencing" (also called "server fencing"), and ensures that a shared storage device is not mounted by more than one server at a time. Lustre includes protection against multiple simultaneous device mounts, but automatically powering off the faulty server ensures that failover works properly. Intel® Manager for Lustre* software supports the use of remotely-operable Power Distribution Units (PDUs) for this purpose. Alternative to the configuration of PDUs, Intel® Manager for Lustre* software also supports the Intelligent Management Platform Interface (IPMI) and associating baseboard management controllers (BMCs) with servers, to support server monitoring and control.
 
-**Note:** See the *Intel® Manager for Lustre\* Partner Installation Guide* for physical design and configuration guidelines required to support high availability. 
+**Note:** See the *Manager for Lustre\* Partner Installation Guide* for physical design and configuration guidelines required to support high availability. 
 
 <a href="#3.0">Top of page</a>
 
