@@ -13,7 +13,7 @@ Intel® Manager for Lustre* software is able to create and manage Lustre file sy
 
 ## <a id="8.1"></a>Create a ZFS-based Lustre file system
 
-The procedures in this section assume that you have first assembled and configured the physical hardware: servers, storage devices, network interfaces, etc., and installed Intel® Manager for Lustre* software as instructed in the *Manager for Lustre\* Software Installation Guide*.  
+The procedures in this section assume that you have first assembled and configured the physical hardware: servers, storage devices, network interfaces, etc., and installed Intel® Manager for Lustre* software as instructed in the *Intel® Enterprise Edition for Lustre\* Software Installation Guide*.  
 
 To create and manage an OpenZFS-based Lustre file system that is highly-available and managed by Intel® Manager for Lustre* software, perform these steps:
 
