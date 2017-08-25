@@ -13,7 +13,7 @@ Hierarchical Storage Management (HSM) can help provide a cost-effective storage 
 
 Manager for Lustre\*software provides a framework for incorporating HSM into a Lustre file system. When a new file is created, a replica is made on the associated HSM archive tier, so that initially, two copies of the file exist. As changes are made to the file, these are replicated onto the archive copy as well. As the available capacity is consumed on the high-performance tier, the least-frequently-used files are deleted from that tier and each file is replaced with stub file that points to the archive copy. Applications are not aware of the locality of a file. Applications do not need to be re-written to work with data stored on an HSM system. If a system call is made to open a file that has been deleted from the high-performance tier, the HSM software automatically dispatches a request to retrieve the file from the archive and restore it to the high-performance tier.
 
-The HSM framework included with Intel® EE for Lustre* software includes the following components:
+The HSM framework included with Manager for Lustre\* software includes the following components:
 
 - **An Agent:** A Lustre client that runs an instance of Copytool to transfer certain files between the Lustre file system and the archive, and deletes from the Lustre file system those files that have been archived. There can be one instance of Copytool per agent.
 - **A POSIX Copytool:** This is a reference implementation included in Lustre 2.5 and later. The copytool actually performs the data transfer between the file system and the archive. 
@@ -27,7 +27,7 @@ The HSM framework included with Intel® EE for Lustre* software includes the fol
 Perform these tasks to configure basic HSM capabilities for a Lustre file system. 
 
 - <a href="#6.1">Add an HSM Agent node</a>
-- Configure power control (optional): HSM Agent nodes are NOT configured for high-availability with Pacemaker and Corosync. The HSM Coordinator schedules HSM tasks with multiple copytools, and if a copytool goes offline, the HSM Coordinator will assign HSM activities to the remaining copytool(s). However, you can configure power control, so that an HSM Agent can be power-controlled from the Intel® Manager for Lustre* GUI. You can either configure power distribution units (PDUs), or baseboard management controllers (BMCs) to control power to HSM Agent nodes. 
+- Configure power control (optional): HSM Agent nodes are NOT configured for high-availability with Pacemaker and Corosync. The HSM Coordinator schedules HSM tasks with multiple copytools, and if a copytool goes offline, the HSM Coordinator will assign HSM activities to the remaining copytool(s). However, you can configure power control, so that an HSM Agent can be power-controlled from the Manager for Lustre\* GUI. You can either configure power distribution units (PDUs), or baseboard management controllers (BMCs) to control power to HSM Agent nodes. 
     - To configure PDUs, see [Add power distribution units](Creating_new_lustre_fs_3_0.md/#3.6) and [Assign PDU outlets to servers](Creating_new_lustre_fs_3_0.md/#3.7).
     - To configure IMPI/BMCs, see [Assign BMCs to servers](Creating_new_lustre_fs_3_0.md/#3.8).
 - <a href="#6.2">Add a copytool to an HSM Agent node</a>
@@ -65,11 +65,11 @@ To add a copytool instance to an existing HSM Agent node, see <a href="#6.2">Add
     
     b. **Worker:** This is the POSIX HSM Agent node that you configured in <a href="#6.1">Add an HSM Agent node</a>. Each copytool instance has its own Agent node, so there may be several. Note that copytool is multi-threaded, so it is able to support multiple simultaneous HSM operations.
     
-    c. **Path to the HSM agent binary:** The file system path to the copytool binary on the worker. For the POSIX copytool provided with Intel® EE for Lustre* software, the path is /usr/sbin/lhsmtool_posix). This was installed on the agent when you configured the HSM Agent node. If another copytool has been installed, it likely resides at another location. 
+    c. **Path to the HSM agent binary:** The file system path to the copytool binary on the worker. For the POSIX copytool provided with Manager for Lustre\* software, the path is /usr/sbin/lhsmtool_posix). This was installed on the agent when you configured the HSM Agent node. If another copytool has been installed, it likely resides at another location. 
     
     d. **HSM agent arguments (optional):** This is a vendor-specific list of copytool arguments. Consult your HSM vendor documentation for the applicable arguments.
     
-    **Note:** Do not provide any flags that will cause the copytool process to be run in the background (e.g. --daemon); this interferes with the ability of Intel® Manager for Lustre* software to control and monitor the copytool process.
+    **Note:** Do not provide any flags that will cause the copytool process to be run in the background (e.g. --daemon); this interferes with the ability of Manager for Lustre\* software to control and monitor the copytool process.
     
     e. **File system mount point:** The file system mount point on the worker node. Copytool instances require client access to their associated file system.
     
@@ -82,7 +82,7 @@ See <a href="#6.3">Start the Copytool</a>.
 
 ## <a id="6.3"></a>Start the Copytool
 
-When a copytool is added to an Intel®EE for Lustre file system configuration, it is not automatically activated. Instead, the copytool will initially be set to Unconfigured. The configuration exists inside the Intel® Manager for Lustre* database but it has not been applied directly to the target HSM Agent.
+When a copytool is added to an Intel®EE for Lustre file system configuration, it is not automatically activated. Instead, the copytool will initially be set to Unconfigured. The configuration exists inside the Manager for Lustre\* database but it has not been applied directly to the target HSM Agent.
 
 To configure and launch the copytool on an HSM Agent:
 
@@ -105,7 +105,7 @@ After configuring the Copytool Agent node and adding Copytool to that agent, you
 ```
 root@client1234 #: lfs hsm_archive /mnt/lustre/path/to/big_file
 ```
-1. After issuing this archive command, the superuser can monitor progress on the operation at the Intel® Manager for Lustre* GUI. To monitor progress, click **Configuration** and click **HSM** to open the HSM window and observe copytool archive progress.
+1. After issuing this archive command, the superuser can monitor progress on the operation at the Manager for Lustre\* GUI. To monitor progress, click **Configuration** and click **HSM** to open the HSM window and observe copytool archive progress.
 1. After the archive operation has completed, you can release command to remove the file from the Lustre file system and free up that space. 
 
     For example: 

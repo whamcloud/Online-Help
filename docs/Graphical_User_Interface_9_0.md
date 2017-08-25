@@ -1,7 +1,7 @@
 [**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
 # <a id="9.0"></a>Graphical User Interface
 
-This section details the Intel® Manager for Lustre* graphical user interface.  Click the desired topic.
+This section details the Manager for Lustre\* graphical user interface.  Click the desired topic.
 
 - <a href="#9.1">Dashboard window</a>
 - <a href="#9.2">Dashboard charts</a>
@@ -28,7 +28,7 @@ To view charts for OSTs and MST(s), select the specific file system. Then select
 At the top, the Dashboard lists the file system(s) being managed or monitored-only. The following information is provided for each file system:
 
 - *File System name*: The name assigned to this file system during its creation on the Configuration window.
-- *Type*: Monitored or Managed. "Managed" file systems are configured and managed for high availability (HA). Managed file systems are both monitored and managed, whereas "monitored" file systems are monitored-only and do not support failover via Intel® Manager for Lustre* software.
+- *Type*: Monitored or Managed. "Managed" file systems are configured and managed for high availability (HA). Managed file systems are both monitored and managed, whereas "monitored" file systems are monitored-only and do not support failover via Manager for Lustre\* software.
 - S*pace Used / Total*: This indicates the amount of file system capacity consumed, versus the total file system capacity. 
 - *Files Used / Total*: This indicates the total number of inodes consumed by file creation versus the total number of inodes established for this file system.
 - Clients: Indicates the number of clients accessing the file system at this moment.
@@ -521,7 +521,7 @@ Under **Server Actions**, you can perform the commands listed next. Note that th
 
 - **Detect File Systems**: Detect an existing file system to be monitored at the manager GUI.
 - **Re-write Target Configuration**: Update each target with the current NID for the server with which it is associated. This is necessary after making changes to server/target configurations and is done after rescanning NIDs. Also see [Handling network address changes<](Manage_maintain_HA_lustre_fs_5_0.md/#5.9) (updating NIDs).
-- **Install Updates**: When an updated release of Intel® Manager for Lustre* software is installed at the *manager* server, a notification is displayed at the manager GUI that updated software is also available for installation on a managed server or servers. This button become enabled. After clicking the **Install Updates** button, a list of servers (default: all) to be included in this update operation is displayed in the Update dialog. Clicking the **Run** button in this dialog will cause the updated packages to be installed on the managed servers.
+- **Install Updates**: When an updated release of Manager for Lustre\* software is installed at the *manager* server, a notification is displayed at the manager GUI that updated software is also available for installation on a managed server or servers. This button become enabled. After clicking the **Install Updates** button, a list of servers (default: all) to be included in this update operation is displayed in the Update dialog. Clicking the **Run** button in this dialog will cause the updated packages to be installed on the managed servers.
 
 
 
@@ -563,7 +563,7 @@ Click the **Actions** menu to access the following commands that are available f
 
 **<a id="9.3.1.1b"></a>Pacemaker configuration **
 
-Pacemaker configuration and enabling is performed automatically by Intel® Manager for Lustre* software. However, an administrator may need to reset or configure Pacemaker when performing maintenance on a server, altering the server's configuration, or troubleshooting problems with Pacemaker.
+Pacemaker configuration and enabling is performed automatically by Manager for Lustre\* software. However, an administrator may need to reset or configure Pacemaker when performing maintenance on a server, altering the server's configuration, or troubleshooting problems with Pacemaker.
 
 Click the **Actions** menu to access the following commands:
 
@@ -575,7 +575,7 @@ Click the **Actions** menu to access the following commands:
 
 **<a id="9.3.1.1c"></a>Corosync configuration**
 
-Corosync configuration and enabling is performed automatically by Intel® Manager for Lustre* software. However, an administrator may need to reset or configure Corosync when performing maintenance on a server, altering the server's configuration, or troubleshooting problems with Corosync.
+Corosync configuration and enabling is performed automatically by Manager for Lustre\* software. However, an administrator may need to reset or configure Corosync when performing maintenance on a server, altering the server's configuration, or troubleshooting problems with Corosync.
 
 Click the **Actions** menu to access the following commands:
 

@@ -1,7 +1,7 @@
 [**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
 # <a id="8.0"></a>Creating and Managing ZFS-based Lustre file systems
 
-Intel® Manager for Lustre* software is able to create and manage Lustre file systems that are based on OpenZFS object storage device (OSD) volumes. The software installs the necessary packages, formats Lustre targets from ZFS pools, and creates the high-availability software framework for managing availability for Lustre + ZFS servers.  The following topics are covered:
+Manager for Lustre\* software is able to create and manage Lustre file systems that are based on OpenZFS object storage device (OSD) volumes. The software installs the necessary packages, formats Lustre targets from ZFS pools, and creates the high-availability software framework for managing availability for Lustre + ZFS servers.  The following topics are covered:
 
 - <a href="#8.1">Create a ZFS-based Lustre file system</a>
 - <a href="#8.2">Importing and exporting ZFS pools in a shared-storage high-availability cluster</a>
@@ -13,15 +13,15 @@ Intel® Manager for Lustre* software is able to create and manage Lustre file sy
 
 ## <a id="8.1"></a>Create a ZFS-based Lustre file system
 
-The procedures in this section assume that you have first assembled and configured the physical hardware: servers, storage devices, network interfaces, etc., and installed Intel® Manager for Lustre* software as instructed in the *Manager for Lustre\* Software Installation Guide*.  
+The procedures in this section assume that you have first assembled and configured the physical hardware: servers, storage devices, network interfaces, etc., and installed Manager for Lustre\* software as instructed in the *Manager for Lustre\* Software Installation Guide*.  
 
-To create and manage an OpenZFS-based Lustre file system that is highly-available and managed by Intel® Manager for Lustre* software, perform these steps:
+To create and manage an OpenZFS-based Lustre file system that is highly-available and managed by Manager for Lustre\* software, perform these steps:
 
 1. Add all of the physical servers that will comprise your ZFS-based Lustre file system. To do this, perform the steps in [Add one or more HA servers](Creating_new_lustre_fs_3_0.md/#3.4). Add each server as a *Managed Storage Server*.
     
     **Note:**  Steps 2 and 3 below are performed automatically by Manager for Lustre\* software and do not need to be performed.  They are included here for topic coverage only. Continue with Step 4.
 
-1. Having added the servers, you now need to ensure that the server hostids are set before creating any zpools. Each server requires a unique hostid to be configured. Setting the hostid on each server will allow ZFS to apply an attribute on each zpool indicating which host currently has the pool imported. This provides some protection in ZFS against multiple simultaneous imports of zpools when the storage is connected to more than one server. To set the hostid, run the genhostid command on each host and reboot. In the document *Lustre\* Installation and Configuration using Intel® EE for Lustre\* Software and OpenZFS*, see the section *Protecting File System Volumes from Concurrent Access* for more information.
+1. Having added the servers, you now need to ensure that the server hostids are set before creating any zpools. Each server requires a unique hostid to be configured. Setting the hostid on each server will allow ZFS to apply an attribute on each zpool indicating which host currently has the pool imported. This provides some protection in ZFS against multiple simultaneous imports of zpools when the storage is connected to more than one server. To set the hostid, run the genhostid command on each host and reboot. In the document *Lustre\* Installation and Configuration using Manager for Lustre\* Software and OpenZFS*, see the section *Protecting File System Volumes from Concurrent Access* for more information.
 
 1. As a further protection against “double-importing” ZFS pools, and to prevent conflicts with the Pacemaker resource management software, disable the ZFS Systemd target by entering the following command:
 	
@@ -52,7 +52,7 @@ To create and manage an OpenZFS-based Lustre file system that is highly-availabl
     - recordsize: this sets a suggested block size for the file system. The block size cannot exceed this value. The default value, 128KB, is fine for MGT and MDT OSDs. For OSTs, where large block IO is the dominant workload, set the recordsize=1M, which is the maximum currently allowed in ZFS on Linux version 0.6.5. Future versions of ZFS are expected to be able to further increase this value.
     - mountpoint=none: in monitored mode, the management software requires that ZfsDatasets have the following property values to prevent undesired automatic mounting.
 
-    For more details, refer to the section ZFS OSDs, in the guide titled Lustre* Installation and Configuration using Intel® EE for Lustre* Software and OpenZFS, as well as the system man pages for zfs(8) and zpool(8).
+    For more details, refer to the section ZFS OSDs, in the guide titled Lustre* Installation and Configuration using Manager for Lustre\* Software and OpenZFS, as well as the system man pages for zfs(8) and zpool(8).
 
     Following are three examples of typical pool configurations, one each for MGT, MDT and OST respectively:
     
@@ -93,7 +93,7 @@ To create and manage an OpenZFS-based Lustre file system that is highly-availabl
 	<dev C> <dev D>  <dev E> <dev F> ...
 	```
 
-**Note:** See the document *Lustre\* Installation and Configuration using Intel® EE for Lustre\* Software and OpenZFS* for descriptions of the ashift and recordsize properties. RAIDZ2 is the preferred vdev configuration for OSTs, and we recommend an arrangement of at least 11 disks (9+2) per RAIDZ2 vdev for best performance. The pool naming convention is based on the Lustre file system name and OST index number, starting at 0 (zero).
+**Note:** See the document *Lustre\* Installation and Configuration using Manager for Lustre\* Software and OpenZFS* for descriptions of the ashift and recordsize properties. RAIDZ2 is the preferred vdev configuration for OSTs, and we recommend an arrangement of at least 11 disks (9+2) per RAIDZ2 vdev for best performance. The pool naming convention is based on the Lustre file system name and OST index number, starting at 0 (zero).
 
    The remainder of this procedure is performed at the Manager for Lustre\* software GUI. 
 1. For high-availability, configure your servers as primary and fail-over servers for each zpool.  Perform the steps in [Configure primary and fail-over servers<](Creating_new_lustre_fs_3_0.md/#3.5).
