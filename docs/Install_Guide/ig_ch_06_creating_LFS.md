@@ -6,7 +6,7 @@
 - [Adding Storage Servers to a Lustre File System](#adding-storage-servers-to-a-lustre-file-system)
 - [Administering a Lustre File System](#administering-a-lustre-file-system)
 
-After Intel® EE for Lustre\* software is installed, point your web
+After Manager for Lustre\* software is installed, point your web
 browser to the Manager for Lustre\* dashboard. Use Chrome\* or
 Firefox\*.
 
@@ -26,7 +26,7 @@ or a server can be added to a managed, HA file system created using
 Manager for Lustre\* software.
 
 For managed, HA file systems, when the server is identified, the
-Manager for Lustre\* agent, Intel® EE for Lustre\* software,
+Manager for Lustre\* agent, Manager for Lustre\* software,
 and specific dependencies (e.g. for Corosync and Pacemaker) are
 automatically deployed to the new storage server. This simplifies
 software installation and avoids possible errors.
@@ -49,7 +49,7 @@ For complete instructions on adding servers, assigning primary and
 failover servers, configuring PDUs or IPMI, and creating a Lustre file
 system, see the Manager for Lustre\* online Help.
 
-**Note**: Installing Intel® EE for Lustre\* software automatically
+**Note**: Installing Manager for Lustre\* software automatically
 disables SELinux on all storage servers, because the Lustre file system
 software is not compatible with SELinux. Installation also configures
 firewalls on the manager and storage servers.

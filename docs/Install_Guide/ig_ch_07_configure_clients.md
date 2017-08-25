@@ -4,13 +4,13 @@
 **In this Chapter:**
 
 - [Client Requirements](#client-requirements-1)
-- [Installing Intel® EE for Lustre\* software on Clients Running RHEL or CentOS](#installing-intel-ee-for-lustre-software-on-clients-running-rhel-or-centos)
+- [Installing Manager for Lustre\* software on Clients Running RHEL or CentOS](#installing-intel-ee-for-lustre-software-on-clients-running-rhel-or-centos)
 - [Installing Lustre on SUSE Linux Enterprise Server](#installing-lustre-on-suse-linux-enterprise-server)
 - [Installing and Configuring Lustre Manually](#installing-and-configuring-lustre-manually)
 
 
 A client (compute node) accessing a storage appliance must be running
-Intel® EE for Lustre\* 3.1.1.0 client software. The Lustre file system
+Manager for Lustre\* 3.1.1.0 client software. The Lustre file system
 must first be created or discovered at the Manager for Lustre\*
 dashboard (see the Manager for Lustre\* Online Help to do this).
 The Lustre client software must be installed on the client, and then the
@@ -28,7 +28,7 @@ or CentOS Linux, version 6.8 or 7.3.
 -   Before using the Red Hat or RHEL software referenced herein, please refer to Red Hat’s website for more information, including without limitation, information regarding the mitigation of potential security vulnerabilities in the Red Hat software.
 - Client support for el6 is distributed in the ee-contrib-3.1.1.0/el6/lustre-client-&lt;lu-version&gt;-bundle.tar.gz tarball.
 
-Intel® EE for Lustre\* software may be installed on file system
+Manager for Lustre\* software may be installed on file system
 *servers and clients* running SUSE Linux Enterprise version 11 with SP4,
 and on clients-only running SLES12 with SP1. However, for SLES
 installations, Manager for Lustre\* software is *not supported or
@@ -43,7 +43,7 @@ LNET provides the client network infrastructure required by the Lustre
 file system and LNET must be configured for each client. See [LNET
 Configuration](ig_ch_04_pre_install.md/#LNET-Configuration).
 
-Installing Intel® EE for Lustre\* software on Clients Running RHEL or CentOS
+Installing Manager for Lustre\* software on Clients Running RHEL or CentOS
 ----------------------------------------------------------------------------
 
 The following instructions detail how to install and configure client

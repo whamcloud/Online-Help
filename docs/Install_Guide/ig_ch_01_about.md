@@ -95,7 +95,7 @@ Related Documentation
 -   *Configuring LNet Routers for File Systems based on Intel® EE for
     Lustre\* Software*
 
--   *Installing Hadoop, the Hadoop Adapter for Intel® EE for Lustre\*,
+-   *Installing Hadoop, the Hadoop Adapter for Manager for Lustre\*,
     and the Job Scheduler Integration *
 
 -   *Creating an HBase Cluster and Integrating Hive on an Intel® EE for
@@ -115,7 +115,7 @@ Related Documentation
 -   *Creating a Scalable File Service for Windows Networks using Intel®
     EE for Lustre\* Software*
 
--   *Intel® EE for Lustre\* Hierarchical Storage Management Framework
+-   *Manager for Lustre\* Hierarchical Storage Management Framework
     White Paper*
 
 -   *Architecting a High-Performance Storage System White Paper*Title

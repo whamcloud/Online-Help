@@ -21,7 +21,7 @@ Specification presented in this chapter.
 
 If you are creating a Lustre file system that will use OpenZFS as the
 backend, see the guide *Lustre\* Installation and Configuration using
-Intel® EE for Lustre\* Software and OpenZFS*.
+Manager for Lustre\* Software and OpenZFS*.
 
 In addition to the specification presented next, please contact your
 Intel® technical support representative for the latest information
@@ -105,13 +105,13 @@ for Lustre\* software consists of the following. See Figure 1.
     clients, and the average throughput requirements for each client.
 
 **Note**: After you have completely configured the system and installed
-Intel® EE for Lustre\* software on the manager server, you will be
+Manager for Lustre\* software on the manager server, you will be
 ready to create the Lustre file system using the Intel® Manager for
 Lustre\* software. **Note that installation consists of installing
-Intel® EE for Lustre\* software on the manager server only**. For HA
+Manager for Lustre\* software on the manager server only**. For HA
 file systems, the software automatically installs required packages on
 the file system’s servers to support HA. This avoids the need to
-manually install the Intel® EE for Lustre\* software on storage
+manually install the Manager for Lustre\* software on storage
 servers and avoids possible errors.
 
 During this physical configuration of your file system hardware, be sure

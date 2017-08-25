@@ -203,7 +203,7 @@ Server Requirements](ig_ch_03_building.md/#manager-server-requirements). The fol
 example Kickstart template describes a basic platform with a small set
 of packages and two network interfaces: one for provisioning the OS and
 connection to external infrastructure, and the other for connection to
-the Intel® EE for Lustre\* management network.
+the Manager for Lustre\* management network.
 
 An *example* Kickstart template:
 
@@ -445,7 +445,7 @@ cp /etc/ntp.conf \$HOME/backup/etc/.
 Manager for Lustre\* software uses SSL certificates to
 establish trusted communications between the manager server (running the
 Manager for Lustre\* software GUI) and the agents running
-Intel® EE for Lustre\* software, including the metadata servers,
+Manager for Lustre\* software, including the metadata servers,
 object storage servers, etc. Without these certificates, trust cannot be
 established and the Manager for Lustre\* software will not be
 able to manage or receive monitoring telemetry from those agents.
@@ -702,7 +702,7 @@ capacity may be incorrectly reported.
 This is caused by one or more of the Manager for Lustre\*
 client agents losing contact with the manager and refusing to reconnect
 after the service has been restored. To restore the connection, log into
-the affected Intel® EE for Lustre\* asset (e.g., the MDS or OSS) and
+the affected Manager for Lustre\* asset (e.g., the MDS or OSS) and
 restart the client agent service as follows. This is a one-time fix.
 
 service chroma-agent restart 

@@ -1,5 +1,5 @@
 [**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
-# Installing Updates to Intel® EE for Lustre\* software
+# Installing Updates to Manager for Lustre\* software
 
 **Note**: Perform any OS update prior to updating the Intel® EE for
 Lustre\* software.
@@ -7,7 +7,7 @@ Lustre\* software.
 **Note**: Updates are only supported for official releases. Updates
 from, or to, test releases are not specifically supported.
 
-Upgrading Intel® EE for Lustre\* software and restarting the manager
+Upgrading Manager for Lustre\* software and restarting the manager
 server will overwrite any changes previously made to the
 chroma-manager.conf template in /etc/httpd/conf.d/. Before upgrading
 your installation or restarting your manager node, make sure you backup
@@ -16,7 +16,7 @@ any modifications to this file first.
 Due to a dependency in the update process in previous releases, please
 take note of the following update path. Please perform the following
 update in the order listed, based on your currently installed version of
-Intel® EE for Lustre\* software.
+Manager for Lustre\* software.
 
 1.  If your currently installed software version is 2.0.0.0 , update to
     version 2.0.1.1 first. Then perform the following consecutive
@@ -31,7 +31,7 @@ Intel® EE for Lustre\* software.
 
 Performing a version downgrade or rollback is not supported.
 
-To install an update of Intel® EE for Lustre\* software on the manager
+To install an update of Manager for Lustre\* software on the manager
 server and then all file system managed servers, do the following:
 
 1.  Stop the file system. To do this, click **Configuration** &gt;
@@ -48,7 +48,7 @@ server and then all file system managed servers, do the following:
     appropriate files. Use that procedure to verify successful
     installation.
 
-4.  After the updated Intel® EE for Lustre\* software is installed,
+4.  After the updated Manager for Lustre\* software is installed,
     point your web browser to the Manager for Lustre\* dashboard.
     Use Chrome\* or Firefox\*. Be sure to refresh the browser cache,
     i.e., force a fresh reload of the updated dashboard.

@@ -18,7 +18,7 @@ Lustre\* is a global, single-namespace file system architecture that
 allows parallel access by many clients to all the data in the file
 system across many servers and storage devices. Designed to take
 advantage of the reliability features of enterprise-class storage
-hardware, Intel® EE for Lustre\* software provides high availability
+hardware, Manager for Lustre\* software provides high availability
 features including redundant servers with storage failover. Metadata and
 data are stored on separate servers to allow each system to be optimized
 for different workloads.
@@ -30,7 +30,7 @@ Specification presented in this guide.
 
 If you are creating a Lustre file system that will use OpenZFS as the
 backend, see the guide *Lustre\* Installation and Configuration using
-Intel® EE for Lustre\* Software and OpenZFS*.
+Manager for Lustre\* Software and OpenZFS*.
 
 In addition to the specification presented next, please contact your
 Intel® technical support representative for the latest information
@@ -41,7 +41,7 @@ Lustre\* software.
 What is Manager for Lustre\* Software?
 -----------------------------------------------
 
-Intel® EE for Lustre\* software includes the Intel® Manager for
+Manager for Lustre\* software includes the Intel® Manager for
 Lustre\* software, which greatly simplifies configuring, creating,
 monitoring, and managing one or more Lustre file systems from either the
 manager GUI, or the associated command line interface (CLI).
@@ -108,8 +108,8 @@ Building a Lustre Storage Solution over a ZFS File System
 ---------------------------------------------------------
 
 If your intent is to build a high-availability, Lustre storage solution
-over an existing ZFS, Intel® EE for Lustre\* software supports this
+over an existing ZFS, Manager for Lustre\* software supports this
 configuration. However, the installation and configuration of such a
 system is not described in this guide. Please see the document:
-*Lustre\* Installation and Configuration using Intel® EE for Lustre\*
+*Lustre\* Installation and Configuration using Manager for Lustre\*
 Software and OpenZFS*.

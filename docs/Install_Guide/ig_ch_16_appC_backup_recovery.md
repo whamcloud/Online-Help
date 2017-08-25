@@ -112,7 +112,7 @@ involves the following components:
 
         -   SSH keys (host and user)
 
--   Intel® EE for Lustre\* software installation and configuration
+-   Manager for Lustre\* software installation and configuration
 
     -   Additional packages required by Lustre
 
@@ -200,7 +200,7 @@ and reliably backed up
 
 The following example Kickstart template describes a basic platform with
 a small set of packages and two network interfaces: one for provisioning
-the OS and connection to the Intel® EE for Lustre\* management network,
+the OS and connection to the Manager for Lustre\* management network,
 the other might be used for Lustre communications traffic (if Ethernet
 is being used for Lustre networking).
 
@@ -304,7 +304,7 @@ configuration used to manage the resources in Pacemaker.
 
 ### Manager for Lustre\* YUM Repository Configuration
 
-Intel® EE for Lustre\* software is distributed as RPM packages. These
+Manager for Lustre\* software is distributed as RPM packages. These
 are hosted in YUM repositories on the manager server running the Intel®
 Manager for Lustre\* software and GUI.
 
@@ -400,7 +400,7 @@ printf("/sbin/chkconfig --levels %s %s on\\n",on,\$1)
 
 ### Sample Automated Backup Script for Intel® EE Lustre Servers
 
-For a server managed by Intel® EE for Lustre\* software, this script can
+For a server managed by Manager for Lustre\* software, this script can
 be used as the basis for automating the backup of server configuration
 information.
 
@@ -490,7 +490,7 @@ has been extracted in to a directory referenced by the variable
 \$BACKUP\_ROOT. It is also assumed that basic network connectivity has
 been restored, sufficient to allow access to the operating system YUM
 repositories, as well as the repositories of the manager server running
-the Intel® EE for Lustre\* GUI.
+the Manager for Lustre\* GUI.
 
 #### Restore Process
 

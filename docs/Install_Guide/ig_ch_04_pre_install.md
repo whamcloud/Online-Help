@@ -18,7 +18,7 @@ Please do *not* perform the following tasks, as these tasks (among
 others) are performed automatically, or will conflict with the software:
 
 -   Do **not** configure IP addresses for the crossover cable interfaces (server to target).
-- Do **not** install or configure Lustre, Corosync, or Pacemaker. Install Intel® EE for Lustre\* software only as described in this guide.
+- Do **not** install or configure Lustre, Corosync, or Pacemaker. Install Manager for Lustre\* software only as described in this guide.
 - Do **not** configure NTP on storage servers.
 - When installing Red Hat Enterprise Linux or CentOS Linux, do **not** use the EPEL repositories. Uninstall EPEL-release on all systems if it is installed.
 - Do **not** install CMAN (Cluster Manager) or other packages that use the Red Hat fence agents. Manager for Lustre\* software will have package conflicts. Remove all such packages from all systems.
@@ -119,7 +119,7 @@ yum-config-manager --enable rhel-7-server-optional-rpms
     yum updates occur successfully. “yum search vim” will reveal if you
     cannot connect to your configured repositories.
 
-3.  Ensure that NTP is not running on any system. Intel® EE for Lustre\*
+3.  Ensure that NTP is not running on any system. Manager for Lustre\*
     software will manage NTP.
 
 4.  Ensure that ssh root access “ssh -l root &lt;hostname&gt;” works
@@ -148,7 +148,7 @@ Client Requirements
 -------------------
 
 A client accessing your Lustre file system (created with Intel® Manager
-for Lustre\* software) must be running Intel® EE for Lustre\* 3.1.1.0
+for Lustre\* software) must be running Manager for Lustre\* 3.1.1.0
 client software. See [Configuring Clients](ig_ch_07_configure_clients.md) for
 instructions on installing software and configuring clients.
 
@@ -159,12 +159,12 @@ Configuration](#LNET-Configuration).
 Linux\* Kernel Rebuilds and Patches
 -----------------------------------
 
-The installation of Intel® EE for Lustre\* software will replace your
+The installation of Manager for Lustre\* software will replace your
 existing Linux\* kernel on all servers. If you require other kernel
 patches for your environment please contact Intel® for further
 assistance with this issue. For those who may need to rebuild a kernel,
 first contact Intel® support as rebuilding will over-write the kernel
-installed with Intel® EE for Lustre\* software.
+installed with Manager for Lustre\* software.
 
 Firewall Considerations
 -----------------------
@@ -172,6 +172,6 @@ Firewall Considerations
 Manager for Lustre\* software runs on
 servers running RHEL or CentOS, version 7.3. The *firewalled* package
 needs to be installed and configured for *all file system servers
-before* installing Intel® EE for Lustre\* software. The Intel® EE for
+before* installing Manager for Lustre\* software. The Intel® EE for
 Lustre\* software installation process will then modify the firewall
-configuration as needed for Intel® EE for Lustre\* software to operate.
+configuration as needed for Manager for Lustre\* software to operate.

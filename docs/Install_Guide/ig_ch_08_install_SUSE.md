@@ -1,7 +1,7 @@
 [**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
 # Installing Lustre on SUSE Linux Enterprise Server
 
-Intel® EE for Lustre\* software may be installed on file system servers
+Manager for Lustre\* software may be installed on file system servers
 and clients running SUSE Linux Enterprise version 11 with SP4, and on
 clients only running SLES12 with SP1. Note that for SLES, the Intel®
 Manager for Lustre\* software *is not supported or installed*. Automatic

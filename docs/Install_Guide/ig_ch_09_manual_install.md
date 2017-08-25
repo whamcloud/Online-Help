@@ -7,7 +7,7 @@ installations may opt to deploy and configure a Lustre file system and
 then later install Manager for Lustre\* software to be used in
 Monitor-only- mode.
 
-The overall release tarball is ee-3.1.1.0.tar.gz. To deploy and
+The overall release tarball is iml-4.0.0.0.tar.gz. To deploy and
 configure Lustre manually, use these packages:
 
 -   Lustre server packages:lustre-2.7.19.10-bundle.tar.gz

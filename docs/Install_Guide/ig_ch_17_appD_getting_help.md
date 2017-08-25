@@ -2,7 +2,7 @@
 
 # Getting Help
 
-*For partners*: If you encounter a problem with Intel® EE for Lustre\*
+*For partners*: If you encounter a problem with Manager for Lustre\*
 software, Manager for Lustre\* software, or storage, and you
 require support from your Intel® technical support representative, then
 to help expedite resolution of the problem, please do the following:

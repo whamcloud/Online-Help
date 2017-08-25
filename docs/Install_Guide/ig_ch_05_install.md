@@ -1,35 +1,35 @@
 [**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
-# Intel® EE for Lustre\* Software Installation
+# Manager for Lustre\* Software Installation
 
 **In this Chapter:**
 
-- [Installing Intel® EE for Lustre\* software](#installing-intel-ee-for-lustre-software)
+- [Installing Manager for Lustre\* software](#installing-intel-ee-for-lustre-software)
 - [Manager for Lustre\* Software Configuration Settings](#intel-manager-for-lustre-software-configuration-settings)
 - [Editing Manager for Lustre\* Software Configuration Settings](#editing-intel-manager-for-lustre-software-configuration-settings)
 
 
-This section describes how to install the Intel® EE for Lustre\*
+This section describes how to install the Manager for Lustre\*
 software and the Manager for Lustre\* software on the *manager
 server.*
 
-After Intel® EE for Lustre\* and Manager for Lustre\* software is
+After Manager for Lustre\* and Manager for Lustre\* software is
 installed, point your web browser to the Manager for Lustre\*
 dashboard. Use Chrome\* or Firefox\*. A display monitor with a minimum
 resolution of 1024 X 768 pixels is recommended, to adequately display
 the Manager for Lustre\* software GUI.
 
 **Note**: Later, when adding storage servers to your Lustre file system,
-the Manager for Lustre\* agent, Intel® EE for Lustre\*
+the Manager for Lustre\* agent, Manager for Lustre\*
 software, and specific dependencies (e.g.: for Corosync and Pacemaker)
 are automatically deployed to the storage server. This avoids the need
-to manually install the Intel® EE for Lustre\* software on storage
+to manually install the Manager for Lustre\* software on storage
 servers and avoids possible errors.
 
 **Note**: Some installations may opt to deploy and configure a Lustre
 file system manually, without Manager for Lustre\* software.
 Other installations may opt to deploy and configure a Lustre file system
 and then later install Manager for Lustre\* software to be used
-in Monitor-only mode. The overall release tarball is ee-3.1.1.0.tar.gz.
+in Monitor-only mode. The overall release tarball is iml-4.0.0.0.tar.gz.
 To deploy and configure Lustre manually, see [Installing and Configuring
 Lustre Manually](ig_ch_07_configure_clients.md/#installing-and-configuring-lustre-manually).
 
@@ -40,7 +40,7 @@ browser.
 
 https://build.hpdd.intel.com/job/lustre-manual/lastSuccessfulBuild/artifact/lustre_manual.xhtml#part.installconfig
 
-Installing Intel® EE for Lustre\* software
+Installing Manager for Lustre\* software
 --------------------------------------------
 
 You will need the following information to perform this installation:
@@ -51,16 +51,16 @@ You will need the following information to perform this installation:
 To install the software, complete these steps:
 
 1.  Download the installation archive to a directory on the manager server (e.g. /tmp).
-1. Unpack the installation archive using tar: ee-3.1.1.0.tar.gz:
+1. Unpack the installation archive using tar: iml-4.0.0.0.tar.gz:
 ```
 # cd /tmp; mkdir install
-# tar –C install –xzf ee-3.1.1.0.tar.gz
+# tar –C install –xzf iml-4.0.0.0.tar.gz
 ```
 
 
-1. To install the Intel® EE for Lustre\* software, run:
+1. To install the Manager for Lustre\* software, run:
 ```
-# cd /tmp/install/ ee-3.1.1.0
+# cd /tmp/install/iml-4.0.0.0.tar.gz
 # ./install
 ```
 
@@ -104,7 +104,7 @@ Lustre\* GUI. A certificate can be downloaded from (example only):
 
 https://&lt;manager-addr&gt;/certificate/
 
-After Intel® EE for Lustre\* software is installed, point your web
+After Manager for Lustre\* software is installed, point your web
 browser to the Manager for Lustre\* dashboard. Use Chrome\* or
 Firefox\*.
 
