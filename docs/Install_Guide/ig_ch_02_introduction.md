@@ -1,5 +1,5 @@
-[**Intel® Enterprise Edition for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
-# Introducing the Intel® Enterprise Edition for Lustre\* Software
+[**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
+# Introducing the Manager for Lustre\* Software
 
 **In this Chapter:**
 
@@ -9,7 +9,7 @@
 - [The Configuration Page in Monitor-only mode](#the-configuration-page-in-monitor-only-mode)
 - [Building a Lustre Storage Solution over a ZFS File System](#building-a-lustre-storage-solution-over-a-zfs-file-system)
 
-Intel® Enterprise Edition for Lustre\* software, when integrated with
+Manager for Lustre\* software, when integrated with
 Linux, aggregates a range of storage hardware into a single Lustre\*
 file system that is well proven for delivering fast IO to applications
 across high-speed network fabrics, such as InfiniBand\* and Ethernet.

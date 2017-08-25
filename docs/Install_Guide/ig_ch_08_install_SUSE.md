@@ -1,4 +1,4 @@
-[**Intel® Enterprise Edition for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
+[**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
 # Installing Lustre on SUSE Linux Enterprise Server
 
 Intel® EE for Lustre\* software may be installed on file system servers

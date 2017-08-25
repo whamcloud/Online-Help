@@ -1,4 +1,4 @@
-[**Intel® Enterprise Edition for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
+[**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
 # General Troubleshooting
 
 Consider the following tips before contacting technical support as you

@@ -1,4 +1,4 @@
-[**Intel® Enterprise Edition for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
+[**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
 # Intel® EE for Lustre\* Software Installation
 
 **In this Chapter:**

@@ -4,7 +4,7 @@
 ### Table of Contents
 
 - [About this Document](ig_ch_01_about.md)
-- [Introducing the Intel® Enterprise Edition for Lustre\* Software](ig_ch_02_introduction.md)
+- [Introducing the Manager for Lustre\* Software](ig_ch_02_introduction.md)
 - [Building the System – The High Availability Configuration Spec](ig_ch_03_building.md)
 - [Pre-Installation Tasks](ig_ch_04_pre_install.md)
 - [Intel® EE for Lustre\* Software Installation](ig_ch_05_install.md)

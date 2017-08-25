@@ -1,4 +1,4 @@
-Intel® Enterprise Edition for Lustre\* Software\
+Manager for Lustre\* Software\
 Installation Guide
 
 Partner Guide\
@@ -102,7 +102,7 @@ Contents {#contents .TOCHeading1}
 
 [Related Documentation viii](#related-documentation)
 
-[Introducing the Intel® Enterprise Edition for Lustre\* Software
+[Introducing the Manager for Lustre\* Software
 1](#introducing-the-intel-enterprise-edition-for-lustre-software)
 
 [What is Manager for Lustre\* Software?
@@ -344,7 +344,7 @@ Document Purpose
 This document provides detailed instructions for installing Intel®
 Enterprise Edition for Lustre\* software. This document:
 
--   Introduces Intel® Enterprise Edition for Lustre\* software and its capabilities
+-   Introduces Manager for Lustre\* software and its capabilities
 
 -   Introduces Manager for Lustre\* software and its
      capabilities to configure and support real-time management of
@@ -361,7 +361,7 @@ Enterprise Edition for Lustre\* software. This document:
      establishing yum repositories, configuring LNET, and also
      discusses Linux\* kernel considerations
 
--   Describes how to install Intel® Enterprise Edition for Lustre\*
+-   Describes how to install Manager for Lustre\*
      software
 
 -   Describes how to configure Manager for Lustre\* software
@@ -374,7 +374,7 @@ Intended Audience
 -----------------
 
 This guide is intended for partners who are designing storage solutions
-based on Intel® Enterprise Edition for Lustre\* software. Readers are
+based on Manager for Lustre\* software. Readers are
 assumed to be full-time Linux system administrators or equivalent who
 have:
 
@@ -390,7 +390,7 @@ have:
     configuration requirements as defined in this guide.
 
 This document is *not intended for end users* of storage solutions
-implemented using the Intel® Enterprise Edition for Lustre\* software.
+implemented using the Manager for Lustre\* software.
 
 Conventions Used
 ----------------
@@ -409,7 +409,7 @@ Conventions used in this document include:
 Related Documentation
 ---------------------
 
--   *Intel® Enterprise Edition for Lustre\* Software, Version 3.1.0.3
+-   *Manager for Lustre\* Software, Version 3.1.0.3
     Release Notes*
 
 -   *Manager for Lustre\* Software Online Help* (accessible from
@@ -449,10 +449,10 @@ Related Documentation
 
 -   *Architecting a High-Performance Storage System White Paper*
 
-Introducing the Intel® Enterprise Edition for Lustre\* Software
+Introducing the Manager for Lustre\* Software
 =================================================================
 
-Intel® Enterprise Edition for Lustre\* software, when integrated with
+Manager for Lustre\* software, when integrated with
 Linux, aggregates a range of storage hardware into a single Lustre\*
 file system that is well proven for delivering fast IO to applications
 across high-speed network fabrics, such as InfiniBand\* and Ethernet.

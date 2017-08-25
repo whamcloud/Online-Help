@@ -1,4 +1,4 @@
-[**Intel® Enterprise Edition for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
+[**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
 # About this Document
 
 **In this Chapter:**
@@ -15,7 +15,7 @@ Document Purpose
 This document provides detailed instructions for installing Intel®
 Enterprise Edition for Lustre\* software. This document:
 
--   Introduces Intel® Enterprise Edition for Lustre\* software and its capabilities
+-   Introduces Manager for Lustre\* software and its capabilities
 
 -   Introduces Manager for Lustre\* software and its
      capabilities to configure and support real-time management of
@@ -32,7 +32,7 @@ Enterprise Edition for Lustre\* software. This document:
      establishing yum repositories, configuring LNET, and also
      discusses Linux\* kernel considerations
 
--   Describes how to install Intel® Enterprise Edition for Lustre\*
+-   Describes how to install Manager for Lustre\*
      software
 
 -   Describes how to configure Manager for Lustre\* software
@@ -45,7 +45,7 @@ Intended Audience
 -----------------
 
 This guide is intended for partners who are designing storage solutions
-based on Intel® Enterprise Edition for Lustre\* software. Readers are
+based on Manager for Lustre\* software. Readers are
 assumed to be full-time Linux system administrators or equivalent who
 have:
 
@@ -61,7 +61,7 @@ have:
     configuration requirements as defined in this guide.
 
 This document is *not intended for end users* of storage solutions
-implemented using the Intel® Enterprise Edition for Lustre\* software.
+implemented using the Manager for Lustre\* software.
 
 Conventions Used
 ----------------
@@ -80,7 +80,7 @@ Conventions used in this document include:
 Related Documentation
 ---------------------
 
--   *Intel® Enterprise Edition for Lustre\* Software, Version 3.1.1.0
+-   *Manager for Lustre\* Software, Version 3.1.1.0
     Release Notes*
 
 -   *Manager for Lustre\* Software Online Help* (accessible from
