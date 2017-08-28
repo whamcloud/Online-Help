@@ -12,8 +12,7 @@
 Document Purpose
 ----------------
 
-This document provides detailed instructions for installing Intel®
-Enterprise Edition for Lustre\* software. This document:
+This document provides detailed instructions for installing Manager for Lustre\* software. This document:
 
 -   Introduces Manager for Lustre\* software and its capabilities
 
@@ -25,7 +24,7 @@ Enterprise Edition for Lustre\* software. This document:
      to create a file system that meets the High Availability
      Configuration Specification (discussed herein). Conformance with
      this specification permits configuration, monitoring, and
-     management of the Lustre file system using the Intel® Manager for
+     management of the Lustre file system using the Manager for
      Lustre\* software.
 
 -   Describes the pre-installation tasks such as configuring servers,

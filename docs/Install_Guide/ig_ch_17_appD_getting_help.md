@@ -15,7 +15,7 @@ Run chroma diagnostics
 ----------------------
 
 Run chroma-diagnostics on any of the servers that you suspect may be
-having problems, and on the server hosting the Intel® Manager for
+having problems, and on the server hosting the Manager for
 Lustre\* software dashboard. Chroma-Diagnostics generates a compressed
 tar.lzma file that you should attach to your JIRA ticket when you create
 it.

@@ -3,7 +3,7 @@
 
 **In this Chapter:**
 
-- [What is Manager for Lustre\* Software?](#what-is-intel-manager-for-lustre-software)
+- [What is Manager for Lustre\* Software?](#what-is-manager-for-lustre-software)
 - [What is Management Mode?](#what-is-management-mode)
 - [What is Monitor-only Mode?](#what-is-monitor-only-mode)
 - [The Configuration Page in Monitor-only mode](#the-configuration-page-in-monitor-only-mode)
@@ -23,7 +23,7 @@ features including redundant servers with storage failover. Metadata and
 data are stored on separate servers to allow each system to be optimized
 for different workloads.
 
-A high-availability Lustre file system managed by Intel® Manager for
+A high-availability Lustre file system managed by Manager for
 Lustre\* software requires that your entire storage system configuration
 and all interfaces comply with the High Availability Configuration
 Specification presented in this guide.
@@ -41,7 +41,7 @@ Lustre\* software.
 What is Manager for Lustre\* Software?
 -----------------------------------------------
 
-Manager for Lustre\* software includes the Intel® Manager for
+Manager for Lustre\* software includes the Manager for
 Lustre\* software, which greatly simplifies configuring, creating,
 monitoring, and managing one or more Lustre file systems from either the
 manager GUI, or the associated command line interface (CLI).
@@ -88,7 +88,7 @@ statistics, are also available in monitor-only mode.
 
 Monitor-only mode is for file systems that do not fully conform to the
 High Availability Configuration Specification. In this situation, the
-Corosync and Pacemaker configuration modules provided with Intel®
+Corosync and Pacemaker configuration modules provided with
 Manager for Lustre\* software are not automatically deployed. This means
 that Manager for Lustre\* software cannot configure the file
 system for server failover. Note that Logical Volume Manager (LVM) is

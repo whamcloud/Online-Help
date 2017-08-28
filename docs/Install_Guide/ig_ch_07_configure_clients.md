@@ -4,7 +4,7 @@
 **In this Chapter:**
 
 - [Client Requirements](#client-requirements-1)
-- [Installing Manager for Lustre\* software on Clients Running RHEL or CentOS](#installing-intel-ee-for-lustre-software-on-clients-running-rhel-or-centos)
+- [Installing Manager for Lustre\* software on Clients Running RHEL or CentOS](#installing-manager-for-lustre-software-on-clients-running-rhel-or-centos)
 - [Installing Lustre on SUSE Linux Enterprise Server](#installing-lustre-on-suse-linux-enterprise-server)
 - [Installing and Configuring Lustre Manually](#installing-and-configuring-lustre-manually)
 

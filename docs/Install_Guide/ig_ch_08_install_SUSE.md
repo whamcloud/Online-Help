@@ -3,9 +3,9 @@
 
 Manager for Lustre\* software may be installed on file system servers
 and clients running SUSE Linux Enterprise version 11 with SP4, and on
-clients only running SLES12 with SP1. Note that for SLES, the Intel®
+clients only running SLES12 with SP1. Note that for SLES, the
 Manager for Lustre\* software *is not supported or installed*. Automatic
-configuration or monitoring of Lustre file systems using the Intel®
+configuration or monitoring of Lustre file systems using the
 Manager for Lustre\* dashboard is not supported.
 
 The overall release tarball is iml-contrib-4.0.0.0.tar.gz. To install

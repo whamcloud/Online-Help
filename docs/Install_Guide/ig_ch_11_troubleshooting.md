@@ -126,7 +126,7 @@ NID may change if the network connecting the Lustre servers and clients
 is modified. If a Lustre server NID changes, the server NID record in
 the Command Center must be updated.
 
-For a procedure to update server NIDS, see the Intel® Manager for
+For a procedure to update server NIDS, see the Manager for
 Lustre\* online Help topic, *Handling network address changes*.
 
 ***Problem:*** **You are unable to create or read a file from a client

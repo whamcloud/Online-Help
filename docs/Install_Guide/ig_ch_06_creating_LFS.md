@@ -17,7 +17,7 @@ Lustre file system, see the Manager for Lustre\* online Help.
 Adding Storage Servers to a Lustre File System
 ----------------------------------------------
 
-Adding a storage server consists of identifying that server to Intel®
+Adding a storage server consists of identifying that server to
 Manager for Lustre\* software, using either the manager GUI or the
 Manager for Lustre\* command line interface. A server can be
 added to an existing file system that was previously discovered and is
@@ -60,7 +60,7 @@ Administering a Lustre File System
 **WARNING**: To manage Lustre file systems from the command line, you must use the Manager for Lustre\* command line interface (CLI).
 
 ***WARNING**: Modifying a file system manually from a shell on a storage
-server will interfere with the ability of the Intel® Manager for
+server will interfere with the ability of the Manager for
 Lustre\* software to manage and monitor the file system. *
 
 Storage servers created in the manager GUI can

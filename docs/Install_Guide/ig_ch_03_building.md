@@ -14,7 +14,7 @@
 - [Power Distribution Units](#power-distribution-units)
 - [Issues Regarding Power Loss to the BMC or PDU](#issues-regarding-power-loss-to-the-bmc-or-pdu)
 
-A high-availability Lustre file system managed by Intel® Manager for
+A high-availability Lustre file system managed by Manager for
 Lustre\* software requires that your entire storage system configuration
 and all interfaces comply with the High Availability Configuration
 Specification presented in this chapter.
@@ -69,7 +69,7 @@ for Lustre\* software consists of the following. See Figure 1.
     in one or more objects that are located on separate OSTs. The number
     of objects per file is configurable by the user and can be tuned to
     optimize performance for a given workload. RAID 6 is recommended for
-    OSTs. RAID is implemented independent of Intel® Manager for
+    OSTs. RAID is implemented independent of Manager for
     Lustre\* software. Note that Logical Volume Manager (LVM) *is not*
     supported in [Management mode](ig_ch_02_introduction.md/#what-is-management-mode), but *is*
     supported in [Monitor mode](ig_ch_02_introduction.md/#what-is-monitor-only-mode). Software
@@ -93,7 +93,7 @@ for Lustre\* software consists of the following. See Figure 1.
 
 -   **Management network**: The Management network is 1-gigabit
     Ethernet, connecting every server in the file system. This network
-    is used with ssh, to install and update Intel® Manager for
+    is used with ssh, to install and update Manager for
     Lustre\* software on each server. It is also used to manage the
     servers and make separate connections to an IPMI port installed on
     each managed server.
@@ -106,7 +106,7 @@ for Lustre\* software consists of the following. See Figure 1.
 
 **Note**: After you have completely configured the system and installed
 Manager for Lustre\* software on the manager server, you will be
-ready to create the Lustre file system using the Intel® Manager for
+ready to create the Lustre file system using the Manager for
 Lustre\* software. **Note that installation consists of installing
 Manager for Lustre\* software on the manager server only**. For HA
 file systems, the software automatically installs required packages on
@@ -116,7 +116,7 @@ servers and avoids possible errors.
 
 During this physical configuration of your file system hardware, be sure
 to write down how servers and storage are configured so you can later
-assign primary and failover servers to each volume (using the Intel®
+assign primary and failover servers to each volume (using the
 Manager for Lustre\* software GUI). Also, keep records of how failover
 power control has been implemented (IPMI or PDUs) as this will be needed
 later.
@@ -126,13 +126,13 @@ The following figure shows the high-level HA system configuration.
 ![lustre-configuration4.png](md_Graphics/ig_image2.png)
 
 
-**Note**: All references herein to the *manager GUI* refer to the Intel®
+**Note**: All references herein to the *manager GUI* refer to the
 Manager for Lustre\* graphical user interface.
 
 Manager Server Requirements
 ---------------------------
 
-The *manager server* is a dedicated server on which the Intel® Manager
+The *manager server* is a dedicated server on which the Manager
 for Lustre\* software is installed. This is unique from the *management*
 *server*. Requirements for the manager server are listed next.
 
@@ -190,7 +190,7 @@ The management server (MGS) is configured as a failover server with the
 metadata server (MDS), and vice-versa, so the MGS and MDS share the same
 configuration requirements.
 
-**Note**: The MGS is separate from the independent server running Intel®
+**Note**: The MGS is separate from the independent server running
 Manager for Lustre\* software.
 
 The following figure depicts the configuration, interconnect requirements and

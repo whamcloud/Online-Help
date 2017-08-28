@@ -30,7 +30,7 @@ LNET provides the client network infrastructure required by the Lustre
 file system. It supports many commonly used network types such as
 InfiniBand and Ethernet.
 
-Basic LNET configuration can be performed using the Intel® Manager for
+Basic LNET configuration can be performed using the Manager for
 Lustre\* GUI. This is done before creating the Lustre file system. In
 this early version of GUI-based LNET configuration, it is intended that
 the file system will exist on a *single* LNET and that all servers and
@@ -38,7 +38,7 @@ clients are on this LNET. In this case, you can perform LNET
 configuration from the GUI and the configuration information is saved in
 a reserved file called
 /etc/modprobe.d/iml\_lnet\_module\_parameters.conf. Do not manually edit
-this file. Simply follow the instructions in the Intel® Manager for
+this file. Simply follow the instructions in the Manager for
 Lustre\* Help.
 
 If you wish to configure more advanced features (such as routes and IP
@@ -147,7 +147,7 @@ nodes.
 Client Requirements
 -------------------
 
-A client accessing your Lustre file system (created with Intel® Manager
+A client accessing your Lustre file system (created with Manager
 for Lustre\* software) must be running Manager for Lustre\* 4.0.0.0
 client software. See [Configuring Clients](ig_ch_07_configure_clients.md) for
 instructions on installing software and configuring clients.

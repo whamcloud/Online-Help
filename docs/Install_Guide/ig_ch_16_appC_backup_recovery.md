@@ -13,13 +13,13 @@
 - [Security configuration](#security-configuration-1)
 - [Creating a Backup Manifest for a Metadata Server or Object Storage Server](#creating-a-backup-manifest-for-a-metadata-server-or-object-storage-server)
 - [Chroma Agent Configuration](#chroma-agent-configuration)
-- [Manager for Lustre\* YUM Repository Configuration](#intel-manager-for-lustre-yum-repository-configuration)
+- [Manager for Lustre\* YUM Repository Configuration](#manager-for-lustre-yum-repository-configuration)
 - [Network Configuration](#network-configuration)
 - [SELinux Configuration](#selinux-configuration)
 - [Lustre LNET Configuration](#lustre-lnet-configuration)
 - [Pacemaker and Corosync High Availability Framework](#pacemaker-and-corosync-high-availability-framework)
 - [System Services Startup Scripts (rc.sysinit)](#system-services-startup-scripts-rc.sysinit)
-- [Sample Automated Backup Script for Manager Lustre Servers](#sample-automated-backup-script-for-intel-ee-lustre-servers)
+- [Sample Automated Backup Script for Manager Lustre Servers](#sample-automated-backup-script-for-manager-lustre-servers)
 - [Restoring a Server from Backup](#restoring-a-server-from-backup)
 
 
@@ -305,7 +305,7 @@ configuration used to manage the resources in Pacemaker.
 ### Manager for Lustre\* YUM Repository Configuration
 
 Manager for Lustre\* software is distributed as RPM packages. These
-are hosted in YUM repositories on the manager server running the Intel®
+are hosted in YUM repositories on the manager server running the
 Manager for Lustre\* software and GUI.
 
 \# YUM Configuration for IML Repositories:
@@ -336,7 +336,7 @@ there is a configuration setting for disabling SELinux in the file:
 
 ### Lustre LNET Configuration
 
-This is normally set by the Intel® Manager for Lustre, but can be
+This is normally set by the Manager for Lustre\*, but can be
 recovered by making a copy of the following file.
 
 \# Lustre LNet Configuration:
@@ -646,7 +646,7 @@ subsequent failover trigger.
     for Pacemaker to disable the constraints around the fencing agents.
     This can make it easier to restore services to a running condition
     on one server while still working to rebuild the second. However,
-    Intel® does not support Manager for Lustre software installations that
+    Intel does not support Manager for Lustre software installations that
     do not have fencing agents configured, so only use this process with
     caution, and only if required to support an emergency recovery. Once
     full service is restored, this configuration change must be

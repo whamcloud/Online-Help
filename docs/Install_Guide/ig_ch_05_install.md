@@ -3,9 +3,9 @@
 
 **In this Chapter:**
 
-- [Installing Manager for Lustre\* software](#installing-intel-ee-for-lustre-software)
-- [Manager for Lustre\* Software Configuration Settings](#intel-manager-for-lustre-software-configuration-settings)
-- [Editing Manager for Lustre\* Software Configuration Settings](#editing-intel-manager-for-lustre-software-configuration-settings)
+- [Installing Manager for Lustre\* software](#installing-manager-for-lustre-software)
+- [Manager for Lustre\* Software Configuration Settings](#manager-for-lustre-software-configuration-settings)
+- [Editing Manager for Lustre\* Software Configuration Settings](#editing-manager-for-lustre-software-configuration-settings)
 
 
 This section describes how to install the Manager for Lustre\*
@@ -99,7 +99,7 @@ https://&lt;command_center_server_fqdn&gt;
 
 **Note**: The GUI uses a self-signed SSL certificate to secure
 communications between the browser and the server. You will need to
-accept this certificate in order to connect to the Intel® Manager for
+accept this certificate in order to connect to the Manager for
 Lustre\* GUI. A certificate can be downloaded from (example only):
 
 https://&lt;manager-addr&gt;/certificate/
@@ -182,7 +182,7 @@ In this example, the first letter of False must be capitalized.
 ```
 
 
-For configuring user accounts, see the online Help in the Intel®
+For configuring user accounts, see the online Help in the
 Manager for Lustre\* software. The online Help also provides
 instructions for creating, monitoring, and managing your Lustre
 file systems.
