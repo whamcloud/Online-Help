@@ -44,7 +44,7 @@ Lustre\* Help.
 If you wish to configure more advanced features (such as routes and IP
 networks), then you should do this manually, in a separate file
 contained in the /etc/modprobe.d directory. Please see the configuration
-guide *Configuring LNet Routers for File Systems based on Intel® EE for
+guide *Configuring LNet Routers for File Systems based on Manager for
 Lustre\* Software* and also see the *Lustre Operations Manual, Chapter 9
 - Configuring Lustre Networking*:
 [https://build.hpdd.intel.com/job/lustre-manual/lastSuccessfulBuild/artifact/lustre\_manual.xhtml\#configuringlnet](https://build.hpdd.intel.com/job/lustre-manual/lastSuccessfulBuild/artifact/lustre_manual.xhtml%23configuringlnet)
@@ -148,7 +148,7 @@ Client Requirements
 -------------------
 
 A client accessing your Lustre file system (created with Intel® Manager
-for Lustre\* software) must be running Manager for Lustre\* 3.1.1.0
+for Lustre\* software) must be running Manager for Lustre\* 4.0.0.0
 client software. See [Configuring Clients](ig_ch_07_configure_clients.md) for
 instructions on installing software and configuring clients.
 
@@ -172,6 +172,6 @@ Firewall Considerations
 Manager for Lustre\* software runs on
 servers running RHEL or CentOS, version 7.3. The *firewalled* package
 needs to be installed and configured for *all file system servers
-before* installing Manager for Lustre\* software. The Intel® EE for
+before* installing Manager for Lustre\* software. The Manager for
 Lustre\* software installation process will then modify the firewall
 configuration as needed for Manager for Lustre\* software to operate.

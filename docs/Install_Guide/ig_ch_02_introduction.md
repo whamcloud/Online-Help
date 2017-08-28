@@ -35,7 +35,7 @@ Manager for Lustre\* Software and OpenZFS*.
 In addition to the specification presented next, please contact your
 Intel® technical support representative for the latest information
 regarding the configuration and interconnect requirements to achieve the
-maximum benefits of an HA file system managed by Intel® EE for
+maximum benefits of an HA file system managed by Manager for
 Lustre\* software.
 
 What is Manager for Lustre\* Software?
@@ -51,7 +51,7 @@ plugins might include real-time storage monitoring that let you track
 Lustre file system usage, performance metrics, events, and errors at the
 Lustre level. Please contact Intel® for more information.
 
-Manager for Lustre\* software is a part of the Intel® EE for
+Manager for Lustre\* software is a part of the Manager for
 Lustre\* software product.
 
 What is Management Mode?

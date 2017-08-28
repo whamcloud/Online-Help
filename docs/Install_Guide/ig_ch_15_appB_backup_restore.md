@@ -594,7 +594,7 @@ service httpd stop
 
 
 **Caution**: Do not conduct any further configuration of Intel®
-Manager for Lustre\* software. Do not attempt to re-discover Intel® EE
+Manager for Lustre\* software. Do not attempt to re-discover Manager
 for Lustre\* assets or add any servers or storage to the instance until
 the recovery is complete and the Manager for Lustre\* software
 installation is verified as working to your satisfaction.

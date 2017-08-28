@@ -80,7 +80,7 @@ Conventions used in this document include:
 Related Documentation
 ---------------------
 
--   *Manager for Lustre\* Software, Version 3.1.1.0
+-   *Manager for Lustre\* Software, Version 4.0.0.0
     Release Notes*
 
 -   *Manager for Lustre\* Software Online Help* (accessible from
@@ -89,31 +89,30 @@ Related Documentation
 -   *Manager for Lustre\* Software User Guide* (a PDF verion on
     the online Help)
 
--   *Lustre\* Installation and Configuration using Intel® EE for
+-   *Lustre\* Installation and Configuration using Manager for
     Lustre\* Software and OpenZFS*
 
--   *Configuring LNet Routers for File Systems based on Intel® EE for
+-   *Configuring LNet Routers for File Systems based on Manager for
     Lustre\* Software*
 
 -   *Installing Hadoop, the Hadoop Adapter for Manager for Lustre\*,
     and the Job Scheduler Integration *
 
--   *Creating an HBase Cluster and Integrating Hive on an Intel® EE for
+-   *Creating an HBase Cluster and Integrating Hive on an Manager for
     Lustre® File System*
 
 -   *Hierarchical Storage Management Configuration Guide*
 
--   *Configuring SELinux for File Systems based on Intel\* EE for
+-   *Configuring SELinux for File Systems based on Manager for
     Lustre\* Software*
 
--   *Configuring Snapshots for File Systems based on Intel® EE for
+-   *Configuring Snapshots for File Systems based on Manager for
     Lustre\* Software*
 
--   *Upgrading a Lustre file system to Intel® Enterprise Edition for
+-   *Upgrading a Lustre file system to Manager for
     Lustre\* software (Lustre only)*
 
--   *Creating a Scalable File Service for Windows Networks using Intel®
-    EE for Lustre\* Software*
+-   *Creating a Scalable File Service for Windows Networks using Manager for Lustre\* Software*
 
 -   *Manager for Lustre\* Hierarchical Storage Management Framework
     White Paper*

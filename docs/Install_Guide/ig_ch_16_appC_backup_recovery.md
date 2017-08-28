@@ -19,7 +19,7 @@
 - [Lustre LNET Configuration](#lustre-lnet-configuration)
 - [Pacemaker and Corosync High Availability Framework](#pacemaker-and-corosync-high-availability-framework)
 - [System Services Startup Scripts (rc.sysinit)](#system-services-startup-scripts-rc.sysinit)
-- [Sample Automated Backup Script for Intel® EE Lustre Servers](#sample-automated-backup-script-for-intel-ee-lustre-servers)
+- [Sample Automated Backup Script for Manager Lustre Servers](#sample-automated-backup-script-for-intel-ee-lustre-servers)
 - [Restoring a Server from Backup](#restoring-a-server-from-backup)
 
 
@@ -70,11 +70,11 @@ Backup Overview
 
 Just as for any critical server infrastructure, it is essential to
 maintain a comprehensive and consistent backup of the system
-configuration for all of the servers managed by Intel® EE Lustre server
+configuration for all of the servers managed by Manager for Lustre server
 software, and to maintain a repeatable and reliable method for
 recovering file system services in the event of a failure.
 
-Backup and recovery of Intel® EE Lustre MDS and OSS server software
+Backup and recovery of Manager for Lustre MDS and OSS server software
 involves the following components:
 
 -   Operating system installation and configuration, to include:
@@ -138,7 +138,7 @@ bandwidth-constrained).
 ### Example Backup Checklist
 
 The following is an example checklist of high level tasks to perform in
-executing a backup. Perform these tasks after creating an Intel® EE for
+executing a backup. Perform these tasks after creating an Manager for
 Lustre\* file system using the Manager for Lustre\* dashboard.
 
 -   Save Kickstart Template from OS Installation (or create one)
@@ -398,7 +398,7 @@ printf("/sbin/chkconfig --levels %s %s on\\n",on,\$1)
 
 }' &gt; \$HOME/chkconfig-output-\$HOSTNAME.sh
 
-### Sample Automated Backup Script for Intel® EE Lustre Servers
+### Sample Automated Backup Script for Manager for Lustre Servers
 
 For a server managed by Manager for Lustre\* software, this script can
 be used as the basis for automating the backup of server configuration
@@ -478,7 +478,7 @@ tar zcf \$BCKROOT.tgz \`basename \$BCKROOT\`
 
 ### Restoring a Server from Backup
 
-The following process restores a server managed by Intel® EE for
+The following process restores a server managed by Manager for
 Lustre\* software to production state. This is done using backup
 resources created as described in the previous sections. This process is
 for a single server, but can be repeated for each storage server in a
@@ -518,7 +518,7 @@ cp \$BACKUP\_ROOT/etc/sysconfig/system-config-firewall /etc/sysconfig/.
 > Restart network interfaces, if required for the server to make the
 > connection to the IML server.
 
-1.  Re-install the Intel® EE Lustre server packages:
+1.  Re-install the Manager for Lustre server packages:
 
 yum -y install --enablerepo=lustre,iml-agent,e2fsprogs \\
 
@@ -574,7 +574,7 @@ done | xargs mkdir -p
 1.  Reboot.
 
 2.  When the system has completed booting, verify that the server is
-    running the Intel® EE Lustre\* software Linux kernel, and that LNET
+    running the Manager for Lustre\* software Linux kernel, and that LNET
     is properly configured. For example:
 
 \[root@ee-mds1 \~\]\# uname -r
@@ -646,7 +646,7 @@ subsequent failover trigger.
     for Pacemaker to disable the constraints around the fencing agents.
     This can make it easier to restore services to a running condition
     on one server while still working to rebuild the second. However,
-    Intel® does not support Intel® EE Lustre software installations that
+    Intel® does not support Manager for Lustre software installations that
     do not have fencing agents configured, so only use this process with
     caution, and only if required to support an emergency recovery. Once
     full service is restored, this configuration change must be

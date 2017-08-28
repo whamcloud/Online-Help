@@ -26,13 +26,13 @@ Manager for Lustre\* Software and OpenZFS*.
 In addition to the specification presented next, please contact your
 Intel® technical support representative for the latest information
 regarding the configuration and interconnect requirements to achieve the
-maximum benefits of an HA file system managed by Intel® EE for
+maximum benefits of an HA file system managed by Manager for
 Lustre\* software.
 
 Overall System Configuration
 ----------------------------
 
-The high-level configuration of an HA file system managed by Intel® EE
+The high-level configuration of an HA file system managed by Manager
 for Lustre\* software consists of the following. See Figure 1.
 
 -   A **dedicated manager server** hosts the Manager for Lustre\*

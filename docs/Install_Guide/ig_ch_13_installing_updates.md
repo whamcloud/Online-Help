@@ -1,7 +1,7 @@
 [**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
 # Installing Updates to Manager for Lustre\* software
 
-**Note**: Perform any OS update prior to updating the Intel® EE for
+**Note**: Perform any OS update prior to updating the Manager for
 Lustre\* software.
 
 **Note**: Updates are only supported for official releases. Updates
@@ -27,7 +27,7 @@ Manager for Lustre\* software.
     updates in the remaining steps.
 
 3.  If your currently installed software version is 2.2.0.2 or later,
-    update directly to version 3.1.1.0.
+    update directly to version 4.0.0.0.
 
 Performing a version downgrade or rollback is not supported.
 
@@ -42,7 +42,7 @@ server and then all file system managed servers, do the following:
     of the other file system(s). Be sure to stop all file systems that
     share a server with your candidate file system.
 
-3.  Perform the installation procedure herein: [Installing Intel® EE
+3.  Perform the installation procedure herein: [Installing Manager
     for Lustre\* software](#installing-intel-ee-for-lustre-software).
     The installation will detect that this is an update and install the
     appropriate files. Use that procedure to verify successful
