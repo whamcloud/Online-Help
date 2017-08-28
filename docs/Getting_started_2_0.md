@@ -15,7 +15,7 @@ Monitor existing Lustre* file systems that have not been configured from the man
 
 See the following information to get started:
 
-- For procedures for installing the Intel® Enterprise Edition for Lustre* software, including Manager for Lustre\* software, and for completing initial configuration steps, see the documentation provided by your storage solution provider. 
+- For procedures for installing the Manager for Lustre* software, including Manager for Lustre\* software, and for completing initial configuration steps, see the documentation provided by your storage solution provider. 
 - To set up superuser and user accounts on Manager for Lustre\* software see: <a href="#2.1">Creating user accounts</a>.
 - Also see: <a href="#2.2">Setting up email notifications of alerts</a>.
 - To create a new Lustre file system using Manager for Lustre\* software, see: [Creating a new Lustre* file system](Creating_new_lustre_fs_3_0.md/#3.0).

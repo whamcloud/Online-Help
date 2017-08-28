@@ -4,7 +4,7 @@
 ** In this Chapter:**
 
 - <a href="#1.1">Related Documentation</a>
-- <a href="#1.2">Overview of Intel® Enterprise Edition for Lustre* software</a>
+- <a href="#1.2">Overview of Manager for Lustre* software</a>
 - <a href="#1.3">Key Features</a>
 - <a href="#1.4">Management mode versus Monitor-only mode</a>
 - <a href="#1.5">Overview of the graphical user interface</a>
@@ -33,14 +33,14 @@ An existing Lustre file system that has been set up outside of Manager for Lustr
 <a id="1.1"></a>
 ## Related Documentation
 
-The following documents are pertinent to Intel® Enterprise Edition for Lustre* software. This list may not be current. Contact your Intel® support representative for the most current information.
+The following documents are pertinent to Manager for Lustre* software. This list may not be current. Contact your Intel® support representative for the most current information.
 
-- Intel® Enterprise Edition for Lustre* Software Partner Installation Guide
-- Creating a Scalable File Service for Windows Networks using Intel® EE for Lustre Software
+- Manager for Lustre* Software Partner Installation Guide
+- Creating a Scalable File Service for Windows Networks using Manager for Lustre Software
 - Hierarchical Storage Management Configuration Guide
 - Installing Hadoop and the Hadoop Adapter for Manager for Lustre\* and the Job Scheduler Integration
-- Creating an HBase Cluster and Integrating Hive on an Intel® EE for Lustre® File System
-- Upgrading a Lustre file system to Intel® Enterprise Edition for Lustre* software (Lustre only)
+- Creating an HBase Cluster and Integrating Hive on an Manager for Lustre® File System
+- Upgrading a Lustre file system to Manager for Lustre* software (Lustre only)
 - Creating a Monitored Lustre* Storage Solution over a ZFS File System
 - Creating a High-Availability Lustre* storage Solution over a ZFS File System
 - Manager for Lustre\* Hierarchical Storage Management Framework White Paper
@@ -54,9 +54,9 @@ For more information beyond the documents listed above, see:
 <a href="#1.0">Top of Page</a>
 
 <a id="1.2"></a>
-## Overview of Intel® Enterprise Edition for Lustre* software
+## Overview of Manager for Lustre* software
 
-Intel® Enterprise Edition for Lustre* software is a global single-namespace file system architecture that allows parallel access by many clients to all the data in the file system across many servers and storage devices. Designed to take advantage of the reliability features of enterprise-class storage hardware, Manager for Lustre\* software supports availability features such as redundant servers with storage failover. Metadata and data are stored on separate servers to allow each system to be optimized for the different workloads. The components of an Manager for Lustre\* software, file storage system include the following:
+Manager for Lustre* software is a global single-namespace file system architecture that allows parallel access by many clients to all the data in the file system across many servers and storage devices. Designed to take advantage of the reliability features of enterprise-class storage hardware, Manager for Lustre\* software supports availability features such as redundant servers with storage failover. Metadata and data are stored on separate servers to allow each system to be optimized for the different workloads. The components of an Manager for Lustre\* software, file storage system include the following:
 
 - Intel® Manager for Lustre server: The server that hosts the Manager for Lustre\* software and GUI, and is the server from which Lustre file systems are created, monitored, and managed. Connected to storage servers via the administrative LAN. This is distinct from the management server, which provides access to the management target.
 - Management server(s) (MGS): Provide access to the management target. Paired, redundant management servers provide server failover (high availability) in the event of a server failure.
@@ -79,7 +79,7 @@ The servers on which the MGT, MDT, or OSTs are located can all be configured as 
 <a id="1.3"></a>
 ## Key Features
 
-Following are key features provided by Intel® Enterprise Edition for Lustre* software and Intel® Manger for Lustre* software.
+Following are key features provided by Manager for Lustre* software and Intel® Manger for Lustre* software.
 
 **GUI-based creation and management of Lustre\* file systems**
 
@@ -155,7 +155,7 @@ HBase is a non-relational, distributed database modeled after Google's BigTable 
 
 **Lustre 2.7.x**
 
-This release of Manager for Lustre\* software is based on the Intel® Foundation Edition for Lustre* 2.7 release tree, representing a major update to the underlying Lustre* version for the Intel® Enterprise Edition for Lustre* software (as of version 3.0.0.0).
+This release of Manager for Lustre\* software is based on the Intel® Foundation Edition for Lustre* 2.7 release tree, representing a major update to the underlying Lustre* version for the Manager for Lustre* software (as of version 4.0.0.0).
 
 **Online Lustre File System Consistency Checks (LFSCK)**
 
@@ -175,7 +175,7 @@ Also referred to as “multi-slot last_rcvd”, this update to the metadata comm
 
 **Differentiated Storage Services**
 
-Differentiated Storage Services (DSS) allows I/O data to be classified, sometimes referred to as “hinting". These hints pass seamlessly through Intel® EE Edition for Lustre* software, at which point data can be tiered and intelligently cached by the storage system. This enables a more efficient use of cache space, and decreases the likelihood of critical data being evicted when the cache fills. Intel® is working directly with storage and cache vendors to enable DSS hinting in Lustre appliances, and to provide optimized performance to Intel® EE Edition for Lustre* software deployments with a mix of SSD and traditional storage.
+Differentiated Storage Services (DSS) allows I/O data to be classified, sometimes referred to as “hinting". These hints pass seamlessly through Manager for Lustre* software, at which point data can be tiered and intelligently cached by the storage system. This enables a more efficient use of cache space, and decreases the likelihood of critical data being evicted when the cache fills. Intel® is working directly with storage and cache vendors to enable DSS hinting in Lustre appliances, and to provide optimized performance to Manager for Lustre* software deployments with a mix of SSD and traditional storage.
 
 **Support for Intel® Omni-Path Architecture**
 
@@ -204,9 +204,9 @@ The Manager for Lustre\* software lets you create and manage new HA Lustre file 
 
 To provide robust HA support, Manager for Lustre\* software automatically configures Corosync and Pacemaker, and takes advantage of IPMI or PDUs to support server failover.
 
-**Note:** Managed HA support requires that your entire storage system configuration and all interfaces be compliant with a pre-defined configuration. See the High Availability Configuration Specification in the Intel® Enterprise Edition of Lustre, Partner Installation Guide for detailed information.
+**Note:** Managed HA support requires that your entire storage system configuration and all interfaces be compliant with a pre-defined configuration. See the High Availability Configuration Specification in the Manager of Lustre, Partner Installation Guide for detailed information.
 
-**Note:** Management mode is supported in Intel® Enterprise Edition for Lustre* software, versions 1.0 and later. No claims of support are made for any versions of Lustre outside of that shipped with Manager for Lustre\* software.
+**Note:** Management mode is supported in Manager for Lustre* software, versions 1.0 and later. No claims of support are made for any versions of Lustre outside of that shipped with Manager for Lustre\* software.
 
 **What is Monitor-only Mode?**
 

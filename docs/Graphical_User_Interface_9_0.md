@@ -670,7 +670,7 @@ If a copytool has been added but never configured or started, then click **Actio
 - **Configure** - Configure this copytool on the worker. Do not start the copytool. Status will show as Configured.
 - **Force Remove** - Remove this copytool from the manager database without deconfiguring this copytool on the worker node. It will no longer appear on this HSM window. This is NOT the best way to remove a copytool, because a later attempt to add this copytool back will fail unless it is manually reconfigured. Only consider using Force Remove if Remove has failed. 
 
-To learn about HSM capabilities supported in Intel® Enterprise Edition for Lustre* software, see [Configuring and using Hierarchical Storage Management](Config_and_using_HSM_6_0.md/#6.0).
+To learn about HSM capabilities supported in Manager for Lustre* software, see [Configuring and using Hierarchical Storage Management](Config_and_using_HSM_6_0.md/#6.0).
 
 
 ### <a id="9.3.5"></a>Storage window

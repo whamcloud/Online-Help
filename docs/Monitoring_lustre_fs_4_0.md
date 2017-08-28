@@ -240,7 +240,7 @@ The logs window also features querying with auto-complete and linkable host name
 
 ## View HSM Copytool activities
 
-To view current copytool activities, click **Configuration** and select **HSM**. To learn about HSM capabilities supported in Intel® Enterprise Edition for Lustre* software, see [Configuring and using Hierarchical Storage Management](Config_and_using_HSM_6_0.md/#6.0).
+To view current copytool activities, click **Configuration** and select **HSM**. To learn about HSM capabilities supported in Manager for Lustre* software, see [Configuring and using Hierarchical Storage Management](Config_and_using_HSM_6_0.md/#6.0).
 
 After HSM has setup for a file system, this HSM Copytool chart displays a moving time-line of waiting copytool requests, current copytool operations, and the number of idle copytool workers.
 

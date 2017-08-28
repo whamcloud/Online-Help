@@ -288,7 +288,7 @@ To view the file system configuration:
 
 ## Mount the Lustre file system
 
-A compute client must mount the Lustre* file system to be able to access data in the file system. Before attempting to mount the file system on your Lustre clients, make sure the Intel® Enterprise Edition for Lustre* client software has been installed on each client. For instructions, see the documentation provided by your storage solution provider. 
+A compute client must mount the Lustre* file system to be able to access data in the file system. Before attempting to mount the file system on your Lustre clients, make sure the Manager for Lustre* client software has been installed on each client. For instructions, see the documentation provided by your storage solution provider. 
 
 A client can mount the entire file system, or mount a file system sub-directory.
 
