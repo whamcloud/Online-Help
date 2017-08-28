@@ -67,7 +67,7 @@ manually fail the target over to the peer server. </td>
     <tbody>
         <tr>
             <td>Immediate file system consequences:</td>
-            <td>No direct file system impact; the file system remains operational. However, Intel® Manger for Lustre* software can no longer manage or monitor the server.</td>
+            <td>No direct file system impact; the file system remains operational. However, Manger for Lustre* software can no longer manage or monitor the server.</td>
         </tr>
         <tr>
             <td>Manager software / Peer server response:</td>
@@ -261,7 +261,7 @@ Listed installed packages
 Listed cibadmin --query
 Listed: pcs config show
 Listed: crm_mon -1r
-Finger printed Intel Manager for Lustre installation
+Finger printed Manager for Lustre installation
 Listed running processes
 listed PCI devices
 listed file system disk space.
@@ -276,7 +276,7 @@ Compressing diagnostics into LZMA (archive)
 Diagnostic collection is completed.
 Size: 16K  /var/log/diagnostics_20150623T160338_lotus-4vm15.iml.intel.com.tar.lzma
 
-The diagnostic report tar.lzma file can be sent to Intel(R) Manager for Lustre Support for analysis.
+The diagnostic report tar.lzma file can be sent to Manager for Lustre Support for analysis.
 ```
 
 You can also decompress the file and examine the results. To unpack and extract the files, use this command:

@@ -58,7 +58,7 @@ For more information beyond the documents listed above, see:
 
 Manager for Lustre* software is a global single-namespace file system architecture that allows parallel access by many clients to all the data in the file system across many servers and storage devices. Designed to take advantage of the reliability features of enterprise-class storage hardware, Manager for Lustre\* software supports availability features such as redundant servers with storage failover. Metadata and data are stored on separate servers to allow each system to be optimized for the different workloads. The components of an Manager for Lustre\* software, file storage system include the following:
 
-- Intel® Manager for Lustre server: The server that hosts the Manager for Lustre\* software and GUI, and is the server from which Lustre file systems are created, monitored, and managed. Connected to storage servers via the administrative LAN. This is distinct from the management server, which provides access to the management target.
+- Manager for Lustre server: The server that hosts the Manager for Lustre\* software and GUI, and is the server from which Lustre file systems are created, monitored, and managed. Connected to storage servers via the administrative LAN. This is distinct from the management server, which provides access to the management target.
 - Management server(s) (MGS): Provide access to the management target. Paired, redundant management servers provide server failover (high availability) in the event of a server failure.
 - Management target (MGT): The MGT stores configuration information for all the Lustre file systems in a cluster and provides this information to other Lustre components. Each Lustre object storage target (OST) contacts the MGT to provide information, and Lustre clients contact the MGT to retrieve information. The MGT can be no larger than 10 gigabytes. 
 - Storage servers: Storage servers provide access to the management target, metadata target and the storage targets. Paired, redundant storage servers provide server failover (high availability) in the event of a server failure. 
@@ -79,7 +79,7 @@ The servers on which the MGT, MDT, or OSTs are located can all be configured as 
 <a id="1.3"></a>
 ## Key Features
 
-Following are key features provided by Manager for Lustre* software and Intel® Manger for Lustre* software.
+Following are key features provided by Manager for Lustre* software and Manger for Lustre* software.
 
 **GUI-based creation and management of Lustre\* file systems**
 
@@ -137,7 +137,7 @@ Manager for Lustre\* software supports ZFS as a back-end file system replacement
 
 **Manager for Lustre\* Software ZFS Snapshots**
 
-The OpenZFS file system provides integrated support for snapshots, a data protection feature that enables an operator to checkpoint a file system volume.  In Manager for Lustre\* software, as of version 3.0.0.0, Intel® has developed a mechanism in Lustre* that leverages ZFS to take a coordinated snapshot of an entire Lustre* file system, if all of the storage targets in the file system are formatted using ZFS.
+The OpenZFS file system provides integrated support for snapshots, a data protection feature that enables an operator to checkpoint a file system volume.  In Manager for Lustre\* software, as of version 4.0.0.0, Intel® has developed a mechanism in Lustre* that leverages ZFS to take a coordinated snapshot of an entire Lustre* file system, if all of the storage targets in the file system are formatted using ZFS.
 
 **HPC Job Scheduler integration with MapReduce**
 
@@ -347,9 +347,9 @@ This red bar briefly appears if there are any active error or warning alerts on 
 <a id="1.6"></a>
 ## Access the Dashboard from a smart phone or tablet
 
-You can access the Intel® Manager for Lustre GUI from your smart phone or tablet. To access the GUI from your smart phone or tablet, your device needs to be running the latest version of Chrome or Firefox browser:
+You can access the Manager for Lustre GUI from your smart phone or tablet. To access the GUI from your smart phone or tablet, your device needs to be running the latest version of Chrome or Firefox browser:
 
-1. Point your device's browser to the manager server running the Intel® Manager for Lustre software.
+1. Point your device's browser to the manager server running the Manager for Lustre software.
 The window is responsive to fit within the display area.
 2. To view the menu bar, click ![md_Graphics/mobile_button.png][f1.12]. The menu bar is now displayed vertically along the left side of the window.
 2. 

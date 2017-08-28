@@ -82,7 +82,7 @@ See <a href="#6.3">Start the Copytool</a>.
 
 ## <a id="6.3"></a>Start the Copytool
 
-When a copytool is added to an Intel®EE for Lustre file system configuration, it is not automatically activated. Instead, the copytool will initially be set to Unconfigured. The configuration exists inside the Manager for Lustre\* database but it has not been applied directly to the target HSM Agent.
+When a copytool is added to a Manager for Lustre file system configuration, it is not automatically activated. Instead, the copytool will initially be set to Unconfigured. The configuration exists inside the Manager for Lustre\* database but it has not been applied directly to the target HSM Agent.
 
 To configure and launch the copytool on an HSM Agent:
 
@@ -98,7 +98,7 @@ As soon as copytool services are requested, the copytool worker will respond. Se
 
 After configuring the Copytool Agent node and adding Copytool to that agent, you can use HSM to manage file archiving, free-up file system storage, and improve overall file system performance. 
 
-1. To use HSM, log into a regular Lustre client node as the system superuser. The node is a compute client node not managed by Intel(R) Manager for Lustre software. 
+1. To use HSM, log into a regular Lustre client node as the system superuser. The node is a compute client node not managed by Manager for Lustre software. 
 1. Issue lfs commands to initiate HSM actions (archive, restore, release, remove). 
     
     For example: 
