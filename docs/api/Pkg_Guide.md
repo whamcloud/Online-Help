@@ -1,13 +1,13 @@
-# Packaging Guide for Intel® Manager for Lustre* software
+# Packaging Guide for Manager for Lustre\* software
 
 Introduction
 ------------
 
-Intel® Manager for Lustre* software is delivered as a single unified installer file, including
+Manager for Lustre\* software is delivered as a single unified installer file, including
 both the central management component and the packages deployed to storage servers.  Because
 storage servers sometimes requires additional packages (such as drivers) or customized packages 
 (such as custom Lustre builds), a mechanism is included whereby these packages can be included
-in an Intel® Manager for Lustre software installation.
+in a Manager for Lustre software installation.
 
 Bundles
 -------
@@ -54,7 +54,7 @@ the likelihood of name collisions.
 The ``version`` attribute is provided to allow identification of a bundle by version.
 
 The 'description' attribute is a human-readable description of the bundle.  This may be visible
-to system administrators of the Intel® Manager for Lustre installation, so it should be something
+to system administrators of the Manager for Lustre installation, so it should be something
 meaningful to that audience.
 
 Creating a Bundle
@@ -69,7 +69,7 @@ Creating a Bundle
 
 **Warning:**
 
-Do not create bundles with the same name as the built-in bundles, as these will be overwritten by updates to Intel® Manager for Lustre* software
+Do not create bundles with the same name as the built-in bundles, as these will be overwritten by updates to Manager for Lustre\* software
 
 Installing a Bundle
 -------------------
@@ -188,3 +188,12 @@ might be called acme-core and acme-scsi.
      "managed": true
     }
 ```
+## <a name="1.9"></a>Legal Information
+
+
+Copyright (c) 2017 Intel Corporation. All rights reserved.
+ Use of this source code is governed by a MIT-style
+ license that can be found in the LICENSE file.
+
+\* Other names and brands may be claimed as the property of others.
+This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit. (http://www.openssl.org/)
