@@ -47,7 +47,7 @@ contained in the /etc/modprobe.d directory. Please see the configuration
 guide *Configuring LNet Routers for File Systems based on Manager for
 Lustre\* Software* and also see the *Lustre Operations Manual, Chapter 9
 - Configuring Lustre Networking*:
-[https://build.hpdd.intel.com/job/lustre-manual/lastSuccessfulBuild/artifact/lustre\_manual.xhtml\#configuringlnet](https://build.hpdd.intel.com/job/lustre-manual/lastSuccessfulBuild/artifact/lustre_manual.xhtml%23configuringlnet)
+[https://build.hpdd.intel.com/job/lustre-manual/lastSuccessfulBuild/artifact/lustre_manual.xhtml#dbdoclet.50438216_15201](https://build.hpdd.intel.com/job/lustre-manual/lastSuccessfulBuild/artifact/lustre_manual.xhtml#dbdoclet.50438216_15201)
 
 Server Configuration
 --------------------
@@ -148,7 +148,7 @@ Client Requirements
 -------------------
 
 A client accessing your Lustre file system (created with Manager
-for Lustre\* software) must be running Manager for Lustre\* 4.0.0.0
+for Lustre\* software) must be running Manager for Lustre\* 4.0.0
 client software. See [Configuring Clients](ig_ch_07_configure_clients.md) for
 instructions on installing software and configuring clients.
 

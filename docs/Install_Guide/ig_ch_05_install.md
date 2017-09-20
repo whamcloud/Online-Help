@@ -170,7 +170,7 @@ In this example, the first letter of False must be capitalized.
         a.  Set EMAIL\_SENDER to an address suitable for your site.
 
         b.  Set up a local mail daemon using standard procedures for Red Hat Enterprise Linux or CentOS such as those described in the Red Hat documentation at:
-        https://access.redhat.com/site/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/>
+        [Mail Servers](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/ch-Mail_Servers.html)
 
         c.  Set EMAIL\_HOST to 'localhost'
 

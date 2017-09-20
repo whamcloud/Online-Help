@@ -1,11 +1,11 @@
-# Manager for Lustre\* 4.0 Online Help
+# Manager for Lustre\* 4.0.0 Online Help
 
 ### Table of Contents
 
 - [Intoduction](Introduction_1_0.md)
 - [Getting Started](Getting_started_2_0.md)
 - [Creating a new Lustre* file system](Creating_new_lustre_fs_3_0.md)
-- [Monitoring Lustre* file systems](Monitoring_lustre_fs_4_0.md)
+- [Monitoring Lustre* file systems](Monitoring_lustre_fs_4_0_0.md)
 - [Managing and Maintaining HA Lustre file systems](Manage_maintain_HA_lustre_fs_5_0.md)
 - [Configuring and using Hierarchical Storage Management](Config_and_using_HSM_6_0.md)
 - [Detecting and monitoring existing Lustre file systems](Detect_and_monitor_existing_LFS_7_0.md)

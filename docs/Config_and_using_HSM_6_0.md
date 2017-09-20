@@ -137,7 +137,7 @@ Cancels an lfs_hsm command that is underway.
 
 **Displaying information about a current lfs_hsm request**
 
-To view the progress of HSM copytool activities, click **Configuration** and click **HSM** to open the HSM window and observe copytool progress. See [Monitor HSM Copytool activities](Monitoring_lustre_fs_4_0.md/#4.8) for more information.
+To view the progress of HSM copytool activities, click **Configuration** and click **HSM** to open the HSM window and observe copytool progress. See [Monitor HSM Copytool activities](Monitoring_lustre_fs_4_0_0.md/#4.8) for more information.
 
 The command```
 lctl get_param mdt.*.hsm

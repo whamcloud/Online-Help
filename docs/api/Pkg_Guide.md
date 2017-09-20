@@ -16,11 +16,11 @@ A bundle is comprised of a collection of RPM packages and metadata files.  The m
 in a bundle is comprised of a standard [yum] 
 (https://access.redhat.com/site/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/ch-yum.html) ``repodata`` directory containing information about
 all the included packages, plus an additional [JSON]
-(http://http//en.wikipedia.org/wiki/JSON) file named ``meta`` containing information about the
+(https://en.wikipedia.org/wiki/JSON) file named ``meta`` containing information about the
 bundle as a whole.
 
 - _yum: https://access.redhat.com/site/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/ch-yum.html
-- _JSON: http://http://en.wikipedia.org/wiki/JSON
+- _JSON: https://en.wikipedia.org/wiki/JSON
 
 
 
@@ -47,7 +47,7 @@ The format of the ``meta`` file is as follows:
 ```
 
 
-The ``name`` attribute serves as a unique identifier for a bundle within an Intel® Manager for Lustre
+The ``name`` attribute serves as a unique identifier for a bundle within an Manager for Lustre
 installation.  It is wise to include the name of your organization in this string to reduce
 the likelihood of name collisions.
 

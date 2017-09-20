@@ -135,7 +135,7 @@ Because of the way that activity information is averaged, the heat map may show 
 **Features**
 
 - Mouse over any cell on the heat map to learn which OST this is, its file system, its read or write activity, and the actual starting date and time of that measurement period. 
-- Click on a specific heat map cell to open the Job Stats window (job statistics) for that OST and read/write measurement. See [View job statistics](Monitoring_lustre_fs_4_0.md/#4.0). 
+- Click on a specific heat map cell to open the Job Stats window (job statistics) for that OST and read/write measurement. See [View job statistics](Monitoring_lustre_fs_4_0_0.md/#4.0.0). 
 - To better view larger numbers of OSTs, for example, more than forty OSTs, click Full Screen to expand the map. 
 
 **View this chart for a specific file system**
@@ -645,7 +645,7 @@ Under Actions, you can:
 - **Remove** the file system: This file system is removed and will not be available to clients. However this file system's contents will remain intact until its volumes are reused in another file system.
 - **Stop** the file system: This stops the metadata and object storage targets, thus making the file system unavailable to clients. If the file system has been stopped, to restart the file system, click **Start**.
 
-To view the full display of file system parameters, click on the file system name in the left column. See [View All File System Parameters](Monitoring_lustre_fs_4_0.md/#4.4).
+To view the full display of file system parameters, click on the file system name in the left column. See [View All File System Parameters](Monitoring_lustre_fs_4_0_0.md/#4.4).
 
 
 ### <a id="9.3.4"></a>HSM window
@@ -741,7 +741,7 @@ The Job Stats window is accessible at the top menu bar. Click **Job Stats**.
 
 Clicking **Job Stats** opens the Job Stats window and reveals the top five jobs currently in process. The listed jobs can be sorted by column and average duration can be selected. Column sorts and duration selections are persistent if you leave and later return to this window.
 
-**Note:** Job stats need to be enabled before then can be viewed. See [View Job stats](Monitoring_lustre_fs_4_0.md/#4.3).
+**Note:** Job stats need to be enabled before then can be viewed. See [View Job stats](Monitoring_lustre_fs_4_0_0.md/#4.3).
 ![md_Graphics/job_stats.png][f9.4]
 
 On the <a href="#9.2.1">Read/Write Heat Map</a> (on the Dashboard), you can also click a heat map cell and go to the Job Stats screen for that OST. Doing so will present a static view of job stats for the selected OST. Because it is static, *Duration* is not selectable.

@@ -3,9 +3,12 @@
   "version": "2.0.3",
   "description": "The IML help docs",
   "scripts": {
-    "build": "rm -rf dist && bundle exec jekyll build --destination dist --baseurl '/help'",
+    "build":
+      "rm -rf dist && bundle exec jekyll build --destination dist --baseurl '/help'",
     "start": "bundle exec jekyll serve",
-    "postversion": "npm run build"
+    "postversion": "npm run build",
+    "link-check":
+      "find . -name '*.md' -not -path './node_modules/*' | xargs -n 1 -I % sh -c 'echo %; markdown-link-check %;'"
   },
   "publishConfig": {
     "access": "public"
@@ -14,5 +17,8 @@
     "type": "git",
     "url": "https://github.com/intel-hpdd/Online-Help.git"
   },
-  "author": "IML Team"
+  "author": "IML Team",
+  "devDependencies": {
+    "markdown-link-check": "^3.1.2"
+  }
 }

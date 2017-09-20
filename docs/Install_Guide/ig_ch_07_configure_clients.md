@@ -10,7 +10,7 @@
 
 
 A client (compute node) accessing a storage appliance must be running
-Manager for Lustre\* 4.0.0.0 client software. The Lustre file system
+Manager for Lustre\* 4.0.0 client software. The Lustre file system
 must first be created or discovered at the Manager for Lustre\*
 dashboard (see the Manager for Lustre\* Online Help to do this).
 The Lustre client software must be installed on the client, and then the

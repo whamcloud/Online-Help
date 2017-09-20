@@ -87,7 +87,7 @@ The Manager for Lustre\* software provides a powerful, yet easy-to-use GUI that 
 
 **Graphical charts display real-time performance metrics**
 
-Fully-configurable color charts display a variety of real-time performance metrics for single or multiple file systems, down to individual servers and targets, and reveal metrics such as read/write heat maps, OST balance, file system capacity, metadata operations, read/write operations, job statistics, and various resource usage parameters, among others. See [View charts on the Dashboard](Monitoring_lustre_fs_4_0.md/#4.0).
+Fully-configurable color charts display a variety of real-time performance metrics for single or multiple file systems, down to individual servers and targets, and reveal metrics such as read/write heat maps, OST balance, file system capacity, metadata operations, read/write operations, job statistics, and various resource usage parameters, among others. See [View charts on the Dashboard](Monitoring_lustre_fs_4_0_0.md/#4.0.0).
 
 **Auto-configured high-availability clustering for server pairs**
 
@@ -137,7 +137,7 @@ Manager for Lustre\* software supports ZFS as a back-end file system replacement
 
 **Manager for Lustre\* Software ZFS Snapshots**
 
-The OpenZFS file system provides integrated support for snapshots, a data protection feature that enables an operator to checkpoint a file system volume.  In Manager for Lustre\* software, as of version 4.0.0.0, Intel® has developed a mechanism in Lustre* that leverages ZFS to take a coordinated snapshot of an entire Lustre* file system, if all of the storage targets in the file system are formatted using ZFS.
+The OpenZFS file system provides integrated support for snapshots, a data protection feature that enables an operator to checkpoint a file system volume.  In Manager for Lustre\* software, as of version 4.0.0, Intel® has developed a mechanism in Lustre* that leverages ZFS to take a coordinated snapshot of an entire Lustre* file system, if all of the storage targets in the file system are formatted using ZFS.
 
 **HPC Job Scheduler integration with MapReduce**
 
@@ -155,7 +155,7 @@ HBase is a non-relational, distributed database modeled after Google's BigTable 
 
 **Lustre 2.7.x**
 
-This release of Manager for Lustre\* software is based on the Intel® Foundation Edition for Lustre* 2.7 release tree, representing a major update to the underlying Lustre* version for the Manager for Lustre* software (as of version 4.0.0.0).
+This release of Manager for Lustre\* software is based on the Intel® Foundation Edition for Lustre* 2.7 release tree, representing a major update to the underlying Lustre* version for the Manager for Lustre* software (as of version 4.0.0).
 
 **Online Lustre File System Consistency Checks (LFSCK)**
 
@@ -266,7 +266,7 @@ The Dashboard window presents several charts that display rich visual informatio
   
 
 
-The following twelve charts are presented. For more information, see [View charts on the Dashboard](Monitoring_lustre_fs_4_0.md/#4.1).
+The following twelve charts are presented. For more information, see [View charts on the Dashboard](Monitoring_lustre_fs_4_0_0.md/#4.1).
 
 - [Read/Write Heat Map chart](Graphical_User_Interface_9_0.md/#9.2.1)
 - [OST Balance chart](Graphical_User_Interface_9_0.md/#9.2.2)
@@ -299,7 +299,7 @@ The Configuration drop-down menu provides access to the following several window
 
 Clicking the Jobstats button on the top menu bar lists the top ten jobs currently in process. The listed jobs can be sorted by column and average duration can be selected. Column sorts and duration will be persistent when navigating away and back to the page.
 
-**Note:** Job stats need to be enabled before then can be viewed. See [View Job stats](Monitoring_lustre_fs_4_0.md/#4.3).
+**Note:** Job stats need to be enabled before then can be viewed. See [View Job stats](Monitoring_lustre_fs_4_0_0.md/#4.3).
 
 <a id="f1.5"></a>
 ![md_Graphics/job_stats.png][f1.5]

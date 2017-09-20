@@ -79,7 +79,7 @@ Conventions used in this document include:
 Related Documentation
 ---------------------
 
--   *Manager for Lustre\* Software, Version 4.0.0.0
+-   *Manager for Lustre\* Software, Version 4.0.0
     Release Notes*
 
 -   *Manager for Lustre\* Software Online Help* (accessible from
