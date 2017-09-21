@@ -25,7 +25,7 @@ In addition to the links below, see [Advanced topics](Advanced_Topics_10_0.md/#1
 
 ## <a id="5.1"></a>Increase a file system's storage capacity
 
-Perform the following procedures to increase a file system's storage capacity. This section applies to managed, high-availability file systems. For instructions on increasing the capacity a monitored file system, see [Detect and monitor existing Lustre file systems](Detect_and_monitor_existing_LFS_7_0.md/#7.0).
+Perform the following procedures to increase a file system's storage capacity. This section applies to managed, high-availability file systems. For instructions on increasing the capacity of a monitored file system, see [Detect and monitor existing Lustre file systems](Detect_and_monitor_existing_LFS_7_0.md/#7.0).
 
 **Add a storage server**
 
@@ -49,7 +49,7 @@ See <a href="#5.2">Add an Object Storage Target</a> for instructions to add targ
 To add another object storage target:
 
 1. At the menu bar, click the **Configuration** drop-down menu and click **File Systems**.
-1. In the file system table displayed, *click on the file system name* to display the file system window.
+1. In the file system table displayed, click on the file system name to display the file system window.
 1. Under *Object Storage Targets*, click **+ Create new OST**.
 1. Each available target device is displayed, with its Capacity, Type, HA-status, and server pair, if configured. Select the OST or OSTs to be added and click **OK**. The new OSTs will be displayed in the table of OSTs for the file system. 
 **Note:** Manager for Lustre\* software will automatically assign OST indices in a distributed fashion across servers to permit striping. 
@@ -58,7 +58,7 @@ To add another object storage target:
 
 ## <a id="5.3"></a>Start, stop, or remove a file system
 
-**To start a file system: **
+**To start a file system:**
 
 1. At the menu bar, click the **Configuration** drop-down menu and click **File Systems**. 
 1. In the table entry for the file system, on the far right, click the **Actions** drop-down menu and click **Start**. The metadata and object store targets are started, enabling the file system to be mounted by clients.
@@ -77,12 +77,12 @@ To add another object storage target:
 
 ## <a id="5.4"></a>Start or stop an MGT, MDT, or OST
 
-To start or stop a target: 
+**To start or stop a target:**
 
-1. At the menu bar, click the Configuration drop-down menu and click File Systems.
+1. At the menu bar, click the **Configuration** drop-down menu and click **File Systems**.
 1. In the File System column, click the name of the file system in which the target is located. The file system window is displayed.
 1. Under Management Target, Metadata Target or Object Storage Targets, locate the target name in the first column. 
-1. At the far right, click the Actions drop-down menu and click Start or Stop for that target. Note that Stop is only available if the server is running; Start is only available if the server is stopped. Click Confirm to complete this action. 
+1. At the far right, click the Actions drop-down menu and click **Start** or **Stop** for that target. Note that *Stop* is only available if the server is running; *Start* is only available if the server is stopped. Click **Confirm** to complete this action. 
 
 **Notes:**
 
@@ -94,7 +94,7 @@ To start or stop a target:
 
 ## <a id="5.5"></a>Remove an OST from a file system
 
-To remove an OST from a file system: 
+**To remove an OST from a file system:** 
 
 **Caution:** 
 Upon removing an OST from a file system, the OST is no longer visible in the manager GUI. **When an OST is removed, files stored on the OST are no longer accessible**. To preserve data, manually create a copy of the data elsewhere before removing the OST.
@@ -172,9 +172,9 @@ To prompt the manager software to detect new NIDs and update file system targets
 
 You can also directly edit the NID configuration for a server, but to do this, the server cannot belong to an existing Lustre file system. See [NID Configuration](Graphical_User_Interface_9_0.md/#9.3.1.1).
 
-**WARNING:** For Lustre* file systems created and managed by Manager for Lustre\* software, the only supported command line interface is the CLI provided by Manager for Lustre\* software. Modifying such a Lustre file system manually from a UNIX shell will interfere with the ability of Manager for Lustre\* software to manage and monitor the file system. 
+**WARNING:** For Lustre* file systems created and managed by Manager for Lustre\* software, the only supported command line interface is the CLI provided by Manager for Lustre\* software. Modifying such a Lustre* file system manually from a UNIX shell will interfere with the ability of Manager for Lustre\* software to manage and monitor the file system. 
 
-Lustre commands can, however, be used to manage metadata or object storage servers in an existing Lustre storage system that has been set up outside the manager and is being monitored, *but not managed*, by Manager for Lustre\* software. 
+Lustre* commands can, however, be used to manage metadata or object storage servers in an existing Lustre* storage system that has been set up outside the manager and is being monitored, *but not managed*, by Manager for Lustre\* software. 
 
 <a href="#5.0">Top of page</a>
 
@@ -192,7 +192,7 @@ The **Actions** menu on the Server Configuration window let you perform the foll
 To perform any of these commands:
 
 1. On the Dashboard, click **Configuration > Servers**.
-1. For the desired server, at the **Actions** drop-down menu at the right, click the desired command.
+1. For the desired server, in the **Actions** drop-down menu at the right, click the desired command.
 1. After clicking on a command, a *Commands* window pops up to reveal the jobs that are run to perform this command, and the command Status shows pending. When each job completes, the command Status then shows *Succeeded*. 
 
 <a href="#5.0">Top of page</a>
@@ -224,7 +224,7 @@ To remove (decommission) a server for an OST:
 1. Click the **Actions** drop-down menu and click **Stop LNet** to shut down the LNet networking layer and stop any targets running on this server. 
 1. Click the **Actions** drop-down menu and click **Unload LNet** to stop LNet, if it is running, and unload the LNet kernel module to ensure that it will be reloaded before any targets are started again. (Clicking **Start LNet** will reload the LNet kernel module and start the LNet networking layer again.)
 
-**Note:** To remove the record for the server from the manager without attempting to contact the server, click the **Actions** drop-down menu and click **Force Remove**. Any targets that depend on this server will also be removed without any attempt to unconfigure them. **This action should only be used if the server is permanently unavailable**. 
+**Note:** To remove the record associated with the server from the manager without attempting to contact the server, click the **Actions** drop-down menu and click **Force Remove**. Any targets that depend on this server will also be removed without any attempt to unconfigure them. **This action should only be used if the server is permanently unavailable**. 
 
 **Warning:** The **Force Remove** command will remove the server from the Manager for Lustre\* configuration, but not remove Manager for Lustre\* software from the server. All targets that depend on the server will also be removed without any attempt to unconfigure them. To completely remove the Manager for Lustre\* software from the server (allowing it to be added to another Lustre file system), first contact technical support.
 

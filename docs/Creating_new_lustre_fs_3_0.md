@@ -16,7 +16,7 @@ This chapter describes how to create a new Lustre* file system, to be managed fr
 - <a href="#3.5">Assign primary and failover servers to storage volumes</a>
 - <a href="#3.6">Add power distribution units</a>
 - <a href="#3.7">Assign PDU outlets to servers</a>
-- <a href="#3.8">Assign PDU outlets to servers</a>
+- <a href="#3.8">Assign BMC outlets to servers</a>
 - <a href="#3.9">Create the new Lustre file system</a>
 - <a href="#3.10">View the new file system</a>
 - <a href="#3.11">Mount the Lustre file system</a>
@@ -29,7 +29,7 @@ This chapter describes how to create a new Lustre* file system, to be managed fr
 
 ## IMPORTANT PREREQUISITES to creating an HA Lustre file system
 
-A high-availability Lustre file system managed by Manager for Lustre\* software requires that your entire storage system configuration and all  interfaces comply with a pre-defined configuration. Manager for Lustre\* software performs LNet configuration assuming that each server is connected to a high-performance data network, which is the Lustre network LNet.  For detailed information, see the section *High Availability Configuration Specification* in the *Manager for Lustre\* Software Installation Guide*. Also see the guide *Lustre\* Installation and Configuration using Manager for Lustre\* Software and OpenZFS*.
+A high-availability Lustre* file system managed by Manager for Lustre\* software requires that your entire storage system configuration and all interfaces comply with a pre-defined configuration. Manager for Lustre\* software performs LNet configuration assuming that each server is connected to a high-performance data network, which is the Lustre* network LNet.  For detailed information, see the section *High Availability Configuration Specification* in the *Manager for Lustre\* Software Installation Guide*. You may also want to read *Lustre\* Installation and Configuration using Manager for Lustre\* Software and OpenZFS*.
 
 **Caution:** When initially setting up your storage system, take care in selecting block device names because these cannot be changed after the file system has been created using  Manager for Lustre\* software. **You should NOT make configuration changes to file system servers or their respective volumes/targets outside of Manager for Lustre\* software**. Doing so will defeat the ability of Manager for Lustre\* software to monitor or manage the file system, and will make the file system unavailable to clients. Re-labeling these device names during multipath configuration will break the HA configuration established by Manager for Lustre\* software.
 
@@ -41,7 +41,7 @@ A high-availability Lustre file system managed by Manager for Lustre\* software 
 
 **Caution:** When initially setting up your storage system, take care in selecting block device names because these cannot be changed after the file system has been created using  Manager for Lustre\* software. **You should NOT make configuration changes to file system servers or their respective volumes/targets outside of Manager for Lustre\* software**. Doing so will defeat the ability of Manager for Lustre\* software to monitor or manage the file system, and will make the file system unavailable to clients. Re-labeling these device names during multipath configuration will break the HA configuration established by Manager for Lustre\* software.
 
-**Caution:** A known issue can result in a server being made unavailable. This can happen if the server has been added to a Lustre file system, (using Manager for Lustre\* software) and then the user decides to Force Remove the server from the file system. The Force Remove command should only be performed if the Remove command has been unsuccessful. Force Remove will remove the server from the Manager for Lustre\* configuration, but not remove Manager for Lustre\* software from the server. All targets that depend on the server will also be removed without any attempt to unconfigure them. To completely remove the Manager for Lustre\* software from the server (allowing it to be added to another Lustre file system), first contact technical support.
+**Caution:** A known issue can result in a server being made unavailable. This can happen if the server has been added to a Lustre* file system, (using Manager for Lustre\* software) and then the user decides to Force Remove the server from the file system. The Force Remove command should only be performed if the Remove command has been unsuccessful. Force Remove will remove the server from the Manager for Lustre\* configuration, but not remove Manager for Lustre\* software from the server. All targets that depend on the server will also be removed without any attempt to unconfigure them. To completely remove the Manager for Lustre\* software from the server (allowing it to be added to another Lustre* file system), first contact technical support.
 
 <a href="#3.0">Top of page</a>
 
@@ -62,7 +62,7 @@ Physically, HA peer servers must be cabled to provide equal access to the pool o
 
 To support HA failover, each HA server must be able to automatically power-off its peer server if a failover is required. The process of powering off a faulty server is known as "node fencing" (also called "server fencing"), and ensures that a shared storage device is not mounted by more than one server at a time. Lustre includes protection against multiple simultaneous device mounts, but automatically powering off the faulty server ensures that failover works properly. Manager for Lustre\* software supports the use of remotely-operable Power Distribution Units (PDUs) for this purpose. Alternative to the configuration of PDUs, Manager for Lustre\* software also supports the Intelligent Management Platform Interface (IPMI) and associating baseboard management controllers (BMCs) with servers, to support server monitoring and control.
 
-**Note:** See the *Manager for Lustre\* Partner Installation Guide* for physical design and configuration guidelines required to support high availability. 
+**Note:** See the *Manager for Lustre\* Installation Guide* for physical design and configuration guidelines required to support high availability. 
 
 <a href="#3.0">Top of page</a>
 
@@ -84,7 +84,7 @@ To add a server to be used for the file system:
     - Click **Root Password** and enter a root password for the server you are adding. This is standard password-based authentication. It is not uncommon to use the same root password for multiple servers. 
     - Click **Another Key** and enter a private key that corresponds to a public key present on the server you are adding. If the key is encrypted, enter the passphrase needed to decrypt the private key. 
 1. Click **Next**. The software will attempt to verify the presence and readiness of all servers with names matching your hostname entry. Each server is represented by a square. A green square means that the server passed all readiness tests required for validation and this process can proceed for that server. A red square means that the server failed one or more readiness tests. Click on a red square to learn which tests the server failed. You can hover the pointer over the failed validation test to learn more. 
-1. For a server that failed validation, log into that server and work to address the failed validation. When the issue has been resolved, the GUI will update the failed validation test in real time, from a red x to green check mark. You can add the server when all failed validations are resolved.
+1. For a server that failed validation, log into that server and work to address the failed validation. When the issue has been resolved, the GUI will update the failed validation test in real time, from a red x to a green check mark. You can add the server when all failed validations are resolved.
 
      **Note:** Many server names may be generated from your host list expression, and some of those servers may not exist. A red square is created for each server that doesn't exist. 
 1. Assuming that all servers pass the validation tests and all boxes are green, click **Proceed** to download agent software to each server. If one or more servers failed to pass validation tests, the green **Proceed** button changes to a yellow **Override** button. Clicking **Override** displays this warning: *You are about to add one or more severs that failed validation. Adding severs that failed validation is unsupported. Click **Proceed** to continue*. 
@@ -94,13 +94,13 @@ To add a server to be used for the file system:
 1. If you decided to override servers that failed validation tests (this is not supported), expand any failed commands in the **Commands** window. Click on any failed jobs and examine the stack trace to learn the cause of the failure. Correct the cause of the failure and close the command and server windows. If the server exists in the server table, click **Actions** and select **Deploy Agent**. Otherwise open the **Add server** dialog and enter the failed server. In either case you should now see a green square for that server and be able to add it without issue.
 1. With the **Commands** window now closed, the servers you added are listed as **Unconfigured** on the **Server Configuration** window. The next task is to add a server profile to each server; this step will configure the server for its purpose. For a given server, under the **Actions** drop-down menu, click **Setup server**. 
 1. At the *Add Server - Add Server Profiles* window, select the desired profile from the drop-down menu. Note that one profile type is selected for all servers you are adding in this process. The common profiles are listed next, but your software may have more server profiles. 
-    - **Managed Storage Server for EL7.2:** As above, this allows the manager GUI to configure Corosync and Pacemaker, configure NTP, etc., so that the manager software can monitor and manage the server. Managed storage servers must be physically configured for high-availability/server failover. This profile is for servers running RHEL 7.2. (In our example below, none of the servers being configuring are running RHEL 7.2, so the warning **Incompatible**, is displayed.)
+    - **Managed Storage Server for EL7.x:** As above, this allows the manager GUI to configure Corosync and Pacemaker, configure NTP, etc., so that the manager software can monitor and manage the server. Managed storage servers must be physically configured for high-availability/server failover. This profile is for servers running RHEL 7.x. (In our example below, none of the servers being configuring are running RHEL 7.x, so the warning **Incompatible**, is displayed.)
     - **Monitored Storage Server:** This is for servers that are not correctly configured for HA/failover (as far as this software is concerned). A monitored storage server is monitored only; the manager GUI performs no such server configuration or management. Note that ZFS file systems use this profile. However the Dashboard will still display charts showing file system operations.
-    - **POSIX HSM Agent Node:** An HSM Agent node is used in hierarchical storage management to run an instance of Copytool. Copytool transfers certain files between the Lustre file system and the archive and deletes from the Lustre file system those files that have been archived. See [Configuring and using Hierarchical Storage Management](Config_and_using_HSM_6_0.md/#6.0)
+    - **POSIX HSM Agent Node:** An HSM Agent node is used in hierarchical storage management to run an instance of Copytool. Copytool transfers certain files between the Lustre file system and the archive and deletes from the Lustre file system to those files that have been archived. See [Configuring and using Hierarchical Storage Management](Config_and_using_HSM_6_0.md/#6.0)
     - **Robinhood Policy Engine Server:** This server hosts the Robinhood policy engine, which enables automation of hierarchical storage management activities. See [Configuring and using Hierarchical Storage Management](Config_and_using_HSM_6_0.md/#6.0).
 1. Select the desired profile and click **Proceed**. The manager does an audit of the storage resources on each server. The manager then provisions the server by loading appropriate Lustre modules and making sure the Lustre networking layer is functioning. When all checks are completed, LNet State indicates LNet Up and each server is fully qualified as a Lustre server. Under the Status column, a green check mark is displayed for each new server. If server provisioning does not succeed, the Status will indicate a exclamation mark (!) and the LNet State may indicate Unconfigured. To learn the cause of the problem, click the exclamation mark for the failed server to see Alerts. For more information, click **Status** at the top menu bar. The *Status* window also lets you view related logs.
 
-    **Note:** A certain profile may not be compatible with a server as the server is configured. If the profile you select is not compatible with the server(s) you specified, a warning is displayed: Incompatible. Each incompatible server is represented by a red box. To learn why a server is incompatible, click on a red box. A pop-up window reveals the problem. You can resolve the problem and the red box will change to green, indicating profile compatibility with the server. 
+    **Note:** A certain profile may not be compatible with a server as the server is configured. If the profile you select is not compatible with the server(s) you specified, a warning is displayed: *Incompatible*. Each incompatible server is represented by a red box. To learn why a server is incompatible, click on a red box. A pop-up window reveals the problem. You can resolve the problem and the red box will change to green, indicating profile compatibility with the server. 
 
     **Caution:** For servers with incompatible profiles, you have the option of clicking **Override**, however, this is not encouraged or supported. Each server's configuration must be compatible with the selected profile, or the server will likely not function as required for the selected profile. The four available default server profiles are described above. For more information about the POSIX HSM Agent Node and Robinhood Policy Engine Server profiles, see <a href="Config_and_using_HSM_6_0.md/#1.0">Configuring and using Hierarchical Storage Management</a> herein.
 1. Click **Close**. This process is complete. For HA file systems, proceed to <a href="#3.5">Configure primary and failover servers</a>. 
@@ -119,11 +119,11 @@ This section establishes the primary and failover storage servers for each volum
 To view the volumes that were discovered and make adjustments to volume configurations, complete these steps: 
 
 1. At the menu bar, click the **Configuration** drop-down menu and click **Volumes** to display the *Volume Configuration* window. A list of available volumes is displayed (if a volume does not contain unused block devices, it will not appear on this list). 
-1. The *Volume Configuration* window displays the current primary and failover servers for each volume. If required, you can change these primary and failover server assignments. To do so, for a given volume select the volume's *Primary Server* from the drop-down list. Then select the *Failover Server* from the drop-down list. Changes you make to volume/server configuration appear in blue, indicating that you have selected to change this setting, but have not applied it yet. To undo a change in-process, click the **x**. 
+1. The *Volume Configuration* window displays the current primary and failover servers for each volume. If required, you can change these primary and failover server assignments. To do so, for a given volume, select the volume's *Primary Server* from the drop-down list. Then select the *Failover Server* from the drop-down list. Changes you make to volume/server configuration appear in blue, indicating that you have selected to change this setting, but have not applied it yet. To undo a change in-process, click the **x**. 
 1. Repeat step 2 for each volume that has a primary and failover server. 
 1. Click **Apply**. Then click **Confirm**.
     
-Changes you select to make on this Volumes Configuration window will be updated and displayed after clicking **Apply** and **Confirm**. Other users viewing this file system's *Volume Configuration* window will see these updated changes after you apply and confirm them. To cancel all changes you have selected (but not yet applied), click **Cancel**. 
+Changes made on the *Volumes Configuration* window will be updated and displayed after clicking **Apply** and **Confirm**. Other users viewing the file system's *Volume Configuration* window will see these updated changes after you apply and confirm them. To cancel all changes you have selected (but not yet applied), click **Cancel**. 
     
 **Note:** There is currently no lock-out of one user's changes versus changes made by another user. The most-recently applied setting is the one in-force.
 
@@ -176,7 +176,7 @@ Proceed to <a href="#3.7">Assign PDU outlets to servers.
 
 **Note:** A server cannot be associated with both baseboard management controller (BMC) outlets and power distribution unit (PDU) outlets. Use PDUs or IPMI/BMCs to support failover. 
 
-Before assigning PDU outlets to servers, make note of the primary and failover server configurations for each volume on the Volumes window. Be sure to assign failover outlets from different PDUs than the primary outlets. When you associate PDU failover outlets with servers using this tool, STONITH is automatically configured. 
+Before assigning PDU outlets to servers, make note of the primary and failover server configurations for each volume on the Volumes window. Be sure to assign failover outlets using different PDUs instead of the primary outlets. When you associate PDU failover outlets with servers using this tool, STONITH is automatically configured. 
 
 To assign PDU outlets to servers:
 
@@ -185,7 +185,7 @@ To assign PDU outlets to servers:
     
     a) Pick a server row for which you want to assign outlets. 
     
-    b) Mouse over to the PDU column and click within the drop-down box to expose the outlets available from this PDU. Now select the desired outlet. (You can also use the tab key to move to the desired server/PDU. Then begin to enter the outlet name. This field auto-fills. Tab or press **Enter** to confirm this selection.)
+    b) Mouse over to the PDU column and click within the drop-down box to expose the outlets available from the PDU. You can now select the desired outlet. Note that you can also use the tab key to select the desired server/PDU and enter the outlet name. This field auto-fills. Press **Tab** or **Enter** to confirm your selection.
     
     c) Move to the next server and assign outlets in the same way. Note that as an outlet is assigned to a server, it becomes unavailable for reassignment.
     
@@ -195,7 +195,7 @@ To assign PDU outlets to servers:
 
 <a id="3.8"></a>
 
-## Assign PDU outlets to servers
+## Assign BMC outlets to servers
 
 This section uses the Intelligent Management Platform Interface (IPMI) and associates baseboard management controllers (BMCs) with servers to support high availability.
 
@@ -228,9 +228,7 @@ To associate BMCs with servers:
 
 ## Create the new Lustre file system
 
-This section is the last procedure to create the Lustre file system, after performing the previous configuration tasks outlined in this chapter. In this section, you will select servers. 
-
-To create the file system:
+Now that the necessary steps are complete, a filesystem can be created. To create the file system:
 
 1. At the menu bar, click the **Configuration** drop-down menu and click **File Systems** to display the *File Systems* window.
 1. Click **Create File System** to display *New File System Configuration*.
@@ -288,7 +286,7 @@ To view the file system configuration:
 
 ## Mount the Lustre file system
 
-A compute client must mount the Lustre* file system to be able to access data in the file system. Before attempting to mount the file system on your Lustre clients, make sure the Manager for Lustre* client software has been installed on each client. For instructions, see the documentation provided by your storage solution provider. 
+A compute client must mount the Lustre* file system to be able to access data in the file system. Before attempting to mount the file system on your Lustre* clients, make sure the Manager for Lustre* client software has been installed on each client. For instructions, see the documentation provided by your storage solution provider. 
 
 A client can mount the entire file system, or mount a file system sub-directory.
 
@@ -299,11 +297,11 @@ A client can mount the entire file system, or mount a file system sub-directory.
 
 ### Mount the entire file system
 
-To obtain the command to use to mount an entire file system:
+To obtain the command used to mount an entire file system:
 
 1. At the Dashboard menu bar, click the **Configuration** drop-down menu and click **File Systems**.
-1. Each Lustre file system created using Manager for Lustre\* is listed. Select the file system to be mounted. A window opens showing information for that file system.
-1. On the file system window, click **View Client Mount Information**. The mount command to be used to mount the file system is displayed. Following is an example only:
+1. Each Lustre* file system created using Manager for Lustre\* is listed. Select the file system to be mounted. A window opens showing information for that file system.
+1. On the file system window, click **View Client Mount Information**. The mount command to be used to mount the file system is displayed. The following is an example only:
 ```
     mount -t lustre 10.214.13.245@tcp0:/test /mnt/test
 ```
@@ -313,7 +311,7 @@ To obtain the command to use to mount an entire file system:
 
 ### Mount a file system sub-directory
 
-To mount a file system, at the client computer, enter the following command at the command line.  This syntax is generic and there are other options not described here.
+To mount a file system at the client computer, enter the following command at the command line.  This syntax is generic and there are other options not described here.
 
 
 ```

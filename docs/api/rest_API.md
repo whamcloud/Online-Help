@@ -13,7 +13,7 @@ applications.
 The API is based on the [REST](http://en.wikipedia.org/wiki/Representational_state_transfer)
 style, and uses [JSON](http://en.wikipedia.org/wiki/JSON) serialization.  Some of the
 resources exposed in the API correspond to functionality within the Lustre file system, while
-others refer to functionality specific to the Intel Manager for Lustre software.
+others refer to functionality specific to the Intel® Manager for Lustre software.
 
 This document consists of a series of sections explaining how to use the API, followed
 by an [Example client](#1.7), and a detailed [API Reference](#1.8) describing all
@@ -21,7 +21,7 @@ available functionality.
 
 ### <a name="1.1.1"></a>Prerequisites
 
-- Familiarity with managing Lustre using the manager server web interface provided with the Intel Manager for Lustre software.
+- Familiarity with managing Lustre using the manager server web interface provided with the Intel® Manager for Lustre* software.
 - Familiarity with HTTP, including the meanings and conventions around the methods (e.g. GET, POST, DELETE) and status codes (e.g. 404, 200).
 - Competence in using a suitable high level programming language to write your API client and the libraries used with your language for HTTP network operations and JSON serialization.
 
@@ -31,7 +31,7 @@ available functionality.
 ### <a name="1.2.1"></a>Terminology
 
 
-The terminology used in this document differs somewhat from that used when administering a Lustre file system manually. This document avoids referring to a host as an object storage server (OSS), metdata server (MDS), or management server (MGS) because, in a Lustre file system created using the Intel Manager for Lustre software, a host can serve targets of any of these types.
+The terminology used in this document differs somewhat from that used when administering a Lustre file system manually. This document avoids referring to a host as an object storage server (OSS), metdata server (MDS), or management server (MGS) because, in a Lustre file system created using the Intel® Manager for Lustre* software, a host can serve targets of any of these types.
  
 Lustre-specific terms used in this API include:
 
@@ -391,7 +391,7 @@ individual resource schemas like ``/api/host/schema``.
 ## <a name="1.9"></a>Legal Information
 
 
-Copyright (c) 2017 Intel Corporation. All rights reserved.
+Copyright (c) 2017 Intel® Corporation. All rights reserved.
  Use of this source code is governed by a MIT-style
  license that can be found in the LICENSE file.
 

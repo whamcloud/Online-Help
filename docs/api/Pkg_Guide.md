@@ -191,7 +191,7 @@ might be called acme-core and acme-scsi.
 ## <a name="1.9"></a>Legal Information
 
 
-Copyright (c) 2017 Intel Corporation. All rights reserved.
+Copyright (c) 2017 Intel® Corporation. All rights reserved.
  Use of this source code is governed by a MIT-style
  license that can be found in the LICENSE file.
 

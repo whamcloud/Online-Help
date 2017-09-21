@@ -105,7 +105,7 @@ manually fail the target over to the peer server. </td>
 <table border="1">
     <thead>
         <tr>
-        <th colspan="2">The Manager for Lustre\* loses connection with a server’s power control device (IPMI or PDU)</th>
+        <th colspan="2">The Manager for Lustre* loses connection with a server’s power control device (IPMI or PDU)</th>
         </tr>
     </thead>
     <tbody>
@@ -249,7 +249,7 @@ If Manager for Lustre\* software is not operating normally and you require suppo
 ```
 
 
-This command generates a compressed tar.lzma file that you can email to Intel® customer support. Following are sample displayed results of running this command. (The resulting tar.lzma file will have a different file name.)
+This command generates a compressed tar.lzma file that you can email to Intel® customer support. The following are sample displayed results of running this command. (The resulting tar.lzma file will have a different file name.)
 
 
 ```
@@ -288,7 +288,8 @@ tar --lzma -xvpf <file_name>.tar.lzma
 **Help for chroma-diagnostics**
 
 Generally, if requested you should run this command without options, as this will generate the needed data. Enter 
-```chroma-diagnostics -h
+```
+chroma-diagnostics -h
 ```
  to see help for this command, as follows:
 
@@ -302,6 +303,6 @@ optional arguments:
  -h, --help   show this help message and exit
  --verbose, -v   More output for troubleshooting.
  --days-back DAYS_BACK, -d DAYS_BACK
-            Number of days back to collect logs. default is 1. 0 would mean today's logs only.
+Number of days back to collect logs. default is 1. 0 would mean today's logs only.
 ```
 <a href="#12.0">Top of page</a>

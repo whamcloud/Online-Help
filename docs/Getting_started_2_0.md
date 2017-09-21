@@ -6,16 +6,16 @@
 - <a href="#2.1">Creating user accounts</a>
 - <a href="#2.2">Setting up email notifications of alerts</a>
 
-A high-availability Lustre file system managed by Manager for Lustre\* software requires that your entire storage system configuration and all  interfaces comply with a pre-defined configuration.  For detailed information, see the section High Availability Configuration Specification in the *Manager for Lustre\* Software Installation Guide*. Also see the guide *Lustre\* Installation and Configuration using Manager for Lustre\* Software and OpenZFS*.
+A high-availability Lustre file system managed by Manager for Lustre\* software requires that your entire storage system configuration and all  interfaces comply with a pre-defined configuration.  For detailed information, see the section, "High Availability Configuration Specification" in the *Manager for Lustre\* Software Installation Guide*. You may also want to read *Lustre\* Installation and Configuration using Manager for Lustre\* Software and OpenZFS*.
 
 **Note:** All references herein to the "manager" refer to the Manager for Lustre\* software.
 The Manager for Lustre\* software can be used to:
-Create, monitor and manage high-availability Lustre* file systems, including systems running Open ZFS as the back-end.
-Monitor existing Lustre* file systems that have not been configured from the manager GUI.
+- Create, monitor and manage high-availability Lustre* file systems, including systems running Open ZFS as the back-end.
+- Monitor existing Lustre* file systems that have not been configured from the manager GUI.
 
 See the following information to get started:
 
-- For procedures for installing the Manager for Lustre* software, including Manager for Lustre\* software, and for completing initial configuration steps, see the documentation provided by your storage solution provider. 
+- For procedures on installing the Manager for Lustre* software, including Manager for Lustre\* software, and for completing initial configuration steps, see the documentation provided by your storage solution provider. 
 - To set up superuser and user accounts on Manager for Lustre\* software see: <a href="#2.1">Creating user accounts</a>.
 - Also see: <a href="#2.2">Setting up email notifications of alerts</a>.
 - To create a new Lustre file system using Manager for Lustre\* software, see: [Creating a new Lustre* file system](Creating_new_lustre_fs_3_0.md/#3.0).
@@ -23,7 +23,7 @@ See the following information to get started:
 
 **WARNING:** For Lustre* file systems created and managed by Manager for Lustre\* software, the only supported command line interface is the CLI provided by Manager for Lustre\* software. Modifying such a Lustre file system manually from a UNIX shell will interfere with the ability of the Manager for Lustre\* software to manage and monitor the file system. 
 
-<a herf="#2.0">Top of page</a>
+<a href="#2.0">Top of page</a>
 
 ## Creating user accounts<a id="2.1"></a>
 
@@ -34,9 +34,9 @@ To create user accounts:
 1. Click **+ Create user**. 
 1. At the Create user dialogue window, select the new user's role:  
     
-    a) **File system user -** A file system user has access to the full GUI, except for the Configuration drop-down menu, which is not displayed. A  user cannot create or manage a file system, but can monitor all file systems using the Dashboard, and the Alerts and Logs windows. Users log in by clicking **Login** in the upper-right corner of the screen, and log out by clicking **Logout**. 
+    a) **File system user -** A file system user has access to the full GUI, except for the Configuration drop-down menu, which is not displayed. A  user cannot create or manage a file system, but can monitor all file systems using the Dashboard, Alerts, and Logs windows. Users log in by clicking **Login** in the upper-right corner of the screen, and log out by clicking **Logout**. 
 
-    b) **Superuser -** A superuser has full access to the application, including the Configuration drop-down menu and all sub-menus. A superuser can create, monitor, manage, and remove file system and their components. A superuser create, modify (change passwords), and delete users. A superuser cannot delete their own account, but a superuser can create or delete another superuser. 
+    b) **Superuser -** A superuser has full access to the application, including the Configuration drop-down menu and all sub-menus. A superuser can create, monitor, manage, and remove file systems and their components. A superuser can create, modify (change passwords), and delete users. A superuser cannot delete their own account, but a superuser can create or delete another superuser. 
     
 1. Fill out the remainder of the *Create user* dialogue window and click **Create**.
 1. To set up email notifications of alerts for a user, see <a href="#2.2">Setting up email notifications of alerts</a>.
@@ -45,7 +45,7 @@ To create user accounts:
 
 A superuser must be logged in to perform any actions that modify the system, such as starting a file system or adding a server.
 
-After logging in, a user can modify their own account by clicking Account near the upper-right corner of the screen. A user can set these options:
+After logging in, a user can modify their own account by clicking **Account** near the upper-right corner of the screen. A user can set these options:
 
 - **Details -** Username, email address, and first and last name can be changed.
 - **Password -** Password can be changed and confirmed.
@@ -69,13 +69,13 @@ To set up email notifications:
     - **Host contact alert -** Host lost contact with a server.
     - **LNet offline alert -** LNet is offline for a server.
     - **LNet NIDs changed alert -** See [Handling Network Address Changes](Manage_maintain_HA_lustre_fs_5_0.md/#5.0).
-    - **LNet NIDs changed on server <server name> -** See [Handling Network Address Changes](Manage_maintain_HA_lustre_fs_5_0.md/#5.0).
+    - **LNet NIDs changed on server \<server name\> -** See [Handling Network Address Changes](Manage_maintain_HA_lustre_fs_5_0.md/#5.0).
     - **Target offline alert -** A target has gone offline.
     - **Target failover alert -** A target is currently running on its secondary server.
     - **Target recovery alert -** A target is in recovery.
-    - **Storage resource offline -** A monitored storage controller is offline or otherwise out of contact with chroma manager, monitoring data are not being received.
+    - **Storage resource offline -** A monitored storage controller is offline or otherwise out of contact with chroma manager, monitored data is not being received.
     - **Storage resource alert -** A storage plug-in has raised an alert. This alert does not reveal the exact message generated by the storage plug-in. 
 1. With your selections made, click **Save Changes**. Clicking **Reset Form** returns the selections to their last saved state.
 
- <a herf="#2.0">Top of page</a> 
+ <a href="#2.0">Top of page</a> 
 

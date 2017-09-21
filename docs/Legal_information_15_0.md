@@ -1,7 +1,7 @@
 [**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
 # <a id="15.0"></a>Legal Information
 
-Copyright (c) 2017 Intel Corporation. All rights reserved.
+Copyright (c) 2017 Intel® Corporation. All rights reserved.
  Use of this source code is governed by a MIT-style
  license that can be found in the LICENSE file.
 

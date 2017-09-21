@@ -646,7 +646,7 @@ subsequent failover trigger.
     for Pacemaker to disable the constraints around the fencing agents.
     This can make it easier to restore services to a running condition
     on one server while still working to rebuild the second. However,
-    Intel does not support Manager for Lustre software installations that
+    Intel® does not support Manager for Lustre* software installations that
     do not have fencing agents configured, so only use this process with
     caution, and only if required to support an emergency recovery. Once
     full service is restored, this configuration change must be

@@ -3,7 +3,7 @@
 
 Manager for Lustre\* software includes a command line interface (CLI) which can be used instead of the GUI to communicate with the Representational State Transfer (REST)-based API underlying the software GUI. The CLI is intended to be used in shell scripts by superusers and power users.
 
-**WARNING**: For Lustre* file systems created and managed by Manager for Lustre\* software, the only supported command line interface is the CLI provided by Manager for Lustre\* software. Modifying such a Lustre file system manually from a UNIX shell will interfere with the ability of the Manager for Lustre\* software to manage and monitor the file system.
+**WARNING**: For Lustre* file systems created and managed by Manager for Lustre\* software, the only supported command line interface is the CLI provided by Manager for Lustre\* software. Modifying such a Lustre* file system manually from a UNIX shell will interfere with the ability of the Manager for Lustre\* software to manage and monitor the file system.
 
 This chapter provides the following procedures and information:
 
@@ -20,7 +20,7 @@ To access the Manager for Lustre\* CLI:
 1. Use SSH to log into the manager server as the UNIX superuser. Log in using your superuser account. 
 1. Enter CLI commands on the UNIX command line.
 
-**WARNING**: To manage Lustre file systems from the command line, you must use the Manager for Lustre\* command line interface. Modifying a file system manually from a shell on a storage server will interfere with the ability of Manager for Lustre\* to manage and monitor the file system.
+**WARNING**: To manage Lustre* file systems from the command line, you must use the Manager for Lustre\* command line interface. Modifying a file system manually from a shell on a storage server will interfere with the ability of Manager for Lustre\* to manage and monitor the file system.
 
 <a href="#11.0">Top of page</a>
 
@@ -214,7 +214,7 @@ To obtain client mount information:
 ```
 
 
-To detect existing (non-managed) Lustre file systems on servers that have been added to the Command Center, enter: 
+To detect existing (non-managed) Lustre* file systems on servers that have been added to the Command Center, enter: 
 
 ```
 # chroma filesystem-detect
