@@ -1,5 +1,5 @@
 [**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
-# Introducing the Manager for Lustre\* Software
+# <a name="1.0"></a>Introducing the Manager for Lustre\* Software
 
 **In this Chapter:**
 
@@ -7,7 +7,7 @@
 - [What is Management Mode?](#what-is-management-mode)
 - [What is Monitor-only Mode?](#what-is-monitor-only-mode)
 - [The Configuration Page in Monitor-only mode](#the-configuration-page-in-monitor-only-mode)
-- [Building a Lustre Storage Solution over a ZFS File System](#building-a-lustre-storage-solution-over-a-zfs-file-system)
+- [Building a Lustre* Storage Solution over a ZFS File System](#building-a-lustre-storage-solution-over-a-zfs-file-system)
 
 Manager for Lustre\* software, when integrated with
 Linux, aggregates a range of storage hardware into a single Lustre\*
@@ -23,42 +23,32 @@ features including redundant servers with storage failover. Metadata and
 data are stored on separate servers to allow each system to be optimized
 for different workloads.
 
-A high-availability Lustre file system managed by Manager for
+A high-availability Lustre* file system managed by Manager for
 Lustre\* software requires that your entire storage system configuration
 and all interfaces comply with the High Availability Configuration
 Specification presented in this guide.
 
-If you are creating a Lustre file system that will use OpenZFS as the
+If you are creating a Lustre* file system that will use OpenZFS as the
 backend, see the guide *Lustre\* Installation and Configuration using
 Manager for Lustre\* Software and OpenZFS*.
-
-In addition to the specification presented next, please contact your
-Intel® technical support representative for the latest information
-regarding the configuration and interconnect requirements to achieve the
-maximum benefits of an HA file system managed by Manager for
-Lustre\* software.
 
 What is Manager for Lustre\* Software?
 -----------------------------------------------
 
-Manager for Lustre\* software includes the Manager for
-Lustre\* software, which greatly simplifies configuring, creating,
-monitoring, and managing one or more Lustre file systems from either the
+Manager for Lustre\* software greatly simplifies configuring, creating,
+monitoring, and managing one or more Lustre* file systems from either the
 manager GUI, or the associated command line interface (CLI).
 
-RestAPI plugins can further extend the functionality of IML. Such
+RestAPI plugins can further extend the functionality of ML. Such
 plugins might include real-time storage monitoring that let you track
-Lustre file system usage, performance metrics, events, and errors at the
-Lustre level. Please contact Intel® for more information.
-
-Manager for Lustre\* software is a part of the Manager for
-Lustre\* software product.
+Lustre* file system usage, performance metrics, events, and errors at the
+Lustre* level.
 
 What is Management Mode?
 ------------------------
 
 The Manager for Lustre\* software lets you create and manage
-new high-availability (HA) Lustre file systems from its GUI. For each HA
+new high-availability (HA) Lustre* file systems from its GUI. For each HA
 file system, the GUI and dashboard let you create, monitor, and manage
 all servers and their respective targets. The software lets you define
 failover servers to support HA. RAID-based fault tolerance for storage
@@ -80,7 +70,7 @@ Specification](ig_ch_03_building.md) for more information.
 What is Monitor-only Mode?
 --------------------------
 
-Monitor-only mode allows you to “discover” a working Lustre file system.
+Monitor-only mode allows you to “discover” a working Lustre* file system.
 Using Manager for Lustre\* software, you can then monitor the
 file system at the Manager for Lustre\* dashboard. All of the
 charts presented on the manager dashboard to monitor performance and
@@ -98,18 +88,20 @@ supported in [Monitor mode](#what-is-monitor-only-mode).
 ### The Configuration Page in Monitor-only mode
 
 The Configuration page presented by Manager for Lustre\*
-software is designed primarily to enable designers to create Lustre file
+software is designed primarily to enable designers to create Lustre* file
 systems with server failover capability, but this capability is not
 supported in monitor-only mode. However, many of the features provided
 on the Configuration page are also directly useful for monitor-only file
 systems.
 
-Building a Lustre Storage Solution over a ZFS File System
+Building a Lustre* Storage Solution over a ZFS File System
 ---------------------------------------------------------
 
-If your intent is to build a high-availability, Lustre storage solution
+If your intent is to build a high-availability, Lustre* storage solution
 over an existing ZFS, Manager for Lustre\* software supports this
 configuration. However, the installation and configuration of such a
 system is not described in this guide. Please see the document:
 *Lustre\* Installation and Configuration using Manager for Lustre\*
 Software and OpenZFS*.
+
+[Top of page](#1.0)

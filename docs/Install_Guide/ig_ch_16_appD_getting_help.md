@@ -1,9 +1,8 @@
 [**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
 
-# Getting Help
+# <a name="1.0"></a>Getting Help
 
-*For partners*: If you encounter a problem with Manager for Lustre\*
-software, Manager for Lustre\* software, or storage, and you
+*For partners*: If you encounter a problem with Manager for Lustre\* software or storage, and you
 require support from your Intel® technical support representative, then
 to help expedite resolution of the problem, please do the following:
 
@@ -17,9 +16,7 @@ Run chroma diagnostics
 Run chroma-diagnostics on any of the servers that you suspect may be
 having problems, and on the server hosting the Manager for
 Lustre\* software dashboard. Chroma-Diagnostics generates a compressed
-tar.lzma file that you should attach to your JIRA ticket when you create
-it.
-
+tar.lzma file that you should attach to your JIRA ticket.
 To run chroma-diagnostics:
 
 1.  Log into the server in question as Admin. Admin login is required in
@@ -60,7 +57,7 @@ Size: 16K
     and extract the files, use this command:
 
     ```
-# tar --lzma -xvpf &lt;file\_name&gt;.tar.lzma
+# tar --lzma -xvpf <file_name>.tar.lzma
 ```
 
 
@@ -90,3 +87,5 @@ representative.
 
 *For end-users*: For assistance with this product, contact your storage
 solution provider.
+
+[Top of page](#1.0)

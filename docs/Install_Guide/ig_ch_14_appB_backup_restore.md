@@ -1,5 +1,5 @@
 [**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
-# Appendix B - Backing up and Restoring Manager for Lustre\* Server Software
+# <a name="1.0"></a>Appendix B - Backing up and Restoring Manager for Lustre\* Server Software
 
 **In this Chapter:**
 
@@ -45,9 +45,9 @@ these instructions, administrators can define a recovery process that is
 compatible with their own environment.
 
 This chapter discusses backup and recovery of the manager software,
-including the configuration information for Lustre file systems being
+including the configuration information for Lustre* file systems being
 managed and/or monitored by the manager software. Backup and restoration
-of data held on any Lustre file system is not within the scope of this
+of data held on any Lustre* file system is not within the scope of this
 document.
 
 While no specific recommendations for backup technologies, server
@@ -68,7 +68,7 @@ redeployed in a consistent and repeatable manner, so that repeated
 installations have a known outcome. The following instructions assume
 the server’s operating system has been fully installed. From there, this
 section describes how to fully restore the manager software, including
-the configuration information for Lustre file systems being managed
+the configuration information for Lustre* file systems being managed
 and/or monitored by the manager software, from the last complete backup
 made of the manager software backup manifest.
 
@@ -285,7 +285,7 @@ configures essential services, such as the PostgreSQL database used for
 recording information, and the RabbitMQ messaging system.
 
 To support the restoration of the Manager for Lustre\*
-software, be sure to regularly back-up of the PostgresSQL database. This
+software, be sure to regularly back-up the PostgresSQL database. This
 is necessary because the database persistently records Manager
 for Lustre\* software configuration information.
 
@@ -320,16 +320,16 @@ or an integrated enterprise backup platform.
 
 
 ```
-mkdir -p \$HOME/backup/etc/sysconfig
+mkdir -p $HOME/backup/etc/sysconfig
 
-cp -a /etc/sysconfig/network /etc/sysconfig/network-scripts/ifcfg-\*
+cp -a /etc/sysconfig/network /etc/sysconfig/network-scripts/ifcfg-*
 \$HOME/backup/etc/sysconfig/.
 
-cp -p /etc/hosts \$HOME/backup/etc/.
+cp -p /etc/hosts $HOME/backup/etc/.
 
-cp -p /etc/resolv.conf \$HOME/backup/etc/.
+cp -p /etc/resolv.conf $HOME/backup/etc/.
 
-cp -p /etc/nsswitch.conf \$HOME/backup/etc/.
+cp -p /etc/nsswitch.conf $HOME/backup/etc/.
 ```
 
 
@@ -337,11 +337,11 @@ cp -p /etc/nsswitch.conf \$HOME/backup/etc/.
 
 
 ```
-mkdir -p \$HOME/backup/etc
+mkdir -p $HOME/backup/etc
 
-cp /etc/yum.conf \$HOME/backup/etc/.
+cp /etc/yum.conf $HOME/backup/etc/.
 
-cp -a /etc/yum.repos.d/\* \$HOME/backup/etc/.
+cp -a /etc/yum.repos.d/* $HOME/backup/etc/.
 ```
 
 
@@ -349,17 +349,17 @@ cp -a /etc/yum.repos.d/\* \$HOME/backup/etc/.
 
 
 ```
-mkdir -p \$HOME/backup/etc
+mkdir -p $HOME/backup/etc
 
-cp -p /etc/passwd \$HOME/backup/etc/.
+cp -p /etc/passwd $HOME/backup/etc/.
 
-cp -p /etc/shadow \$HOME/backup/etc/.
+cp -p /etc/shadow $HOME/backup/etc/.
 
-cp -p /etc/group \$HOME/backup/etc/.
+cp -p /etc/group $HOME/backup/etc/.
 
-cp -p /etc/gshadow \$HOME/backup/etc/.
+cp -p /etc/gshadow $HOME/backup/etc/.
 
-cp -p /etc/sudoers \$HOME/backup/etc/.
+cp -p /etc/sudoers $HOME/backup/etc/.
 ```
 
 
@@ -382,9 +382,9 @@ re-create the original server as closely as possible.
 
 
 ```
-mkdir -p \$HOME/backup/etc/ssh
+mkdir -p $HOME/backup/etc/ssh
 
-cp -p /etc/ssh/ssh\_host\*key\* \$HOME/backup/etc/ssh/.
+cp -p /etc/ssh/ssh_host*key* $HOME/backup/etc/ssh/.
 ```
 
 
@@ -404,9 +404,9 @@ For RSA keys:
 
 
 ```
-mkdir -m 0700 -p \$HOME/backup/root/.ssh
+mkdir -m 0700 -p $HOME/backup/root/.ssh
 
-cp -p /root/.ssh/id\_rsa\* \$HOME/backup/root/.ssh/.
+cp -p /root/.ssh/id_rsa* $HOME/backup/root/.ssh/.
 ```
 
 
@@ -414,9 +414,9 @@ For DSA keys:
 
 
 ```
-mkdir -m 0700 -p \$HOME/backup/root/.ssh
+mkdir -m 0700 -p $HOME/backup/root/.ssh
 
-cp /root/.ssh/id\_dsa\* \$HOME/backup/etc/root/.ssh/.
+cp /root/.ssh/id_dsa* $HOME/backup/etc/root/.ssh/.
 ```
 
 
@@ -434,9 +434,9 @@ a backup of the resulting file:
 
 
 ```
-mkdir -p \$HOME/backup/etc
+mkdir -p $HOME/backup/etc
 
-cp /etc/ntp.conf \$HOME/backup/etc/.
+cp /etc/ntp.conf $HOME/backup/etc/.
 ```
 
 
@@ -459,19 +459,18 @@ backup of the following certificate files located on the manager server.
 
 
 ```
-mkdir -p \$HOME/backup/var/lib/chroma
+mkdir -p $HOME/backup/var/lib/chroma
 
-cp /var/lib/chroma/authority.crt \~/backup/var/lib/chroma/.
+cp /var/lib/chroma/authority.crt ~/backup/var/lib/chroma/.
 
-cp /var/lib/chroma/authority.pem \~/backup/var/lib/chroma/.
+cp /var/lib/chroma/authority.pem ~/backup/var/lib/chroma/.
 
-cp /var/lib/chroma/authority.srl \~/backup/var/lib/chroma/.
+cp /var/lib/chroma/authority.srl ~/backup/var/lib/chroma/.
 
-cp /var/lib/chroma/manager.crt \~/backup/var/lib/chroma/.
+cp /var/lib/chroma/manager.crt ~/backup/var/lib/chroma/.
 
-cp /var/lib/chroma/manager.pem \~/backup/var/lib/chroma/
+cp /var/lib/chroma/manager.pem ~/backup/var/lib/chroma/.
 ```
-.
 
 ### Manager for Lustre\* Database
 
@@ -491,10 +490,10 @@ root superuser on a RHEL or CentOS based operating system is:
 
 
 ```
-mkdir -p \$HOME/backup
+mkdir -p $HOME/backup
 
-su - postgres -c "/usr/bin/pg\_dumpall --clean" | /bin/gzip &gt;
-\$HOME/backup/pgbackup-\`date +\\%Y-\\%m-\\%d-\\%H:\\%M:\\%S\`.sql.gz
+su - postgres -c "/usr/bin/pg_dumpall --clean" | /bin/gzip >
+$HOME/backup/pgbackup-`date +\%Y-\%m-\%d-\%H:\%M:\%S`.sql.gz
 ```
 
 
@@ -605,7 +604,7 @@ Restore the backup of /etc/ntp.conf and restart NTP:
 
 
 ```
-cp \$HOME/backup/etc/ntp.conf /etc/ntp.conf
+cp $HOME/backup/etc/ntp.conf /etc/ntp.conf
 
 service ntpd restart
 ```
@@ -630,12 +629,12 @@ overwritten.
 ### Restore the PostgresSQL Database
 
 Run the restore command for PostgresSQL, assuming that the backup was
-created using the pg\_dumpall command as described in "Creating a Backup
+created using the `pg\_dumpall` command as described in "Creating a Backup
 Manifest [– Manager for Lustre\*
 Database](#manager-for-lustre-database)". Warning, this command
 will erase all existing database content:
 
-zcat \~/backup/pgbackup-\*.sql.gz | su - postgres -c "psql postgres"
+`zcat \~/backup/pgbackup-\*.sql.gz` | `su - postgres -c "psql postgres"`
 
 The following errors, usually encountered at the beginning of the
 restore output, can be ignored:
@@ -651,11 +650,13 @@ ERROR: role "postgres" already exists
 When the PostgreSQL database restore has completed, restart the services
 that were shut down:
 
+```bash
 service rabbitmq-server start
 
 service httpd start
 
 service chroma-supervisor start
+```
 
 Alternatively, reboot the Manager for Lustre\* server. The
 service will restart automatically.
@@ -705,4 +706,8 @@ after the service has been restored. To restore the connection, log into
 the affected Manager for Lustre\* asset (e.g., the MDS or OSS) and
 restart the client agent service as follows. This is a one-time fix.
 
+```
 service chroma-agent restart 
+```
+
+[Top of page](#1.0)

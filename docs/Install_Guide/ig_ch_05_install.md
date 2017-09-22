@@ -1,5 +1,5 @@
 [**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
-# Manager for Lustre\* Software Installation
+# <a name="1.0"></a>Manager for Lustre\* Software Installation
 
 **In this Chapter:**
 
@@ -12,33 +12,33 @@ This section describes how to install the Manager for Lustre\*
 software and the Manager for Lustre\* software on the *manager
 server.*
 
-After Manager for Lustre\* and Manager for Lustre\* software is
+After the Manager for Lustre\* software is
 installed, point your web browser to the Manager for Lustre\*
 dashboard. Use Chrome\* or Firefox\*. A display monitor with a minimum
 resolution of 1024 X 768 pixels is recommended, to adequately display
 the Manager for Lustre\* software GUI.
 
-**Note**: Later, when adding storage servers to your Lustre file system,
+**Note**: Later, when adding storage servers to your Lustre* file system,
 the Manager for Lustre\* agent, Manager for Lustre\*
 software, and specific dependencies (e.g.: for Corosync and Pacemaker)
 are automatically deployed to the storage server. This avoids the need
 to manually install the Manager for Lustre\* software on storage
 servers and avoids possible errors.
 
-**Note**: Some installations may opt to deploy and configure a Lustre
+**Note**: Some installations may opt to deploy and configure a Lustre*
 file system manually, without Manager for Lustre\* software.
-Other installations may opt to deploy and configure a Lustre file system
+Other installations may opt to deploy and configure a Lustre* file system
 and then later install Manager for Lustre\* software to be used
 in Monitor-only mode. The overall release tarball is iml-4.0.0.0.tar.gz.
-To deploy and configure Lustre manually, see [Installing and Configuring
-Lustre Manually](ig_ch_07_configure_clients.md/#installing-and-configuring-lustre-manually).
+To deploy and configure Lustre* manually, see [Installing and Configuring
+Lustre* Manually](ig_ch_07_configure_clients.md/#installing-and-configuring-lustre-manually).
 
 For information regarding installing and configuring Lustre, see Part II
-of the *Lustre Operations Manual*. This information is available at the
+of the *Lustre* Operations Manual*. This information is available at the
 following URL. If this page does not load, copy and paste it into your
 browser.
 
-https://build.hpdd.intel.com/job/lustre-manual/lastSuccessfulBuild/artifact/lustre_manual.xhtml#part.installconfig
+[https://build.hpdd.intel.com/job/lustre-manual/lastSuccessfulBuild/artifact/lustre_manual.xhtml#part.installconfig](https://build.hpdd.intel.com/job/lustre-manual/lastSuccessfulBuild/artifact/lustre_manual.xhtml#part.installconfig)
 
 Installing Manager for Lustre\* software
 --------------------------------------------
@@ -125,7 +125,7 @@ settings following the descriptions.
 
 **Default:** False (Uppercase first letter required.)
 
-**Description:** The default state is False, allowing automatic monitoring of power control devices. When set to True, this setting disables the manager software’s monitoring of your power control devices (eg, BMC, PDU outlets, etc.) This is necessary for sites where the manager server does not have access to the power control devices itself. However, Manager for Lustre\* software will then NO LONGER REPORT ANY FAILURE IN ANY POWER CONTROL DEVICES. If power control becomes non-operational, automatic failover will not occur on failure, and manual intervention will be required to restore service to your file system. If you chose to make this setting to True, we recommend implementing an alternate mechanism to monitor of power control devices, outside of Manager for Lustre\* software.
+**Description:** The default state is False, allowing automatic monitoring of power control devices. When set to True, this setting disables the manager software’s monitoring of your power control devices (eg, BMC, PDU outlets, etc.) This is necessary for sites where the manager server does not have access to the power control devices itself. However, Manager for Lustre\* software will then NO LONGER REPORT ANY FAILURE IN ANY POWER CONTROL DEVICES. If power control becomes non-operational, automatic failover will not occur on failure, and manual intervention will be required to restore service to your file system. If you chose to set this value to True, we recommend implementing an alternate mechanism to monitor your power control devices, outside of Manager for Lustre\* software.
 
 **Other Settings**:
 
@@ -136,7 +136,7 @@ settings following the descriptions.
 |**```EMAIL\_HOST\_USER```**|' '|SMTP server username (or ' ').|
 |**```EMAIL\_HOST\_PASSWORD```**|' '|SMTP server username (or ' ').|
 |**```EMAIL\_USE\_TLS```**|False (Uppercase first letter required.)|True indicates that TLS/SSL is to be used. False indicates it is not to be used.|
-|**```EMAIL\_SENDER```**|'noreply\@\<command_center server_fqdn>'|The address that appears in the *From* field on alert emails.
+|**```EMAIL\_SENDER```**|`noreply@<command_center server_fqdn>`|The address that appears in the *From* field on alert emails.
 
 ### Editing Manager for Lustre\* Software Configuration Settings
 
@@ -158,8 +158,8 @@ In this example, the first letter of False must be capitalized.
 
 1.  To configure email alerts, complete one of the options below. By default, email alerts from the Manager for Lustre\* software are disabled (EMAIL\_HOST set to None).
 
-    -   *Option 1: Set up an external mail server.* Create or modify the file\
-    /usr/share/chroma-manager/local\_settings.py to provide appropriate values for these settings:
+    -   *Option 1: Set up an external mail server.* Create or modify the file
+    `/usr/share/chroma-manager/local\_settings.py` to provide appropriate values for these settings:
 
         a.  Set EMAIL\_SENDER to an address suitable for your site.
 
@@ -172,17 +172,18 @@ In this example, the first letter of False must be capitalized.
         b.  Set up a local mail daemon using standard procedures for Red Hat Enterprise Linux or CentOS such as those described in the Red Hat documentation at:
         [Mail Servers](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/ch-Mail_Servers.html)
 
-        c.  Set EMAIL\_HOST to 'localhost'
+        c.  Set EMAIL\_HOST to `localhost`
 
 
 1. Run the chroma configuration tool
-    in order to effect changes made to ```local_settings.py```.
+    in order to load changes made to ```local_settings.py```.
 ```
 # chroma-config restart
 ```
 
-
 For configuring user accounts, see the online Help in the
 Manager for Lustre\* software. The online Help also provides
-instructions for creating, monitoring, and managing your Lustre
+instructions for creating, monitoring, and managing your Lustre*
 file systems.
+
+[Top of page](#1.0)

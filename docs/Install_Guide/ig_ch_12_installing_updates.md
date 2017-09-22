@@ -1,5 +1,5 @@
 [**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
-# Installing Updates to Manager for Lustre\* software
+# <a name="1.0"></a>Installing Updates to Manager for Lustre\* software
 
 **Note**: Perform any OS update prior to updating the Manager for
 Lustre\* software.
@@ -9,7 +9,7 @@ from, or to, test releases are not specifically supported.
 
 Upgrading Manager for Lustre\* software and restarting the manager
 server will overwrite any changes previously made to the
-chroma-manager.conf template in /etc/httpd/conf.d/. Before upgrading
+chroma-manager.conf template in `/etc/httpd/conf.d/`. Before upgrading
 your installation or restarting your manager node, make sure you backup
 any modifications to this file first.
 
@@ -66,3 +66,5 @@ server and then all file system managed servers, do the following:
 
 7.  When all servers have been updated, restart the file system(s) that
     were stopped for this update.
+
+[Top of page](#1.0)

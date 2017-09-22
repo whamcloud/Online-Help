@@ -1,7 +1,7 @@
 [**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
-# Appendix C - Backup and Recovery of Servers Managed by Manager for Lustre\* Software
+# <a name="1.0"></a>Appendix C - Backup and Recovery of Servers Managed by Manager for Lustre\* Software
 
-**In this Chapter:
+**In this Chapter**:
 
 - [Introduction](#introduction)
 - [Backup Overview](#backup-overview-1)
@@ -16,24 +16,24 @@
 - [Manager for Lustre\* YUM Repository Configuration](#manager-for-lustre-yum-repository-configuration)
 - [Network Configuration](#network-configuration)
 - [SELinux Configuration](#selinux-configuration)
-- [Lustre LNET Configuration](#lustre-lnet-configuration)
+- [Lustre* LNET Configuration](#lustre-lnet-configuration)
 - [Pacemaker and Corosync High Availability Framework](#pacemaker-and-corosync-high-availability-framework)
 - [System Services Startup Scripts (rc.sysinit)](#system-services-startup-scripts-rc.sysinit)
-- [Sample Automated Backup Script for Manager Lustre Servers](#sample-automated-backup-script-for-manager-lustre-servers)
+- [Sample Automated Backup Script for Manager Lustre* Servers](#sample-automated-backup-script-for-manager-lustre-servers)
 - [Restoring a Server from Backup](#restoring-a-server-from-backup)
 
 
 **Note**: This appendix is outdated and in
 revision.  Procedures in this appendix were developed for servers
-running RHEL 6.7.  The process for servers running RHEL 7.3 is very
+running RHEL 6.7.  The process for servers running RHEL 7.3 and 7.4 is very
 similar, but *this appendix has not yet been revised or tested for RHEL
-7.3*.
+7.3 and 7.4*.
 
 Introduction
 ------------
 
 This appendix provides guidance on how to conduct bare-metal recovery of
-a Lustre server from a combination of the original installation media
+a Lustre* server from a combination of the original installation media
 and a backup manifest for the servers. This content describes the
 essential files required to recover the service to the point of the last
 successful backup. From this, readers can create processes that are
@@ -48,7 +48,7 @@ configured into high availability cluster pairs as defined in this
 section: [Building the System – The High Availability Configuration
 Spec](ig_ch_03_building.md/#building-the-system-the-high-availability-configuration-spec).
 
-For a high-availability Lustre file system configured and managed by
+For a high-availability Lustre* file system configured and managed by
 Manager for Lustre\* software, there must be at least one cluster
 pair hosting the Management Server (MGS) and a Metadata Server (MDS) for
 the file system. With the introduction of Distributed Namespace (DNE),
@@ -57,10 +57,10 @@ resources.
 
 In such an HA file system, there must also be at least one Object
 Storage Server (OSS) high availability cluster pair. There may be a
-large number of OSS pairs in a single Lustre file system.
+large number of OSS pairs in a single Lustre* file system.
 
 The process described herein assumes that Manager for Lustre\*
-software has provisioned Lustre servers and that a Lustre file system
+software has provisioned Lustre* servers and that a Lustre* file system
 has been successfully created. This process is restricted to coverage of
 managed servers and applies equally to Metadata and Object Storage
 servers.
@@ -70,11 +70,11 @@ Backup Overview
 
 Just as for any critical server infrastructure, it is essential to
 maintain a comprehensive and consistent backup of the system
-configuration for all of the servers managed by Manager for Lustre server
+configuration for all of the servers managed by Manager for Lustre* server
 software, and to maintain a repeatable and reliable method for
 recovering file system services in the event of a failure.
 
-Backup and recovery of Manager for Lustre MDS and OSS server software
+Backup and recovery of Manager for Lustre* MDS and OSS server software
 involves the following components:
 
 -   Operating system installation and configuration, to include:
@@ -167,11 +167,11 @@ Operating System
 
 **Note**: This appendix is outdated and in revision.  Procedures in this
 appendix were developed for servers running RHEL 6.7.  The process for
-servers running RHEL 7.3 is very similar, but this appendix has not yet
-been revised or tested for RHEL 7.3.
+servers running RHEL 7.3 and 7.4 is very similar, but this appendix has not yet
+been revised or tested for RHEL 7.3 and 7.4.
 
-Red Hat Enterprise Linux or CentOS Linux, version 6.7 or 7.2 must be
-installed on all Lustre servers. The OS must be deployed in a consistent
+Red Hat Enterprise Linux or CentOS Linux, version 7.3 or 7.4 must be
+installed on all Lustre* servers. The OS must be deployed in a consistent
 and repeatable manner. All servers should be running the same OS and
 version. For Red Hat Enterprise Linux and CentOS Linux, template-driven
 provisioning using Kickstart has proven to be reliable and
@@ -201,8 +201,8 @@ and reliably backed up
 The following example Kickstart template describes a basic platform with
 a small set of packages and two network interfaces: one for provisioning
 the OS and connection to the Manager for Lustre\* management network,
-the other might be used for Lustre communications traffic (if Ethernet
-is being used for Lustre networking).
+the other might be used for Lustre* communications traffic (if Ethernet
+is being used for Lustre* networking).
 
 An *example* Kickstart template:
 
@@ -238,13 +238,13 @@ repo --name="CentOS" --baseurl=http://10.0.1.1/CS6.4/ --cost=100
 
 
 Kickstart templates are flexible and powerful, and can be extended with
-the addition of pre- and post-install scripts. With a modest amount of
+the addition of pre-install and post-install scripts. With a modest amount of
 effort, the entire operating system installation can be fully automated.
 
 ### Host Name Resolution
 
 The hosts database /etc/hosts often contains the names and IP addresses
-for all of the members of the Lustre server infrastructure; include a
+for all of the members of the Lustre* server infrastructure; include a
 copy of this file in the operating system manifest. The file
 /etc/resolv.conf contains the list of DNS name servers in use on the
 network; include a copy of this file in the manifest as well.
@@ -334,14 +334,14 @@ SELinux during provisioning of the server. For RHEL and CentOS systems,
 there is a configuration setting for disabling SELinux in the file:
 /etc/selinux/config
 
-### Lustre LNET Configuration
+### Lustre* LNET Configuration
 
 This is normally set by the Manager for Lustre\*, but can be
 recovered by making a copy of the following file.
-
-\# Lustre LNet Configuration:
-
-/etc/modprobe.d/iml\_lnet\_module\_parameters.conf
+```
+# Lustre* LNet Configuration:
+/etc/modprobe.d/iml_lnet_module_parameters.conf
+```
 
 ### Pacemaker and Corosync High Availability Framework
 
@@ -349,14 +349,13 @@ The Corosync configuration is held in a plain text file, but the
 Pacemaker configuration is more complex and must be exported from the
 running cluster resource manager service. Fortunately, there is a simple
 command to export the Pacemaker configuration.
-
-\# Corosync Configuration:
-
+```
+# Corosync Configuration:
 /etc/corosync/corosync.conf
 
-\# Pacemaker Configuration:
-
-cibadmin --query &gt; \$HOME/cluster-cfg-\$HOSTNAME.xml
+# Pacemaker Configuration:
+cibadmin --query > $HOME/cluster-cfg-$HOSTNAME.xml
+```
 
 ### System Services Startup Scripts (rc.sysinit)
 
@@ -364,117 +363,98 @@ The following awk script parses the output from the chkconfig command
 and creates a shell script that can be executed to re-apply the
 runlevels for each of the installed services.
 
-\# RC.Sysinit Services Configuration:
+```bash
+# RC.Sysinit Services Configuration:
 
 chkconfig --list | awk '{
 
 on="";
-
 off="";
 
-for (i=2;i&lt;=8;i++) {
-
-if (\$i \~ /on\$/){
-
-on=sprintf("%s%s",on,substr(\$i,1,1))
-
+for (i=2;i<=8;i++) {
+  if ($i ~ /on$/) {
+    on=sprintf("%s%s",on,substr($i,1,1))
+  } else {
+    off=sprintf("%s%s",off,substr($i,1,1))
+  }
 }
 
-else {
+if (length(off)>0)
+    printf("/sbin/chkconfig --levels %s %s off\n",off,$1);
+if (length(on)>0)
+    printf("/sbin/chkconfig --levels %s %s on\n",on,$1)
+}' > $HOME/chkconfig-output-$HOSTNAME.sh
+```
 
-off=sprintf("%s%s",off,substr(\$i,1,1))
-
-}
-
-}
-
-if (length(off)&gt;0)
-
-printf("/sbin/chkconfig --levels %s %s off\\n",off,\$1);
-
-if (length(on)&gt;0)
-
-printf("/sbin/chkconfig --levels %s %s on\\n",on,\$1)
-
-}' &gt; \$HOME/chkconfig-output-\$HOSTNAME.sh
-
-### Sample Automated Backup Script for Manager for Lustre Servers
+### Sample Automated Backup Script for Manager for Lustre* Servers
 
 For a server managed by Manager for Lustre\* software, this script can
 be used as the basis for automating the backup of server configuration
 information.
 
-\#!/bin/sh
+```bash
+#!/bin/sh
 
-BCKNAME=bck-\$HOSTNAME-\`date +%Y%m%d-%H%M%S\`
+BCKNAME=bck-$HOSTNAME-`date +%Y%m%d-%H%M%S`
 
-BCKROOT=\$HOME/\$BCKNAME
+BCKROOT=$HOME/$BCKNAME
 
-mkdir -p \$BCKROOT
+mkdir -p $BCKROOT
 
-tar cf - \\
+tar cf - \
 
-/var/lib/chroma \\
+/var/lib/chroma \
 
-/etc/yum.repos.d/Intel-Lustre-Agent.repo \\
+/etc/yum.repos.d/Intel-Lustre-Agent.repo \
 
-/etc/sysconfig/network-scripts/ifcfg-\* \\
+/etc/sysconfig/network-scripts/ifcfg-* \
 
-/etc/sysconfig/system-config-firewall \\
+/etc/sysconfig/system-config-firewall \
 
-/etc/rsyslog.conf \\
+/etc/rsyslog.conf \
 
-/etc/ntp.conf \\
+/etc/ntp.conf \
 
-/etc/selinux/config \\
+/etc/selinux/config \
 
-/etc/modprobe.d/iml\_lnet\_module\_parameters.conf \\
+/etc/modprobe.d/iml_lnet_module_parameters.conf \
 
-/etc/corosync/corosync.conf \\
+/etc/corosync/corosync.conf \
 
-| (cd \$BCKROOT && tar xf -)
+| (cd $BCKROOT && tar xf -)
 
-\# Pacemaker Configuration:
+# Pacemaker Configuration:
 
-cibadmin --query &gt; \$BCKROOT/cluster-cfg-\$HOSTNAME.xml
+cibadmin --query > $BCKROOT/cluster-cfg-$HOSTNAME.xml
 
-\# RC.Sysinit Services Configuration:
+# RC.Sysinit Services Configuration:
 
 chkconfig --list | awk '{
 
 on="";
-
 off="";
 
-for (i=2;i&lt;=8;i++) {
-
-if (\$i \~ /on\$/){
-
-on=sprintf("%s%s",on,substr(\$i,1,1))
-
+for (i=2;i<=8;i++) {
+  if ($i ~ /on$/) {
+    on=sprintf("%s%s",on,substr($i,1,1))
+  } else {
+    off=sprintf("%s%s",off,substr($i,1,1))
+  }
 }
 
-else {
+if (length(off)>0)
+  printf("/sbin/chkconfig --levels %s %s off\n",off,$1);
 
-off=sprintf("%s%s",off,substr(\$i,1,1))
+if (length(on)>0)
 
-}
+printf("/sbin/chkconfig --levels %s %s on\n",on,$1)
 
-}
+}' > $BCKROOT/chkconfig-output-$HOSTNAME.sh
 
-if (length(off)&gt;0)
+cd `dirname $BCKROOT`
 
-printf("/sbin/chkconfig --levels %s %s off\\n",off,\$1);
-
-if (length(on)&gt;0)
-
-printf("/sbin/chkconfig --levels %s %s on\\n",on,\$1)
-
-}' &gt; \$BCKROOT/chkconfig-output-\$HOSTNAME.sh
-
-cd \`dirname \$BCKROOT\`
-
-tar zcf \$BCKROOT.tgz \`basename \$BCKROOT\`
+tar zcf $BCKROOT.tgz `basename $BCKROOT`
+```
 
 ### Restoring a Server from Backup
 
@@ -495,57 +475,64 @@ the Manager for Lustre\* GUI.
 #### Restore Process
 
 1.  Restore the SELinux configuration.
-
-cp \$BACKUP\_ROOT/etc/selinux/config /etc/selinux/.
+    ```
+    cp $BACKUP_ROOT/etc/selinux/config /etc/selinux/.
+    ```
 
 1.  Restore the contents of /var/lib/chroma, which includes the SSL
     certificates and the chroma-agent configuration.
-
-cp -a \$BACKUP\_ROOT/var/lib/chroma /var/lib/.
+    ```
+    cp -a $BACKUP_ROOT/var/lib/chroma /var/lib/.
+    ```
 
 1.  Restore the YUM repository definition:
-
-cp \$BACKUP\_ROOT/etc/yum.repos.d/Intel-Lustre-Agent.repo
-/etc/yum.repos.d/.
+    ```
+    cp $BACKUP_ROOT/etc/yum.repos.d/Intel-Lustre-Agent.repo /etc/yum.repos.d/.
+    ```
 
 1.  Restore the network interface configuration:
+    ```
+    cp $BACKUP_ROOT/etc/sysconfig/network-scripts/ifcfg-* /etc/sysconfig/network-scripts/.
 
-cp \$BACKUP\_ROOT/etc/sysconfig/network-scripts/ifcfg-\*
-/etc/sysconfig/network-scripts/.
-
-cp \$BACKUP\_ROOT/etc/sysconfig/system-config-firewall /etc/sysconfig/.
+    cp $BACKUP_ROOT/etc/sysconfig/system-config-firewall /etc/sysconfig/.
+    ```
 
 > Restart network interfaces, if required for the server to make the
 > connection to the IML server.
 
-1.  Re-install the Manager for Lustre server packages:
+1.  Re-install the Manager for Lustre* server packages:
 
-yum -y install --enablerepo=lustre,iml-agent,e2fsprogs \\
+    ```bash
+    yum -y install --enablerepo=lustre,iml-agent,e2fsprogs \
 
-lustre \\
+    lustre \
 
-kernel- 3.10.0-514.2.2.el7\_lustre.x86\_64.rpm
+    kernel- 3.10.0-514.2.2.el7_lustre.x86\_64.rpm
 
-yum -y install --enablerepo=iml-agent \\
+    yum -y install --enablerepo=iml-agent \
 
-chroma-agent \\
+    chroma-agent \
 
-chroma-agent-management \\
+    chroma-agent-management \
 
-chroma-diagnostics
+    chroma-diagnostics
+    ```
 
 1.  Restore the RSyslog configuration and NTP Configuration:
-
-cp \$BACKUP\_ROOT/etc/rsyslog.conf \$BACKUP\_ROOT/etc/ntp.conf /etc/.
+```
+cp $BACKUP_ROOT/etc/rsyslog.conf $BACKUP_ROOT/etc/ntp.conf /etc/.
+```
 
 1.  Restore the LNET Configuration:
-
-cp \$BACKUP\_ROOT/etc/modprobe.d/iml\_lnet\_module\_parameters.conf
+```
+cp $BACKUP_ROOT/etc/modprobe.d/iml_lnet_module_parameters.conf
 /etc/modprobe.d/.
+```
 
 1.  Restore the Corosync configuration:
-
-cp \$BACKUP\_ROOT/etc/corosync/corosync.conf /etc/corosync/.
+```
+cp $BACKUP_ROOT/etc/corosync/corosync.conf /etc/corosync/.
+```
 
 > **Note**: Do not restore the Pacemaker configuration at this time.
 
@@ -554,17 +541,19 @@ cp \$BACKUP\_ROOT/etc/corosync/corosync.conf /etc/corosync/.
 
 sh \$BACKUP\_ROOT/chkconfig-output-\$HOSTNAME.sh
 
-1.  Create the directories for the Lustre storage mount points. For
+1.  Create the directories for the Lustre* storage mount points. For
     example, the following script extracts the directory paths for the
-    Lustre storage from the chroma-agent configuration, and creates the
+    Lustre* storage from the chroma-agent configuration, and creates the
     directories:
 
-for i in /var/lib/chroma/targets/\* ; do
+    ```bash
+    for i in /var/lib/chroma/targets/\* ; do
 
-cat \$i | python -c 'import sys,json; obj=json.load(sys.stdin); print
-obj\["mntpt"\]';
+    cat \$i | python -c 'import sys,json; obj=json.load(sys.stdin); print
+    obj\["mntpt"\]';
 
-done | xargs mkdir -p
+    done | xargs mkdir -p
+    ```
 
 > This method is not officially sanctioned because the format of the
 > JSON configuration is not part of a public API and may change over
@@ -577,22 +566,25 @@ done | xargs mkdir -p
     running the Manager for Lustre\* software Linux kernel, and that LNET
     is properly configured. For example:
 
-\[root@ee-mds1 \~\]\# uname -r
+    ```
+    [root@ee-mds1 ~]# uname -r
 
-3.10.0-514.2.2.el7\_lustre.x86\_64.rpm \[root@ee-mds1 \~\]\# modprobe -v
-lnet
+    3.10.0-514.2.2.el7_lustre.x86_64.rpm [root@ee-mds1 ~]# modprobe -v lnet
 
-\[root@ee-mds1 \~\]\# lctl network up
+    [root@ee-mds1 ~]# lctl network up
 
-LNET configured
+    LNET configured
 
-\[root@ee-mds1 \~\]\# lctl list\_nids
+    [root@ee-mds1 ~]# lctl list\_nids
 
-<10.70.73.11@tcp>
+    <10.70.73.11@tcp>
+    ```
 
 1.  Verify that the basic cluster framework is also running:
 
-pcs status
+    ```
+    pcs status
+    ```
 
 a.  If the other server in the HA pair is already running, then the
     Pacemaker configuration should have been copied over when Pacemaker
@@ -615,28 +607,31 @@ b.  If both servers in the HA pair have been re-installed, then the
     the cluster, so clear out any historical error conditions and force
     the cluster to re-detect the current state. For example:
 
-\[root@ee-mds1 \~\]\# pcs resource show
+    ```
+    [root@ee-mds1 ~]# pcs resource show
 
-MGS\_7dec26 (ocf::chroma:Target): Started
+    MGS_7dec26 (ocf::chroma:Target): Started
 
-demo-MDT0000\_ae5915 (ocf::chroma:Target): Started
+    demo-MDT0000_ae5915 (ocf::chroma:Target): Started
 
-\[root@ee-mds1 \~\]\# pcs resource cleanup MGS\_7dec26
+    [root@ee-mds1 ~]# pcs resource cleanup MGS_7dec26
 
-Resource: MGS\_7dec26 successfully cleaned up
+    Resource: MGS_7dec26 successfully cleaned up
 
-\[root@ee-mds1 \~\]\# pcs resource cleanup demo-MDT0000\_ae5915
+    [root@ee-mds1 ~]# pcs resource cleanup demo-MDT0000_ae5915
 
-Resource: demo-MDT0000\_ae5915 successfully cleaned up
+    Resource: demo-MDT0000_ae5915 successfully cleaned up
+    ```
 
 1.  If the resources are running on their non-preferred servers (i.e.,
     on the failover hosts), then use the following commands to force a
     failback (or use Manager for Lustre\* GUI to manage the
     resources):
 
-    pcs resource move &lt;resource name&gt;
-
-    pcs resource clear &lt;resource name&gt;
+    ```
+    pcs resource move <resource name>
+    pcs resource clear <resource name>
+    ```
 
     The resource clear command removes any constraints imposed by the
 move, so that the resource can be moved back again in the event of a
@@ -652,9 +647,11 @@ subsequent failover trigger.
     full service is restored, this configuration change must be
     reversed.
 
+    ```
     pcs property set stonith-enabled=false
+    ```
 
 The cluster configuration has now been recovered to the running state
 based on the last backup taken. Note that this process assumes that the
-Lustre storage for the MGT, MDTs and OSTs remains intact during the
+Lustre* storage for the MGT, MDTs and OSTs remains intact during the
 outage and throughout the server recovery.

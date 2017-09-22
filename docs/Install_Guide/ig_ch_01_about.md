@@ -1,5 +1,5 @@
 [**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
-# About this Document
+# <a name="1.0"></a>About this Document
 
 **In this Chapter:**
 
@@ -18,13 +18,13 @@ This document provides detailed instructions for installing Manager for Lustre\*
 
 -   Introduces Manager for Lustre\* software and its
      capabilities to configure and support real-time management of
-     Lustre file systems, using a GUI-based dashboard
+     Lustre* file systems, using a GUI-based dashboard
 
 -   Provides detailed instructions about how to configure the components
      to create a file system that meets the High Availability
      Configuration Specification (discussed herein). Conformance with
      this specification permits configuration, monitoring, and
-     management of the Lustre file system using the Manager for
+     management of the Lustre* file system using the Manager for
      Lustre\* software.
 
 -   Describes the pre-installation tasks such as configuring servers,
@@ -36,7 +36,7 @@ This document provides detailed instructions for installing Manager for Lustre\*
 
 -   Describes how to configure Manager for Lustre\* software
 
--   Describes how to add storage servers to the Lustre file system
+-   Describes how to add storage servers to the Lustre* file system
 
 -   Provides troubleshooting information
 
@@ -108,8 +108,8 @@ Related Documentation
 -   *Configuring Snapshots for File Systems based on Manager for
     Lustre\* Software*
 
--   *Upgrading a Lustre file system to Manager for
-    Lustre\* software (Lustre only)*
+-   *Upgrading a Lustre* file system to Manager for
+    Lustre\* software (Lustre* only)*
 
 -   *Creating a Scalable File Service for Windows Networks using Manager for Lustre\* Software*
 
@@ -118,4 +118,4 @@ Related Documentation
 
 -   *Architecting a High-Performance Storage System White Paper*Title
 
-
+[Top of page](#1.0)

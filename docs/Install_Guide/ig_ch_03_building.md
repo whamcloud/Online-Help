@@ -1,5 +1,5 @@
 [**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
-# Building the System – The High Availability Configuration Spec
+# <a name="1.0"></a>Building the System – The High Availability Configuration Spec
 
 **In this Chapter:**
 
@@ -14,20 +14,14 @@
 - [Power Distribution Units](#power-distribution-units)
 - [Issues Regarding Power Loss to the BMC or PDU](#issues-regarding-power-loss-to-the-bmc-or-pdu)
 
-A high-availability Lustre file system managed by Manager for
+A high-availability Lustre* file system managed by Manager for
 Lustre\* software requires that your entire storage system configuration
 and all interfaces comply with the High Availability Configuration
 Specification presented in this chapter.
 
-If you are creating a Lustre file system that will use OpenZFS as the
+If you are creating a Lustre* file system that will use OpenZFS as the
 backend, see the guide *Lustre\* Installation and Configuration using
 Manager for Lustre\* Software and OpenZFS*.
-
-In addition to the specification presented next, please contact your
-Intel® technical support representative for the latest information
-regarding the configuration and interconnect requirements to achieve the
-maximum benefits of an HA file system managed by Manager for
-Lustre\* software.
 
 Overall System Configuration
 ----------------------------
@@ -53,8 +47,8 @@ for Lustre\* software consists of the following. See Figure 1.
     failed over to its peer server.
 
 -   **Management target** (MGT): The MGT stores configuration
-    information for all the Lustre file systems in a cluster and
-    provides this information to other Lustre components. The MGT is
+    information for all the Lustre* file systems in a cluster and
+    provides this information to other Lustre* components. The MGT is
     accessed by the primary MGS and, if the MGS fails, by the MDS
     operating in failover mode. The MGT should *not* be larger than 10
     Gbyte in capacity.
@@ -98,7 +92,7 @@ for Lustre\* software consists of the following. See Figure 1.
     servers and make separate connections to an IPMI port installed on
     each managed server.
 
--   **Lustre network**: Generally, the Lustre network (LNET) is either
+-   **Lustre* network**: Generally, the Lustre* network (LNET) is either
     10-gigabit Ethernet or Infiniband and provides high-speed file
     system access for each client. The required data rate of this
     network is generally driven by the file system size, the number of
@@ -106,7 +100,7 @@ for Lustre\* software consists of the following. See Figure 1.
 
 **Note**: After you have completely configured the system and installed
 Manager for Lustre\* software on the manager server, you will be
-ready to create the Lustre file system using the Manager for
+ready to create the Lustre* file system using the Manager for
 Lustre\* software. **Note that installation consists of installing
 Manager for Lustre\* software on the manager server only**. For HA
 file systems, the software automatically installs required packages on
@@ -159,8 +153,8 @@ security vulnerabilities in the Red Hat software.
 -   RAID 1 is a minimum recommendation. RAID 10 may be optimal for heavy
     workloads. Software RAID (MDRAID) disk discovery is not supported.
 
--   Red Hat Enterprise Linux or CentOS Linux, version 7.3 must be
-    installed on all servers. All Lustre servers should be running the
+-   Red Hat Enterprise Linux or CentOS Linux, version 7.3 or 7.4 must be
+    installed on all servers. All Lustre* servers should be running the
     same OS and version. CentOS must have access to the base
     repositories and update repositories. Red Hat must have the
     following channels registered and enabled:
@@ -211,8 +205,8 @@ requirements.
     Chapter 5, Determining Hardware Configuration Requirements and
     Formatting Options* for more information.
 
--   Red Hat Enterprise Linux or CentOS Linux version 7.3 must be
-    installed. All Lustre servers should be running the same OS and
+-   Red Hat Enterprise Linux or CentOS Linux version 7.3 or 7.4 must be
+    installed. All Lustre* servers should be running the same OS and
     version. CentOS must have access to the base repositories and update
     repositories. Red Hat must have the following channels registered
     and enabled:
@@ -237,7 +231,7 @@ requirements.
 Management Target
 -----------------
 
--   For comparatively small file systems, the typical management target capacity might be 100 MB. See the *Lustre\* 2.X File System Operations Manual, Chapter 5, Setting up a Lustre File System* for more information.
+-   For comparatively small file systems, the typical management target capacity might be 100 MB. See the *Lustre\* 2.X File System Operations Manual, Chapter 5, Setting up a Lustre* File System* for more information.
 - Manager for Lustre\* software does *not* support an MGT larger than 10 Gbytes.
 - RAID 1 is recommended. Software RAID (MDRAID) disk discovery is not supported.
 - As described above, the MGS and MDS servers are connected to the management storage in a primary/failover configuration.
@@ -246,7 +240,7 @@ Management Target
 Metadata Target
 ---------------
 
--   Storage capacity for the metadata target should be 2K bytes per storage system file. Multiply the anticipated number of files the file system will contain by 2K to determine the required capacity of the target. See the *Lustre\* 2.X File System Operations Manual, Chapter 5, Setting up a Lustre File System* for more information.
+-   Storage capacity for the metadata target should be 2K bytes per storage system file. Multiply the anticipated number of files the file system will contain by 2K to determine the required capacity of the target. See the *Lustre\* 2.X File System Operations Manual, Chapter 5, Setting up a Lustre* File System* for more information.
 - RAID 10 is recommended for metadata targets. Software RAID (MDRAID) disk discovery is not supported.
 - As described above, the MGS and MDS servers are connected to metadata storage in a primary/failover configuration.
 - All required multipath configuration between each storage server controller and its physical storage devices must be complete.
@@ -254,7 +248,7 @@ Metadata Target
 Object Storage Server and Target Requirements
 ---------------------------------------------
 
-The object storage server (OSS) provides access to the object storage target(s) (OST). There is no specific limit to the number of OSSs. For HA, each OSS must have a failover twin. This means that OSSs are paired. Each OSS pair can provide access for to up to 8 targets or LUNS. The maximum capacity for an OST is 128 terabytes. Figure 3 depicts the configuration and interconnect requirements for HA OSSs and OSTs. See the *Lustre\* 2.X File System Operations Manual, Chapter 5, Setting up a Lustre File System* for more information.
+The object storage server (OSS) provides access to the object storage target(s) (OST). There is no specific limit to the number of OSSs. For HA, each OSS must have a failover twin. This means that OSSs are paired. Each OSS pair can provide access for to up to 8 targets or LUNS. The maximum capacity for an OST is 128 terabytes. Figure 3 depicts the configuration and interconnect requirements for HA OSSs and OSTs. See the *Lustre\* 2.X File System Operations Manual, Chapter 5, Setting up a Lustre* File System* for more information.
 
 ![oss\_config.png](md_Graphics/ig_image4.png)
 
@@ -262,13 +256,13 @@ The object storage server (OSS) provides access to the object storage target(s) 
 
 Requirements for HA object storage servers and targets are as follows:
 
--   Red Hat Enterprise Linux or CentOS Linux version 7.3 must be installed. All Lustre servers should be running the same OS and version. CentOS must have access to the base repositories and update repositories. Red Hat must have the following channels registered and enabled:
+-   Red Hat Enterprise Linux or CentOS Linux version 7.3 or 7.4 must be installed. All Lustre* servers should be running the same OS and version. CentOS must have access to the base repositories and update repositories. Red Hat must have the following channels registered and enabled:
     - rhel-x86\_64-server-supplementary-7
     - rhel-x86\_64-server-optional-7
     - rhel-x86\_64-server-ha-7
     - rhel-x86\_64-server-7
 
--   A storage device of at least 6 GB on each server to store the operating system and additional packages. Generally, OSS and OST space requirements are driven by the total size of the file system, the number of servers and OST, the number of files in the file system and the file size. See the Lustre\* 2.X File System Operations Manual, Chapter 5, Setting up a Lustre File System for more information.
+-   A storage device of at least 6 GB on each server to store the operating system and additional packages. Generally, OSS and OST space requirements are driven by the total size of the file system, the number of servers and OST, the number of files in the file system and the file size. See the Lustre\* 2.X File System Operations Manual, Chapter 5, Setting up a Lustre* File System for more information.
 -  A dedicated Ethernet port capable of one gigabit/sec. This port connects to the Management network.
 - yum needs to be functional, with any needed proxies, and default yum repositories must be fully configured. Run yum update to verify that yum updates occur successfully.
 - HA servers are configured in pairs, with a primary server and a failover server.
@@ -311,7 +305,7 @@ the Manager for Lustre\* software GUI.
 PDU](#issues-regarding-power-loss-to-the-bmc-or-pdu)
 
 After you have connected and configured IPMI, see [Appendix A, IPMI
-Checks](ig_ch_14_appA_IPMI.md).
+Checks](ig_ch_13_appA_IPMI.md).
 
 ### Power Distribution Units
 
@@ -357,3 +351,5 @@ Power loss to a PDU will mean that HA will be unable to fail the targets
 over. As in the above situation, the remedy is to restore power to the
 PDU to restore the functionality of your file system. We recommend
 redundant PDUs if availability is critical.
+
+[Top of page](#1.0)
