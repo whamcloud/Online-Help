@@ -1,3 +1,5 @@
+[**Manager for Lustre\* 4.0.0 API Documentation**](./api_TOC.md)
+
 # <a name="1.0"></a>REST API for Manager for Lustre\* software
 
 ## <a name="1.1"></a>Introduction
@@ -12,8 +14,8 @@ applications.
 
 The API is based on the [REST](http://en.wikipedia.org/wiki/Representational_state_transfer)
 style, and uses [JSON](http://en.wikipedia.org/wiki/JSON) serialization.  Some of the
-resources exposed in the API correspond to functionality within the Lustre file system, while
-others refer to functionality specific to the Intel® Manager for Lustre software.
+resources exposed in the API correspond to functionality within the Lustre* file system, while
+others refer to functionality specific to the Manager for Lustre* software.
 
 This document consists of a series of sections explaining how to use the API, followed
 by an [Example client](#1.7), and a detailed [API Reference](#1.8) describing all
@@ -21,17 +23,17 @@ available functionality.
 
 ### <a name="1.1.1"></a>Prerequisites
 
-- Familiarity with managing Lustre using the manager server web interface provided with the Intel® Manager for Lustre* software.
+- Familiarity with managing Lustre* using the manager server web interface provided with the Manager for Lustre* software.
 - Familiarity with HTTP, including the meanings and conventions around the methods (e.g. GET, POST, DELETE) and status codes (e.g. 404, 200).
 - Competence in using a suitable high level programming language to write your API client and the libraries used with your language for HTTP network operations and JSON serialization.
 
-## <a name="1.2"></a>Overview of Lustre File Systems in the API
+## <a name="1.2"></a>Overview of Lustre* File Systems in the API
 
 
 ### <a name="1.2.1"></a>Terminology
 
 
-The terminology used in this document differs somewhat from that used when administering a Lustre file system manually. This document avoids referring to a host as an object storage server (OSS), metdata server (MDS), or management server (MGS) because, in a Lustre file system created using the Intel® Manager for Lustre* software, a host can serve targets of any of these types.
+The terminology used in this document differs somewhat from that used when administering a Lustre* file system manually. This document avoids referring to a host as an object storage server (OSS), metdata server (MDS), or management server (MGS) because, in a Lustre* file system created using the Manager for Lustre* software, a host can serve targets of any of these types.
  
 Lustre-specific terms used in this API include:
 
@@ -154,9 +156,7 @@ All list methods (e.g. ``GET /api/host``) return a dict with 'meta' and 'objects
 
 If you wish to obtain all objects, pass ``limit=0`` as a parameter to the request.
 
-.. code-block:: javascript
-
-
+```json
     {
         "meta": {
             "limit": 20,
@@ -167,6 +167,7 @@ If you wish to obtain all objects, pass ``limit=0`` as a parameter to the reques
         },
         "objects": [{...}, {...}]
     }
+```
 
 Where:
 
@@ -198,7 +199,7 @@ On resources that support the DELETE method, this method may be used to remove r
 from the storage server.  Some objects can always be removed immediately, while
 others take some time to remove and the operation may not succeed.  For example,
 removing a file system requires removing the configuration of its targets from
-the Lustre servers: if a DELETE is sent for such an object then the operation
+the Lustre* servers: if a DELETE is sent for such an object then the operation
 will be run asynchronously (see [Asynchronous Actions](#1.4.1))
 
 ### <a name="1.4.1"></a>Asynchronous Actions
@@ -207,9 +208,7 @@ will be run asynchronously (see [Asynchronous Actions](#1.4.1))
 When an action will occur in the background, the ACCEPTED (202) status code is
 returned, with a dictionary containing a command object, e.g.:
 
-.. code-block:: javascript
-
-
+```json
     {
         "command": {
             "id": 22,
@@ -217,6 +216,7 @@ returned, with a dictionary containing a command object, e.g.:
             "message": "Starting filesystem testfs"
         }
     }
+```
 
 In some cases, the response may include additional fields describing work
 that was completed synchronously. For example, POSTing to ``/api/filesystem/``
@@ -240,33 +240,32 @@ state to change.
 
 For example, consider this host object:
 
-.. code-block:: javascript
-
+```json
     {
-        address: "flint02",
-        available_transitions: [
+        "address": "flint02",
+        "available_transitions": [
             {
-                state: "removed",
-                verb: "Remove"
+                "state": "removed",
+                "verb": "Remove"
             },
             {
-                state: "lnet_unloaded",
-                verb: "Unload LNet"
+                "state": "lnet_unloaded",
+                "verb": "Unload LNet"
             },
             {
-                state: "lnet_down",
-                verb: "Stop LNet"
+                "state": "lnet_down",
+                "verb": "Stop LNet"
             }
         ],
-        content_type_id: 6,
-        fqdn: "flint02",
-        id: "10",
-        label: "flint02",
-        nodename: "flint02",
-        resource_uri: "/api/host/10/",
-        state: "lnet_up"
+        "content_type_id": 6,
+        "fqdn": "flint02",
+        "id": "10",
+        "label": "flint02",
+        "nodename": "flint02",
+        "resource_uri": "/api/host/10/",
+        "state": "lnet_up"
     }
-
+```
 
 The host is in state ``lnet_up``.  To stop LNet, the host state can be transitioned to the appropriate available 
 transition 'lnet_down'/'Stop LNet' by executing a PUT ``{"state": "lnet_down"}`` to ``/api/host/10/``.
@@ -341,12 +340,11 @@ errors on the fields.
 For example, attempting to create a file system with a name longer than 8 characters
 may result in a 400 response with the following body:
 
-.. code-block:: javascript
-
-
+```json
     {
         "name": "Filesystem name 'verylongname' is too long (limit 8 characters)"
     }
+```
 
 BAD REQUEST (400) responses to GETs and DELETEs indicate that something more
 serious was wrong with the request, for example, the caller attempted to filter
@@ -358,13 +356,12 @@ or sort on a field that is not permitted.
 If an unhandled exception, INTERNAL SERVER ERROR (500), occurs during an API call, and the 
 manager server is running in development mode, the exception and traceback will be serialized and returned as JSON:
 
-.. code-block:: javascript
-
+```json
     {
         "error_message": "Exception 'foo'",
         "traceback": "Traceback (most recent call last):\n  File "/usr/lib/python2.7/site-packages/django/core/handlers/base.py", line 111, in get_response\n    response = callback(request, *callback_args, **callback_kwargs)"
     }
-
+```
 
 ## <a name="1.7"></a>Example Client
 
@@ -373,20 +370,231 @@ The example below is written in Python``*`` and uses the ``python-requests``
 module for HTTP operations.  It demonstrates how to establish a session, authenticate,
 and retrieve a list of hosts.
 
-.. literalinclude:: /../../tests/integration/shared_storage_configuration/example_api_client.py
-   :language: python
-   :linenos:
+```python
+import os
+import requests
+import json
+from urlparse import urljoin
+
+LOCAL_CA_FILE = "chroma.ca"
+
+
+def setup_ca(url):
+    """
+    To verify the server's identity on subsequent connections, first
+    download the manager server's local CA.
+    """
+
+    if os.path.exists(LOCAL_CA_FILE):
+        os.unlink(LOCAL_CA_FILE)
+
+    response = requests.get(urljoin(url, "certificate/"), verify = False)
+    if response.status_code != 200:
+        raise RuntimeError("Failed to download CA: %s" % response.status_code)
+
+    open(LOCAL_CA_FILE, 'w').write(response.content)
+    print "dir %s" % os.getcwd()
+    print "Stored chroma CA certificate at %s" % LOCAL_CA_FILE
+
+
+def list_hosts(url, username, password):
+    # Create a local session context
+    session = requests.session()
+    session.headers = {"Accept": "application/json", "Content-type": "application/json"}
+    session.verify = LOCAL_CA_FILE
+
+    # Obtain a session ID from the API
+    response = session.get(urljoin(url, "api/session/"))
+    if not 200 <= response.status_code < 300:
+        raise RuntimeError("Failed to open session")
+    session.headers['X-CSRFToken'] = response.cookies['csrftoken']
+    session.cookies['csrftoken'] = response.cookies['csrftoken']
+    session.cookies['sessionid'] = response.cookies['sessionid']
+
+    # Authenticate our session by username and password
+    response = session.post(urljoin(url, "api/session/"), data = json.dumps({'username': username, 'password': password}))
+    if not 200 <= response.status_code < 300:
+        raise RuntimeError("Failed to authenticate")
+
+    # Get a list of servers
+    response = session.get(urljoin(url, "api/host/"))
+    if not 200 <= response.status_code < 300:
+        raise RuntimeError("Failed to get host list")
+    body_data = json.loads(response.text)
+    # Print out each host's address
+    return [host['fqdn'] for host in body_data['objects']]
+
+if __name__ == '__main__':
+    url = "https://localhost:8000/"
+    username = 'debug'
+    password = 'password'
+    setup_ca(url)
+    print list_hosts(url, username, password)
+
+```
 
 ## <a name="1.8"></a>API Reference
 
 
 **Note:** in addition to the information in this document, you may inspect the 
-available API resources and their fields on a running manager server server.  To enumerate 
+available API resources and their fields on a running manager server.  To enumerate 
 available resources, use GET ``/api/``.  The resulting list includes links to 
 individual resource schemas like ``/api/host/schema``.
 
-.. tastydoc:: chroma_api.urls.api
+```json
+{
+  "alert": {
+    "list_endpoint": "/api/alert/",
+    "schema": "/api/alert/schema/"
+  },
+  "alert_subscription": {
+    "list_endpoint": "/api/alert_subscription/",
+    "schema": "/api/alert_subscription/schema/"
+  },
+  "alert_type": {
+    "list_endpoint": "/api/alert_type/",
+    "schema": "/api/alert_type/schema/"
+  },
+  "client_error": {
+    "list_endpoint": "/api/client_error/",
+    "schema": "/api/client_error/schema/"
+  },
+  "client_mount": {
+    "list_endpoint": "/api/client_mount/",
+    "schema": "/api/client_mount/schema/"
+  },
+  "command": {
+    "list_endpoint": "/api/command/",
+    "schema": "/api/command/schema/"
+  },
+  "copytool": {
+    "list_endpoint": "/api/copytool/",
+    "schema": "/api/copytool/schema/"
+  },
+  "copytool_operation": {
+    "list_endpoint": "/api/copytool_operation/",
+    "schema": "/api/copytool_operation/schema/"
+  },
+  "corosync_configuration": {
+    "list_endpoint": "/api/corosync_configuration/",
+    "schema": "/api/corosync_configuration/schema/"
+  },
+  "filesystem": {
+    "list_endpoint": "/api/filesystem/",
+    "schema": "/api/filesystem/schema/"
+  },
+  "group": {
+    "list_endpoint": "/api/group/",
+    "schema": "/api/group/schema/"
+  },
+  "ha_cluster": {
+    "list_endpoint": "/api/ha_cluster/",
+    "schema": "/api/ha_cluster/schema/"
+  },
+  "help": {
+    "list_endpoint": "/api/help/",
+    "schema": "/api/help/schema/"
+  },
+  "host": {
+    "list_endpoint": "/api/host/",
+    "schema": "/api/host/schema/"
+  },
+  "host_profile": {
+    "list_endpoint": "/api/host_profile/",
+    "schema": "/api/host_profile/schema/"
+  },
+  "job": {
+    "list_endpoint": "/api/job/",
+    "schema": "/api/job/schema/"
+  },
+  "lnet_configuration": {
+    "list_endpoint": "/api/lnet_configuration/",
+    "schema": "/api/lnet_configuration/schema/"
+  },
+  "log": {
+    "list_endpoint": "/api/log/",
+    "schema": "/api/log/schema/"
+  },
+  "network_interface": {
+    "list_endpoint": "/api/network_interface/",
+    "schema": "/api/network_interface/schema/"
+  },
+  "nid": {
+    "list_endpoint": "/api/nid/",
+    "schema": "/api/nid/schema/"
+  },
+  "pacemaker_configuration": {
+    "list_endpoint": "/api/pacemaker_configuration/",
+    "schema": "/api/pacemaker_configuration/schema/"
+  },
+  "package": {
+    "list_endpoint": "/api/package/",
+    "schema": "/api/package/schema/"
+  },
+  "power_control_device": {
+    "list_endpoint": "/api/power_control_device/",
+    "schema": "/api/power_control_device/schema/"
+  },
+  "power_control_device_outlet": {
+    "list_endpoint": "/api/power_control_device_outlet/",
+    "schema": "/api/power_control_device_outlet/schema/"
+  },
+  "power_control_type": {
+    "list_endpoint": "/api/power_control_type/",
+    "schema": "/api/power_control_type/schema/"
+  },
+  "registration_token": {
+    "list_endpoint": "/api/registration_token/",
+    "schema": "/api/registration_token/schema/"
+  },
+  "server_profile": {
+    "list_endpoint": "/api/server_profile/",
+    "schema": "/api/server_profile/schema/"
+  },
+  "session": {
+    "list_endpoint": "/api/session/",
+    "schema": "/api/session/schema/"
+  },
+  "step": {
+    "list_endpoint": "/api/step/",
+    "schema": "/api/step/schema/"
+  },
+  "storage_resource": {
+    "list_endpoint": "/api/storage_resource/",
+    "schema": "/api/storage_resource/schema/"
+  },
+  "storage_resource_class": {
+    "list_endpoint": "/api/storage_resource_class/",
+    "schema": "/api/storage_resource_class/schema/"
+  },
+  "system_status": {
+    "list_endpoint": "/api/system_status/",
+    "schema": "/api/system_status/schema/"
+  },
+  "target": {
+    "list_endpoint": "/api/target/",
+    "schema": "/api/target/schema/"
+  },
+  "test_host": {
+    "list_endpoint": "/api/test_host/",
+    "schema": "/api/test_host/schema/"
+  },
+  "user": {
+    "list_endpoint": "/api/user/",
+    "schema": "/api/user/schema/"
+  },
+  "volume": {
+    "list_endpoint": "/api/volume/",
+    "schema": "/api/volume/schema/"
+  },
+  "volume_node": {
+    "list_endpoint": "/api/volume_node/",
+    "schema": "/api/volume_node/schema/"
+  }
+}
+```
 
+[Top of page](#1.0)
 
 ## <a name="1.9"></a>Legal Information
 

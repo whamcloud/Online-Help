@@ -1,3 +1,5 @@
+[**Manager for Lustre\* 4.0.0 API Documentation**](./api_TOC.md)
+
 # <a name="1.0"></a>Storage Plugin Developer's Guide for Manager for Lustre\* software
 
 
@@ -14,9 +16,9 @@ the Storage Plugin API described in this document:
 * The objects to be reported are described by declaring a series of
   Python classes (refer to [Storage Sources](#1.2)
 * Certain of these objects are used to store the contact information
-  such as IP addresses for managed devices(refer to [Scannable Storage Resources]`scannable_storage_resources`
+  such as IP addresses for managed devices(refer to [Scannable Storage Resources](#scannable_storage_resources))
 * A main plugin class is implemented to provide required hooks for
-  initialization and teardown(refer to [Storage Plugins]
+  initialization and teardown(refer to [Storage Plugins](#storage_plugins))
 
 The API is designed to minimize the lines of code required to write a plugin, 
 minimize the duplication of effort between different plugins, and make as much
@@ -40,7 +42,7 @@ the resources, used for associating problems with one resource with another reso
 takes the form of an "affects" relationship between resources, for example the health of 
 a physical disk affects the health of its pool, and the health of a pool affects LUNs
 in that pool.  These relationships allow the effects of issues to be traced all the 
-way up to the Lustre file system level and an appropriate drill-down user interface to be provided.
+way up to the Lustre* file system level and an appropriate drill-down user interface to be provided.
 
 The API may change over time.  To ensure plugins are able to run against a particular
 version of the API, each plugin module must declare the version of the API it intends to use.
@@ -58,9 +60,6 @@ See the example plugin below for details on how to specify the version in your p
 - **resource class:** A subclass of Resource declaring a means of identification, attributes, statistics and alert conditions.
 - **resource:** An instance of a particular resource class, with a unique identifier.
 
-
-.. _storage_resources:
-
 ## <a name="1.2"></a>Declaring Resources
 -------------------
 
@@ -68,7 +67,7 @@ A `Resource` represents a single, uniquely identified object.  It may be a physi
 device such as a physical hard drive, or a virtual object such as a storage pool or 
 virtual machine.
 
-.. code-block:: python
+```python
 
    from chroma_core.lib.storage_plugin.api import resources, identifiers, attributes, statistics
 
@@ -79,15 +78,16 @@ virtual machine.
 
        class Meta:
            identifier = identifiers.GlobalId('serial_number')
+```
 
 In general, storage resources may inherit from Resource directly, but
 optionally they may inherit from a built-in resource class as a way of 
 identifying common resource types for presentation purposes.  See 
-:ref:`storage_plugin_builtin_resource_classes` for the available built-in
+[Resource Classes](#storage_plugin_builtin_resource_classes) for the available built-in
 resource types.
 
 Attributes
-~~~~~~~~~~
+----------
 
 The ``serial_number`` and ``capacity`` attributes of the HardDrive class are
 from the ``attributes`` module.  These are special classes which:
@@ -95,17 +95,17 @@ from the ``attributes`` module.  These are special classes which:
 * Apply validation conditions to the attributes
 * Act as metadata for the presentation of the attribute in the manager server user interface
 
-Various attribute classes are available for use, see :ref:`storage_plugin_attribute_classes`.
+Various attribute classes are available for use, see [Attribute Classes](#storage_plugin_attribute_classes).
 
 Attributes may be optional or mandatory.  They are mandatory by default. To 
 make an attribute optional, pass ``optional = True`` to the constructor.
 
 Statistics
-~~~~~~~~~~
+----------
 
 The ``temperature`` attribute of the HardDrive class is an example of
 a resource statistic. Resource statistics differ from resource
-attributes in the way they are presented to the user.  See :ref:`storage_plugin_statistic_classes`
+attributes in the way they are presented to the user.  See [Statistic Classes](#storage_plugin_statistic_classes)
 for more on statistics.
 
 Statistics are stored at runtime by assigning to the relevant
@@ -114,7 +114,7 @@ attribute of a storage resource instance.  For example, for a
 the statistic.
 
 Identifiers
-~~~~~~~~~~~
+-----------
 
 Every Resource subclass is required to have an ``identifier`` attribute
 that declares which attributes are to be used to uniquely identify the resource.
@@ -132,13 +132,14 @@ Either of the above classes is initialized with a list of attributes which
 in combination are a unique identifier.  For example, if a true hard drive 
 identifier is unavailable, a drive might be identified within a particular couplet 
 by its shelf and slot number, like this:
-::
 
+```python
     class HardDrive(Resource):
         class Meta:
             identifier = identifiers.ScopedId('shelf', 'slot')
         shelf = attributes.ResourceReference()
         slot = attributes.Integer()
+```
 
 If a resource is created by users that doesn't have a natural unique
 set of attributes, you can use ``identifiers.AutoId()`` to have
@@ -146,29 +147,28 @@ an internal ID assigned.  This is only valid for ScannableResource subclasses, a
 allow the user to create more than one identical resource. Therefore, use with care.
 
 Relationships
-~~~~~~~~~~~~~
+-------------
 
-The ``update_or_create`` function used to report resources (see :ref:`storage_plugins`) 
+The ``update_or_create`` function used to report resources (see [Storage Plugins](#storage_plugins)) 
 takes a ``parents`` argument, which is a list of the resources that directly affect the 
 status of this resource.  This relationship does not imply ownership, but rather "a problem 
 with parent is a problem with child" relationship.  For example,
-a chain of relationships might be Fan->Enclosure->Physical disk->Pool->LUN.  
-The graph of these relationships must be acyclic.
+a chain of relationships might be *Fan->Enclosure->Physical disk->Pool->LUN*. The graph of these relationships must be acyclic.
 
 Although plugins will run without any parent relationships, it is important
 to populate them so that hardware issues can be associated with the relevant
-Lustre target or file system.
+Lustre* target or file system.
 
 Alert Conditions
-~~~~~~~~~~~~~~~~
+----------------
 
 Plugins can communicate error states by declaring *Alert conditions*,
 which monitor the values of resource attributes and display alerts in the
 manager server user interface when an error condition is encountered.
 
 Alert conditions are specified for each resource in the Meta section, like this:
-::
 
+```python
     class HardDrive(Resource):
         class Meta:
             identifier = identifiers.ScopedId('shelf', 'slot')
@@ -178,13 +178,14 @@ Alert conditions are specified for each resource in the Meta section, like this:
         shelf = attributes.ResourceReference()
         slot = attributes.Integer()
         status = attributes.String()
+```
 
-Several types of alert conditions are available. See :ref:`storage_plugin_alert_conditions`.
+Several types of alert conditions are available. See [Alert Conditions](#storage_plugin_alert_conditions).
 
 If a resource has more than one alert condition that refers to the same attribute, it is
 necessary to add an `id` argument to allow each alert condition to be uniquely identified.  For example:
-::
 
+```python
     class HardDrive(Resource):
         class Meta:
             identifier = identifiers.ScopedId('shelf', 'slot')
@@ -195,17 +196,14 @@ necessary to add an `id` argument to allow each alert condition to be uniquely i
         shelf = attributes.ResourceReference()
         slot = attributes.Integer()
         status = attributes.String()
+```
 
 You can tell if it is necessary to add an explicit ID by looking for an error in the
-output of the validation process (:ref:`validation`) -- if a plugin passes validation without `id`
+output of the validation process ([validation](#validation)) -- if a plugin passes validation without `id`
 arguments to alert conditions, it is recommended that `id` be omitted.
 
-
-
-.. _scannable_storage_resources:
-
-Declaring a ScannableResource
------------------------------
+<a name="scannable_storage_resources"></a>Declaring a ScannableResource
+-----------------------------------------------------------------------
 
 Certain storage resources are considered 'scannable':
 
@@ -216,8 +214,7 @@ Certain storage resources are considered 'scannable':
 A typical scannable resource is a storage controller or couplet of
 storage controllers.
 
-::
-
+```python
    from chroma_core.lib.storage_plugin.api import attributes, identifiers, resources
 
    class StorageController(resources.ScannableResource):
@@ -226,10 +223,9 @@ storage controllers.
 
        class Meta:
            identifier = identifiers.GlobalId('address_1', 'address_2')
+```
 
-.. _storage_plugins:
-
-Implementing a Plugin
+<a name="storage_plugins"></a>Implementing a Plugin
 ---------------------
 
 The Resource classes are simply declarations of what resources can be 
@@ -237,31 +233,129 @@ reported by the plugin and what properties they will have.  The plugin module
 must also contain a subclass of *Plugin* which implements at least the
 ``initial_scan`` function:
 
-.. automethod:: chroma_core.lib.storage_plugin.api.plugin.Plugin.initial_scan
+```python
+# chroma_core.lib.storage_plugin.api.plugin.Plugin.initial_scan
+def initial_scan(self, root_resource):
+    """
+    Required
+
+    Identify all resources present at this time and call register_resource on them.
+
+    If you return from this function you must have succeeded in communicating with the scannable resource.  Any
+    resources which were present previously and are absent when initial_scan returns are assumed to be
+    permanently absent and are deleted.  If for any reason you cannot return all resources (for example,
+    communication failure with a controller), you must raise an exception.
+
+    :param root_resource: All resources of the plugin for each host are children of this resource.
+    :return: No return value
+    """
+    raise NotImplementedError
+```
 
 Within ``initial_scan``, plugins use the ``update_or_create`` function to 
 report resources.
 
-.. automethod:: chroma_core.lib.storage_plugin.api.plugin.Plugin.update_or_create
+```python
+# chroma_core.lib.storage_plugin.api.plugin.Plugin.update_or_create
+def update_or_create(self, klass, parents=[], **attrs):
+    """
+    Report a storage resource.  If it already exists then it will be updated, otherwise it will be created.
+    The resulting resource instance is returned.
+
+    The 'created' return value indicates whether this is the first report of the resource within this
+    plugin session, not whether it is the first report of the resource ever (e.g. from a different or previous
+    plugin session).
+
+    The identifier of the resource is used as the key to check for an existing object.
+
+    :param klass: The resource class of the object being created.
+    :param parents: The parent resources of the resource being created.
+    :param attrs: The attributes of the resource being updated or fetched.
+    :return: (resource, created) -- the storage resource and a boolean
+                indicating whether this was the first report this session.
+    """
+    with self._resource_lock:
+        try:
+            existing = self._index.get(klass, **attrs)
+            for k, v in attrs.items():
+                setattr(existing, k, v)
+            for p in parents:
+                existing.add_parent(p)
+            for p in parents:
+                assert p._handle != existing._handle
+            return existing, False
+        except ResourceNotFound:
+            resource = klass(parents=parents, calc_changes_delta=lambda: self._calc_changes_delta, **attrs)
+            self._register_resource(resource)
+            for p in parents:
+                assert p._handle != resource._handle
+            return resource, True
+```
 
 If any resources are allocated in ``initial_scan``, such as threads or 
 sockets, they may be freed in the ``teardown`` function:
 
-.. automethod:: chroma_core.lib.storage_plugin.api.plugin.Plugin.teardown
+```python
+# chroma_core.lib.storage_plugin.api.plugin.Plugin.teardown
+def teardown(self):
+    """
+    Optional
+
+    Perform any teardown required before terminating.
+
+    Guaranteed not to be called concurrently with  initial_scan or update_scan.
+    Guaranteed that initial_scan or update_scan will not be called after this.
+    Guaranteed that once initial_scan has been entered this function will later be called unless the whole process
+    terminates prematurely.
+
+    This function will be called even if initial_scan or update_scan raises an exception.
+    """
+    pass
+```
 
 After initialization, the ``update_scan`` function will be called periodically.
 You can set the delay between ``update_scan`` calls by assigning to
 ``self.update_period`` before leaving in ``initial_scan``.  Assignments to
 ``update_period`` after ``initial_scan`` will have no effect.
 
-.. automethod:: chroma_core.lib.storage_plugin.api.plugin.Plugin.update_scan
+```python
+# chroma_core.lib.storage_plugin.api.plugin.Plugin.update_scan
+def update_scan(self, root_resource):
+    """
+    Optional
+
+    Perform any required periodic refresh of data and update any resource instances. It is guaranteed that
+    initial_scan will have been called before this.
+
+    :param root_resource: All resources of the plugin for each host are children of this resource.
+    :return: No return value
+    """
+    pass
+
+```
 
 If a resource has changed, you can either use ``update_or_create`` to modify 
 attributes or parent relationships, or you can directly assign to the resource's 
 attributes or use its add_parent and remove_parent functions.  If a resource has 
 gone away, use ``remove`` to remove it:
 
-.. automethod:: chroma_core.lib.storage_plugin.api.plugin.Plugin.remove
+```python
+# chroma_core.lib.storage_plugin.api.plugin.Plugin.remove
+def remove(self, resource):
+    """
+    Remove the resource passed from the resource list. The operation is not immediate with the resource being
+    marked for deletion and actually deleted at the next periodic cycle.
+
+    :param resource: The resource to be removed
+    """
+    with self._resource_lock:
+        self._index.remove(resource)
+
+        if isinstance(resource.identifier, identifiers.BaseScopedId):
+            self._delta_delete_local_resources.append(resource)
+        else:
+            self._delta_delete_global_resources.append(resource)
+```
 
 Although resources must be reported synchronously during ``initial_scan``, this
 is not the case for updates.  For example, if a storage device provides asynchronous
@@ -271,29 +365,30 @@ and make ``update_or_create`` and ``remove`` calls on the plugin object.
 Plugins written in this way would probably not implement ``update_scan`` at all.
 
 Logging
-~~~~~~~
+-------
 
 Plugins should refrain from using ``print`` or any custom logging, in favor of
 using the ``log`` attribute of the Plugin instances, which is a standard Python
 ``logging.Logger`` object provided to each plugin.
 
 The following shows the wrong and right ways to emit log messages:
-::
 
-        # BAD: do not use print
-        print "log message"
+```python
+    # BAD: do not use print
+    print "log message"
 
-        # BAD: do not create custom loggers
-        logging.getLogger('my_logger').info("log message")
+    # BAD: do not create custom loggers
+    logging.getLogger('my_logger').info("log message")
 
-        # Good: use the provided logger
-        self.log.info("log message")
+    # Good: use the provided logger
+    self.log.info("log message")
+```
 
 Presentation Metadata
 ---------------------
 
 Names
-~~~~~
+-----
 
 Sensible defaults are used wherever possible when presenting UI elements
 relating to storage resources.  For example, by default, attribute names are
@@ -301,9 +396,9 @@ transformed to capitalized text. For example,``file_size`` is transformed to *Fi
 name is desired, the plugin author can provide a ``label`` argument to attribute 
 constructors:
 
-::
-
+```python
    my_internal_name = attributes.String(label = 'Fancy name')
+```
 
 Resource classes are by default referred to by their Python class name, qualified
 with the plugin module name.  For example, if the ``acme`` plugin had a class called
@@ -315,7 +410,7 @@ their identifier attributes.  This can be overridden by implementing the ``get_l
 function on the storage resource class, returning a string or unicode string for the instance.
 
 Charts
-~~~~~~
+------
 
 By default, the manager server web interface presents a separate chart for each statistic
 of a resource.  However, it is often desirable to group statistics on the same
@@ -331,41 +426,38 @@ used on the same chart (one Y axis on either side of the chart).
 For example, the following resource has a ``charts`` attribute which presents
 the read and write bandwidth on the same chart:
 
-::
+```python
+class MyResource(Resource):
+    read_bytes_per_sec = statistics.Gauge(units = 'bytes/s')
+    write_bytes_per_sec = statistics.Gauge(units = 'bytes/s')
 
-    class MyResource(Resource):
-        read_bytes_per_sec = statistics.Gauge(units = 'bytes/s')
-        write_bytes_per_sec = statistics.Gauge(units = 'bytes/s')
-
-        class Meta:
-            charts = [
-                {
-                    'title': "Bandwidth",
-                    'series': ['read_bytes_per_sec', 'write_bytes_per_sec']
-                }
-            ]
-
+    class Meta:
+        charts = [
+            {
+                'title': "Bandwidth",
+                'series': ['read_bytes_per_sec', 'write_bytes_per_sec']
+            }
+        ]
+```
 
 Running a Plugin
 ----------------
 
-.. _validation:
-
-Validating
-~~~~~~~~~~
+<a name="validation"></a>Validating
+-----------------------------------
 
 Before running your plugin as part of a manager server instance, it is a good idea to check it over
 using the `validate_storage_plugin` command:
 
-::
-
+```bash
     $ cd /usr/share/chroma-manager
     $ ./manage.py validate_storage_plugin /tmp/my_plugin.py
     Validating plugin 'my_plugin'...
     OK
+```
 
 Installing
-~~~~~~~~~~
+----------
 
 Plugins are loaded according to the ``settings.INSTALLED_STORAGE_PLUGINS`` variable.  This variable
 is a list of module names within the Python import path.  If your plugin is located
@@ -373,10 +465,10 @@ at ``/home/developer/project/my_plugin.py``, create a ``local_settings.py`` file
 in the ``chroma-manager`` directory (``/usr/share/chroma-manager`` when installed
 from RPM) with the following content:
 
-::
-
+```python
     sys.path.append("/home/developer/project/")
     INSTALLED_STORAGE_PLUGINS.append('my_plugin')
+```
 
 After modifying this setting, restart the manager server services.
 
@@ -388,16 +480,16 @@ Changes to these settings take effect when the manager server services are
 restarted.
 
 Running the Plugin Process Separately
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------------
 
 During development, the process that hosts storage plugins can be run separately,
 so that it can be stopped and started quickly by plugin developers:
 
-::
-
+```bash
     cd /usr/share/chroma-manager
     supervisorctl -c production_supervisord.conf stop plugin_runner
     ./manage.py chroma_service --verbose plugin_runner
+```
 
 Correlating Controller Resources with Linux Devices Using Relations
 -------------------------------------------------------------------
@@ -412,17 +504,16 @@ example, a plugin matches its LUNs to detected SCSI devices of the built in clas
 which stores the device's WWID as the `serial` attribute.
 
 
-.. code-block:: python
+```python
+class MyLunClass(Resource):
+    serial = attributes.String()
 
-    class MyLunClass(Resource):
-        serial = attributes.String()
-
-        class Meta:
-            identifier = identifiers.GlobalId('my_serial')
-            relations = [relations.Provide(
-                provide_to = ('linux', 'ScsiDevice'),
-                attributes = 'serial')]
-
+    class Meta:
+        identifier = identifiers.GlobalId('my_serial')
+        relations = [relations.Provide(
+            provide_to = ('linux', 'ScsiDevice'),
+            attributes = 'serial')]
+```
 
 The `provide_to` argument to `Provide` can either be a resource class, or a 2-tuple of `([plugin name], [class name])`
 for referring to resources in another plugin.  In this case, we are referring to a resource in the 'linux' plugin, which
@@ -432,77 +523,527 @@ relations are case sensitive.
 Example Plugin
 --------------
 
-.. literalinclude:: /../../tests/unit/chroma_core/lib/storage_plugin/example_plugin.py
-   :language: python
-   :linenos:
+```python
+from chroma_core.lib.storage_plugin.api import attributes, identifiers, plugin, relations, resources, statistics
+
+version = 1
+
+
+class Couplet(resources.ScannableResource):
+    class Meta:
+        identifier = identifiers.GlobalId('address_1', 'address_2')
+
+    address_1 = attributes.Hostname()
+    address_2 = attributes.Hostname()
+
+
+class Controller(resources.Controller):
+    class Meta:
+        identifier = identifiers.ScopedId('index')
+
+    index = attributes.Enum(0, 1)
+
+
+class HardDrive(resources.PhysicalDisk):
+    class Meta:
+        identifier = identifiers.ScopedId('serial_number')
+
+    serial_number = attributes.String()
+    capacity = attributes.Bytes()
+    temperature = statistics.Gauge(units = 'C')
+
+
+class RaidPool(resources.StoragePool):
+    class Meta:
+        identifier = identifiers.ScopedId('local_id')
+
+    local_id = attributes.Integer()
+    raid_type = attributes.Enum('raid0', 'raid1', 'raid5', 'raid6')
+    capacity = attributes.Bytes()
+
+    def get_label(self):
+        return self.local_id
+
+
+class Lun(resources.LogicalDrive):
+    class Meta:
+        identifier = identifiers.ScopedId('local_id')
+        relations = [
+            relations.Provide(provide_to=('linux', 'ScsiDevice'), attributes=['serial'], ignorecase=True),
+        ]
+
+    local_id = attributes.Integer()
+    name = attributes.String()
+
+    serial = attributes.String()
+
+    def get_label(self):
+        return self.name
+
+
+class ExamplePlugin(plugin.Plugin):
+    def initial_scan(self, scannable_resource):
+        # This is where the plugin should detect all the resources
+        # belonging to scannable_resource, or throw an exception
+        # if that cannot be done.
+        pass
+
+    def update_scan(self, scannable_resource):
+        # Update any changed or added/removed resources
+        # Update any statistics
+        pass
+
+    def teardown(self):
+        # Free any resources
+        pass
+```
 
 Reference
 ---------
 
-.. _storage_plugin_attribute_classes:
+<a name="storage_plugin_attribute_classes"></a>**Resource Attributes**
 
-Resource Attributes
--------------------
+```python
+# chroma_core.lib.storage_plugin.base_resource_attribute.BaseResourceAttribute.__init__
+    def __init__(self,
+                 optional=False,
+                 label=None,
+                 hidden=False,
+                 user_read_only=False,
+                 default=None):
+        """
+        :param optional: If this is True, the attribute may be left unassigned (i.e. null).  Otherwise,
+            a non-null value must be provided for all instances.
+        :param label: Human readable string for use in the user interface.  Use this if the programmatic
+            attribute name in the resource declaration is not appropriate for presentation to the user.
+        :param hidden: If this is True, this attribute will not be included as a column in the tabular view
+            of storage resources.
+        :param user_read_only: If this is True, this attribute can only be set internally by the plugin, not
+            by the user.  For example, a controller might have some attributes entered by the user, and some
+            read from the hardware: those read from the hardware would be marked `user_read_only`.  Attributes
+            which are `user_read_only` must also be `optional`.
+        :param default: If not None then this default value will be used in the case of a non-optional value
+            missing. Generally used in the case of upgrades to supply previous records. default maybe callable
+            or a fixed value.
+        """
+        self.optional = optional
+        self.default = default
+        self.label = label
+        self.hidden = hidden
+        self.user_read_only = user_read_only
 
-Common Options
-~~~~~~~~~~~~~~
+        self.creation_counter = BaseResourceAttribute.creation_counter
+        BaseResourceAttribute.creation_counter += 1
+```
 
-.. automethod:: chroma_core.lib.storage_plugin.base_resource_attribute.BaseResourceAttribute.__init__
+**Available Attribute Classes**
+
+```python
+# chroma_core.lib.storage_plugin.api.attributes
+class ResourceReference(BaseResourceAttribute):
+    """A reference to another resource.  Conceptually similar to a
+    foreign key in a database.  Assign
+    instantiated BaseStorageResource objects to this attribute.  When a storage
+    resource is deleted, any other resources having a reference to it are affected:
+
+    * If the ResourceReference has ``optional = True`` then the field is cleared
+    * Otherwise, the referencing resource is also deleted
+
+    .. note::
+
+       Creating circular reference relationships using
+       this attribute has undefined (most likely fatal) behaviour.
+
+    """
+
+    model_class = StorageResourceAttributeReference
+
+    def to_markup(self, value):
+        from chroma_core.models import StorageResourceRecord
+        if value is None:
+            return ""
+
+        record = StorageResourceRecord.objects.get(pk = value._handle)
+        if record.alias:
+            name = record.alias
+        else:
+            name = value.get_label()
+
+        from django.utils.html import conditional_escape
+        name = conditional_escape(name)
+
+        from django.utils.safestring import mark_safe
+        return mark_safe("%s" % name)
+
+    def validate(self, value):
+        if value is None and self.optional:
+            return
+        elif (value is None) and (not self.optional):
+            raise ValueError("ResourceReference set to None but not optional")
+        elif not isinstance(value, BaseStorageResource):
+            raise ValueError("Cannot take ResourceReference to %s" % value)
+
+```
+
+<a name="storage_plugin_statistic_classes"></a>**Statistic Classes**
+
+```python
+# chroma_core.lib.storage_plugin.api.statistics
+
+from chroma_core.lib.storage_plugin.base_statistic import BaseStatistic
 
 
-Available Attribute Classes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+class Gauge(BaseStatistic):
+    """A numerical time series which can go up or down"""
 
-.. automodule:: chroma_core.lib.storage_plugin.api.attributes
-   :members:
-   :exclude-members: ResourceReference
 
-.. autoclass:: chroma_core.lib.storage_plugin.api.attributes.ResourceReference
+class Counter(BaseStatistic):
+    """A monotonically increasing time series."""
 
-.. _storage_plugin_statistic_classes:
 
-Statistic Classes
------------------
+class BytesHistogram(BaseStatistic):
+    """A fixed-length array of integers used for representing histogram data.  The number of
+    bins and the value range of each bin are specified in the ``bins`` constructor argument:
 
-.. automodule:: chroma_core.lib.storage_plugin.api.statistics
-   :members:
+    ::
 
-.. _storage_plugin_builtin_resource_classes:
+        BytesHistogram(bins = [(0, 512), (513, 1024), (1025, 4096), (4097,)])
 
-Built-in Resource Classes
--------------------------
+    :param bins: a list of tuples, either length 2 for a bounded range or length 1
+                 to represent "this value or higher".
 
-.. automodule:: chroma_core.lib.storage_plugin.api.resources
-   :members:
+    """
+    def __init__(self, *args, **kwargs):
+        """
+        e.g. bins=[(0, 256), (257, 512), (513, 2048), (2049, 4096), (4097,)]
+        """
+        self.bins = kwargs.pop('bins')
 
-.. _storage_plugin_alert_conditions:
+        super(BytesHistogram, self).__init__(*args, **kwargs)
 
-Alert Conditions
-----------------
+    def format_bin(self, bin):
+        return u"\u2264%s" % (self.format_units(bin[1]))
 
-.. automodule:: chroma_core.lib.storage_plugin.api.alert_conditions
-    :members:
+    def validate(self, value):
+        if len(value) != len(self.bins):
+            raise ValueError("Invalid histogram value, got %d bins, expected %d" % (len(value), len(self.bins)))
+```
 
+<a name="storage_plugin_builtin_resource_classes"></a>**Built-in Resource Classes**
+
+```python
+# chroma_core.lib.storage_plugin.api.resources
+
+"""Plugin authors are encouraged to inherit from these classes when there is
+a clear analogy between an object in their plugin and one of those provided here.
+
+"""
+
+from chroma_core.lib.storage_plugin.base_resource import BaseStorageResource, BaseScannableResource
+from chroma_core.lib.storage_plugin.api import attributes
+
+
+class Resource(BaseStorageResource):
+    pass
+
+
+class ScannableResource(BaseStorageResource, BaseScannableResource):
+    pass
+
+
+class Host(BaseStorageResource):
+    class Meta:
+        label = 'Host'
+        icon = 'host'
+
+
+class PathWeight(BaseStorageResource):
+    weight = attributes.Integer()
+
+
+class LogicalDriveOccupier(BaseStorageResource):
+    """When a subclass of this class is the descendent of a LogicalDrive, that LogicalDrive
+    is considered unavailable.  This is used for marking LUNs/partitions/LVs which are
+    in use, for example those which are mounted in existing file systems."""
+    pass
+
+
+class VirtualMachine(BaseStorageResource):
+    """A Linux* host provided by a plugin.  This resource has a special behaviour when
+    created: the manager server will add this (by the ``address`` attribute) as a Lustre server and
+    attempt to configure the ``chroma-agent`` service on it.  The ``host_id`` attribute is used internally
+    by the manager server and must not be assigned to by plugins."""
+    # NB address is used to cue the creation of a ManagedHost, once that is set up
+    # this address is not used.
+    address = attributes.String()
+
+    host_id = attributes.Integer(optional = True)
+
+
+class DeviceNode(BaseStorageResource):
+    host_id = attributes.Integer()
+    path = attributes.PosixPath()
+    logical_drive = attributes.ResourceReference(optional = True)
+
+    class Meta:
+        label = 'Device node'
+
+    def get_label(self):
+        path = self.path
+        strip_strings = ["/dev/",
+                         "/dev/mapper/",
+                         "/dev/disk/by-id/",
+                         "/dev/disk/by-path/"]
+        strip_strings.sort(lambda a, b: cmp(len(b), len(a)))
+        for s in strip_strings:
+            if path.startswith(s):
+                path = path[len(s):]
+        return "%s:%s" % (self.host_id, path)
+
+
+class LogicalDrive(BaseStorageResource):
+    """A storage device with a fixed size that could be used for installing the Lustre software"""
+    class Meta:
+        icon = 'virtual_disk'
+
+    size = attributes.Bytes()
+    filesystem_type = attributes.Boolean(optional=True)
+
+    usable_for_lustre = True
+
+    """ This has to be a class method today because at the point we call it we only has the type not the object"""
+    @classmethod
+    def device_type(cls):
+        """ By default devices are linux block devices """
+        return "linux"
+
+
+class LogicalDriveSlice(LogicalDrive):
+    """A part of a slicable device like partition or lvm"""
+    pass
+
+
+class Enclosure(BaseStorageResource):
+    """A physical enclosure/drawer/shelf"""
+    pass
+
+
+class Fan(BaseStorageResource):
+    """A physical cooling fan"""
+    pass
+
+
+class Controller(BaseStorageResource):
+    """A RAID controller"""
+    pass
+
+
+class StoragePool(BaseStorageResource):
+    """An aggregation of physical drives"""
+    class Meta:
+        label = 'Storage pool'
+        icon = 'storage_pool'
+
+
+class PhysicalDisk(BaseStorageResource):
+    """A physical storage device, such as a hard drive or SSD"""
+    class Meta:
+        label = 'Physical disk'
+        icon = 'physical_disk'
+
+
+class NetworkInterface(BaseStorageResource):
+    host_id = attributes.Integer()
+
+    class Meta:
+        label = 'Network node'
+
+
+class LNETInterface(BaseStorageResource):
+
+    class Meta:
+        label = 'LNET Interface'
+
+
+class LNETModules(BaseStorageResource):
+    host_id = attributes.Integer()
+
+    class Meta:
+        label = 'LNET State'
+
+```
+
+<a name="storage_plugin_alert_conditions"></a>**Alert Conditions**
+
+```python
+# chroma_core.lib.storage_plugin.api.alert_conditions
+
+import logging
+
+from chroma_core.lib.storage_plugin.base_alert_condition import AlertCondition
+
+
+class BoundCondition(AlertCondition):
+    upper = None
+
+    def __init__(self, attribute, error_bound = None, warn_bound = None, info_bound = None, message = None, *args, **kwargs):
+        self.error_bound = error_bound
+        self.warn_bound = warn_bound
+        self.info_bound = info_bound
+        self.attribute = attribute
+        self.message = message
+        super(BoundCondition, self).__init__(*args, **kwargs)
+
+    def alert_classes(self):
+        result = []
+        bound_sev = [
+            (self.error_bound, logging.ERROR),
+            (self.warn_bound, logging.WARNING),
+            (self.info_bound, logging.INFO)
+        ]
+        for bound, sev in bound_sev:
+            if bound == None:
+                continue
+            else:
+                alert_name = "_%s_%s_%s" % (self._id, self.attribute, sev)
+                result.append(alert_name)
+
+        return result
+
+    def test(self, resource):
+        result = []
+        bound_sev = [
+            (self.error_bound, logging.ERROR),
+            (self.warn_bound, logging.WARNING),
+            (self.info_bound, logging.INFO)
+        ]
+        for bound, sev in bound_sev:
+            if bound == None:
+                continue
+            alert_name = "_%s_%s_%s" % (self._id, self.attribute, sev)
+            if self.upper:
+                active = getattr(resource, self.attribute) > bound
+            else:
+                active = getattr(resource, self.attribute) < bound
+
+            result.append([alert_name, self.attribute, active, sev])
+
+        return result
+
+
+class UpperBoundCondition(BoundCondition):
+    """A condition that checks a numeric attribute against an upper bound, and
+       raises the alert if it exceeds that bound
+       ::
+
+        UpperBoundCondition('temperature', error_bound = 85, message = "Maximum operating temperature exceeded")
+    """
+    upper = True
+
+
+class LowerBoundCondition(BoundCondition):
+    """A condition that checks a numeric attribute against a lower bound, and
+       raises the alert if it falls below that bound
+       ::
+
+        LowerBoundCondition('rate', error_bound = 10, message = "Rate too low")
+    """
+    upper = False
+
+
+class ValueCondition(AlertCondition):
+    """A condition that checks an attribute against certain values indicating varying
+    severities of alert.  For example, if you had a 'status' attribute on your
+    'widget' resource class which could be 'OK' or 'FAILED' then you might
+    create an AttrValAlertCondition like this:
+    ::
+
+        AttrValAlertCondition('status', error_states = ['FAILED'], message = "Widget failed")"""
+
+    def __init__(self, attribute, error_states = list([]), warn_states = list([]), info_states = list([]), message = None, *args, **kwargs):
+        self.error_states = error_states
+        self.warn_states = warn_states
+        self.info_states = info_states
+        self.attribute = attribute
+        self.message = message
+        super(ValueCondition, self).__init__(*args, **kwargs)
+
+    def alert_classes(self):
+        result = []
+        states_sev = [
+                (self.error_states, logging.ERROR),
+                (self.warn_states, logging.WARNING),
+                (self.info_states, logging.INFO)
+                ]
+        for states, sev in states_sev:
+            if len(states) == 0:
+                continue
+            else:
+                alert_name = "_%s_%s_%s" % (self._id, self.attribute, sev)
+                result.append(alert_name)
+
+        return result
+
+    def test(self, resource):
+        result = []
+        states_sev = [
+                (self.error_states, logging.ERROR),
+                (self.warn_states, logging.WARNING),
+                (self.info_states, logging.INFO)
+                ]
+        for states, sev in states_sev:
+            if len(states) == 0:
+                continue
+            alert_name = "_%s_%s_%s" % (self._id, self.attribute, sev)
+            active = getattr(resource, self.attribute) in states
+            result.append([alert_name, self.attribute, active, sev])
+
+        return result
+```
 
 Advanced: Using Custom Block Device Identifiers
 -----------------------------------------------
 
 A best effort is made to extract standard SCSI identifiers from block devices that
-are encountered on Lustre servers.  However, in some cases:
+are encountered on Lustre* servers.  However, in some cases:
 
 * The SCSI identifier may be missing
 * The storage controller may not provide the SCSI identifier
 
-Storage plugins may provide additional code to run on Lustre servers that extracts additional
+Storage plugins may provide additional code to run on Lustre* servers that extracts additional
 information from block devices.
 
 Agent Plugins
-~~~~~~~~~~~~~
+-------------
 
 Plugin code running within the chroma-agent service has a simple interface:
 
-.. autoclass:: chroma_agent.plugin_manager.DevicePlugin
-  :members: start_session, update_session
+```python
+# chroma_agent.plugin_manager.DevicePlugin
+def start_session(self):
+        """
+        Return information needed to start a manager-agent session, i.e. a full
+        listing of all available information.
+
+        :rtype: JSON-serializable object, DevicePluginMessage, or DevicePluginMessageCollection
+        """
+        raise NotImplementedError()
+
+def update_session(self):
+    """
+    Return information needed to maintain a manager-agent session, i.e. what
+    has changed since the start of the session or since the last update.
+
+    If you need to refer to any data from the start_session call, you can
+    store it as an attribute on this DevicePlugin instance.
+
+    This will never be called concurrently with respect to start_session, or
+    before start_session.
+
+    :rtype: JSON-serializable object, DevicePluginMessage, or DevicePluginMessageCollection
+    """
+    raise NotImplementedError()
+```
 
 Implementing `update_session` is optional. Plugins that do not implement this function will only send
 information to the server once when the agent begins its connection to the server.
@@ -523,25 +1064,55 @@ The name of the agent plugin module must exactly match the name of the plugin mo
 on the manager server server.
 
 Handling Data from Agent Plugins
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------------
 
 The information sent by an agent plugin is passed on to the server plugin with the same name.  To handle
 this type of information, the plugin must implement two methods:
 
-.. autoclass:: chroma_core.lib.storage_plugin.api.plugin.Plugin
-  :members: agent_session_start, agent_session_continue
+```python
+# chroma_core.lib.storage_plugin.api.plugin.Plugin
+def agent_session_start(self, host_id, data):
+        """
+        Optional
+
+        Start a session based on information sent from an agent plugin.
+
+        :param host_id: ID of the host from which the agent information was sent -- this is
+                        a database identifier which is mainly useful for constructing DeviceNode
+                        resources.
+        :param data: Arbitrary JSON-serializable data sent by plugin.
+        :return No return value
+        """
+        pass
+
+def agent_session_continue(self, host_id, data):
+    """
+    Optional
+
+    Continue a session using information sent from an agent plugin.
+
+    This will only ever be called on Plugin instances where `agent_session_start` has
+    already been called.
+
+    :param host_id: ID of the host from which the agent information was sent -- this is
+                    a database identifier which is mainly useful for constructing DeviceNode
+                    resources.
+    :param data: Arbitrary JSON-serializable data sent by plugin.
+    :return No return value
+    """
+    pass
+```
 
 Advanced: Reporting Hosts
 -------------------------
 
 Your storage hardware may be able to provide server addresses, for example
-if the storage hardware hosts virtual machines that act as Lustre servers.
+if the storage hardware hosts virtual machines that act as Lustre* servers.
 
 To report these hosts from a storage plugin, create resources of a class with
 subclasses `resources.VirtualMachine`.
 
-.. code-block:: python
-
+```python
     class MyController(resources.ScannableResource):
         class Meta:
             identifier = identifiers.GlobalId('address')
@@ -559,6 +1130,7 @@ subclasses `resources.VirtualMachine`.
         def initial_scan(self, controller):
             # ... somehow learn about a virtual machine hosted on `controller` ...
             self.update_or_create(MyVirtualMachine, vm_id = 0, controller = controller, address = "192.168.1.11")
+```
 
 When a new VirtualMachine resource is created by a plugin, the configuration
 process is the same as if the host had been added via the manager server user interface, and the added host 
@@ -574,10 +1146,12 @@ of access to a storage device.  For example:
   may be preferable to a device node on a host connected to the other port.
 * If a LUN is accessible via two device nodes on a single server, one may be preferable to the other.
 
-This type of information allows the manager server to make an intelligent selection of primary/secondary Lustre servers.
+This type of information allows the manager server to make an intelligent selection of primary/secondary Lustre* servers.
 
 To express this information, create a PathWeight resource that is a parent of the device node and has as its
 parent the LUN.
+
+[Top of page](#1.0)
 
 Legal Information
 -----------------

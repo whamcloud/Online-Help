@@ -1,4 +1,6 @@
 
+[**Manager for Lustre\* 4.0.0 API Documentation**](./api_TOC.md)
+
 # <a name="1.0"></a>Scheduler Plugin Developer's Guide for Manager for Lustre\* software
 
 
@@ -7,9 +9,9 @@
 IML collects and displays metrics on a per-job basis, when enabled in Lustre.
 See the Lustre manual for supported schedulers and configuration.
 By default, the data is associated by unique job_id, from whichever job scheduler is configured.
-In order to display more useful metata, e.g. user, a corresponding plugin must be registered to lookup the job_ids.
+In order to display more useful metadata, e.g. user, a corresponding plugin must be registered to lookup the job_ids.
 
-Plugins are registered by linking a python module (.py) in the plugin directory:  <root>/chroma_core/lib/scheduler/.
+Plugins are registered by linking a python module (.py) in the plugin directory:  `<root>/chroma_core/lib/scheduler/`.
 The provided plugin (procname_uid) uses the shell as the scheduler.
 
 ## <a name="1.2"></a>API
@@ -38,6 +40,7 @@ autofunction:: fetch
 autoattribute:: chroma_core.lib.scheduler.procname_uid.FIELDS
 ```
 
+[Top of page](#1.0)
 
 ## <a name="1.4"></a>Legal Information
 
