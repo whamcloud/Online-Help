@@ -1,23 +1,24 @@
 [**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
-# Introducing Manager for Lustre\*<a id="1.0"></a>
+<a id="1.0"></a>
+# Introducing Manager for Lustre\*
 
-** In this Chapter:**
+**In this Chapter:**
 
-- <a href="#1.1">Related Documentation</a>
-- <a href="#1.2">Overview of Manager for Lustre* software</a>
-- <a href="#1.3">Key Features</a>
-- <a href="#1.4">Management mode versus Monitor-only mode</a>
-- <a href="#1.5">Overview of the graphical user interface</a>
-    - <a href="#1.5.1">Menu bar</a>
-    - <a href="#1.5.2">Dashboard window</a>
-    - <a href="#1.5.3">Summary of charts</a>
-    - <a href="#1.5.4">Configuration menu</a>
-    - <a href="#1.5.4">Job stats</a>
-    - <a href="#1.5.5">Logs window</a>
-    - <a href="#1.5.6">Help</a>
-    - <a href="#1.5.7">Status Indicator and window</a>
-    - <a href="#1.5.8">Alert Bar</a>
-- <a href="#1.6">Access the Dashboard from a smart phone or tablet</a>
+- [Related Documentation](#1.1)
+- [Overview of Manager for Lustre* software](#1.2)
+- [Key Features](#1.3)
+- [Management mode versus Monitor-only mode](#1.4)
+- [Overview of the graphical user interface](#1.5)
+    - [Menu bar](#1.5.1)
+    - [Dashboard window](#1.5.2)
+    - [Summary of charts](#1.5.3)
+    - [Configuration menu](#1.5.4)
+    - [Job stats](#1.5.5)
+    - [Logs window](#1.5.6)
+    - [Help](#1.5.7)
+    - [Status Indicator and window](#1.5.8)
+    - [Alert Bar](#1.5.9)
+- [Access the Dashboard from a smart phone or tablet](#1.6)
 
 Enterprises and institutions of all sizes use high performance computing to solve today's most intense computing challenges. Just as compute clusters exploit parallel processors and development tools, storage solutions must be parallel to deliver the sustained performance at the large scales that today's applications require. The Lustre* file system is the ideal distributed, parallel file system for high performance computing. 
 
@@ -28,7 +29,7 @@ Manager for Lustre\* software greatly simplifies the creation and management of 
 Manager for Lustre\*, when integrated with Linux, aggregates a range of storage hardware into a single Lustre file system that is well-proven for delivering fast IO to applications across high-speed network fabrics such as InfiniBand* and Ethernet.
 An existing Lustre file system that has been set up outside of Manager for Lustre\* software can be monitored, but not managed by the manager. In this case, Lustre commands can be used to manage metadata or object storage servers in the Lustre file system.
 
-<a href="#1.0">Top of Page</a>
+[Top of Page](#1.0)
 
 <a id="1.1"></a>
 ## Related Documentation
@@ -50,7 +51,7 @@ The following documents are pertinent to Manager for Lustre* software. This list
 For more information beyond the documents listed above, see: 
 **Intel® Solutions for Lustre\* software** - [http://www.intel.com/content/www/us/en/software/intel-solutions-for-lustre-software.html](http://www.intel.com/content/www/us/en/software/intel-solutions-for-lustre-software.html).
 
-<a href="#1.0">Top of Page</a>
+[Top of Page](#1.0)
 
 <a id="1.2"></a>
 ## Overview of Manager for Lustre* software
@@ -74,7 +75,7 @@ The servers on which the MGT, MDT, or OSTs are located can all be configured as 
 
 ![md_Graphics/lustre-configuration5_zoom40.png][f1.1]
 
-<a href="#1.0">Top of page</a>
+[Top of page](#1.0)
 
 <a id="1.3"></a>
 ## Key Features
@@ -90,13 +91,18 @@ The Manager for Lustre\* software provides a powerful, yet easy-to-use GUI that 
 Fully-configurable color charts display a variety of real-time performance metrics for single or multiple file systems with detailed output for both individual servers and targets. These metrics are rendered using the following charts:
 
 - [Read/Write Heat Map chart](Graphical_User_Interface_9_0.md/#9.2.1)
-- [OST Balance chart](Graphical_User_Interface_9_0.md/#9.2.3)
-- [Metadata Operations chart](Graphical_User_Interface_9_0.md/#9.2.4)
-- [Read/Write Bandwidth chart](Graphical_User_Interface_9_0.md/#9.2.5)
-- [Metadata Servers chart](Graphical_User_Interface_9_0.md/#9.2.6)
-- [Object Storage Servers chart](Graphical_User_Interface_9_0.md/#9.2.7)
+- [OST Balance chart](Graphical_User_Interface_9_0.md/#9.2.2)
+- [Metadata Operations chart](Graphical_User_Interface_9_0.md/#9.2.3)
+- [Read/Write Bandwidth chart](Graphical_User_Interface_9_0.md/#9.2.4)
+- [Metadata Servers chart](Graphical_User_Interface_9_0.md/#9.2.5)
+- [Object Storage Servers chart](Graphical_User_Interface_9_0.md/#9.2.6)
+- [CPU Usage chart](Graphical_User_Interface_9_0.md/#9.2.7)
+- [Memory Usage chart](Graphical_User_Interface_9_0.md/#9.2.8)
+- [Space Usage chart](Graphical_User_Interface_9_0.md/#9.2.9)
+- [File Usage chart](Graphical_User_Interface_9_0.md/#9.2.10)
+- [Object Usage chart](Graphical_User_Interface_9_0.md/#9.2.11)
 
-See [View charts on the Dashboard](Monitoring_lustre_fs_4_0_0.md/#4.0.0).
+See [View charts on the Dashboard](Monitoring_lustre_fs_4_0_0.md/#4.1).
 
 **Auto-configured high-availability clustering for server pairs**
 
@@ -162,7 +168,7 @@ Hive is a data warehouse infrastructure built on top of Hadoop for providing dat
 
 HBase is a non-relational, distributed database modeled after Google's BigTable and written in Java\*.  Hbase runs on top of HDFS (Hadoop Distributed File System). Intel® has tested the Hadoop adapter for Lustre provided with Manager for Lustre\* software for compatibility with Apache Hbase version 2.5.
 
-**Lustre 2.7.x**
+**Lustre\* 2.7.x**
 
 This release of Manager for Lustre\* software is based on the Intel® Foundation Edition for Lustre* 2.7 release tree, representing a major update to the underlying Lustre* version for the Manager for Lustre* software (as of version 4.0.0).
 
@@ -202,7 +208,7 @@ Dynamic LNet configuration (DLC) is a powerful extension of the LNet software to
 
 Kerberos provides a means for authentication and authorization of participants on a computer network, as well as providing secure communications through authentication. This functionality has been applied to Manager for Lustre\* software for the purposes of establishing trust between Lustre* servers and clients, and optionally, supporting encrypted network communications.
 
-<a href="#1.0">Top of page</a>
+[Top of page](#1.0)
 
 <a id="1.4"></a>
 ## Management mode versus Monitor-only mode
@@ -225,7 +231,7 @@ Monitor-only mode can be used to establish monitoring for file systems that don�
 
 **Note:** RAID-based fault tolerance for storage devices are implemented independent of Manager for Lustre\* software.
 
-<a href="#1.0">Top of page</a>
+[Top of page](#1.0)
 
 <a id="1.5"></a>
 ## Overview of the graphical user interface
@@ -234,15 +240,15 @@ This section provides an overview of the Manager for Lustre\* software GUI. For 
 
 The Manager for Lustre\* software GUI presents a set of intuitive windows that let you set up, configure, monitor, and manage Lustre* file systems. The menu bar provides access to these capabilities.  Click the following links for overview information:
 
-- <a href="#1.5.1">Menu bar</a>
-- <a href="#1.5.2">Dashboard window</a>
-- <a href="#1.5.3">Summary of charts</a>
-- <a href="#1.5.4">Configuration menu</a>
-- <a href="#1.5.5">Jobs Stats</a>
-- <a href="#1.5.6">Logs window</a>
-- <a href="#1.5.7">Help</a>
-- <a href="#1.5.8">Status Indicator and window</a>
-- <a href="#1.5.9">Alert bar</a>
+- [Menu bar](#1.5.1)
+- [Dashboard window](#1.5.2)
+- [Summary of charts](#1.5.3)
+- [Configuration menu](#1.5.4)
+- [Jobs Stats](#1.5.5)
+- [Logs window](#1.5.6)
+- [Help](#1.5.7)
+- [Status Indicator and window](#1.5.8)
+- [Alert bar](#1.5.9)
  
 <a id="1.5.1"></a>
 ### Menu bar
@@ -303,7 +309,7 @@ The Configuration drop-down menu provides access to the following several window
 - **MGTs** - This window provides features to create and configure a management target.
 
 
-<a id="1.5.4"></a>
+<a id="1.5.5"></a>
 ### Job stats
 
 Clicking the Jobstats button on the top menu bar lists the top ten jobs currently in process. The listed jobs can be sorted by column and average duration can be selected. Column sorts and duration will be persistent when navigating away and back to the page.
@@ -316,7 +322,7 @@ Clicking the Jobstats button on the top menu bar lists the top ten jobs currentl
 
 
 
-<a id="1.5.5"></a>
+<a id="1.5.6"></a>
 ### Logs window
 
 The Logs window displays log information and lets you filter events by date range, host, service, and messages from Lustre* or all sources.  The logs window also features querying with auto-complete and linkable host names.
@@ -326,12 +332,12 @@ The Logs window displays log information and lets you filter events by date rang
 
 
 
-<a id="1.5.6"></a>
+<a id="1.5.7"></a>
 ### Help
 
 Help is context-sensitive; Clicking Help at the menu bar opens this Online Help to the related topic. Internet access is not required.
 
-<a id="1.5.7"></a>
+<a id="1.5.8"></a>
 ### Status Indicator and window
 
 The Status indicator provides information about the functioning and health of each file system. Alerts are messages that indicate that the file system may be, or is, operating in a degraded mode.
@@ -346,7 +352,7 @@ The Status window displays information alerts, commands that are executing, and 
 
 
  
-<a id="1.5.8"></a>
+<a id="1.5.9"></a>
 ### Alert Bar
 This red bar briefly appears if there are any active error or warning alerts on your system. Clicking *Details* opens the Status window and reveals the current, active alerts.
 
@@ -366,7 +372,7 @@ The window is responsive to fit within the display area.
 ![md_Graphics/vertical_menu_bar.png][f1.13]
 3. To hide the menu bar, click ![md_Graphics/mobile_button.png][f1.12] again.
  
-<a href="#1.0">Top of Page</a>
+[Top of Page](#1.0)
  
 
 [f1.1]: md_Graphics/lustre-configuration5_zoom40.png

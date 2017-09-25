@@ -1,13 +1,14 @@
 [**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
-# <a id="8.0"></a>Creating and Managing ZFS-based Lustre* file systems
+<a id="8.0"></a>
+# Creating and Managing ZFS-based Lustre* file systems
 
 Manager for Lustre\* software is able to create and manage Lustre* file systems that are based on OpenZFS object storage device (OSD) volumes. The software installs the necessary packages, formats Lustre* targets from ZFS pools, and creates the high-availability software framework for managing availability for Lustre* + ZFS servers.  The following topics are covered:
 
-- <a href="#8.1">Create a ZFS-based Lustre* file system</a>
-- <a href="#8.2">Importing and exporting ZFS pools in a shared-storage high-availability cluster</a>
-- <a href="#8.3">Removing a ZFS-based Lustre* file system</a>
-- <a href="#8.4">Destroy an individual zpool</a>
-- <a href="#8.5">Destroy all of the ZFS pools in a shared-storage</a>
+- [Create a ZFS-based Lustre* file system](#8.1)
+- [Importing and exporting ZFS pools in a shared-storage high-availability cluster](#8.2)
+- [Removing a ZFS-based Lustre* file system](#8.3)
+- [Destroy an individual zpool](#8.4)
+- [Destroy all of the ZFS pools in a shared-storage](#8.5)
 
 
 
@@ -101,7 +102,7 @@ To create and manage an OpenZFS-based Lustre* file system that is highly-availab
 1. If you are using Baseboard Management Controllers (BMCs) for power control, then perform the steps in [Assign BMCs to servers](Creating_new_lustre_fs_3_0.md/#3.8) for each server.  
 1. Perform the steps in [Create the new Lustre* file system](Creating_new_lustre_fs_3_0.md/#3.0), using the zpools you created in step 4 above as object storage targets (volumes), rather than direct block devices.  Each ZFS pool that you created will appear as a target, with the Type identified as a **ZfsPool**.
 
-<a href="#8.0">Top of page</a>
+[Top of page](#8.0)
 
 <a id="8.2"></a>
 ## Importing and exporting ZFS pools in a shared-storage high-availability cluster
@@ -171,7 +172,7 @@ In the example, there are two exported pools. Note that the second pool in the l
 	```
 	zpool import -a
 	```
-<a href="#8.0">Top of page</a>
+[Top of page](#8.0)
 
 <a id="8.3"></a>
 ## Removing a ZFS-based Lustre* file system
@@ -181,10 +182,10 @@ When removing a Lustre* file system, the Manager for Lustre\* software does not 
 LDISKFS volumes do not require any special treatment; they can simply be reformatted, either by hand or by re-adding the volumes into a new Lustre* file system via  Manager for Lustre\* software. The manager software will detect the pre-existing Lustre* data, and ask the user to confirm that the volume is to be re-used.
 ZFS OSDs require some additional work. ZFS OSDs are file system datasets inside zpools. After a file system is removed using Manager for Lustre\* software, any ZFS OSDs from that file system will still be present in the ZFS storage pools (zpools), and cannot be re-used directly. To reuse the storage in a zpool, the existing OSD datasets must first be removed, using the zfs destroy command.  This is described in these sections:
 
-- <a href="#8.4">Destroy an individual zpool</a>
+- [Destroy an individual zpool](#8.4)
 - <a href="#8.5">Destroy all of the ZFS pools in a shared-storage high-availability cluster
 
-<a href="#8.0">Top of page</a>
+[Top of page](#8.0)
 
 <a id="8.4"></a>
 ## Destroy an individual zpool
@@ -220,10 +221,10 @@ zpool destroy demo-ost0pool
 ```
 1. Confirm that the pool has been removed with zpool list.
 
-<a href="#8.0">Top of page</a>
+[Top of page](#8.0)
 
 <a id="8.5"></a>
-## Destroy an individual zpool
+## Destroy all of the ZFS pools in a shared-storage
 
 Perform the following steps.
 
@@ -245,3 +246,4 @@ zpool destroy [-f] <pool name>
 ```
 The `-f` flag will force the destruction of the pool, unmounting any active datasets that may be present.
 
+[Top of page](#8.0)

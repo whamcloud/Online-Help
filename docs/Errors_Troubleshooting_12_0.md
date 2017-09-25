@@ -1,10 +1,12 @@
 [**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
-# <a id="12.0"></a>Errors and troubleshooting
+
+<a id="12.0"></a>
+# Errors and troubleshooting
 
 The following topics are discussed in this chapter:
 
-- <a href="#12.1">Unexpected file system events</a>
-- <a href="#12.2">Running Manager for Lustre\* diagnostics</a>
+- [Unexpected file system events](#12.1)
+- [Running Manager for Lustre\* diagnostics](#12.2)
 
 
 ## <a id="12.1"></a>Unexpected file system events
@@ -234,7 +236,7 @@ manually fail the target over to the peer server. </td>
     </tbody>
 </table>
 
-<a href="#12.0">Top of page</a>
+[Top of page](#12.0)
 
 ## <a id="12.2"></a>Running Manager for Lustre\* diagnostics
 
@@ -305,4 +307,4 @@ optional arguments:
  --days-back DAYS_BACK, -d DAYS_BACK
 Number of days back to collect logs. default is 1. 0 would mean today's logs only.
 ```
-<a href="#12.0">Top of page</a>
+[Top of page](#12.0)

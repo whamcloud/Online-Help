@@ -1,18 +1,19 @@
 [**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
-# <a id="9.0"></a>Graphical User Interface
+
+<a id="9.0"></a>
+# Graphical User Interface
 
 This section details the Manager for Lustre\* graphical user interface.  Click the desired topic.
 
-- <a href="#9.1">Dashboard window</a>
-- <a href="#9.2">Dashboard charts</a>
-- <a href="#9.3">Configuration menu</a>
-- <a href="#9.4">Job stats</a>
-- <a href="#9.5">Logs window</a>
-- <a href="#9.6">Status window</a>
-- <a href="#9.7">Alert bar</a>
-- <a href="#9.8">Resources tree view</a>
-- <a href="#9.9">Breadcrumb navigation</a>
-
+- [Dashboard window](#9.1)
+- [Dashboard charts](#9.2)
+- [Configuration menu](#9.3)
+- [Job stats](#9.4)
+- [Logs window](#9.5)
+- [Status window](#9.6)
+- [Resources tree view](#9.7)
+- [Breadcrumb navigation](#9.8)
+- [Alert bar](#9.9)
 
 ## <a id="9.1"></a>Dashboard window
 
@@ -21,7 +22,7 @@ The Dashboard window is shown next.
 <a id="f9.1"></a>
 ![md_Graphics/dashboard.png][f9.1]
 
-The Dashboard displays a set of charts that provide usage and performance data at several levels for each file system. At the top level, this window displays an aggregate view of all file systems you're currently monitoring. You can select to monitor individual file systems and servers by clicking **Configure Dashboard**; See <a href="#9.1.2">Configuring the Dashboard</a>.
+The Dashboard displays a set of charts that provide usage and performance data at several levels for each file system. At the top level, this window displays an aggregate view of all file systems you're currently monitoring. You can select to monitor individual file systems and servers by clicking **Configure Dashboard**; See [Configuring the Dashboard](#9.1.2).
 
 To view charts for OSTs and MDT(s), select the specific file system. Then select the desired target(s).
 
@@ -65,7 +66,7 @@ By default, the Dashboard displays information and charts for all file systems. 
 
 Click **Update** to apply your choices and **Cancel** to close.
 
-<a href="#9.0">Top of page</a>
+[Top of page](#9.0)
 
 ## <a id="9.2"></a>Dashboard charts
 
@@ -73,32 +74,32 @@ Several Dashboard charts provide quick, detailed, visual representation of the p
 
 Charts are presented as:
 
-- <a href="#9.2a">File system charts</a>
-- <a href="#9.2b">Server charts</a>
-- <a href="#9.2c">MDT charts</a>
-- <a href="#9.2d">OST charts</a>
+- [File system charts](#9.2a)
+- [Server charts](#9.2b)
+- [MDT charts](#9.2c)
+- [OST charts](#9.2d)
 
-<a href="#9.0">Top of page</a>
+[Top of page](#9.0)
 
 **<a id="9.2a"></a>File system charts**
 
 The Dashboard window displays the following six charts for one or more file systems:
 
-- <a href="#9.2.1">Read/Write Heat Map</a>
-- <a href="#9.2.2">OST Balance</a>
-- <a href="#9.2.3">Metadata Operations</a>
-- <a href="#9.2.4">Read/Write Bandwidth</a>
-- <a href="#9.2.6">Object Storage Servers</a>
+- [Read/Write Heat Map](#9.2.1)
+- [OST Balance](#9.2.2)
+- [Metadata Operations](#9.2.3)
+- [Read/Write Bandwidth](#9.2.4)
+- [Object Storage Servers](#9.2.6)
 
 
 
-**<a id="9.2a"></a>Server charts**
+**<a id="9.2b"></a>Server charts**
 
 The Dashboard displays the following three charts for an individual server (MDS or OSS). To access, click **Configure Dashboard**. Then select **Servers** and select the desired server. 
 
-- <a href="#9.2.4">Read/Write Bandwidth</a>
-- <a href="#9.2.7">CPU Usage</a>
-- <a href="#9.2.8">Memory Usage</a>
+- [Read/Write Bandwidth](#9.2.4)
+- [CPU Usage](#9.2.7)
+- [Memory Usage](#9.2.8)
 
 
 
@@ -106,9 +107,9 @@ The Dashboard displays the following three charts for an individual server (MDS 
 
 The Dashboard window displays the following three charts for the selected MDT. To access, click **Configure Dashboard**. Then select the specific file system. Lastly, select the desired MDT.
 
-- <a href="#9.2.3">Metadata Operations</a>
-- <a href="#9.2.9">Space Usage</a>
-- <a href="#9.2.810">File Usage</a>
+- [Metadata Operations](#9.2.3)
+- [Space Usage](#9.2.9)
+- [File Usage](#9.2.10)
 
 
 
@@ -116,9 +117,9 @@ The Dashboard window displays the following three charts for the selected MDT. T
 
 The OST Dashboard window displays the following three charts for the selected OST. To access, click Configure Dashboard. Then select the specific file system. Lastly, select the desired OST.
 
-- <a href="#9.2.4">Read/Write Bandwidth</a>
-- <a href="#9.2.9">Space Usage</a>
-- <a href="#9.2.11">Object Usage</a>
+- [Read/Write Bandwidth](#9.2.4)
+- [Space Usage](#9.2.9)
+- [Object Usage](#9.2.11)
 
 
 ### <a id="9.2.1"></a>Read/Write Heat Map chart
@@ -135,7 +136,7 @@ Because of the way that activity information is averaged, the heat map may show 
 **Features**
 
 - Mouse over any cell on the heat map to learn which OST this is, its file system, its read or write activity, and the actual starting date and time of that measurement period. 
-- Click on a specific heat map cell to open the Job Stats window (job statistics) for that OST and read/write measurement. See [View job statistics](Monitoring_lustre_fs_4_0_0.md/#4.0.0). 
+- Click on a specific heat map cell to open the Job Stats window (job statistics) for that OST and read/write measurement. See [View job statistics](Monitoring_lustre_fs_4_0_0.md/#4.3). 
 - To better view larger numbers of OSTs, for example, more than forty OSTs, click Full Screen to expand the map. 
 
 **View this chart for a specific file system**
@@ -470,21 +471,21 @@ This chart is displayed for a selected OST and shows the percentage of metadata 
 1. Click **Set Range** to set the **Start** and **End** times and dates over which measurements will be displayed. This  view of the chart is a static snapshot, starting and ending as configured. 
 1. Click **Update** to apply and close this window.
 
-<a href="#9.0">Top of page</a>
+[Top of page](#9.0)
 
 
 ## <a id="9.3"></a>Configuration menu
 
 The Configuration menu provides access to the following windows, to let you create and manage file systems:
 
-- The <a href="#9.3.1">Server window</a> lets you configure a new server for a new file system or add a server to an existing file system.
-- At the <a href="#9.3.2">Power Control window</a>, you can configure power distribution units and outlets, and assign servers to PDU outlets to support high availability/failover. 
-- At the <a href="#9.3.3">File Systems window</a>, you can create a new file system or manage a file system. 
-- The <a href="#9.3.4">HSM window</a> configure and monitor hierarchical storage management (HSM) activities. You can also add a copytool to a worker agent and assign that tool instance to a file system.
-- The <a href="#9.3.5">Storage window</a> lists detected storage module plug-ins (provided by third parties), which may provide configuration, status, and/or failover control of RAID based storage devices, depending entirely on the plug-in.
-- At the <a href="#9.3.6">Users window</a>, add and configure superusers and users. Superusers are administrators.
-- Add volumes and configure those volumes for high availability at the <a href="#9.3.7">Volumes window</a>.
-- The <a href="#9.3.8">MGTs window</a> lets you configure the management target.
+- The [Server window](#9.3.1) lets you configure a new server for a new file system or add a server to an existing file system.
+- At the [Power Control window](#9.3.2), you can configure power distribution units and outlets, and assign servers to PDU outlets to support high availability/failover. 
+- At the [File Systems window](#9.3.3), you can create a new file system or manage a file system. 
+- The [HSM window](#9.3.4) configure and monitor hierarchical storage management (HSM) activities. You can also add a copytool to a worker agent and assign that tool instance to a file system.
+- The [Storage window](#9.3.5) lists detected storage module plug-ins (provided by third parties), which may provide configuration, status, and/or failover control of RAID based storage devices, depending entirely on the plug-in.
+- At the [Users window](#9.3.6), add and configure superusers and users. Superusers are administrators.
+- Add volumes and configure those volumes for high availability at the [Volumes window](#9.3.7).
+- The [MGTs window](#9.3.8) lets you configure the management target.
 
 
 ### <a id="9.3.1"></a>Server Configuration window
@@ -498,14 +499,14 @@ Under Server Configuration, you can:
 
 - Add an object storage server. Click **+ Add Server** or **+ Add More Servers**.
 - View existing servers for all file systems.
-- View **Server State**: This indicator tells you the alert status for that server. A green check mark indicates that all is well with that server. A red exclamation mark indicates an active alert has been generated for this server; you can mouse over the exclamation mark to learn the cause of the alert. See <a href="#9.3.4">View all status messages</a> for more information. 
+- View **Server State**: This indicator tells you the alert status for that server. A green check mark indicates that all is well with that server. A red exclamation mark indicates an active alert has been generated for this server; you can mouse over the exclamation mark to learn the cause of the alert. See [View all status messages](#9.6a) for more information. 
 - View the **Profile** associated with each server. When you add a new server, you select the server profile for that server. The profile defines the role of that server. There are generally four server profiles available, however your installation may list more. The four common server profiles are:
     - *Managed storage server*
     - *Monitored storage server*
     - *POSIX HSM Agent Node*
     - *Robinhood Policy Engine server*
 - Determine **LNet state** for a given server. Possible LNet states are: *LNet up*, *LNet down*, and *LNet unloaded*. 
-- Click on the server name (hostname) to open a <a href="#9.3.1.1">Server Detail window</a> to learn more about that server and access configuration options.
+- Click on the server name (hostname) to open a [Server Detail window](#9.3.1.1) to learn more about that server and access configuration options.
 - Under **Actions**, specific to each server, you can perform the following commands. These commands are used primarily to decommission servers. See [Decommissioning a server for an MGT, MDT, or OST](Manage_maintain_HA_lustre_fs_5_0.md/#5.13).
     - **Reboot**: Initiate a reboot on this server. If this server is configured as the primary server of an HA pair, the file system will failover to the secondary server until this server is back online. The file system will then fail back to the primary server. If this is not configured as an HA server, then any file systems or targets that rely on this server will be unavailable until rebooting is complete.
     - **Shutdown**: Initiate an orderly shutdown on this server. If this server is configured as the primary server of an HA pair, the file system will failover to the secondary server. If this is not configured as an HA server, then any file systems or targets that rely on this server will be unavailable until this server is rebooted.
@@ -530,11 +531,11 @@ Each Server Detail window contains the full extent of information for that serve
 
 This window is divided into five sections: 
 
-- <a href="#9.3.1.1a">Server Detail</a>
-- <a href="#9.3.1.1b">Pacemaker configuration</a>
-- <a href="#9.3.1.1c">Corosync configuration</a>
-- <a href="#9.3.1.1d">LNet detail</a>
-- <a href="#9.3.1.1e">NID configuration</a>
+- [Server Detail](#9.3.1.1a)
+- [Pacemaker configuration](#9.3.1.1b)
+- [Corosync configuration](#9.3.1.1c)
+- [LNet detail](#9.3.1.1d)
+- [NID configuration](#9.3.1.1e)
 
 
 **<a id="9.3.1.1a"></a>Server Detail**
@@ -732,7 +733,7 @@ Under MGT Configuration for an existing MGT, you can perform these actions under
 - **Failover**: Clicking Failover will forcibly migrate the target to its failover server. Clients attempting to access data on the target while the migration is in process may experience delays until the migration completes. If this action is not displayed, then the MGT has already failed-over and this button will display as Failback. Otherwise, a secondary server has not been configured. 
 - **Failback**: Migrate the target back to its primary server. Clients attempting to access data on the target while the migration is in process may experience delays until the migration completes. This action is displayed only after a target has failed-over.
 
-<a href="#9.0">Top of page</a>
+[Top of page](#9.0)
 
 ## <a id="9.4"></a>Job Stats window
 
@@ -743,9 +744,9 @@ Clicking **Job Stats** opens the Job Stats window and reveals the top five jobs 
 **Note:** Job stats need to be enabled before then can be viewed. See [View Job stats](Monitoring_lustre_fs_4_0_0.md/#4.3).
 ![md_Graphics/job_stats.png][f9.4]
 
-On the <a href="#9.2.1">Read/Write Heat Map</a> (on the Dashboard), you can also click a heat map cell and go to the Job Stats screen for that OST. Doing so will present a static view of job stats for the selected OST. Because it is static, *Duration* is not selectable.
+On the [Read/Write Heat Map](#9.2.1) (on the Dashboard), you can also click a heat map cell and go to the Job Stats screen for that OST. Doing so will present a static view of job stats for the selected OST. Because it is static, *Duration* is not selectable.
 
-<a href="#9.0">Top of page</a>
+[Top of page](#9.0)
 
 
 ## <a id="9.5"></a>Logs window
@@ -766,7 +767,7 @@ For example, if a failover event takes place, the following occurs:
 
 Each of the above items generates a log message which is generated and displayed on the Logs window.
 
-<a href="#9.0">Top of page</a>
+[Top of page](#9.0)
 
 
 ## <a id="9.6"></a>Status window
@@ -812,10 +813,10 @@ The Status window also incorporates an auto-complete search function.  Simply be
 You can run searches using the following rules:
 
 1. Keywords can be filtered using the equals sign (=) or "in" keywords. Examples: 
-    - severity = ERROR
-    - severity in [WARNING, ERROR]
+    - `severity = ERROR`
+    - `severity in [WARNING, ERROR]`
 1. Filters can be joined using the "and" keyword. Example:
-    - severity = ERROR and active = true
+    - `severity = ERROR and active = true`
 
 The following table lists field names, associated types, and information about that field. 
 
@@ -832,7 +833,7 @@ record_type = CorosyncNoPeersAlert
 severity in [ERROR, WARNING]
 ```
 
-<a href="#9.0">Top of page</a>
+[Top of page](#9.0)
 
 ## <a id="9.7"></a>Resources tree view
 
@@ -842,7 +843,7 @@ The following image is a partial display of the Resources tree view.
 
 The Resources tree view is a tree listing of resources in the selected file system. It lists items in real time and lets you descend the file system hierarchy to the desired resource.  You can click a resource (file systems, servers, volumes, and targets) to view that resource in the tree, and click its metrics link to view that resource's metrics. This pane displays pages when many records are available. You can size this pane by dragging its edge drawer.
 
-<a href="#9.0">Top of page</a>
+[Top of page](#9.0)
 
 ## <a id="9.8"></a>Breadcrumb navigation
 
@@ -858,7 +859,7 @@ If you create a cycle, the breadcrumbs will automatically slice up to the curren
 
 If you click the Back button and the browser indicates that it is going to a previous page not in the breadcrumbs list, the new page will act as the starting breadcrumb location. This prevents a "reverse build-up" of breadcrumbs.
 
-<a href="#9.0">Top of page</a>
+[Top of page](#9.0)
 
 ## <a id="9.9"></a>Alert bar
 
@@ -866,6 +867,7 @@ This red bar briefly appears if there are any active error or warning alerts on 
 
 ![f9.25]
 
+[Top of page](#9.0)
 
 
 [f9.1]: md_Graphics/dashboard.png

@@ -1,13 +1,14 @@
 [**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
-# <a id="6.0"></a>Configuring and using Hierarchical Storage Management
+<a id="6.0"></a>
+# Configuring and using Hierarchical Storage Management
 
 **In this chapter:**
 
-- <a href="#6.1">Add an HSM Agent node</a>
-- <a href="#6.2">Add a Copytool to an HSM Agent node</a>
-- <a href="#6.3">Start the Copytool</a>
-- <a href="#6.4">Using HSM</a>
-- <a href="#6.5">Add a Robinhood Policy Engine server</a>
+- [Add an HSM Agent node](#6.1)
+- [Add a Copytool to an HSM Agent node](#6.2)
+- [Start the Copytool](#6.3)
+- [Using HSM](#6.4)
+- [Add a Robinhood Policy Engine server](#6.5)
 
 Hierarchical Storage Management (HSM) can help provide a cost-effective storage platform that balances performance and capacity. With HSM, storage systems are organized into tiers. The high-performance, primary tier is on the shortest path to the systems where applications are running and where the most data is generated and consumed. As the high-performance tier fills, data that is not being as actively accessed is migrated to lower-cost, higher-capacity storage archive for long-term retention. Data migration is generally managed automatically and transparently to users. 
 
@@ -26,34 +27,34 @@ The HSM framework included with Manager for Lustre\* software includes the follo
 
 Perform these tasks to configure basic HSM capabilities for a Lustre* file system. 
 
-- <a href="#6.1">Add an HSM Agent node</a>
+- [Add an HSM Agent node](#6.1)
 - Configure power control (optional): HSM Agent nodes are NOT configured for high-availability with Pacemaker and Corosync. The HSM Coordinator schedules HSM tasks with multiple copytools, and if a copytool goes offline, the HSM Coordinator will assign HSM activities to the remaining copytool(s). However, you can configure power control, so that an HSM Agent can be power-controlled from the Manager for Lustre\* GUI. You can either configure power distribution units (PDUs), or baseboard management controllers (BMCs) to control power to HSM Agent nodes. 
     - To configure PDUs, see [Add power distribution units](Creating_new_lustre_fs_3_0.md/#3.6) and [Assign PDU outlets to servers](Creating_new_lustre_fs_3_0.md/#3.7).
     - To configure IMPI/BMCs, see [Assign BMCs to servers](Creating_new_lustre_fs_3_0.md/#3.8).
-- <a href="#6.2">Add a copytool to an HSM Agent node</a>
-- For an overview of manual HSM tasks, see <a href="#6.4">Using HSM</a>.
+- [Add a copytool to an HSM Agent node](#6.2)
+- For an overview of manual HSM tasks, see [Using HSM](#6.4).
 
 **Add a Robinhood policy engine server**
 
 Robinhood can automate HSM activities. The section linked here discusses adding a Robinhood policy engine server, but does not discuss configuring Robinhood for HSM automation. For more information, see the related guide: *Hierarchical Storage Management Configuration*.
 
- - <a href="#6.5">Add a Robinhood policy engine server</a>
+ - [Add a Robinhood policy engine server](#6.5)
  
-<a href="#6.0">Top of page</a>
+[Top of page](#6.0)
 
 ## <a id="6.1"></a>Add an HSM Agent node
 
 If you plan to enable Hierarchical Storage Management (HSM), perform the following procedures to create an HSM Agent node.
 
-To add a copytool instance to an existing HSM Agent node, see <a href="#6.2">Add a Copytool to an HSM Agent node</a>.
+To add a copytool instance to an existing HSM Agent node, see [Add a Copytool to an HSM Agent node](#6.2).
 
 **Add an HSM Agent node:**
 
-1. Perform the steps under [Add one or more servers](Creating_new_lustre_fs_3_0.md/#3.4"). In that procedure, when selecting the server profile, select **POSIX HSM Agent Node**. 
-1. When you have added the server(s), perform the procedure in <a href="#6.2">Add a Copytool to an HSM Agent node</a>.
-1. After the copytool has been added to the HSM Agent node, see <a href="#6.4">Using HSM</a>.
+1. Perform the steps under [Add one or more servers](Creating_new_lustre_fs_3_0.md/#3.4). In that procedure, when selecting the server profile, select **POSIX HSM Agent Node**. 
+1. When you have added the server(s), perform the procedure in [Add a Copytool to an HSM Agent node](#6.2).
+1. After the copytool has been added to the HSM Agent node, see [Using HSM](#6.4).
 
-<a href="#6.0">Top of page</a>
+[Top of page](#6.0)
 
 ## <a id="6.2"></a>Add a Copytool to an HSM Agent node
 
@@ -63,7 +64,7 @@ To add a copytool instance to an existing HSM Agent node, see <a href="#6.2">Add
     
     a. **File system:** Specify file system for which this copytool will perform HSM actions.
     
-    b. **Worker:** This is the POSIX HSM Agent node that you configured in <a href="#6.1">Add an HSM Agent node</a>. Each copytool instance has its own Agent node, so there may be several. Note that copytool is multi-threaded, so it is able to support multiple simultaneous HSM operations.
+    b. **Worker:** This is the POSIX HSM Agent node that you configured in [Add an HSM Agent node](#6.1). Each copytool instance has its own Agent node, so there may be several. Note that copytool is multi-threaded, so it is able to support multiple simultaneous HSM operations.
     
     c. **Path to the HSM agent binary:** The file system path to the copytool binary on the worker. For the POSIX copytool provided with Manager for Lustre\* software, the path is `/usr/sbin/lhsmtool_posix`). This was installed on the agent when you configured the HSM Agent node. If another copytool has been installed, it likely resides at another location. 
     
@@ -76,9 +77,9 @@ To add a copytool instance to an existing HSM Agent node, see <a href="#6.2">Add
     f. **Archive number:** The storage back-end number. Change this number only if your site policies require multiple storage back-ends. If there is only one archive available for the file system, set the archive number to "1" (the default). For more information, consult the "Lustre* Operations Manual", Section 22.3.1: Archive ID, multiple back-ends.
 1. To commit this configuration, click **Save**.
 
-See <a href="#6.3">Start the Copytool</a>.
+See [Start the Copytool](#6.3).
 
-<a href="#6.0">Top of page</a>
+[Top of page](#6.0)
 
 ## <a id="6.3"></a>Start the Copytool
 
@@ -92,7 +93,7 @@ To configure and launch the copytool on an HSM Agent:
 
 As soon as copytool services are requested, the copytool worker will respond. See [HSM window](Graphical_User_Interface_9_0.md/#9.3.4) for more information.
 
-<a href="#6.0">Top of page</a>
+[Top of page](#6.0)
 
 ## <a id="6.4"></a>Using HSM
 
@@ -144,7 +145,7 @@ lctl get_param mdt.*.hsm
 ```
 also requests returns information about the currently executing HSM request.
 
-<a href="#6.0">Top of page</a>
+[Top of page](#6.0)
 
 ## <a id="6.5"></a>Add a Robinhood Policy Engine server
 
@@ -155,4 +156,5 @@ To add a Robinhood policy engine server, perform the steps under [Add one or mor
 **Creating Policies**
 
 Robinhood lets a superuser create file-archiving policies based on the file class, as defined by file size, path, owner, age, extended attributes (xattrs), least-recently used, and other criteria. Multiple rules can be combined with Boolean operators. After copying files to archive, automatic file system purging can be set to occur based on the percentage of consumed file system capacity, file classes, etc. Robinhood can also be used to generate reports and create packages. See the implementation guide *Hierarchical Storage Management Configuration Guide* for more information.
-<a href="#6.0">Top of page</a>
+
+[Top of page](#6.0)

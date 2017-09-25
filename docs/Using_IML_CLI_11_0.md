@@ -1,5 +1,7 @@
 [**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
-# <a id="11.0"></a>Using the Manager for Lustre\* command line interface
+
+<a id="11.0"></a>
+# Using the Manager for Lustre\* command line interface
 
 Manager for Lustre\* software includes a command line interface (CLI) which can be used instead of the GUI to communicate with the Representational State Transfer (REST)-based API underlying the software GUI. The CLI is intended to be used in shell scripts by superusers and power users.
 
@@ -7,10 +9,10 @@ Manager for Lustre\* software includes a command line interface (CLI) which can 
 
 This chapter provides the following procedures and information:
 
-- <a href="#11.1">Accessing the command line interface</a>
-- <a href="#11.2">Creating a configuration file with login information</a>
-- <a href="#11.3">Getting help for CLI commands</a>
-- <a href="#11.4">CLI command examples</a>
+- [Accessing the command line interface](#11.1)
+- [Creating a configuration file with login information](#11.2)
+- [Getting help for CLI commands](#11.3)
+- [CLI command examples](#11.4)
 
 
 ## <a id="11.1"></a>Accessing the command line interface
@@ -22,7 +24,7 @@ To access the Manager for Lustre\* CLI:
 
 **WARNING**: To manage Lustre* file systems from the command line, you must use the Manager for Lustre\* command line interface. Modifying a file system manually from a shell on a storage server will interfere with the ability of Manager for Lustre\* to manage and monitor the file system.
 
-<a href="#11.0">Top of page</a>
+[Top of page](#11.0)
 
 
 ## <a id="11.2"></a>Creating a configuration file with login information
@@ -43,7 +45,7 @@ password = <password>
 ```
 $ chmod 0600 ~/.chroma
 ```
-<a href="#11.0">Top of page</a>
+[Top of page](#11.0)
 
 ## <a id="11.3"></a>Getting help for CLI commands
 
@@ -144,13 +146,13 @@ optional arguments:
 ```
  -h, --help show this help message and exit
 ```
-<a href="#11.0">Top of page</a>
+[Top of page](#11.0)
 
 ## <a id="11.4"></a>CLI command examples
 
 This section includes examples of common operations executed using the CLI.
 
-**Note**: Operations that modify the file system configuration can only be executed by a file system superuser. For a convenient way to access login information in a configuration file, see <a href="#11.2">Creating a configuration file containing login information</a>. If a configuration file containing the superuser’s login information does not exist, include the --username and --password parameters in the CLI command.
+**Note**: Operations that modify the file system configuration can only be executed by a file system superuser. For a convenient way to access login information in a configuration file, see [Creating a configuration file containing login information](#11.2). If a configuration file containing the superuser’s login information does not exist, include the --username and --password parameters in the CLI command.
 
 To add the file system jovian to Manager for Lustre\* , enter:
 
@@ -219,4 +221,4 @@ To detect existing (non-managed) Lustre* file systems on servers that have been 
 ```
 # chroma filesystem-detect
 ```
-<a href="#11.0">Top of page</a>
+[Top of page](#11.0)

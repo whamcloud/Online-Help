@@ -1,17 +1,19 @@
 [**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
-# Monitoring Lustre* file systems<a id="4.0.0"></a>
+<a id="4.0.0"></a>
+# Monitoring Lustre* file systems
 
 You can easily monitor one or more file systems at the Dashboard, Status, and Logs windows. The Dashboard window displays a set of charts that provide usage and performance data at several levels in the file systems being monitored, while the Status and Logs windows keep you informed of file system activity relevant to current and past file system health and performance. 
 
 **In this section:**
 
-- <a href="#4.1">View charts on the Dashboard</a>
-- <a href="#4.2">Check file systems status</a>
-- <a href="#4.3">View alerts and events status messages</a>
-- <a href="#4.4">View commands and status messages on the Status window</a>
-- <a href="#4.5">View Logs</a>
-- <a href="#4.6">View and change file system parameters</a>
-- <a href="#4.7">View a server's parameters</a>
+- [View charts on the Dashboard](#4.1)
+- [Check file systems status](#4.2)
+- [View job stats](#4.3)
+- [View and manage file system parameters](#4.4)
+- [View a servers detail window](#4.5)
+- [View commands and status messages on the Status window](#4.6)
+- [View Logs](#4.7)
+- [View HSM Copytool activities](#4.8)
 
 <a id="4.1"></a>
 
@@ -34,11 +36,11 @@ You can configure certain data display parameters for each chart, and your chart
 
 See:
 
-- <a href="#4.1.1">View charts for one or all file systems (including all OSTs, MDTs, and servers)</a>
-- <a href="#4.1.2">View charts for one or all servers</a>
-- <a href="#4.1.3">View charts for an OST or MDT</a>
+- [View charts for one or all file systems (including all OSTs, MDTs, and servers)](#4.1.1)
+- [View charts for one or all servers](#4.1.2)
+- [View charts for an OST or MDT](#4.1.3)
 
-<a href="#4.0.0">Top of page</a>
+[Top of page](#4.0.0)
 <a id="4.1.1"></a>
 
 ### View charts for one or all file systems
@@ -109,7 +111,7 @@ The following charts are displayed for MDTs:
 - [Space Usage](Graphical_User_Interface_9_0.md/#9.2.9)
 - [File Usage](Graphical_User_Interface_9_0.md/#9.2.10)
 
-<a href="#4.0.0">Top of page</a>
+[Top of page](#4.0.0)
 
 <a id="4.2"></a>
 
@@ -121,9 +123,9 @@ The file systems Status light ![md_Graphics/status_light.png][f4.1] provides a q
 - A yellow Status light ![md_Graphics/yellow_status.png][f4.2] indicates that one or more warning alerts have been received. The file system may be operating in a degraded mode, (such as when a target fails over) so performance may be degraded. 
 - A red Status light ![md_Graphics/red_status.png][f4.3] indicates that one or more errors alerts have been received. This file system may be down or is severely degraded. One or more file system components may be currently unavailable, such as when both the primary and secondary servers for a target are not running.
 
-Click **Status** to open the Status window. See <a href="#4.6">View status messages on the Status window</a>.
+Click **Status** to open the Status window. See [View commands and status messages on the Status window](#4.6).
 
-<a href="#4.0.0">Top of page</a>
+[Top of page](#4.0.0)
 
 <a id="4.3"></a>
 
@@ -188,7 +190,7 @@ To track job stats per process name and user ID (for debugging, or if no job sch
 $ lctl conf_param testfs.sys.jobid_var=procname_uid
 ```
 
-<a href="#4.0.0">Top of page</a>
+[Top of page](#4.0.0)
 
 <a id="4.4"></a>
 
@@ -196,15 +198,15 @@ $ lctl conf_param testfs.sys.jobid_var=procname_uid
 
 After you have created a file system, you can view its configuration and manage the file system at the [File System Details window](Graphical_User_Interface_9_0.md/#9.1.1). 
 
-<a href="#4.0.0">Top of page</a>
+[Top of page](#4.0.0)
 
 <a id="4.5"></a>
 
 ## View a server's detail window
 
-To view all parameters available for a server, at the menu bar, click the **Configuration** drop-down menu and click **Servers**. Select the server to view its [Server Details window](Graphical_User_Interface_9_0.md/#9.3.1.1). 
+To view all parameters available for a server, at the menu bar, click the **Configuration** drop-down menu and click **Servers**. Select the server to view its [Server Detail window](Graphical_User_Interface_9_0.md/#9.3.1.1). 
 
-<a href="#4.0.0">Top of page</a>
+[Top of page](#4.0.0)
 
 <a id="4.6"></a>
 
@@ -222,9 +224,9 @@ Click **Status** to view all status messages. All messages are displayed most-re
 - **Warning alerts:** Warnings are displayed in orange. A warning usually indicates that the file system is operating in a degraded mode such as when a target has failed over so that high availability is no longer true for that target. A warning message marks a status change that has a specific **Begin** and **End** time. A warning is active at the beginning of the status change and inactive at the end of the status change. 
 - **Errors alerts:** Errors are displayed in red. An error message indicates that the file system is down or severely degraded. One or more file system components are currently unavailable, such as when both the primary and secondary servers for a target are not running. An error often has a remedial action you can take by clicking the button.
 
-For more information see [Status window](Graphical_User_Interface_9_0.md/#9.3.4).
+For more information see [Status window](Graphical_User_Interface_9_0.md/#9.6).
 
-<a href="#4.0.0">Top of page</a>
+[Top of page](#4.0.0)
 
 <a id="4.7"></a>
 
@@ -235,7 +237,7 @@ Click **Logs** on the menu bar to view all system logs.
 The Logs window displays log information and allows filtering of events by date range, host, service, and messages from Lustre or all sources. 
 The logs window also features querying with auto-complete and linkable host names.
 
-<a href="#4.0.0">Top of page</a>
+[Top of page](#4.0.0)
 
 <a id="4.8"></a>
 
@@ -253,7 +255,7 @@ After HSM has setup for a file system, this HSM Copytool chart displays a moving
 - Click **Actions > Shutdown** to stop the HSM coordinator for this file system. No new requests will be scheduled.
 - Use **Change Duration** to change the time period for the range of data displayed on the HSM Copytool chart. The chart begins at the assigned start time and ends now. You can set this to select **Minutes**, **Hours**, **Days** or **Weeks**, up to four weeks back in time and ending now. The most recent data is displayed on the right. The number of data points will vary, based primarily on the duration.
 
-<a href="#4.0.0">Top of page</a>
+[Top of page](#4.0.0)
 
 
 [f4.1]:md_Graphics/status_light.png

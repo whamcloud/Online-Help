@@ -1,5 +1,6 @@
 [**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
-# <a id="13.0"></a>Glossary
+<a id="13.0"></a>
+# Glossary
 
 **chroma-agent.** An executable provided with the Manager for Lustre\* software that can be installed as a service on Lustre* servers to enable monitoring of Lustre* file systems not created by the Manager for Lustre\* software. 
 
@@ -16,3 +17,6 @@
 **Target.** See metadata target, management target, object storage target.
 
 **Volumes.** (also called LUNs or block devices) are the underlying units of storage used to create Lustre* file systems. Each Lustre* target corresponds to a single volume. If servers in the volume have been configured for high availability, primary and failover servers can be designated for a Lustre* target. Only volumes that are not already in use as Lustre* targets or local file systems are shown. A volume may be accessible on one or more servers via different device nodes, and it may be accessible via multiple device nodes on the same host.
+
+
+[Top of page](#13.0)

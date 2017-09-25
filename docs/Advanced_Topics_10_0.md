@@ -1,11 +1,13 @@
 [**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
-# <a id="10.0"></a>Advanced Topics
+
+<a id="10.0"></a>
+# Advanced Topics
 
 The following procedures are provided in this chapter:
 
-- <a href="#10.1">File system advanced settings</a>
-- <a href="#10.2">Configure a new management target</a>
-- <a href="#10.3">Detect and monitor existing Lustre* file systems</a>
+- [File system advanced settings](#10.1)
+- [Configure a new management target](#10.2)
+- [Add additional Metadata Targets](#10.3)
 
 
 ## <a id="10.1"></a>File system advanced settings
@@ -39,7 +41,7 @@ These setting are pre-set to default values. Most of these settings are automati
 - *Idlm_timeout* - Lustre* distributed lock manager timeout: Time in seconds that a server will wait for a client to reply to an initial AST (local cancellation request). The default value is 20 seconds for an OST and 6 seconds for an MDT. 
 - *timeout* - Time in seconds that a client waits for a server to complete an RPC. The default value is 100.
 
-<a href="#10.0">Top of page</a>
+[Top of page](#10.0)
 
 ## <a id="10.2"></a>Configure a new Management Target
 
@@ -52,7 +54,7 @@ Perform the following steps to configure the management target:
     **Note:** The MGT and metadata target (MDT) can be located on the same server. However, they cannot be located on the same volume on a server.
 1. Click **+ Create new MGT** to create the new MGT. 
 
-<a href="#10.0">Top of page</a>
+[Top of page](#10.0)
 
 ## <a id="10.3"></a>Add additional Metadata Targets
 
@@ -79,4 +81,4 @@ mkdir <lustre_mount_point>/<parent_folder_to_contain this_MDT>/<subdirectory_nam
 
 **Note:** Any added MDT you create will be unavailable for use as an OST.
 
-<a href="#10.0">Top of page</a>
+[Top of page](#10.0)
