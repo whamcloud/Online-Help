@@ -1,4 +1,4 @@
-# Manager for Lustre* 4.0.0 Online Help
+# Manager for Lustre* 4.0.0 Help Docs
 
 ### Table of Contents
 

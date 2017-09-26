@@ -20,3 +20,4 @@
 - [Appendix C - Backup and Recovery of Servers Managed by Manager for Lustre\* Software](ig_ch_15_appC_backup_recovery.md)
 - [Getting Help](ig_ch_16_appD_getting_help.md)
 
+[Manager for Lustre* 4.0.0 Help Docs](../../README.md)

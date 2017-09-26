@@ -17,3 +17,5 @@
 - [Glossary](Glossary_13_0.md)
 - [Getting Help](Getting_help_14_0.md)
 - [Legal Information](Legal_information_15_0.md)
+
+[Manager for Lustre* 4.0.0 Help Docs](../README.md)
