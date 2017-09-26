@@ -31,7 +31,7 @@ Other installations may opt to deploy and configure a Lustre* file system
 and then later install Manager for Lustre\* software to be used
 in Monitor-only mode. The overall release tarball is iml-4.0.0.0.tar.gz.
 To deploy and configure Lustre* manually, see [Installing and Configuring
-Lustre* Manually](ig_ch_07_configure_clients.md/#installing-and-configuring-lustre-manually).
+Lustre* Manually](ig_ch_08_manual_install).
 
 For information regarding installing and configuring Lustre, see Part II
 of the *Lustre* Operations Manual*. This information is available at the

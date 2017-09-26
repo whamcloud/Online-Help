@@ -3,7 +3,7 @@
 
 **In this Chapter:**
 
-- [Client Requirements](#client-requirements-1)
+- [Client Requirements](#client-requirements)
 - [Installing Manager for Lustre\* software on Clients Running RHEL or CentOS](#installing-manager-for-lustre-software-on-clients-running-rhel-or-centos)
 
 
@@ -26,8 +26,7 @@ or CentOS Linux, version 7.3 or 7.4.
 -   Before using the Red Hat or RHEL software referenced herein, please refer to Red Hat’s website for more information, including without limitation, information regarding the mitigation of potential security vulnerabilities in the Red Hat software.
 
 LNET provides the client network infrastructure required by the Lustre*
-file system and LNET must be configured for each client. See [LNET
-Configuration](ig_ch_04_pre_install.md/#LNET-Configuration).
+file system and LNET must be configured for each client. See [LNET Configuration](ig_ch_04_pre_install.md/#lnet-configuration).
 
 Installing Manager for Lustre\* software on Clients Running RHEL or CentOS
 ----------------------------------------------------------------------------

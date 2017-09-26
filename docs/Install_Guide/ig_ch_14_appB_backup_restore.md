@@ -7,7 +7,7 @@
 - [Example Backup Checklist](#example-backup-checklist)
 - [Operating System](#operating-system)
 - [Host Name Resolution](#host-name-resolution)
-- [Package Update management environment (RPM & YUM)](#package-update-management-environment-rpm-yum)
+- [Package Update management environment (RPM & YUM)](#package-update-management-environment)
 - [Identity configuration](#identity-configuration)
 - [Security configuration](#security-configuration)
 - [Manager for Lustre\* software](#manager-for-lustre-software)
@@ -250,6 +250,7 @@ this file in the operating system manifest. The file /etc/resolv.conf
 contains the list of DNS name servers in use on the network; include a
 copy of this file in the manifest as well.
 
+<a id="package-update-management-environment"></a>
 ### Package Update management environment (RPM & YUM)
 
 The YUM configuration file /etc/yum.conf and files located at
@@ -322,8 +323,8 @@ or an integrated enterprise backup platform.
 ```
 mkdir -p $HOME/backup/etc/sysconfig
 
-cp -a /etc/sysconfig/network /etc/sysconfig/network-scripts/ifcfg-*
-\$HOME/backup/etc/sysconfig/.
+cp -a /etc/sysconfig/network /etc/sysconfig/network-scripts/ifcfg-* 
+$HOME/backup/etc/sysconfig/.
 
 cp -p /etc/hosts $HOME/backup/etc/.
 
@@ -561,7 +562,7 @@ Requirements](ig_ch_03_building.md/#manager-server-requirements). Network connec
 localization, user accounts, etc., should all be established as before
 the server/services failure. It is essential to ensure that the manager
 server is functionally identical to the original instance. As discussed
-in [Operating System](#example-backup-checklist), template-driven
+in [Operating System](#operating-system), template-driven
 automated provisioning platforms such as Kickstart are very effective
 ways to implement consistent operating system deployment.
 

@@ -4,13 +4,13 @@
 **In this Chapter**:
 
 - [Introduction](#introduction)
-- [Backup Overview](#backup-overview-1)
-- [Example Backup Checklist](#example-backup-checklist-1)
-- [Operating System](#operating-system-1)
-- [Host Name Resolution](#host-name-resolution-1)
-- [Package Update management environment (RPM & YUM)](#package-update-management-environment-rpm-yum-1)
-- [Identity configuration](#identity-configuration-1)
-- [Security configuration](#security-configuration-1)
+- [Backup Overview](#backup-overview)
+- [Example Backup Checklist](#example-backup-checklist)
+- [Operating System](#operating-system)
+- [Host Name Resolution](#host-name-resolution)
+- [Package Update management environment (RPM & YUM)](#package-update-management-environment)
+- [Identity configuration](#identity-configuration)
+- [Security configuration](#security-configuration)
 - [Creating a Backup Manifest for a Metadata Server or Object Storage Server](#creating-a-backup-manifest-for-a-metadata-server-or-object-storage-server)
 - [Chroma Agent Configuration](#chroma-agent-configuration)
 - [Manager for Lustre\* YUM Repository Configuration](#manager-for-lustre-yum-repository-configuration)
@@ -18,7 +18,7 @@
 - [SELinux Configuration](#selinux-configuration)
 - [Lustre* LNET Configuration](#lustre-lnet-configuration)
 - [Pacemaker and Corosync High Availability Framework](#pacemaker-and-corosync-high-availability-framework)
-- [System Services Startup Scripts (rc.sysinit)](#system-services-startup-scripts-rc.sysinit)
+- [System Services Startup Scripts (rc.sysinit)](#system-services-startup-scripts)
 - [Sample Automated Backup Script for Manager Lustre* Servers](#sample-automated-backup-script-for-manager-lustre-servers)
 - [Restoring a Server from Backup](#restoring-a-server-from-backup)
 
@@ -249,6 +249,7 @@ copy of this file in the operating system manifest. The file
 /etc/resolv.conf contains the list of DNS name servers in use on the
 network; include a copy of this file in the manifest as well.
 
+<a id="package-update-management-environment"></a>
 ### Package Update management environment (RPM & YUM)
 
 The YUM configuration file /etc/yum.conf and files located at
@@ -357,6 +358,7 @@ command to export the Pacemaker configuration.
 cibadmin --query > $HOME/cluster-cfg-$HOSTNAME.xml
 ```
 
+<a id="system-services-startup-scripts"></a>
 ### System Services Startup Scripts (rc.sysinit)
 
 The following awk script parses the output from the chkconfig command
@@ -386,6 +388,7 @@ if (length(on)>0)
 }' > $HOME/chkconfig-output-$HOSTNAME.sh
 ```
 
+<a id="sample-automated-backup-script-for-manager-lustre-servers"></a>
 ### Sample Automated Backup Script for Manager for Lustre* Servers
 
 For a server managed by Manager for Lustre\* software, this script can
@@ -497,8 +500,8 @@ the Manager for Lustre\* GUI.
     cp $BACKUP_ROOT/etc/sysconfig/system-config-firewall /etc/sysconfig/.
     ```
 
-> Restart network interfaces, if required for the server to make the
-> connection to the IML server.
+    > Restart network interfaces, if required for the server to make the
+    > connection to the IML server.
 
 1.  Re-install the Manager for Lustre* server packages:
 
@@ -534,12 +537,12 @@ cp $BACKUP_ROOT/etc/modprobe.d/iml_lnet_module_parameters.conf
 cp $BACKUP_ROOT/etc/corosync/corosync.conf /etc/corosync/.
 ```
 
-> **Note**: Do not restore the Pacemaker configuration at this time.
+    > **Note**: Do not restore the Pacemaker configuration at this time.
 
 1.  Restore the system services startup configuration (rc.sysinit run
     levels):
 
-sh \$BACKUP\_ROOT/chkconfig-output-\$HOSTNAME.sh
+    `sh \$BACKUP\_ROOT/chkconfig-output-\$HOSTNAME.sh`
 
 1.  Create the directories for the Lustre* storage mount points. For
     example, the following script extracts the directory paths for the
@@ -555,21 +558,23 @@ sh \$BACKUP\_ROOT/chkconfig-output-\$HOSTNAME.sh
     done | xargs mkdir -p
     ```
 
-> This method is not officially sanctioned because the format of the
-> JSON configuration is not part of a public API and may change over
-> time. Nevertheless, it's a convenient way to recreate mount points, if
-> they are not already in the build manifest for the server.
+    > This method is not officially sanctioned because the format of the
+    > JSON configuration is not part of a public API and may change over
+    > time. Nevertheless, it's a convenient way to recreate mount points, if
+    > they are not already in the build manifest for the server.
 
 1.  Reboot.
 
-2.  When the system has completed booting, verify that the server is
+1.  When the system has completed booting, verify that the server is
     running the Manager for Lustre\* software Linux kernel, and that LNET
     is properly configured. For example:
 
     ```
     [root@ee-mds1 ~]# uname -r
 
-    3.10.0-514.2.2.el7_lustre.x86_64.rpm [root@ee-mds1 ~]# modprobe -v lnet
+    3.10.0-514.2.2.el7_lustre.x86_64.rpm 
+    
+    [root@ee-mds1 ~]# modprobe -v lnet
 
     [root@ee-mds1 ~]# lctl network up
 
@@ -586,22 +591,22 @@ sh \$BACKUP\_ROOT/chkconfig-output-\$HOSTNAME.sh
     pcs status
     ```
 
-a.  If the other server in the HA pair is already running, then the
-    Pacemaker configuration should have been copied over when Pacemaker
-    started on the node being recovered. The cluster status will show
-    the resources.
+    a.  If the other server in the HA pair is already running, then the
+        Pacemaker configuration should have been copied over when Pacemaker
+        started on the node being recovered. The cluster status will show
+        the resources.
 
-b.  If both servers in the HA pair have been re-installed, then the
-    Pacemaker configuration will need to be restored from the backup as
-    well. For example:
+    b.  If both servers in the HA pair have been re-installed, then the
+        Pacemaker configuration will need to be restored from the backup as
+        well. For example:
 
-> cibadmin --replace --xml-file
-> \$BACKUP\_ROOT/ee-cluster-cfg-\$HOSTNAME.xml
->
-> This command will fail if a pre-existing configuration is detected. If
-> the configuration from the backup is absolutely required, then include
-> the --force flag on the command line. Be very careful that this is the
-> correct configuration before proceeding.
+    > cibadmin --replace --xml-file
+    > \$BACKUP\_ROOT/ee-cluster-cfg-\$HOSTNAME.xml
+    >
+    > This command will fail if a pre-existing configuration is detected. If
+    > the configuration from the backup is absolutely required, then include
+    > the --force flag on the command line. Be very careful that this is the
+    > correct configuration before proceeding.
 
 1.  The newly restored server may not yet be able to manage resources in
     the cluster, so clear out any historical error conditions and force

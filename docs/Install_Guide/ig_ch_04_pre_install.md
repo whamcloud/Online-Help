@@ -73,13 +73,13 @@ lost*.
     Following is one example of how to accomplish this. Please reference
     your site instructions for more information.
 
-```bash
-subscription-manager register --autosubscribe\
---username=\$redhat\_register\_user\
---password=\$redhat\_register\_password
- yum -y install yum-utils
-yum-config-manager --enable rhel-7-server-optional-rpms
-```
+    ```bash
+    subscription-manager register --autosubscribe\
+    --username=\$redhat\_register\_user\
+    --password=\$redhat\_register\_password
+    yum -y install yum-utils
+    yum-config-manager --enable rhel-7-server-optional-rpms
+    ```
 
 
 1.  Next, you will need to configure hostname resolution of all Lustre
@@ -95,13 +95,13 @@ yum-config-manager --enable rhel-7-server-optional-rpms
     complete:
 
 
-```
-10.0.0.101 manager
-10.0.0.102 ost1
-10.0.0.103 mds1
-10.0.0.104 mds2
-10.0.0.105 ost2
-```
+    ```
+    10.0.0.101 manager
+    10.0.0.102 ost1
+    10.0.0.103 mds1
+    10.0.0.104 mds2
+    10.0.0.105 ost2
+    ```
 
 1. Copy your `/etc/hosts` file to all servers.
 
@@ -149,7 +149,7 @@ instructions on installing software and configuring clients.
 
 LNET provides the client network infrastructure required by the Lustre*
 file system and LNET must be configured for each client. See [LNET
-Configuration](#LNET-Configuration).
+Configuration](#lnet-configuration).
 
 Linux\* Kernel Rebuilds and Patches
 -----------------------------------
