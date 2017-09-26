@@ -33,9 +33,6 @@ bundle as a whole.
 
 The format of the ``meta`` file is as follows:
 
-
-
-
 ```json
     {
       "name": "acme_drivers",
@@ -66,8 +63,7 @@ Creating a Bundle
 6. Create an archive of your bundle with ``-bundle.tar.gz`` appended to the name of your bundle.  For example, ````tar czf acme_drivers-bundle.tar.gz *.rpm meta repodata````
 
 **Warning:**
-
-Do not create bundles with the same name as the built-in bundles, as these will be overwritten by updates to Manager for Lustre\* software
+> Do not create bundles with the same name as the built-in bundles, as these will be overwritten by updates to Manager for Lustre\* software
 
 Installing a Bundle
 -------------------
@@ -139,24 +135,24 @@ A server profile is simply a JSON file defining various options.  For example, t
 ```
 
 
-- **name:**
+* **name:**
   An ID.  This must be unique within a Manager for Lustre* installation. To avoid name collisions, it is recommended
   to include the name of your organization.
 
-- **bundles:**
+* **bundles:**
   A list of strings referencing installed bundles.  A storage server using this profile will have access
   to packages in all the bundles referenced here.
 
-**packages:**
+* **packages:**
   A dict wherein the keys are the names of a bundle, and the values are a list of names of associated RPM packages.  These are the packages to be installed on storage servers using this profile.  Note that it is usually not necessary to list all packages: ``yum`` is used to install packages, so dependencies are respected.  For example, when installing ``lustre`` we do not also name ``e2fsprogs`` because it is a dependency of ``lustre`` and therefore installed automatically.  The reason we name ``lustre-modules`` even though it too is a dependency of ``lustre`` is that naming a package here causes any exact-version dependencies (such as the dependency on a particular version of ``kernel`` to be respected even if they involve installing a downgraded package).  This mechanism is an ML modification to the default ``yum`` behaviour, included to handle Lustre*'s need for older kernel versions.
 
-- **ui_name:**
+* **ui_name:**
   A string for presentation to users of the web interface and command line interface to ML.  This should be short (a few words at most) and meaningful to system administrators.
 
-- **ui_description:**
+* **ui_description:**
   A string containing a more detailed explanation of what this profile includes and what it is for.  Like ``ui_name``, this may be presented to users.
 
-- **managed:**
+* **managed:**
   A boolean.  If true, servers using this profile will be fully managed by ML, including the creation and modification of filesystems.  If false, servers using this profile will only be able to report monitoring data to ML.
 
 Installing a server profile
@@ -194,14 +190,14 @@ might be called acme-core and acme-scsi.
    
 ```json
 {
-     "name": "acme_storage",
-     "bundles": ["acme_lustre", "acme_drivers", "chroma-agent", "e2fsprogs"],
-     "packages": {"acme_lustre": ["lustre-modules", "lustre"],
-                  "acme_drivers": ["acme-core", "acme-scsi"]},
-     "ui_name": "Acme storage server",
-     "ui_description": "A storage server using Acme SCSI drivers, using Acme Lustre* extensions",
-     "managed": true
-    }
+  "name": "acme_storage",
+  "bundles": ["acme_lustre", "acme_drivers", "chroma-agent", "e2fsprogs"],
+  "packages": {"acme_lustre": ["lustre-modules", "lustre"],
+              "acme_drivers": ["acme-core", "acme-scsi"]},
+  "ui_name": "Acme storage server",
+  "ui_description": "A storage server using Acme SCSI drivers, using Acme Lustre* extensions",
+  "managed": true
+}
 ```
 
 [Top of page](#1.0)

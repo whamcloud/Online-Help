@@ -16,28 +16,31 @@ The provided plugin (procname_uid) uses the shell as the scheduler.
 
 ## <a name="1.2"></a>API
 
+Registered job scheduler plugins: slurm_job_id, job_id, lsb_jobid, loadl_step_id, pbs_jobid, procname_uid.
+
+Modules will be loaded dynamically as needed. Plugins must implement fetch function as documented. Plugins should also document the available metadata fields.
 
 ```
-automodule:: chroma_core.lib.scheduler
-
-autofunction:: fetch
-
-attribute:: FIELDS
+chroma_core.lib.scheduler.fetch(ids)
 ```
+> Given an iterable of job ids, return an interable of associated metadata dicts. Ids will be unique and requested in batch whenever possible. Plugins are responsible for any caching necessary for performance.
 
-
-Tuple of field names that the plugin will retrieve
-
+```
+chroma_core.lib.scheduler.FIELDS
+```
+> tuple of field names that the plugin will retrieve
 
 ## <a name="1.3"></a>procname_uid
 
+Shell-based scheduler which records process name and user id.
 
 ```
-automodule:: chroma_core.lib.scheduler.procname_uid
+chroma_core.lib.scheduler.procname_uid.fetch(ids)
+```
+> Generate process names and user ids.
 
-autofunction:: fetch
-
-autoattribute:: chroma_core.lib.scheduler.procname_uid.FIELDS
+```
+procname_uid.FIELDS = ('name', 'user')
 ```
 
 [Top of page](#1.0)
