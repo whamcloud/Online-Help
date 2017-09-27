@@ -46,11 +46,6 @@ The following documents are pertinent to Manager for Lustre* software. This list
 - Manager for Lustre\* Hierarchical Storage Management Framework White Paper
 - Architecting a High-Performance Storage System White Paper
 
-
-
-For more information beyond the documents listed above, see: 
-**Intel® Solutions for Lustre\* software** - [http://www.intel.com/content/www/us/en/software/intel-solutions-for-lustre-software.html](http://www.intel.com/content/www/us/en/software/intel-solutions-for-lustre-software.html).
-
 [Top of Page](#1.0)
 
 <a id="1.2"></a>
