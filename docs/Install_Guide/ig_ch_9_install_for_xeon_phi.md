@@ -1,5 +1,6 @@
-[**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
 # <a name="1.0"></a>Installing Manager for Lustre\* software on Intel® Xeon Phi™ Coprocessors
+
+[**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
 
 
 **In this Chapter:**

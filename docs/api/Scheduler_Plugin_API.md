@@ -1,8 +1,6 @@
-
-[**Manager for Lustre\* 4.0.0 API Documentation**](./api_TOC.md)
-
 # <a name="1.0"></a>Scheduler Plugin Developer's Guide for Manager for Lustre\* software
 
+[**Manager for Lustre\* 4.0.0 API Documentation**](./api_TOC.md)
 
 ## <a name="1.1"></a>Introduction
 
@@ -53,3 +51,5 @@ Copyright (c) 2017 Intel® Corporation. All rights reserved.
 
 \* Other names and brands may be claimed as the property of others.
 This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit. (http://www.openssl.org/)
+
+[Top of page](#1.0)

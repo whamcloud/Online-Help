@@ -1,7 +1,7 @@
-[**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
-
 <a id="12.0"></a>
 # Errors and troubleshooting
+
+[**Manager for Lustre\* Online Help**](IML_Help_TOC.md)
 
 The following topics are discussed in this chapter:
 

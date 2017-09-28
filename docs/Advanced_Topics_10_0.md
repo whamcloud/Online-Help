@@ -1,7 +1,7 @@
-[**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
-
 <a id="10.0"></a>
 # Advanced Topics
+
+[**Manager for Lustre\* Online Help**](IML_Help_TOC.md)
 
 The following procedures are provided in this chapter:
 

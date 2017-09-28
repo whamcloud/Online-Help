@@ -1,6 +1,6 @@
-[**Table of Contents**](cd_TOC.md)
+# <a name="Top"></a>IML Screen Shots
 
-# IML Screen Shots
+[**Table of Contents**](cd_TOC.md)
 
 ### The examples below are intended to represent an overall sense of the IML look and feel. 
 
@@ -59,4 +59,4 @@
 
 ---
 
-[**Table of Contents**](cd_TOC.md) 
+[Top of page](#Top) 

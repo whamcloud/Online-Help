@@ -1,6 +1,7 @@
-[**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
 <a id="4.0.0"></a>
 # Monitoring Lustre* file systems
+
+[**Manager for Lustre\* Online Help**](IML_Help_TOC.md)
 
 You can easily monitor one or more file systems at the Dashboard, Status, and Logs windows. The Dashboard window displays a set of charts that provide usage and performance data at several levels in the file systems being monitored, while the Status and Logs windows keep you informed of file system activity relevant to current and past file system health and performance. 
 

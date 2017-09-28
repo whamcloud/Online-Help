@@ -1,6 +1,6 @@
-[**Table of Contents**](cd_TOC.md)
+# <a name="Top"></a>Uninstalling IML
 
-# Uninstalling IML
+[**Table of Contents**](cd_TOC.md)
 
 ![clustre](md_Graphics/uninstall_sm.jpg)
 
@@ -187,4 +187,4 @@ yum remove kernel-2.6.32-431.5.1.el6_lustre.x86_64
 ```
 
 ---
-[**Table of Contents**](cd_TOC.md) 
+[Top of page](#Top)

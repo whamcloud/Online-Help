@@ -1,6 +1,6 @@
-[**Table of Contents**](cd_TOC.md)
+# <a name="Top"></a>Managing Import and Export Sequences of Zpools within zfs HA
 
-# Managing Import and Export Sequences of Zpools within zfs HA
+[**Table of Contents**](cd_TOC.md)
 
 ### background
 
@@ -58,4 +58,4 @@ File locks are created on zpool during transitions in a specified directory and 
 Lock directory is cleared and re-created on zfs device_driver_initialization which occurs on agent startup.
 
 ---
-[**Table of Contents**](cd_TOC.md) 
+[Top of page](#Top)

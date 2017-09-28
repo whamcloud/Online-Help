@@ -1,6 +1,7 @@
-[**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
 <a id="6.0"></a>
 # Configuring and using Hierarchical Storage Management
+
+[**Manager for Lustre\* Online Help**](IML_Help_TOC.md)
 
 **In this chapter:**
 

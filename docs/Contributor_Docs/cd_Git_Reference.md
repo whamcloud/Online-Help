@@ -1,6 +1,6 @@
-[**Table of Contents**](cd_TOC.md)
+# <a name="Top"></a>Git Info
 
-# Git Info
+[**Table of Contents**](cd_TOC.md)
 
 ![git info](md_Graphics/git_sm.jpg)
 
@@ -117,4 +117,4 @@
 | | | |
 
 ---
-[**Table of Contents**](cd_TOC.md) 
+[Top of page](#Top)

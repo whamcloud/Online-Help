@@ -1,5 +1,6 @@
-[**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
 # <a name="1.0"></a>Installing and Configuring Lustre* Manually
+
+[**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
 
 Some installations may opt to deploy and configure a Lustre* file system
 manually, without Manager for Lustre\* software. Other

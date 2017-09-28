@@ -1,6 +1,7 @@
+## <a name="Top"></a>Sync with the github origin
+
 [**Table of Contents**](cd_TOC.md)
 
-## Sync with the github origin
 Prior to pushing the code change it may be necessary to synchronize your cloned repo with the master repo that may have changed while you were working.
 
 To synchronize your cloned master with the origin master and to rebase your changed on top of the changes of everyone else, do the following:
@@ -44,4 +45,4 @@ git push origin my-fix
 ```
 
 ---
-[**Table of Contents**](cd_TOC.md) 
+[Top of page](#Top)

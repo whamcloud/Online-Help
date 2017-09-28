@@ -1,6 +1,6 @@
-[**Table of Contents**](cd_TOC.md)
+# <a name="Top"></a>Introduction
 
-# Introduction
+[**Table of Contents**](cd_TOC.md)
 
 ![beginning](md_Graphics/start_sm.jpg)
 
@@ -78,6 +78,8 @@ The [IML codebase](https://github.com/intel-hpdd) consists of many repositories 
  * view_server
  
  ---
- [**Table of Contents**](cd_TOC.md) 
+
+ [Top of page](#Top)
+
 
 

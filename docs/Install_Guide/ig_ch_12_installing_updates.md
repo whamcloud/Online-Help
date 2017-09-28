@@ -1,5 +1,6 @@
-[**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
 # <a name="1.0"></a>Installing Updates to Manager for Lustre\* software
+
+[**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
 
 **Note**: Perform any OS update prior to updating the Manager for
 Lustre\* software.

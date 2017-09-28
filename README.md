@@ -4,11 +4,11 @@
 
 ### [4.0.0 Online Help](docs/IML_Help_TOC.md)
   
-* Online Help file for the Intel® Manager for Lustre Graphical User Interface.
+* Online Help documents for the Manager for Lustre* Graphical User Interface.
 
 ### [Software Installation Guide](docs/Install_Guide/ig_TOC.md)
 
-* This document provides detailed instructions for installing the Intel® Enterprise Edition for Lustre\* software.
+* These documents provide detailed instructions for installing the Manager for Lustre* software.
   
 ###  [Software API Reference](docs/api/api_TOC.md)
 
@@ -16,4 +16,4 @@
 
 ### [Software Contributor Docs](docs/Contributor_Docs/cd_TOC.md)
 
-* Documents for contributing to the Intel® Manager for Lustre* software.
+* Documents for contributing to the Manager for Lustre* software.

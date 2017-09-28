@@ -1,6 +1,7 @@
-[**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
 <a id="13.0"></a>
 # Glossary
+
+[**Manager for Lustre\* Online Help**](IML_Help_TOC.md)
 
 **chroma-agent.** An executable provided with the Manager for Lustre\* software that can be installed as a service on Lustre* servers to enable monitoring of Lustre* file systems not created by the Manager for Lustre\* software. 
 

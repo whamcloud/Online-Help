@@ -1,7 +1,7 @@
-[**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
-
 <a id="5.0"></a>
 # Managing and Maintaining HA Lustre file systems
+
+[**Manager for Lustre\* Online Help**](IML_Help_TOC.md)
 
 **Warning:** After you have created a Lustre file system using Manager for Lustre\* software, you should not make any configuration changes outside of Manager for Lustre\* software, to file system servers, their respective targets, or network connectivity. Doing so will likely defeat the ability of Manager for Lustre\* software to monitor or manage the file system, and will make all or portions of the file system unavailable to clients.
 

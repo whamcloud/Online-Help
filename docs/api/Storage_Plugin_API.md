@@ -1,7 +1,6 @@
-[**Manager for Lustre\* 4.0.0 API Documentation**](./api_TOC.md)
-
 # <a name="1.0"></a>Storage Plugin Developer's Guide for Manager for Lustre\* software
 
+[**Manager for Lustre\* 4.0.0 API Documentation**](./api_TOC.md)
 
 ## <a name="1.1"></a>Introduction
 
@@ -982,8 +981,6 @@ This type of information allows the manager server to make an intelligent select
 To express this information, create a PathWeight resource that is a parent of the device node and has as its
 parent the LUN.
 
-[Top of page](#1.0)
-
 Legal Information
 -----------------
 
@@ -993,3 +990,5 @@ Copyright (c) 2017 Intel® Corporation. All rights reserved.
 
 \* Other names and brands may be claimed as the property of others.
 This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit. (http://www.openssl.org/)
+
+[Top of page](#1.0)

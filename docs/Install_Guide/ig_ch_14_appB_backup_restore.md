@@ -1,5 +1,6 @@
-[**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
 # <a name="1.0"></a>Appendix B - Backing up and Restoring Manager for Lustre\* Server Software
+
+[**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
 
 **In this Chapter:**
 

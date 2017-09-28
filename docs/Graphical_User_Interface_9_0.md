@@ -1,7 +1,7 @@
-[**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
-
 <a id="9.0"></a>
 # Graphical User Interface
+
+[**Manager for Lustre\* Online Help**](IML_Help_TOC.md)
 
 This section details the Manager for Lustre\* graphical user interface.  Click the desired topic.
 

@@ -41,9 +41,9 @@
 ---
 ## Resources
 
-1.  [Things to Learn](cd_Things_To_Learn.md)
+1. [Things to Learn](cd_Things_To_Learn.md)
 
-1.  [Git Reference](cd_Git_Reference.md)
+1. [Git Reference](cd_Git_Reference.md)
 
 1. [NPM and Yarn](cd_NPM_And_Yarn.md)
 

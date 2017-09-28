@@ -1,6 +1,7 @@
-[**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
 <a id="3.0"></a>
 # Creating a new Lustre\* file system
+
+[**Manager for Lustre\* Online Help**](IML_Help_TOC.md)
 
 This chapter describes how to create a new Lustre* file system, to be managed from the Manager for Lustre\*, and how to mount file system clients.  
 

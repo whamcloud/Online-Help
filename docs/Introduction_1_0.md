@@ -1,6 +1,7 @@
-[**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
 <a id="1.0"></a>
 # Introducing Manager for Lustre\*
+
+[**Manager for Lustre\* Online Help**](IML_Help_TOC.md)
 
 **In this Chapter:**
 

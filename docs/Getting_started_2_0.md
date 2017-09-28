@@ -1,7 +1,7 @@
-[**Manager for Lustre\* Online Help Main Table of Contents**](../README.md)
-
 <a id="2.0"></a>
 # Getting started
+
+[**Manager for Lustre\* Online Help**](IML_Help_TOC.md)
 
 **In this section:**
 

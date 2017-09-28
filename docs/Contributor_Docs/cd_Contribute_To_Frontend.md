@@ -1,6 +1,6 @@
-[**Table of Contents**](cd_TOC.md)
+# <a name="Top"></a>Contributing to the IML Frontend
 
-# Contributing to the IML Frontend
+[**Table of Contents**](cd_TOC.md)
 
 ![frontend](md_Graphics/frontend_sm.jpg)
 
@@ -190,4 +190,4 @@ This is a test fix for the frontend
 ## [Push to github](./cd_Push_To_Github.md)
 
 ---
-[**Table of Contents**](cd_TOC.md) 
+[Top of page](#Top)

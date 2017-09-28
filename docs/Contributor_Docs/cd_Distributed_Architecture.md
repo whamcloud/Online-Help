@@ -1,6 +1,6 @@
-[**Table of Contents**](cd_TOC.md)
+# <a name="Top"></a>IML Distributed Architecture
 
-# IML Distributed Architecture
+[**Table of Contents**](cd_TOC.md)
 
 ![architecture](md_Graphics/architecture_sm.jpg)
 
@@ -90,4 +90,4 @@ In addition to publishing in a language specific package registry, the root node
     └─────────────────────────────────────┘
 
 ---
-[**Table of Contents**](cd_TOC.md) 
+[Top of page](#Top)

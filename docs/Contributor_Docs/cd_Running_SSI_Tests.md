@@ -1,6 +1,6 @@
-[**Table of Contents**](cd_TOC.md)
+# <a name="Top"></a>Running SSI Tests
 
-# Running SSI Tests
+[**Table of Contents**](cd_TOC.md)
 
 ---
 # MacOS
@@ -176,4 +176,4 @@ make ssi_tests
 ```
 
 ---
-[**Table of Contents**](cd_TOC.md) 
+[Top of page](#Top)

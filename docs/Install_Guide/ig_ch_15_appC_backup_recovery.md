@@ -1,5 +1,6 @@
-[**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
 # <a name="1.0"></a>Appendix C - Backup and Recovery of Servers Managed by Manager for Lustre\* Software
+
+[**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
 
 **In this Chapter**:
 
@@ -660,3 +661,5 @@ The cluster configuration has now been recovered to the running state
 based on the last backup taken. Note that this process assumes that the
 Lustre* storage for the MGT, MDTs and OSTs remains intact during the
 outage and throughout the server recovery.
+
+[Top of page](#1.0)

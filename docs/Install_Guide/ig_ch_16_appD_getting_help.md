@@ -1,6 +1,6 @@
-[**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
-
 # <a name="1.0"></a>Getting Help
+
+[**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
 
 *For partners*: If you encounter a problem with Manager for Lustre\* software or storage, and you
 require support from your Intel® technical support representative, then

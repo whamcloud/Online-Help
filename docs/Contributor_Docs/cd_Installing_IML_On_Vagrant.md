@@ -1,6 +1,6 @@
-[**Table of Contents**](cd_TOC.md)
+# <a name="Top"></a>Installing IML on Vagrant
 
-# Installing IML on Vagrant
+[**Table of Contents**](cd_TOC.md)
 
 ![clustre](md_Graphics/installing_sm.jpg)
 
@@ -139,7 +139,7 @@ To create a filesystem, simply navigate to `Configure->File Systems` and click t
 
 After the selections have been made, click the button to create the filesystem. If you have any issues creating the filesystem there is a good chance that the interface for 10.73.20.x is not assigned to Lustre Network 0. If this happens, stop the filesystem and update the interfaces accordingly. 
 
-## [Setting up Clients](IML_Setting_up_Clients.md)
+## [Setting up Clients](cd_Setting_Up_Clients.md)
 
 ---
-[**Table of Contents**](cd_TOC.md) 
+[Top of page](#Top) 
