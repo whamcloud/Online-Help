@@ -74,7 +74,7 @@ git push origin my-new-branch
 ## 3. Code Review
 ### Create a pull request in github
 
-Browse to [https://github.com/intel-hpdd]()
+Browse to [https://github.com/intel-hpdd](https://github.com/intel-hpdd)
 
 * Go to the desired repository where the new branch was pushed.
 * Click on the **branches** tab.

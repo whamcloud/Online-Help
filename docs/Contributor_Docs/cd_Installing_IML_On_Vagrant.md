@@ -86,7 +86,8 @@ Run the install script
     vagrant plugin install vagrant-vbguest
     vagrant plugin install vagrant-proxyconf    <--- Optional, for example, this may be needed if behind corporate firewall.
     ```
-2. Obtain the [preview 3 build](https://github.com/intel-hpdd/intel-manager-for-lustre/releases/tag/v4.0.0.0P3).
+2. Obtain the IML tarball: [https://github.com/intel-hpdd/intel-manager-for-lustre/releases/download/4.0.0/iml-4.0.0.0.tar.gz](https://github.com/intel-hpdd/intel-manager-for-lustre/releases/download/4.0.0/iml-4.0.0.0.tar.gz).
+
 3. Exit from the vagrant box and scp the build to the /tmp directory in your admin node. For example, if your admin node is running on port 2200 (you can verify this with `vagrant ssh-config`) and the build is in your Downloads folder:
     ```
     scp -P 2200 ~/Downloads/iml-4.0.0.0.tar.gz vagrant@127.0.0.1:/tmp/.

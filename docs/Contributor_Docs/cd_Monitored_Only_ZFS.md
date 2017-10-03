@@ -13,8 +13,8 @@ Note: use vagrant ssh-config to get the port each server is running on. The comm
     ```
     vagrant plugin install vagrant-shell-commander
     ```
-2. Download the latest IML build (tarball). For example, the preview 3 build 
-from: [https://github.com/intel-hpdd/intel-manager-for-lustre/releases/download/v4.0.0.0P3/iml-4.0.0.0.tar.gz](https://github.com/intel-hpdd/intel-manager-for-lustre/releases/download/v4.0.0.0P3/iml-4.0.0.0.tar.gz)
+2. Download the latest IML build (tarball). 
+from: [https://github.com/intel-hpdd/intel-manager-for-lustre/releases/download/4.0.0/iml-4.0.0.0.tar.gz](https://github.com/intel-hpdd/intel-manager-for-lustre/releases/download/4.0.0/iml-4.0.0.0.tar.gz)
 
 3. Create zfs installer and install the zfs packages on the following servers: mds1, mds2, oss1, and oss2
    ```
@@ -26,6 +26,7 @@ from: [https://github.com/intel-hpdd/intel-manager-for-lustre/releases/download/
        # password is "vagrant"
        vagrant sh -c 'cd /tmp; sudo tar xzvf lustre-zfs-el7-installer.tar.gz; cd lustre-zfs; sudo ./install' mds1 mds2 oss1 oss2
    ```
+
 
 
 ## Installing IML:

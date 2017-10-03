@@ -15,11 +15,11 @@ Bundles
 -------
 
 A bundle is comprised of a collection of RPM packages and metadata files.  The metadata
-in a bundle is comprised of a standard [yum](https://access.redhat.com/site/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/ch-yum.html) ``repodata`` directory containing information about
+in a bundle is comprised of a standard [yum](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-yum) ``repodata`` directory containing information about
 all the included packages, plus an additional [JSON](https://en.wikipedia.org/wiki/JSON) file named ``meta`` containing information about the
 bundle as a whole.
 
-- yum: [https://access.redhat.com/site/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/ch-yum.html](https://access.redhat.com/site/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/ch-yum.html)
+- yum: [https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-yum](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-yum)
 - JSON: [https://en.wikipedia.org/wiki/JSON](https://en.wikipedia.org/wiki/JSON)
 
 
@@ -29,6 +29,7 @@ bundle as a whole.
     packageB-1.0.rpm
     repodata/
 ```
+
 
 
 The format of the ``meta`` file is as follows:
