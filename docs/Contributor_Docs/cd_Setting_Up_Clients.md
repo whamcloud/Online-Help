@@ -5,8 +5,8 @@
 In your vagrant folder, run the following script to prepare both client c1 and c2:
 ```
 vagrant sh -c '\
-sudo yum-config-manager --add-repo https://build.whamcloud.com/lustre-b2_10_last_successful_client/ && \
-ed <<EOF /etc/yum.repos.d/build.whamcloud.com_lustre-b2_10_last_successful_client.repo
+sudo yum-config-manager --add-repo https://downloads.hpdd.intel.com/public/lustre/lustre-2.10.1/el7/client/&& \
+ed <<EOF /etc/yum.repos.d/downloads.hpdd.intel.com_public_lustre_lustre-2.10.1_el7_client_.repo
 /enabled/a
 gpgcheck=0
 gpgkey=http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-7
@@ -16,7 +16,6 @@ EOF
 sudo yum -y install lustre-client && \
 ' c1 c2
 ```
-
 
 Both clients are now running the lustre-client software and are ready to be mounted. To mount a client, do the following:
 1. ssh into the client
