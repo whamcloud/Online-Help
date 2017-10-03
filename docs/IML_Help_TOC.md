@@ -1,6 +1,7 @@
-# Manager for Lustre\* 4.0.0 Online Help
+# Intel® Manager for Lustre* software 4.0.0
+# **Online Help**
 
-[Manager for Lustre* 4.0.0 Help Docs](../README.md)
+[**Help Docs Table of Contents**](../README.md)
 
 ### Table of Contents
 
@@ -14,7 +15,7 @@
 - [Creating and Managing ZFS-based Lustre file systems](Create_and_manage_ZFS_based_LFS_8_0.md)
 - [Graphical User Interface](Graphical_User_Interface_9_0.md)
 - [Advanced topics](Advanced_Topics_10_0.md)
-- [Using the Manager for Lustre\* command line interface](Using_IML_CLI_11_0.md)
+- [Using the Intel® Manager for Lustre* software command line interface](Using_IML_CLI_11_0.md)
 - [Errors and troubleshooting](Errors_Troubleshooting_12_0.md)
 - [Glossary](Glossary_13_0.md)
 - [Getting Help](Getting_help_14_0.md)

@@ -1,6 +1,6 @@
 # <a name="Top"></a>Create a Vagrant Shared Mount from the guest machine to the vagrant virtual machine
 
-[**Table of Contents**](cd_TOC.md)
+[**Software Contributor Documentation Table of Contents**](cd_TOC.md)
 
 * Edit the **Vagrantfile** to allow for a shared mount. Immediately after the block that states *Create an admin server for the cluster*, add the following line:
 

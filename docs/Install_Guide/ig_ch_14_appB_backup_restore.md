@@ -1,6 +1,6 @@
-# <a name="1.0"></a>Appendix B - Backing up and Restoring Manager for Lustre\* Server Software
+# <a name="1.0"></a>Appendix B - Backing up and Restoring Intel® Manager for Lustre* software Server Software
 
-[**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
+[**Software Installation Guide Table of Contents**](ig_TOC.md)
 
 **In this Chapter:**
 
@@ -11,23 +11,23 @@
 - [Package Update management environment (RPM & YUM)](#package-update-management-environment)
 - [Identity configuration](#identity-configuration)
 - [Security configuration](#security-configuration)
-- [Manager for Lustre\* software](#manager-for-lustre-software)
-- [Creating a Backup Manifest for the Manager for Lustre\* Server](#creating-a-backup-manifest-for-the-manager-for-lustre-server)
+- [Intel® Manager for Lustre* software](#manager-for-lustre-software)
+- [Creating a Backup Manifest for the Intel® Manager for Lustre* software Server](#creating-a-backup-manifest-for-the-manager-for-lustre-server)
 - [Network Configuration Files](#network-configuration-files)
 - [YUM Configuration](#yum-configuration)
 - [User Configuration](#user-configuration)
 - [SSH Host keys (Optional)](#ssh-host-keys-optional)
 - [SSH user keys (Optional)](#ssh-user-keys-optional)
 - [NTP Configuration](#ntp-configuration)
-- [Manager for Lustre\* SSL Certificates](#manager-for-lustre-ssl-certificates)
-- [Manager for Lustre\* Database](#manager-for-lustre-database)
-- [Restoring the Manager for Lustre\* Service](#restoring-the-manager-for-lustre-service)
+- [Intel® Manager for Lustre* software SSL Certificates](#manager-for-lustre-ssl-certificates)
+- [Intel® Manager for Lustre* software Database](#manager-for-lustre-database)
+- [Restoring the Intel® Manager for Lustre* software Service](#restoring-the-manager-for-lustre-service)
 - [Re-install OS and Restore System Configuration](#re-install-os-and-restore-system-configuration)
-- [Re-install Manager for Lustre\* software](#re-install-manager-for-lustre-software)
+- [Re-install Intel® Manager for Lustre* software](#re-install-manager-for-lustre-software)
 - [Restore the NTP Configuration](#restore-the-ntp-configuration)
-- [Restore the Manager for Lustre\* SSL certificates](#restore-the-manager-for-lustre-ssl-certificates)
+- [Restore the Intel® Manager for Lustre* software SSL certificates](#restore-the-manager-for-lustre-ssl-certificates)
 - [Restore the PostgresSQL Database](#restore-the-postgressql-database)
-- [Restart Manager for Lustre\* software](#restart-manager-for-lustre-software)
+- [RestartIntel® Manager for Lustre* software](#restart-manager-for-lustre-software)
 - [Potential Issues](#potential-issues)
 
 
@@ -36,10 +36,10 @@ maintains a current backup of critical files and implements a reliable
 and repeatable method for restoring the platform to working condition.
 
 This chapter provides guidance on how to conduct a full recovery of the
-Manager for Lustre\* server from a combination of the original
-installation media and a backup manifest of the Manager for
-Lustre\* software. The manifest will describe the essential files
-required in order to restore Manager for Lustre\* software
+Intel® Manager for Lustre* software server from a combination of the original
+installation media and a backup manifest of the Intel® Manager for Lustre*
+software. The manifest will describe the essential files
+required in order to restore Intel® Manager for Lustre* software
 (referred to herein as “manager software”) and its management of
 existing file systems to the point of the last successful backup. From
 these instructions, administrators can define a recovery process that is
@@ -114,7 +114,7 @@ following components:
 
         -   SSH keys (host and user)
 
--   Manager for Lustre\* software installation and
+-   Intel® Manager for Lustre* software installation and
     configuration
 
     -   Additional packages required by IML (installation will attempt
@@ -145,7 +145,7 @@ bandwidth-constrained).
 
 The following is an example checklist of high-level tasks to perform in
 executing a backup. Perform these tasks before restoring the
-Manager for Lustre\* service.
+Intel® Manager for Lustre* software service.
 
 -   Save the Kickstart Template from OS Installation (or create one)
 
@@ -165,7 +165,7 @@ Manager for Lustre\* service.
 
 -   Save NTP configuration
 
--   Save Manager for Lustre\* server SSL Certificates
+-   Save Intel® Manager for Lustre* software server SSL Certificates
 
 -   Execute PostgreSQL Backup (execute on a regular schedule)
 
@@ -204,7 +204,7 @@ Server Requirements](ig_ch_03_building.md/#manager-server-requirements). The fol
 example Kickstart template describes a basic platform with a small set
 of packages and two network interfaces: one for provisioning the OS and
 connection to external infrastructure, and the other for connection to
-the Manager for Lustre\* management network.
+the Intel® Manager for Lustre* software management network.
 
 An *example* Kickstart template:
 
@@ -256,7 +256,7 @@ copy of this file in the manifest as well.
 
 The YUM configuration file /etc/yum.conf and files located at
 /etc/yum.repos.d/\* must be configured so that package dependencies for
-Manager for Lustre\* software can be automatically installed.
+Intel® Manager for Lustre* software can be automatically installed.
 
 ### Identity configuration
 
@@ -277,17 +277,17 @@ provisioning or backup manifest, including firewall rules (IPTables),
 Security Enhanced Linux (must be disabled), pluggable authentication
 modules (PAMs) and SSH (including Host and User keys).
 
-### Manager for Lustre\* software
+### Intel® Manager for Lustre* software
 
-The Manager for Lustre\* software is distributed with an
+The Intel® Manager for Lustre* software is distributed with an
 installation program that makes deployment straightforward, predictable,
 and repeatable. The installer works to automatically resolve any
 software package dependencies, and also initializes the platform and
 configures essential services, such as the PostgreSQL database used for
 recording information, and the RabbitMQ messaging system.
 
-To support the restoration of the Manager for Lustre\*
-software, be sure to regularly back-up the PostgresSQL database. This
+To support the restoration of the Intel® Manager for Lustre* software,
+be sure to regularly back-up the PostgresSQL database. This
 is necessary because the database persistently records Manager
 for Lustre\* software configuration information.
 
@@ -300,13 +300,13 @@ disruption.
 
 To minimize data loss due to loss of a manager server instance, database
 backups must be run on a regular schedule and be captured to a
-persistent storage target that is external to the Manager for
-Lustre\* server itself. The interval between backups determines the
+persistent storage target that is external to the Intel® Manager for
+Lustre* software server itself. The interval between backups determines the
 level of risk of data loss. We strongly recommend that a point-in-time
 backup is taken directly after completing any major change management
 activity, such as adding new servers or file systems.
 
-Creating a Backup Manifest for the Manager for Lustre\* Server
+Creating a Backup Manifest for the Intel® Manager for Lustre* software Server
 -----------------------------------------------------------------------
 
 This section provides a subset of the information required to rebuild a
@@ -392,7 +392,7 @@ cp -p /etc/ssh/ssh_host*key* $HOME/backup/etc/ssh/.
 
 ### SSH user keys (Optional)
 
-Manager for Lustre\* software has several mechanisms available
+Intel® Manager for Lustre* software has several mechanisms available
 for establishing trust between itself and the servers that it manages.
 One of the most common mechanisms used during server discovery, is to
 create a passphrase-less SSH public/private key pair for the root
@@ -430,7 +430,7 @@ or regenerated and the public keys redistributed to all targets.
 
 ### NTP Configuration
 
-The Manager for Lustre\* software installation program will
+The Intel® Manager for Lustre* software installation program will
 generate an NTP configuration file. After installation completes, create
 a backup of the resulting file:
 
@@ -442,21 +442,21 @@ cp /etc/ntp.conf $HOME/backup/etc/.
 ```
 
 
-### Manager for Lustre\* SSL Certificates
+### Intel® Manager for Lustre* software SSL Certificates
 
-Manager for Lustre\* software uses SSL certificates to
+Intel® Manager for Lustre* software uses SSL certificates to
 establish trusted communications between the manager server (running the
-Manager for Lustre\* software GUI) and the agents running
-Manager for Lustre\* software, including the metadata servers,
+Intel® Manager for Lustre* software GUI) and the agents running
+Intel® Manager for Lustre* software, including the metadata servers,
 object storage servers, etc. Without these certificates, trust cannot be
-established and the Manager for Lustre\* software will not be
+established and the Intel® Manager for Lustre* software will not be
 able to manage or receive monitoring telemetry from those agents.
 
-The SSL certificates are generated by the Manager for Lustre\*
+The SSL certificates are generated by the Intel® Manager for Lustre* software
 installation program and are re-generated each time the installer is
 run. The SSL certificates are randomly generated, so no two sets of keys
-are the same. To support successfully restoring Manager for
-Lustre\* software and restoring communication with the agents, create a
+are the same. To support successfully restoring Intel® Manager for Lustre*
+software and restoring communication with the agents, create a
 backup of the following certificate files located on the manager server.
 
 
@@ -474,9 +474,9 @@ cp /var/lib/chroma/manager.crt ~/backup/var/lib/chroma/.
 cp /var/lib/chroma/manager.pem ~/backup/var/lib/chroma/.
 ```
 
-### Manager for Lustre\* Database
+### Intel® Manager for Lustre* software Database
 
-Manager for Lustre\* software employs a PostgreSQL RDBMS to
+Intel® Manager for Lustre* software employs a PostgreSQL RDBMS to
 record configuration data and file system telemetry for all Lustre
 servers connected to the manager server. Data collection is continuous
 and regular backups of the database are required in order to be able to
@@ -515,8 +515,8 @@ database from this backup.
 **Caution**: It may be tempting to omit the --clean flag from the backup
 process, but this will complicate the restore process and *may lead to
 an inadvertent corruption of the target*. Therefore, always use the
---clean flag when taking a full backup of the Manager for
-Lustre\* database.
+--clean flag when taking a full backup of theIntel® Manager for 
+Lustre* software database.
 
 The above command can be added to cron so that it runs on a regular
 schedule. Each backup copy will have a unique date and time stamp, down
@@ -529,8 +529,8 @@ around this limitation by feeding the output into the split command.
 For other database backup strategies and discussions on the merits of
 the different approaches, refer to the PostgreSQL project documentation.
 
-Restoring the Manager for Lustre\* Service
----------------------------------------------------
+Restoring the Intel® Manager for Lustre* software Service
+---------------------------------------------------------
 
 Most of the effort expended in developing a recovery strategy for IT
 services is focused on the backup procedure described previously.
@@ -567,20 +567,20 @@ in [Operating System](#operating-system), template-driven
 automated provisioning platforms such as Kickstart are very effective
 ways to implement consistent operating system deployment.
 
-### Re-install Manager for Lustre\* software
+### Re-install Intel® Manager for Lustre* software
 
-There is no automated installer for the Manager for Lustre\*
+There is no automated installer for the Intel® Manager for Lustre*
 software but it is fortunately straightforward to re-run the
 installation program. This has the added benefit of guaranteeing that
 the core infrastructure is correctly installed and configured and that
 all package dependencies are appropriately satisfied. Re-running the
 installation program creates a new, unpopulated, instance of the
-Manager for Lustre\* software. Note that it does not matter
+Intel® Manager for Lustre* software. Note that it does not matter
 what answer you provide to the questions asked by the installation
 program; this information will be overwritten when the database backup
 is restored.
 
-When installation completes, shutdown the Manager for Lustre\*
+When installation completes, shutdown the Intel® Manager for Lustre*
 software and its related services immediately, but keep the PostgreSQL
 database server running:
 
@@ -595,9 +595,9 @@ service httpd stop
 
 
 **Caution**: Do not conduct any further configuration of
-Manager for Lustre\* software. Do not attempt to re-discover Manager
+Intel® Manager for Lustre* software. Do not attempt to re-discover Manager
 for Lustre\* assets or add any servers or storage to the instance until
-the recovery is complete and the Manager for Lustre\* software
+the recovery is complete and the Intel® Manager for Lustre* software
 installation is verified as working to your satisfaction.
 
 ### Restore the NTP Configuration
@@ -612,7 +612,7 @@ service ntpd restart
 ```
 
 
-### Restore the Manager for Lustre\* SSL certificates
+### Restore the Intel® Manager for Lustre* software SSL certificates
 
 The following commands must be run after the initial installation
 program has been run; otherwise, the SSL certificates will be
@@ -632,7 +632,7 @@ overwritten.
 
 Run the restore command for PostgresSQL, assuming that the backup was
 created using the `pg\_dumpall` command as described in "Creating a Backup
-Manifest [– Manager for Lustre\*
+Manifest [– Intel® Manager for Lustre* software
 Database](#manager-for-lustre-database)". Warning, this command
 will erase all existing database content:
 
@@ -647,7 +647,7 @@ ERROR: current user cannot be dropped
 
 ERROR: role "postgres" already exists
 
-### Restart Manager for Lustre\* software
+### Restart Intel® Manager for Lustre* software
 
 When the PostgreSQL database restore has completed, restart the services
 that were shut down:
@@ -660,15 +660,15 @@ service httpd start
 service chroma-supervisor start
 ```
 
-Alternatively, reboot the Manager for Lustre\* server. The
+Alternatively, reboot the MIntel® Manager for Lustre* software server. The
 service will restart automatically.
 
 ### Potential Issues
 
-#### Internal Server Error Reported by Browser on Connection to the Manager for Lustre\* GUI
+#### Internal Server Error Reported by Browser on Connection to the Intel® Manager for Lustre* software GUI
 
 After the restore is complete and the services have been started, the
-Manager for Lustre\* software may report the following error
+Intel® Manager for Lustre* software may report the following error
 when an attempt is made to connect through the client browser:
 
 > **Internal Server Error**
@@ -696,16 +696,16 @@ page.
 #### Graph Data Missing After Restore
 
 It has been noticed that occasionally, after a complete restore of the
-Manager for Lustre\* server, some of the data points may not be
+Intel® Manager for Lustre* software server, some of the data points may not be
 updated. One of the obvious symptoms of this is the graphs on the
-Manager for Lustre\* dashboard may display as blank, without
+Intel® Manager for Lustre* software dashboard may display as blank, without
 data, even when the file system is known to be busy. Similarly, OST
 capacity may be incorrectly reported.
 
-This is caused by one or more of the Manager for Lustre\*
+This is caused by one or more of the Intel® Manager for Lustre* software
 client agents losing contact with the manager and refusing to reconnect
 after the service has been restored. To restore the connection, log into
-the affected Manager for Lustre\* asset (e.g., the MDS or OSS) and
+the affected Intel® Manager for Lustre* software asset (e.g., the MDS or OSS) and
 restart the client agent service as follows. This is a one-time fix.
 
 ```

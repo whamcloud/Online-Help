@@ -1,6 +1,6 @@
 # <a name="1.0"></a>About this Document
 
-[**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
+[**Software Installation Guide Table of Contents**](ig_TOC.md)
 
 **In this Chapter:**
 
@@ -13,11 +13,11 @@
 Document Purpose
 ----------------
 
-This document provides detailed instructions for installing Manager for Lustre\* software. This document:
+This document provides detailed instructions for installing Intel® Manager for Lustre* software. This document:
 
--   Introduces Manager for Lustre\* software and its capabilities
+-   Introduces Intel® Manager for Lustre* software and its capabilities
 
--   Introduces Manager for Lustre\* software and its
+-   Introduces Intel® Manager for Lustre* software and its
      capabilities to configure and support real-time management of
      Lustre* file systems, using a GUI-based dashboard
 
@@ -25,17 +25,15 @@ This document provides detailed instructions for installing Manager for Lustre\*
      to create a file system that meets the High Availability
      Configuration Specification (discussed herein). Conformance with
      this specification permits configuration, monitoring, and
-     management of the Lustre* file system using the Manager for
-     Lustre\* software.
+     management of the Lustre* file system using the Intel® Manager for Lustre* software.
 
 -   Describes the pre-installation tasks such as configuring servers,
      establishing yum repositories, configuring LNET, and also
      discusses Linux\* kernel considerations
 
--   Describes how to install Manager for Lustre\*
-     software
+-   Describes how to install Intel® Manager for Lustre* software
 
--   Describes how to configure Manager for Lustre\* software
+-   Describes how to configure Intel® Manager for Lustre* software
 
 -   Describes how to add storage servers to the Lustre* file system
 
@@ -45,7 +43,7 @@ Intended Audience
 -----------------
 
 This guide is intended for partners who are designing storage solutions
-based on Manager for Lustre\* software. Readers are
+based on Intel® Manager for Lustre* software. Readers are
 assumed to be full-time Linux system administrators or equivalent who
 have:
 
@@ -61,7 +59,7 @@ have:
     configuration requirements as defined in this guide.
 
 This document is *not intended for end users* of storage solutions
-implemented using the Manager for Lustre\* software.
+implemented using the Intel® Manager for Lustre* software.
 
 Conventions Used
 ----------------
@@ -80,41 +78,35 @@ Conventions used in this document include:
 Related Documentation
 ---------------------
 
--   *Manager for Lustre\* Software, Version 4.0.0
+-   *Intel® Manager for Lustre* software, Version 4.0.0
     Release Notes*
 
--   *Manager for Lustre\* Software Online Help* (accessible from
+-   *Intel® Manager for Lustre* software Online Help* (accessible from
     within the GUI)
 
--   *Manager for Lustre\* Software User Guide* (a PDF verion on
+-   *Intel® Manager for Lustre* software User Guide* (a PDF verion on
     the online Help)
 
--   *Lustre\* Installation and Configuration using Manager for
-    Lustre\* Software and OpenZFS*
+-   *Lustre\* Installation and Configuration using Intel® Manager for Lustre* software and OpenZFS*
 
--   *Configuring LNet Routers for File Systems based on Manager for
-    Lustre\* Software*
+-   *Configuring LNet Routers for File Systems based on Intel® Manager for Lustre* software*
 
--   *Installing Hadoop, the Hadoop Adapter for Manager for Lustre\*,
+-   *Installing Hadoop, the Hadoop Adapter for Intel® Manager for Lustre* software,
     and the Job Scheduler Integration *
 
--   *Creating an HBase Cluster and Integrating Hive on an Manager for
-    Lustre® File System*
+-   *Creating an HBase Cluster and Integrating Hive on an Intel® Manager for Lustre* software File System*
 
 -   *Hierarchical Storage Management Configuration Guide*
 
--   *Configuring SELinux for File Systems based on Manager for
-    Lustre\* Software*
+-   *Configuring SELinux for File Systems based on Intel® Manager for Lustre* software*
 
--   *Configuring Snapshots for File Systems based on Manager for
-    Lustre\* Software*
+-   *Configuring Snapshots for File Systems based on Intel® Manager for Lustre* software*
 
--   *Upgrading a Lustre* file system to Manager for
-    Lustre\* software (Lustre* only)*
+-   *Upgrading a Lustre* file system to Intel® Manager for Lustre* software (Lustre* only)*
 
--   *Creating a Scalable File Service for Windows Networks using Manager for Lustre\* Software*
+-   *Creating a Scalable File Service for Windows Networks using Intel® Manager for Lustre* software*
 
--   *Manager for Lustre\* Hierarchical Storage Management Framework
+-   *Intel® Manager for Lustre* software Hierarchical Storage Management Framework
     White Paper*
 
 -   *Architecting a High-Performance Storage System White Paper*Title

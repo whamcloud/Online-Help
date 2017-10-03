@@ -1,6 +1,6 @@
 # <a name="Top"></a>Uninstalling IML
 
-[**Table of Contents**](cd_TOC.md)
+[**Software Contributor Documentation Table of Contents**](cd_TOC.md)
 
 ![clustre](md_Graphics/uninstall_sm.jpg)
 

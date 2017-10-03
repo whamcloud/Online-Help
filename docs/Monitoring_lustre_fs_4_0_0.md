@@ -1,7 +1,7 @@
 <a id="4.0.0"></a>
 # Monitoring Lustre* file systems
 
-[**Manager for Lustre\* Online Help**](IML_Help_TOC.md)
+[**Online Help Table of Contents**](IML_Help_TOC.md)
 
 You can easily monitor one or more file systems at the Dashboard, Status, and Logs windows. The Dashboard window displays a set of charts that provide usage and performance data at several levels in the file systems being monitored, while the Status and Logs windows keep you informed of file system activity relevant to current and past file system health and performance. 
 
@@ -25,7 +25,7 @@ The Dashboard displays a set of graphical charts that provide real-time usage an
 At the top, the Dashboard lists the file system(s) being managed or monitored-only. The following information is provided for each file system:
 
 - **File System:** The name assigned to this file system during its creation on the Configuration window.
-- **Type:** Monitored or Managed. Managed file systems are configured and managed for high availability (HA). Managed file systems are both monitored and managed, whereas monitored file systems are monitored-only and do not support failover via Manager for Lustre\* software.
+- **Type:** Monitored or Managed. Managed file systems are configured and managed for high availability (HA). Managed file systems are both monitored and managed, whereas monitored file systems are monitored-only and do not support failover via Intel® Manager for Lustre* software.
 - **Space Used / Total:** This indicates the amount of file system capacity consumed, versus the total file system capacity. 
 - **Files Used / Total:** This indicates the total number of inodes consumed by file creation versus the total number of inodes established for this file system.
 - **Clients:** Indicates the number of clients accessing the file system at this moment.
@@ -118,7 +118,7 @@ The following charts are displayed for MDTs:
 
 ## Check file systems status
 
-The file systems Status light ![md_Graphics/status_light.png][f4.1] provides a quick glance of the status and health of all file systems managed by Manager for Lustre\* software. This indicator is located along the top banner of the manager GUI. The indicator reflects the worst-case condition. For example, an Error message for any file system will always display a red Status light. Click **Status** to open the Status window and learn more about status.
+The file systems Status light ![md_Graphics/status_light.png][f4.1] provides a quick glance of the status and health of all file systems managed by Intel® Manager for Lustre* software. This indicator is located along the top banner of the manager GUI. The indicator reflects the worst-case condition. For example, an Error message for any file system will always display a red Status light. Click **Status** to open the Status window and learn more about status.
 
 - A green Status light ![md_Graphics/status_light.png][f4.1] indicates that all is normal. No errors or warnings have been received. The file system is operating normally.
 - A yellow Status light ![md_Graphics/yellow_status.png][f4.2] indicates that one or more warning alerts have been received. The file system may be operating in a degraded mode, (such as when a target fails over) so performance may be degraded. 
@@ -159,7 +159,7 @@ Job statistics are available from two locations:
 
 **Using job stats with other job schedulers**
 
-The job stats code extracts the job identifier from an environment variable set by the scheduler when the job is started. Manager for Lustre\* software sets a jobstats environment variable to work with SLURM, however you can set the variable to work with other job schedulers. To enable job stats to work with a desired scheduler, specify the `jobid_var` to name the environment variable set by the scheduler. For example, SLURM sets the `SLURM_JOB_ID` environment variable with the unique job ID on each client. To permanently enable jobstats on the testfs file system, run this command on the MGS:
+The job stats code extracts the job identifier from an environment variable set by the scheduler when the job is started. Intel® Manager for Lustre* software sets a jobstats environment variable to work with SLURM, however you can set the variable to work with other job schedulers. To enable job stats to work with a desired scheduler, specify the `jobid_var` to name the environment variable set by the scheduler. For example, SLURM sets the `SLURM_JOB_ID` environment variable with the unique job ID on each client. To permanently enable jobstats on the testfs file system, run this command on the MGS:
 ```
 $ lctl conf_param testfs.sys.jobid_var=<environment variable>
 ```
@@ -213,7 +213,7 @@ To view all parameters available for a server, at the menu bar, click the **Conf
 
 ## View commands and status messages on the Status window
 
-The Manager for Lustre\* software provides status messages about the health of each managed file system.
+The Intel® Manager for Lustre* software provides status messages about the health of each managed file system.
 
 **View all status messages**
 
@@ -244,7 +244,7 @@ The logs window also features querying with auto-complete and linkable host name
 
 ## View HSM Copytool activities
 
-To view current copytool activities, click **Configuration** and select **HSM**. To learn about HSM capabilities supported in Manager for Lustre* software, see [Configuring and using Hierarchical Storage Management](Config_and_using_HSM_6_0.md/#6.0).
+To view current copytool activities, click **Configuration** and select **HSM**. To learn about HSM capabilities supported in Intel® Manager for Lustre* software, see [Configuring and using Hierarchical Storage Management](Config_and_using_HSM_6_0.md/#6.0).
 
 After HSM has setup for a file system, this HSM Copytool chart displays a moving time-line of waiting copytool requests, current copytool operations, and the number of idle copytool workers.
 

@@ -1,6 +1,6 @@
 # <a name="1.0"></a>Appendix A - IPMI Checks
 
-[**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
+[**Software Installation Guide Table of Contents**](ig_TOC.md)
 
 Procedures provided in this appendix can be used to establish a level of
 confidence that your IPMI implementation is functional. Note that IPMI

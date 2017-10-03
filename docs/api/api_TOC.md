@@ -1,13 +1,14 @@
-# Manager for Lustre\* 4.0.0 API Documentation
+# Intel® Manager for Lustre* software 4.0.0
+# **Software API Documentation**
 
-[Manager for Lustre* 4.0.0 Help Docs](../../README.md)
+[**Help Docs Table of Contents**](../../README.md)
 
 ### List of Documents:
 
-- [REST API for Manager for Lustre* software](rest_API.md)
-- [Scheduler Plugin Developer's Guide for Manager for Lustre* software](Scheduler_Plugin_API.md)
-- [Storage Plugin Developer's Guide for Manager for Lustre* software](Storage_Plugin_API.md)
-- [Packaging Guide for Manager for Lustre* software](Pkg_Guide.md)
+- [REST API for Intel® Manager for Lustre* software](rest_API.md)
+- [Scheduler Plugin Developer's Guide for Intel® Manager for Lustre* software](Scheduler_Plugin_API.md)
+- [Storage Plugin Developer's Guide for Intel® Manager for Lustre* software](Storage_Plugin_API.md)
+- [Packaging Guide for Intel® Manager for Lustre* software](Pkg_Guide.md)
   
 
  

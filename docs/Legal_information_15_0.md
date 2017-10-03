@@ -1,6 +1,6 @@
 # <a id="15.0"></a>Legal Information
 
-[**Manager for Lustre\* Online Help**](IML_Help_TOC.md)
+[**Online Help Table of Contents**](IML_Help_TOC.md)
 
 Copyright (c) 2017 Intel® Corporation. All rights reserved.
  Use of this source code is governed by a MIT-style

@@ -1,17 +1,17 @@
 <a id="12.0"></a>
 # Errors and troubleshooting
 
-[**Manager for Lustre\* Online Help**](IML_Help_TOC.md)
+[**Online Help Table of Contents**](IML_Help_TOC.md)
 
 The following topics are discussed in this chapter:
 
 - [Unexpected file system events](#12.1)
-- [Running Manager for Lustre\* diagnostics](#12.2)
+- [Running Intel® Manager for Lustre* software diagnostics](#12.2)
 
 
 ## <a id="12.1"></a>Unexpected file system events
 
-This section discusses several unwanted file system events and how Manager for Lustre\* software responds to them.
+This section discusses several unwanted file system events and how Intel® Manager for Lustre* software responds to them.
 
 <table border="1">
     <thead>
@@ -107,7 +107,7 @@ manually fail the target over to the peer server. </td>
 <table border="1">
     <thead>
         <tr>
-        <th colspan="2">The Manager for Lustre* loses connection with a server’s power control device (IPMI or PDU)</th>
+        <th colspan="2">The Intel® Manager for Lustre* software loses connection with a server’s power control device (IPMI or PDU)</th>
         </tr>
     </thead>
     <tbody>
@@ -238,9 +238,9 @@ manually fail the target over to the peer server. </td>
 
 [Top of page](#12.0)
 
-## <a id="12.2"></a>Running Manager for Lustre\* diagnostics
+## <a id="12.2"></a>Running Intel® Manager for Lustre* software diagnostics
 
-If Manager for Lustre\* software is not operating normally and you require support from Intel® customer support, you may be asked to run chroma-diagnostics on any servers that are suspected of having problems, and/or on the server hosting the Manager for Lustre\* dashboard. The results of running the diagnostics should be attached to the ticket you are filing describing the problem. These diagnostics are described next.
+If Intel® Manager for Lustre* software is not operating normally and you require support from Intel® customer support, you may be asked to run chroma-diagnostics on any servers that are suspected of having problems, and/or on the server hosting the Intel® Manager for Lustre* software dashboard. The results of running the diagnostics should be attached to the ticket you are filing describing the problem. These diagnostics are described next.
 
 **Run diagnostics**
 
@@ -263,7 +263,7 @@ Listed installed packages
 Listed cibadmin --query
 Listed: pcs config show
 Listed: crm_mon -1r
-Finger printed Manager for Lustre installation
+Finger printed Intel® Manager for Lustre* software installation
 Listed running processes
 listed PCI devices
 listed file system disk space.
@@ -278,7 +278,7 @@ Compressing diagnostics into LZMA (archive)
 Diagnostic collection is completed.
 Size: 16K  /var/log/diagnostics_20150623T160338_lotus-4vm15.iml.intel.com.tar.lzma
 
-The diagnostic report tar.lzma file can be sent to Manager for Lustre Support for analysis.
+The diagnostic report tar.lzma file can be sent to Intel® Manager for Lustre* software Support for analysis.
 ```
 
 You can also decompress the file and examine the results. To unpack and extract the files, use this command:

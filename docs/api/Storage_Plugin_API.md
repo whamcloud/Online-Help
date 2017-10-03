@@ -1,6 +1,6 @@
-# <a name="1.0"></a>Storage Plugin Developer's Guide for Manager for Lustre\* software
+# <a name="1.0"></a>Storage Plugin Developer's Guide for Intel® Manager for Lustre* software
 
-[**Manager for Lustre\* 4.0.0 API Documentation**](./api_TOC.md)
+[**Software API Documentation Table of Contents**](./api_TOC.md)
 
 ## <a name="1.1"></a>Introduction
 

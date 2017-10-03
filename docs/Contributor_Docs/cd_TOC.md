@@ -1,6 +1,7 @@
-# Manager for Lustre\* Software Contributor Documentation
+# Intel® Manager for Lustre* software
+# **Software Contributor Documentation**
 
-[Manager for Lustre* 4.0.0 Help Docs](../../README.md)
+[**Help Docs Table of Contents**](../../README.md)
 
 ## Table of Contents
 ---

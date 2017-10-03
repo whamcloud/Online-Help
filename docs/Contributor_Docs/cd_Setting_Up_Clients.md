@@ -1,6 +1,6 @@
 # <a name="Top"></a>Setting up IML Clients
 
-[**Table of Contents**](cd_TOC.md)
+[**Software Contributor Documentation Table of Contents**](cd_TOC.md)
 
 In your vagrant folder, run the following script to prepare both client c1 and c2:
 ```

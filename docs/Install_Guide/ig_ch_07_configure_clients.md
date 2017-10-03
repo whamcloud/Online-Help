@@ -1,17 +1,17 @@
 # <a name="1.0"></a>Configuring Clients 
 
-[**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
+[**Software Installation Guide Table of Contents**](ig_TOC.md)
 
 **In this Chapter:**
 
 - [Client Requirements](#client-requirements)
-- [Installing Manager for Lustre\* software on Clients Running RHEL or CentOS](#installing-manager-for-lustre-software-on-clients-running-rhel-or-centos)
+- [Installing Intel® Manager for Lustre* software on Clients Running RHEL or CentOS](#installing-manager-for-lustre-software-on-clients-running-rhel-or-centos)
 
 
 A client (compute node) accessing a storage appliance must be running
-Manager for Lustre\* 4.0.0 client software. The Lustre* file system
-must first be created or discovered at the Manager for Lustre\*
-dashboard (see the Manager for Lustre\* Online Help to do this).
+Intel® Manager for Lustre* software 4.0.0 client software. The Lustre* file system
+must first be created or discovered at the Intel® Manager for Lustre* software
+dashboard (see the Intel® Manager for Lustre* software Online Help to do this).
 The Lustre* client software must be installed on the client, and then the
 Lustre* file system can be mounted on the client as described in the
 Online Help.
@@ -29,8 +29,8 @@ or CentOS Linux, version 7.3 or 7.4.
 LNET provides the client network infrastructure required by the Lustre*
 file system and LNET must be configured for each client. See [LNET Configuration](ig_ch_04_pre_install.md/#lnet-configuration).
 
-Installing Manager for Lustre\* software on Clients Running RHEL or CentOS
-----------------------------------------------------------------------------
+Installing Intel® Manager for Lustre* software on Clients Running RHEL or CentOS
+--------------------------------------------------------------------------------
 
 The following instructions detail how to install and configure client
 software.
@@ -79,7 +79,7 @@ perform these steps:**
 
     **Note**: Verify that the bootloader configuration file has been updated with an entry for the new kernel. Before you can boot to a  kernel, an entry for it must be included in the bootloader configuration file. Often it is added automatically when the kernel RPM is installed.
 
-1.  Launch Manager for Lustre\* software and login as
+1.  Launch Intel® Manager for Lustre* software and login as
     administrator. Go to the manager GUI to obtain mount point
     information:
 

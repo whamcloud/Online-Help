@@ -1,8 +1,8 @@
 # <a name="1.0"></a>Getting Help
 
-[**Manager for Lustre\* Software Installation Guide Table of Contents**](ig_TOC.md)
+[**Software Installation Guide Table of Contents**](ig_TOC.md)
 
-*For partners*: If you encounter a problem with Manager for Lustre\* software or storage, and you
+*For partners*: If you encounter a problem with Intel® Manager for Lustre* software or storage, and you
 require support from your Intel® technical support representative, then
 to help expedite resolution of the problem, please do the following:
 
@@ -14,8 +14,8 @@ Run chroma diagnostics
 ----------------------
 
 Run chroma-diagnostics on any of the servers that you suspect may be
-having problems, and on the server hosting the Manager for
-Lustre\* software dashboard. Chroma-Diagnostics generates a compressed
+having problems, and on the server hosting the Intel® Manager for Lustre*
+software dashboard. Chroma-Diagnostics generates a compressed
 tar.lzma file that you should attach to your JIRA ticket.
 To run chroma-diagnostics:
 
@@ -36,7 +36,7 @@ Listed installed packages
 Listed cibadmin --query
 Listed: pcs config show
 Listed: crm\_mon -1r
-Finger printed Manager for Lustre\* software installation
+Finger printed Intel® Manager for Lustre* software installation
 Listed running processes
 listed PCI devices
 listed file system disk space.
