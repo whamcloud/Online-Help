@@ -39,6 +39,8 @@
 
 1. [Create a Monitored only ZFS Filesystem on a Vagrant virtual cluster](cd_Monitored_Only_ZFS.md)
 
+1. [Creating a Managed Lustre ZFS Filesystem on a Vagrant virtual cluster](cd_Managed_ZFS.md)
+
 ---
 ## Resources
 
