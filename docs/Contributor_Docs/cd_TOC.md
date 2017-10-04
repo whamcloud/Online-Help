@@ -41,6 +41,8 @@
 
 1. [Creating a Managed Lustre ZFS Filesystem on a Vagrant virtual cluster](cd_Managed_ZFS.md)
 
+1. [How to create offline repos for IML 4.0.0](cd_Create_Offline_Repos.md)
+
 ---
 ## Resources
 
