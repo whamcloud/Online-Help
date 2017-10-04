@@ -13,7 +13,7 @@ gpgkey=http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-7
 .
 wq
 EOF
-sudo yum -y install lustre-client && \
+sudo yum -y install lustre-client
 ' c1 c2
 ```
 
