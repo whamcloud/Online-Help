@@ -1,9 +1,9 @@
-#  <a name="Top"></a>Running IML Unit Tests
+#  <a name="Top"></a>Running Unit Tests for [intel-manager-for-lustre](https://github.com/intel-hpdd/intel-manager-for-lustre)
 
 ![Unit Testing](md_Graphics/test.png)
 
 ## Prerequisites
-* To run the python unit tests for IML, it will be necessary to install a working version of IML.
+* To run the python unit tests for the [intel-manager-for-lustre](https://github.com/intel-hpdd/intel-manager-for-lustre) repo, it will be necessary to install a working version of IML.
     * Create a **Vagrant** virtual cluster outined here: [Install IML on a Vagrant Virtual Cluster](cd_Installing_IML_On_Vagrant.md).
 
     * Create a Shared Mount from the guest machine to the vagrant virtual machine.
@@ -58,11 +58,11 @@ Activate the virtual environment where dependencies will be added.
     cd myenv
     source bin/activate
 
-## Clone the IML code.
+## Clone the [intel-manager-for-lustre](https://github.com/intel-hpdd/intel-manager-for-lustre) code.
 
     git clone git@github.com:intel-hpdd/intel-manager-for-lustre.git
 
-## Or, copy IML code from the /vagrant shared drive:
+## Or, copy the [intel-manager-for-lustre](https://github.com/intel-hpdd/intel-manager-for-lustre) code from the /vagrant shared drive:
 
     cp -r /vagrant/intel-manager-for-lustre .
 
