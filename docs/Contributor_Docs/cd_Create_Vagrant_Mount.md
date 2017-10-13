@@ -17,7 +17,7 @@ This will mount the current local directory to **/vagrant** on the virtual machi
     * vagrant up adm
     * vagrant ssh
     * su -i
-    * ls -al /vagrant[**Table of Contents**](cd_TOC.md)
+    * ls -al /vagrant
     * The Vagrantfile should be in the directory listing 
 
 ---
