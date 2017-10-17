@@ -100,6 +100,20 @@ As soon as copytool services are requested, the copytool worker will respond. Se
 
 After configuring the Copytool Agent node and adding Copytool to that agent, you can use HSM to manage file archiving, free-up file system storage, and improve overall file system performance. 
 
+1. Bind the Lustre* file system to an HSM coordinator. Run the following command on the MDS node:
+
+    ```
+    $ lctl set_param mdt.<$FSNAME>-MDT0000.hsm_control=enabled
+    mdt.lustre-MDT0000.hsm_control=enabled
+    ```
+
+1. Verify that the coordinator is running:
+
+    ```
+    $ lctl get_param mdt.<$FSNAME>-MDT0000.hsm_control
+    mdt.lustre-MDT0000.hsm_control=enabled
+    ```
+
 1. To use HSM, log into a regular Lustre* client node as the system superuser. The node is a compute client node not managed by Intel® Manager for Lustre* software. 
 1. Issue `lfs` commands to initiate HSM actions (archive, restore, release, remove). 
     

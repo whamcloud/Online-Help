@@ -6,18 +6,18 @@
 require support from your Intel® technical support representative, then
 to help expedite resolution of the problem, please do the following:
 
-1.  [Run chroma diagnostics](#run-chroma-diagnostics).
+1.  [Run iml diagnostics](#run-iml-diagnostics).
 
 2.  [Submit a ticket](#submit-a-ticket).
 
-Run chroma diagnostics
+Run iml diagnostics
 ----------------------
 
-Run chroma-diagnostics on any of the servers that you suspect may be
+Run iml-diagnostics on any of the servers that you suspect may be
 having problems, and on the server hosting the Intel® Manager for Lustre*
-software dashboard. Chroma-Diagnostics generates a compressed
-tar.lzma file that you should attach to your JIRA ticket.
-To run chroma-diagnostics:
+software dashboard. Iml-Diagnostics generates a compressed
+tar.xz file that you should attach to your JIRA ticket / github issue.
+To run iml-diagnostics:
 
 1.  Log into the server in question as Admin. Admin login is required in
     order to collect all desired data.
@@ -25,55 +25,80 @@ To run chroma-diagnostics:
 2.  Enter the following command at the prompt:
 
     ```
-# chroma-diagnostics
-```
-The following results are displayed after running this command. (The resulting tar.lzma file will have a different file name.)
-```
-Collecting diagnostic files
-Detected devices
-Devices monitored
-Listed installed packages
-Listed cibadmin --query
-Listed: pcs config show
-Listed: crm\_mon -1r
-Finger printed Intel® Manager for Lustre* software installation
-Listed running processes
-listed PCI devices
-listed file system disk space.
-listed cat /proc/cpuinfo
-listed cat /proc/meminfo
-listed cat /proc/mounts
-listed cat /proc/partitions
-Listed hosts
-Copied 1 log files.
-Compressing diagnostics into LZMA (archive)
-Diagnostic collection is completed.
-Size: 16K
-/var/log/diagnostics\_20151006T160338\_lotus-4vm15.iml.intel.com.tar.lzma
-```
+    # iml-diagnostics
+    ```
+
+    The following results are displayed after running this command. (The resulting tar.xz file will have a different file name.)
+
+    ```
+    sosreport (version 3.4)
+
+    This command will collect diagnostic and configuration information from
+    this CentOS Linux system and installed applications.
+
+    An archive containing the collected information will be generated in
+    /var/tmp/sos.p3Djuo and may be provided to a CentOS support
+    representative.
+
+    Any information provided to CentOS will be treated in accordance with
+    the published support policies at:
+
+    https://wiki.centos.org/
+
+    The generated archive may contain data considered sensitive and its
+    content should be reviewed by the originating organization before being
+    passed to any third party.
+
+    No changes will be made to system configuration.
+
+
+    Setting up archive ...
+    Setting up plugins ...
+    Running plugins. Please wait ...
+
+    Running 1/10: block...
+    Running 2/10: filesys...
+    Running 3/10: iml...
+    Running 4/10: kernel...
+    Running 5/10: logs...
+    Running 6/10: memory...
+    Running 7/10: pacemaker...
+    Running 8/10: pci...
+    Running 9/10: processor...
+    Running 10/10: yum...
+
+    Creating compressed archive...
+
+    Your sosreport has been generated and saved in:
+    /var/tmp/sosreport-iml.dev-20171017003954.tar.xz
+
+    The checksum is: f018ba301df835862e559aa98465e9fc
+
+    Please send this file to your support representative.
+    ```
 
 
 1.  You can also decompress the file and examine the results. To unpack
     and extract the files, use this command:
 
     ```
-# tar --lzma -xvpf <file_name>.tar.lzma
-```
+    # tar --xz -xvpf <file_name>.tar.xz
+    ```
 
 
 1.  If desired, the following command returns help for chroma
     diagnostics:
 
     ```
-# chroma-diagnostics -h
-```
+    # iml-diagnostics -h
+    ```
 
 
 Submit a ticket
 ---------------
 
 You can submit a ticket using the Jira issue tracking system. Attach the
-chroma diagnostics log report to the ticket.
+sos report to the ticket.
 
 1.  Log in to the Jira dashboard at:
     <https://jira.hpdd.intel.com/secure/Dashboard.jspa>

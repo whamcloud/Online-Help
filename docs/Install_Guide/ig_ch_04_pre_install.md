@@ -61,7 +61,7 @@ servers with the correct, supported operating system. Then install
 Lustre* as described herein. *Any existing file system data will be
 lost*.
 
-1.  Red Hat Enterprise Linux or CentOS Linux version 7.3 or 7.4 must be
+1.  Red Hat Enterprise Linux or CentOS Linux version 7.4 must be
     installed. All servers should be running the same OS and version.
 
     -   Do **not** install CMAN (Cluster Manager) or other packages that use
@@ -161,7 +161,7 @@ Firewall Considerations
 -----------------------
 
 Intel® Manager for Lustre* software runs on
-servers running RHEL or CentOS, version 7.3 or 7.4. The *firewalled* package
+servers running RHEL or CentOS, version 7.4. The *firewalled* package
 needs to be installed and configured for *all file system servers
 before* installing Intel® Manager for Lustre* software. The Intel® Manager for 
 Lustre* software installation process will then modify the firewall

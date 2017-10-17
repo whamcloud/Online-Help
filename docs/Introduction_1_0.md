@@ -190,7 +190,7 @@ Differentiated Storage Services (DSS) allows I/O data to be classified, sometime
 
 **Support for Intel® Omni-Path Architecture**
 
-Intel® Omni-Path fabric support is available for Intel® Manager for Lustre* software systems running RHEL 7.3.  (Intel® OPA driver support requires RHEL 7.1 or newer, and so is not available for RHEL 6.x based systems.)
+Intel® Omni-Path fabric support is available for Intel® Manager for Lustre* software systems running RHEL 7.4.  (Intel® OPA driver support requires RHEL 7.1 or newer, and so is not available for RHEL 6.x based systems.)
 
 **LNet Configuration**
 

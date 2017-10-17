@@ -240,71 +240,136 @@ manually fail the target over to the peer server. </td>
 
 ## <a id="12.2"></a>Running Intel® Manager for Lustre* software diagnostics
 
-If Intel® Manager for Lustre* software is not operating normally and you require support from Intel® customer support, you may be asked to run chroma-diagnostics on any servers that are suspected of having problems, and/or on the server hosting the Intel® Manager for Lustre* software dashboard. The results of running the diagnostics should be attached to the ticket you are filing describing the problem. These diagnostics are described next.
+If Intel® Manager for Lustre* software is not operating normally and you require support from Intel® customer support, you may be asked to run iml-diagnostics on any servers that are suspected of having problems, and/or on the server hosting the Intel® Manager for Lustre* software dashboard. The results of running the diagnostics should be attached to the ticket you are filing describing the problem. These diagnostics are described next.
 
 **Run diagnostics**
 
 1. Log into the server in question. Admin login is required in order to collect all desired data.
 1. Enter the following command at the prompt:
-```
-#chroma-diagnostics
-```
+    ```
+    #iml-diagnostics
+    ```
+
+    This command generates a compressed tar.xz file that you can email to Intel® customer support. The following are sample displayed results of running this command. (The resulting tar.xz file will have a different file name.)
 
 
-This command generates a compressed tar.lzma file that you can email to Intel® customer support. The following are sample displayed results of running this command. (The resulting tar.lzma file will have a different file name.)
+    ```
+    sosreport (version 3.4)
+
+    This command will collect diagnostic and configuration information from
+    this CentOS Linux system and installed applications.
+
+    An archive containing the collected information will be generated in
+    /var/tmp/sos.p3Djuo and may be provided to a CentOS support
+    representative.
+
+    Any information provided to CentOS will be treated in accordance with
+    the published support policies at:
+
+    https://wiki.centos.org/
+
+    The generated archive may contain data considered sensitive and its
+    content should be reviewed by the originating organization before being
+    passed to any third party.
+
+    No changes will be made to system configuration.
 
 
-```
-Collecting diagnostic files
+    Setting up archive ...
+    Setting up plugins ...
+    Running plugins. Please wait ...
 
-Detected devices
-Devices monitored
-Listed installed packages
-Listed cibadmin --query
-Listed: pcs config show
-Listed: crm_mon -1r
-Finger printed Intel® Manager for Lustre* software installation
-Listed running processes
-listed PCI devices
-listed file system disk space.
-listed cat /proc/cpuinfo
-listed cat /proc/meminfo
-listed cat /proc/mounts
-listed cat /proc/partitions
-Listed hosts
-Copied 1 log files.
-Compressing diagnostics into LZMA (archive)
+    Running 1/10: block...
+    Running 2/10: filesys...
+    Running 3/10: iml...
+    Running 4/10: kernel...
+    Running 5/10: logs...
+    Running 6/10: memory...
+    Running 7/10: pacemaker...
+    Running 8/10: pci...
+    Running 9/10: processor...
+    Running 10/10: yum...
 
-Diagnostic collection is completed.
-Size: 16K  /var/log/diagnostics_20150623T160338_lotus-4vm15.iml.intel.com.tar.lzma
+    Creating compressed archive...
 
-The diagnostic report tar.lzma file can be sent to Intel® Manager for Lustre* software Support for analysis.
-```
+    Your sosreport has been generated and saved in:
+    /var/tmp/sosreport-iml.dev-20171017003954.tar.xz
+
+    The checksum is: f018ba301df835862e559aa98465e9fc
+
+    Please send this file to your support representative.
+    ```
 
 You can also decompress the file and examine the results. To unpack and extract the files, use this command:
 
 ```
-tar --lzma -xvpf <file_name>.tar.lzma
+tar --xz -xvpf <file_name>.tar.xz
 ```
 
-**Help for chroma-diagnostics**
+**Help for iml-diagnostics**
 
 Generally, if requested you should run this command without options, as this will generate the needed data. Enter 
 ```
-chroma-diagnostics -h
+iml-diagnostics -h
 ```
+
  to see help for this command, as follows:
 
 ```
-# chroma-diagnostics -h
-usage: chroma-diagnostics [-h] [--verbose] [--days-back DAYS_BACK]
-Run this to save a tar-file collection of logs and diagnostic output.
-The tar-file created is compressed with lzma.
-Sample output: /var/log/diagnostics_<date>_<fqdn>.tar.lzma
-optional arguments:
- -h, --help   show this help message and exit
- --verbose, -v   More output for troubleshooting.
- --days-back DAYS_BACK, -d DAYS_BACK
-Number of days back to collect logs. default is 1. 0 would mean today's logs only.
+# iml-diagnostics -h
+Usage: sosreport [options]
+
+Options:
+  -h, --help            show this help message and exit
+  -l, --list-plugins    list plugins and available plugin options
+  -n NOPLUGINS, --skip-plugins=NOPLUGINS
+                        disable these plugins
+  --experimental        enable experimental plugins
+  -e ENABLEPLUGINS, --enable-plugins=ENABLEPLUGINS
+                        enable these plugins
+  -o ONLYPLUGINS, --only-plugins=ONLYPLUGINS
+                        enable these plugins only
+  -k PLUGOPTS, --plugin-option=PLUGOPTS
+                        plugin options in plugname.option=value format (see
+                        -l)
+  --log-size=LOG_SIZE   set a limit on the size of collected logs (in MiB)
+  -a, --alloptions      enable all options for loaded plugins
+  --all-logs            collect all available logs regardless of size
+  --batch               batch mode - do not prompt interactively
+  --build               preserve the temporary directory and do not package
+                        results
+  -v, --verbose         increase verbosity
+  --verify              perform data verification during collection
+  --quiet               only print fatal errors
+  --debug               enable interactive debugging using the python debugger
+  --ticket-number=CASE_ID
+                        specify ticket number
+  --case-id=CASE_ID     specify case identifier
+  -p PROFILES, --profile=PROFILES
+                        enable plugins selected by the given profiles
+  --list-profiles       display a list of available profiles and plugins that
+                        they include
+  --name=CUSTOMER_NAME  specify report name
+  --config-file=CONFIG_FILE
+                        specify alternate configuration file
+  --tmp-dir=TMP_DIR     specify alternate temporary directory
+  --no-report           disable HTML/XML reporting
+  -s SYSROOT, --sysroot=SYSROOT
+                        system root directory path (default='/')
+  -c CHROOT, --chroot=CHROOT
+                        chroot executed commands to SYSROOT [auto, always,
+                        never] (default=auto)
+  -z COMPRESSION_TYPE, --compression-type=COMPRESSION_TYPE
+                        compression technology to use [auto, gzip, bzip2, xz]
+                        (default=auto)
+
+Some examples:
+
+ enable dlm plugin only and collect dlm lockdumps:
+   # sosreport -o dlm -k dlm.lockdump
+
+ disable memory and samba plugins, turn off rpm -Va collection:
+   # sosreport -n memory,samba -k rpm.rpmva=off
 ```
+
 [Top of page](#12.0)

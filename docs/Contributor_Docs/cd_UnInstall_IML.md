@@ -90,7 +90,7 @@ service chroma-agent stop
 
 ### Remove agent software
 ```
-yum remove chroma-agent chroma-agent-management chroma-diagnostics
+yum remove chroma-agent chroma-agent-management iml-diagnostics
 ```
 
 ### Unconfigure NTP

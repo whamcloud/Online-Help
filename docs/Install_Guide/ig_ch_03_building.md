@@ -153,7 +153,7 @@ security vulnerabilities in the Red Hat software.
 -   RAID 1 is a minimum recommendation. RAID 10 may be optimal for heavy
     workloads. Software RAID (MDRAID) disk discovery is not supported.
 
--   Red Hat Enterprise Linux or CentOS Linux, version 7.3 or 7.4 must be
+-   Red Hat Enterprise Linux or CentOS Linux, version 7.4 must be
     installed on all servers. All Lustre* servers should be running the
     same OS and version. CentOS must have access to the base
     repositories and update repositories. Red Hat must have the
@@ -205,7 +205,7 @@ requirements.
     Chapter 5, Determining Hardware Configuration Requirements and
     Formatting Options* for more information.
 
--   Red Hat Enterprise Linux or CentOS Linux version 7.3 or 7.4 must be
+-   Red Hat Enterprise Linux or CentOS Linux version 7.4 must be
     installed. All Lustre* servers should be running the same OS and
     version. CentOS must have access to the base repositories and update
     repositories. Red Hat must have the following channels registered
@@ -256,7 +256,7 @@ The object storage server (OSS) provides access to the object storage target(s) 
 
 Requirements for HA object storage servers and targets are as follows:
 
--   Red Hat Enterprise Linux or CentOS Linux version 7.3 or 7.4 must be installed. All Lustre* servers should be running the same OS and version. CentOS must have access to the base repositories and update repositories. Red Hat must have the following channels registered and enabled:
+-   Red Hat Enterprise Linux or CentOS Linux version 7.4 must be installed. All Lustre* servers should be running the same OS and version. CentOS must have access to the base repositories and update repositories. Red Hat must have the following channels registered and enabled:
     - rhel-x86\_64-server-supplementary-7
     - rhel-x86\_64-server-optional-7
     - rhel-x86\_64-server-ha-7
