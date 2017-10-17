@@ -16,38 +16,15 @@ Change directory to the location of the Vagrantfile and become the root user.
     su -
 
 ## Install Necessary Tools
-Install the extra packages for enterprise linux, pip, git and virtualenv.
+Install pip, virtualenv and other packages.
 
-    yum --enablerepo=extras install epel-release -y
-    yum install python-pip -y
-    yum install git -y
+    yum -y install python-pip systemd-devel libpqxx-devel graphviz-devel.x86_64
+
+    pip install -U pip
+
+    pip install -U psycopg2
 
     pip install virtualenv
-
-
-## Install Extra Items
-Add the systemd-devel package.
-
-    yum install systemd-devel -y
-
-Add the systemd python package
-
-    yum install systemd-python -y
-
-Add the python development package
-
-    yum install python2-devel -y
-
-Add the C++ client API for Postgress, libpqxx.
-
-    yum list libpq*
-    yum install libpqxx-devel -y
-
-Add the graphviz package.
-
-    yum install graphviz -y
-    yum list available 'graphviz*'
-    yum install graphviz-devel.x86_64 -y
 
 ## Create a Virtual environment
 This is an optional step if the desire is to build up the test area and then to eliminate the test area.
