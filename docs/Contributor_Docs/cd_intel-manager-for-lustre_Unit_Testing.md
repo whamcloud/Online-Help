@@ -92,7 +92,7 @@ Destroying test database for alias 'default'...
 (myenv) root@adm>
 ```
 
-## If the Unit Tests not Behaving
+## If the Unit Tests are not Behaving
 
 Evaluating database transactions will not work as expected if multiple threads are operating on the same database instance. 
 To remedy this, disable threading for the manager unit tests.
