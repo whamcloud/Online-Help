@@ -20,20 +20,24 @@ Install pip, virtualenv and other packages.
 
     yum -y install python-pip systemd-devel libpqxx-devel graphviz-devel.x86_64
 
-    pip install -U pip
-
-    pip install -U psycopg2
-
+    pip install -U pip psycopg2
     pip install virtualenv
 
 ## Create a Virtual environment
-This is an optional step if the desire is to build up the test area and then to eliminate the test area.
+This is an optional step if the desire is to build up the test area and then to eliminate the test area. Virtual environments are about isolation, and not polluting the system namespace. 
 
 Activate the virtual environment where dependencies will be added.
 
     virtualenv myenv
     cd myenv
-    source bin/activate
+    
+    root@adm>source bin/activate
+    (myenv) root@adm>
+
+To **deactivate** the virtual environment, type "deactivate":
+
+    (myenv) root@adm>deactivate
+    root@adm>
 
 ## Clone the [intel-manager-for-lustre](https://github.com/intel-hpdd/intel-manager-for-lustre) code.
 
@@ -87,6 +91,49 @@ OK (SKIP=3)
 Destroying test database for alias 'default'...
 (myenv) root@adm>
 ```
+
+## If the Unit Tests not Behaving
+
+Evaluating database transactions will not work as expected if multiple threads are operating on the same database instance. 
+To remedy this, disable threading for the manager unit tests.
+
+    export IML_DISABLE_THREADS=1
+
+        Run the tests here.
+        For example, 
+        python manage.py test tests/unit
+
+    unset IML_DISABLE_THREADS
+
+## Other tests
+
+### Test 1
+
+    export IML_DISABLE_THREADS=1
+
+    mkdir -p /tmp/test_reports
+    export WORKSPACE=/tmp/myworkspace
+
+    python manage.py test --with-xunit --xunit-file=$WORKSPACE/test_reports/chroma-manager-unit-test-results.xml --with-coverage tests/unit/ <<EOC
+    yes
+    EOC
+
+    unset IML_DISABLE_THREADS
+
+### Test 2
+
+    export IML_DISABLE_THREADS=1
+
+    mkdir -p /tmp/test_reports
+    export WORKSPACE=/tmp/myworkspace
+
+    export IML_DISABLE_THREADS=1
+
+      python manage.py test --with-xunit --xunit-file=$WORKSPACE/test_reports/chroma-manager-unit-test-results.xml tests/unit/ <<EOC
+    yes
+    EOC
+
+    unset IML_DISABLE_THREADS
 
 ---
 [Top of page](#Top)
