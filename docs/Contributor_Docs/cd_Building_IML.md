@@ -4,6 +4,10 @@
 
 ## Prerequisites
 
+Clone of the [intel-manager-for-lustre repository](https://github.com/intel-hpdd/intel-manager-for-lustre)
+```
+git clone git@github.com:intel-hpdd/intel-manager-for-lustre.git
+```
 Install the YUM Copr plugin:
 ```
 # yum -y install yum-plugin-copr
@@ -19,9 +23,12 @@ Install needed software packages:
 ```
 
 ## How does one build IML?
+
+From the top-level directory in the repository clone:
 ```
 $ make
 ```
+The result of the above command will be source tarballs and RPMs in the `dist/` subdirectory and a `iml-<version>.tar.gz` tarball in the `chroma-bundles/` subdirectory containing everything needed to install IML on a cluster.
 
 ---
 [Top of page](#Top)
