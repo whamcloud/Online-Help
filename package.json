@@ -4,7 +4,7 @@
   "description": "The IML help docs",
   "scripts": {
     "build":
-      "rm -rf dist && bundle exec jekyll build --destination dist --baseurl '/help'",
+      "rm -rf dist && make BASEURL='/help'",
     "start": "bundle exec jekyll serve",
     "postversion": "npm run build",
     "link-check":
