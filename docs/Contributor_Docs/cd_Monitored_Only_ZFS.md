@@ -64,13 +64,13 @@ There will be alters and warnings about LNET. Ignore for now.
 Once all servers have been added with "Monitored Server Profile", each server will need to know which interface should be assigned the lustre network.
 ssh to each server (mds1, mds2, oss1, oss2)
 vagrant ssh <server>  and as root (sudo su ) run the following commands:
+
 ```
-    systemctl stop firewalld ; systemctl disable firewalld 
-    systemctl stop NetworkManager; systemctl disable NetworkManager 
-    systemctl start ntpd 
-    echo 'options lnet networks=tcp0(enp0s9)' > /etc/modprobe.d/lustre.conf 
-    modprobe lnet 
-    lctl network configure 
+    systemctl stop firewalld ; systemctl disable firewalld
+    systemctl start ntpd
+    echo 'options lnet networks=tcp0(enp0s9)' > /etc/modprobe.d/lustre.conf
+    modprobe lnet
+    lctl network configure
     /sbin/modprobe zfs
     genhostid
 ```
@@ -88,36 +88,67 @@ Note that VM Disks (ata-VBOX_HARDDISK...) will be mapped as /dev/sd devices. Use
     vagrant ssh mds1
     sudo -s
     #note use /dev/sdb (512M) for the mgt
-    zpool create mgs -o cachefile=none /dev/disk/by-id/ata-VBOX_HARDDISK_VBe85051d4-e6ae953d -f
-    mkfs.lustre --reformat --failover mds2.lfs.local@tcp --mgs --backfstype=zfs mgs/mgt
-    mkdir -p /lustre/mgs
-    mount -t lustre mgs/mgt /lustre/mgs
+    zpool create mgs -o cachefile=none /dev/disk/by-id/ata-VBOX_HARDDISK_VBe85051d4-e6ae953d
+    mkfs.lustre --failover 10.73.20.12@tcp --mgs --backfstype=zfs mgs/mgt
+    zpool export mgs
+```
+
+At this point you should wait until the volume disappears from the volumes page and the dataset appears on both the primary and secondary nodes. Then:
+
+```
+zpool import mgs
+mkdir -p /lustre/mgs
+mount -t lustre mgs/mgt /lustre/mgs
 ```
 
 - Metadata Target:
 ```
     vagrant ssh mds2
     sudo -s
-    zpool create mds -o cachefile=none /dev/disk/by-id/ata-VBOX_HARDDISK_VB0729fac1-5420a643 -f
-    mkfs.lustre --reformat --failover mds1.lfs.local@tcp  --mdt --backfstype=zfs --fsname=zfsmo --index=0 --mgsnode=mds1.lfs.local@tcp mds/mdt0
+    zpool create mds -o cachefile=none /dev/disk/by-id/ata-VBOX_HARDDISK_VB0729fac1-5420a643
+    mkfs.lustre --failover 10.73.20.11@tcp --mdt --backfstype=zfs --fsname=zfsmo --index=0 --mgsnode=10.73.20.11@tcp mds/mdt0
+    zpool export mds
+```
+
+At this point you should wait until the volume disappears from the volumes page and the dataset appears on both the primary and secondary nodes. Then:
+
+```
+    zpool import mds
     mkdir -p /lustre/zfsmo/mdt0
     mount -t lustre mds/mdt0 /lustre/zfsmo/mdt0
 ```
+
 - Object Storage Targets:
 ```
     vagrant ssh oss1
     sudo -s
-    zpool create oss1 -o cachefile=none raidz2 /dev/disk/by-id/ata-VBOX_HARDDISK_VB6f41df02-0d5d2a15 /dev/disk/by-id/ata-VBOX_HARDDISK_VB06b563a9-2539af7b  /dev/disk/by-id/ata-VBOX_HARDDISK_VBb2ec79fb-b900b724 /dev/disk/by-id/ata-VBOX_HARDDISK_VBe2585d74-5267121b -f
-    mkfs.lustre --reformat --failover oss2.lfs.local@tcp  --ost --backfstype=zfs --fsname=zfsmo --index=0 --mgsnode=mds1.lfs.local@tcp oss1/ost00
+    zpool create oss1 -o cachefile=none raidz2 /dev/disk/by-id/ata-VBOX_HARDDISK_VB6f41df02-0d5d2a15 /dev/disk/by-id/ata-VBOX_HARDDISK_VB06b563a9-2539af7b /dev/disk/by-id/ata-VBOX_HARDDISK_VBb2ec79fb-b900b724 /dev/disk/by-id/ata-VBOX_HARDDISK_VBe2585d74-5267121b
+    mkfs.lustre --failover 10.73.20.22@tcp --ost --backfstype=zfs --fsname=zfsmo --index=0 --mgsnode=10.73.20.11@tcp oss1/ost00
     zfs compression=on oss1
+    zpool export oss1
+```
+
+At this point you should wait until the volume disappears from the volumes page and the dataset appears on both the primary and secondary nodes. Then:
+
+```
+    zpool import oss1
     mkdir -p /lustre/zfsmo/ost00
     mount -t lustre oss1/ost00 /lustre/zfsmo/ost00
+```
 
+```
     vagrant ssh oss2
     sudo -s
-    zpool create oss2 -o cachefile=none raidz2 /dev/disk/by-id/ata-VBOX_HARDDISK_VBb7776d10-aba16176 /dev/disk/by-id/ata-VBOX_HARDDISK_VB6657241f-bab2ffed  /dev/disk/by-id/ata-VBOX_HARDDISK_VB0ebfc209-9bbf80c4 /dev/disk/by-id/ata-VBOX_HARDDISK_VB51449aa2-95df9cdc -f
-    mkfs.lustre --reformat --failover oss1.lfs.local@tcp  --ost --backfstype=zfs --fsname=zfsmo --index=1 --mgsnode=mds1.lfs.local oss2/ost01
+    zpool create oss2 -o cachefile=none raidz2 /dev/disk/by-id/ata-VBOX_HARDDISK_VBb7776d10-aba16176 /dev/disk/by-id/ata-VBOX_HARDDISK_VB6657241f-bab2ffed /dev/disk/by-id/ata-VBOX_HARDDISK_VB0ebfc209-9bbf80c4 /dev/disk/by-id/ata-VBOX_HARDDISK_VB51449aa2-95df9cdc
+    mkfs.lustre --failover  10.73.20.21@tcp --ost --backfstype=zfs --fsname=zfsmo --index=1 --mgsnode=10.73.20.11@tcp oss2/ost01
     zfs compression=on oss2
+    zpool export oss2
+```
+
+At this point you should wait until the volume disappears from the volumes page and the dataset appears on both the primary and secondary nodes. Then:
+
+```
+    zpool import oss2
     mkdir -p /lustre/zfsmo/ost01
     mount -t lustre oss2/ost01 /lustre/zfsmo/ost01
 ```
