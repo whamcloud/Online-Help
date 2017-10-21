@@ -90,34 +90,34 @@ Now that all managed servers have been added and the power control has been conf
 
 1. ssh into `mds1` and switch to the root account with `sudo -i`.
 1. In the GUI, navigate to `Configuration->Volumes`. Setup your web browser and console next to each other such that the result of running commands in your console can be viewed on the browser in real time. 
-1. Create the MGS. On the volumes page, look for the mds with a file size of 512MB. This should be easy to spot as the other mds has a capacity of 5GB. Notice the numbers that come after `VBOX_HARDDISK_VB`. This is the diskSerial. Enter the following command, replacing `<mgs-diskSerial>` with your diskSerial.
+1. Create the MGS. On the volumes page, look for the mds with a file size of 512MB. This should be easy to spot as the other mds has a capacity of 5GB. Notice the numbers that come after `VBOX_HARDDISK`. This is the diskSerial. Enter the following command:
 
 ```
-[root@mds1 ~]# zpool create mgs -o cachefile=none -o multihost=on /dev/disk/by-id/ata-VBOX_HARDDISK_VB<mgs-diskSerial>
-[root@mds1 ~]# zpool export mgs
+root@mds1 by-id]# zpool create mgs -o cachefile=none -o multihost=on /dev/disk/by-id/ata-VBOX_HARDDISK_MGS00000000000000000
+[root@mds1 by-id]# zpool export mgs
 ```
 
 Watch the volumes page and wait for the volumes associated with the mgs to change and become labeled "mgs."
-1. Create the MDS. On the volumes page, look for the mds with a file size of 5GB. This should be the only mds left. Take note of the diskSerial for this mds and enter the following command, replacing `<mds-diskSerial>` with your diskSerial.
+1. Create the MDS. On the volumes page, look for the mds with a file size of 5GB. This should be the only mds left. Take note of the diskSerial for this mds and enter the following command:
 
 ```
-[root@mds1 ~]# zpool create mds -o cachefile=none -o multihost=on /dev/disk/by-id/ata-VBOX_HARDDISK_VB<mds-diskSerial>
-[root@mds1 ~]# zpool export mds
+[root@mds1 by-id]# zpool create mds -o cachefile=none -o multihost=on /dev/disk/by-id/ata-VBOX_HARDDISK_MDT00000000000000000
+[root@mds1 by-id]# zpool export mds
 ```
 
 Watch the volumes page and wait for the volumes associated with the mds to change and become labeled "mds."
-1. Create OSS1. Exit out of `mds1` and ssh into `oss1`. On the volumes page, look for all occurrences of `oss1` and take note of their diskSerial's. Enter the following command, replacing `<oss1-diskSerial>` with your diskSerial.
+1. Create OSS1. Exit out of `mds1` and ssh into `oss1`. On the volumes page, look for all occurrences of `oss1` and take note of their diskSerial's. Enter the following command:
 
 ```
-[root@oss1 ~]# zpool create oss1 -o cachefile=none -o multihost=on raidz2 /dev/disk/by-id/ata-VBOX_HARDDISK_VB<oss1-diskSerial1> /dev/disk/by-id/ata-VBOX_HARDDISK_VB<oss1-diskSerial2> /dev/disk/by-id/ata-VBOX_HARDDISK_VB<oss1-diskSerial3> /dev/disk/by-id/ata-VBOX_HARDDISK_VB<oss1-diskSerial4>
+[root@oss1 ~]# zpool create oss1 -o cachefile=none -o multihost=on raidz2 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT1000000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT3000000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT5000000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT7000000000000
 [root@oss1 ~]# zpool export oss1
 ```
 
 Watch the volumes page and wait for the volumes associated with oss1 to change and become labeled "oss1."
-1. Create OSS2. On the volumes page, look for all occurrences of `oss2` and take note of their diskSerial's. Enter the following command, replacing `<oss2-diskSerial>` with your diskSerial.
+1. Create OSS2. On the volumes page, look for all occurrences of `oss2` and take note of their diskSerial's. Enter the following command:
 
 ```
-[root@oss1 ~]# zpool create oss2 -o cachefile=none -o multihost=on raidz2 /dev/disk/by-id/ata-VBOX_HARDDISK_VB<oss2-diskSerial1> /dev/disk/by-id/ata-VBOX_HARDDISK_VB<oss2-diskSerial2>  /dev/disk/by-id/ata-VBOX_HARDDISK_VB<oss2-diskSerial3> /dev/disk/by-id/ata-VBOX_HARDDISK_VB<oss2-diskSerial4> 
+[root@oss1 ~]# zpool create oss2 -o cachefile=none -o multihost=on raidz2 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT2000000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT4000000000000  /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT6000000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT8000000000000
 [root@oss1 ~]# zpool export oss2
 ```
 
