@@ -66,7 +66,7 @@ ssh to each server (mds1, mds2, oss1, oss2)
 vagrant ssh <server>  and as root (sudo su ) run the following commands:
 
 ```
-    systemctl stop firewalld ; systemctl disable firewalld
+    systemctl stop firewalld; systemctl disable firewalld
     systemctl start ntpd
     echo 'options lnet networks=tcp0(enp0s9)' > /etc/modprobe.d/lustre.conf
     modprobe lnet
@@ -81,14 +81,13 @@ The IML GUI should show that the LNET and NID Configuration is updated (IP Addre
 ## Creating a monitored only zfs based Lustre filesystem
 
 The lustre filesystem will be created from the command line on zpools and IML GUI will be used to scan for the filesytem.
-Note that VM Disks (ata-VBOX_HARDDISK...) will be mapped as /dev/sd devices. Use "ls -l /dev/disk/by-id/" to list the VM Disks available. 
+Note that VM Disks (ata-VBOX_HARDDISK...) will be mapped as /dev/sd devices.
 
 - Management Target:
 ```
     vagrant ssh mds1
-    sudo -s
-    #note use /dev/sdb (512M) for the mgt
-    zpool create mgs -o cachefile=none /dev/disk/by-id/ata-VBOX_HARDDISK_VBe85051d4-e6ae953d
+    sudo -i
+    zpool create mgs -o cachefile=none /dev/disk/by-id/ata-VBOX_HARDDISK_MGS00000000000000000
     mkfs.lustre --failover 10.73.20.12@tcp --mgs --backfstype=zfs mgs/mgt
     zpool export mgs
 ```
@@ -104,8 +103,8 @@ mount -t lustre mgs/mgt /lustre/mgs
 - Metadata Target:
 ```
     vagrant ssh mds2
-    sudo -s
-    zpool create mds -o cachefile=none /dev/disk/by-id/ata-VBOX_HARDDISK_VB0729fac1-5420a643
+    sudo -i
+    zpool create mds -o cachefile=none /dev/disk/by-id/ata-VBOX_HARDDISK_MDT00000000000000000
     mkfs.lustre --failover 10.73.20.11@tcp --mdt --backfstype=zfs --fsname=zfsmo --index=0 --mgsnode=10.73.20.11@tcp mds/mdt0
     zpool export mds
 ```
@@ -121,8 +120,8 @@ At this point you should wait until the volume disappears from the volumes page 
 - Object Storage Targets:
 ```
     vagrant ssh oss1
-    sudo -s
-    zpool create oss1 -o cachefile=none raidz2 /dev/disk/by-id/ata-VBOX_HARDDISK_VB6f41df02-0d5d2a15 /dev/disk/by-id/ata-VBOX_HARDDISK_VB06b563a9-2539af7b /dev/disk/by-id/ata-VBOX_HARDDISK_VBb2ec79fb-b900b724 /dev/disk/by-id/ata-VBOX_HARDDISK_VBe2585d74-5267121b
+    sudo -i
+    zpool create oss1 -o cachefile=none raidz2 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT1000000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT3000000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT5000000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT7000000000000
     mkfs.lustre --failover 10.73.20.22@tcp --ost --backfstype=zfs --fsname=zfsmo --index=0 --mgsnode=10.73.20.11@tcp oss1/ost00
     zfs compression=on oss1
     zpool export oss1
@@ -138,8 +137,8 @@ At this point you should wait until the volume disappears from the volumes page 
 
 ```
     vagrant ssh oss2
-    sudo -s
-    zpool create oss2 -o cachefile=none raidz2 /dev/disk/by-id/ata-VBOX_HARDDISK_VBb7776d10-aba16176 /dev/disk/by-id/ata-VBOX_HARDDISK_VB6657241f-bab2ffed /dev/disk/by-id/ata-VBOX_HARDDISK_VB0ebfc209-9bbf80c4 /dev/disk/by-id/ata-VBOX_HARDDISK_VB51449aa2-95df9cdc
+    sudo -i
+    zpool create oss2 -o cachefile=none raidz2 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT2000000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT4000000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT6000000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT8000000000000
     mkfs.lustre --failover  10.73.20.21@tcp --ost --backfstype=zfs --fsname=zfsmo --index=1 --mgsnode=10.73.20.11@tcp oss2/ost01
     zfs compression=on oss2
     zpool export oss2
