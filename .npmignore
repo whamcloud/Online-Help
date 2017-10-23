@@ -11,3 +11,4 @@ README.md
 dist/README.md
 dist/Gemfile
 dist/Gemfile.lock
+vendor
