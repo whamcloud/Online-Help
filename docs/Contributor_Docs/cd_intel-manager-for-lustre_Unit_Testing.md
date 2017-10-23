@@ -126,8 +126,6 @@ To remedy this, disable threading for the manager unit tests.
     # mkdir -p /tmp/test_reports
     # export WORKSPACE=/tmp/myworkspace
 
-    # export IML_DISABLE_THREADS=1
-
     # python manage.py test --with-xunit --xunit-file=$WORKSPACE/test_reports/chroma-manager-unit-test-results.xml tests/unit/ <<EOC
     yes
     EOC
