@@ -172,9 +172,9 @@ rpm -qR lustre-client-modules | grep 'kernel'
 # Use Grub to set the desired kernel
 ```
 awk -F\' '$1=="menuentry " {print i++ " : " $2}' /etc/grub2.cfg
-0 : CentOS Linux (3.10.0-693.2.2.el7_lustre.x86_64) 7 (Core)
-1 : CentOS Linux (3.10.0-514.6.1.el7.x86_64) 7 (Core)
-2 : CentOS Linux (0-rescue-8018a73b69a84a48bde20d088bca3238) 7 (Core)
+# 0 : CentOS Linux (3.10.0-693.2.2.el7_lustre.x86_64) 7 (Core)
+# 1 : CentOS Linux (3.10.0-514.6.1.el7.x86_64) 7 (Core)
+# 2 : CentOS Linux (0-rescue-8018a73b69a84a48bde20d088bca3238) 7 (Core)
 
 grub2-set-default 1
 
