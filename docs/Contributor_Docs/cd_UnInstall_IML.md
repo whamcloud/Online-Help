@@ -86,11 +86,17 @@ In the case of **ForceRemoveHostJob**, the agent side is completely untouched. T
 ```
 service chroma-agent stop
 /sbin/chkconfig --del chroma-agent
+
 ```
 
 ### Remove agent software
 ```
-yum remove chroma-agent chroma-agent-management iml-diagnostics
+yum remove -y chroma-agent chroma-agent-management iml_sos_plugin iml-device-scanner python2-iml-common*
+rm -rf /etc/yum.repos.d/Intel-Lustre-Agent.repo
+rm -rf /var/lib/chroma/
+rm -rf /var/lib/iml/
+
+dnf repository-packages managerforlustre-manager-for-lustre remove
 ```
 
 ### Unconfigure NTP
@@ -109,11 +115,9 @@ cibadmin -f -E
 systemctl stop pacemaker
 systemctl stop corosync
 
---OR--  
+# --OR--  
 
-killall -9 pacemaker\; killall -9 corosync   <-- Only if necessary
-
-
+killall -9 pacemaker\; killall -9 corosync  # <-- Only if necessary
 ```
 
 ### Reset firewall setting
@@ -139,8 +143,7 @@ REMOVE "--port=MCAST-PORT:udp" from /etc/sysconfig/system-config-firewall
 
 ## remove pacemaker and corosync
 ```
-yum remove pacemaker-*
-yum remove corosync*
+yum -y remove pacemaker-* corosync* 
 rm -f /var/lib/heartbeat/crm/* /var/lib/corosync/*
 ```
 
@@ -166,11 +169,19 @@ umount -a -tlustre -f
 rpm -qR lustre-client-modules | grep 'kernel'
 ```
 
-### To uninstall the kernel, start by editing: **/etc/grub.conf**
-### Change **default = 1** or to point to the stock kernel.
+# Use Grub to set the desired kernel
+```
+awk -F\' '$1=="menuentry " {print i++ " : " $2}' /etc/grub2.cfg
+0 : CentOS Linux (3.10.0-693.2.2.el7_lustre.x86_64) 7 (Core)
+1 : CentOS Linux (3.10.0-514.6.1.el7.x86_64) 7 (Core)
+2 : CentOS Linux (0-rescue-8018a73b69a84a48bde20d088bca3238) 7 (Core)
 
-### Save **/etc/grub.conf** and reboot.
-**Note:** Editing **/etc/grub.conf** incorrectly can cause boot issues.
+grub2-set-default 1
+
+grub2-editenv list
+```
+
+Now that the non-lustre kernel has been selected, reboot the node.
 
 ### After the system reboots, remove the lustre rpm
 ```
