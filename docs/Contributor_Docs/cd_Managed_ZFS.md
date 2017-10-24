@@ -55,34 +55,7 @@ The vagrant file indicates that the lustre network will run on 10.73.20.x. If Lu
 
 ## Setting up Power Control
 
-Power control can be configured once all managed servers have been added successfully and the network interfaces have been updated. To do this, install `fence-agents-vbox` on the admin node and all server nodes:
-
-```
-vagrant sh -c "sudo yum install -y fence-agents-vbox" adm oss1 oss2 mds1 mds2
-```
-
-Next, ssh into the `adm` node and install the "fake" IPMI hardware:
-
-
-```bash
-cd /usr/share/chroma-manager
-python scripts/fake_ipmi_vbox.py
-    # Enter "10.0.2.2" for the IP
-    # Enter your computer username
-    # Enter your computer password
-```
-
-**Note** There is currently a bug that causes the fake_ipmi_vbox.py script to fail on the first run; the process will hang indefinitely. To fix this, hit `ctrl+Z` to suspend the process. Next, run `ps aux | grep "fake_ipmi"` to get the process number and kill the process by executing, `kill -9 <processId>`. Once the process has been destroyed, run the script a second time, using the same information and the script should succeed.
-
-Navigate to `Configuration->Power Control`. Add the following entries for each server:
-
-| **Server**         | **PDU**  |
-| mds1.lfs.local | mds1 |
-| mds2.lfs.local | mds2 |
-| oss1.lfs.local | oss1 |
-| oss2.lfs.local | oss2 |
-
-Initially, each entry will highlight with a light orange background. Wait for 30 seconds and refresh the page; each entry will now be green. Your power control is now setup.
+[Follow these instructions to configure the Power Control.](cd_Setting_Up_Power_Control.md)
 
 ## Creating ZPools
 

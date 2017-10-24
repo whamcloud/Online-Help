@@ -132,6 +132,10 @@ Once all servers have been added, each server will need to know which interface 
 
 The vagrant file indicates that the lustre network will run on 10.73.20.x. If `Lustre Network 0` is specified for a different IP address, you will need to change its interface to `Not Lustre Network` and update the network for 10.73.20.x to use `Lustre Network 0`. It is very important that Lustre Network 0 is specified on the correct interface; otherwise, creating a filesystem will fail. Make sure that all servers have been updated where appropriate.
 
+## Setting up Power Control
+
+[Follow these instructions to configure the Power Control.](cd_Setting_Up_Power_Control.md)
+
 ## Creating a Filesystem
 To create a filesystem, simply navigate to `Configure->File Systems` and click the `Create` button. Make the following selections:
 - Management Target / MGS -> mds1 (512 MB)
