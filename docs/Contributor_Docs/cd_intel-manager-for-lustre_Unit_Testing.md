@@ -5,7 +5,7 @@
 ## Prerequisites
 * To run the python unit tests for the [intel-manager-for-lustre](https://github.com/intel-hpdd/intel-manager-for-lustre) repo, it will be necessary to install a working version of IML.
 
-* Create a **Vagrant** virtual cluster outined here: [Install IML on a Vagrant Virtual Cluster](cd_Installing_IML_On_Vagrant.md).
+* Create a **Vagrant** virtual cluster outlined here: [Install IML on a Vagrant Virtual Cluster](cd_Installing_IML_On_Vagrant.md).
 
 ## Log into the **adm** node
 Change directory to the location of the Vagrantfile and become the root user.
