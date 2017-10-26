@@ -23,7 +23,7 @@ To fix this, hit `ctrl+Z` to suspend the process.
 
 Next, run `ps aux | grep "fake_ipmi"` to get the process number and kill the process by executing, `kill -9 <processId>`. 
 
-Once the process has been destroyed, run the script a second time, using the same information and the script should succeed.
+Once the process has been destroyed,
 
 Navigate to `Configuration->Power Control`. Add the following entries for each server:
 
@@ -33,7 +33,6 @@ Navigate to `Configuration->Power Control`. Add the following entries for each s
 | mds2.lfs.local|mds2 |
 | oss1.lfs.local|oss1 |
 | oss2.lfs.local|oss2 |
-| | |
 
 Initially, each entry will highlight with a light orange background. Wait for 30 seconds and refresh the page; each entry will now be green. Your power control is now setup.
 
