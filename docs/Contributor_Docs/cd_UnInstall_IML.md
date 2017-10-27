@@ -91,12 +91,12 @@ service chroma-agent stop
 
 ### Remove agent software
 ```
-yum remove -y chroma-agent chroma-agent-management iml_sos_plugin iml-device-scanner python2-iml-common*
+yum remove -y chroma-agent chroma-agent-management iml_sos_plugin iml-device-scanner python2-iml-common* lustre-iokit lustre-osd-ldiskfs-mount lustre-osd-zfs-mount
 rm -rf /etc/yum.repos.d/Intel-Lustre-Agent.repo
 rm -rf /var/lib/chroma/
 rm -rf /var/lib/iml/
-
-dnf repository-packages managerforlustre-manager-for-lustre remove
+rm -rf /etc/yum.repos.d/Intel-Lustre-Agent.repo
+rm -rf /usr/lib/python2.7/site-packages/chroma_agent*
 ```
 
 ### Unconfigure NTP
