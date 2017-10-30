@@ -10,6 +10,10 @@
 
 * These documents provide detailed instructions for installing the Intel® Manager for Lustre* software.
   
+### [**Upgrade Guide**](docs/Upgrade_Guide/ug_TOC.md)
+
+* These documents provide detailed instructions for upgrading from Intel Enterprise Edition for Lustre to the current Lustre LTS and Intel® Manager for Lustre*.
+  
 ###  [**Software API Documentation**](docs/api/api_TOC.md)
 
 * An API reference for the Intel® Manager for Lustre* software.
