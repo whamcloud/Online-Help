@@ -782,11 +782,10 @@ The `pcs config export` command can be useful as a cross reference when restorin
         ```bash
         yum --nogpgcheck --enablerepo=lustre-server install \
         lustre-dkms \
-        spl-dkms \
-        zfs-dkms \
         lustre-osd-zfs-mount \
         lustre \
-        lustre-resource-agents
+        lustre-resource-agents \
+        zfs
         ```
 
     1. Load the Lustre and ZFS kernel modules to verify that the software has installed correctly:
@@ -1480,11 +1479,10 @@ The `pcs config export` command can be useful as a cross reference when restorin
         ```bash
         yum --nogpgcheck --enablerepo=lustre-server install \
         lustre-dkms \
-        spl-dkms \
-        zfs-dkms \
         lustre-osd-zfs-mount \
         lustre \
-        lustre-resource-agents
+        lustre-resource-agents \
+        zfs
         ```
 
     1. Load the Lustre and ZFS kernel modules to verify that the software has installed correctly:
