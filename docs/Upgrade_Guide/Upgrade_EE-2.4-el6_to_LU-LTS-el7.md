@@ -94,7 +94,7 @@ The first component in the environment to upgrade is the manager for Lustre serv
     ```
 
 1. Copy the backup tarball to a safe location that is not on the server being upgraded.
-1. [Optional] Stop  the `chroma-agent` daemon on each of the registered Lustre nodes. This step is optional, but will reduce the number of warnings and errors in the log files during the upgrade process. Stopping the `chroma-agent` not affect Lustre file system services that are running and will not impact failover of Lustre file system cluster resources managed by Pacemaker.
+1. [Optional] Stop  the `chroma-agent` daemon on each of the registered Lustre nodes. This step is optional, but will reduce the number of warnings and errors in the log files during the upgrade process. Stopping the `chroma-agent` will not affect Lustre file system services that are running and will not impact failover of Lustre file system cluster resources managed by Pacemaker.
 
 **Note:** This is not intended to be a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre servers managed by IML that are difficult to re-create if deleted.
 
