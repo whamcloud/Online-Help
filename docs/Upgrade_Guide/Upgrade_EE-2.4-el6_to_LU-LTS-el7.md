@@ -301,7 +301,7 @@ Also note that the manager server distribution includes a default repository def
     [iml-agent]
     name=Intel Manager for Lustre Agent
     baseurl=https://$hn/repo/iml-agent/7
-    enabled=0
+    enabled=1
     gpgcheck=0
     sslverify = 1
     sslcacert = /var/lib/chroma/authority.crt
@@ -312,7 +312,7 @@ Also note that the manager server distribution includes a default repository def
     [lustre-server]
     name=lustre-server
     baseurl=https://$hn/repo/lustre-server
-    enabled=0
+    enabled=1
     gpgcheck=0
     sslverify = 1
     sslcacert = /var/lib/chroma/authority.crt
@@ -323,7 +323,7 @@ Also note that the manager server distribution includes a default repository def
     [lustre-client]
     name=lustre-client
     baseurl=https://$hn/repo/lustre-client
-    enabled=0
+    enabled=1
     gpgcheck=0
     sslverify = 1
     sslcacert = /var/lib/chroma/authority.crt
@@ -334,7 +334,7 @@ Also note that the manager server distribution includes a default repository def
     [e2fsprogs-wc]
     name=e2fsprogs-wc
     baseurl=https://$hn/repo/e2fsprogs-wc
-    enabled=0
+    enabled=1
     gpgcheck=0
     sslverify = 1
     sslcacert = /var/lib/chroma/authority.crt
