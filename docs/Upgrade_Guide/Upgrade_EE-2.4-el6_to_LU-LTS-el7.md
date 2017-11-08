@@ -1419,7 +1419,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
         ```bash
         yum -y install \
-        http://download.zfsonlinux.org/epel/zfs-release.el7_3.noarch.rpm
+        http://download.zfsonlinux.org/epel/zfs-release.el7_4.noarch.rpm
         ```
 
     1. Install the kernel packages that match the latest supported version for the Lustre release:
