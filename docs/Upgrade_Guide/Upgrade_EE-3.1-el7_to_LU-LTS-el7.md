@@ -685,11 +685,10 @@ The upgrade procedure documented here shows how to execute the upgrade while the
         ```bash
         yum --nogpgcheck --enablerepo=lustre-server install \
         lustre-dkms \
-        spl-dkms \
-        zfs-dkms \
         lustre-osd-zfs-mount \
         lustre \
-        lustre-resource-agents
+        lustre-resource-agents \
+        zfs
         ```
 
     1. Load the Lustre and ZFS kernel modules to verify that the software has installed correctly:
@@ -1093,11 +1092,10 @@ Node 1 upgrade is complete.
         ```bash
         yum --nogpgcheck --enablerepo=lustre-server install \
         lustre-dkms \
-        spl-dkms \
-        zfs-dkms \
         lustre-osd-zfs-mount \
         lustre \
-        lustre-resource-agents
+        lustre-resource-agents \
+        zfs
         ```
 
     1. Load the Lustre and ZFS kernel modules to verify that the software has installed correctly:
