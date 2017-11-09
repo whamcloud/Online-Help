@@ -361,7 +361,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
     https://copr.fedorainfracloud.org/coprs/managerforlustre/manager-for-lustre/repo/epel-7/managerforlustre-manager-for-lustre-epel-7.repo
     ```
 
-1. Install the DNF project COPR Repository definition. DNF is a package manager, and is used as a replacement for YUM in many distributions, such as Fedora. It does not replace YUM in CentOS, but Manager for Lustre does make use of some of the newer features DNF for some of its tasks:
+1. Install the DNF project COPR Repository definition. DNF is a package manager, and is used as a replacement for YUM in many distributions, such as Fedora. It does not replace YUM in CentOS, but Manager for Lustre does make use of some of the newer features in DNF for some of its tasks:
 
     ```bash
     yum-config-manager --add-repo \
@@ -799,7 +799,7 @@ Node 1 upgrade is complete.
     https://copr.fedorainfracloud.org/coprs/managerforlustre/manager-for-lustre/repo/epel-7/managerforlustre-manager-for-lustre-epel-7.repo
     ```
 
-1. Install the DNF project COPR Repository definition. DNF is a package manager, and is used as a replacement for YUM in many distributions, such as Fedora. It does not replace YUM in CentOS, but Manager for Lustre does make use of some of the newer features DNF for some of its tasks:
+1. Install the DNF project COPR Repository definition. DNF is a package manager, and is used as a replacement for YUM in many distributions, such as Fedora. It does not replace YUM in CentOS, but Manager for Lustre does make use of some of the newer features in DNF for some of its tasks:
 
     ```bash
     yum-config-manager --add-repo \
