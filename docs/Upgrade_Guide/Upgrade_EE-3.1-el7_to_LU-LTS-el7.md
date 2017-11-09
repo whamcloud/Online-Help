@@ -2,20 +2,20 @@
 
 ## Introduction
 
-This document provides a description of how to upgrade an existing Lustre server file system installation from Intel EE Lustre version 3.1.1.0 running on the RHEL/CentOS 7 OS distribution to Lustre 2.10 LTS and Manager for Lustre version 4 running on RHEL/CentOS 7.
+This document provides a description of how to upgrade an existing Lustre server file system installation from Intel EE Lustre version 3.1.1.0 running on the RHEL/CentOS 7 OS distribution to Lustre 2.10 LTS and Intel® Manager for Lustre\* version 4 running on RHEL/CentOS 7.
 
 CentOS is used for the examples. RHEL users will need to refer to Red Hat for instructions on enabling the High Availability add-on needed to install Pacemaker, Corosync and related support tools.
 
 ## Risks
 
-The process of upgrading Intel EE Lustre to a newer Lustre and Manager for Lustre version requires careful consideration and planning. There will always be some disruption to services when major maintenance works are undertaken, although this can be contained and minimized.
+The process of upgrading Intel EE Lustre to a newer Lustre and Intel® Manager for Lustre\* version requires careful consideration and planning. There will always be some disruption to services when major maintenance works are undertaken, although this can be contained and minimized.
 
-The reference platform used throughout the documentation has been installed and is being managed by Intel Manager for Lustre (IML), but the methods for the Lustre server components can be broadly applied to any Lustre server environment running the RHEL or CentOS OS.
+The reference platform used throughout the documentation has been installed and is being managed by Intel® Manager for Lustre\*, but the methods for the Lustre server components can be broadly applied to any Lustre server environment running the RHEL or CentOS OS.
 
 ## Process Overview
 
 1. Upgrade the IML manager server
-    1. Backup the Intel Manager for Lustre server (IML manager) configuration and database
+    1. Backup the Intel® Manager for Lustre server (IML manager) configuration and database
     1. Install the latest version of the IML manager software for EL7
 1. Upgrade the metadata and object storage server pairs. For each HA pair:
     1. Backup the server configuration for both machines
@@ -30,7 +30,7 @@ The reference platform used throughout the documentation has been installed and 
         1. Re-enable the secondary node in the Pacemaker configuration
         1. Re-balance the resources
 
-## Upgrade Intel Manager for Lustre
+## Upgrade Intel® Manager for Lustre
 
 The first component in the environment to upgrade is the manager for Lustre software itself. The manager server upgrade can be conducted without any impact to the Lustre file system services.
 
@@ -79,7 +79,7 @@ The first component in the environment to upgrade is the manager for Lustre soft
 
 **Note:** The script is not intended to provide a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre servers managed by IML that are difficult to re-create if deleted.
 
-### Install the Manager for Lustre Upgrade
+### Install the Intel® Manager for Lustre Upgrade
 
 The software upgrade process requires super-user privileges to run. Login as the `root` user or use `sudo` to elevate privileges as required.
 
@@ -97,7 +97,7 @@ The software upgrade process requires super-user privileges to run. Login as the
 
     <https://github.com/intel-hpdd/intel-manager-for-lustre/releases>
 
-1. Extract the Manager for Lustre bundle. For example:
+1. Extract the Intel® Manager for Lustre bundle. For example:
 
     ```bash
     cd $HOME
@@ -130,7 +130,7 @@ The software upgrade process requires super-user privileges to run. Login as the
 
 ### Create Local Repositories for the Lustre Packages
 
-The Manager for Lustre distribution does not include Lustre software packages. These need to be acquired separately from the Lustre project's download server. The following instructions will establish the manager node as a YUM repository host for the Lustre packages. The Manager for Lustre server is automatically configured as a web server, so it is a convenient location for the repository mirrors.
+The Intel® Manager for Lustre distribution does not include Lustre software packages. These need to be acquired separately from the Lustre project's download server. The following instructions will establish the manager node as a YUM repository host for the Lustre packages. The Intel® Manager for Lustre server is automatically configured as a web server, so it is a convenient location for the repository mirrors.
 
 1. Create a temporary YUM repository definition. This will be used to assist with the initial acquisition of Lustre and related packages.
 
@@ -187,7 +187,7 @@ The Manager for Lustre distribution does not include Lustre software packages. T
 
 1. Create a YUM Repository Definition File
 
-    The following script creates a file containing repository definitions for the IML Agent software and the Lustre packages downloaded in the previous section. Review the content and adjust according to the requirements of the target environment. Run the script on the upgraded Manager for Lustre host:
+    The following script creates a file containing repository definitions for the IML Agent software and the Lustre packages downloaded in the previous section. Review the content and adjust according to the requirements of the target environment. Run the script on the upgraded Intel® Manager for Lustre host:
 
     ```bash
     hn=`hostname --fqdn`
@@ -246,7 +246,7 @@ The Manager for Lustre distribution does not include Lustre software packages. T
 
 Lustre server upgrades can be coordinated as either an online roll-out, leveraging the failover HA mechanism to migrate services between nodes and minimize disruption, or as an offline service outage, which has the advantage of usually being faster to deploy overall, with generally lower risk.
 
-The upgrade procedure documented here shows how to execute the upgrade while the file system is online. It assumes that the Lustre servers have been installed in pairs, where each server pair forms an independent high-availability cluster built on Pacemaker and Corosync. Intel Manager for Lustre deploys these configurations and includes its own resource agent for managing Lustre assets, called `ocf:chroma:Target`. IML can also configure STONITH agents to provide node fencing in the event of a cluster partition or loss of quorum.
+The upgrade procedure documented here shows how to execute the upgrade while the file system is online. It assumes that the Lustre servers have been installed in pairs, where each server pair forms an independent high-availability cluster built on Pacemaker and Corosync. Intel® Manager for Lustre deploys these configurations and includes its own resource agent for managing Lustre assets, called `ocf:chroma:Target`. IML can also configure STONITH agents to provide node fencing in the event of a cluster partition or loss of quorum.
 
 This documentation will demonstrate how to upgrade a single HA pair of Lustre servers. The process needs to be repeated for all servers in the cluster. It is possible to execute this upgrade while services are still online, with only minor disruption during critical phases. Nevertheless, where possible it is recommended that the upgrade operation is conducted during a planned maintenance window with the file system stopped.
 
@@ -304,7 +304,7 @@ Upgrade one server at a time in each cluster pair, starting with Node 1, and mak
 
 ### Online Upgrade
 
-The upgrade procedure documented here shows how to execute the upgrade while the file system is online. It assumes that the Lustre servers have been installed by Intel Manager for Lustre in pairs, where each server pair forms an independent high-availability cluster built on Pacemaker and Corosync.
+The upgrade procedure documented here shows how to execute the upgrade while the file system is online. It assumes that the Lustre servers have been installed by Intel® Manager for Lustre in pairs, where each server pair forms an independent high-availability cluster built on Pacemaker and Corosync.
 
 #### Migrate the Resources on Node 1
 
@@ -345,7 +345,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
 
     Refer to the operating system documentation for details on the correct procedure for upgrading between minor OS releases.
 
-#### Upgrade the Manager for Lustre Agent on Node 1
+#### Upgrade the Intel® Manager for Lustre Agent on Node 1
 
 1. Login to node 1.
 1. Install EPEL repository support:
@@ -354,14 +354,14 @@ The upgrade procedure documented here shows how to execute the upgrade while the
     yum -y install epel-release
     ```
 
-1. Install the Manager for Lustre COPR Repository definition, which contains some dependencies for the IML Agent:
+1. Install the Intel® Manager for Lustre COPR Repository definition, which contains some dependencies for the IML Agent:
 
     ```bash
     yum-config-manager --add-repo \
     https://copr.fedorainfracloud.org/coprs/managerforlustre/manager-for-lustre/repo/epel-7/managerforlustre-manager-for-lustre-epel-7.repo
     ```
 
-1. Install the DNF project COPR Repository definition. DNF is a package manager, and is used as a replacement for YUM in many distributions, such as Fedora. It does not replace YUM in CentOS, but Manager for Lustre does make use of some of the newer features in DNF for some of its tasks:
+1. Install the DNF project COPR Repository definition. DNF is a package manager, and is used as a replacement for YUM in many distributions, such as Fedora. It does not replace YUM in CentOS, but Intel® Manager for Lustre does make use of some of the newer features in DNF for some of its tasks:
 
     ```bash
     yum-config-manager --add-repo \
@@ -469,7 +469,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
 
 1. For systems that have **both** LDISKFS and ZFS OSDs:
 
-    **Note:** This is the configuration that IML installs for all managed-mode Lustre storage clusters. Use this configuration for the highest level of compatibility with Manager for Lustre.
+    **Note:** This is the configuration that IML installs for all managed-mode Lustre storage clusters. Use this configuration for the highest level of compatibility with Intel® Manager for Lustre.
 
     1. Install the Lustre `e2fsprogs` distribution:
 
@@ -783,7 +783,7 @@ Node 1 upgrade is complete.
 
     Refer to the operating system documentation for details on the correct procedure for upgrading between minor OS releases.
 
-#### Upgrade the Manager for Lustre Agent on Node 2
+#### Upgrade the Intel® Manager for Lustre Agent on Node 2
 
 1. Login to node 2.
 1. Install EPEL repository support:
@@ -792,14 +792,14 @@ Node 1 upgrade is complete.
     yum -y install epel-release
     ```
 
-1. Install the Manager for Lustre COPR Repository definition, which contains some dependencies for the IML Agent:
+1. Install the Intel® Manager for Lustre COPR Repository definition, which contains some dependencies for the IML Agent:
 
     ```bash
     yum-config-manager --add-repo \
     https://copr.fedorainfracloud.org/coprs/managerforlustre/manager-for-lustre/repo/epel-7/managerforlustre-manager-for-lustre-epel-7.repo
     ```
 
-1. Install the DNF project COPR Repository definition. DNF is a package manager, and is used as a replacement for YUM in many distributions, such as Fedora. It does not replace YUM in CentOS, but Manager for Lustre does make use of some of the newer features in DNF for some of its tasks:
+1. Install the DNF project COPR Repository definition. DNF is a package manager, and is used as a replacement for YUM in many distributions, such as Fedora. It does not replace YUM in CentOS, but Intel® Manager for Lustre does make use of some of the newer features in DNF for some of its tasks:
 
     ```bash
     yum-config-manager --add-repo \
@@ -876,7 +876,7 @@ Node 1 upgrade is complete.
 
 1. For systems that have **both** LDISKFS and ZFS OSDs:
 
-    **Note:** This is the configuration that IML installs for all managed-mode Lustre storage clusters. Use this configuration for the highest level of compatibility with Manager for Lustre.
+    **Note:** This is the configuration that IML installs for all managed-mode Lustre storage clusters. Use this configuration for the highest level of compatibility with Intel® Manager for Lustre.
 
     1. Install the Lustre `e2fsprogs` distribution:
 
