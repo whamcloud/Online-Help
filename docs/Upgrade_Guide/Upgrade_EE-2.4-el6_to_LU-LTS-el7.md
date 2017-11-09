@@ -624,10 +624,11 @@ The `pcs config export` command can be useful as a cross reference when restorin
         tcl tcl-devel tk tk-devel wget xmlto yum-utils zlib-devel
         ```
 
-    1. Generate a persistent hostid (needed to help protect zpools against simultaneous imports on multiple servers):
+    1. Ensure that a persistent hostid has been generated on the machine. If necessary, generate a persistent hostid (needed to help protect zpools against simultaneous imports on multiple servers). For example:
 
         ```bash
-        genhostid
+        hid=`[ -f /etc/hostid ] && od -An -tx /etc/hostid|sed 's/ //g'`
+        [ "$hid" = `hostid` ] || genhostid
         ```
 
     1. Reboot the node.
@@ -765,10 +766,11 @@ The `pcs config export` command can be useful as a cross reference when restorin
         tcl tcl-devel tk tk-devel wget xmlto yum-utils zlib-devel
         ```
 
-    1. Generate a persistent hostid (needed to help protect zpools against simultaneous imports on multiple servers):
+    1. Ensure that a persistent hostid has been generated on the machine. If necessary, generate a persistent hostid (needed to help protect zpools against simultaneous imports on multiple servers). For example:
 
         ```bash
-        genhostid
+        hid=`[ -f /etc/hostid ] && od -An -tx /etc/hostid|sed 's/ //g'`
+        [ "$hid" = `hostid` ] || genhostid
         ```
 
     1. Reboot the node.
@@ -1336,10 +1338,11 @@ The `pcs config export` command can be useful as a cross reference when restorin
         tcl tcl-devel tk tk-devel wget xmlto yum-utils zlib-devel
         ```
 
-    1. Generate a persistent hostid (needed to help protect zpools against simultaneous imports on multiple servers):
+    1. Ensure that a persistent hostid has been generated on the machine. If necessary, generate a persistent hostid (needed to help protect zpools against simultaneous imports on multiple servers). For example:
 
         ```bash
-        genhostid
+        hid=`[ -f /etc/hostid ] && od -An -tx /etc/hostid|sed 's/ //g'`
+        [ "$hid" = `hostid` ] || genhostid
         ```
 
     1. Reboot the node.
@@ -1462,10 +1465,11 @@ The `pcs config export` command can be useful as a cross reference when restorin
         tcl tcl-devel tk tk-devel wget xmlto yum-utils zlib-devel
         ```
 
-    1. Generate a persistent hostid (needed to help protect zpools against simultaneous imports on multiple servers):
+    1. Ensure that a persistent hostid has been generated on the machine. If necessary, generate a persistent hostid (needed to help protect zpools against simultaneous imports on multiple servers). For example:
 
         ```bash
-        genhostid
+        hid=`[ -f /etc/hostid ] && od -An -tx /etc/hostid|sed 's/ //g'`
+        [ "$hid" = `hostid` ] || genhostid
         ```
 
     1. Reboot the node.
