@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This document provides a description of how to upgrade an existing Lustre server file system installation from Intel EE Lustre version 2.4.2.7 running on the RHEL/CentOS 6 OS distribution to Lustre 2.10 LTS and Manager for Lustre version 4 running on RHEL/CentOS 7.
+This document provides a description of how to upgrade an existing Lustre server file system installation from Intel EE Lustre version 2.4.2.7 running on the RHEL/CentOS 6 OS distribution to Lustre 2.10 LTS and Intel® Manager for Lustre\* version 4 running on RHEL/CentOS 7.
 
 Included in the process is a method for implementing migration of the server operating system from RHEL / CentOS 6.8 to version 7, which represents the most difficult part of the upgrade process.
 
@@ -18,12 +18,12 @@ With very few exceptions, Red Hat does not provide a supported method for upgrad
 
 Nevertheless, upgrades are possible.
 
-The reference system used throughout the documentation has been installed and is being managed by Intel Manager for Lustre (IML), but the methods for the Lustre server components can be broadly applied to any approximately equivalent Lustre server environment running the RHEL OS.
+The reference system used throughout the documentation has been installed and is being managed by Intel® Manager for Lustre\* (IML), but the methods for the Lustre server components can be broadly applied to any approximately equivalent Lustre server environment running the RHEL OS.
 
 ## Process Overview
 
 1. Upgrade the IML manager server
-    1. Backup the Intel Manager for Lustre server (IML manager) configuration and database
+    1. Backup the Intel® Manager for Lustre server (IML manager) configuration and database
     1. Install RHEL 7 or CentOS 7
     1. Install the latest version of the IML manager software for EL7
     1. Restore the IML manager configuration and database
@@ -48,7 +48,7 @@ The reference system used throughout the documentation has been installed and is
 
 **Note:** When restoring OS configuration files to the upgraded OS, make sure to follow the distribution vendor's guidelines for best practice and security, as there may be differences in software configuration between the older and newer OS releases.
 
-## Upgrade Intel Manager for Lustre
+## Upgrade Intel® Manager for Lustre
 
 The first component in the environment to upgrade is the manager for Lustre server and software. The manager server upgrade can be conducted without any impact to the Lustre file system services.
 
@@ -97,7 +97,7 @@ The first component in the environment to upgrade is the manager for Lustre serv
 
 **Note:** This is not intended to be a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre servers managed by IML that are difficult to re-create if deleted.
 
-***Do not skip the backup. Subsequent process steps rely on the content of the backup to restore the Manager for Lustre services to operation.***
+***Do not skip the backup. Subsequent process steps rely on the content of the backup to restore the Intel® Manager for Lustre services to operation.***
 
 ### Install the Operating System Update for the Manager Node
 
@@ -162,7 +162,7 @@ The first component in the environment to upgrade is the manager for Lustre serv
     systemctl start ntpd
     ```
 
-### Install the Manager for Lustre Upgrade
+### Install the Intel® Manager for Lustre Upgrade
 
 The software upgrade process requires super-user privileges to run. Login as the `root` user or use `sudo` to elevate privileges as required.
 
@@ -170,7 +170,7 @@ The software upgrade process requires super-user privileges to run. Login as the
 
     <https://github.com/intel-hpdd/intel-manager-for-lustre/releases>
 
-1. Extract the Manager for Lustre bundle. For example:
+1. Extract the Intel® Manager for Lustre bundle. For example:
 
     ```bash
     cd $HOME
@@ -199,7 +199,7 @@ The software upgrade process requires super-user privileges to run. Login as the
 
 ### Restore the IML Configuration
 
-1. When the initial installation is complete, stop the Manager for Lustre services on the host:
+1. When the initial installation is complete, stop the Intel® Manager for Lustre services on the host:
 
     ```bash
     chroma-config stop
@@ -228,11 +228,11 @@ The software upgrade process requires super-user privileges to run. Login as the
 
     On successful completion, the IML software will be started automatically.
 
-1. When the installation and restoration of the configuration is complete, connect to the Manager for Lustre service using a web browser and verify that the new version has been installed and is running.
+1. When the installation and restoration of the configuration is complete, connect to the Intel® Manager for Lustre service using a web browser and verify that the new version has been installed and is running.
 
 ### Create Local Repositories for the Lustre Packages
 
-The Manager for Lustre distribution does not include Lustre software packages. These need to be acquired separately from the Lustre download server. The following instructions will establish the manager node as a YUM repository server for the network. The Manager for Lustre server is automatically configured as a web server, so it is a convenient location for the repositories.
+The Intel® Manager for Lustre distribution does not include Lustre software packages. These need to be acquired separately from the Lustre download server. The following instructions will establish the manager node as a YUM repository server for the network. The Intel® Manager for Lustre server is automatically configured as a web server, so it is a convenient location for the repositories.
 
 An alternative strategy is to copy the repository definition from step 1 directly onto each Lustre server and client (saving the file in `/etc/yum.repos.d` on each node), and skip the other steps that follow. This avoids creating a local repository on the manager node, and uses the Lustre download servers directly to download packages.
 
@@ -293,7 +293,7 @@ Also note that the manager server distribution includes a default repository def
 
 1. Create a YUM Repository Definition File
 
-    The following script creates a file containing repository definitions for the IML Agent software and the Lustre packages downloaded in the previous section. Review the content and adjust according to the requirements of the target environment. Run the script on the upgraded Manager for Lustre host:
+    The following script creates a file containing repository definitions for the IML Agent software and the Lustre packages downloaded in the previous section. Review the content and adjust according to the requirements of the target environment. Run the script on the upgraded Intel® Manager for Lustre host:
 
     ```bash
     hn=`hostname --fqdn`
@@ -352,7 +352,7 @@ Also note that the manager server distribution includes a default repository def
 
 Lustre server upgrades can be coordinated as either an online roll-out, leveraging the failover HA mechanism to migrate services between nodes and minimize disruption, or as an offline service outage, which has the advantage of usually being faster to deploy overall, with generally lower risk.
 
-The upgrade procedure documented here shows how to execute the upgrade while the file system is online. It assumes that the Lustre servers have been installed in pairs, where each server pair forms an independent high-availability cluster built on Pacemaker and Corosync. Intel Manager for Lustre deploys these configurations and includes its own resource agent for managing Lustre assets, called `ocf:chroma:Target`. IML can also configure STONITH agents to provide node fencing in the event of a cluster partition or loss of quorum.
+The upgrade procedure documented here shows how to execute the upgrade while the file system is online. It assumes that the Lustre servers have been installed in pairs, where each server pair forms an independent high-availability cluster built on Pacemaker and Corosync. Intel® Manager for Lustre deploys these configurations and includes its own resource agent for managing Lustre assets, called `ocf:chroma:Target`. IML can also configure STONITH agents to provide node fencing in the event of a cluster partition or loss of quorum.
 
 The cluster configuration deployed by IML is straightforward and easy to reproduce from backups, and is further simplified by the `pcs` cluster management application that ships with RHEL and CentOS.
 
@@ -524,7 +524,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     cp $HOME/bck-`hostname`-*/etc/modprobe.d/iml_lnet_module_parameters.conf /etc/modprobe.d/.
     ```
 
-#### Install the Manager for Lustre Agent on Node 1
+#### Install the Intel® Manager for Lustre Agent on Node 1
 
 1. Install EPEL repository support:
 
@@ -532,14 +532,14 @@ The `pcs config export` command can be useful as a cross reference when restorin
     yum -y install epel-release
     ```
 
-1. Install the Manager for Lustre COPR Repository definition, which contains some dependencies for the IML Agent:
+1. Install the Intel® Manager for Lustre COPR Repository definition, which contains some dependencies for the IML Agent:
 
     ```bash
     yum-config-manager --add-repo \
     https://copr.fedorainfracloud.org/coprs/managerforlustre/manager-for-lustre/repo/epel-7/managerforlustre-manager-for-lustre-epel-7.repo
     ```
 
-1. Install the DNF project COPR Repository definition. DNF is a package manager, and is used as a replacement for YUM in many distributions, such as Fedora. It does not replace YUM in CentOS, but Manager for Lustre does make use of some of the newer features in DNF for some of its tasks:
+1. Install the DNF project COPR Repository definition. DNF is a package manager, and is used as a replacement for YUM in many distributions, such as Fedora. It does not replace YUM in CentOS, but Intel® Manager for Lustre does make use of some of the newer features in DNF for some of its tasks:
 
     ```bash
     yum-config-manager --add-repo \
@@ -588,7 +588,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
 1. For systems that have **both** LDISKFS and ZFS OSDs:
 
-    **Note:** This is the configuration that IML installs for all managed-mode Lustre storage clusters. Use this configuration for the highest level of compatibility with Manager for Lustre.
+    **Note:** This is the configuration that IML installs for all managed-mode Lustre storage clusters. Use this configuration for the highest level of compatibility with Intel® Manager for Lustre.
 
     1. Install the Lustre `e2fsprogs` distribution:
 
@@ -1238,7 +1238,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     cp $HOME/bck-`hostname`-*/etc/modprobe.d/iml_lnet_module_parameters.conf /etc/modprobe.d/.
     ```
 
-#### Install the Manager for Lustre Agent on Node 2
+#### Install the Intel® Manager for Lustre Agent on Node 2
 
 1. Install EPEL repository support:
 
@@ -1246,14 +1246,14 @@ The `pcs config export` command can be useful as a cross reference when restorin
     yum -y install epel-release
     ```
 
-1. Install the Manager for Lustre COPR Repository definition, which contains some dependencies for the IML Agent:
+1. Install the Intel® Manager for Lustre COPR Repository definition, which contains some dependencies for the IML Agent:
 
     ```bash
     yum-config-manager --add-repo \
     https://copr.fedorainfracloud.org/coprs/managerforlustre/manager-for-lustre/repo/epel-7/managerforlustre-manager-for-lustre-epel-7.repo
     ```
 
-1. Install the DNF project COPR Repository definition. DNF is a package manager, and is used as a replacement for YUM in many distributions, such as Fedora. It does not replace YUM in CentOS, but Manager for Lustre does make use of some of the newer features in DNF for some of its tasks:
+1. Install the DNF project COPR Repository definition. DNF is a package manager, and is used as a replacement for YUM in many distributions, such as Fedora. It does not replace YUM in CentOS, but Intel® Manager for Lustre does make use of some of the newer features in DNF for some of its tasks:
 
     ```bash
     yum-config-manager --add-repo \
@@ -1266,7 +1266,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     cp -a $HOME/bck-`hostname`-*/var/lib/chroma /var/lib/.
     ```
 
-1. Install the Manager for Lustre repository definition:
+1. Install the Intel® Manager for Lustre repository definition:
 
     ```bash
     curl -o /etc/yum.repos.d/Manager-for-Lustre.repo \
@@ -1302,7 +1302,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
 1. For systems that have **both** LDISKFS and ZFS OSDs:
 
-    **Note:** This is the configuration that IML installs for all managed-mode Lustre storage clusters. Use this configuration for the highest level of compatibility with Manager for Lustre.
+    **Note:** This is the configuration that IML installs for all managed-mode Lustre storage clusters. Use this configuration for the highest level of compatibility with Intel® Manager for Lustre.
 
     1. Install the Lustre `e2fsprogs` distribution:
 
@@ -1721,4 +1721,4 @@ awk '/Node Attributes/{na=1;next} na==1 && /^[ \t]+/{sub(/:/,"",$1);printf "pcs 
 
 **Note:** The power control configuration could be restored at an earlier phase in the process, but it is conducted last in order to minimize the chance of accidentally executing a STONITH action on one of the nodes during the upgrade process. The workflow outlined in this document is meant to allow operators to upgrade their Lustre environment with the least amount of disruption, so the final power control setup is left to the end.
 
-Please also refer to the Intel Manager for Lustre documentation and online help for instructions on how to configure cluster power management for the Lustre servers. If there are any issues with restoring the fencing agents for each cluster, it may be necessary to remove the original configuration from the IML UI and re-add.
+Please also refer to the Intel® Manager for Lustre documentation and online help for instructions on how to configure cluster power management for the Lustre servers. If there are any issues with restoring the fencing agents for each cluster, it may be necessary to remove the original configuration from the IML UI and re-add.
