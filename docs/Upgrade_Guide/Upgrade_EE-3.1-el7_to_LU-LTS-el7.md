@@ -126,7 +126,7 @@ The software upgrade process requires super-user privileges to run. Login as the
     ```
 
 1. The installation program will detect that there is a previous installation and will run the upgrade process.
-1. When the upgrade is complete, connect to the manager for lustre service using a web browser and verify that the upgraded version has been installed and is running. IML Agents running version EE 3.1 will still be able to communicate with the new version of the manager service.
+1. When the upgrade is complete, connect to the manager for lustre service using a web browser and verify that the upgraded version has been installed and is running. IML Agents running version EE 3.1 will still be able to communicate with the new version of the manager service. If the IML manager browser window was left open during the upgrade process, the window must be reloade with ahard refresh (hold the control key (Windows/Linux) or shift key (Mac) and hit the reload button. Alternatively, clode the window or tab and open a fresh instance.
 
 ### Create Local Repositories for the Lustre Packages
 
