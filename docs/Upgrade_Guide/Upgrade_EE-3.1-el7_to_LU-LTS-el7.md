@@ -532,17 +532,10 @@ The upgrade procedure documented here shows how to execute the upgrade while the
         reboot
         ```
 
-    1. Install Lustre\*, and the LDISKFS and ZFS `kmod` packages:
+    1. Install the metapackage that will install Lustre\* and the LDISKFS and ZFS 'kmod' packages:
 
         ```bash
-        yum --nogpgcheck install \
-        kmod-lustre-osd-ldiskfs \
-        lustre-dkms \
-        lustre-osd-ldiskfs-mount \
-        lustre-osd-zfs-mount \
-        lustre \
-        lustre-resource-agents \
-        zfs
+        yum --nogpgcheck install lustre-ldiskfs-zfs
         ```
 
     1. Verify that the DKMS kernel modules for Lustre\*, SPL and ZFS have installed correctly:
