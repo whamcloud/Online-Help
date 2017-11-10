@@ -1,16 +1,16 @@
-# Upgrading Intel® EE for Lustre 3.1.1.0 to Lustre 2.10 LTS and Intel® Manager for Lustre\* 4.0
+# Upgrading Intel® EE for Lustre\* 3.1.1.0 to Lustre\* 2.10.x LTS and Intel® Manager for Lustre\* 4.0
 
 ## Introduction
 
-This document provides a description of how to upgrade an existing Lustre server file system installation from Intel® EE for Lustre version 3.1.1.0 running on the RHEL/CentOS 7 OS distribution to Lustre 2.10 LTS and Intel® Manager for Lustre\* version 4 running on RHEL/CentOS 7.
+This document provides a description of how to upgrade an existing Lustre\* server file system installation from Intel® EE for Lustre\* version 3.1.1.0 running on the RHEL/CentOS 7 OS distribution to Lustre\* 2.10 LTS and Intel® Manager for Lustre\* version 4 running on RHEL/CentOS 7.
 
 CentOS is used for the examples. RHEL users will need to refer to Red Hat for instructions on enabling the High Availability add-on needed to install Pacemaker, Corosync and related support tools.
 
 ## Risks
 
-The process of upgrading Intel® EE for Lustre to a newer Lustre and Intel® Manager for Lustre\* version requires careful consideration and planning. There will always be some disruption to services when major maintenance works are undertaken, although this can be contained and minimized.
+The process of upgrading Intel® EE for Lustre\* to a newer Lustre\* and Intel® Manager for Lustre\* version requires careful consideration and planning. There will always be some disruption to services when major maintenance works are undertaken, although this can be contained and minimized.
 
-The reference platform used throughout the documentation has been installed and is being managed by Intel® Manager for Lustre\*, but the methods for the Lustre server components can be broadly applied to any Lustre server environment running the RHEL or CentOS OS.
+The reference platform used throughout the documentation has been installed and is being managed by Intel® Manager for Lustre\* (IML), but the methods for the Lustre\* server components can be broadly applied to any approximately equivalent Lustre\* server environment running the RHEL or CentOS OS.
 
 ## Process Overview
 
@@ -22,7 +22,7 @@ The reference platform used throughout the documentation has been installed and 
     1. Machines are upgraded one at a time
         1. Failover all resources to a single node, away from the node being upgraded
         1. Set the node to standby mode and disable the node in Pacemaker
-        1. Unload the Lustre kernel modules
+        1. Unload the Lustre\* kernel modules
         1. Unload the ZFS and SPL kernel modules, if used
         1. Install the new EE software
         1. Move the Pacemaker resources from the secondary node to the upgraded node
@@ -32,11 +32,11 @@ The reference platform used throughout the documentation has been installed and 
 
 ## Upgrade Intel® Manager for Lustre\*
 
-The first component in the environment to upgrade is the Intel® Manager for Lustre\* software itself. The manager server upgrade can be conducted without any impact to the Lustre file system services.
+The first component in the environment to upgrade is the Intel® Manager for Lustre\* server and software. The manager server upgrade can be conducted without any impact to the Lustre\* file system services.
 
 ### Backup the Existing Intel® Manager for Lustre\* Configuration
 
-1. Prior to commencing the upgrade, create a backup of the existing configuration. This will enable recovery of the original configuration in the event of a problem occurring during execution of the upgrade.
+1. Backup the Existing configuration. Prior to commencing the upgrade, it is essential that a backup of the existing configuration is completed.  This will enable recovery of the original configuration in the event of a problem occurring during execution of the upgrade.
 
     The following shell script can be used to capture the essential configuration information that is relevant to the Intel® Manager for Lustre\* software itself:
 
@@ -77,7 +77,7 @@ The first component in the environment to upgrade is the Intel® Manager for Lus
 
 1. Copy the backup tarball to a safe location that is not on the server being upgraded.
 
-**Note:** The script is not intended to provide a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre servers managed by Intel® Manager for Lustre\* that are difficult to re-create if deleted.
+**Note:** This script is not intended to provide a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre\* servers managed by Intel® Manager for Lustre\* that are difficult to re-create if deleted.
 
 ### Install the Intel® Manager for Lustre\* Upgrade
 
@@ -108,31 +108,34 @@ The software upgrade process requires super-user privileges to run. Login as the
 
     ```bash
     cd $HOME/iml-*
-    ./install [-h] | [-e] [-r] [-p] [-d]
+    ./install [-h] | [-r] [-p] [-d]
     ```
 
     **Note:** For an explanation of the installation options, run the install script with the `--help` flag:
 
     ```bash
-    usage: install [-h] [--no-epel-check] [--no-repo-check] \
-    [--no-platform-check] [--no-dbspace-check]
+    usage: install [-h] [--no-repo-check] [--no-platform-check]
+                   [--no-dbspace-check]
 
     optional arguments:
-    -h, --help            show this help message and exit
-    --no-epel-check, -e
-    --no-repo-check, -r
-    --no-platform-check, -p
-    --no-dbspace-check, -d
+      -h, --help            show this help message and exit
+      --no-repo-check, -r
+      --no-platform-check, -p
+      --no-dbspace-check, -d
     ```
 
 1. The installation program will detect that there is a previous installation and will run the upgrade process.
 1. When the upgrade is complete, connect to the Intel® Manager for Lustre\* service using a web browser and verify that the upgraded version has been installed and is running. Intel® Manager for Lustre\* Agents running version EE 3.1 will still be able to communicate with the new version of the manager service. If the Intel® Manager for Lustre\* manager browser window was left open during the upgrade process, the window must be reloaded with a hard refresh: hold the control key (Windows/Linux) or shift key (Mac) and hit the reload button. Alternatively, close the window or tab and open a fresh copy of the page.
 
-### Create Local Repositories for the Lustre Packages
+### Create Local Repositories for the Lustre\* Packages
 
-The Intel® Manager for Lustre\* distribution does not include Lustre software packages. These need to be acquired separately from the Lustre project's download server. The following instructions will establish the manager node as a YUM repository host for the Lustre packages. The Intel® Manager for Lustre\* server is automatically configured as a web server, so it is a convenient location for the repository mirrors.
+The Intel® Manager for Lustre\* distribution does not include Lustre\* software packages. These need to be acquired separately from the Lustre\* project's download server. The following instructions will establish the manager node as a YUM repository server for the network. The Intel® Manager for Lustre\* server is automatically configured as a web server, so it is a convenient location for the repository mirrors.
 
-1. Create a temporary YUM repository definition. This will be used to assist with the initial acquisition of Lustre and related packages.
+An alternative strategy is to copy the repository definition from step 1 directly onto each Lustre\* server and client (saving the file in `/etc/yum.repos.d` on each node), and skip the other steps that follow. This avoids creating a local repository on the manager node, and uses the Lustre\* download servers directly to download packages.
+
+Also note that the manager server distribution includes a default repository definition in `/usr/share/chroma-manager/storage_server.repo`. This can be copied onto each Lustre\* server and client into `/etc/yum.repos.d` instead of using these instructions. The choice of method for distributing Lustre\* onto the target nodes is a matter of preference and suitability for the target environment.
+
+1. Create a temporary YUM repository definition. This will be used to assist with the initial acquisition of the Lustre\* and related packages.
 
     ```bash
     cat >/tmp/lustre-repo.conf <<\__EOF
@@ -156,9 +159,9 @@ The Intel® Manager for Lustre\* distribution does not include Lustre software p
     __EOF
     ```
 
-    **Note:** The above example references the latest Lustre release available. To use a specific version, replace `latest-release` in the `[lustre-server]` and `[lustre-client]` `baseurl` variables with the version required, e.g., `lustre-2.10.1`. Always use the latest `e2fsprogs` package unless directed otherwise.
+    **Note:** The above example references the latest Lustre\* release available. To use a specific version, replace `latest-release` in the `[lustre-server]` and `[lustre-client]` `baseurl` variables with the version required, e.g., `lustre-2.10.1`. Always use the latest `e2fsprogs` package unless directed otherwise.
 
-    **Note:** With the release of Lustre version 2.10.1, it is possible to use patchless kernels for Lustre servers running LDISKFS. The patchless LDISKFS server distribution does not include a Linux kernel. Instead, patchless servers will use the kernel distributed with the operating system. To use patchless kernels for the Lustre servers, replace the string `server` with `patchless-ldiskfs-server` at the end of the `[lustre-server]` `baseurl` string. For example:
+    **Note:** With the release of Lustre\* version 2.10.1, it is possible to use patchless kernels for Lustre\* servers running LDISKFS. The patchless LDISKFS server distribution does not include a Linux kernel. Instead, patchless servers will use the kernel distributed with the operating system. To use patchless kernels for the Lustre\* servers, replace the string `server` with `patchless-ldiskfs-server` at the end of the `[lustre-server]` `baseurl` string. For example:
 
     ```bash
     baseurl=https://downloads.hpdd.intel.com/public/lustre/latest-release/el7/patchless-ldiskfs-server
@@ -166,7 +169,7 @@ The Intel® Manager for Lustre\* distribution does not include Lustre software p
 
     Also note that the `debuginfo` packages are excluded in the example repository definitions. This is simply to cut down on the size of the download. It is usually a good idea to pull in these files as well, to assist with debugging of issues.
 
-1. Use the `reposync` command (distributed in the `yum-utils` package) to download mirrors of the Lustre repositories to the manager server:
+1. Use the `reposync` command (distributed in the `yum-utils` package) to download mirrors of the Lustre\* repositories to the manager server:
 
     ```bash
     cd /var/lib/chroma/repo
@@ -187,7 +190,7 @@ The Intel® Manager for Lustre\* distribution does not include Lustre software p
 
 1. Create a YUM Repository Definition File
 
-    The following script creates a file containing repository definitions for the Intel® Manager for Lustre\* Agent software and the Lustre packages downloaded in the previous section. Review the content and adjust according to the requirements of the target environment. Run the script on the upgraded Intel® Manager for Lustre\* host:
+    The following script creates a file containing repository definitions for the Intel® Manager for Lustre\* Agent software and the Lustre\* packages downloaded in the previous section. Review the content and adjust according to the requirements of the target environment. Run the script on the upgraded Intel® Manager for Lustre\* host:
 
     ```bash
     hn=`hostname --fqdn`
@@ -238,17 +241,17 @@ The Intel® Manager for Lustre\* distribution does not include Lustre software p
     __EOF
     ```
 
-    This file is distributed to each of the Lustre servers during the upgrade process to facilitate installation of the software.
+    This file needs to be distributed to each of the Lustre\* servers during the upgrade process to facilitate installation of the software.
 
-    Make sure that the `$hn` variable matches the host name that will be used by the Lustre servers to access the Intel® Manager for Lustre\* host.
+    Make sure that the `$hn` variable matches the host name that will be used by the Lustre\* servers to access the Intel® Manager for Lustre\* host.
 
-## Upgrade the Lustre Servers
+## Upgrade the Lustre\* Servers
 
-Lustre server upgrades can be coordinated as either an online roll-out, leveraging the failover HA mechanism to migrate services between nodes and minimize disruption, or as an offline service outage, which has the advantage of usually being faster to deploy overall, with generally lower risk.
+Lustre\* server upgrades can be coordinated as either an online roll-out, leveraging the failover HA mechanism to migrate services between nodes and minimize disruption, or as an offline service outage, which has the advantage of usually being faster to deploy overall, with generally lower risk.
 
-The upgrade procedure documented here shows how to execute the upgrade while the file system is online. It assumes that the Lustre servers have been installed in pairs, where each server pair forms an independent high-availability cluster built on Pacemaker and Corosync. Intel® Manager for Lustre\* deploys these configurations and includes its own resource agent for managing Lustre assets, called `ocf:chroma:Target`. Intel® Manager for Lustre\* can also configure STONITH agents to provide node fencing in the event of a cluster partition or loss of quorum.
+The upgrade procedure documented here shows how to execute the upgrade while the file system is online. It assumes that the Lustre\* servers have been installed in pairs, where each server pair forms an independent high-availability cluster built on Pacemaker and Corosync. Intel® Manager for Lustre\* deploys these configurations and includes its own resource agent for managing Lustre\* assets, called `ocf:chroma:Target`. Intel® Manager for Lustre\* can also configure STONITH agents to provide node fencing in the event of a cluster partition or loss of quorum.
 
-This documentation will demonstrate how to upgrade a single HA pair of Lustre servers. The process needs to be repeated for all servers in the cluster. It is possible to execute this upgrade while services are still online, with only minor disruption during critical phases. Nevertheless, where possible it is recommended that the upgrade operation is conducted during a planned maintenance window with the file system stopped.
+This documentation will demonstrate how to upgrade a singleLustre\* server HA pair. The process needs to be repeated for all servers in the cluster. It is possible to execute this upgrade while services are still online, with only minor disruption during critical phases. Nevertheless, where possible it is recommended that the upgrade operation is conducted during a planned maintenance window with the file system stopped.
 
 In the procedure, "Node 1" or "first node" will be used to refer to the first server in each HA cluster to upgrade, and "Node 2" or "second node" will be used to refer to the second server in each HA cluster pair.
 
@@ -256,7 +259,7 @@ Upgrade one server at a time in each cluster pair, starting with Node 1, and mak
 
 The software upgrade process requires super-user privileges to run. Login as the `root` user or use `sudo` to elevate privileges as required to complete tasks.
 
-**Note:** It is recommended that Lustre clients are quiesced prior to executing the upgrade. This reduces the risk of disruption to the upgrade process itself. It is not usually necessary to unmount the Lustre clients, although this is a sensible precaution.
+**Note:** It is recommended that Lustre\* clients are quiesced prior to executing the upgrade. This reduces the risk of disruption to the upgrade process itself. It is not usually necessary to unmount the Lustre\* clients, although this is a sensible precaution.
 
 ### Prepare for the Upgrade
 
@@ -298,13 +301,13 @@ Upgrade one server at a time in each cluster pair, starting with Node 1, and mak
     tar zcf $BCKROOT.tgz `basename $BCKROOT`
     ```
 
-    **Note:** This is not intended to be a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre servers managed by Intel® Manager for Lustre\* that are difficult to re-create if deleted.
+    **Note:** This is not intended to be a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre\* servers managed by Intel® Manager for Lustre\* that are difficult to re-create if deleted.
 
 1. Copy the backups for each server's configuration to a safe location that is not on the servers being upgraded.
 
 ### Online Upgrade
 
-The upgrade procedure documented here shows how to execute the upgrade while the file system is online. It assumes that the Lustre servers have been installed by Intel® Manager for Lustre\* in pairs, where each server pair forms an independent high-availability cluster built on Pacemaker and Corosync.
+The upgrade procedure documented here shows how to execute the upgrade while the file system is online. It assumes that the Lustre\* servers have been installed by Intel® Manager for Lustre\* in pairs, where each server pair forms an independent high-availability cluster built on Pacemaker and Corosync.
 
 #### Migrate the Resources on Node 1
 
@@ -388,7 +391,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
     https://<admin server>/repo/Manager-for-Lustre.repo
     ```
 
-    Replace `<admin server>` in the `https` URL with the appropriate manager node hostname (normally the fully-qualified domain name).
+    Replace `<admin server>` in the `https` URL with the appropriate Intel® Manager for Lustre\* hostname (normally the fully-qualified domain name).
 
 1. Upgrade the Intel® Manager for Lustre\* Agent and Diagnostics packages
 
@@ -410,7 +413,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
     ...
     ```
 
-#### Upgrade the Lustre Server Software on Node 1
+#### Upgrade the Lustre\* Server Software on Node 1
 
 1. Stop ZED and unload the ZFS and SPL modules:
 
@@ -419,7 +422,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
     rmmod zfs zcommon znvpair spl
     ```
 
-1. Remove the Lustre, ZFS and SPL packages, as they will be replaced with upgraded packages. The upgrade process will fail if these packages are not preemptively removed:
+1. Remove the Lustre\*  ZFS and SPL packages, as they will be replaced with upgraded packages. The upgrade process will fail if these packages are not preemptively removed:
 
     ```bash
     yum erase zfs-dkms spl-dkms \
@@ -472,22 +475,22 @@ The upgrade procedure documented here shows how to execute the upgrade while the
 
 1. For systems that have **both** LDISKFS and ZFS OSDs:
 
-    **Note:** This is the configuration that Intel® Manager for Lustre\* installs for all managed-mode Lustre storage clusters. Use this configuration for the highest level of compatibility with Intel® Manager for Lustre\*.
+    **Note:** This is the configuration that Intel® Manager for Lustre\* installs for all managed-mode Lustre\* storage clusters. Use this configuration for the highest level of compatibility with Intel® Manager for Lustre\*.
 
-    1. Install the Lustre `e2fsprogs` distribution:
+    1. Install the Lustre\* `e2fsprogs` distribution:
 
         ```bash
         yum --nogpgcheck --disablerepo=* --enablerepo=e2fsprogs-wc \
         install e2fsprogs e2fsprogs-devel
         ```
 
-    1. If the installed `kernel-tools` and  `kernel-tools-libs` packages are at a higher revision than the patched kernel packages in the Lustre server repository, they will need to be removed:
+    1. If the installed `kernel-tools` and  `kernel-tools-libs` packages are at a higher revision than the patched kernel packages in the Lustre\* server repository, they will need to be removed:
 
         ```bash
         yum erase kernel-tools kernel-tools-libs
         ```
 
-    1. Install the Lustre-patched kernel packages. Ensure that the Lustre repository is picked for the kernel packages, by disabling the OS repos:
+    1. Install the Lustre-patched kernel packages. Ensure that the Lustre\* repository is picked for the kernel packages, by disabling the OS repos:
 
         ```bash
         yum --nogpgcheck --disablerepo=base,extras,updates \
@@ -500,7 +503,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
         kernel-tools-libs-devel
         ```
 
-    1. Install additional development packages. These are needed to enable support for some of the newer features in Lustre – if certain packages are not detected by Lustre's configure script when its DKMS package is installed, the features will not be enabled when Lustre is compiled. Notable in this list are `krb5-devel` and `libselinux-devel`, needed for Kerberos and SELinux support, respectively.
+    1. Install additional development packages. These are needed to enable support for some of the newer features in Lustre\* – if certain packages are not detected by Lustre's\* configure script when its DKMS package is installed, the features will not be enabled when Lustre\* is compiled. Notable in this list are `krb5-devel` and `libselinux-devel`, needed for Kerberos and SELinux support, respectively.
 
         ```bash
         yum install \
@@ -529,7 +532,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
         reboot
         ```
 
-    1. Install Lustre, and the LDISKFS and ZFS `kmod` packages:
+    1. Install Lustre\*, and the LDISKFS and ZFS `kmod` packages:
 
         ```bash
         yum --nogpgcheck install \
@@ -542,7 +545,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
         zfs
         ```
 
-    1. Verify that the DKMS kernel modules for Lustre, SPL and ZFS have installed correctly:
+    1. Verify that the DKMS kernel modules for Lustre\*, SPL and ZFS have installed correctly:
 
         ```bash
         dkms status
@@ -557,7 +560,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
         zfs, 0.7.1, 3.10.0-693.2.2.el7_lustre.x86_64, x86_64: installed
         ```
 
-    1. Load the Lustre and ZFS kernel modules to verify that the software has installed correctly:
+    1. Load the Lustre\* and ZFS kernel modules to verify that the software has installed correctly:
 
         ```bash
         modprobe -v zfs
@@ -565,20 +568,20 @@ The upgrade procedure documented here shows how to execute the upgrade while the
         ```
 
 1. For systems that use LDISKFS OSDs:
-    1. Upgrade the Lustre `e2fsprogs` distribution:
+    1. Upgrade the Lustre\* `e2fsprogs` distribution:
 
         ```bash
         yum --nogpgcheck \
         --disablerepo=* --enablerepo=e2fsprogs-wc install e2fsprogs
         ```
 
-    1. If the installed `kernel-tools` and  `kernel-tools-libs` packages are at a higher revision than the patched kernel packages in the Lustre server repository, they will need to be removed:
+    1. If the installed `kernel-tools` and  `kernel-tools-libs` packages are at a higher revision than the patched kernel packages in the Lustre\* server repository, they will need to be removed:
 
         ```bash
         yum erase kernel-tools kernel-tools-libs
         ```
 
-    1. Install the Lustre-patched kernel packages. Ensure that the Lustre repository is picked for the kernel packages, by disabling the OS repos:
+    1. Install the Lustre\* patched kernel packages. Ensure that the Lustre\* repository is picked for the kernel packages, by disabling the OS repos:
 
         ```bash
         yum --nogpgcheck --disablerepo=base,extras,updates \
@@ -597,7 +600,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
         reboot
         ```
 
-    1. Install the LDISKFS `kmod` and other Lustre packages:
+    1. Install the LDISKFS `kmod` and other Lustre\* packages:
 
         ```bash
         yum --nogpgcheck install \
@@ -608,7 +611,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
         lustre-resource-agents
         ```
 
-    1. Load the Lustre kernel modules to verify that the software has installed correctly:
+    1. Load the Lustre\* kernel modules to verify that the software has installed correctly:
 
         ```bash
         modprobe -v lustre
@@ -639,15 +642,15 @@ The upgrade procedure documented here shows how to execute the upgrade while the
         kernel-tools-libs-devel-3.10.0-693.2.2.el7
         ```
 
-        **Note:** If the `kernel-tools` and  `kernel-tools-libs` packages that have been installed on the host prior to running this command are at a higher revision than the kernel version supported by Lustre, they will need to be removed first:
+        **Note:** If the `kernel-tools` and  `kernel-tools-libs` packages that have been installed on the host prior to running this command are at a higher revision than the kernel version supported by Lustre\*, they will need to be removed first:
 
         ```bash
         yum erase kernel-tools kernel-tools-libs
         ```
 
-        Refer to the [Lustre Changelog](http://wiki.lustre.org/Category:Changelog) for the list of supported kernels.
+        Refer to the [Lustre\* Changelog](http://wiki.lustre.org/Category:Changelog) for the list of supported kernels.
 
-    1. Install additional development packages. These are needed to enable support for some of the newer features in Lustre – if certain packages are not detected by Lustre's configure script when its DKMS package is installed, the features will not be enabled when Lustre is compiled. Notable in this list are `krb5-devel` and `libselinux-devel`, needed for Kerberos and SELinux support, respectively.
+    1. Install additional development packages. These are needed to enable support for some of the newer features in Lustre\* – if certain packages are not detected by Lustre's\* configure script when its DKMS package is installed, the features will not be enabled when Lustre\* is compiled. Notable in this list are `krb5-devel` and `libselinux-devel`, needed for Kerberos and SELinux support, respectively.
 
         ```bash
         yum install \
@@ -676,7 +679,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
         reboot
         ```
 
-    1. Install the packages for Lustre and ZFS:
+    1. Install the packages for Lustre\* and ZFS:
 
         ```bash
         yum --nogpgcheck install \
@@ -687,7 +690,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
         zfs
         ```
 
-    1. Load the Lustre and ZFS kernel modules to verify that the software has installed correctly:
+    1. Load the Lustre\* and ZFS kernel modules to verify that the software has installed correctly:
 
         ```bash
         modprobe -v zfs
@@ -718,7 +721,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
 
     Node 1 should now be in the online state.
 
-#### Migrate the Lustre Services to Node 1
+#### Migrate the Lustre\* Services to Node 1
 
 1. Verify that Pacemaker is able to identify node 1 as a valid target for hosting its preferred resources:
 
@@ -822,7 +825,7 @@ Node 1 upgrade is complete.
     https://<admin server>/repo/Manager-for-Lustre.repo
     ```
 
-    Replace `<admin server>` in the `https` URL with the appropriate manager node hostname (normally the fully-qualified domain name).
+    Replace `<admin server>` in the `https` URL with the appropriate Intel® Manager for Lustre\* hostname (normally the fully-qualified domain name).
 
 1. Upgrade the Intel® Manager for Lustre\* Agent and Diagnostics packages
 
@@ -844,7 +847,7 @@ Node 1 upgrade is complete.
     ...
     ```
 
-#### Upgrade the Lustre Server Software on Node 2
+#### Upgrade the Lustre\* Server Software on Node 2
 
 1. Stop ZED and unload the ZFS and SPL modules:
 
@@ -853,7 +856,7 @@ Node 1 upgrade is complete.
     rmmod zfs zcommon znvpair spl
     ```
 
-1. Remove the Lustre, ZFS and SPL packages, as they will be replaced with upgraded packages. The upgrade process will fail if these packages are not preemptively removed.
+1. Remove the Lustre\*  ZFS and SPL packages, as they will be replaced with upgraded packages. The upgrade process will fail if these packages are not preemptively removed.
 
     ```bash
     yum erase zfs-dkms spl-dkms \
@@ -875,22 +878,22 @@ Node 1 upgrade is complete.
 
 1. For systems that have **both** LDISKFS and ZFS OSDs:
 
-    **Note:** This is the configuration that Intel® Manager for Lustre\* installs for all managed-mode Lustre storage clusters. Use this configuration for the highest level of compatibility with Intel® Manager for Lustre\*.
+    **Note:** This is the configuration that Intel® Manager for Lustre\* installs for all managed-mode Lustre\* storage clusters. Use this configuration for the highest level of compatibility with Intel® Manager for Lustre\*.
 
-    1. Install the Lustre `e2fsprogs` distribution:
+    1. Install the Lustre\* `e2fsprogs` distribution:
 
         ```bash
         yum --nogpgcheck --disablerepo=* --enablerepo=e2fsprogs-wc \
         install e2fsprogs e2fsprogs-devel
         ```
 
-    1. If the installed `kernel-tools` and  `kernel-tools-libs` packages are at a higher revision than the patched kernel packages in the Lustre server repository, they will need to be removed:
+    1. If the installed `kernel-tools` and  `kernel-tools-libs` packages are at a higher revision than the patched kernel packages in the Lustre\* server repository, they will need to be removed:
 
         ```bash
         yum erase kernel-tools kernel-tools-libs
         ```
 
-    1. Install the Lustre-patched kernel packages. Ensure that the Lustre repository is picked for the kernel packages, by disabling the OS repos:
+    1. Install the Lustre-patched kernel packages. Ensure that the Lustre\* repository is picked for the kernel packages, by disabling the OS repos:
 
         ```bash
         yum --nogpgcheck --disablerepo=base,extras,updates \
@@ -903,11 +906,10 @@ Node 1 upgrade is complete.
         kernel-tools-libs-devel
         ```
 
-    1. Install additional development packages. These are needed to enable support for some of the newer features in Lustre – if certain packages are not detected by Lustre's configure script when its DKMS package is installed, the features will not be enabled when Lustre is compiled. Notable in this list are `krb5-devel` and `libselinux-devel`, needed for Kerberos and SELinux support, respectively.
+    1. Install additional development packages. These are needed to enable support for some of the newer features in Lustre\* – if certain packages are not detected by Lustre's\* configure script when its DKMS package is installed, the features will not be enabled when Lustre\* is compiled. Notable in this list are `krb5-devel` and `libselinux-devel`, needed for Kerberos and SELinux support, respectively.
 
         ```bash
-        yum install \
-        asciidoc audit-libs-devel automake bc \
+        yum install asciidoc audit-libs-devel automake bc \
         binutils-devel bison device-mapper-devel elfutils-devel \
         elfutils-libelf-devel expect flex gcc gcc-c++ git glib2 \
         glib2-devel hmaccalc keyutils-libs-devel krb5-devel ksh \
@@ -938,7 +940,7 @@ Node 1 upgrade is complete.
         yum --nogpgcheck install lustre-ldiskfs-zfs
         ```
 
-    1. Verify that the DKMS kernel modules for Lustre, SPL and ZFS have installed correctly:
+    1. Verify that the DKMS kernel modules for Lustre\*  SPL and ZFS have installed correctly:
 
         ```bash
         dkms status
@@ -953,7 +955,7 @@ Node 1 upgrade is complete.
         zfs, 0.7.1, 3.10.0-693.2.2.el7_lustre.x86_64, x86_64: installed
         ```
 
-    1. Load the Lustre and ZFS kernel modules to verify that the software has installed correctly:
+    1. Load the Lustre\* and ZFS kernel modules to verify that the software has installed correctly:
 
         ```bash
         modprobe -v zfs
@@ -961,20 +963,20 @@ Node 1 upgrade is complete.
         ```
 
 1. For systems that use LDISKFS OSDs:
-    1. Upgrade the Lustre `e2fsprogs` distribution:
+    1. Upgrade the Lustre\* `e2fsprogs` distribution:
 
         ```bash
         yum --nogpgcheck \
         --disablerepo=* --enablerepo=e2fsprogs-wc install e2fsprogs
         ```
 
-    1. If the installed `kernel-tools` and  `kernel-tools-libs` packages are at a higher revision than the patched kernel packages in the Lustre server repository, they will need to be removed:
+    1. If the installed `kernel-tools` and  `kernel-tools-libs` packages are at a higher revision than the patched kernel packages in the Lustre\* server repository, they will need to be removed:
 
         ```bash
         yum erase kernel-tools kernel-tools-libs
         ```
 
-    1. Install the Lustre-patched kernel packages. Ensure that the Lustre repository is picked for the kernel packages, by disabling the OS repos:
+    1. Install the Lustre\* patched kernel packages. Ensure that the Lustre\* repository is picked for the kernel packages, by disabling the OS repos:
 
         ```bash
         yum --nogpgcheck --disablerepo=base,extras,updates \
@@ -993,7 +995,7 @@ Node 1 upgrade is complete.
         reboot
         ```
 
-    1. Install the LDISKFS `kmod` and other Lustre packages:
+    1. Install the LDISKFS `kmod` and other Lustre\* packages:
 
         ```bash
         yum --nogpgcheck install \
@@ -1004,14 +1006,14 @@ Node 1 upgrade is complete.
         lustre-resource-agents
         ```
 
-    1. Load the Lustre kernel modules to verify that the software has installed correctly:
+    1. Load the Lustre\* kernel modules to verify that the software has installed correctly:
 
         ```bash
         modprobe -v lustre
         ```
 
 1. For systems with ZFS-based OSDs:
-    1. Install the kernel packages that match the latest supported version for the Lustre release:
+    1. Install the kernel packages that match the latest supported version for the Lustre\* release:
 
         ```bash
         yum install \
@@ -1023,27 +1025,27 @@ Node 1 upgrade is complete.
         kernel-tools-libs-devel
         ```
 
-        It may be necessary to specify the kernel package version number in order to ensure that a kernel that is compatible with Lustre is installed. For example, Lustre 2.10.0 has support for RHEL kernel 3.10.0-514.21.1.el7:
+        It may be necessary to specify the kernel package version number in order to ensure that a kernel that is compatible with Lustre\* is installed. For example, Lustre\* 2.10.1 has support for RHEL kernel 3.10.0-693.2.2.el7:
 
         ```bash
         yum install \
-        kernel-3.10.0-514.21.1.el7 \
-        kernel-devel-3.10.0-514.21.1.el7 \
-        kernel-headers-3.10.0-514.21.1.el7 \
-        kernel-tools-3.10.0-514.21.1.el7 \
-        kernel-tools-libs-3.10.0-514.21.1.el7 \
-        kernel-tools-libs-devel-3.10.0-514.21.1.el7
+        kernel-3.10.0-693.2.2.el7 \
+        kernel-devel-3.10.0-693.2.2.el7 \
+        kernel-headers-3.10.0-693.2.2.el7 \
+        kernel-tools-3.10.0-693.2.2.el7 \
+        kernel-tools-libs-3.10.0-693.2.2.el7 \
+        kernel-tools-libs-devel-3.10.0-693.2.2.el7
         ```
 
-        **Note:** If the `kernel-tools` and  `kernel-tools-libs` packages that have been installed on the host prior to running this command are at a higher revision than the kernel version supported by Lustre, they will need to be removed first:
+        **Note:** If the `kernel-tools` and  `kernel-tools-libs` packages that have been installed on the host prior to running this command are at a higher revision than the kernel version supported by Lustre\*, they will need to be removed first:
 
         ```bash
         yum erase kernel-tools kernel-tools-libs
         ```
 
-        Refer to the [Lustre Changelog](http://wiki.lustre.org/Category:Changelog) for the list of supported kernels.
+        Refer to the [Lustre\* Changelog](http://wiki.lustre.org/Category:Changelog) for the list of supported kernels.
 
-    1. Install additional development packages. These are needed to enable support for some of the newer features in Lustre – if certain packages are not detected by Lustre's configure script when its DKMS package is installed, the features will not be enabled when Lustre is compiled. Notable in this list are `krb5-devel` and `libselinux-devel`, needed for Kerberos and SELinux support, respectively.
+    1. Install additional development packages. These are needed to enable support for some of the newer features in Lustre\* – if certain packages are not detected by Lustre's\* configure script when its DKMS package is installed, the features will not be enabled when Lustre\* is compiled. Notable in this list are `krb5-devel` and `libselinux-devel`, needed for Kerberos and SELinux support, respectively.
 
         ```bash
         yum install \
@@ -1072,7 +1074,7 @@ Node 1 upgrade is complete.
         reboot
         ```
 
-    1. Install the packages for Lustre and ZFS:
+    1. Install the packages for Lustre\* and ZFS:
 
         ```bash
         yum --nogpgcheck install \
@@ -1083,7 +1085,7 @@ Node 1 upgrade is complete.
         zfs
         ```
 
-    1. Load the Lustre and ZFS kernel modules to verify that the software has installed correctly:
+    1. Load the Lustre\* and ZFS kernel modules to verify that the software has installed correctly:
 
         ```bash
         modprobe -v zfs
@@ -1114,7 +1116,7 @@ Node 1 upgrade is complete.
 
     Node 2 should now be in the online state.
 
-### Rebalance the Distribution of Lustre Resources Across all Cluster Nodes
+### Rebalance the Distribution of Lustre\* Resources Across all Cluster Nodes
 
 1. Verify that Pacemaker is able to identify node 2 as a valid target for hosting its preferred resources:
 
@@ -1148,6 +1150,6 @@ Node 1 upgrade is complete.
 
 Node 2 upgrade is complete
 
-Repeat this procedure on all Lustre server HA cluster pairs for the file system.
+Repeat this procedure on all Lustre\* server HA cluster pairs for the file system.
 
 \* Other names and brands may be claimed as the property of others.

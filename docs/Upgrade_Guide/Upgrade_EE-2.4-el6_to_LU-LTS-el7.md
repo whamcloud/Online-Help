@@ -10,7 +10,7 @@ CentOS is used for the examples. RHEL users will need to refer to Red Hat for in
 
 ## Risks
 
-The process of upgrading Intel® EE for Lustre\* between major versions requires careful consideration and planning. There will always be some disruption to services when major maintenance works are undertaken, although this can be contained and minimized.
+The process of upgrading Intel® EE for Lustre\* to a newer Lustre\* and Intel® Manager for Lustre\* version requires careful consideration and planning. There will always be some disruption to services when major maintenance works are undertaken, although this can be contained and minimized.
 
 The procedure is made more complex by the support policies for upgrades of the underlying operating system. In particular, upgrading from Red Hat Enterprise Linux version 6 to version 7 requires a complete re-installation of the base OS, because in-place upgrades are not available to the majority of RHEL deployments. This policy extends to the derivative OS distributions such as CentOS.
 
@@ -18,7 +18,7 @@ With very few exceptions, Red Hat does not provide a supported method for upgrad
 
 Nevertheless, upgrades are possible.
 
-The reference system used throughout the documentation has been installed and is being managed by Intel® Manager for Lustre\* (IML), but the methods for the Lustre\* server components can be broadly applied to any approximately equivalent Lustre\* server environment running the RHEL OS.
+The reference platform used throughout the documentation has been installed and is being managed by Intel® Manager for Lustre\* (IML), but the methods for the Lustre\* server components can be broadly applied to any approximately equivalent Lustre\* server environment running the RHEL or CentOS OS.
 
 ## Process Overview
 
@@ -52,11 +52,11 @@ The reference system used throughout the documentation has been installed and is
 
 The first component in the environment to upgrade is the Intel® Manager for Lustre\* server and software. The manager server upgrade can be conducted without any impact to the Lustre\* file system services.
 
-### Backup the server
+### Backup the Existing Intel® Manager for Lustre\* Configuration
 
 1. Backup the Existing configuration. Prior to commencing the upgrade, it is essential that a backup of the existing configuration is completed.
 
-    The following shell script can be used to capture the configuration information that is relevant to Intel® Manager for Lustre\* itself:
+    The following shell script can be used to capture the essential configuration information that is relevant to the Intel® Manager for Lustre\* software itself:
 
     ```bash
     #!/bin/sh
@@ -95,7 +95,7 @@ The first component in the environment to upgrade is the Intel® Manager for Lus
 
 1. Copy the backup tarball to a safe location that is not on the server being upgraded.
 
-**Note:** This is not intended to be a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre\* servers managed by Intel® Manager for Lustre\* that are difficult to re-create if deleted.
+**Note:** This script is not intended to provide a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre\* servers managed by Intel® Manager for Lustre\* that are difficult to re-create if deleted.
 
 ***Do not skip the backup. Subsequent process steps rely on the content of the backup to restore the Intel® Manager for Lustre\* services to operation.***
 
@@ -188,7 +188,7 @@ The software upgrade process requires super-user privileges to run. Login as the
 
     ```bash
     usage: install [-h] [--no-repo-check] [--no-platform-check]
-               [--no-dbspace-check]
+                   [--no-dbspace-check]
 
     optional arguments:
       -h, --help            show this help message and exit
@@ -232,7 +232,7 @@ The software upgrade process requires super-user privileges to run. Login as the
 
 ### Create Local Repositories for the Lustre\* Packages
 
-The Intel® Manager for Lustre\* distribution does not include Lustre\* software packages. These need to be acquired separately from the Lustre\* download server. The following instructions will establish the manager node as a YUM repository server for the network. The Intel® Manager for Lustre\* server is automatically configured as a web server, so it is a convenient location for the repositories.
+The Intel® Manager for Lustre\* distribution does not include Lustre\* software packages. These need to be acquired separately from the Lustre\* project's download server. The following instructions will establish the manager node as a YUM repository server for the network. The Intel® Manager for Lustre\* server is automatically configured as a web server, so it is a convenient location for the repository mirrors.
 
 An alternative strategy is to copy the repository definition from step 1 directly onto each Lustre\* server and client (saving the file in `/etc/yum.repos.d` on each node), and skip the other steps that follow. This avoids creating a local repository on the manager node, and uses the Lustre\* download servers directly to download packages.
 
@@ -272,7 +272,7 @@ Also note that the manager server distribution includes a default repository def
 
     Also note that the `debuginfo` packages are excluded in the example repository definitions. This is simply to cut down on the size of the download. It is usually a good idea to pull in these files as well, to assist with debugging of issues.
 
-1. Use the `reposync` (distributed in the `yum-utils` package) command to download mirrors of the Lustre\* repositories to the manager server:
+1. Use the `reposync` command (distributed in the `yum-utils` package) to download mirrors of the Lustre\* repositories to the manager server:
 
     ```bash
     cd /var/lib/chroma/repo
@@ -368,7 +368,7 @@ The software upgrade process requires super-user privileges to run. Login as the
 
 Upgrade one server at a time in each cluster pair, starting with Node 1, and make sure the upgrade is complete on one server before moving on to the second server in the pair.
 
-1. Create a backup of the existing configuration for each server. The following shell script can be used to capture the essential configuration information that is relevant to Intel® Manager for Lustre\* managed mode servers:
+1. As a precaution, create a backup of the existing configuration for each server. The following shell script can be used to capture the essential configuration information that is relevant to Intel® Manager for Lustre\* managed mode servers:
 
     ```bash
     #!/bin/sh
@@ -526,6 +526,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
 #### Install the EPEL Repository Definition on Node 1
 
+1. Login to node 1.
 1. Install EPEL repository support:
 
     ```bash
@@ -534,6 +535,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
 #### Install the Intel® Manager for Lustre\* Agent on Node 1
 
+1. Login to node 1.
 1. Install the Intel® Manager for Lustre\* COPR Repository definition, which contains some dependencies for the Intel® Manager for Lustre\* Agent:
 
     ```bash
@@ -564,7 +566,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     https://<admin server>/repo/Manager-for-Lustre.repo
     ```
 
-    Replace `<admin server>` in the `https` URL with the appropriate Intel® Manager for Lustre\* hostname.
+    Replace `<admin server>` in the `https` URL with the appropriate Intel® Manager for Lustre\* hostname (normally the fully-qualified domain name).
 
 1. Install The Intel® Manager for Lustre\* Agent and Diagnostics packages
 
@@ -1249,6 +1251,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
 #### Install the EPEL Repository Definition on Node 2
 
+1. Login to node 2.
 1. Install EPEL repository support:
 
     ```bash
@@ -1257,6 +1260,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
 #### Install the Intel® Manager for Lustre\* Agent on Node 2
 
+1. Login to node 2.
 1. Install the Intel® Manager for Lustre\* COPR Repository definition, which contains some dependencies for the Intel® Manager for Lustre\* Agent:
 
     ```bash
@@ -1277,7 +1281,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     cp -a $HOME/bck-`hostname`-*/var/lib/chroma /var/lib/.
     ```
 
-1. Install the Intel® Manager for Lustre\* repository definition:
+1. Install the Intel® Manager for Lustre\* Agent repository definition:
 
     ```bash
     curl -o /etc/yum.repos.d/Manager-for-Lustre.repo \
@@ -1287,7 +1291,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     https://<admin server>/repo/Manager-for-Lustre.repo
     ```
 
-    Replace `<admin server>` in the `https` URL with the appropriate Intel® Manager for Lustre\* hostname.
+    Replace `<admin server>` in the `https` URL with the appropriate Intel® Manager for Lustre\* hostname (normally the fully-qualified domain name).
 
 1. Install The Intel® Manager for Lustre\* Agent and Diagnostics packages
 
@@ -1346,11 +1350,12 @@ The `pcs config export` command can be useful as a cross reference when restorin
         ```bash
         yum install asciidoc audit-libs-devel automake bc \
         binutils-devel bison device-mapper-devel elfutils-devel \
-        elfutils-libelf-devel expect flex gcc gcc-c++ git glib2 glib2-devel \
-        hmaccalc keyutils-libs-devel krb5-devel ksh libattr-devel \
-        libblkid-devel libselinux-devel libtool libuuid-devel libyaml-devel \
-        lsscsi make ncurses-devel net-snmp-devel net-tools newt-devel \
-        numactl-devel parted patchutils pciutils-devel perl-ExtUtils-Embed \
+        elfutils-libelf-devel expect flex gcc gcc-c++ git glib2 \
+        glib2-devel hmaccalc keyutils-libs-devel krb5-devel ksh \
+        libattr-devel libblkid-devel libselinux-devel libtool \
+        libuuid-devel libyaml-devel lsscsi make ncurses-devel \
+        net-snmp-devel net-tools newt-devel numactl-devel \
+        parted patchutils pciutils-devel perl-ExtUtils-Embed \
         pesign python-devel redhat-rpm-config rpm-build systemd-devel \
         tcl tcl-devel tk tk-devel wget xmlto yum-utils zlib-devel
         ```
@@ -1372,6 +1377,21 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
         ```bash
         yum --nogpgcheck install lustre-ldiskfs-zfs
+        ```
+
+    1. Verify that the DKMS kernel modules for Lustre\*  SPL and ZFS have installed correctly:
+
+        ```bash
+        dkms status
+        ```
+
+        All packages should have the status `installed`. For example:
+
+        ```bash
+        # dkms status
+        lustre, 2.10.1, 3.10.0-693.2.2.el7_lustre.x86_64, x86_64: installed
+        spl, 0.7.1, 3.10.0-693.2.2.el7_lustre.x86_64, x86_64: installed
+        zfs, 0.7.1, 3.10.0-693.2.2.el7_lustre.x86_64, x86_64: installed
         ```
 
     1. Load the Lustre\* and ZFS kernel modules to verify that the software has installed correctly:
