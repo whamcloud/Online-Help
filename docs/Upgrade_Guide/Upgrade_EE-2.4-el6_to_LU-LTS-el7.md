@@ -670,7 +670,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
         zfs, 0.7.1, 3.10.0-693.2.2.el7_lustre.x86_64, x86_64: installed
         ```
 
-    1. Load the Lustre\* kernel modules to verify that the software has installed correctly:
+    1. Load the Lustre\* and ZFS kernel modules to verify that the software has installed correctly:
 
         ```bash
         modprobe -v zfs
