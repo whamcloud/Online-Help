@@ -195,7 +195,7 @@ The Intel® Manager for Lustre\* distribution does not include Lustre software p
     [iml-agent]
     name=Intel Manager for Lustre Agent
     baseurl=https://$hn/repo/iml-agent/7
-    enabled=0
+    enabled=1
     gpgcheck=0
     sslverify = 1
     sslcacert = /var/lib/chroma/authority.crt
@@ -206,7 +206,7 @@ The Intel® Manager for Lustre\* distribution does not include Lustre software p
     [lustre-server]
     name=lustre-server
     baseurl=https://$hn/repo/lustre-server
-    enabled=0
+    enabled=1
     gpgcheck=0
     sslverify = 1
     sslcacert = /var/lib/chroma/authority.crt
@@ -217,7 +217,7 @@ The Intel® Manager for Lustre\* distribution does not include Lustre software p
     [lustre-client]
     name=lustre-client
     baseurl=https://$hn/repo/lustre-client
-    enabled=0
+    enabled=1
     gpgcheck=0
     sslverify = 1
     sslcacert = /var/lib/chroma/authority.crt
@@ -228,7 +228,7 @@ The Intel® Manager for Lustre\* distribution does not include Lustre software p
     [e2fsprogs-wc]
     name=e2fsprogs-wc
     baseurl=https://$hn/repo/e2fsprogs-wc
-    enabled=0
+    enabled=1
     gpgcheck=0
     sslverify = 1
     sslcacert = /var/lib/chroma/authority.crt
@@ -393,7 +393,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
 1. Upgrade the Intel® Manager for Lustre\* Agent and Diagnostics packages
 
     ```bash
-    yum -y --enablerepo=iml-agent install chroma-\*
+    yum -y install chroma-\*
     ```
 
     **Note:** following warning during install / update is benign and can be ignored:
@@ -491,7 +491,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
 
         ```bash
         yum --nogpgcheck --disablerepo=base,extras,updates \
-        --enablerepo=lustre-server install \
+        install \
         kernel \
         kernel-devel \
         kernel-headers \
@@ -532,7 +532,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
     1. Install Lustre, and the LDISKFS and ZFS `kmod` packages:
 
         ```bash
-        yum --nogpgcheck --enablerepo=lustre-server install \
+        yum --nogpgcheck install \
         kmod-lustre-osd-ldiskfs \
         lustre-dkms \
         lustre-osd-ldiskfs-mount \
@@ -582,7 +582,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
 
         ```bash
         yum --nogpgcheck --disablerepo=base,extras,updates \
-        --enablerepo=lustre-server install \
+        install \
         kernel \
         kernel-devel \
         kernel-headers \
@@ -600,7 +600,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
     1. Install the LDISKFS `kmod` and other Lustre packages:
 
         ```bash
-        yum --nogpgcheck --enablerepo=lustre-server install \
+        yum --nogpgcheck install \
         kmod-lustre \
         kmod-lustre-osd-ldiskfs \
         lustre-osd-ldiskfs-mount \
@@ -679,7 +679,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
     1. Install the packages for Lustre and ZFS:
 
         ```bash
-        yum --nogpgcheck --enablerepo=lustre-server install \
+        yum --nogpgcheck install \
         lustre-dkms \
         lustre-osd-zfs-mount \
         lustre \
@@ -827,7 +827,7 @@ Node 1 upgrade is complete.
 1. Upgrade the Intel® Manager for Lustre\* Agent and Diagnostics packages
 
     ```bash
-    yum -y --enablerepo=iml-agent install chroma-\*
+    yum -y install chroma-\*
     ```
 
     **Note:** following warning during install / update is benign and can be ignored:
@@ -894,7 +894,7 @@ Node 1 upgrade is complete.
 
         ```bash
         yum --nogpgcheck --disablerepo=base,extras,updates \
-        --enablerepo=lustre-server install \
+        install \
         kernel \
         kernel-devel \
         kernel-headers \
@@ -935,7 +935,7 @@ Node 1 upgrade is complete.
     1. Install Lustre, and the LDISKFS and ZFS `kmod` packages:
 
         ```bash
-        yum --nogpgcheck --enablerepo=lustre-server install \
+        yum --nogpgcheck install \
         kmod-lustre-osd-ldiskfs \
         lustre-dkms \
         lustre-osd-ldiskfs-mount \
@@ -985,7 +985,7 @@ Node 1 upgrade is complete.
 
         ```bash
         yum --nogpgcheck --disablerepo=base,extras,updates \
-        --enablerepo=lustre-serverinstall \
+        install \
         kernel \
         kernel-devel \
         kernel-headers \
@@ -1003,7 +1003,7 @@ Node 1 upgrade is complete.
     1. Install the LDISKFS `kmod` and other Lustre packages:
 
         ```bash
-        yum --nogpgcheck --enablerepo=lustre-server install \
+        yum --nogpgcheck install \
         kmod-lustre \
         kmod-lustre-osd-ldiskfs \
         lustre-osd-ldiskfs-mount \
@@ -1082,7 +1082,7 @@ Node 1 upgrade is complete.
     1. Install the packages for Lustre and ZFS:
 
         ```bash
-        yum --nogpgcheck --enablerepo=lustre-server install \
+        yum --nogpgcheck install \
         lustre-dkms \
         lustre-osd-zfs-mount \
         lustre \

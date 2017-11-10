@@ -569,7 +569,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 1. Install The Intel® Manager for Lustre\* Agent and Diagnostics packages
 
     ```bash
-    yum -y --enablerepo=iml-agent install chroma-\*
+    yum -y install chroma-\*
     ```
 
     **Note:** following warning during install / update is benign and can be ignored:
@@ -609,7 +609,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
         ```bash
         yum --nogpgcheck --disablerepo=base,extras,updates \
-        --enablerepo=lustre-server install \
+        install \
         kernel \
         kernel-devel \
         kernel-headers \
@@ -650,7 +650,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     1. Install Lustre\*, and the LDISKFS and ZFS `kmod` packages:
 
         ```bash
-        yum --nogpgcheck --enablerepo=lustre-server install \
+        yum --nogpgcheck install \
         kmod-lustre-osd-ldiskfs \
         lustre-dkms \
         lustre-osd-ldiskfs-mount \
@@ -694,7 +694,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
         ```bash
         yum --nogpgcheck --disablerepo=base,extras,updates \
-        --enablerepo=lustre-server install \
+        install \
         kernel \
         kernel-devel \
         kernel-headers \
@@ -712,7 +712,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     1. Install the LDISKFS `kmod` and other Lustre\* packages:
 
         ```bash
-        yum --nogpgcheck --enablerepo=lustre-server install \
+        yum --nogpgcheck install \
         kmod-lustre \
         kmod-lustre-osd-ldiskfs \
         lustre-osd-ldiskfs-mount \
@@ -791,7 +791,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     1. Install the packages for Lustre\* and ZFS:
 
         ```bash
-        yum --nogpgcheck --enablerepo=lustre-server install \
+        yum --nogpgcheck install \
         lustre-dkms \
         lustre-osd-zfs-mount \
         lustre \
@@ -1292,7 +1292,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 1. Install The Intel® Manager for Lustre\* Agent and Diagnostics packages
 
     ```bash
-    yum -y --enablerepo=iml-agent install chroma-\*
+    yum -y install chroma-\*
     ```
 
     **Note:** following warning during install / update is benign and can be ignored:
@@ -1332,7 +1332,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
         ```bash
         yum --nogpgcheck --disablerepo=base,extras,updates \
-        --enablerepo=lustre-server install \
+        install \
         kernel \
         kernel-devel \
         kernel-headers \
@@ -1371,7 +1371,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     1. Install Lustre\*, and the LDISKFS and ZFS `kmod` packages:
 
         ```bash
-        yum --nogpgcheck --enablerepo=lustre-server install \
+        yum --nogpgcheck install \
         kmod-lustre-osd-ldiskfs \
         lustre-dkms \
         lustre-osd-ldiskfs-mount \
@@ -1400,7 +1400,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
         ```bash
         yum --nogpgcheck --disablerepo=base,extras,updates \
-        --enablerepo=lustre-server install \
+        install \
         kernel \
         kernel-devel \
         kernel-headers \
@@ -1418,7 +1418,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     1. Install the LDISKFS `kmod` and other Lustre\* packages:
 
         ```bash
-        yum --nogpgcheck --enablerepo=lustre-server install \
+        yum --nogpgcheck install \
         kmod-lustre \
         kmod-lustre-osd-ldiskfs \
         lustre-osd-ldiskfs-mount \
@@ -1497,7 +1497,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     1. Install the packages for Lustre\* and ZFS:
 
         ```bash
-        yum --nogpgcheck --enablerepo=lustre-server install \
+        yum --nogpgcheck install \
         lustre-dkms \
         lustre-osd-zfs-mount \
         lustre \
