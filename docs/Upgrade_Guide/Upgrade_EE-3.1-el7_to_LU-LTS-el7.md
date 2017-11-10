@@ -1,21 +1,21 @@
-# Upgrading Intel EE Lustre 3.1.1.0 to Lustre 2.10 LTS and IML 4.0
+# Upgrading Intel® EE for Lustre 3.1.1.0 to Lustre 2.10 LTS and Intel® Manager for Lustre\* 4.0
 
 ## Introduction
 
-This document provides a description of how to upgrade an existing Lustre server file system installation from Intel EE Lustre version 3.1.1.0 running on the RHEL/CentOS 7 OS distribution to Lustre 2.10 LTS and Intel® Manager for Lustre\* version 4 running on RHEL/CentOS 7.
+This document provides a description of how to upgrade an existing Lustre server file system installation from Intel® EE for Lustre version 3.1.1.0 running on the RHEL/CentOS 7 OS distribution to Lustre 2.10 LTS and Intel® Manager for Lustre\* version 4 running on RHEL/CentOS 7.
 
 CentOS is used for the examples. RHEL users will need to refer to Red Hat for instructions on enabling the High Availability add-on needed to install Pacemaker, Corosync and related support tools.
 
 ## Risks
 
-The process of upgrading Intel EE Lustre to a newer Lustre and Intel® Manager for Lustre\* version requires careful consideration and planning. There will always be some disruption to services when major maintenance works are undertaken, although this can be contained and minimized.
+The process of upgrading Intel® EE for Lustre to a newer Lustre and Intel® Manager for Lustre\* version requires careful consideration and planning. There will always be some disruption to services when major maintenance works are undertaken, although this can be contained and minimized.
 
 The reference platform used throughout the documentation has been installed and is being managed by Intel® Manager for Lustre\*, but the methods for the Lustre server components can be broadly applied to any Lustre server environment running the RHEL or CentOS OS.
 
 ## Process Overview
 
-1. Upgrade the IML manager server
-    1. Backup the Intel® Manager for Lustre server (IML manager) configuration and database
+1. Upgrade the Intel® Manager for Lustre\* manager server
+    1. Backup the Intel® Manager for Lustre\* server (IML manager) configuration and database
     1. Install the latest version of the IML manager software for EL7
 1. Upgrade the metadata and object storage server pairs. For each HA pair:
     1. Backup the server configuration for both machines
@@ -30,15 +30,15 @@ The reference platform used throughout the documentation has been installed and 
         1. Re-enable the secondary node in the Pacemaker configuration
         1. Re-balance the resources
 
-## Upgrade Intel® Manager for Lustre
+## Upgrade Intel® Manager for Lustre\*
 
-The first component in the environment to upgrade is the manager for Lustre software itself. The manager server upgrade can be conducted without any impact to the Lustre file system services.
+The first component in the environment to upgrade is the Intel® Manager for Lustre\* software itself. The manager server upgrade can be conducted without any impact to the Lustre file system services.
 
-### Backup the Existing IML Configuration
+### Backup the Existing Intel® Manager for Lustre\* Configuration
 
 1. Prior to commencing the upgrade, create a backup of the existing configuration. This will enable recovery of the original configuration in the event of a problem occurring during execution of the upgrade.
 
-    The following shell script can be used to capture the essential configuration information that is relevant to IML itself:
+    The following shell script can be used to capture the essential configuration information that is relevant to the Intel® Manager for Lustre\* software itself:
 
     ```bash
     #!/bin/sh
@@ -77,9 +77,9 @@ The first component in the environment to upgrade is the manager for Lustre soft
 
 1. Copy the backup tarball to a safe location that is not on the server being upgraded.
 
-**Note:** The script is not intended to provide a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre servers managed by IML that are difficult to re-create if deleted.
+**Note:** The script is not intended to provide a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre servers managed by Intel® Manager for Lustre\* that are difficult to re-create if deleted.
 
-### Install the Intel® Manager for Lustre Upgrade
+### Install the Intel® Manager for Lustre\* Upgrade
 
 The software upgrade process requires super-user privileges to run. Login as the `root` user or use `sudo` to elevate privileges as required.
 
@@ -93,11 +93,11 @@ The software upgrade process requires super-user privileges to run. Login as the
 
     Refer to the operating system documentation for details on the correct procedure for upgrading between minor OS releases.
 
-1. Download the latest manager for lustre software from the project's release page:
+1. Download the latest Intel® Manager for Lustre\* software from the project's release page:
 
     <https://github.com/intel-hpdd/intel-manager-for-lustre/releases>
 
-1. Extract the Intel® Manager for Lustre bundle. For example:
+1. Extract the Intel® Manager for Lustre\* bundle. For example:
 
     ```bash
     cd $HOME
@@ -126,11 +126,11 @@ The software upgrade process requires super-user privileges to run. Login as the
     ```
 
 1. The installation program will detect that there is a previous installation and will run the upgrade process.
-1. When the upgrade is complete, connect to the manager for lustre service using a web browser and verify that the upgraded version has been installed and is running. IML Agents running version EE 3.1 will still be able to communicate with the new version of the manager service. If the IML manager browser window was left open during the upgrade process, the window must be reloade with ahard refresh (hold the control key (Windows/Linux) or shift key (Mac) and hit the reload button. Alternatively, clode the window or tab and open a fresh instance.
+1. When the upgrade is complete, connect to the Intel® Manager for Lustre\* service using a web browser and verify that the upgraded version has been installed and is running. Intel® Manager for Lustre\* Agents running version EE 3.1 will still be able to communicate with the new version of the manager service. If the Intel® Manager for Lustre\* manager browser window was left open during the upgrade process, the window must be reloaded with a hard refresh: hold the control key (Windows/Linux) or shift key (Mac) and hit the reload button. Alternatively, close the window or tab and open a fresh copy of the page.
 
 ### Create Local Repositories for the Lustre Packages
 
-The Intel® Manager for Lustre distribution does not include Lustre software packages. These need to be acquired separately from the Lustre project's download server. The following instructions will establish the manager node as a YUM repository host for the Lustre packages. The Intel® Manager for Lustre server is automatically configured as a web server, so it is a convenient location for the repository mirrors.
+The Intel® Manager for Lustre\* distribution does not include Lustre software packages. These need to be acquired separately from the Lustre project's download server. The following instructions will establish the manager node as a YUM repository host for the Lustre packages. The Intel® Manager for Lustre\* server is automatically configured as a web server, so it is a convenient location for the repository mirrors.
 
 1. Create a temporary YUM repository definition. This will be used to assist with the initial acquisition of Lustre and related packages.
 
@@ -187,7 +187,7 @@ The Intel® Manager for Lustre distribution does not include Lustre software pac
 
 1. Create a YUM Repository Definition File
 
-    The following script creates a file containing repository definitions for the IML Agent software and the Lustre packages downloaded in the previous section. Review the content and adjust according to the requirements of the target environment. Run the script on the upgraded Intel® Manager for Lustre host:
+    The following script creates a file containing repository definitions for the Intel® Manager for Lustre\* Agent software and the Lustre packages downloaded in the previous section. Review the content and adjust according to the requirements of the target environment. Run the script on the upgraded Intel® Manager for Lustre\* host:
 
     ```bash
     hn=`hostname --fqdn`
@@ -240,13 +240,13 @@ The Intel® Manager for Lustre distribution does not include Lustre software pac
 
     This file is distributed to each of the Lustre servers during the upgrade process to facilitate installation of the software.
 
-    Make sure that the `$hn` variable matches the host name that will be used by the Lustre servers to access the manager for lustre host.
+    Make sure that the `$hn` variable matches the host name that will be used by the Lustre servers to access the Intel® Manager for Lustre\* host.
 
 ## Upgrade the Lustre Servers
 
 Lustre server upgrades can be coordinated as either an online roll-out, leveraging the failover HA mechanism to migrate services between nodes and minimize disruption, or as an offline service outage, which has the advantage of usually being faster to deploy overall, with generally lower risk.
 
-The upgrade procedure documented here shows how to execute the upgrade while the file system is online. It assumes that the Lustre servers have been installed in pairs, where each server pair forms an independent high-availability cluster built on Pacemaker and Corosync. Intel® Manager for Lustre deploys these configurations and includes its own resource agent for managing Lustre assets, called `ocf:chroma:Target`. IML can also configure STONITH agents to provide node fencing in the event of a cluster partition or loss of quorum.
+The upgrade procedure documented here shows how to execute the upgrade while the file system is online. It assumes that the Lustre servers have been installed in pairs, where each server pair forms an independent high-availability cluster built on Pacemaker and Corosync. Intel® Manager for Lustre\* deploys these configurations and includes its own resource agent for managing Lustre assets, called `ocf:chroma:Target`. Intel® Manager for Lustre\* can also configure STONITH agents to provide node fencing in the event of a cluster partition or loss of quorum.
 
 This documentation will demonstrate how to upgrade a single HA pair of Lustre servers. The process needs to be repeated for all servers in the cluster. It is possible to execute this upgrade while services are still online, with only minor disruption during critical phases. Nevertheless, where possible it is recommended that the upgrade operation is conducted during a planned maintenance window with the file system stopped.
 
@@ -262,7 +262,7 @@ The software upgrade process requires super-user privileges to run. Login as the
 
 Upgrade one server at a time in each cluster pair, starting with Node 1, and make sure the upgrade is complete on one server before moving on to the second server in the pair.
 
-1. As a precaution, create a backup of the existing configuration for each server. The following shell script can be used to capture the essential configuration information that is relevant to IML managed mode servers:
+1. As a precaution, create a backup of the existing configuration for each server. The following shell script can be used to capture the essential configuration information that is relevant to Intel® Manager for Lustre\* managed mode servers:
 
     ```bash
     #!/bin/sh
@@ -298,13 +298,13 @@ Upgrade one server at a time in each cluster pair, starting with Node 1, and mak
     tar zcf $BCKROOT.tgz `basename $BCKROOT`
     ```
 
-    **Note:** This is not intended to be a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre servers managed by IML that are difficult to re-create if deleted.
+    **Note:** This is not intended to be a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre servers managed by Intel® Manager for Lustre\* that are difficult to re-create if deleted.
 
 1. Copy the backups for each server's configuration to a safe location that is not on the servers being upgraded.
 
 ### Online Upgrade
 
-The upgrade procedure documented here shows how to execute the upgrade while the file system is online. It assumes that the Lustre servers have been installed by Intel® Manager for Lustre in pairs, where each server pair forms an independent high-availability cluster built on Pacemaker and Corosync.
+The upgrade procedure documented here shows how to execute the upgrade while the file system is online. It assumes that the Lustre servers have been installed by Intel® Manager for Lustre\* in pairs, where each server pair forms an independent high-availability cluster built on Pacemaker and Corosync.
 
 #### Migrate the Resources on Node 1
 
@@ -345,7 +345,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
 
     Refer to the operating system documentation for details on the correct procedure for upgrading between minor OS releases.
 
-#### Upgrade the Intel® Manager for Lustre Agent on Node 1
+#### Install the EPEL Repository Definition on Node 1
 
 1. Login to node 1.
 1. Install EPEL repository support:
@@ -354,28 +354,31 @@ The upgrade procedure documented here shows how to execute the upgrade while the
     yum -y install epel-release
     ```
 
-1. Install the Intel® Manager for Lustre COPR Repository definition, which contains some dependencies for the IML Agent:
+#### Upgrade the Intel® Manager for Lustre\* Agent on Node 1
+
+1. Login to node 1.
+1. Install the Intel® Manager for Lustre\* COPR Repository definition, which contains some dependencies for the Intel® Manager for Lustre\* Agent:
 
     ```bash
     yum-config-manager --add-repo \
     https://copr.fedorainfracloud.org/coprs/managerforlustre/manager-for-lustre/repo/epel-7/managerforlustre-manager-for-lustre-epel-7.repo
     ```
 
-1. Install the DNF project COPR Repository definition. DNF is a package manager, and is used as a replacement for YUM in many distributions, such as Fedora. It does not replace YUM in CentOS, but Intel® Manager for Lustre does make use of some of the newer features in DNF for some of its tasks:
+1. Install the DNF project COPR Repository definition. DNF is a package manager, and is used as a replacement for YUM in many distributions, such as Fedora. It does not replace YUM in CentOS, but Intel® Manager for Lustre\* does make use of some of the newer features in DNF for some of its tasks:
 
     ```bash
     yum-config-manager --add-repo \
     https://copr.fedorainfracloud.org/coprs/ngompa/dnf-el7/repo/epel-7/ngompa-dnf-el7-epel-7.repo
     ```
 
-1. Remove or rename the old IML YUM repository definition:
+1. Remove or rename the old Intel® Manager for Lustre\* YUM repository definition:
 
     ```bash
     mv /etc/yum.repos.d/Intel-Lustre-Agent.repo \
     $HOME/Intel-Lustre-Agent.repo.bak
     ```
 
-1. Install the IML Agent repository definition:
+1. Install the Intel® Manager for Lustre\* Agent repository definition:
 
     ```bash
     curl -o /etc/yum.repos.d/Manager-for-Lustre.repo \
@@ -385,9 +388,9 @@ The upgrade procedure documented here shows how to execute the upgrade while the
     https://<admin server>/repo/Manager-for-Lustre.repo
     ```
 
-    Replace `<admin server>` in the `https` URL with the appropriate manager for lustre hostname (normally the fully-qualified domain name).
+    Replace `<admin server>` in the `https` URL with the appropriate manager node hostname (normally the fully-qualified domain name).
 
-1. Upgrade the IML Agent and Diagnostics packages
+1. Upgrade the Intel® Manager for Lustre\* Agent and Diagnostics packages
 
     ```bash
     yum -y --enablerepo=iml-agent install chroma-\*
@@ -469,7 +472,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
 
 1. For systems that have **both** LDISKFS and ZFS OSDs:
 
-    **Note:** This is the configuration that IML installs for all managed-mode Lustre storage clusters. Use this configuration for the highest level of compatibility with Intel® Manager for Lustre.
+    **Note:** This is the configuration that Intel® Manager for Lustre\* installs for all managed-mode Lustre storage clusters. Use this configuration for the highest level of compatibility with Intel® Manager for Lustre\*.
 
     1. Install the Lustre `e2fsprogs` distribution:
 
@@ -500,7 +503,8 @@ The upgrade procedure documented here shows how to execute the upgrade while the
     1. Install additional development packages. These are needed to enable support for some of the newer features in Lustre – if certain packages are not detected by Lustre's configure script when its DKMS package is installed, the features will not be enabled when Lustre is compiled. Notable in this list are `krb5-devel` and `libselinux-devel`, needed for Kerberos and SELinux support, respectively.
 
         ```bash
-        yum install asciidoc audit-libs-devel automake bc \
+        yum install \
+        asciidoc audit-libs-devel automake bc \
         binutils-devel bison device-mapper-devel elfutils-devel \
         elfutils-libelf-devel expect flex gcc gcc-c++ git \
         glib2 glib2-devel hmaccalc keyutils-libs-devel krb5-devel ksh \
@@ -611,22 +615,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
         ```
 
 1. For systems with ZFS-based OSDs:
-    1. Follow the instructions from the ZFS on Linux project to [install the ZFS YUM repository definition](https://github.com/zfsonlinux/zfs/wiki/RHEL-%26-CentOS). Use the DKMS package repository (the default).
-
-        For example:
-
-        ```bash
-        yum -y install \
-        http://download.zfsonlinux.org/epel/zfs-release.el7_4.noarch.rpm
-        ```
-
-    1. Clean the YUM cache:
-
-        ```bash
-        yum clean all
-        ```
-
-    1. Install the kernel packages that match the latest supported version for the Lustre release:
+    1. Install the kernel packages that match the latest supported version for the Lustre\* release:
 
         ```bash
         yum install \
@@ -638,16 +627,22 @@ The upgrade procedure documented here shows how to execute the upgrade while the
         kernel-tools-libs-devel
         ```
 
-        It may be necessary to specify the kernel package version number in order to ensure that a kernel that is compatible with Lustre is installed. For example, Lustre 2.10.0 has support for RHEL kernel 3.10.0-514.21.1.el7:
+        It may be necessary to specify the kernel package version number in order to ensure that a kernel that is compatible with Lustre\* is installed. For example, Lustre\* 2.10.1 has support for RHEL kernel 3.10.0-693.2.2.el7:
 
         ```bash
         yum install \
-        kernel-3.10.0-514.21.1.el7 \
-        kernel-devel-3.10.0-514.21.1.el7 \
-        kernel-headers-3.10.0-514.21.1.el7 \
-        kernel-tools-3.10.0-514.21.1.el7 \
-        kernel-tools-libs-3.10.0-514.21.1.el7 \
-        kernel-tools-libs-devel-3.10.0-514.21.1.el7
+        kernel-3.10.0-693.2.2.el7 \
+        kernel-devel-3.10.0-693.2.2.el7 \
+        kernel-headers-3.10.0-693.2.2.el7 \
+        kernel-tools-3.10.0-693.2.2.el7 \
+        kernel-tools-libs-3.10.0-693.2.2.el7 \
+        kernel-tools-libs-devel-3.10.0-693.2.2.el7
+        ```
+
+        **Note:** If the `kernel-tools` and  `kernel-tools-libs` packages that have been installed on the host prior to running this command are at a higher revision than the kernel version supported by Lustre, they will need to be removed first:
+
+        ```bash
+        yum erase kernel-tools kernel-tools-libs
         ```
 
         Refer to the [Lustre Changelog](http://wiki.lustre.org/Category:Changelog) for the list of supported kernels.
@@ -655,7 +650,8 @@ The upgrade procedure documented here shows how to execute the upgrade while the
     1. Install additional development packages. These are needed to enable support for some of the newer features in Lustre – if certain packages are not detected by Lustre's configure script when its DKMS package is installed, the features will not be enabled when Lustre is compiled. Notable in this list are `krb5-devel` and `libselinux-devel`, needed for Kerberos and SELinux support, respectively.
 
         ```bash
-        yum install asciidoc audit-libs-devel automake bc \
+        yum install \
+        asciidoc audit-libs-devel automake bc \
         binutils-devel bison device-mapper-devel elfutils-devel \
         elfutils-libelf-devel expect flex gcc gcc-c++ git \
         glib2 glib2-devel hmaccalc keyutils-libs-devel krb5-devel ksh \
@@ -783,7 +779,7 @@ Node 1 upgrade is complete.
 
     Refer to the operating system documentation for details on the correct procedure for upgrading between minor OS releases.
 
-#### Upgrade the Intel® Manager for Lustre Agent on Node 2
+#### Install the EPEL Repository Definition on Node 2
 
 1. Login to node 2.
 1. Install EPEL repository support:
@@ -792,28 +788,31 @@ Node 1 upgrade is complete.
     yum -y install epel-release
     ```
 
-1. Install the Intel® Manager for Lustre COPR Repository definition, which contains some dependencies for the IML Agent:
+#### Upgrade the Intel® Manager for Lustre\* Agent on Node 2
+
+1. Login to node 2.
+1. Install the Intel® Manager for Lustre\* COPR Repository definition, which contains some dependencies for the Intel® Manager for Lustre\* Agent:
 
     ```bash
     yum-config-manager --add-repo \
     https://copr.fedorainfracloud.org/coprs/managerforlustre/manager-for-lustre/repo/epel-7/managerforlustre-manager-for-lustre-epel-7.repo
     ```
 
-1. Install the DNF project COPR Repository definition. DNF is a package manager, and is used as a replacement for YUM in many distributions, such as Fedora. It does not replace YUM in CentOS, but Intel® Manager for Lustre does make use of some of the newer features in DNF for some of its tasks:
+1. Install the DNF project COPR Repository definition. DNF is a package manager, and is used as a replacement for YUM in many distributions, such as Fedora. It does not replace YUM in CentOS, but Intel® Manager for Lustre\* does make use of some of the newer features in DNF for some of its tasks:
 
     ```bash
     yum-config-manager --add-repo \
     https://copr.fedorainfracloud.org/coprs/ngompa/dnf-el7/repo/epel-7/ngompa-dnf-el7-epel-7.repo
     ```
 
-1. Remove or rename the old IML YUM repository definition:
+1. Remove or rename the old Intel® Manager for Lustre\* YUM repository definition:
 
     ```bash
     mv /etc/yum.repos.d/Intel-Lustre-Agent.repo \
     $HOME/Intel-Lustre-Agent.repo.bak
     ```
 
-1. Install the IML Agent repository definition:
+1. Install the Intel® Manager for Lustre\* Agent repository definition:
 
     ```bash
     curl -o /etc/yum.repos.d/Manager-for-Lustre.repo \
@@ -823,9 +822,9 @@ Node 1 upgrade is complete.
     https://<admin server>/repo/Manager-for-Lustre.repo
     ```
 
-    Replace `<admin server>` in the `https` URL with the appropriate manager for lustre hostname (normally the fully-qualified domain name).
+    Replace `<admin server>` in the `https` URL with the appropriate manager node hostname (normally the fully-qualified domain name).
 
-1. Upgrade the IML Agent and Diagnostics packages
+1. Upgrade the Intel® Manager for Lustre\* Agent and Diagnostics packages
 
     ```bash
     yum -y --enablerepo=iml-agent install chroma-\*
@@ -876,7 +875,7 @@ Node 1 upgrade is complete.
 
 1. For systems that have **both** LDISKFS and ZFS OSDs:
 
-    **Note:** This is the configuration that IML installs for all managed-mode Lustre storage clusters. Use this configuration for the highest level of compatibility with Intel® Manager for Lustre.
+    **Note:** This is the configuration that Intel® Manager for Lustre\* installs for all managed-mode Lustre storage clusters. Use this configuration for the highest level of compatibility with Intel® Manager for Lustre\*.
 
     1. Install the Lustre `e2fsprogs` distribution:
 
@@ -907,7 +906,8 @@ Node 1 upgrade is complete.
     1. Install additional development packages. These are needed to enable support for some of the newer features in Lustre – if certain packages are not detected by Lustre's configure script when its DKMS package is installed, the features will not be enabled when Lustre is compiled. Notable in this list are `krb5-devel` and `libselinux-devel`, needed for Kerberos and SELinux support, respectively.
 
         ```bash
-        yum install asciidoc audit-libs-devel automake bc \
+        yum install \
+        asciidoc audit-libs-devel automake bc \
         binutils-devel bison device-mapper-devel elfutils-devel \
         elfutils-libelf-devel expect flex gcc gcc-c++ git glib2 \
         glib2-devel hmaccalc keyutils-libs-devel krb5-devel ksh \
@@ -1018,21 +1018,6 @@ Node 1 upgrade is complete.
         ```
 
 1. For systems with ZFS-based OSDs:
-    1. Follow the instructions from the ZFS on Linux project to [install the ZFS YUM repository definition](https://github.com/zfsonlinux/zfs/wiki/RHEL-%26-CentOS). Use the DKMS package repository (the default).
-
-        For example:
-
-        ```bash
-        yum -y install \
-        http://download.zfsonlinux.org/epel/zfs-release.el7_4.noarch.rpm
-        ```
-
-    1. Clean the YUM cache:
-
-        ```bash
-        yum clean all
-        ```
-
     1. Install the kernel packages that match the latest supported version for the Lustre release:
 
         ```bash
@@ -1057,12 +1042,19 @@ Node 1 upgrade is complete.
         kernel-tools-libs-devel-3.10.0-514.21.1.el7
         ```
 
+        **Note:** If the `kernel-tools` and  `kernel-tools-libs` packages that have been installed on the host prior to running this command are at a higher revision than the kernel version supported by Lustre, they will need to be removed first:
+
+        ```bash
+        yum erase kernel-tools kernel-tools-libs
+        ```
+
         Refer to the [Lustre Changelog](http://wiki.lustre.org/Category:Changelog) for the list of supported kernels.
 
     1. Install additional development packages. These are needed to enable support for some of the newer features in Lustre – if certain packages are not detected by Lustre's configure script when its DKMS package is installed, the features will not be enabled when Lustre is compiled. Notable in this list are `krb5-devel` and `libselinux-devel`, needed for Kerberos and SELinux support, respectively.
 
         ```bash
-        yum install asciidoc audit-libs-devel automake bc \
+        yum install \
+        asciidoc audit-libs-devel automake bc \
         binutils-devel bison device-mapper-devel elfutils-devel \
         elfutils-libelf-devel expect flex gcc gcc-c++ git \
         glib2 glib2-devel hmaccalc keyutils-libs-devel krb5-devel ksh \
@@ -1164,3 +1156,5 @@ Node 1 upgrade is complete.
 Node 2 upgrade is complete
 
 Repeat this procedure on all Lustre server HA cluster pairs for the file system.
+
+\* Other names and brands may be claimed as the property of others.
