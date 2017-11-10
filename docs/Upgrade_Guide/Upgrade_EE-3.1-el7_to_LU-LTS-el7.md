@@ -617,7 +617,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
         modprobe -v lustre
         ```
 
-1. For systems with ZFS-based OSDs:
+1. For systems with only ZFS-based OSDs:
     1. Install the kernel packages that match the latest supported version for the Lustre\* release:
 
         ```bash
@@ -962,7 +962,7 @@ Node 1 upgrade is complete.
         modprobe -v lustre
         ```
 
-1. For systems that use LDISKFS OSDs:
+1. For systems that use only LDISKFS OSDs:
     1. Upgrade the Lustre\* `e2fsprogs` distribution:
 
         ```bash
@@ -1083,6 +1083,21 @@ Node 1 upgrade is complete.
         lustre \
         lustre-resource-agents \
         zfs
+        ```
+
+    1. Verify that the DKMS kernel modules for Lustre\*  SPL and ZFS have installed correctly:
+
+        ```bash
+        dkms status
+        ```
+
+        All packages should have the status `installed`. For example:
+
+        ```bash
+        # dkms status
+        lustre, 2.10.1, 3.10.0-693.2.2.el7_lustre.x86_64, x86_64: installed
+        spl, 0.7.1, 3.10.0-693.2.2.el7_lustre.x86_64, x86_64: installed
+        zfs, 0.7.1, 3.10.0-693.2.2.el7_lustre.x86_64, x86_64: installed
         ```
 
     1. Load the Lustre\* and ZFS kernel modules to verify that the software has installed correctly:
