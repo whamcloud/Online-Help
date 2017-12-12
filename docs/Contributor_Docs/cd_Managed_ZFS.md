@@ -82,7 +82,7 @@ Watch the volumes page and wait for the volumes associated with the mds to chang
 1. Create OSS1. Exit out of `mds1` and ssh into `oss1`. On the volumes page, look for all occurrences of `oss1` and take note of their diskSerial's. Enter the following command:
 
 ```
-[root@oss1 ~]# zpool create oss1 -o cachefile=none -o multihost=on raidz2 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT1000000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT3000000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT5000000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT7000000000000
+[root@oss1 ~]# zpool create oss1 -o cachefile=none -o multihost=on raidz2 /dev/disk/by-id/ata-VBOX_HARDDISK_OST0PORT100000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OST2PORT300000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OST4PORT500000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OST6PORT700000000000
 [root@oss1 ~]# zpool export oss1
 ```
 
@@ -90,7 +90,7 @@ Watch the volumes page and wait for the volumes associated with oss1 to change a
 1. Create OSS2. On the volumes page, look for all occurrences of `oss2` and take note of their diskSerial's. Enter the following command:
 
 ```
-[root@oss1 ~]# zpool create oss2 -o cachefile=none -o multihost=on raidz2 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT2000000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT4000000000000  /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT6000000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT8000000000000
+[root@oss1 ~]# zpool create oss2 -o cachefile=none -o multihost=on raidz2 /dev/disk/by-id/ata-VBOX_HARDDISK_OST1PORT200000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OST3PORT400000000000  /dev/disk/by-id/ata-VBOX_HARDDISK_OST5PORT600000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OST7PORT800000000000
 [root@oss1 ~]# zpool export oss2
 ```
 
