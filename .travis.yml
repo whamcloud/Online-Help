@@ -7,11 +7,14 @@ install:
   - nvm use 6
   - npm install -g npm@latest
   - bundle install --jobs=3 --retry=3
+  - sudo apt-get install clamav -y
+  - sudo freshclam
 
 script: 
   - node --version
   - npm --version
   - npm run postversion
+  - clamscan --quiet -r ./
 
 deploy:
   provider: npm
