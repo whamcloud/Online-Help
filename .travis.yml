@@ -2,7 +2,7 @@ language: ruby
 rvm: 2.1
 
 jobs:
-  install:
+  include:
     - stage: Initialize
       script: . $HOME/.nvm/nvm.sh
     - stage: NodeVersion
@@ -15,7 +15,6 @@ jobs:
       script: sudo apt-get install clamav -y
     - stage: RefreshDB
       script: sudo freshclam
-  include:
     - stage: validate
       script: node --version
       script: npm --version
