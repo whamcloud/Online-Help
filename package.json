@@ -3,12 +3,10 @@
   "version": "2.3.2",
   "description": "The IML help docs",
   "scripts": {
-    "build":
-      "rm -rf dist && make BASEURL='/help'",
+    "build": "rm -rf dist && make BASEURL='/help'",
     "start": "bundle exec jekyll serve",
     "postversion": "npm run build",
-    "link-check":
-      "find . -name '*.md' -not -path './node_modules/*' -not -path './_site/*' | xargs -n 1 -I % sh -c 'echo %; markdown-link-check %;'"
+    "link-check": "find . -name '*.md' -not -path './node_modules/*' -not -path './_site/*' | xargs -n 1 -I % sh -c 'echo %; markdown-link-check %;'"
   },
   "publishConfig": {
     "access": "public"
@@ -19,6 +17,6 @@
   },
   "author": "IML Team",
   "devDependencies": {
-    "markdown-link-check": "^3.1.2"
+    "markdown-link-check": "^3.1.5"
   }
 }
