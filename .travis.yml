@@ -1,17 +1,26 @@
 language: ruby
 rvm: 2.1
 
-install:
-  - . $HOME/.nvm/nvm.sh
-  - nvm install 6
-  - nvm use 6
-  - npm install -g npm@latest
-  - bundle install --jobs=3 --retry=3
-
-script: 
-  - node --version
-  - npm --version
-  - npm run postversion
+jobs:
+  include:
+    - stage: Initialize
+      script: . $HOME/.nvm/nvm.sh
+    - stage: NodeVersion
+      script: nvm install 6      
+    - stage: UseNodeVersion
+      script: nvm use 6
+    - stage: MultiTask
+      script: npm install -g npm@latest
+      script: bundle install --jobs=3 --retry=3
+      script: sudo apt-get install clamav -y
+    - stage: RefreshDB
+      script: sudo freshclam
+    - stage: validate
+      script: node --version
+      script: npm --version
+    - stage: BuildAndScan
+      script: npm run postversion
+      script: clamscan --quiet -r ./
 
 deploy:
   provider: npm
