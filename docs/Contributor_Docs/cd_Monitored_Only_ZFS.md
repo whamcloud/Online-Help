@@ -79,9 +79,6 @@ Run the following commands:
    lctl network configure;
    /sbin/modprobe zfs;
    genhostid' mds1 mds2 oss1 oss2
-
-   vagrant halt mds1 mds2 oss1 oss2
-   vagrant up mds1 mds2 oss1 oss2
 ```
 
 The IML GUI should show that the LNET and NID Configuration is updated (IP Address 10.73.20.x to use `Lustre Network 0`). All alerts are cleared.
@@ -130,7 +127,7 @@ At this point you should wait until the volume disappears from the volumes page 
 ```
     vagrant ssh oss1
     sudo -i
-    zpool create oss1 -o cachefile=none raidz2 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT1000000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT3000000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT5000000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT7000000000000
+    zpool create oss1 -o cachefile=none raidz2 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTP1ORT200000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OST3PORT400000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OST5PORT600000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OST7PORT800000000000
     mkfs.lustre --failover 10.73.20.22@tcp --ost --backfstype=zfs --fsname=zfsmo --index=0 --mgsnode=10.73.20.11@tcp oss1/ost00
     zfs compression=on oss1
     zpool export oss1
@@ -147,7 +144,7 @@ At this point you should wait until the volume disappears from the volumes page 
 ```
     vagrant ssh oss2
     sudo -i
-    zpool create oss2 -o cachefile=none raidz2 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT2000000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT4000000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT6000000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTPORT8000000000000
+    zpool create oss2 -o cachefile=none raidz2 /dev/disk/by-id/ata-VBOX_HARDDISK_OST0PORT100000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OST2PORT300000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OST4PORT500000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OST6PORT700000000000
     mkfs.lustre --failover  10.73.20.21@tcp --ost --backfstype=zfs --fsname=zfsmo --index=1 --mgsnode=10.73.20.11@tcp oss2/ost01
     zfs compression=on oss2
     zpool export oss2
