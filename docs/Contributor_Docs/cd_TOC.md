@@ -42,7 +42,9 @@
 
 1.  [Managing Import Export Sequences of zpools within ZFS HA](cd_Managing_Import_Export_Sequences_Of_Zpools_Within_Zfs_HA.md)
 
-1.  [Create a Monitored only ZFS Filesystem on a Vagrant virtual cluster](cd_Monitored_Only_ZFS.md)
+1. [Create a Monitored only ldiskfs Filesystem on a Vagrant virtual cluster](cd_Monitored_Only_ldiskfs.md)
+
+1. [Create a Monitored only ZFS Filesystem on a Vagrant virtual cluster](cd_Monitored_Only_ZFS.md)
 
 1.  [Creating a Managed Lustre ZFS Filesystem on a Vagrant virtual cluster](cd_Managed_ZFS.md)
 
