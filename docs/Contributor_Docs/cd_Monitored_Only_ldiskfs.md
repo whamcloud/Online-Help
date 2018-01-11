@@ -52,7 +52,7 @@ mds[1,2].lfs.local,oss[1,2].lfs.local
 ```
 
 This will take some time (around 5 to 10 minutes) but all four servers should add successfully.
-There will be alters and warnings about LNET. Ignore for now.
+There will be alerts and warnings about LNET. Ignore for now.
 
 ## Installing lustre on each MDS and OSS Server
 
