@@ -16,18 +16,6 @@ Note: use vagrant ssh-config to get the port each server is running on. The comm
 2. Download the latest IML build (tarball). 
 from: [https://github.com/intel-hpdd/intel-manager-for-lustre/releases/download/4.0.0/iml-4.0.0.0.tar.gz](https://github.com/intel-hpdd/intel-manager-for-lustre/releases/download/4.0.0/iml-4.0.0.0.tar.gz)
 
-3. Create zfs installer and install the zfs packages on the following servers: mds1, mds2, oss1, and oss2
-   ```
-       cd ~/downloads
-       tar xzvf iml-4.0.0.0.tar.gz
-       cd iml-4.0.0.0
-       ./create_installer zfs
-       for i in {2200..2203}; do scp -P $i ~/Downloads/iml-4.0.0.0/lustre-zfs-el7-installer.tar.gz vagrant@127.0.0.1:/tmp/.; done
-       # password is "vagrant"
-       vagrant sh -c 'cd /tmp; sudo tar xzvf lustre-zfs-el7-installer.tar.gz; cd lustre-zfs; sudo ./install' mds1 mds2 oss1 oss2
-   ```
-
-
 
 ## Installing IML:
 
@@ -59,20 +47,41 @@ mds[1,2].lfs.local,oss[1,2].lfs.local
 # Make sure to select "Monitored Server Profile" for the servers profile
 ```
 This will take some time (around 5 to 10 minutes) but all four servers should add successfully.
-There will be alters and warnings about LNET. Ignore for now.
+There will be alerts and warnings about LNET. Ignore for now.
 
-Once all servers have been added with "Monitored Server Profile", each server will need to know which interface should be assigned the lustre network.
-ssh to each server (mds1, mds2, oss1, oss2)
-vagrant ssh <server>  and as root (sudo su ) run the following commands:
+## Installing lustre on each MDS and OSS Server
+
+ZFS can now be installed on each mds and oss node since the agent software has been deployed. To do this, follow these simple steps:
+
+1. Create the zfs installer and install the necessary packages on the following servers: mds1, mds2, oss1, and oss2
+
+   ```
+       cd ~/downloads
+       tar xzvf iml-4.0.0.0.tar.gz
+       cd iml-4.0.0.0
+       ./create_installer zfs
+       for i in {2200..2203}; do scp -P $i ~/Downloads/iml-4.0.0.0/lustre-zfs-el7-installer.tar.gz vagrant@127.0.0.1:/tmp/.; done
+       # password is "vagrant"
+       vagrant sh -c 'cd /tmp; sudo tar xzvf lustre-zfs-el7-installer.tar.gz; cd lustre-zfs; sudo ./install' mds1 mds2 oss1 oss2
+   ```
+
+## Configuring each MDS and OSS server
+
+Each server will need to know which interface should be assigned the lustre network.
+Run the following commands:
 
 ```
-    systemctl stop firewalld; systemctl disable firewalld
-    systemctl start ntpd
-    echo 'options lnet networks=tcp0(enp0s9)' > /etc/modprobe.d/lustre.conf
-    modprobe lnet
-    lctl network configure
-    /sbin/modprobe zfs
-    genhostid
+   vagrant sh -c '
+   systemctl stop firewalld; systemctl disable firewalld;
+   systemctl start ntpd;
+   echo "options lnet networks=tcp0(enp0s9)" > /etc/modprobe.d/lustre.conf;
+   modprobe lnet;
+   lctl network configure;
+   /sbin/modprobe zfs;
+   genhostid' mds1 mds2 oss1 oss2
+
+   vagrant halt mds1 mds2 oss1 oss2
+   vagrant up mds1 mds2 oss1 oss2
 ```
 
 The IML GUI should show that the LNET and NID Configuration is updated (IP Address 10.73.20.x to use `Lustre Network 0`). All alerts are cleared.
