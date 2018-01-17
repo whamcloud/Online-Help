@@ -6,7 +6,7 @@
 
 ## Prerequisites:
 
-Please refer to https://github.com/intel-hpdd/vagrantfiles on how to create a virtual HPC storage cluster with vagrant before attempting to install IML.
+Please refer to [creating a virtual HPC storage cluster with vagrant](https://github.com/intel-hpdd/vagrantfiles) before attempting to install IML.
 
 ## Download IML build, create ldiskfs installer, and install ldiskfs packages:
 
@@ -44,11 +44,10 @@ Note: use vagrant ssh-config to get the port each server is running on. The comm
 
 ## Adding the MDS and OSS Servers
 
-You should now be able to see IML when navigating to https://adm.lfs.local:8443. Click on the login link at the top right and log in as the admin. Next, go to the server configuration page and add the following servers:
+You should now be able to see IML when navigating to https://adm.lfs.local:8443. Click on the login link at the top right and log in as the admin. Next, go to the server configuration page and add the following servers using the "Monitored Server" profile:
 
 ```
 mds[1,2].lfs.local,oss[1,2].lfs.local
-# Make sure to select "Monitored Server Profile" for the servers profile
 ```
 
 This will take some time (around 5 to 10 minutes) but all four servers should add successfully.
