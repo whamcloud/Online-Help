@@ -16,7 +16,7 @@ Run iml diagnostics
 Run iml-diagnostics on any of the servers that you suspect may be
 having problems, and on the server hosting the Intel® Manager for Lustre*
 software dashboard. Iml-Diagnostics generates a compressed
-tar.xz file that you should attach to your JIRA ticket / github issue.
+tar.xz file that you should attach to your GitHub issue.
 To run iml-diagnostics:
 
 1.  Log into the server in question as Admin. Admin login is required in
@@ -97,20 +97,17 @@ To run iml-diagnostics:
 Submit a ticket
 ---------------
 
-You can submit a ticket using the Jira issue tracking system. Attach the
+You can submit a ticket using the GitHub issue tracking system. Attach the
 sos report to the ticket.
 
-1.  Log in to the Jira dashboard at:
-    <https://jira.hpdd.intel.com/secure/Dashboard.jspa>
+1.  Look through existing issues to see if any relevant answers exist:
+    <https://github.com/intel-hpdd/intel-manager-for-lustre/issues>
 
-2.  In the upper right corner, select **+ Create Issue**.
+2.  If still required, log in to the GitHub issue tracker at:
+    <https://github.com/intel-hpdd/intel-manager-for-lustre/issues/new>
 
-3.  Select the project that was issued by your Intel® account manager.
+3.  Fill in the issue details, paying attention to the suggested template.
 
-For any other issues, contact your product manager or sales
-representative.
-
-*For end-users*: For assistance with this product, contact your storage
-solution provider.
+4.  Click "Submit new issue" and await a response.
 
 [Top of page](#1.0)
