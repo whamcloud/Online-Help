@@ -74,11 +74,9 @@ Run the following commands:
    vagrant sh -c '
    systemctl stop firewalld; systemctl disable firewalld;
    systemctl start ntpd;
-   echo "options lnet networks=tcp0(enp0s9)" > /etc/modprobe.d/lustre.conf;
-   modprobe lnet;
-   lctl network configure;
-   /sbin/modprobe zfs;
-   genhostid' mds1 mds2 oss1 oss2
+   modprobe lnet
+   lnetctl lnet configure
+   lnetctl net add --net tcp0 --if enp0s9' mds1 mds2 oss1 oss2
 ```
 
 The IML GUI should show that the LNET and NID Configuration is updated (IP Address 10.73.20.x to use `Lustre Network 0`). All alerts are cleared.
@@ -127,7 +125,7 @@ At this point you should wait until the volume disappears from the volumes page 
 ```
     vagrant ssh oss1
     sudo -i
-    zpool create oss1 -o cachefile=none raidz2 /dev/disk/by-id/ata-VBOX_HARDDISK_OSTP1ORT200000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OST3PORT400000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OST5PORT600000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OST7PORT800000000000
+    zpool create oss1 -o cachefile=none raidz2 /dev/disk/by-id/ata-VBOX_HARDDISK_OST1PORT200000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OST3PORT400000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OST5PORT600000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OST7PORT800000000000
     mkfs.lustre --failover 10.73.20.22@tcp --ost --backfstype=zfs --fsname=zfsmo --index=0 --mgsnode=10.73.20.11@tcp oss1/ost00
     zfs compression=on oss1
     zpool export oss1
