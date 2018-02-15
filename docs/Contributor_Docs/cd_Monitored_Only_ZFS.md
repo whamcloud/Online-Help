@@ -76,7 +76,9 @@ Run the following commands:
    systemctl start ntpd;
    modprobe lnet
    lnetctl lnet configure
-   lnetctl net add --net tcp0 --if enp0s9' mds1 mds2 oss1 oss2
+   lnetctl net add --net tcp0 --if enp0s9
+   /sbin/modprobe zfs;
+   genhostid' mds1 mds2 oss1 oss2
 ```
 
 The IML GUI should show that the LNET and NID Configuration is updated (IP Address 10.73.20.x to use `Lustre Network 0`). All alerts are cleared.
