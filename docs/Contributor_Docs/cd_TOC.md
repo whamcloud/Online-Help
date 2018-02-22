@@ -34,8 +34,7 @@
 
 1. [Running SSI Tests](cd_Running_SSI_Tests.md)
 
-1.  [Create a Sample Storage plugin](https://github.com/intel-hpdd/sample-storage-plugin
-)
+1. [Create a Sample Storage plugin](https://github.com/intel-hpdd/sample-storage-plugin)
 
 1. [IML Lustre Target Sequence Diagrams](cd_Lustre_Target_Sequence_Diagrams.md)
 
@@ -44,6 +43,8 @@
 1. [Create a Monitored only ZFS Filesystem on a Vagrant virtual cluster](cd_Monitored_Only_ZFS.md)
 
 1. [Creating a Managed Lustre ZFS Filesystem on a Vagrant virtual cluster](cd_Managed_ZFS.md)
+
+1. [Setting up Lustre Clients](cd_Setting_Up_Clients.html)
 
 1. [Setup Power Control on a Vagrant virtual cluster](cd_Setting_Up_Power_Control.md)
 
