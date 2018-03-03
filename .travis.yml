@@ -1,24 +1,30 @@
-language: ruby
-rvm: 2.1
-
-install:
-  - . $HOME/.nvm/nvm.sh
-  - nvm install 6
-  - nvm use 6
-  - npm install -g npm@latest
-  - bundle install --jobs=3 --retry=3
-
-script: 
-  - node --version
-  - npm --version
-  - npm run postversion
-
-deploy:
-  provider: npm
-  email: joe.grund@intel.com
-  skip_cleanup: true
-  api_key:
-    secure: S9+WK70auEwNnC0vx0nw0k6Y2ci+lddgctdihfKeVPvfIlxfN/mIpVrswIeLTZ8nIOSiUxwqKQucEDtI9sRynPUq7VnA6W9Q1ZNw2LxdjrMYn6VFQIPzU+7W+cDWysPxacaqgn5qyCEaLJ6VQPiv9326FM8R48zt4i3eKs66tub9esnO7mQ4VwAJnuTCRO4ioVS5kRiKLHA/YGl3CHxcPUjp9Q/4xUv2w6hwycBAh2ct+TRJzQIGC3+2rqds/80mQwNkB3kghgO3+te2PlEjpZhx8/QzQyPN1U2JrZ8HOVdP20Pz17MpyNpmwNq+wQrg3Tq+Rk4aIAJH1P3fNQmxnLpytNz20O53PYN+EsG3ZvJ/9I9b+HhQL0g63Cl8PqnMtXLynjJI3laD4BxWwiC6Xw02Ve1MWpTSlkU3utZprRGxOWisVMdtwU2zNRggK4WEqBQgA9FpJEXwqRwzJ+fJcg/6bTPhsRlXYOVgbZCnDyOtZk1/G8/ARd8lBFFyJM0rU+YEkKL5NvrhtpxLqrbwXkVevEitnImPUni7vVTzOYOir7WSEhsKr9TH5zxhB6kzD3npi0a+nMyJizFW2uVNDMjIhNg0dwEr+Qf4hCUDDIiGWubcZEshQbGISPsOjQ7giPxdb4Pyi1cYd+Jz3kGlT0+rL798INKFDw/sy9H79kc=
-  on:
-    tags: true
-    repo: intel-hpdd/Online-Help
+jobs:
+  include:
+    - stage: test
+      env: Type='virus scan'
+      script:
+        - sudo apt-get install clamav -y
+        - sudo freshclam
+        - clamscan --quiet -r ./
+    - stage: test
+      env: Type='build'
+      language: ruby
+      rvm: 2.1
+      install:
+        - . $HOME/.nvm/nvm.sh
+        - nvm install 6
+        - nvm use 6
+        - npm install -g npm@latest
+        - bundle install --jobs=3 --retry=3
+      script: 
+        - node --version
+        - npm --version
+        - npm run postversion
+      deploy:
+        provider: npm
+        skip_cleanup: true
+        email: "$NPM_EMAIL"
+        api_key: "$NPM_TOKEN"
+        on:
+          tags: true
+          repo: intel-hpdd/Online-Help
