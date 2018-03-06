@@ -29,7 +29,7 @@ cp -a dist/. %{buildroot}%{_libdir}/iml-manager/%{name}/
 rm -rf %{buildroot}
 
 %files 
-%dir %{_libdir}/iml-manager/%{name}
+%{_libdir}/iml-manager/%{name}
 
 %changelog
 * Mon Oct 23 2017 Joe Grund <joe.grund@intel.com> - 2.3.2-1
