@@ -2,6 +2,7 @@ NAME                 := iml-online-help
 PACKAGE_VERSION      := 2.3.2
 DIST_VERSION         := $(PACKAGE_VERSION)
 PACKAGE_RELEASE      := 1
+BUILD_METHOD         := Registry
 
 BASEURL ?= $$PWD/dist
 
