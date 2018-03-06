@@ -22,14 +22,14 @@ This module is a static html website based on the online-help markdown docs. The
 %install
 rm -rf %{buildroot}
 
-mkdir -p %{buildroot}/lib/iml-manager/%{name}
-cp -a dist/. %{buildroot}/lib/iml-manager/%{name}/
+mkdir -p %{buildroot}/%{_prefix}/%{_lib}/iml-manager/%{name}
+cp -a dist/. %{buildroot}/%{_prefix}/%{_lib}/iml-manager/%{name}/
 
 %clean
 rm -rf %{buildroot}
 
 %files 
-%{buildroot}/lib/iml-manager/%{name}
+%{buildroot}/%{_prefix}/%{_lib}/iml-manager/%{name}
 
 %changelog
 * Mon Oct 23 2017 Joe Grund <joe.grund@intel.com> - 2.3.2-1
