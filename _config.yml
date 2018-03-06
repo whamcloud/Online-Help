@@ -1,2 +1,2 @@
 theme: jekyll-theme-cayman
-exclude: [include]
+exclude: [vendor, include]
