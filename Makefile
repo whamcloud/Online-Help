@@ -1,3 +1,8 @@
+NAME                 := iml-online-help
+PACKAGE_VERSION      := 2.3.2
+DIST_VERSION         := $(PACKAGE_VERSION)
+PACKAGE_RELEASE      := 1
+
 BASEURL ?= $$PWD/dist
 
 all: vendor/cache
@@ -8,3 +13,5 @@ view: all
 
 vendor/cache: Gemfile Gemfile.lock
 	bundle install --path vendor/cache
+
+include ./include/rpm.mk

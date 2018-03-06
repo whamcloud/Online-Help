@@ -19,7 +19,19 @@ enabled=1
 wq
 EOF
 
-eval export "$(grep -e "^TRAVIS=" -e "^TRAVIS_PULL_REQUEST_BRANCH=" "$MAPPED_DIR"/travis_env)"
+eval export "$(grep -e "^TRAVIS=" -e "^TRAVIS_EVENT_TYPE=" "$MAPPED_DIR"/travis_env)"
+
+if [ "$TRAVIS_EVENT_TYPE" = "push" ]; then
+    eval export "$(grep -e "^TRAVIS_BRANCH=" "$MAPPED_DIR"/travis_env)"
+    TEST_BRANCH="$TRAVIS_BRANCH"
+elif [ "$TRAVIS_EVENT_TYPE" = "pull_request" ]; then
+    eval export "$(grep -e "^TRAVIS_PULL_REQUEST_BRANCH=" \
+                        "$MAPPED_DIR"/travis_env)"
+    TEST_BRANCH="$TRAVIS_PULL_REQUEST_BRANCH"
+else
+    echo "Don't know how to handle TRAVIS_EVENT_TYPE $TRAVIS_EVENT_TYPE."
+    exit 1
+fi
 
 groupadd --gid "$(stat -c '%g' "$MAPPED_DIR")" mocker
 useradd --uid "$(stat -c '%u' "$MAPPED_DIR")" --gid "$(stat -c '%g' "$MAPPED_DIR")" mocker
@@ -30,7 +42,7 @@ if ! su - mocker <<EOF; then
 set -xe
 cd "$MAPPED_DIR"
 make rpmlint
-make DIST_VERSION="$TRAVIS_PULL_REQUEST_BRANCH" build_test
+make DIST_VERSION="$TEST_BRANCH" build_test
 EOF
     exit "${PIPESTATUS[0]}"
 fi
