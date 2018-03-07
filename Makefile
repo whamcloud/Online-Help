@@ -16,9 +16,9 @@ vendor/cache: Gemfile Gemfile.lock
 
 include ./include/rpm.mk
 
-$(NAME)-$(PACKAGE_VERSION).tgz:
+$(NAME)-$(PACKAGE_VERSION).tgz: _site
 	mkdir $(NAME)-$(PACKAGE_VERSION)/
-	cp $< $(NAME)-$(PACKAGE_VERSION)/
+	cp -r $</* $(NAME)-$(PACKAGE_VERSION)/
 	tar czvf $@ $(NAME)-$(PACKAGE_VERSION)/
 	rm -rf $(NAME)-$(PACKAGE_VERSION)/
 
