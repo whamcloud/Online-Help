@@ -1,12 +1,12 @@
 %define base_name online-help
 Name:       iml-%{base_name}
-Version:    2.3.2
+Version:    2.4.0
 Release:    1%{?dist}
 Summary:    IML Online Help
 License:    MIT
 Group:      System Environment/Libraries
 URL:        https://github.com/intel-hpdd/%{base_name}
-Source0:    http://registry.npmjs.org/@iml/%{base_name}/-/%{base_name}-%{version}.tgz
+Source0:    %{name}-%{version}.tgz
 
 BuildArch:  noarch
 

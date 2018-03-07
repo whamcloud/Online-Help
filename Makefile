@@ -1,5 +1,5 @@
 NAME                 := iml-online-help
-PACKAGE_VERSION      := 2.3.2
+PACKAGE_VERSION      := 2.4.0
 PACKAGE_RELEASE      := 1
 BUILD_METHOD         := Registry
 
@@ -15,3 +15,11 @@ vendor/cache: Gemfile Gemfile.lock
 	bundle install --path vendor/cache
 
 include ./include/rpm.mk
+
+$(NAME)-$(PACKAGE_VERSION).tgz: .
+	mkdir $(NAME)-$(PACKAGE_VERSION)/
+	cp -r $</* $(NAME)-$(PACKAGE_VERSION)/
+	tar czvf $@ $(NAME)-$(PACKAGE_VERSION)/
+	rm -rf $(NAME)-$(PACKAGE_VERSION)/
+
+dist: $(NAME)-$(PACKAGE_VERSION).tgz
