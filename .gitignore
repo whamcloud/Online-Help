@@ -1,5 +1,9 @@
 *.log
-dist
+targetdir/
 _site
 node_modules
 vendor
+.bundle/
+.jekyll-metadata
+_topdir/
+*.tgz

@@ -1,5 +1,5 @@
-/.vscode
-/docs
+.vscode/
+docs/
 .editorconfig
 .eslintignore
 .gitattributes
@@ -7,8 +7,16 @@
 _config.yml
 Gemfile
 Gemfile.lock
-README.md
 dist/README.md
 dist/Gemfile
 dist/Gemfile.lock
-vendor
+.github/move.yml
+.jekyll-metadata
+.travis.yml
+Makefile
+_topdir
+iml-online-help.spec
+*.tgz
+include/
+vendor/
+*.old

@@ -13,10 +13,10 @@ jobs:
       script:
       - ./include/travis/run_in_centos7_docker.sh include/travis/mock_build_test.sh
     - stage: deploy-npm
-      language: ruby
-      rvm: 2.1
       if: branch =~ ^v\d+\.\d+\.\d+-1.*$
       env: Type='NPM Deploy'
+      language: ruby
+      rvm: 2.1
       install:
         - . $HOME/.nvm/nvm.sh
         - nvm install 8
@@ -36,14 +36,10 @@ jobs:
       if: branch =~ ^v\d+\.\d+\.\d+-.+$
       env: Type='Copr deploy'
       before_deploy:
-      - openssl aes-256-cbc -K $encrypted_253525cedcf6_key -iv $encrypted_253525cedcf6_iv -in include/copr-mfl.enc -out include/copr-mfl -d
-      - curl -O https://raw.githubusercontent.com/m3t/travis_wait/master/travis_wait
-      - chmod 755 travis_wait
+      - include/travis/copr-deploy.sh prepare
       deploy:
         skip_cleanup: true
         provider: script
-        script: ./travis_wait "./include/travis/run_in_centos7_docker.sh include/travis/copr-deploy.sh"
+        script: ./travis_wait "./include/travis/run_in_centos7_docker.sh include/travis/copr-deploy.sh build"
         on:
           all_branches: true
-
-

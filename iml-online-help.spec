@@ -23,7 +23,7 @@ This module is a static html website based on the online-help markdown docs. The
 rm -rf %{buildroot}
 
 mkdir -p %{buildroot}%{_libdir}/iml-manager/%{name}
-cp -a dist/. %{buildroot}%{_libdir}/iml-manager/%{name}/
+cp -a targetdir/. %{buildroot}%{_libdir}/iml-manager/%{name}/
 
 %clean
 rm -rf %{buildroot}
