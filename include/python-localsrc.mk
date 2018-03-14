@@ -1,3 +1,5 @@
+BUILD_METHOD := Registry
+
 include include/git-versioning.mk
 
 ifeq ($(strip $(VERSION)),)
@@ -68,6 +70,9 @@ endif
 _topdir/SOURCES/%: %
 	mkdir -p _topdir/SOURCES
 	cp $< $@
+
+install_build_deps:
+	yum -y install python-setuptools
 
 include deps
 

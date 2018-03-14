@@ -1,5 +1,8 @@
 RPM_SPEC      ?= $(NAME).spec
 
+CLEAN += _topdir
+DISTCLEAN += dist
+
 ifndef DIST_VERSION
 DIST_VERSION	     := $(PACKAGE_VERSION)
 else
@@ -12,10 +15,6 @@ RPM_DIST=$(subst .centos,,$(shell rpm --eval %dist))
 ALL_PKGS := $(NAME) $(addprefix $(NAME)-,$(SUBPACKAGES))
 
 PACKAGE_VRD   := $(PACKAGE_VERSION)-$(PACKAGE_RELEASE)$(RPM_DIST)
-
-TARGET_RPMS   := $(addprefix _topdir/RPMS/noarch/python-,  \
-                   $(addsuffix -$(PACKAGE_VRD).noarch.rpm, \
-                     $(ALL_PKGS)))
 
 RPM_SOURCES   := $(shell spectool --define version\ $(PACKAGE_VERSION)   \
 		                  $(RPM_DIST_VERSION_ARG)                \
@@ -31,9 +30,9 @@ COMMON_RPMBUILD_ARGS += $(RPM_DIST_VERSION_ARG)                       \
 			--define "epel 1"                             \
 			--define "%dist $(RPM_DIST)"
 
-RPMBUILD_ARGS += $(COMMON_RPMBUILD_ARGS) --define "_topdir $$(pwd)/_topdir" 
+RPMBUILD_ARGS += $(COMMON_RPMBUILD_ARGS) --define "_topdir $$(pwd)/_topdir"
 
-TARGET_SRPM   := _topdir/SRPMS/$(shell set -x; rpm $(RPMBUILD_ARGS) -q             \
+TARGET_SRPM   := _topdir/SRPMS/$(shell rpm $(RPMBUILD_ARGS) -q             \
 				 --qf %{name}-%{version}-%{release}\\n     \
 				 --specfile $(RPM_SPEC) | head -1).src.rpm
 
@@ -43,10 +42,6 @@ genfiles: $(RPM_SPEC)
 
 develop:
 	python setup.py develop
-
-cleandist:
-	rm -rf dist
-	mkdir dist
 
 tarball: dist/$(NAME)-$(PACKAGE_VERSION).tar.gz
 
@@ -61,14 +56,6 @@ _topdir/SPECS/$(RPM_SPEC): $(RPM_SPEC)
 _topdir/SOURCES/%: %
 	mkdir -p _topdir/SOURCES
 	cp $< $@
-
-$(RPM_SOURCES):
-	if ! spectool $(RPM_DIST_VERSION_ARG)                  \
-		   --define "epel 1"                           \
-		   -g $(RPM_SPEC); then                        \
-	    echo "Failed to fetch $@.";                        \
-	    exit 1;                                            \
-	fi
 
 srpm: $(TARGET_SRPM)
 
@@ -109,11 +96,8 @@ rpmlint: $(RPM_SPEC)
 tags:
 	ctags -R .
 
-clean: cleandist
-	rm -rf _topdir
-
-.PHONY: rpms srpm test test_dependencies build_test dist cleandist develop \
-	all clean genfiles setuphooks rpmlint
+.PHONY: rpms srpm test test_dependencies build_test dist develop \
+	all genfiles setuphooks rpmlint
 
 include include/githooks.mk
 

@@ -1,7 +1,16 @@
+PREREQ :=
+
+ifeq ($(DRYRUN),true)
+	ECHO := echo
+else
+	ECHO :=
+endif
+
 ifneq ($(filter iml_%,$(MAKECMDGOALS)),)
   COPR_CONFIG := --config include/copr-mfl
   OWNER_PROJECT = managerforlustre/manager-for-lustre
 else
+  PREREQ += create_copr_project
   # local settings
   -include copr-local.mk
 
@@ -17,10 +26,19 @@ else
 endif
 
 ifeq ($(shell grep -q ^%patch $(RPM_SPEC); echo $${PIPESTATUS[0]}),0)
-  PREREQ=$(TARGET_SRPM)
+  PREREQ += $(TARGET_SRPM)
 else
-  PREREQ=$(RPM_SPEC)
+  PREREQ += $(RPM_SPEC)
 endif
+
+delete_copr_project:
+	if copr-cli list | grep $(NAME); then                     \
+	    $(ECHO) copr-cli $(COPR_CONFIG) delete $(NAME);               \
+	fi
+
+create_copr_project: delete_copr_project
+	$(ECHO) copr-cli $(COPR_CONFIG) create --chroot epel-7-x86_64 \
+		 --enable-net on $(NAME)
 
 ifeq ($(BUILD_METHOD),PyPI)
 #copr_build:
@@ -30,13 +48,15 @@ copr_build iml_copr_build: $(PREREQ)
 	# https://pagure.io/copr/copr/issue/207
 	#copr-cli buildpypi --packagename $(NAME)
 	#$(COPR_OWNER)/$(COPR_PROJECT)
-	copr-cli $(COPR_CONFIG) build $(OWNER_PROJECT) $^
+	$(ECHO) copr-cli $(COPR_CONFIG) build $(OWNER_PROJECT) $(filter-out \
+		create_copr_project,$^)
 else ifeq ($(BUILD_METHOD),Registry)
 copr_build iml_copr_build: $(PREREQ)
-	copr-cli $(COPR_CONFIG) build $(OWNER_PROJECT) $^
+	$(ECHO) copr-cli $(COPR_CONFIG) build $(OWNER_PROJECT) $(filter-out \
+		create_copr_project,$^)
 else
-copr_build iml_copr_build: $(RPM_SPEC)
-	copr-cli $(COPR_CONFIG) buildmock $(OWNER_PROJECT)       \
+copr_build iml_copr_build: $(PREREQ)
+	$(ECHO) copr-cli $(COPR_CONFIG) buildmock $(OWNER_PROJECT)       \
 		 --scm-type git                                  \
 		 --scm-url https://github.com/intel-hpdd/$(NAME)
 endif

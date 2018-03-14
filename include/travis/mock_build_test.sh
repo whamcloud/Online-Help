@@ -4,8 +4,15 @@
 MAPPED_DIR="${MAPPED_DIR:-/build}"
 
 echo 'travis_fold:start:yum'
-yum -y install git mock rpm-build ed sudo make rpmdevtools python-setuptools rpmlint
+yum -y install git mock rpm-build ed sudo make rpmdevtools rpmlint
 echo 'travis_fold:end:yum'
+
+# edit per the module if specified
+if [ -f mock-default.cfg.ed ]; then
+    cp /etc/mock/default.cfg{,.orig}
+    ed /etc/mock/default.cfg < mock-default.cfg.ed
+    diff -u /etc/mock/default.cfg{.orig,} || true
+fi
 
 # add our repos to the mock configuration
 ed <<"EOF" /etc/mock/default.cfg
@@ -37,6 +44,9 @@ groupadd --gid "$(stat -c '%g' "$MAPPED_DIR")" mocker
 useradd --uid "$(stat -c '%u' "$MAPPED_DIR")" --gid "$(stat -c '%g' "$MAPPED_DIR")" mocker
 usermod -a -G mock mocker
 
+pushd "$MAPPED_DIR"
+make install_build_deps
+popd
 
 if ! su - mocker <<EOF; then
 set -xe

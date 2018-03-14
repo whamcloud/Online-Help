@@ -1,4 +1,8 @@
-RPM_SPEC      := python-$(NAME).spec
+RPM_SPEC := python-$(NAME).spec
+
+TARGET_RPMS = $(addprefix _topdir/RPMS/noarch/python-,  \
+                $(addsuffix -$(PACKAGE_VRD).noarch.rpm, \
+                  $(ALL_PKGS)))
 
 test_dependencies:
 	test_deps="$(TEST_DEPS)";                               \
@@ -12,3 +16,5 @@ test_dependencies:
 test: test_dependencies
 	@nosetests $(NOSE_ARGS)
 
+install_build_deps:
+	echo "Nothing to install"
