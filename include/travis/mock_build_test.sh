@@ -53,6 +53,10 @@ set -xe
 cd "$MAPPED_DIR"
 make rpmlint
 make DIST_VERSION="$TEST_BRANCH" build_test
+for rpm in \$(ls /var/lib/mock/epel-7-x86_64/result/*.rpm); do
+    echo "------- \$rpm -------"
+    rpm -qlp \$rpm
+done
 EOF
     exit "${PIPESTATUS[0]}"
 fi
