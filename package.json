@@ -2,6 +2,7 @@
   "name": "@iml/online-help",
   "version": "2.3.2",
   "description": "The IML help docs",
+  "files": ["targetdir/"],
   "scripts": {
     "build": "rm -rf dist && make BASEURL='/help'",
     "start": "bundle exec jekyll serve",
