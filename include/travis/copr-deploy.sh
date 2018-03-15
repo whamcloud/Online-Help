@@ -21,6 +21,6 @@ build() {
 }
 
 # default action to build for backward compatibility
-action=${1:build}
+action=${1:-build}
 
 $action
