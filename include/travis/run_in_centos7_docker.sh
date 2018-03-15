@@ -13,5 +13,5 @@ trap 'set -x
 docker stop "$DOCKER_CONTAINER_ID"
 docker rm -v "$DOCKER_CONTAINER_ID"' EXIT
 docker logs "$DOCKER_CONTAINER_ID"
-docker exec -i "$DOCKER_CONTAINER_ID" /bin/bash -xec "cd $MAPPED_DIR; $1"
+docker exec -i "$DOCKER_CONTAINER_ID" /bin/bash -xec "cd $MAPPED_DIR; $*"
 docker ps -a
