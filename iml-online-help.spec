@@ -6,7 +6,7 @@ Summary:    IML Online Help
 License:    MIT
 Group:      System Environment/Libraries
 URL:        https://github.com/intel-hpdd/%{base_name}
-Source0:    http://registry.npmjs.org/@iml/%{base_name}/-/%{base_name}-%{version}.tgz
+Source0:    https://registry.npmjs.org/@iml/%{base_name}/-/%{base_name}-%{version}.tgz
 
 BuildArch:  noarch
 
