@@ -1,14 +1,13 @@
+CLEAN        += $(NAME)-$(PACKAGE_VERSION).tgz \
+	        $(subst iml-,,$(NAME)-$(PACKAGE_VERSION).tgz) targetdir
+
 include include/common.mk
 
 TARGET_RPMS = $(NAME)-$(PACKAGE_VERSION)-$(PACKAGE_RELEASE)$(RPM_DIST).noarch.rpm
+BUILD_METHOD := Registry
 
 include include/rpm-common.mk
 include include/copr.mk
-
-
-BUILD_METHOD := Registry
-CLEAN        += $(NAME)-$(PACKAGE_VERSION).tgz \
-	        $(subst iml-,,$(NAME)-$(PACKAGE_VERSION).tgz) targetdir
 
 # these are interesting ways to try to generate the prerequisite list but
 # they don't quite work since prerequisite determination is done at Makefile
