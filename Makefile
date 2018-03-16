@@ -1,5 +1,5 @@
 NAME            := iml-online-help
-PACKAGE_VERSION := 2.4.0
+PACKAGE_VERSION := 2.4.1
 PACKAGE_RELEASE := 1
 
 BASEURL ?= $(PWD)/targetdir

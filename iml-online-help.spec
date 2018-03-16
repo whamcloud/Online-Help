@@ -1,6 +1,9 @@
 %define base_name online-help
+%define managerdir /iml-manager/
+%define backcompatdir /usr/lib%{managerdir}
+
 Name:       iml-%{base_name}
-Version:    2.4.0
+Version:    2.4.1
 Release:    1%{?dist}
 Summary:    IML Online Help
 License:    MIT
@@ -22,16 +25,23 @@ This module is a static html website based on the online-help markdown docs. The
 %install
 rm -rf %{buildroot}
 
-mkdir -p %{buildroot}%{_libdir}/iml-manager/%{name}
-cp -a targetdir/. %{buildroot}%{_libdir}/iml-manager/%{name}/
+mkdir -p %{buildroot}%{_datadir}%{managerdir}%{name}
+cp -al targetdir/. %{buildroot}%{_datadir}%{managerdir}%{name}
+mkdir -p %{buildroot}%{backcompatdir}
+ln -s %{_datadir}%{managerdir}%{name} %{buildroot}%{backcompatdir}%{name}
 
 %clean
 rm -rf %{buildroot}
 
-%files 
-%{_libdir}/iml-manager/%{name}
+%files
+%{_datadir}
+%{backcompatdir}
 
 %changelog
+* Fri Mar 16 2018 Joe Grund <joe.grund@intel.com> - 2.4.1-1
+- Remove *.md files
+- Move deployment dir to datadir.
+
 * Wed Mar 14 2018 Joe Grund <joe.grund@intel.com> - 2.4.0-1
 - Add upgrade docs.
 - Add debugging rust section.
