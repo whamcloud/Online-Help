@@ -4,64 +4,50 @@
 
 ![clustre](md_Graphics/uninstall_sm.jpg)
 
-# **Step 1**: Uninstall the IML Manager
+## **Step 1**: Uninstall the IML Manager
 
-### Stop the manager and httpd 
+### Stop the manager
 
-```
+```bash
 chroma-config stop
 ```
 
-### Remove the Manager
-```
-chkconfig --del chroma-supervisor
-yum clean all --enablerepo=*
-yum remove chroma* fence-agents*
-rm -rf  /usr/lib/iml-*
-rm -rf /usr/share/chroma-manager/
-```
+### Export the database (optional)
 
-### Optionally, remove nginx
-```
-yum remove nginx
-```
-
-### Clean up these RPM included files/dirs
-```
-rm -rf /usr/lib/python2.7/site-packages/chroma*
-```
-
-### Clean up extra yum directories
-```
-rm -rf /var/cache/yum/x86_64/7/chroma-manager
-```
-
-### Optionally, Remove logs
-```
-rm -rf /var/log/chroma
-```
-
-### Optionally, export the database
-```
-su - postgres 
+```bash
+su - postgres
 pg_dump -f chromadb.dump chroma
+logout
+```
+
+### Drop the database (optional)
+
+```bash
+su - postgres
 dropdb chroma
 logout
 ```
 
-### Optionally, remove database server
-```
-yum remove postgresql*
+### Remove the Manager
+
+```bash
+chkconfig --del chroma-supervisor
+yum clean all --enablerepo=*
+yum autoremove -y chroma-manager
+# may want if running in vagrant: yum autoremove -y fence-agents-vbox
+rm -rf  /usr/lib/iml-*
+rm -rf /usr/share/chroma-manager/
+rm -rf /usr/lib/python2.7/site-packages/chroma*
+rm -rf /var/cache/yum/x86_64/7/chroma-manager
+rm -rf /var/cache/yum/x86_64/7/managerforlustre-manager-for-lustre
+rm -rf /etc/yum.repos.d/chroma_support.repo
 ```
 
-### Optionally stop and remove RabbitMQ
-```
-service rabbitmq-server stop
-yum remove rabbitmq-server
-```
+### Optionally, Remove logs
 
-### **Note:**  The IML install creates a repo dir based on a tgz distrubtion and a repo file in /etc/yum.repos.d/ however, both repo dir and repo file are completely removed after installation so they should not need to be deleted now.
-
+```shell
+rm -rf /var/log/chroma
+```
 
 ---
 
