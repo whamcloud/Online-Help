@@ -76,17 +76,15 @@ Each server will need to know which interface should be assigned the lustre netw
 Run the following commands:
 
 ```
-    vagrant sh -c '
+    vagrant sh -u root -c '
     systemctl stop firewalld; systemctl disable firewalld;
     systemctl start ntpd;
-    echo "options lnet networks=tcp0(enp0s9)" > /etc/modprobe.d/lustre.conf;
-    modprobe lnet;
-    lctl network configure;
+    modprobe lnet
+    lnetctl lnet configure
+    lnetctl net del --net tcp0 --if enp0s3
+    lnetctl net add --net tcp0 --if enp0s9
     /sbin/modprobe lustre;
     genhostid' mds1 mds2 oss1 oss2
-
-    vagrant halt mds1 mds2 oss1 oss2
-    vagrant up mds1 mds2 oss1 oss2
 ```
 
 The IML GUI should show that the LNET and NID Configuration is updated (IP Address 10.73.20.x to use `Lustre Network 0`). All alerts are cleared.
@@ -116,50 +114,50 @@ vagrant sh -c 'lctl list_nids' mds1 mds2 oss1 oss2
 ### Format the MGS and mount Lustre
 
 ```
-vagrant sh -c 'mkfs.lustre --mgs --reformat --servicenode=10.73.20.12@tcp \
+vagrant sh -u root -c 'mkfs.lustre --mgs --reformat --servicenode=10.73.20.12@tcp \
 --servicenode=10.73.20.11@tcp /dev/disk/by-id/ata-VBOX_HARDDISK_MGS00000000000000000' mds2
-vagrant sh -c 'mkdir -p /mnt/mgs' mds1 mds2
-vagrant sh -c 'mount -t lustre /dev/disk/by-id/ata-VBOX_HARDDISK_MGS00000000000000000 /mnt/mgs' mds2
+vagrant sh -u root -c 'mkdir -p /mnt/mgs' mds1 mds2
+vagrant sh -u root -c 'mount -t lustre /dev/disk/by-id/ata-VBOX_HARDDISK_MGS00000000000000000 /mnt/mgs' mds2
 # verify the mount
-vagrant sh -c 'mount | grep lustre' mds2
+vagrant sh -u root -c 'mount | grep lustre' mds2
 ```
 
 ### Format the MDS and mount Lustre
 
 ```
-vagrant sh -c 'mkfs.lustre --mdt --reformat --servicenode=10.73.20.12@tcp \
+vagrant sh -u root -c 'mkfs.lustre --mdt --reformat --servicenode=10.73.20.12@tcp \
 --servicenode=10.73.20.11@tcp --index=0 --mgsnode=10.73.20.12@tcp --fsname=fs \
 /dev/disk/by-id/ata-VBOX_HARDDISK_MDT00000000000000000' mds1
-vagrant sh -c 'mkdir -p /mnt/mds' mds1 mds2
-vagrant sh -c 'mount -t lustre /dev/disk/by-id/ata-VBOX_HARDDISK_MDT00000000000000000 /mnt/mds' mds1
+vagrant sh -u root -c 'mkdir -p /mnt/mds' mds1 mds2
+vagrant sh -u root -c 'mount -t lustre /dev/disk/by-id/ata-VBOX_HARDDISK_MDT00000000000000000 /mnt/mds' mds1
 # verify the mount
-vagrant sh -c 'mount | grep lustre' mds1
+vagrant sh -u root -c 'mount | grep lustre' mds1
 ```
 
 ### Format OSS1 and mount Lustre
 
 ```
-vagrant sh -c 'mkfs.lustre --ost --reformat --servicenode=10.73.20.21@tcp \
+vagrant sh -u root -c 'mkfs.lustre --ost --reformat --servicenode=10.73.20.21@tcp \
 --servicenode=10.73.20.22@tcp --index=0 \
 --mgsnode=10.73.20.12@tcp --fsname=fs \
 /dev/disk/by-id/ata-VBOX_HARDDISK_OST0PORT100000000000' oss1
-vagrant sh -c 'mkdir -p /mnt/ost0' oss1 oss2
-vagrant sh -c 'mount -t lustre /dev/disk/by-id/ata-VBOX_HARDDISK_OST0PORT100000000000 /mnt/ost0' oss1
+vagrant sh -u root -c 'mkdir -p /mnt/ost0' oss1 oss2
+vagrant sh -u root -c 'mount -t lustre /dev/disk/by-id/ata-VBOX_HARDDISK_OST0PORT100000000000 /mnt/ost0' oss1
 # verify the mount
-vagrant sh -c 'mount | grep lustre' oss1
+vagrant sh -u root -c 'mount | grep lustre' oss1
 ```
 
 ### Format OSS2 and mount Lustre
 
 ```
-vagrant sh -c 'mkfs.lustre --ost --reformat --servicenode=10.73.20.21@tcp \
+vagrant sh -u root -c 'mkfs.lustre --ost --reformat --servicenode=10.73.20.21@tcp \
 --servicenode=10.73.20.22@tcp --index=1 \
 --mgsnode=10.73.20.12@tcp --fsname=fs \
 /dev/disk/by-id/ata-VBOX_HARDDISK_OST1PORT200000000000' oss2
-vagrant sh -c 'mkdir -p /mnt/ost1' oss1 oss2
-vagrant sh -c 'mount -t lustre /dev/disk/by-id/ata-VBOX_HARDDISK_OST1PORT200000000000 /mnt/ost1' oss2
+vagrant sh -u root -c 'mkdir -p /mnt/ost1' oss1 oss2
+vagrant sh -u root -c 'mount -t lustre /dev/disk/by-id/ata-VBOX_HARDDISK_OST1PORT200000000000 /mnt/ost1' oss2
 # verify the mount
-vagrant sh -c 'mount | grep lustre' oss2
+vagrant sh -u root -c 'mount | grep lustre' oss2
 ```
 
 After all the commands for each node have run successfully, use the IML GUI to scan for the filesystem:
