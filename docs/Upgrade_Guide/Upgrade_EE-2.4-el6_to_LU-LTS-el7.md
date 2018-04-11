@@ -922,6 +922,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
     ```bash
     pcs cluster start
+    pcs cluster enable
     ```
 
     **Note:** The cluster framework will usually take a few seconds to initialize. Progress can be monitored in the syslog or by occasionally reviewing the output of the `pcs status` command.
@@ -1623,6 +1624,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
     ```bash
     pcs cluster start
+    pcs cluster enable
     ```
 
 1. On **node 2**, create the mount points for the storage targets. If not, the resource agent, `ocf:chroma:Target` will fail. The expected mount points can be derived from the target configuration files in ``$HOME/bck-`hostname`-*/var/lib/chroma/targets/*``. The following script extracts the mount points from the files:

@@ -696,6 +696,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
 
     ```bash
     pcs cluster start
+    pcs cluster enable
     ```
 
 1. Take node 1 out of standby mode:
@@ -1106,6 +1107,7 @@ Node 1 upgrade is complete.
 
     ```bash
     pcs cluster start
+    pcs cluster enable
     ```
 
 1. Take node 2 out of standby mode:
