@@ -9,7 +9,7 @@
 
 
 A client (compute node) accessing a storage appliance must be running
-Intel® Manager for Lustre* software 4.0.0 client software. The Lustre* file system
+Intel® Manager for Lustre* software {{site.version}} client software. The Lustre* file system
 must first be created or discovered at the Intel® Manager for Lustre* software
 dashboard (see the Intel® Manager for Lustre* software Online Help to do this).
 The Lustre* client software must be installed on the client, and then the

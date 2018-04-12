@@ -1,4 +1,4 @@
-# Upgrading Intel® EE for Lustre\* 2.4.2.7 to Lustre\* 2.10.x LTS and Intel® Manager for Lustre\* 4.0
+# Upgrading Intel® EE for Lustre\* 2.4.2.7 to Lustre\* 2.10.x LTS and Intel® Manager for Lustre\* {{site.version}}
 
 ## Introduction
 
@@ -22,27 +22,27 @@ The reference platform used throughout the documentation has been installed and 
 
 ## Process Overview
 
-1. Upgrade the Intel® Manager for Lustre\* manager server
-    1. Backup the Intel® Manager for Lustre\* server (IML manager) configuration and database
-    1. Install RHEL 7 or CentOS 7
-    1. Install the latest version of the IML manager software for EL7
-    1. Restore the IML manager configuration and database
-    1. Start the IML manager services
-1. Upgrade the metadata and object storage server pairs. For each HA pair:
-    1. Backup the server configuration for both machines
-    1. Machines are upgraded one at a time
-        1. Failover all resources to a single node, away from the node being upgraded
-        1. Set the node to standby mode and disable the node in Pacemaker
-        1. Shut down the node to be upgraded. Verify that the Lustre\* services remain online
-        1. Install the new OS
-        1. Install the new EE software
-        1. Restore the server configuration
-        1. Create the Pacemaker framework
-        1. Stop the resources on the secondary node
-        1. Move the Pacemaker resources to the upgraded node
-        1. Update the secondary node
-        1. Add the secondary node into the Pacemaker configuration
-        1. Re-balance the resources
+1.  Upgrade the Intel® Manager for Lustre\* manager server
+    1.  Backup the Intel® Manager for Lustre\* server (IML manager) configuration and database
+    1.  Install RHEL 7 or CentOS 7
+    1.  Install the latest version of the IML manager software for EL7
+    1.  Restore the IML manager configuration and database
+    1.  Start the IML manager services
+1.  Upgrade the metadata and object storage server pairs. For each HA pair:
+    1.  Backup the server configuration for both machines
+    1.  Machines are upgraded one at a time
+        1.  Failover all resources to a single node, away from the node being upgraded
+        1.  Set the node to standby mode and disable the node in Pacemaker
+        1.  Shut down the node to be upgraded. Verify that the Lustre\* services remain online
+        1.  Install the new OS
+        1.  Install the new EE software
+        1.  Restore the server configuration
+        1.  Create the Pacemaker framework
+        1.  Stop the resources on the secondary node
+        1.  Move the Pacemaker resources to the upgraded node
+        1.  Update the secondary node
+        1.  Add the secondary node into the Pacemaker configuration
+        1.  Re-balance the resources
 
 **Note:** The procedure relies heavily on backups of server configuration information. The document will describe how to create a backup manifest for each type of server. It is recommended that this information is backed up periodically as a matter of routine, as it can be used to support disaster recovery scenarios.
 
@@ -54,7 +54,7 @@ The first component in the environment to upgrade is the Intel® Manager for Lus
 
 ### Backup the Existing Intel® Manager for Lustre\* Configuration
 
-1. Backup the Existing configuration. Prior to commencing the upgrade, it is essential that a backup of the existing configuration is completed.
+1.  Backup the Existing configuration. Prior to commencing the upgrade, it is essential that a backup of the existing configuration is completed.
 
     The following shell script can be used to capture the essential configuration information that is relevant to the Intel® Manager for Lustre\* software itself:
 
@@ -93,26 +93,26 @@ The first component in the environment to upgrade is the Intel® Manager for Lus
     tar zcf $BCKROOT.tgz `basename $BCKROOT`
     ```
 
-1. Copy the backup tarball to a safe location that is not on the server being upgraded.
+1.  Copy the backup tarball to a safe location that is not on the server being upgraded.
 
 **Note:** This script is not intended to provide a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre\* servers managed by Intel® Manager for Lustre\* that are difficult to re-create if deleted.
 
-***Do not skip the backup. Subsequent process steps rely on the content of the backup to restore the Intel® Manager for Lustre\* services to operation.***
+**_Do not skip the backup. Subsequent process steps rely on the content of the backup to restore the Intel® Manager for Lustre\* services to operation._**
 
 ### Install the Operating System Update for the Manager Node
 
-1. [Optional] Stop  the `chroma-agent` daemon on each of the registered Lustre\* nodes. This step is optional, but will reduce the number of warnings and errors in the log files during the upgrade process. Stopping the `chroma-agent` will not affect Lustre\* file system services that are running and will not impact failover of Lustre\* file system cluster resources managed by Pacemaker.
-1. Shut down the Intel® Manager for Lustre\* manager machine and install the new operating system version.
-1. When the installation is complete, copy the configuration backup tarball onto the host and extract it:
+1.  [Optional] Stop the `chroma-agent` daemon on each of the registered Lustre\* nodes. This step is optional, but will reduce the number of warnings and errors in the log files during the upgrade process. Stopping the `chroma-agent` will not affect Lustre\* file system services that are running and will not impact failover of Lustre\* file system cluster resources managed by Pacemaker.
+1.  Shut down the Intel® Manager for Lustre\* manager machine and install the new operating system version.
+1.  When the installation is complete, copy the configuration backup tarball onto the host and extract it:
 
     ```bash
     cd $HOME
     tar zxf bck-`hostname`-*.tgz
     ```
 
-1. Restore the network interfaces, using the utilities provided by the OS (e.g. `nmtui edit`). The backup contains the raw configuration files for reference, in ``bck-`hostname`-*/etc/sysconfig/network-scripts``.
+1.  Restore the network interfaces, using the utilities provided by the OS (e.g. `nmtui edit`). The backup contains the raw configuration files for reference, in `` bck-`hostname`-*/etc/sysconfig/network-scripts ``.
 
-1. Restore the hosts database and DNS resolver configuration. For example:
+1.  Restore the hosts database and DNS resolver configuration. For example:
 
     ```bash
     cp $HOME/bck-`hostname`-*/etc/hosts /etc/.
@@ -120,7 +120,7 @@ The first component in the environment to upgrade is the Intel® Manager for Lus
     cp $HOME/bck-`hostname`-*/etc/nsswitch.conf /etc/.
     ```
 
-1. Restore the user management configuration (`passwd`, `group`, `shadow`, `gshadow`, `sudoers`). For example:
+1.  Restore the user management configuration (`passwd`, `group`, `shadow`, `gshadow`, `sudoers`). For example:
 
     ```bash
     cp $HOME/bck-`hostname`-*/etc/passwd /etc/.
@@ -130,7 +130,7 @@ The first component in the environment to upgrade is the Intel® Manager for Lus
     cp $HOME/bck-`hostname`-*/etc/sudoers /etc/.
     ```
 
-1. Restore the SSH configuration from the backup. For example:
+1.  Restore the SSH configuration from the backup. For example:
 
     ```bash
     mv /root/.ssh /root/.ssh.inst
@@ -148,7 +148,7 @@ The first component in the environment to upgrade is the Intel® Manager for Lus
 
     Restoring the `/etc/ssh` configuration and root user ssh keys is optional but will make the process of upgrading easier.
 
-1. Restore the NTP configuration. For example:
+1.  Restore the NTP configuration. For example:
 
     ```bash
     # install ntp
@@ -166,18 +166,18 @@ The first component in the environment to upgrade is the Intel® Manager for Lus
 
 The software upgrade process requires super-user privileges to run. Login as the `root` user or use `sudo` to elevate privileges as required.
 
-1. Download the latest Intel® Manager for Lustre\* software from the project's release page:
+1.  Download the latest Intel® Manager for Lustre\* software from the project's release page:
 
     <https://github.com/intel-hpdd/intel-manager-for-lustre/releases>
 
-1. Extract the Intel® Manager for Lustre\* bundle. For example:
+1.  Extract the Intel® Manager for Lustre\* bundle. For example:
 
     ```bash
     cd $HOME
-    tar zxf iml-4.0.0.0.tar.gz
+    tar zxf {{site.package_name}}.tar.gz
     ```
 
-1. As root, run the installer:
+1.  As root, run the installer:
 
     ```bash
     cd $HOME/iml-*
@@ -199,13 +199,13 @@ The software upgrade process requires super-user privileges to run. Login as the
 
 ### Restore the Intel® Manager for Lustre\* Configuration
 
-1. When the initial installation is complete, stop the Intel® Manager for Lustre\* services on the host:
+1.  When the initial installation is complete, stop the Intel® Manager for Lustre\* services on the host:
 
     ```bash
     chroma-config stop
     ```
 
-1. Restore the Intel® Manager for Lustre\* certificates from the backup:
+1.  Restore the Intel® Manager for Lustre\* certificates from the backup:
 
     ```bash
     mkdir /var/lib/chroma/certs-inst
@@ -213,14 +213,14 @@ The software upgrade process requires super-user privileges to run. Login as the
     cp $HOME/bck-`hostname`-*/var/lib/chroma/* /var/lib/chroma/.
     ```
 
-1. Restore the Intel® Manager for Lustre\* database from the backup:
+1.  Restore the Intel® Manager for Lustre\* database from the backup:
 
     ```bash
     zcat $HOME/bck-`hostname`-*/pgbackup-*.sql.gz | \
     su - postgres -c "psql postgres"
     ```
 
-1. Run `chroma-config setup` to upgrade the restored database to the latest version. This will reconcile any schema changes that may exist between versions:
+1.  Run `chroma-config setup` to upgrade the restored database to the latest version. This will reconcile any schema changes that may exist between versions:
 
     ```bash
     chroma-config setup [-v]
@@ -228,7 +228,7 @@ The software upgrade process requires super-user privileges to run. Login as the
 
     On successful completion, the Intel® Manager for Lustre\* software will be started automatically.
 
-1. When the installation and restoration of the configuration is complete, connect to the Intel® Manager for Lustre\* service using a web browser and verify that the new version has been installed and is running.
+1.  When the installation and restoration of the configuration is complete, connect to the Intel® Manager for Lustre\* service using a web browser and verify that the new version has been installed and is running.
 
 ### Create Local Repositories for the Lustre\* Packages
 
@@ -238,7 +238,7 @@ An alternative strategy is to copy the repository definition from step 1 directl
 
 Also note that the manager server distribution includes a default repository definition in `/usr/share/chroma-manager/storage_server.repo`. This can be copied onto each Lustre\* server and client into `/etc/yum.repos.d` instead of using these instructions. The choice of method for distributing Lustre\* onto the target nodes is a matter of preference and suitability for the target environment.
 
-1. Create a temporary YUM repository definition. This will be used to assist with the initial acquisition of the Lustre\* and related packages.
+1.  Create a temporary YUM repository definition. This will be used to assist with the initial acquisition of the Lustre\* and related packages.
 
     ```bash
     cat >/tmp/lustre-repo.conf <<\__EOF
@@ -272,7 +272,7 @@ Also note that the manager server distribution includes a default repository def
 
     Also note that the `debuginfo` packages are excluded in the example repository definitions. This is simply to cut down on the size of the download. It is usually a good idea to pull in these files as well, to assist with debugging of issues.
 
-1. Use the `reposync` command (distributed in the `yum-utils` package) to download mirrors of the Lustre\* repositories to the manager server:
+1.  Use the `reposync` command (distributed in the `yum-utils` package) to download mirrors of the Lustre\* repositories to the manager server:
 
     ```bash
     cd /var/lib/chroma/repo
@@ -282,7 +282,7 @@ Also note that the manager server distribution includes a default repository def
     -r e2fsprogs-wc
     ```
 
-1. Create the repository metadata:
+1.  Create the repository metadata:
 
     ```bash
     cd /var/lib/chroma/repo
@@ -291,7 +291,7 @@ Also note that the manager server distribution includes a default repository def
     done
     ```
 
-1. Create a YUM Repository Definition File
+1.  Create a YUM Repository Definition File
 
     The following script creates a file containing repository definitions for the Intel® Manager for Lustre\* Agent software and the Lustre\* packages downloaded in the previous section. Review the content and adjust according to the requirements of the target environment. Run the script on the upgraded Intel® Manager for Lustre\* host:
 
@@ -368,7 +368,7 @@ The software upgrade process requires super-user privileges to run. Login as the
 
 Upgrade one server at a time in each cluster pair, starting with Node 1, and make sure the upgrade is complete on one server before moving on to the second server in the pair.
 
-1. As a precaution, create a backup of the existing configuration for each server. The following shell script can be used to capture the essential configuration information that is relevant to Intel® Manager for Lustre\* managed mode servers:
+1.  As a precaution, create a backup of the existing configuration for each server. The following shell script can be used to capture the essential configuration information that is relevant to Intel® Manager for Lustre\* managed mode servers:
 
     ```bash
     #!/bin/sh
@@ -406,9 +406,9 @@ Upgrade one server at a time in each cluster pair, starting with Node 1, and mak
 
     **Note:** This is not intended to be a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre\* servers managed by Intel® Manager for Lustre\* that are difficult to re-create if deleted.
 
-    ***Do not skip the backup. Subsequent process steps rely on the content of the backup to restore the Lustre\* services to operation.***
+    **_Do not skip the backup. Subsequent process steps rely on the content of the backup to restore the Lustre\* services to operation._**
 
-1. Copy the backups for each server's configuration to a safe location that is not on the servers being upgraded.
+1.  Copy the backups for each server's configuration to a safe location that is not on the servers being upgraded.
 
 **Note:** The `pcs` command provides a way to create a set of commands intended to help recreate a cluster, as an alternative form of configuration backup. It is invoked as follows:
 
@@ -416,7 +416,7 @@ Upgrade one server at a time in each cluster pair, starting with Node 1, and mak
 pcs config export pcs-commands | pcs-commands-verbose
 ```
 
-However, it is ***not*** a suitable replacement for a backup of the running configuration, and there are several issues with the resulting output. In particular:
+However, it is **_not_** a suitable replacement for a backup of the running configuration, and there are several issues with the resulting output. In particular:
 
 * The generated commands assume that all of the nodes in the pacemaker cluster have been reinitialized and are being upgraded simultaneously. This means that servers cannot be upgraded one at a time, and will require a full outage of the nodes in the HA cluster.
 * If moving from an older OS version to a newer one, some of the naming conventions have changed and will not be captured in the command list. Specifically, the node names in the "backup" may not have fully qualified domain names. It is recommended that clusters use fully qualified domain names, so this has to be factored into the restore process and edits made to the output.
@@ -427,7 +427,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
 ### Migrate the Resources on Node 1
 
-1. Login to node 1 and failover all resources to the standby node. The easiest way to do this is to set the server to standby mode:
+1.  Login to node 1 and failover all resources to the standby node. The easiest way to do this is to set the server to standby mode:
 
     ```bash
     pcs cluster standby [<node name>]
@@ -435,7 +435,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
     **Note:** if the node name is omitted from the command, only the node currently logged into will be affected.
 
-1. Verify that the resources have moved to the second node and that the resources are running (all storage targets are mounted on the second node only):
+1.  Verify that the resources have moved to the second node and that the resources are running (all storage targets are mounted on the second node only):
 
     ```bash
     # On node 2:
@@ -443,7 +443,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     df -ht lustre
     ```
 
-1. [Optional] Disable the node that is being upgraded:
+1.  [Optional] Disable the node that is being upgraded:
 
     ```bash
     pcs cluster disable [<node name>]
@@ -455,21 +455,21 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
 #### Install the New Operating System Version on Node 1
 
-1. Shut down the first server, node 1
-1. Following the vendor's instructions, install the new OS version on node 1
+1.  Shut down the first server, node 1
+1.  Following the vendor's instructions, install the new OS version on node 1
 
 #### Restore the Node 1 OS Configuration from Backup
 
-1. When the initial OS installation is complete, login to node 1.
-1. Copy the backup tarball onto the new installation on node 1 and extract it:
+1.  When the initial OS installation is complete, login to node 1.
+1.  Copy the backup tarball onto the new installation on node 1 and extract it:
 
     ```bash
     cd $HOME
     tar zxf bck-`hostname`-*.tgz
     ```
 
-1. Restore the network interfaces, using the utilities provided by the OS (e.g. `nmtui-edit`). The backup contains the raw configuration files for reference, in ``bck-`hostname`-*/etc/sysconfig/network-scripts``. Do not forget to restore the network configuration of the direct network connection between the server nodes (used as `ring1` for Corosync communications).
-1. Restore the hosts database and DNS resolver configuration. For example:
+1.  Restore the network interfaces, using the utilities provided by the OS (e.g. `nmtui-edit`). The backup contains the raw configuration files for reference, in `` bck-`hostname`-*/etc/sysconfig/network-scripts ``. Do not forget to restore the network configuration of the direct network connection between the server nodes (used as `ring1` for Corosync communications).
+1.  Restore the hosts database and DNS resolver configuration. For example:
 
     ```bash
     cp $HOME/bck-`hostname`-*/etc/hosts /etc/.
@@ -477,7 +477,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     cp $HOME/bck-`hostname`-*/etc/nsswitch.conf /etc/.
     ```
 
-1. Restore the user management configuration (`passwd`, `group`, `shadow`, `gshadow`, `sudoers`). For example:
+1.  Restore the user management configuration (`passwd`, `group`, `shadow`, `gshadow`, `sudoers`). For example:
 
     ```bash
     cp $HOME/bck-`hostname`-*/etc/passwd /etc/.
@@ -487,7 +487,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     cp $HOME/bck-`hostname`-*/etc/sudoers /etc/.
     ```
 
-1. Restore the SSH configuration from the backup:
+1.  Restore the SSH configuration from the backup:
 
     ```bash
     mv /root/.ssh /root/.ssh.inst
@@ -504,7 +504,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
     Restoring the `/etc/ssh` configuration and root user ssh keys is optional but will make the process of upgrading easier.
 
-1. Restore the NTP configuration. For example:
+1.  Restore the NTP configuration. For example:
 
     ```bash
     # install ntp
@@ -518,7 +518,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     systemctl start ntpd
     ```
 
-1. Restore the LNet configuration (file name may vary, depending on how LNet was configured and any customization that may have been carried out). The following example assumes that the server has a configuration that was created by Intel® Manager for Lustre\*:
+1.  Restore the LNet configuration (file name may vary, depending on how LNet was configured and any customization that may have been carried out). The following example assumes that the server has a configuration that was created by Intel® Manager for Lustre\*:
 
     ```bash
     cp $HOME/bck-`hostname`-*/etc/modprobe.d/iml_lnet_module_parameters.conf /etc/modprobe.d/.
@@ -526,8 +526,8 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
 #### Install the EPEL Repository Definition on Node 1
 
-1. Login to node 1.
-1. Install EPEL repository support:
+1.  Login to node 1.
+1.  Install EPEL repository support:
 
     ```bash
     yum -y install epel-release
@@ -535,28 +535,28 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
 #### Install the Intel® Manager for Lustre\* Agent on Node 1
 
-1. Login to node 1.
-1. Install the Intel® Manager for Lustre\* COPR Repository definition, which contains some dependencies for the Intel® Manager for Lustre\* Agent:
+1.  Login to node 1.
+1.  Install the Intel® Manager for Lustre\* COPR Repository definition, which contains some dependencies for the Intel® Manager for Lustre\* Agent:
 
     ```bash
     yum-config-manager --add-repo \
     https://copr.fedorainfracloud.org/coprs/managerforlustre/manager-for-lustre/repo/epel-7/managerforlustre-manager-for-lustre-epel-7.repo
     ```
 
-1. Install the DNF project COPR Repository definition. DNF is a package manager, and is used as a replacement for YUM in many distributions, such as Fedora. It does not replace YUM in CentOS, but Intel® Manager for Lustre\* does make use of some of the newer features in DNF for some of its tasks:
+1.  Install the DNF project COPR Repository definition. DNF is a package manager, and is used as a replacement for YUM in many distributions, such as Fedora. It does not replace YUM in CentOS, but Intel® Manager for Lustre\* does make use of some of the newer features in DNF for some of its tasks:
 
     ```bash
     yum-config-manager --add-repo \
     https://copr.fedorainfracloud.org/coprs/ngompa/dnf-el7/repo/epel-7/ngompa-dnf-el7-epel-7.repo
     ```
 
-1. Restore the Intel® Manager for Lustre\* Agent configuration and certificates to the node:
+1.  Restore the Intel® Manager for Lustre\* Agent configuration and certificates to the node:
 
     ```bash
     cp -a $HOME/bck-`hostname`-*/var/lib/chroma /var/lib/.
     ```
 
-1. Install the Intel® Manager for Lustre\* Agent repository definition:
+1.  Install the Intel® Manager for Lustre\* Agent repository definition:
 
     ```bash
     curl -o /etc/yum.repos.d/Manager-for-Lustre.repo \
@@ -568,7 +568,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
     Replace `<admin server>` in the `https` URL with the appropriate Intel® Manager for Lustre\* hostname (normally the fully-qualified domain name).
 
-1. Install The Intel® Manager for Lustre\* Agent and Diagnostics packages
+1.  Install The Intel® Manager for Lustre\* Agent and Diagnostics packages
 
     ```bash
     yum -y install chroma-\*
@@ -590,24 +590,24 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
 #### Install the Lustre\* Server Software on Node 1
 
-1. For systems that have **both** LDISKFS and ZFS OSDs:
+1.  For systems that have **both** LDISKFS and ZFS OSDs:
 
     **Note:** This is the configuration that Intel® Manager for Lustre\* installs for all managed-mode Lustre\* storage clusters. Use this configuration for the highest level of compatibility with Intel® Manager for Lustre\*.
 
-    1. Install the Lustre\* `e2fsprogs` distribution:
+    1.  Install the Lustre\* `e2fsprogs` distribution:
 
         ```bash
         yum --nogpgcheck --disablerepo=* --enablerepo=e2fsprogs-wc \
         install e2fsprogs e2fsprogs-devel
         ```
 
-    1. If the installed `kernel-tools` and  `kernel-tools-libs` packages are at a higher revision than the patched kernel packages in the Lustre\* server repository, they will need to be removed:
+    1.  If the installed `kernel-tools` and `kernel-tools-libs` packages are at a higher revision than the patched kernel packages in the Lustre\* server repository, they will need to be removed:
 
         ```bash
         yum erase kernel-tools kernel-tools-libs
         ```
 
-    1. Install the Lustre-patched kernel packages. Ensure that the Lustre\* repository is picked for the kernel packages, by disabling the OS repos:
+    1.  Install the Lustre-patched kernel packages. Ensure that the Lustre\* repository is picked for the kernel packages, by disabling the OS repos:
 
         ```bash
         yum --nogpgcheck --disablerepo=base,extras,updates \
@@ -620,7 +620,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
         kernel-tools-libs-devel
         ```
 
-    1. Install additional development packages. These are needed to enable support for some of the newer features in Lustre\* – if certain packages are not detected by Lustre's\* configure script when its DKMS package is installed, the features will not be enabled when Lustre\* is compiled. Notable in this list are `krb5-devel` and `libselinux-devel`, needed for Kerberos and SELinux support, respectively.
+    1.  Install additional development packages. These are needed to enable support for some of the newer features in Lustre\* – if certain packages are not detected by Lustre's\* configure script when its DKMS package is installed, the features will not be enabled when Lustre\* is compiled. Notable in this list are `krb5-devel` and `libselinux-devel`, needed for Kerberos and SELinux support, respectively.
 
         ```bash
         yum install \
@@ -636,26 +636,26 @@ The `pcs config export` command can be useful as a cross reference when restorin
         tcl tcl-devel tk tk-devel wget xmlto yum-utils zlib-devel
         ```
 
-    1. Ensure that a persistent hostid has been generated on the machine. If necessary, generate a persistent hostid (needed to help protect zpools against simultaneous imports on multiple servers). For example:
+    1.  Ensure that a persistent hostid has been generated on the machine. If necessary, generate a persistent hostid (needed to help protect zpools against simultaneous imports on multiple servers). For example:
 
         ```bash
         hid=`[ -f /etc/hostid ] && od -An -tx /etc/hostid|sed 's/ //g'`
         [ "$hid" = `hostid` ] || genhostid
         ```
 
-    1. Reboot the node.
+    1.  Reboot the node.
 
         ```bash
         reboot
         ```
 
-    1. Install the metapackage that will install Lustre\* and the LDISKFS and ZFS 'kmod' packages:
+    1.  Install the metapackage that will install Lustre\* and the LDISKFS and ZFS 'kmod' packages:
 
         ```bash
         yum --nogpgcheck install lustre-ldiskfs-zfs
         ```
 
-    1. Verify that the DKMS kernel modules for Lustre\*, SPL and ZFS have installed correctly:
+    1.  Verify that the DKMS kernel modules for Lustre\*, SPL and ZFS have installed correctly:
 
         ```bash
         dkms status
@@ -670,22 +670,23 @@ The `pcs config export` command can be useful as a cross reference when restorin
         zfs, 0.7.1, 3.10.0-693.2.2.el7_lustre.x86_64, x86_64: installed
         ```
 
-    1. Load the Lustre\* and ZFS kernel modules to verify that the software has installed correctly:
+    1.  Load the Lustre\* and ZFS kernel modules to verify that the software has installed correctly:
 
         ```bash
         modprobe -v zfs
         modprobe -v lustre
         ```
 
-1. For systems that use LDISKFS OSDs:
-    1. Install the Lustre\* `e2fsprogs` distribution:
+1.  For systems that use LDISKFS OSDs:
+
+    1.  Install the Lustre\* `e2fsprogs` distribution:
 
         ```bash
         yum --nogpgcheck \
         --disablerepo=* --enablerepo=e2fsprogs-wc install e2fsprogs
         ```
 
-    1. Install the Lustre-patched kernel packages. Ensure that the Lustre\* repository is picked for the kernel packages, by disabling the OS repos:
+    1.  Install the Lustre-patched kernel packages. Ensure that the Lustre\* repository is picked for the kernel packages, by disabling the OS repos:
 
         ```bash
         yum --nogpgcheck --disablerepo=base,extras,updates \
@@ -698,13 +699,13 @@ The `pcs config export` command can be useful as a cross reference when restorin
         kernel-tools-libs-devel
         ```
 
-    1. Reboot the node.
+    1.  Reboot the node.
 
         ```bash
         reboot
         ```
 
-    1. Install the LDISKFS `kmod` and other Lustre\* packages:
+    1.  Install the LDISKFS `kmod` and other Lustre\* packages:
 
         ```bash
         yum --nogpgcheck install \
@@ -715,14 +716,15 @@ The `pcs config export` command can be useful as a cross reference when restorin
         lustre-resource-agents
         ```
 
-    1. Load the Lustre\* kernel modules to verify that the software has installed correctly:
+    1.  Load the Lustre\* kernel modules to verify that the software has installed correctly:
 
         ```bash
         modprobe -v lustre
         ```
 
-1. For systems with only ZFS-based OSDs:
-    1. Install the kernel packages that match the latest supported version for the Lustre\* release:
+1.  For systems with only ZFS-based OSDs:
+
+    1.  Install the kernel packages that match the latest supported version for the Lustre\* release:
 
         ```bash
         yum install \
@@ -746,7 +748,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
         kernel-tools-libs-devel-3.10.0-693.2.2.el7
         ```
 
-        **Note:** If the `kernel-tools` and  `kernel-tools-libs` packages that have been installed on the host prior to running this command are at a higher revision than the kernel version supported by Lustre\*, they will need to be removed first:
+        **Note:** If the `kernel-tools` and `kernel-tools-libs` packages that have been installed on the host prior to running this command are at a higher revision than the kernel version supported by Lustre\*, they will need to be removed first:
 
         ```bash
         yum erase kernel-tools kernel-tools-libs
@@ -754,7 +756,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
         Refer to the [Lustre\* Changelog](http://wiki.lustre.org/Category:Changelog) for the list of supported kernels.
 
-    1. Install additional development packages. These are needed to enable support for some of the newer features in Lustre\* – if certain packages are not detected by Lustre's\* configure script when its DKMS package is installed, the features will not be enabled when Lustre\* is compiled. Notable in this list are `krb5-devel` and `libselinux-devel`, needed for Kerberos and SELinux support, respectively.
+    1.  Install additional development packages. These are needed to enable support for some of the newer features in Lustre\* – if certain packages are not detected by Lustre's\* configure script when its DKMS package is installed, the features will not be enabled when Lustre\* is compiled. Notable in this list are `krb5-devel` and `libselinux-devel`, needed for Kerberos and SELinux support, respectively.
 
         ```bash
         yum install \
@@ -770,20 +772,20 @@ The `pcs config export` command can be useful as a cross reference when restorin
         tcl tcl-devel tk tk-devel wget xmlto yum-utils zlib-devel
         ```
 
-    1. Ensure that a persistent hostid has been generated on the machine. If necessary, generate a persistent hostid (needed to help protect zpools against simultaneous imports on multiple servers). For example:
+    1.  Ensure that a persistent hostid has been generated on the machine. If necessary, generate a persistent hostid (needed to help protect zpools against simultaneous imports on multiple servers). For example:
 
         ```bash
         hid=`[ -f /etc/hostid ] && od -An -tx /etc/hostid|sed 's/ //g'`
         [ "$hid" = `hostid` ] || genhostid
         ```
 
-    1. Reboot the node.
+    1.  Reboot the node.
 
         ```bash
         reboot
         ```
 
-    1. Install the packages for Lustre\* and ZFS:
+    1.  Install the packages for Lustre\* and ZFS:
 
         ```bash
         yum --nogpgcheck install \
@@ -794,7 +796,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
         zfs
         ```
 
-    1. Load the Lustre\* and ZFS kernel modules to verify that the software has installed correctly:
+    1.  Load the Lustre\* and ZFS kernel modules to verify that the software has installed correctly:
 
         ```bash
         modprobe -v zfs
@@ -803,13 +805,13 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
 #### Configure the High Availability Framework on Node 1
 
-1. Install the OS cluster software:
+1.  Install the OS cluster software:
 
     ```bash
     yum -y install pcs pacemaker corosync fence-agents
     ```
 
-1. Ensure `hacluster` user is present on the server. For example:
+1.  Ensure `hacluster` user is present on the server. For example:
 
     ```bash
     [root@ct6-mds1 ~]# id hacluster
@@ -818,16 +820,16 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
     If required, add the `hacluster` user – usually the user is created when the cluster software is installed.
 
-1. Set the password for the `hacluster` user:
+1.  Set the password for the `hacluster` user:
 
     ```bash
     passwd hacluster
     ```
 
-1. Modify or disable the firewall. According to Red Hat, the following ports need to be enabled:
-    1. TCP: ports 2224, 3121, 21064
-    1. UDP: ports 5405
-1. In RHEL / CentOS 7, the firewall software can be configured to permit cluster traffic as follows:
+1.  Modify or disable the firewall. According to Red Hat, the following ports need to be enabled:
+    1.  TCP: ports 2224, 3121, 21064
+    1.  UDP: ports 5405
+1.  In RHEL / CentOS 7, the firewall software can be configured to permit cluster traffic as follows:
 
     ```bash
     firewall-cmd --permanent --add-service=high-availability
@@ -836,33 +838,33 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
     **Note:** both commands are required. The first command writes a persistent record of the firewall rules without changing the running configuration, while the second command changes the running configuration.
 
-1. Verify the firewall configuration as follows:
+1.  Verify the firewall configuration as follows:
 
     ```bash
     firewall-cmd --list-service
     ```
 
-1. Alternatively, disable the firewall completely:
+1.  Alternatively, disable the firewall completely:
 
     ```bash
     systemctl stop firewalld
     systemctl disable firewalld
     ```
 
-1. Start the Pacemaker configuration daemon, `pcsd`, and enable it to start on system boot:
+1.  Start the Pacemaker configuration daemon, `pcsd`, and enable it to start on system boot:
 
     ```bash
     systemctl start pcsd.service
     systemctl enable pcsd.service
     ```
 
-1. Verify that the `pcsd` service is running:
+1.  Verify that the `pcsd` service is running:
 
     ```bash
     systemctl status pcsd.service
     ```
 
-1. Set up PCS authentication by executing the following command on node 1:
+1.  Set up PCS authentication by executing the following command on node 1:
 
     ```bash
     pcs cluster auth <node1 fqdn> -u hacluster
@@ -880,7 +882,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
     **Note:** When working with host names in Pacemaker and Corosync, use the fully qualified domain names for the nodes.
 
-1. From node 1, recreate the cluster framework:
+1.  From node 1, recreate the cluster framework:
 
     ```bash
     pcs cluster setup --name lustre-ha-cluster <node1 fqdn> \
@@ -918,7 +920,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
     **Note:** the script assumes that the input `corosync.conf` file conforms to the Corosync configuration file syntax.
 
-1. Start the cluster on the new node:
+1.  Start the cluster on the new node:
 
     ```bash
     pcs cluster start
@@ -927,7 +929,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
     **Note:** The cluster framework will usually take a few seconds to initialize. Progress can be monitored in the syslog or by occasionally reviewing the output of the `pcs status` command.
 
-1. Set the cluster-wide properties:
+1.  Set the cluster-wide properties:
 
     ```bash
     ### No Quorum policy (what to do when there is no quorum)
@@ -949,7 +951,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     pcs property set symmetric-cluster=true
     ```
 
-1. Set the cluster-wide resource defaults (taken from the pacemaker CIB XML):
+1.  Set the cluster-wide resource defaults (taken from the pacemaker CIB XML):
 
     ```bash
     # How much does the resource prefer to stay where it is?
@@ -974,19 +976,19 @@ The `pcs config export` command can be useful as a cross reference when restorin
     pcs resource defaults migration-threshold=3
     ```
 
-1. Set the cluster to maintenance-mode:
+1.  Set the cluster to maintenance-mode:
 
     ```bash
     pcs property set maintenance-mode=true
     ```
 
-1. Add the basic Intel® Manager for Lustre\* STONITH fencing configuration for the `fence_chroma` resource (this is the same for all Intel® Manager for Lustre\* managed resources, irrespective of the underlying fencing mechanism):
+1.  Add the basic Intel® Manager for Lustre\* STONITH fencing configuration for the `fence_chroma` resource (this is the same for all Intel® Manager for Lustre\* managed resources, irrespective of the underlying fencing mechanism):
 
     ```bash
     pcs stonith create st-fencing fence_chroma
     ```
 
-1. Add the resources for each Lustre\* storage target. This requires the original resource name and target identifier assigned by Intel® Manager for Lustre\*. Both can be retrieved from the backup copy of the Pacemaker CIB XML file. The syntax of the command to create a resource is as follows:
+1.  Add the resources for each Lustre\* storage target. This requires the original resource name and target identifier assigned by Intel® Manager for Lustre\*. Both can be retrieved from the backup copy of the Pacemaker CIB XML file. The syntax of the command to create a resource is as follows:
 
     ```bash
     pcs resource create <resource name> ocf:chroma:Target \
@@ -1038,7 +1040,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     --disabled
     ```
 
-1. Set the location constraints for each resource:
+1.  Set the location constraints for each resource:
 
     ```bash
     pcs constraint location <resource> prefers <primary node name>=20
@@ -1065,7 +1067,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     pcs constraint location demo-MDT0000_802c1b prefers ct6-mds1.lfs.intl=10
     ```
 
-1. Create the mount points for the storage targets. If not, the resource agent, `ocf:chroma:Target` will fail. The expected mount points can be derived from the target configuration files in `/var/lib/chroma/targets/*`, or the backup copes of these files using the following script:
+1.  Create the mount points for the storage targets. If not, the resource agent, `ocf:chroma:Target` will fail. The expected mount points can be derived from the target configuration files in `/var/lib/chroma/targets/*`, or the backup copes of these files using the following script:
 
     ```bash
     for i in /var/lib/chroma/targets/*;do
@@ -1106,14 +1108,14 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
 ### Start the Agent Service and Load the Kernel Modules on Node 1
 
-1. Start the `chroma-agent` service:
+1.  Start the `chroma-agent` service:
 
     ```bash
     systemctl start chroma-agent
     systemctl enable chroma-agent
     ```
 
-1. Start the Lustre\* kernel modules (the Intel® Manager for Lustre\* `ocf:chroma:Target` resource agent expects the Lustre\* kernel modules to be loaded, or it will abort):
+1.  Start the Lustre\* kernel modules (the Intel® Manager for Lustre\* `ocf:chroma:Target` resource agent expects the Lustre\* kernel modules to be loaded, or it will abort):
 
     ```bash
     modprobe lustre
@@ -1123,7 +1125,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
 ### Migrate the Lustre\* Services to Node 1
 
-1. Stop the cluster service on the secondary node. Login to **node 2** and run:
+1.  Stop the cluster service on the secondary node. Login to **node 2** and run:
 
     ```bash
     pcs cluster standby
@@ -1134,13 +1136,13 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
     **Note:** This will incur an outage of the file system for the length of time it takes to shut down the services on node 2 and then restart them on the upgraded node 1 server. This interruption can be minimized with careful planning.
 
-1. On node 1, take the new cluster configuration out of `maintenance-mode`:
+1.  On node 1, take the new cluster configuration out of `maintenance-mode`:
 
     ```bash
     pcs property set maintenance-mode=false
     ```
 
-1. On node 1, start the targets on the new cluster configuration:
+1.  On node 1, start the targets on the new cluster configuration:
 
     ```bash
     pcs resource enable <resource name>
@@ -1169,26 +1171,26 @@ The `pcs config export` command can be useful as a cross reference when restorin
     done
     ```
 
-1. The resources should now be running on the upgraded cluster node.
+1.  The resources should now be running on the upgraded cluster node.
 
 ### Upgrade Node 2
 
 #### Install the New Operating System Version on Node 2
 
-1. Shut down the second server, **node 2**
-1. Following the vendor's instructions, install the new OS version on node 2
+1.  Shut down the second server, **node 2**
+1.  Following the vendor's instructions, install the new OS version on node 2
 
 #### Restore the Node 2 OS Configuration from Backup
 
-1. When the initial OS installation is complete, copy the backup tarball onto the new installation on node 2 and extract it:
+1.  When the initial OS installation is complete, copy the backup tarball onto the new installation on node 2 and extract it:
 
     ```bash
     cd $HOME
     tar zxf bck-`hostname`-*.tgz
     ```
 
-1. Restore the network interfaces, using the utilities provided by the OS (e.g. `nmtui-edit`). The backup contains the raw configuration files for reference, in ``bck-`hostname`-*/etc/sysconfig/network-scripts``. Do not forget to restore the network configuration of the direct network connection between the server nodes (used as `ring1` for Corosync communications).
-1. Restore the NTP configuration. For example:
+1.  Restore the network interfaces, using the utilities provided by the OS (e.g. `nmtui-edit`). The backup contains the raw configuration files for reference, in `` bck-`hostname`-*/etc/sysconfig/network-scripts ``. Do not forget to restore the network configuration of the direct network connection between the server nodes (used as `ring1` for Corosync communications).
+1.  Restore the NTP configuration. For example:
 
     ```bash
     # install ntp
@@ -1202,7 +1204,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     systemctl start ntpd
     ```
 
-1. Restore the hosts database and DNS resolver configuration. For example:
+1.  Restore the hosts database and DNS resolver configuration. For example:
 
     ```bash
     cp $HOME/bck-`hostname`-*/etc/hosts /etc/.
@@ -1210,7 +1212,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     cp $HOME/bck-`hostname`-*/etc/nsswitch.conf /etc/.
     ```
 
-1. Restore the user management configuration (`passwd`, `group`, `shadow`, `gshadow`, `sudoers`). For example:
+1.  Restore the user management configuration (`passwd`, `group`, `shadow`, `gshadow`, `sudoers`). For example:
 
     ```bash
     cp $HOME/bck-`hostname`-*/etc/passwd /etc/.
@@ -1220,7 +1222,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     cp $HOME/bck-`hostname`-*/etc/sudoers /etc/.
     ```
 
-1. Restore the SSH configuration from the backup:
+1.  Restore the SSH configuration from the backup:
 
     ```bash
     mv /root/.ssh /root/.ssh.inst
@@ -1237,7 +1239,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
     Restoring the `/etc/ssh` configuration and root user ssh keys is optional but will make the process of upgrading easier.
 
-1. Restore the LNet configuration (file name may vary, depending on how LNet was configured and any customization that may have been carried out). The following example assumes that the server has a configuration that was created by Intel® Manager for Lustre\*:
+1.  Restore the LNet configuration (file name may vary, depending on how LNet was configured and any customization that may have been carried out). The following example assumes that the server has a configuration that was created by Intel® Manager for Lustre\*:
 
     ```bash
     cp $HOME/bck-`hostname`-*/etc/modprobe.d/iml_lnet_module_parameters.conf /etc/modprobe.d/.
@@ -1245,8 +1247,8 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
 #### Install the EPEL Repository Definition on Node 2
 
-1. Login to node 2.
-1. Install EPEL repository support:
+1.  Login to node 2.
+1.  Install EPEL repository support:
 
     ```bash
     yum -y install epel-release
@@ -1254,28 +1256,28 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
 #### Install the Intel® Manager for Lustre\* Agent on Node 2
 
-1. Login to node 2.
-1. Install the Intel® Manager for Lustre\* COPR Repository definition, which contains some dependencies for the Intel® Manager for Lustre\* Agent:
+1.  Login to node 2.
+1.  Install the Intel® Manager for Lustre\* COPR Repository definition, which contains some dependencies for the Intel® Manager for Lustre\* Agent:
 
     ```bash
     yum-config-manager --add-repo \
     https://copr.fedorainfracloud.org/coprs/managerforlustre/manager-for-lustre/repo/epel-7/managerforlustre-manager-for-lustre-epel-7.repo
     ```
 
-1. Install the DNF project COPR Repository definition. DNF is a package manager, and is used as a replacement for YUM in many distributions, such as Fedora. It does not replace YUM in CentOS, but Intel® Manager for Lustre\* does make use of some of the newer features in DNF for some of its tasks:
+1.  Install the DNF project COPR Repository definition. DNF is a package manager, and is used as a replacement for YUM in many distributions, such as Fedora. It does not replace YUM in CentOS, but Intel® Manager for Lustre\* does make use of some of the newer features in DNF for some of its tasks:
 
     ```bash
     yum-config-manager --add-repo \
     https://copr.fedorainfracloud.org/coprs/ngompa/dnf-el7/repo/epel-7/ngompa-dnf-el7-epel-7.repo
     ```
 
-1. Restore the Intel® Manager for Lustre\* Agent configuration and certificates to the node:
+1.  Restore the Intel® Manager for Lustre\* Agent configuration and certificates to the node:
 
     ```bash
     cp -a $HOME/bck-`hostname`-*/var/lib/chroma /var/lib/.
     ```
 
-1. Install the Intel® Manager for Lustre\* Agent repository definition:
+1.  Install the Intel® Manager for Lustre\* Agent repository definition:
 
     ```bash
     curl -o /etc/yum.repos.d/Manager-for-Lustre.repo \
@@ -1287,7 +1289,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
     Replace `<admin server>` in the `https` URL with the appropriate Intel® Manager for Lustre\* hostname (normally the fully-qualified domain name).
 
-1. Install The Intel® Manager for Lustre\* Agent and Diagnostics packages
+1.  Install The Intel® Manager for Lustre\* Agent and Diagnostics packages
 
     ```bash
     yum -y install chroma-\*
@@ -1309,24 +1311,24 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
 #### Install the Lustre\* Server Software on Node 2
 
-1. For systems that have **both** LDISKFS and ZFS OSDs:
+1.  For systems that have **both** LDISKFS and ZFS OSDs:
 
     **Note:** This is the configuration that Intel® Manager for Lustre\* installs for all managed-mode Lustre\* storage clusters. Use this configuration for the highest level of compatibility with Intel® Manager for Lustre\*.
 
-    1. Install the Lustre\* `e2fsprogs` distribution:
+    1.  Install the Lustre\* `e2fsprogs` distribution:
 
         ```bash
         yum --nogpgcheck --disablerepo=* --enablerepo=e2fsprogs-wc \
         install e2fsprogs e2fsprogs-devel
         ```
 
-    1. If the installed `kernel-tools` and  `kernel-tools-libs` packages are at a higher revision than the patched kernel packages in the Lustre\* server repository, they will need to be removed:
+    1.  If the installed `kernel-tools` and `kernel-tools-libs` packages are at a higher revision than the patched kernel packages in the Lustre\* server repository, they will need to be removed:
 
         ```bash
         yum erase kernel-tools kernel-tools-libs
         ```
 
-    1. Install the Lustre-patched kernel packages. Ensure that the Lustre\* repository is picked for the kernel packages, by disabling the OS repos:
+    1.  Install the Lustre-patched kernel packages. Ensure that the Lustre\* repository is picked for the kernel packages, by disabling the OS repos:
 
         ```bash
         yum --nogpgcheck --disablerepo=base,extras,updates \
@@ -1339,7 +1341,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
         kernel-tools-libs-devel
         ```
 
-    1. Install additional development packages. These are needed to enable support for some of the newer features in Lustre\* – if certain packages are not detected by Lustre's\* configure script when its DKMS package is installed, the features will not be enabled when Lustre\* is compiled. Notable in this list are `krb5-devel` and `libselinux-devel`, needed for Kerberos and SELinux support, respectively.
+    1.  Install additional development packages. These are needed to enable support for some of the newer features in Lustre\* – if certain packages are not detected by Lustre's\* configure script when its DKMS package is installed, the features will not be enabled when Lustre\* is compiled. Notable in this list are `krb5-devel` and `libselinux-devel`, needed for Kerberos and SELinux support, respectively.
 
         ```bash
         yum install asciidoc audit-libs-devel automake bc \
@@ -1354,26 +1356,26 @@ The `pcs config export` command can be useful as a cross reference when restorin
         tcl tcl-devel tk tk-devel wget xmlto yum-utils zlib-devel
         ```
 
-    1. Ensure that a persistent hostid has been generated on the machine. If necessary, generate a persistent hostid (needed to help protect zpools against simultaneous imports on multiple servers). For example:
+    1.  Ensure that a persistent hostid has been generated on the machine. If necessary, generate a persistent hostid (needed to help protect zpools against simultaneous imports on multiple servers). For example:
 
         ```bash
         hid=`[ -f /etc/hostid ] && od -An -tx /etc/hostid|sed 's/ //g'`
         [ "$hid" = `hostid` ] || genhostid
         ```
 
-    1. Reboot the node.
+    1.  Reboot the node.
 
         ```bash
         reboot
         ```
 
-    1. Install the metapackage that will install Lustre\* and the LDISKFS and ZFS 'kmod' packages:
+    1.  Install the metapackage that will install Lustre\* and the LDISKFS and ZFS 'kmod' packages:
 
         ```bash
         yum --nogpgcheck install lustre-ldiskfs-zfs
         ```
 
-    1. Verify that the DKMS kernel modules for Lustre\*  SPL and ZFS have installed correctly:
+    1.  Verify that the DKMS kernel modules for Lustre\* SPL and ZFS have installed correctly:
 
         ```bash
         dkms status
@@ -1388,22 +1390,23 @@ The `pcs config export` command can be useful as a cross reference when restorin
         zfs, 0.7.1, 3.10.0-693.2.2.el7_lustre.x86_64, x86_64: installed
         ```
 
-    1. Load the Lustre\* and ZFS kernel modules to verify that the software has installed correctly:
+    1.  Load the Lustre\* and ZFS kernel modules to verify that the software has installed correctly:
 
         ```bash
         modprobe -v zfs
         modprobe -v lustre
         ```
 
-1. For systems that use only LDISKFS OSDs:
-    1. Install the Lustre\* `e2fsprogs` distribution:
+1.  For systems that use only LDISKFS OSDs:
+
+    1.  Install the Lustre\* `e2fsprogs` distribution:
 
         ```bash
         yum --nogpgcheck \
         --disablerepo=* --enablerepo=e2fsprogs-wc install e2fsprogs
         ```
 
-    1. Install the Lustre-patched kernel packages. Ensure that the Lustre\* repository is picked for the kernel packages, by disabling the OS repos:
+    1.  Install the Lustre-patched kernel packages. Ensure that the Lustre\* repository is picked for the kernel packages, by disabling the OS repos:
 
         ```bash
         yum --nogpgcheck --disablerepo=base,extras,updates \
@@ -1416,13 +1419,13 @@ The `pcs config export` command can be useful as a cross reference when restorin
         kernel-tools-libs-devel
         ```
 
-    1. Reboot the node.
+    1.  Reboot the node.
 
         ```bash
         reboot
         ```
 
-    1. Install the LDISKFS `kmod` and other Lustre\* packages:
+    1.  Install the LDISKFS `kmod` and other Lustre\* packages:
 
         ```bash
         yum --nogpgcheck install \
@@ -1433,14 +1436,15 @@ The `pcs config export` command can be useful as a cross reference when restorin
         lustre-resource-agents
         ```
 
-    1. Load the Lustre\* kernel modules to verify that the software has installed correctly:
+    1.  Load the Lustre\* kernel modules to verify that the software has installed correctly:
 
         ```bash
         modprobe -v lustre
         ```
 
-1. For systems with ZFS-based OSDs:
-    1. Install the kernel packages that match the latest supported version for the Lustre\* release:
+1.  For systems with ZFS-based OSDs:
+
+    1.  Install the kernel packages that match the latest supported version for the Lustre\* release:
 
         ```bash
         yum install \
@@ -1464,7 +1468,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
         kernel-tools-libs-devel-3.10.0-693.2.2.el7
         ```
 
-        **Note:** If the `kernel-tools` and  `kernel-tools-libs` packages that have been installed on the host prior to running this command are at a higher revision than the kernel version supported by Lustre\*, they will need to be removed first:
+        **Note:** If the `kernel-tools` and `kernel-tools-libs` packages that have been installed on the host prior to running this command are at a higher revision than the kernel version supported by Lustre\*, they will need to be removed first:
 
         ```bash
         yum erase kernel-tools kernel-tools-libs
@@ -1472,7 +1476,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
         Refer to the [Lustre\* Changelog](http://wiki.lustre.org/Category:Changelog) for the list of supported kernels.
 
-    1. Install additional development packages. These are needed to enable support for some of the newer features in Lustre\* – if certain packages are not detected by Lustre's\* configure script when its DKMS package is installed, the features will not be enabled when Lustre\* is compiled. Notable in this list are `krb5-devel` and `libselinux-devel`, needed for Kerberos and SELinux support, respectively.
+    1.  Install additional development packages. These are needed to enable support for some of the newer features in Lustre\* – if certain packages are not detected by Lustre's\* configure script when its DKMS package is installed, the features will not be enabled when Lustre\* is compiled. Notable in this list are `krb5-devel` and `libselinux-devel`, needed for Kerberos and SELinux support, respectively.
 
         ```bash
         yum install \
@@ -1488,20 +1492,20 @@ The `pcs config export` command can be useful as a cross reference when restorin
         tcl tcl-devel tk tk-devel wget xmlto yum-utils zlib-devel
         ```
 
-    1. Ensure that a persistent hostid has been generated on the machine. If necessary, generate a persistent hostid (needed to help protect zpools against simultaneous imports on multiple servers). For example:
+    1.  Ensure that a persistent hostid has been generated on the machine. If necessary, generate a persistent hostid (needed to help protect zpools against simultaneous imports on multiple servers). For example:
 
         ```bash
         hid=`[ -f /etc/hostid ] && od -An -tx /etc/hostid|sed 's/ //g'`
         [ "$hid" = `hostid` ] || genhostid
         ```
 
-    1. Reboot the node.
+    1.  Reboot the node.
 
         ```bash
         reboot
         ```
 
-    1. Install the packages for Lustre\* and ZFS:
+    1.  Install the packages for Lustre\* and ZFS:
 
         ```bash
         yum --nogpgcheck install \
@@ -1512,7 +1516,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
         zfs
         ```
 
-    1. Verify that the DKMS kernel modules for Lustre\*  SPL and ZFS have installed correctly:
+    1.  Verify that the DKMS kernel modules for Lustre\* SPL and ZFS have installed correctly:
 
         ```bash
         dkms status
@@ -1527,7 +1531,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
         zfs, 0.7.1, 3.10.0-693.2.2.el7_lustre.x86_64, x86_64: installed
         ```
 
-    1. Load the Lustre\* and ZFS kernel modules to verify that the software has installed correctly:
+    1.  Load the Lustre\* and ZFS kernel modules to verify that the software has installed correctly:
 
         ```bash
         modprobe -v zfs
@@ -1536,13 +1540,13 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
 #### Add Node 2 to the new High Availability Framework
 
-1. Install the OS cluster software:
+1.  Install the OS cluster software:
 
     ```bash
     yum -y install pcs pacemaker corosync fence-agents
     ```
 
-1. Ensure `hacluster` user is present on the server. For example:
+1.  Ensure `hacluster` user is present on the server. For example:
 
     ```bash
     [root@ct6-mds2 ~]# id hacluster
@@ -1551,16 +1555,16 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
     If required, add the `hacluster` user – usually the user is created when the cluster software is installed.
 
-1. Set the password for the `hacluster` user:
+1.  Set the password for the `hacluster` user:
 
     ```bash
     passwd hacluster
     ```
 
-1. Modify or disable the firewall. According to Red Hat, the following ports need to be enabled:
-    1. TCP: ports 2224, 3121, 21064
-    1. UDP: ports 5405
-1. In RHEL / CentOS 7, the firewall software can be configured to permit cluster traffic as follows:
+1.  Modify or disable the firewall. According to Red Hat, the following ports need to be enabled:
+    1.  TCP: ports 2224, 3121, 21064
+    1.  UDP: ports 5405
+1.  In RHEL / CentOS 7, the firewall software can be configured to permit cluster traffic as follows:
 
     ```bash
     firewall-cmd --permanent --add-service=high-availability
@@ -1569,33 +1573,33 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
     **Note:** both commands are required. The first command writes a persistent record of the firewall rules without changing the running configuration, while the second command changes the running configuration.
 
-1. Verify the firewall configuration as follows:
+1.  Verify the firewall configuration as follows:
 
     ```bash
     firewall-cmd --list-service
     ```
 
-1. Alternatively, disable the firewall completely:
+1.  Alternatively, disable the firewall completely:
 
     ```bash
     systemctl stop firewalld
     systemctl disable firewalld
     ```
 
-1. Start the Pacemaker configuration daemon, `pcsd`, and enable it to start on system boot:
+1.  Start the Pacemaker configuration daemon, `pcsd`, and enable it to start on system boot:
 
     ```bash
     systemctl start pcsd.service
     systemctl enable pcsd.service
     ```
 
-1. Verify that the `pcsd` service is running:
+1.  Verify that the `pcsd` service is running:
 
     ```bash
     systemctl status pcsd.service
     ```
 
-1. Set up PCS authentication by executing the following command on **node 1** (*not* node 2):
+1.  Set up PCS authentication by executing the following command on **node 1** (_not_ node 2):
 
     ```bash
     pcs cluster auth <node1 fqdn> <node2 fqdn> -u hacluster
@@ -1614,20 +1618,20 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
     **Note:** When working with host names in Pacemaker and Corosync, use the fully qualified domain names for the nodes.
 
-1. From **node 1**, add node 2 into the upgraded cluster framework:
+1.  From **node 1**, add node 2 into the upgraded cluster framework:
 
     ```bash
     pcs cluster node add <node2 fqdn> [--start]
     ```
 
-1. Login to **node 2** and start the cluster framework (if the `--start` flag was not used in the previous step):
+1.  Login to **node 2** and start the cluster framework (if the `--start` flag was not used in the previous step):
 
     ```bash
     pcs cluster start
     pcs cluster enable
     ```
 
-1. On **node 2**, create the mount points for the storage targets. If not, the resource agent, `ocf:chroma:Target` will fail. The expected mount points can be derived from the target configuration files in ``$HOME/bck-`hostname`-*/var/lib/chroma/targets/*``. The following script extracts the mount points from the files:
+1.  On **node 2**, create the mount points for the storage targets. If not, the resource agent, `ocf:chroma:Target` will fail. The expected mount points can be derived from the target configuration files in `` $HOME/bck-`hostname`-*/var/lib/chroma/targets/* ``. The following script extracts the mount points from the files:
 
     ```bash
     # Simple script to create the mount points from the JSON data:
@@ -1638,14 +1642,14 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
 ### Start the Agent Service and Load the Kernel Modules on Node 2
 
-1. Start the `chroma-agent` service:
+1.  Start the `chroma-agent` service:
 
     ```bash
     systemctl start chroma-agent
     systemctl enable chroma-agent
     ```
 
-1. Start the Lustre\* kernel modules (the Intel® Manager for Lustre\* `ocf:chroma:Target` resource agent expects the Lustre\* kernel modules to be loaded, or it will abort):
+1.  Start the Lustre\* kernel modules (the Intel® Manager for Lustre\* `ocf:chroma:Target` resource agent expects the Lustre\* kernel modules to be loaded, or it will abort):
 
     ```bash
     modprobe lustre
@@ -1655,19 +1659,19 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
 ### Rebalance the Cluster Resources
 
-1. Use the `pcs resource relocate show` command to review the changes that will be made to the cluster resources without committing the change:
+1.  Use the `pcs resource relocate show` command to review the changes that will be made to the cluster resources without committing the change:
 
     ```bash
     pcs resource relocate show
     ```
 
-1. Use the `pcs resource relocate run` command to execute the relocation plan:
+1.  Use the `pcs resource relocate run` command to execute the relocation plan:
 
     ```bash
     pcs resource relocate run
     ```
 
-1. Verify that the resources are running on their preferred nodes in the now-upgraded cluster pair:
+1.  Verify that the resources are running on their preferred nodes in the now-upgraded cluster pair:
 
     ```bash
     pcs resource show
@@ -1694,7 +1698,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     Ticket Constraints:
     ```
 
-1. Both nodes are now upgraded.
+1.  Both nodes are now upgraded.
 
 **Note:** This guide does not enable Pacemaker and Corosync to start automatically on system boot. By not starting the services at boot time, the administrator has the opportunity to review the server configuration and run-time prior to re-introducing a node to the cluster framework.
 

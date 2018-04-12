@@ -1,26 +1,25 @@
-# <a name="1.0"></a>Intel® Manager for Lustre* software Installation
+# <a name="1.0"></a>Intel® Manager for Lustre\* software Installation
 
 [**Software Installation Guide Table of Contents**](ig_TOC.md)
 
 **In this Chapter:**
 
-- [Installing Intel® Manager for Lustre* software](#installing-manager-for-lustre-software)
-- [Intel® Manager for Lustre* software Configuration Settings](#manager-for-lustre-software-configuration-settings)
-- [Editing Intel® Manager for Lustre* software Configuration Settings](#editing-manager-for-lustre-software-configuration-settings)
-
+* [Installing Intel® Manager for Lustre\* software](#installing-manager-for-lustre-software)
+* [Intel® Manager for Lustre\* software Configuration Settings](#manager-for-lustre-software-configuration-settings)
+* [Editing Intel® Manager for Lustre\* software Configuration Settings](#editing-manager-for-lustre-software-configuration-settings)
 
 This section describes how to install the Intel® Manager for Lustre* software
-and the Intel® Manager for Lustre* software on the *manager
-server.*
+and the Intel® Manager for Lustre* software on the _manager
+server._
 
 After the Intel® Manager for Lustre* software is
 installed, point your web browser to the Intel® Manager for Lustre* software
 dashboard. Use Chrome\* or Firefox\*. A display monitor with a minimum
 resolution of 1024 X 768 pixels is recommended, to adequately display
-the Intel® Manager for Lustre* software GUI.
+the Intel® Manager for Lustre\* software GUI.
 
 **Note**: Later, when adding storage servers to your Lustre* file system,
-the Intel® Manager for Lustre* software agent, Intel® Manager for Lustre* 
+the Intel® Manager for Lustre* software agent, Intel® Manager for Lustre*
 software, and specific dependencies (e.g.: for Corosync and Pacemaker)
 are automatically deployed to the storage server. This avoids the need
 to manually install the Intel® Manager for Lustre* software on storage
@@ -30,77 +29,74 @@ servers and avoids possible errors.
 file system manually, without Intel® Manager for Lustre* software.
 Other installations may opt to deploy and configure a Lustre* file system
 and then later install Intel® Manager for Lustre* software to be used
-in Monitor-only mode. The overall release tarball is iml-4.0.0.0.tar.gz.
+in Monitor-only mode. The overall release tarball is {{site.package_name}}.tar.gz.
 To deploy and configure Lustre* manually, see [Installing and Configuring
 Lustre* Manually](ig_ch_08_manual_install).
 
 For information regarding installing and configuring Lustre, see Part II
-of the *Lustre* Operations Manual*. This information is available at the
+of the _Lustre_ Operations Manual\*. This information is available at the
 following URL. If this page does not load, copy and paste it into your
 browser.
 
 [https://build.hpdd.intel.com/job/lustre-manual/lastSuccessfulBuild/artifact/lustre_manual.xhtml#part.installconfig](https://build.hpdd.intel.com/job/lustre-manual/lastSuccessfulBuild/artifact/lustre_manual.xhtml#part.installconfig)
 
-Installing Intel® Manager for Lustre* software
-----------------------------------------------
+## Installing Intel® Manager for Lustre\* software
 
 You will need the following information to perform this installation:
 
--   The name, email address, and password you wish to use for the first Intel® Manager for Lustre* software superuser. The email address must use an FQDN.
-- (Optional) The fully qualified domain name (FQDN) of the NTP server (internal or external) used for your site. If no NTP server is set, the Intel® Manager for Lustre* software server's clock will act as the time source for the entire storage cluster.
+* The name, email address, and password you wish to use for the first Intel® Manager for Lustre\* software superuser. The email address must use an FQDN.
+* (Optional) The fully qualified domain name (FQDN) of the NTP server (internal or external) used for your site. If no NTP server is set, the Intel® Manager for Lustre\* software server's clock will act as the time source for the entire storage cluster.
 
 To install the software, complete these steps:
 
 1.  Download the installation archive to a directory on the manager server (e.g. /tmp).
-1. Unpack the installation archive using tar: iml-4.0.0.0.tar.gz:
+1.  Unpack the installation archive using tar: {{site.package_name}}.tar.gz:
+
 ```
 # cd /tmp; mkdir install
-# tar –C install –xzf iml-4.0.0.0.tar.gz
+# tar –C install –xzf {{site.package_name}}.tar.gz
 ```
 
+1.  To install the Intel® Manager for Lustre\* software, run:
 
-1. To install the Intel® Manager for Lustre* software, run:
 ```
-# cd /tmp/install/iml-4.0.0.0.tar.gz
+# cd /tmp/install/{{site.package_name}}.tar.gz
 # ./install
 ```
 
+1.  When the following prompts appear, enter your parameters for the first superuser of Intel® Manager for Lustre\* software:
 
-1. When the following prompts appear, enter your parameters for the first superuser of Intel® Manager for Lustre* software:
+    **Username:** _&lt;Enter the name of the superuser&gt;_
 
-   **Username:** *&lt;Enter the name of the superuser&gt;*
-   
-   **Password:** *&lt;Enter a password&gt;*
-   
-   **Confirm password:** *&lt;Enter the password again&gt;*
+    **Password:** _&lt;Enter a password&gt;_
 
-   **Email:** *&lt;Enter an email address for the superuser&gt;*
+    **Confirm password:** _&lt;Enter the password again&gt;_
 
-   **Note**: Additional Intel® Manager for Lustre* software superusers as well as file system administrators and users can be created in the manager GUI.
+    **Email:** _&lt;Enter an email address for the superuser&gt;_
 
-   When configuration is complete, a message is displayed indicating the installation was successful.
+    **Note**: Additional Intel® Manager for Lustre\* software superusers as well as file system administrators and users can be created in the manager GUI.
+
+    When configuration is complete, a message is displayed indicating the installation was successful.
 
 1.  When the prompt **NTP Server \[localhost\]** appears, respond with **one of these options**:
 
-    -   *Option 1:* To designate the NTP server (internal or external) used for your site, enter the FQDN or IP address of the NTP server and press the **&lt;Enter&gt;** key.
+    * _Option 1:_ To designate the NTP server (internal or external) used for your site, enter the FQDN or IP address of the NTP server and press the **&lt;Enter&gt;** key.
 
-    -   *Option 2:* To use the Intel® Manager for Lustre* software server’s clock as the time source, press the **&lt;Enter&gt;** key.
+    * _Option 2:_ To use the Intel® Manager for Lustre\* software server’s clock as the time source, press the **&lt;Enter&gt;** key.
 
 1.  Using ifconfig, obtain the IP address of the administrative network interface for the server hosting Intel® Manager for Lustre* software. The default network interface for Intel® Manager for Lustre* software is eth0.
 
-2.  Open a web browser and access the Intel® Manager for Lustre* software GUI using the server IP address obtained in the previous step. Enter in the address field of your browser:
+1.  Open a web browser and access the Intel® Manager for Lustre\* software GUI using the server IP address obtained in the previous step. Enter in the address field of your browser:
 
 https://&lt;command_center_server_IP_address&gt;
 
-**Note**: If the IP address of the server has an associated FQDN, you can connect to the Intel® Manager for Lustre* software GUI user interface using:
+**Note**: If the IP address of the server has an associated FQDN, you can connect to the Intel® Manager for Lustre\* software GUI user interface using:
 
 https://&lt;command_center_server_fqdn&gt;
 
-
-
 **Note**: The GUI uses a self-signed SSL certificate to secure
 communications between the browser and the server. You will need to
-accept this certificate in order to connect to the Intel® Manager for Lustre* 
+accept this certificate in order to connect to the Intel® Manager for Lustre\*
 software GUI. A certificate can be downloaded from (example only):
 
 https://&lt;manager-addr&gt;/certificate/
@@ -109,18 +105,17 @@ After Intel® Manager for Lustre* software is installed, point your web
 browser to the Intel® Manager for Lustre* software dashboard. Use Chrome\* or
 Firefox\*.
 
-Intel® Manager for Lustre* software Configuration Settings
--------------------------------------------------------------
+## Intel® Manager for Lustre\* software Configuration Settings
 
-The following Intel® Manager for Lustre* software configuration
+The following Intel® Manager for Lustre\* software configuration
 settings can be modified. See the instructions for modifying these
 settings following the descriptions.
 
 **ALLOW_ANONYMOUS_READ**
-    
+
 **Default:** True (Uppercase first letter required.)
-    
-**Description:** Allows anonymous (unauthenticated) users to view statistics, logs and status of a system in theIntel® Manager for Lustre* software GUI but not to make any changes. If set to False, anonymous users will be presented with a login prompt and no data.
+
+**Description:** Allows anonymous (unauthenticated) users to view statistics, logs and status of a system in theIntel® Manager for Lustre\* software GUI but not to make any changes. If set to False, anonymous users will be presented with a login prompt and no data.
 
 **DISABLE_POWER_CONTROL_DEVICE_MONITORING**
 
@@ -130,54 +125,56 @@ settings following the descriptions.
 
 **Other Settings**:
 
-|Setting|Default|Description|
-|---|---|---|
-|**```EMAIL\_HOST```**|None|SMTP server hostname (Example: 'server1.test.com')|
-|**```EMAIL\_PORT```**|25|SMTP server port number.|
-|**```EMAIL\_HOST\_USER```**|' '|SMTP server username (or ' ').|
-|**```EMAIL\_HOST\_PASSWORD```**|' '|SMTP server username (or ' ').|
-|**```EMAIL\_USE\_TLS```**|False (Uppercase first letter required.)|True indicates that TLS/SSL is to be used. False indicates it is not to be used.|
-|**```EMAIL\_SENDER```**|`noreply@<command_center server_fqdn>`|The address that appears in the *From* field on alert emails.
+| Setting                     | Default                                  | Description                                                                      |
+| --------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------- |
+| **`EMAIL\_HOST`**           | None                                     | SMTP server hostname (Example: 'server1.test.com')                               |
+| **`EMAIL\_PORT`**           | 25                                       | SMTP server port number.                                                         |
+| **`EMAIL\_HOST\_USER`**     | ' '                                      | SMTP server username (or ' ').                                                   |
+| **`EMAIL\_HOST\_PASSWORD`** | ' '                                      | SMTP server username (or ' ').                                                   |
+| **`EMAIL\_USE\_TLS`**       | False (Uppercase first letter required.) | True indicates that TLS/SSL is to be used. False indicates it is not to be used. |
+| **`EMAIL\_SENDER`**         | `noreply@<command_center server_fqdn>`   | The address that appears in the _From_ field on alert emails.                    |
 
-### Editing Intel® Manager for Lustre* software Configuration Settings
+### Editing Intel® Manager for Lustre\* software Configuration Settings
 
 To change these configuration settings:
 
-1.  Use a text editor to create or modify a file ```local_settings.py
-```in the directory ``` /usr/share/chroma-manager/```
+1.  Use a text editor to create or modify a file `local_settings.py`in the directory `/usr/share/chroma-manager/`
 
-    For example, add the following setting to the ```local_settings.py```
- file to restrict view of system statistics, logs, and status to only users who are logged in:
+        For example, add the following setting to the ```local_settings.py```
+
+    file to restrict view of system statistics, logs, and status to only users who are logged in:
+
 ```
 ALLOW_ANONYMOUS_READ=False
 ```
+
 In this example, the first letter of False must be capitalized.
 
-   **Note**: Entries must follow Python\* syntax rules. For example, all strings must be enclosed in single or double quotes (double quotes must be used if the string includes a single quote). For example, EMAIL\_HOST=server1.test.com will result in an error, while EMAIL\_HOST='server1.test.com' is a valid entry.
+**Note**: Entries must follow Python\* syntax rules. For example, all strings must be enclosed in single or double quotes (double quotes must be used if the string includes a single quote). For example, EMAIL_HOST=server1.test.com will result in an error, while EMAIL_HOST='server1.test.com' is a valid entry.
 
-   **Warning**: If you edit the file settings.py instead of creating a local\_settings.py file, your changes will be overwritten without warning when the Intel® Manager for Lustre* software is updated.
+**Warning**: If you edit the file settings.py instead of creating a local_settings.py file, your changes will be overwritten without warning when the Intel® Manager for Lustre\* software is updated.
 
-1.  To configure email alerts, complete one of the options below. By default, email alerts from the Intel® Manager for Lustre* software are disabled (EMAIL\_HOST set to None).
+1.  To configure email alerts, complete one of the options below. By default, email alerts from the Intel® Manager for Lustre\* software are disabled (EMAIL_HOST set to None).
 
-    -   *Option 1: Set up an external mail server.* Create or modify the file
-    `/usr/share/chroma-manager/local\_settings.py` to provide appropriate values for these settings:
+    * _Option 1: Set up an external mail server._ Create or modify the file
+      `/usr/share/chroma-manager/local\_settings.py` to provide appropriate values for these settings:
 
-        a.  Set EMAIL\_SENDER to an address suitable for your site.
+          a.  Set EMAIL\_SENDER to an address suitable for your site.
 
-        b.  Modify EMAIL\_HOST (and other server settings if necessary) to point to an existing SMTP server on your network.
+          b.  Modify EMAIL\_HOST (and other server settings if necessary) to point to an existing SMTP server on your network.
 
-    -   *Option 2: Use a local mail server.* If a suitable SMTP server is not available, you can configure the Intel® Manager for Lustre* software server to act as an SMTP server:
+    * _Option 2: Use a local mail server._ If a suitable SMTP server is not available, you can configure the Intel® Manager for Lustre\* software server to act as an SMTP server:
 
-        a.  Set EMAIL\_SENDER to an address suitable for your site.
+      a. Set EMAIL_SENDER to an address suitable for your site.
 
-        b.  Set up a local mail daemon using standard procedures for Red Hat Enterprise Linux or CentOS such as those described in the Red Hat documentation at:
-        [Mail Servers](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/ch-Mail_Servers.html)
+      b. Set up a local mail daemon using standard procedures for Red Hat Enterprise Linux or CentOS such as those described in the Red Hat documentation at:
+      [Mail Servers](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/ch-Mail_Servers.html)
 
-        c.  Set EMAIL\_HOST to `localhost`
+      c. Set EMAIL_HOST to `localhost`
 
+1)  Run the chroma configuration tool
+    in order to load changes made to `local_settings.py`.
 
-1. Run the chroma configuration tool
-    in order to load changes made to ```local_settings.py```.
 ```
 # chroma-config restart
 ```

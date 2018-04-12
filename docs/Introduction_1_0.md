@@ -148,7 +148,7 @@ Intel® Manager for Lustre* software supports ZFS as a back-end file system repl
 
 **Intel® Manager for Lustre* software ZFS Snapshots**
 
-The OpenZFS file system provides integrated support for snapshots, a data protection feature that enables an operator to checkpoint a file system volume.  In Intel® Manager for Lustre* software, as of version 4.0.0, Intel® has developed a mechanism in Lustre* that leverages ZFS to take a coordinated snapshot of an entire Lustre* file system, if all of the storage targets in the file system are formatted using ZFS.
+The OpenZFS file system provides integrated support for snapshots, a data protection feature that enables an operator to checkpoint a file system volume.  In Intel® Manager for Lustre* software, as of version {{site.version}}, Intel® has developed a mechanism in Lustre* that leverages ZFS to take a coordinated snapshot of an entire Lustre* file system, if all of the storage targets in the file system are formatted using ZFS.
 
 **HPC Job Scheduler integration with MapReduce**
 
@@ -166,7 +166,7 @@ HBase is a non-relational, distributed database modeled after Google's BigTable 
 
 **Lustre\* 2.7.x**
 
-This release of Intel® Manager for Lustre* software is based on the Intel® Foundation Edition for Lustre* 2.7 release tree, representing a major update to the underlying Lustre* version for the Intel® Manager for Lustre* software (as of version 4.0.0).
+This release of Intel® Manager for Lustre* software is based on the Intel® Foundation Edition for Lustre* 2.7 release tree, representing a major update to the underlying Lustre* version for the Intel® Manager for Lustre* software (as of version {{site.version}}).
 
 **Online Lustre File System Consistency Checks (LFSCK)**
 

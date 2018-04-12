@@ -12,35 +12,35 @@ Please refer to [creating a virtual HPC storage cluster with vagrant](https://gi
 
 Note: use vagrant ssh-config to get the port each server is running on. The commands below use ports that are specific to my vagrant environment.
 
-1. Verify the following vagrant plugins are installed:
-   ```
-   vagrant plugin install vagrant-shell-commander
-   ```
-2. Download the latest IML build (tarball).
-   from: [https://github.com/intel-hpdd/intel-manager-for-lustre/releases/download/4.0.0/iml-4.0.0.0.tar.gz](https://github.com/intel-hpdd/intel-manager-for-lustre/releases/download/4.0.0/iml-4.0.0.0.tar.gz)
+1.  Verify the following vagrant plugins are installed:
+    ```
+    vagrant plugin install vagrant-shell-commander
+    ```
+2.  Download the latest IML build (tarball).
+    from: [https://github.com/intel-hpdd/intel-manager-for-lustre/releases/download/{{site.version}}/{{site.package_name}}.tar.gz](https://github.com/intel-hpdd/intel-manager-for-lustre/releases/download/{{site.version}}/{{site.package_name}}.tar.gz)
 
 ## Installing IML:
 
-1. Copy the IML build to the /tmp directory in your admin node:
-   ```
-   scp -P 2222 ~/Downloads/iml-4.0.0.0.tar.gz vagrant@127.0.0.1:/tmp/.
-   # password is "vagrant"
-   ```
-2. ssh into the admin box and install the build:
-   ```
-   vagrant ssh
-   [vagrant@adm ~]$ sudo su - # (or "sudo -s")
-   [vagrant@adm ~]# cd /tmp
-   [vagrant@adm ~]# tar xvf <buildname>.tar.gz
-   [vagrant@adm ~]# cd <build folder>
-   [vagrant@adm ~]# ./install --no-dbspace-check
-   ```
-3. Update the /etc/hosts file on your computer to include the following line:
-   ```
-   127.0.0.1 adm.lfs.local
-   ```
-4. Test that a connection can be made to IML by going to the following link in your browser:
-   https://adm.lfs.local:8443
+1.  Copy the IML build to the /tmp directory in your admin node:
+    ```
+    scp -P 2222 ~/Downloads/{{site.package_name}}.tar.gz vagrant@127.0.0.1:/tmp/.
+    # password is "vagrant"
+    ```
+2.  ssh into the admin box and install the build:
+    ```
+    vagrant ssh
+    [vagrant@adm ~]$ sudo su - # (or "sudo -s")
+    [vagrant@adm ~]# cd /tmp
+    [vagrant@adm ~]# tar xvf <buildname>.tar.gz
+    [vagrant@adm ~]# cd <build folder>
+    [vagrant@adm ~]# ./install --no-dbspace-check
+    ```
+3.  Update the /etc/hosts file on your computer to include the following line:
+    ```
+    127.0.0.1 adm.lfs.local
+    ```
+4.  Test that a connection can be made to IML by going to the following link in your browser:
+    https://adm.lfs.local:8443
 
 ## Adding the MDS and OSS Servers
 
@@ -57,18 +57,18 @@ There will be alerts and warnings about LNET. Ignore for now.
 
 Lustre\* server can now be installed on each mds and oss node since the agent software has been deployed. To do this, follow these simple steps:
 
-1. Create the ldiskfs installer and install the necessary packages on the following servers: mds1, mds2, oss1, and oss2
-   ```
-       cd ~/downloads
-       tar xzvf iml-4.0.0.0.tar.gz
-       cd iml-4.0.0.0
-       ./create_installer ldiskfs
-       for i in {2200..2203}; do scp -P $i ~/Downloads/iml-4.0.0.0/lustre-ldiskfs-el7-installer.tar.gz vagrant@127.0.0.1:/tmp/.; done
-       # password is "vagrant"
-       vagrant sh -c 'cd /tmp; sudo tar xzvf lustre-ldiskfs-el7-installer.tar.gz; cd lustre-ldiskfs; sudo ./install;' mds1 mds2 oss1 oss2
-       vagrant halt mds1 mds2 oss1 oss2
-       vagrant up mds1 mds2 oss1 oss2
-   ```
+1.  Create the ldiskfs installer and install the necessary packages on the following servers: mds1, mds2, oss1, and oss2
+    ```
+        cd ~/downloads
+        tar xzvf {{site.package_name}}.tar.gz
+        cd {{site.package_name}}.0
+        ./create_installer ldiskfs
+        for i in {2200..2203}; do scp -P $i ~/Downloads/{{site.package_name}}.0/lustre-ldiskfs-el7-installer.tar.gz vagrant@127.0.0.1:/tmp/.; done
+        # password is "vagrant"
+        vagrant sh -c 'cd /tmp; sudo tar xzvf lustre-ldiskfs-el7-installer.tar.gz; cd lustre-ldiskfs; sudo ./install;' mds1 mds2 oss1 oss2
+        vagrant halt mds1 mds2 oss1 oss2
+        vagrant up mds1 mds2 oss1 oss2
+    ```
 
 ## Configuring each MDS and OSS Server
 

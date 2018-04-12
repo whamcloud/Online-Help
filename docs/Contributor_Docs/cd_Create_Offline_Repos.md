@@ -1,4 +1,4 @@
-# <a name="Top"></a>How to create offline repos for IML 4.0.0
+# <a name="Top"></a>How to create offline repos for IML {{site.version}}
 
 [**Software Contributor Documentation Table of Contents**](cd_TOC.md)
 
