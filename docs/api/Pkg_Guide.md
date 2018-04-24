@@ -56,7 +56,7 @@ meaningful to that audience.
 Creating a Bundle
 -----------------
 
-1. Create an empty folder on a CentOS* 7 or Red Hat* 7 host
+1. Create an empty folder on a CentOS* {{site.centos_version}} or Red Hat* {{site.centos_version}} host
 2. Collect the RPM packages which you wish to include in your bundle.  You will need to build RPMs for any software which is not already packaged in this format: doing so is outside the scope of this documentation.  Place these RPM files in the folder you just created.
 3. Create your ``meta`` file (in the format described above) in the same folder as the RPM packages
 4. Install the ``createrepo`` package using ``yum`` if it is not already installed.

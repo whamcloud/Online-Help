@@ -1,4 +1,4 @@
-# Intel® Manager for Lustre\* software 4.0.5
+# Intel® Manager for Lustre\* software {{site.version}}
 
 # **Help Docs**
 

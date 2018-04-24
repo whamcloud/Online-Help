@@ -26,9 +26,9 @@
 
 **Note**: This appendix is outdated and in
 revision.  Procedures in this appendix were developed for servers
-running RHEL 6.7.  The process for servers running RHEL 7.4 is very
+running RHEL 6.7.  The process for servers running RHEL {{site.centos_version}} is very
 similar, but *this appendix has not yet been revised or tested for RHEL
-7.4*.
+{{site.centos_version}}*.
 
 Introduction
 ------------
@@ -168,10 +168,10 @@ Operating System
 
 **Note**: This appendix is outdated and in revision.  Procedures in this
 appendix were developed for servers running RHEL 6.7.  The process for
-servers running RHEL 7.4 is very similar, but this appendix has not yet
-been revised or tested for RHEL 7.4.
+servers running RHEL {{site.centos_version}} is very similar, but this appendix has not yet
+been revised or tested for RHEL {{site.centos_version}}.
 
-Red Hat Enterprise Linux or CentOS Linux, version 7.4 must be
+Red Hat Enterprise Linux or CentOS Linux, version {{site.centos_version}} must be
 installed on all Lustre* servers. The OS must be deployed in a consistent
 and repeatable manner. All servers should be running the same OS and
 version. For Red Hat Enterprise Linux and CentOS Linux, template-driven
@@ -509,7 +509,7 @@ the Intel® Manager for Lustre* software GUI.
     ```bash
     yum -y install --enablerepo=lustre,iml-agent,e2fsprogs \
     lustre \
-    kernel-3.10.0-514.2.2.el7_lustre.x86_64.rpm
+    kernel-{{site.lustre_kernel_version}}_lustre.x86_64.rpm
 
     yum -y install --enablerepo=iml-agent \
     chroma-agent \
@@ -568,7 +568,7 @@ cp $BACKUP_ROOT/etc/corosync/corosync.conf /etc/corosync/.
     ```
     [root@ee-mds1 ~]# uname -r
 
-    3.10.0-514.2.2.el7_lustre.x86_64.rpm 
+    {{site.lustre_kernel_version}}_lustre.x86_64.rpm 
     
     [root@ee-mds1 ~]# modprobe -v lnet
 

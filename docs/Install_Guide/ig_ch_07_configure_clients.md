@@ -20,7 +20,7 @@ Client Requirements
 --------------------
 
 Each file system client must be running Red Hat Enterprise Linux (RHEL)
-or CentOS Linux, version 7.4.
+or CentOS Linux, version {{site.centos_version}}.
 
 **Notes**:
 
@@ -42,10 +42,10 @@ The following Lustre* packages are installed on clients:
 |`lustre-client-modules-<ver>`|Lustre* module RPM for clients.|
 |`lustre-client-<ver>`|Lustre* utilities for clients.|
 
-**To configure a Lustre* client running RHEL or CentOS version 7.4,
+**To configure a Lustre* client running RHEL or CentOS version {{site.centos_version}},
 perform these steps:**
 
-1.  For clients running RHEL or CentOS version 7.4, add a client
+1.  For clients running RHEL or CentOS version {{site.centos_version}}, add a client
     repository with the following command.
 
     ```
@@ -71,7 +71,7 @@ perform these steps:**
     a.  Enter (on one line):
 
     ```
-    # yum install lustre-client-modules-<ver>.<arch>.rpm
+    # yum install lustre-client-modules-{{site.lustre_version}}.<arch>.rpm
     ```
 
     b.  Update the bootloader (grub.conf or lilo.conf) configuration file as

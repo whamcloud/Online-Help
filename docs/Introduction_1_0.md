@@ -164,9 +164,9 @@ Hive is a data warehouse infrastructure built on top of Hadoop for providing dat
 
 HBase is a non-relational, distributed database modeled after Google's BigTable and written in Java\*.  Hbase runs on top of HDFS (Hadoop Distributed File System). Intel® has tested the Hadoop adapter for Lustre provided with Intel® Manager for Lustre* software for compatibility with Apache Hbase version 2.5.
 
-**Lustre\* 2.7.x**
+**Lustre\* {{site.lustre_version}}**
 
-This release of Intel® Manager for Lustre* software is based on the Intel® Foundation Edition for Lustre* 2.7 release tree, representing a major update to the underlying Lustre* version for the Intel® Manager for Lustre* software (as of version {{site.version}}).
+This release of Intel® Manager for Lustre* software is based on the Intel® Foundation Edition for Lustre* {{site.lustre_version}} release tree, representing a major update to the underlying Lustre* version for the Intel® Manager for Lustre* software (as of version {{site.version}}).
 
 **Online Lustre File System Consistency Checks (LFSCK)**
 
@@ -190,7 +190,7 @@ Differentiated Storage Services (DSS) allows I/O data to be classified, sometime
 
 **Support for Intel® Omni-Path Architecture**
 
-Intel® Omni-Path fabric support is available for Intel® Manager for Lustre* software systems running RHEL 7.4.  (Intel® OPA driver support requires RHEL 7.1 or newer, and so is not available for RHEL 6.x based systems.)
+Intel® Omni-Path fabric support is available for Intel® Manager for Lustre* software systems running RHEL {{site.centos_version}}.  (Intel® OPA driver support requires RHEL 7.1 or newer, and so is not available for RHEL 6.x based systems.)
 
 **LNet Configuration**
 

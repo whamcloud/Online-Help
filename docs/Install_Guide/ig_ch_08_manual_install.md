@@ -11,11 +11,11 @@ Monitor-only mode.
 The overall release tarball is iml-{{site.version}}.0.tar.gz. To deploy and
 configure Lustre\* manually, use these packages:
 
-* Lustre\* server packages:lustre-2.7.19.10-bundle.tar.gz
+* Lustre\* server packages:{{site.lustre_package_name}}-bundle.tar.gz
 
-* Lustre\* client packages:lustre-client-2.7.19.10-bundle.tar.gz
+* Lustre\* client packages:lustre-client-{{site.lustre_version}}-bundle.tar.gz
 
-* e2fsprogs packages: e2fsprogs-1.42.13.wc5-bundle.tar.gz
+* e2fsprogs packages: e2fsprogs-{{site.e2fsprogs_version}}.wc5-bundle.tar.gz
 
 For information regarding installing and configuring Lustre\*, see Part II
 of the Lustre\* Operations Manual. This is available at the following URL.
