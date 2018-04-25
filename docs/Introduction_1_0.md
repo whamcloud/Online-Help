@@ -87,9 +87,7 @@ The PDU window lets you configure and manager power distribution units. At this 
 
 An alternative to PDU configuration, support for Intelligent Platform Management Interface and baseboard management controllers support server monitoring, high-availability configuration, and failover.
 
-Support for Intel® Xeon Phi™ Coprocessor Clients
-
-Intel® Manager for Lustre* software client software can be installed and configured to run on Intel® Xeon Phi™ Coprocessor clients. This means that the Intel® Xeon Phi™ Coprocessor clients can directly mount Lustre.
+Intel® Manager for Lustre* client software can be installed and configured to run on Intel® Xeon Phi™ Coprocessor clients. This means that the Intel® Xeon Phi™ Coprocessor clients can directly mount Lustre.
 
 ## Hierarchical Storage Management
 
@@ -105,7 +103,7 @@ The Robinhood policy engine has been incorporated into Lustre and is included wi
 
 ## Apache Hadoop\* adapter software
 
-Intel® Manager for Lustre* software is supported by the Apache Hadoop* adapter software, however the adapter software is a separate download. This Hadoop adapter for Lustre is compatible with the Apache Hadoop software, versions 2.3 and 2.5 as of this writing.  Hadoop software allows users who run MapReduce jobs to bypass storing data in HDFS, and store the MapReduce output directly to Lustre instead. This allows the analytical processes direct access to scientific output instead of transferring data from the compute cluster storage system to another file system. Optimizations have also been made to the shuffle step in MapReduce to take advantage of Lustre’s high-speed network access to data. Many workloads will see an overall reduction in end-to-end processing time by using the Hadoop adapter with the Intel® Manager for Lustre* software file system.  For more information, see Installing Hadoop, the Hadoop Adapter for Intel® Manager for Lustre* software, and the Job Scheduler Integration.
+Intel® Manager for Lustre* software is supported by the Apache Hadoop* adapter software, however the adapter software is a separate download. This Hadoop adapter for Lustre is compatible with the Apache Hadoop software, versions 2.3 and 2.5 as of this writing.  Hadoop software allows users who run MapReduce jobs to bypass storing data in HDFS, and store the MapReduce output directly to Lustre instead. This allows the analytical processes direct access to scientific output instead of transferring data from the compute cluster storage system to another file system. Optimizations have also been made to the shuffle step in MapReduce to take advantage of Lustre’s high-speed network access to data. Many workloads will see an overall reduction in end-to-end processing time by using the Hadoop adapter with the Intel® Manager for Lustre* software file system.  For more information, see [Hadoop Adaptor for Lustre](https://github.com/intel-hpdd/lustre-connector-for-hadoop/blob/master/Installation%20of%20HAL%20on%20Apache%20Hadoop.md).
 
 ## Automated Provisioning of Custom Lustre Service Nodes
 
@@ -127,19 +125,19 @@ The OpenZFS file system provides integrated support for snapshots, a data protec
 
 ## HPC Job Scheduler integration with MapReduce
 
-Intel® Manager for Lustre* software works with the HPC job scheduler to integrate MapReduce; however, the job scheduler integration is a separate download. The HPC job scheduler integration supports Apache Hadoop. This adapter for job schedulers allows you to integrate common resource schedulers into your cluster. You have the choice of installing the SLURM (Simple Linux Utility for Resource Management) job scheduler integration or the PBS (portable batch system) job scheduler integration. An integration guide is available: Installing Hadoop, the Hadoop Adapter for Intel® Manager for Lustre* software, and the Job Scheduler Integration.
+Intel® Manager for Lustre* software works with the HPC job scheduler to integrate MapReduce; however, the job scheduler integration is a separate download. The HPC job scheduler integration supports Apache Hadoop. This adapter for job schedulers allows you to integrate common resource schedulers into your cluster. You have the choice of installing the SLURM (Simple Linux Utility for Resource Management) job scheduler integration or the PBS (portable batch system) job scheduler integration.
 
 Hadoop commonly uses Yarn to manage MapReduce jobs. Installing more than one job scheduler (such as SLURM and Yarn) on a single system can cause problems. The HPC Job Scheduler integration with MapReduce replaces YARN with an interface to the main resource manager for the system. This allows MapReduce applications to be run as normal HPC jobs.
 
 ## Apache Hive compatibility
 
-Hive is a data warehouse infrastructure built on top of Hadoop for providing data summarization, query, and analysis. Intel® has tested the Hadoop adapter for Lustre provided with Intel® Manager for Lustre* software for compatibility with Apache Hive version 2.5.
+Hive is a data warehouse infrastructure built on top of Hadoop for providing data summarization, query, and analysis. Intel® has tested the Hadoop adapter for Lustre provided with Intel® Manager for Lustre* software for compatibility with Apache Hive version 2.3.
 
 ## Apache Hbase compatibility
 
 HBase is a non-relational, distributed database modeled after Google's BigTable and written in Java\*.  Hbase runs on top of HDFS (Hadoop Distributed File System). Intel® has tested the Hadoop adapter for Lustre provided with Intel® Manager for Lustre* software for compatibility with Apache Hbase version 2.5.
 
-**Lustre\* {{site.lustre_version}}**
+## Lustre\* {{site.lustre_version}}
 
 This release of Intel® Manager for Lustre* software is based on the Intel® Foundation Edition for Lustre* {{site.lustre_version}} release tree, representing a major update to the underlying Lustre* version for the Intel® Manager for Lustre* software (as of version {{site.version}}).
 
@@ -157,11 +155,11 @@ Striped directories support (Distributed Name Space, phase 2) is available in In
 
 ## Single Client Metadata Concurrency
 
-Also referred to as “multi-slot last_rcvd”, this update to the metadata communications interface between client and server allows multiple metadata RPCs to be in flight in parallel, per-client for both read and write transactions. Prior to this release, any client RPCs that modified file system metadata (for example, creates or unlinks), were sent serially to the server. With this update, this restriction is removed.
+Also referred to as `multi-slot last_rcvd`, this update to the metadata communications interface between client and server allows multiple metadata RPCs to be in flight in parallel, per-client for both read and write transactions. Prior to this release, any client RPCs that modified file system metadata (for example, creates or unlinks), were sent serially to the server. With this update, this restriction is removed.
 
 ## Differentiated Storage Services
 
-Differentiated Storage Services (DSS) allows I/O data to be classified, sometimes referred to as “hinting". These hints pass seamlessly through Intel® Manager for Lustre* software, at which point data can be tiered and intelligently cached by the storage system. This enables a more efficient use of cache space and decreases the likelihood of critical data being evicted when the cache fills. Intel® is working directly with storage and cache vendors to enable DSS hinting in Lustre appliances, and to provide optimized performance to Intel® Manager for Lustre* software deployments with a mix of SSD and traditional storage.
+Differentiated Storage Services (DSS) allows I/O data to be classified, sometimes referred to as `hinting`. These hints pass seamlessly through Intel® Manager for Lustre* software, at which point data can be tiered and intelligently cached by the storage system. This enables a more efficient use of cache space and decreases the likelihood of critical data being evicted when the cache fills. Intel® is working directly with storage and cache vendors to enable DSS hinting in Lustre appliances, and to provide optimized performance to Intel® Manager for Lustre* software deployments with a mix of SSD and traditional storage.
 
 ## Support for Intel® Omni-Path Architecture
 
@@ -169,7 +167,7 @@ Intel® Omni-Path fabric support is available for Intel® Manager for Lustre* so
 
 ## LNet Configuration
 
-This feature assists in configuring LNet for a given server’s network interface by setting the LNet network ID for that port. This feature requires a single LNet. You can configure multiple LNets (i.e., with the use of routers), however in this release, additional LNets cannot be configured from the GUI.
+This feature assists in configuring LNet for a given server’s network interface by setting the LNet network ID for that port. IML supports the configuration of multiple LNet interfaces.
 
 ## Dynamic LNet Configuration
 
@@ -189,13 +187,13 @@ The Intel® Manager for Lustre* software lets you create and manage new HA Lustr
 
 To provide robust HA support, Intel® Manager for Lustre* software automatically configures Corosync and Pacemaker, and takes advantage of IPMI or PDUs to support server failover.
 
-**Note:** Managed HA support requires that your entire storage system configuration and all interfaces be compliant with a pre-defined configuration. See the High Availability Configuration Specification in the Intel® Manager for Lustre* software, Installation Guide for detailed information.
+**Note:** Managed HA support requires that your entire storage system configuration and all interfaces be compliant with a pre-defined configuration. See [The High Availability Configuration Spec](Install_Guide/ig_ch_03_building.md) for more details.
 
-**Note:** Management mode is supported in Intel® Manager for Lustre* software, versions 1.0 and later. No claims of support are made for any versions of Lustre* outside of that shipped with Intel® Manager for Lustre* software.
+**Note:** Management mode is supported in Intel® Manager for Lustre* software, versions {{site.version}} and later. No claims of support are made for any versions of Lustre* outside of that shipped with Intel® Manager for Lustre* software.
 
 ### Monitor-only Mode Explained
 
-Monitor-only mode allows you to “discover” an existing Lustre file system using Intel® Manager for Lustre* software. You can then monitor the file system in the MIntel® Manager for Lustre* software dashboard. All of the charts presented on the manager dashboard to monitor performance and statistics, are available in monitor-only mode.
+Monitor-only mode allows you to “discover” an existing Lustre file system using Intel® Manager for Lustre* software. You can then monitor the file system in the Intel® Manager for Lustre* software dashboard. All of the charts presented on the manager dashboard to monitor performance and statistics, are available in monitor-only mode.
 
 Monitor-only mode can be used to establish monitoring for file systems that don’t fully conform to the High Availability Configuration Specification. In this situation, the Corosync and Pacemaker configuration modules provided with Intel® Manager for Lustre* software are not automatically deployed. This means that Intel® Manager for Lustre* software cannot configure the file system for server failover.
 
@@ -257,7 +255,7 @@ The following twelve charts are presented. For more information, see [View chart
 
 The Configuration drop-down menu provides access to the following several windows, where you can create, configure, and manage file systems:
 
-- **Servers** - This window lets you add servers to the storage system and configure LNet for each server, provides server status information, and lets you start, stop, and remove servers. From here you can also automatically configure Corosync for managed HA servers.
+- **Servers** - This window lets you add servers to the storage system and configure LNet for each server, provides server status information, and lets you start, stop, and remove servers.
 - **Power Control** - This window lets you configure power control for each server. Here, you can add baseboard management controllers to configure IPMI to support server failover and also assign PDU outlets.
 - **File Systems** - This window lists your current file systems and provides current configuration information. This window also provides access to step-by-step procedures to create and configure a file system and add system components. From this window, you can start, stop, or remove an entire file system, and you can start, stop, or remove management, metadata, or object storage targets.
 - **HSM** - Hierarchical Storage Management. This window displays HSM information for one or all Lustre* file systems for which HSM has been configured. After configuration, the HSM Copytool chart displays a moving time-line of waiting copytool requests, current copytool operations, and the number of idle copytool workers.
@@ -306,8 +304,8 @@ This red bar briefly appears if there are any active error or warning alerts on 
 
 You can access the Intel® Manager for Lustre* software GUI from your smart phone or tablet. To access the GUI from your smart phone or tablet, your device needs to be running the latest version of Chrome or Firefox browser:
 
-1. Point your device's browser to the manager server running the Intel® Manager for Lustre* software. The window is responsive to fit within the display area.
-2. To view the menu bar, click ![md_Graphics/mobile_button.png][f1.12]. The menu bar is now displayed vertically along the left side of the window.
+1. Point your device's browser to the manager server running the Intel® Manager for Lustre* software. The window will responsively fit within the device's screen.
+2. To view the menu bar, click ![Mobile Button](md_Graphics/mobile_button.png). The menu bar is now displayed vertically along the left side of the window.
 3. ![Vertical Menu Bar](md_Graphics/vertical_menu_bar.png)
 4. To hide the menu bar, click ![Mobile Button](md_Graphics/mobile_button.png) again.
 

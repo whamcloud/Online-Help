@@ -9,7 +9,7 @@
     "start": "bundle exec jekyll serve",
     "postversion": "npm run build",
     "link-check":
-      "find . -name '*.md' -not -path './node_modules/*' -not -path './_site/*' | xargs -n 1 -I % sh -c 'echo %; markdown-link-check %;'"
+      "find . -name '*.md' -path './docs/*' | xargs -n 1 -I % sh -c 'echo %; markdown-link-check %;'"
   },
   "publishConfig": {
     "access": "public"

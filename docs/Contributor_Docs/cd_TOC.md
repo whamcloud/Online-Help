@@ -48,7 +48,7 @@
 
 1.  [Creating a Managed Lustre ZFS Filesystem on a Vagrant virtual cluster](cd_Managed_ZFS.md)
 
-1.  [Setting up Lustre Clients](cd_Setting_Up_Clients.html)
+1.  [Setting up Lustre Clients](cd_Setting_Up_Clients.md)
 
 1.  [Setup Power Control on a Vagrant virtual cluster](cd_Setting_Up_Power_Control.md)
 

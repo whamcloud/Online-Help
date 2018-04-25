@@ -33,7 +33,7 @@ promises | [https://promisesaplus.com/](https://promisesaplus.com/)
 **redux / flux** | [http://redux.js.org/](http://redux.js.org/)
 Semantic Versioning | [https://docs.npmjs.com/getting-started/semantic-versioning](https://docs.npmjs.com/getting-started/semantic-versioning)
 Streams, Pipes, Buffers | [https://nodejs.org/api/stream.html](https://nodejs.org/api/stream.html)
-**Webpack** | [https://webpack.github.io/docs/](https://webpack.github.io/docs/)
+**Webpack** | [https://webpack.js.org/concepts/](https://webpack.js.org/concepts/)
 |
 
 <br />
