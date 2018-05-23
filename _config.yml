@@ -1,9 +1,9 @@
 theme: jekyll-theme-cayman
 exclude: [vendor, include, node_modules, package.json, package-lock.json, iml-online-help.spec, Makefile, LICENSE, Gemfile, Gemfile.lock, travis_env]
-version: '4.0.5.0'
-package_name: 'iml-4.0.5.0'
-lustre_version: '2.10.3'
-lustre_package_name: 'lustre-2.10.3'
-lustre_kernel_version: '3.10.0-693.11.6.el7'
+version: '4.0.6.0'
+package_name: 'iml-4.0.6.0'
+lustre_version: '2.10.4'
+lustre_package_name: 'lustre-2.10.4'
+lustre_kernel_version: '3.10.0-862.2.3.el7'
 e2fsprogs_version: '1.42.13'
-centos_version: '7.4'
+centos_version: '7.5'
