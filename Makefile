@@ -30,7 +30,8 @@ install_build_deps:
 	yum -y install https://rpm.nodesource.com/pub_8.x/el/7/x86_64/nodesource-release-el7-1.noarch.rpm
 	yum -y install nodejs rubygem-bundler ruby-devel gcc autoconf \
 		       automake libtool yum-plugin-copr zlib-devel
-	yum -y copr enable managerforlustre/CentOS_Ruby22
+	#yum -y copr enable managerforlustre/CentOS_Ruby22
+	wget -O /etc/yum.repos.d/managerforlustre-CentOS_Ruby22-epel-7.repo https://copr.fedorainfracloud.org/coprs/managerforlustre/CentOS_Ruby22/repo/epel-7/managerforlustre-CentOS_Ruby22-epel-7.repo
 	yum -y install ruby
 
 NPM_PREREQS := $(HTML_FILES) README.md
