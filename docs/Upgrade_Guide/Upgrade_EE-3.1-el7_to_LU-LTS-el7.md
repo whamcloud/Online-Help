@@ -161,12 +161,6 @@ Also note that the manager server distribution includes a default repository def
 
     **Note:** The above example references the latest Lustre\* release available. To use a specific version, replace `latest-release` in the `[lustre-server]` and `[lustre-client]` `baseurl` variables with the version required, e.g., `{{site.lustre_package_name}}`. Always use the latest `e2fsprogs` package unless directed otherwise.
 
-    **Note:** With the release of Lustre\* version {{site.lustre_version}}, it is possible to use patchless kernels for Lustre\* servers running LDISKFS. The patchless LDISKFS server distribution does not include a Linux kernel. Instead, patchless servers will use the kernel distributed with the operating system. To use patchless kernels for the Lustre\* servers, replace the string `server` with `patchless-ldiskfs-server` at the end of the `[lustre-server]` `baseurl` string. For example:
-
-    ```bash
-    baseurl=https://downloads.hpdd.intel.com/public/lustre/latest-release/el7/patchless-ldiskfs-server
-    ```
-
     Also note that the `debuginfo` packages are excluded in the example repository definitions. This is simply to cut down on the size of the download. It is usually a good idea to pull in these files as well, to assist with debugging of issues.
 
 1.  Use the `reposync` command (distributed in the `yum-utils` package) to download mirrors of the Lustre\* repositories to the manager server:
