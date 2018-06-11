@@ -18,9 +18,9 @@ we currently need to build each RPM and indicate to the manager to use these rep
 
 1.  Sign up for a [Fedora account](https://admin.fedoraproject.org/accounts/user/new) if you don't have one and login to Copr.
 1.  Get your api token info [here](https://copr.fedorainfracloud.org/api/), you will need this later.
-1.  Create a new project to hold your changes.
+1.  (Optional) Create a new project to hold your changes. If you don't do this `make copr_build` will create a project and build in it using the name of your project. Creating a new project by hand is useful if you want to batch multiple RPMs in a single repo.
 1.  Once your project is created, navigate to the change you want to test locally.
-1.  Create a `copr-local.mk` file at the top level of your project with `COPR_OWNER` and `COPR_PROJECT` set to your user and project created in step 3.
+1.  Create a `copr-local.mk` file at the top level of your project with `COPR_OWNER` and `COPR_PROJECT` set to your user and project created in step 3. Note that if you elected for module-tools to create the repo, you should omit `COPR_PROJECT`.
 1.  (Optional) If you are running an OS that doesn't support copr-cli or make, start a docker container and mount the contents:
 
     ```shell
@@ -34,7 +34,9 @@ we currently need to build each RPM and indicate to the manager to use these rep
     yum install -y make copr-cli rpmdevtools git
     # create file at ~/.config/copr holding the contents from step 2.
     cd /build # if running in docker
-    make DRYRUN=false copr_build
+    make DRYRUN=false copr_build # If building from spec
+    # OR
+    make DRYRUN=false UNPUBLISHED=true copr_build # If building from SRPM
     ```
 
 1.  Check the builds in your Copr repo to make sure it was successful.
