@@ -24,6 +24,8 @@
 
 1.  [How to Contribute To the **Backend**](cd_Contribute_To_Backend.md)
 
+1.  [How to use module-tools](cd_module_tools)
+
 1.  [How to Create **Frontend** Unit Tests](cd_Create_Frontend_Unit_Tests.md)
 
 1.  [Running Unit Tests for intel-manager-for-lustre Repo ](cd_intel-manager-for-lustre_Unit_Testing.md)
