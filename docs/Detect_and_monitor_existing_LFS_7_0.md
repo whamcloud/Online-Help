@@ -3,7 +3,7 @@
 
 [**Online Help Table of Contents**](IML_Help_TOC.md)
 
-A Lustre* file system that was created without using Intel® Manager for Lustre* software can be monitored, *but not managed*, from the manager GUI. 
+A Lustre* file system that was created without using Integrated Manager for Lustre* software can be monitored, *but not managed*, from the manager GUI. 
 
 Before an existing Lustre* file system can be monitored at the manager GUI, the servers must be added and then the file system detected by the manager. 
 

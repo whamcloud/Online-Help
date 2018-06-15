@@ -2,8 +2,8 @@
 
 [**Software Installation Guide Table of Contents**](ig_TOC.md)
 
-*For partners*: If you encounter a problem with Intel® Manager for Lustre* software or storage, and you
-require support from your Intel® technical support representative, then
+*For partners*: If you encounter a problem with Integrated Manager for Lustre* software or storage, and you
+require support from your technical support representative, then
 to help expedite resolution of the problem, please do the following:
 
 1.  [Run iml diagnostics](#run-iml-diagnostics).
@@ -14,7 +14,7 @@ Run iml diagnostics
 ----------------------
 
 Run iml-diagnostics on any of the servers that you suspect may be
-having problems, and on the server hosting the Intel® Manager for Lustre*
+having problems, and on the server hosting the Integrated Manager for Lustre*
 software dashboard. Iml-Diagnostics generates a compressed
 tar.xz file that you should attach to your GitHub issue.
 To run iml-diagnostics:

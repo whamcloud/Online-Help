@@ -17,9 +17,9 @@ Please do _not_ perform the following tasks, as these tasks (among
 others) are performed automatically, or will conflict with the software:
 
 * Do **not** configure IP addresses for the crossover cable interfaces (server to target).
-* Do **not** install or configure Lustre, Corosync, or Pacemaker. Install Intel® Manager for Lustre\* software only as described in this guide.
+* Do **not** install or configure Lustre, Corosync, or Pacemaker. Install Integrated Manager for Lustre\* software only as described in this guide.
 * Do **not** configure NTP on storage servers.
-* Do **not** install CMAN (Cluster Manager) or other packages that use the Red Hat fence agents. Intel® Manager for Lustre\* software will have package conflicts. Remove all such packages from all systems.
+* Do **not** install CMAN (Cluster Manager) or other packages that use the Red Hat fence agents. Integrated Manager for Lustre\* software will have package conflicts. Remove all such packages from all systems.
 
 ## LNET Configuration
 
@@ -27,7 +27,7 @@ LNET provides the client network infrastructure required by the Lustre\*
 file system. It supports many commonly used network types such as
 InfiniBand and Ethernet.
 
-Basic LNET configuration can be performed using the Intel® Manager for Lustre* software GUI.
+Basic LNET configuration can be performed using the Integrated Manager for Lustre* software GUI.
 This is done before creating the Lustre* file system. In
 this early version of GUI-based LNET configuration, it is intended that
 the file system will exist on a _single_ LNET and that all servers and
@@ -35,12 +35,12 @@ clients are on this LNET. In this case, you can perform LNET
 configuration from the GUI and the configuration information is saved in
 a reserved file called
 /etc/modprobe.d/iml_lnet_module_parameters.conf. Do not manually edit
-this file. Simply follow the instructions in the Intel® Manager for Lustre\* software Help.
+this file. Simply follow the instructions in the Integrated Manager for Lustre\* software Help.
 
 If you wish to configure more advanced features (such as routes and IP
 networks), then you should do this manually, in a separate file
 contained in the /etc/modprobe.d directory. Please see the configuration
-guide _Configuring LNet Routers for File Systems based on Intel® Manager for Lustre_ software*
+guide _Configuring LNet Routers for File Systems based on Integrated Manager for Lustre_ software*
 and also see the Lustre* Operations Manual, Chapter 9
 
 * Configuring Lustre* Networking*:
@@ -62,7 +62,7 @@ lost_.
     installed. All servers should be running the same OS and version.
 
     * Do **not** install CMAN (Cluster Manager) or other packages that use
-      the Red Hat fence agents. Intel® Manager for Lustre\* software will
+      the Red Hat fence agents. Integrated Manager for Lustre\* software will
       have package conflicts. Remove all such packages from all systems.
 
 1.  For servers running Red Hat Linux, each server must be registered
@@ -110,11 +110,11 @@ lost_.
     yum updates occur successfully. `yum search vim` will reveal if you
     cannot connect to your configured repositories.
 
-1.  Ensure that NTP is not running on any system. Intel® Manager for Lustre\* software
+1.  Ensure that NTP is not running on any system. Integrated Manager for Lustre\* software
     will manage NTP.
 
 1.  Ensure that ssh root access `ssh -l root <hostname>` works
-    from the server that will be hosting the Intel® Manager for Lustre\* software
+    from the server that will be hosting the Integrated Manager for Lustre\* software
     dashboard, to all other file system servers.
 
 1.  Properly configure the firewall to allow access to your
@@ -138,7 +138,7 @@ nodes.
 ## Client Requirements
 
 A client accessing your Lustre* file system (created with Manager
-for Lustre\* software) must be running Intel® Manager for Lustre* software {{site.version}}
+for Lustre\* software) must be running Integrated Manager for Lustre* software {{site.version}}
 client software. See [Configuring Clients](ig_ch_07_configure_clients.md) for
 instructions on installing software and configuring clients.
 
@@ -148,16 +148,16 @@ Configuration](#lnet-configuration).
 
 ## Linux\* Kernel Rebuilds and Patches
 
-The installation of Intel® Manager for Lustre\* software will replace your
+The installation of Integrated Manager for Lustre\* software will replace your
 existing Linux\* kernel on all servers.
 
 ## Firewall Considerations
 
-Intel® Manager for Lustre* software runs on
+Integrated Manager for Lustre* software runs on
 servers running RHEL or CentOS, version {{site.centos_version}}. The *firewalled* package
 needs to be installed and configured for *all file system servers
-before* installing Intel® Manager for Lustre* software. The Intel® Manager for
+before* installing Integrated Manager for Lustre* software. The Integrated Manager for
 Lustre* software installation process will then modify the firewall
-configuration as needed for Intel® Manager for Lustre* software to operate.
+configuration as needed for Integrated Manager for Lustre* software to operate.
 
 [Top of page](#1.0)

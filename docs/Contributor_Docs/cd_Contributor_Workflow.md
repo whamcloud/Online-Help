@@ -104,7 +104,7 @@ git push origin my-new-branch
 
 
 ## 5. Jenkins Automated Build Server
-Intel provides a Jenkins build server that performs automated tests and generates IML tarball releases for download.
+Whamcloud provides a Jenkins build server that performs automated tests and generates IML tarball releases for download.
 
 
 ## 6. Fedora Copr Automated Build System

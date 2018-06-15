@@ -7,22 +7,22 @@
 - [Creating user accounts](#creating-user-accounts)
 - [Setting up email notifications of alerts](#setting-up-email-notifications-of-alerts)
 
-A high-availability Lustre file system managed by Intel® Manager for Lustre* software requires that your entire storage system configuration and all  interfaces comply with a pre-defined configuration.  For detailed information, see [High Availability Configuration Specification](Install_Guide/ig_ch_03_building.md). If the system will leverage ZFS you may also want to read [Creating and Managing ZFS-based Lustre\* file systems](Create_and_manage_ZFS_based_LFS_8_0.md).
+A high-availability Lustre file system managed by Integrated Manager for Lustre* software requires that your entire storage system configuration and all  interfaces comply with a pre-defined configuration.  For detailed information, see [High Availability Configuration Specification](Install_Guide/ig_ch_03_building.md). If the system will leverage ZFS you may also want to read [Creating and Managing ZFS-based Lustre\* file systems](Create_and_manage_ZFS_based_LFS_8_0.md).
 
-**Note:** All references herein to the "manager" refer to the Intel® Manager for Lustre* software.
-The Intel® Manager for Lustre* software can be used to:
+**Note:** All references herein to the "manager" refer to the Integrated Manager for Lustre* software.
+The Integrated Manager for Lustre* software can be used to:
 
 - Create, monitor and manage high-availability Lustre* file systems, including systems running Open ZFS as the back-end.
 - Monitor existing Lustre* file systems that have not been configured from the manager GUI.
 
 See the following information to get started:
 
-- To setup superuser and user accounts on Intel® Manager for Lustre* software see: [Creating user accounts](#creating-user-accounts).
+- To setup superuser and user accounts on Integrated Manager for Lustre* software see: [Creating user accounts](#creating-user-accounts).
 - Also see: [Setting up email notifications of alerts](#setting-up-email-notifications-of-alerts).
-- To create a new Lustre file system using Intel® Manager for Lustre* software, see: [Creating a new Lustre* file system](Creating_new_lustre_fs_3_0.md/#3.0).
-- To detect and monitor an existing Lustre file system using Intel® Manager for Lustre* software, see: [Detect and monitor existing Lustre* file systems](Detect_and_monitor_existing_LFS_7_0.md/#7.0).
+- To create a new Lustre file system using Integrated Manager for Lustre* software, see: [Creating a new Lustre* file system](Creating_new_lustre_fs_3_0.md/#3.0).
+- To detect and monitor an existing Lustre file system using Integrated Manager for Lustre* software, see: [Detect and monitor existing Lustre* file systems](Detect_and_monitor_existing_LFS_7_0.md/#7.0).
 
-**WARNING:** For Lustre* file systems created and managed by Intel® Manager for Lustre* software, the only supported command line interface is the CLI provided by Intel® Manager for Lustre* software. Modifying such a Lustre file system manually from a UNIX shell will interfere with the ability of the Intel® Manager for Lustre* software to manage and monitor the file system.
+**WARNING:** For Lustre* file systems created and managed by Integrated Manager for Lustre* software, the only supported command line interface is the CLI provided by Integrated Manager for Lustre* software. Modifying such a Lustre file system manually from a UNIX shell will interfere with the ability of the Integrated Manager for Lustre* software to manage and monitor the file system.
 
 [Top of page](#getting-started)
 
@@ -48,13 +48,13 @@ After logging in, a user can modify their own account by clicking **Account** ne
 - **Password -** Password can be changed and confirmed.
 - **Email Notifications -** The types of events for which this account will receive emailed notifications can be selected from a checklist. If no notifications are selected, email notifications will be sent for all alerts except “Host contact alerts”. See [Setting up Email Notifications of alerts](#setting-up-email-notifications-of-alerts).
 
-**Note:** Unauthenticated users can access the static HTML content present on the Intel® Manager for Lustre* software GUI, but the display will not be populated with current system information unless the user is authenticated.
+**Note:** Unauthenticated users can access the static HTML content present on the Integrated Manager for Lustre* software GUI, but the display will not be populated with current system information unless the user is authenticated.
 
 ## Setting up email notifications of alerts
 
 This feature lets a superuser selectively turn on and turn off email notifications of specific classes of alerts for individual users. Users can also configure this capability. The alert email has specific information as to which component is affected.
 
-**Note:** A mail handler needs to be established to forward alert emails before this feature will work. See [Editing Intel® Manager for Lustre* software Configuration Settings](Install_Guide/ig_ch_05_install.md#editing-manager-for-lustre-software-configuration-settings) for more information.
+**Note:** A mail handler needs to be established to forward alert emails before this feature will work. See [Editing Integrated Manager for Lustre* software Configuration Settings](Install_Guide/ig_ch_05_install.md#editing-manager-for-lustre-software-configuration-settings) for more information.
 
 To set up email notifications:
 

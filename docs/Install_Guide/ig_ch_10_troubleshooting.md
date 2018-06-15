@@ -109,7 +109,7 @@ these steps in the Command Center Manager user interface:
     menu **Failback** button.
 
 For more details about manually performing failover and failback
-operations, see the Intel® Manager for Lustre* software online Help topic,
+operations, see the Integrated Manager for Lustre* software online Help topic,
 *Managing storage*.
 
 ***Problem:*** **You need to restart cleanly after a power outage to
@@ -130,7 +130,7 @@ NID may change if the network connecting the Lustre* servers and clients
 is modified. If a Lustre* server NID changes, the server NID record in
 the Command Center must be updated.
 
-For a procedure to update server NIDS, see the Intel® Manager for Lustre* software
+For a procedure to update server NIDS, see the Integrated Manager for Lustre* software
 online Help topic, *Handling network address changes*.
 
 ***Problem:*** **You are unable to create or read a file from a client

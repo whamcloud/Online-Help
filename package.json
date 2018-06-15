@@ -2,14 +2,14 @@
   "name": "@iml/online-help",
   "version": "2.4.1",
   "description": "The IML help docs",
-  "files": ["targetdir/"],
+  "files": [
+    "targetdir/"
+  ],
   "scripts": {
-    "build":
-      "rm -rf targetdir && bundle exec jekyll build --destination targetdir --baseurl='/help' && find targetdir -name *.md -print0 | xargs -0 rm -f",
+    "build": "rm -rf targetdir && bundle exec jekyll build --destination targetdir --baseurl='/help' && find targetdir -name *.md -print0 | xargs -0 rm -f",
     "start": "bundle exec jekyll serve",
     "postversion": "npm run build",
-    "link-check":
-      "find . -name '*.md' -path './docs/*' | xargs -n 1 -I % sh -c 'echo %; markdown-link-check %;'"
+    "link-check": "find . -name '*.md' -path './docs/*' | xargs -n 1 -I % sh -c 'echo %; markdown-link-check %;'"
   },
   "publishConfig": {
     "access": "public"
@@ -20,6 +20,6 @@
   },
   "author": "IML Team",
   "devDependencies": {
-    "markdown-link-check": "^3.1.5"
+    "markdown-link-check": "^3.6.2"
   }
 }

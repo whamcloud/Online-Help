@@ -3,9 +3,9 @@
 [**Software Installation Guide Table of Contents**](ig_TOC.md)
 
 Some installations may opt to deploy and configure a Lustre* file system
-manually, without Intel® Manager for Lustre* software. Other
+manually, without Integrated Manager for Lustre* software. Other
 installations may opt to deploy and configure a Lustre* file system and
-then later install Intel® Manager for Lustre* software to be used in
+then later install Integrated Manager for Lustre* software to be used in
 Monitor-only mode.
 
 The overall release tarball is iml-{{site.version}}.0.tar.gz. To deploy and

@@ -1,4 +1,4 @@
-# Intel® Manager for Lustre\* software
+# Integrated Manager for Lustre\* software
 
 ## **Software Contributor Documentation**
 

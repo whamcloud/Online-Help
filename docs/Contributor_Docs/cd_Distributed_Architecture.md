@@ -13,7 +13,7 @@ _monorepo_
 
 #### Repos
 
-Each repo is a separate entry under the [Intel HPDD organization](https://github.com/intel-hpdd).
+Each repo is a separate entry under the [whamCloud organization](https://github.com/whamcloud).
 
 Many of the repos utilize [travis](https://travis-ci.org/) to run their automated tests. Travis is a general hosted CI platform where unit / integration tests can be run. Here is an [example](https://travis-ci.org/intel-hpdd/view-server/jobs/257382690). They also are published individually by travis on a public facing package registry; here is an [example](https://yarnpkg.com/en/package/@iml/view-server).
 

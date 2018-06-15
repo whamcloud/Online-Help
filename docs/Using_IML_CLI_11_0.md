@@ -1,11 +1,11 @@
 <a id="11.0"></a>
-# Using the Intel® Manager for Lustre* software command line interface
+# Using the Integrated Manager for Lustre* software command line interface
 
 [**Online Help Table of Contents**](IML_Help_TOC.md)
 
-Intel® Manager for Lustre* software includes a command line interface (CLI) which can be used instead of the GUI to communicate with the Representational State Transfer (REST)-based API underlying the software GUI. The CLI is intended to be used in shell scripts by superusers and power users.
+Integrated Manager for Lustre* software includes a command line interface (CLI) which can be used instead of the GUI to communicate with the Representational State Transfer (REST)-based API underlying the software GUI. The CLI is intended to be used in shell scripts by superusers and power users.
 
-**WARNING**: For Lustre* file systems created and managed by Intel® Manager for Lustre* software, the only supported command line interface is the CLI provided byIntel® Manager for Lustre* software. Modifying such a Lustre* file system manually from a UNIX shell will interfere with the ability of the Intel® Manager for Lustre* software to manage and monitor the file system.
+**WARNING**: For Lustre* file systems created and managed by Integrated Manager for Lustre* software, the only supported command line interface is the CLI provided by Integrated Manager for Lustre* software. Modifying such a Lustre* file system manually from a UNIX shell will interfere with the ability of the Integrated Manager for Lustre* software to manage and monitor the file system.
 
 This chapter provides the following procedures and information:
 
@@ -17,23 +17,23 @@ This chapter provides the following procedures and information:
 
 ## <a id="11.1"></a>Accessing the command line interface
 
-To access the Intel® Manager for Lustre* software CLI:
+To access the Integrated Manager for Lustre* software CLI:
 
 1. Use SSH to log into the manager server as the UNIX superuser. Log in using your superuser account. 
 1. Enter CLI commands on the UNIX command line.
 
-**WARNING**: To manage Lustre* file systems from the command line, you must use the Intel® Manager for Lustre* software command line interface. Modifying a file system manually from a shell on a storage server will interfere with the ability of Intel® Manager for Lustre* software to manage and monitor the file system.
+**WARNING**: To manage Lustre* file systems from the command line, you must use the Integrated Manager for Lustre* software command line interface. Modifying a file system manually from a shell on a storage server will interfere with the ability of Integrated Manager for Lustre* software to manage and monitor the file system.
 
 [Top of page](#11.0)
 
 
 ## <a id="11.2"></a>Creating a configuration file with login information
 
-Although a superuser can enter a login name and password on the command line each time the Intel® Manager for Lustre* software CLI is used, accessing login information in a configuration file is more convenient and more secure. 
+Although a superuser can enter a login name and password on the command line each time the Integrated Manager for Lustre* software CLI is used, accessing login information in a configuration file is more convenient and more secure. 
 
 To set up an optional configuration file, complete these steps:
 
-1. Create a configuration file $HOME/.chroma on the server hosting Intel® Manager for Lustre* software.
+1. Create a configuration file $HOME/.chroma on the server hosting Integrated Manager for Lustre* software.
 1. Edit the file to include content as shown below:
 ```
 [chroma]
@@ -154,7 +154,7 @@ This section includes examples of common operations executed using the CLI.
 
 **Note**: Operations that modify the file system configuration can only be executed by a file system superuser. For a convenient way to access login information in a configuration file, see [Creating a configuration file containing login information](#11.2). If a configuration file containing the superuser’s login information does not exist, include the --username and --password parameters in the CLI command.
 
-To add the file system jovian to Intel® Manager for Lustre* software, enter:
+To add the file system jovian to Integrated Manager for Lustre* software, enter:
 
 ```
 # chroma fs-add jovian --mgt autonoe:/dev/mapper/LustreVG-mgs --mdt autonoe:/dev/mapper/

@@ -2,9 +2,9 @@
 
 [**Online Help Table of Contents**](IML_Help_TOC.md)
 
-This chapter describes how to create a new Lustre* file system, to be managed from the Intel® Manager for Lustre* software, and how to mount file system clients.
+This chapter describes how to create a new Lustre* file system, to be managed from the Integrated Manager for Lustre* software, and how to mount file system clients.
 
-**Note:** All references herein to the manager refer to the Intel® Manager for Lustre* software.
+**Note:** All references herein to the manager refer to the Integrated Manager for Lustre* software.
 
 **Note:** The procedure for creating a Lustre* file system *based on ZFS zpools* is different. For that information see [Creating and Managing ZFS-based Lustre* file systems](Create_and_manage_ZFS_based_LFS_8_0.md/#8.0).
 
@@ -26,31 +26,31 @@ This chapter describes how to create a new Lustre* file system, to be managed fr
 
 ## IMPORTANT PREREQUISITES to creating an HA Lustre* file system
 
-A high-availability Lustre* file system managed by Intel® Manager for Lustre* software requires that your entire storage system configuration and all interfaces comply with a pre-defined configuration. Intel® Manager for Lustre* software performs LNet configuration assuming that each server is connected to a high-performance data network, which is the Lustre* network LNet.  For detailed information, see [The High Availability Configuration Spec](Install_Guide/ig_ch_03_building.md). If the system will leverage ZFS you may also want to read [Creating and Managing ZFS-based Lustre\* file systems](Create_and_manage_ZFS_based_LFS_8_0.md).
+A high-availability Lustre* file system managed by Integrated Manager for Lustre* software requires that your entire storage system configuration and all interfaces comply with a pre-defined configuration. Integrated Manager for Lustre* software performs LNet configuration assuming that each server is connected to a high-performance data network, which is the Lustre* network LNet.  For detailed information, see [The High Availability Configuration Spec](Install_Guide/ig_ch_03_building.md). If the system will leverage ZFS you may also want to read [Creating and Managing ZFS-based Lustre\* file systems](Create_and_manage_ZFS_based_LFS_8_0.md).
 
 [Top of page](#creating-a-new-lustre-file-system)
 
 ## IMPORTANT INFORMATION about reconfiguring your file system
 
-**Caution:** When initially setting up your storage system, take care in selecting block device names because these cannot be changed after the file system has been created using  Intel® Manager for Lustre* software. **You should NOT make configuration changes to file system servers or their respective volumes/targets outside of Intel® Manager for Lustre* software**. Doing so will defeat the ability of Intel® Manager for Lustre* software to monitor or manage the file system, and will make the file system unavailable to clients. **Re-labeling these device names during multipath configuration will break the HA configuration established by Intel® Manager for Lustre* software**.
+**Caution:** When initially setting up your storage system, take care in selecting block device names because these cannot be changed after the file system has been created using  Integrated Manager for Lustre* software. **You should NOT make configuration changes to file system servers or their respective volumes/targets outside of Integrated Manager for Lustre* software**. Doing so will defeat the ability of Integrated Manager for Lustre* software to monitor or manage the file system, and will make the file system unavailable to clients. **Re-labeling these device names during multipath configuration will break the HA configuration established by Integrated Manager for Lustre* software**.
 
-**Caution:** A known issue can result in a server being made unavailable. This can happen if the server has been added to a Lustre* file system, (using Intel® Manager for Lustre* software) and then the user decides to Force Remove the server from the file system. **The Force Remove command should only be performed if the Remove command has been unsuccessful.** Force Remove will remove the server from the Intel® Manager for Lustre* software configuration, but not remove Intel® Manager for Lustre* software from the server. All targets that depend on the server will also be removed without any attempt to unconfigure them.
+**Caution:** A known issue can result in a server being made unavailable. This can happen if the server has been added to a Lustre* file system, (using Integrated Manager for Lustre* software) and then the user decides to Force Remove the server from the file system. **The Force Remove command should only be performed if the Remove command has been unsuccessful.** Force Remove will remove the server from the Integrated Manager for Lustre* software configuration, but not remove Integrated Manager for Lustre* software from the server. All targets that depend on the server will also be removed without any attempt to unconfigure them.
 
 [Top of page](#creating-a-new-lustre-file-system)
 
 ## High-availability file system support
 
-Intel® Manager for Lustre* software includes several capabilities for configuring and managing highly-available Lustre* file systems.
+Integrated Manager for Lustre* software includes several capabilities for configuring and managing highly-available Lustre* file systems.
 
 Generally, high availability (HA) means that the file system is able to tolerate server hardware failure without loss of service. The key components of this solution are the software components Corosync and Pacemaker. Corosync is responsible for maintaining intra-cluster control and heartbeat communications, and Pacemaker is responsible for managing HA resources (e.g., Lustre* targets).
 
-To support automatic server failover, each HA server must have a dedicated crossover connection to the other server that will be its HA peer. During file system creation, each HA server is designated as a primary server for one or more targets, and as a failover, peer server for its peer server's targets. This crossover connection is configured as a redundant Corosync communications interface in order to reduce the likelihood of false failover events. Intel® Manager for Lustre* software uses a managed server profile to automatically configure Corosync and Pacemaker. The managed server profile is used to configure primary and failover servers. See the following figure.
+To support automatic server failover, each HA server must have a dedicated crossover connection to the other server that will be its HA peer. During file system creation, each HA server is designated as a primary server for one or more targets, and as a failover, peer server for its peer server's targets. This crossover connection is configured as a redundant Corosync communications interface in order to reduce the likelihood of false failover events. Integrated Manager for Lustre* software uses a managed server profile to automatically configure Corosync and Pacemaker. The managed server profile is used to configure primary and failover servers. See the following figure.
 
 ![Lustre Configuration](md_Graphics/lustre-configuration5_zoom40.png)
 
 Physically, HA peer servers must be cabled to provide equal access to the pool of storage targets allocated to those peers. For example: server 1 and server 2 are cabled as HA peers. Targets A and B have been configured with server 1 as their primary server and server 2 as their failover server. Targets C and D have been configured with server 2 as their primary server and server 1 as their failover server. If server 1 becomes unavailable, server 2 must have access to the block storage devices underlying targets A and B in order to mount them and make them available to Lustre* clients. The end result is that server 1 is powered off and server 2 is now exporting targets A, B, C, and D to Lustre* clients.
 
-To support HA failover, each HA server must be able to automatically power-off its peer server if a failover is required. The process of powering off a faulty server is known as "node fencing" (also called "server fencing"), and ensures that a shared storage device is not mounted by more than one server at a time. Lustre* includes protection against multiple simultaneous device mounts, but automatically powering off the faulty server ensures that failover works properly. Intel® Manager for Lustre* software supports the use of remotely-operable Power Distribution Units (PDUs) for this purpose. Alternative to the configuration of PDUs, Intel® Manager for Lustre* software also supports the Intelligent Management Platform Interface (IPMI) and associating baseboard management controllers (BMCs) with servers, to support server monitoring and control.
+To support HA failover, each HA server must be able to automatically power-off its peer server if a failover is required. The process of powering off a faulty server is known as "node fencing" (also called "server fencing"), and ensures that a shared storage device is not mounted by more than one server at a time. Lustre* includes protection against multiple simultaneous device mounts, but automatically powering off the faulty server ensures that failover works properly. Integrated Manager for Lustre* software supports the use of remotely-operable Power Distribution Units (PDUs) for this purpose. Alternative to the configuration of PDUs, Integrated Manager for Lustre* software also supports the Intelligent Management Platform Interface (IPMI) and associating baseboard management controllers (BMCs) with servers, to support server monitoring and control.
 
 **Note:** See [The High Availability Configuration Spec](Install_Guide/ig_ch_03_building.md) for physical design and configuration guidelines required to support high availability.
 
@@ -242,7 +242,7 @@ Now that the necessary steps are complete, a filesystem can be created. To creat
     ![Filesystem Name](md_Graphics/add_filesystem_step_1.png)
 
 1. If this file system is to utilize Hierarchical Storage Management, click the check-box **Enable HSM**.
-1. At step 2, Choose a management target (MGT). Intel® Manager for Lustre* software does not support an MGT larger than 10 gigabytes. *If a management target has been created previously*, the following options will be available. Use one of these options to select the MGT:
+1. At step 2, Choose a management target (MGT). Integrated Manager for Lustre* software does not support an MGT larger than 10 gigabytes. *If a management target has been created previously*, the following options will be available. Use one of these options to select the MGT:
     - If the MGT is to be installed on an existing server in the file system, you can select the target to be used from the *Use existing MGT* drop-down list.
     - If a new MGT is to be created, click **Select Storage** to display a list of available servers and then click the server to be used.
 
@@ -278,7 +278,7 @@ Now that the necessary steps are complete, a filesystem can be created. To creat
     mkdir <lustre_mount_point>/<parent_folder_to_contain_this_MDT>/<subdirectory_name>
     ```
 
-**Note:** Intel® Manager for Lustre* software will automatically assign OST indices in a distributed fashion across servers to permit striping.
+**Note:** Integrated Manager for Lustre* software will automatically assign OST indices in a distributed fashion across servers to permit striping.
 
 **Note:** If you plan to enable HSM for this file system, see the chapter [Configuring and using Hierarchical Storage Management](Config_and_using_HSM_6_0.md/#6.0) to setup HSM.
 
@@ -298,7 +298,7 @@ To view the file system configuration:
 
 ## Mount the Lustre\* file system
 
-A compute client must mount the Lustre* file system to be able to access data in the file system. Before attempting to mount the file system on your Lustre* clients, make sure the Intel® Manager for Lustre* client software has been installed on each client node. See [Configuring Clients](Install_Guide/ig_ch_07_configure_clients.md) for more information.
+A compute client must mount the Lustre* file system to be able to access data in the file system. Before attempting to mount the file system on your Lustre* clients, make sure the Integrated Manager for Lustre* client software has been installed on each client node. See [Configuring Clients](Install_Guide/ig_ch_07_configure_clients.md) for more information.
 
 A client can mount the entire file system, or mount a file system sub-directory.
 
@@ -310,7 +310,7 @@ A client can mount the entire file system, or mount a file system sub-directory.
 To obtain the command used to mount an entire file system:
 
 1. Using the Dashboard menu bar, click the **Configuration** drop-down menu and click **File Systems**.
-1. Each Lustre* file system created using Intel® Manager for Lustre* software is listed. Select the file system to be mounted. The browser will navigate to the filesystem detail page.
+1. Each Lustre* file system created using Integrated Manager for Lustre* software is listed. Select the file system to be mounted. The browser will navigate to the filesystem detail page.
 1. Click the **View Client Mount Information** button. The mount command will be displayed.
 
     ```bash

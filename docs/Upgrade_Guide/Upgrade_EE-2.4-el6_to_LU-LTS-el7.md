@@ -1,8 +1,8 @@
-# Upgrading Intel® EE for Lustre\* 2.4.2.7 to Lustre\* {{site.lustre_version}} LTS and Intel® Manager for Lustre\* {{site.version}}
+# Upgrading Intel® EE for Lustre\* 2.4.2.7 to Lustre\* {{site.lustre_version}} LTS and Integrated Manager for Lustre\* {{site.version}}
 
 ## Introduction
 
-This document provides a description of how to upgrade an existing Lustre\* server file system installation from Intel® EE for Lustre\* version 2.4.2.7 running on the RHEL/CentOS 6 OS distribution to Lustre\* {{site.lustre_version}} LTS and Intel® Manager for Lustre\* version {{site.version}} running on RHEL/CentOS {{site.centos_version}}.
+This document provides a description of how to upgrade an existing Lustre\* server file system installation from Intel® EE for Lustre\* version 2.4.2.7 running on the RHEL/CentOS 6 OS distribution to Lustre\* {{site.lustre_version}} LTS and Integrated Manager for Lustre\* version {{site.version}} running on RHEL/CentOS {{site.centos_version}}.
 
 Included in the process is a method for implementing migration of the server operating system from RHEL / CentOS 6.8 to version {{site.centos_version}}, which represents the most difficult part of the upgrade process.
 
@@ -10,7 +10,7 @@ CentOS is used for the examples. RHEL users will need to refer to Red Hat for in
 
 ## Risks
 
-The process of upgrading Intel® EE for Lustre\* to a newer Lustre\* and Intel® Manager for Lustre\* version requires careful consideration and planning. There will always be some disruption to services when major maintenance works are undertaken, although this can be contained and minimized.
+The process of upgrading Intel® EE for Lustre\* to a newer Lustre\* and Integrated Manager for Lustre\* version requires careful consideration and planning. There will always be some disruption to services when major maintenance works are undertaken, although this can be contained and minimized.
 
 The procedure is made more complex by the support policies for upgrades of the underlying operating system. In particular, upgrading from Red Hat Enterprise Linux version 6 to version 7 requires a complete re-installation of the base OS, because in-place upgrades are not available to the majority of RHEL deployments. This policy extends to the derivative OS distributions such as CentOS.
 
@@ -18,12 +18,12 @@ With very few exceptions, Red Hat does not provide a supported method for upgrad
 
 Nevertheless, upgrades are possible.
 
-The reference platform used throughout the documentation has been installed and is being managed by Intel® Manager for Lustre\* (IML), but the methods for the Lustre\* server components can be broadly applied to any approximately equivalent Lustre\* server environment running the RHEL or CentOS OS.
+The reference platform used throughout the documentation has been installed and is being managed by Integrated Manager for Lustre\* (IML), but the methods for the Lustre\* server components can be broadly applied to any approximately equivalent Lustre\* server environment running the RHEL or CentOS OS.
 
 ## Process Overview
 
-1.  Upgrade the Intel® Manager for Lustre\* manager server
-    1.  Backup the Intel® Manager for Lustre\* server (IML manager) configuration and database
+1.  Upgrade the Integrated Manager for Lustre\* manager server
+    1.  Backup the Integrated Manager for Lustre\* server (IML manager) configuration and database
     1.  Install RHEL {{site.centos_version}} or CentOS {{site.centos_version}}
     1.  Install the latest version of the IML manager software for EL7
     1.  Restore the IML manager configuration and database
@@ -48,19 +48,19 @@ The reference platform used throughout the documentation has been installed and 
 
 **Note:** When restoring OS configuration files to the upgraded OS, make sure to follow the distribution vendor's guidelines for best practice and security, as there may be differences in software configuration between the older and newer OS releases.
 
-## Upgrade Intel® Manager for Lustre\*
+## Upgrade Integrated Manager for Lustre\*
 
-The first component in the environment to upgrade is the Intel® Manager for Lustre\* server and software. The manager server upgrade can be conducted without any impact to the Lustre\* file system services.
+The first component in the environment to upgrade is the Integrated Manager for Lustre\* server and software. The manager server upgrade can be conducted without any impact to the Lustre\* file system services.
 
-### Backup the Existing Intel® Manager for Lustre\* Configuration
+### Backup the Existing Integrated Manager for Lustre\* Configuration
 
 1.  Backup the Existing configuration. Prior to commencing the upgrade, it is essential that a backup of the existing configuration is completed.
 
-    The following shell script can be used to capture the essential configuration information that is relevant to the Intel® Manager for Lustre\* software itself:
+    The following shell script can be used to capture the essential configuration information that is relevant to the Integrated Manager for Lustre\* software itself:
 
     ```bash
     #!/bin/sh
-    # EE Intel Manager for Lustre (IML) server backup script
+    # EE Integrated Manager for Lustre (IML) server backup script
 
     BCKNAME=bck-$HOSTNAME-`date +%Y%m%d-%H%M%S`
     BCKROOT=$HOME/$BCKNAME
@@ -95,14 +95,14 @@ The first component in the environment to upgrade is the Intel® Manager for Lus
 
 1.  Copy the backup tarball to a safe location that is not on the server being upgraded.
 
-**Note:** This script is not intended to provide a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre\* servers managed by Intel® Manager for Lustre\* that are difficult to re-create if deleted.
+**Note:** This script is not intended to provide a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre\* servers managed by Integrated Manager for Lustre\* that are difficult to re-create if deleted.
 
-**_Do not skip the backup. Subsequent process steps rely on the content of the backup to restore the Intel® Manager for Lustre\* services to operation._**
+**_Do not skip the backup. Subsequent process steps rely on the content of the backup to restore the Integrated Manager for Lustre\* services to operation._**
 
 ### Install the Operating System Update for the Manager Node
 
 1.  [Optional] Stop the `chroma-agent` daemon on each of the registered Lustre\* nodes. This step is optional, but will reduce the number of warnings and errors in the log files during the upgrade process. Stopping the `chroma-agent` will not affect Lustre\* file system services that are running and will not impact failover of Lustre\* file system cluster resources managed by Pacemaker.
-1.  Shut down the Intel® Manager for Lustre\* manager machine and install the new operating system version.
+1.  Shut down the Integrated Manager for Lustre\* manager machine and install the new operating system version.
 1.  When the installation is complete, copy the configuration backup tarball onto the host and extract it:
 
     ```bash
@@ -162,15 +162,15 @@ The first component in the environment to upgrade is the Intel® Manager for Lus
     systemctl start ntpd
     ```
 
-### Install the Intel® Manager for Lustre\* Upgrade
+### Install the Integrated Manager for Lustre\* Upgrade
 
 The software upgrade process requires super-user privileges to run. Login as the `root` user or use `sudo` to elevate privileges as required.
 
-1.  Download the latest Intel® Manager for Lustre\* software from the project's release page:
+1.  Download the latest Integrated Manager for Lustre\* software from the project's release page:
 
     <https://github.com/intel-hpdd/intel-manager-for-lustre/releases>
 
-1.  Extract the Intel® Manager for Lustre\* bundle. For example:
+1.  Extract the Integrated Manager for Lustre\* bundle. For example:
 
     ```bash
     cd $HOME
@@ -197,15 +197,15 @@ The software upgrade process requires super-user privileges to run. Login as the
       --no-dbspace-check, -d
     ```
 
-### Restore the Intel® Manager for Lustre\* Configuration
+### Restore the Integrated Manager for Lustre\* Configuration
 
-1.  When the initial installation is complete, stop the Intel® Manager for Lustre\* services on the host:
+1.  When the initial installation is complete, stop the Integrated Manager for Lustre\* services on the host:
 
     ```bash
     chroma-config stop
     ```
 
-1.  Restore the Intel® Manager for Lustre\* certificates from the backup:
+1.  Restore the Integrated Manager for Lustre\* certificates from the backup:
 
     ```bash
     mkdir /var/lib/chroma/certs-inst
@@ -213,7 +213,7 @@ The software upgrade process requires super-user privileges to run. Login as the
     cp $HOME/bck-`hostname`-*/var/lib/chroma/* /var/lib/chroma/.
     ```
 
-1.  Restore the Intel® Manager for Lustre\* database from the backup:
+1.  Restore the Integrated Manager for Lustre\* database from the backup:
 
     ```bash
     zcat $HOME/bck-`hostname`-*/pgbackup-*.sql.gz | \
@@ -226,13 +226,13 @@ The software upgrade process requires super-user privileges to run. Login as the
     chroma-config setup [-v]
     ```
 
-    On successful completion, the Intel® Manager for Lustre\* software will be started automatically.
+    On successful completion, the Integrated Manager for Lustre\* software will be started automatically.
 
-1.  When the installation and restoration of the configuration is complete, connect to the Intel® Manager for Lustre\* service using a web browser and verify that the new version has been installed and is running.
+1.  When the installation and restoration of the configuration is complete, connect to the Integrated Manager for Lustre\* service using a web browser and verify that the new version has been installed and is running.
 
 ### Create Local Repositories for the Lustre\* Packages
 
-The Intel® Manager for Lustre\* distribution does not include Lustre\* software packages. These need to be acquired separately from the Lustre\* project's download server. The following instructions will establish the manager node as a YUM repository server for the network. The Intel® Manager for Lustre\* server is automatically configured as a web server, so it is a convenient location for the repository mirrors.
+The Integrated Manager for Lustre\* distribution does not include Lustre\* software packages. These need to be acquired separately from the Lustre\* project's download server. The following instructions will establish the manager node as a YUM repository server for the network. The Integrated Manager for Lustre\* server is automatically configured as a web server, so it is a convenient location for the repository mirrors.
 
 An alternative strategy is to copy the repository definition from step 1 directly onto each Lustre\* server and client (saving the file in `/etc/yum.repos.d` on each node), and skip the other steps that follow. This avoids creating a local repository on the manager node, and uses the Lustre\* download servers directly to download packages.
 
@@ -287,13 +287,13 @@ Also note that the manager server distribution includes a default repository def
 
 1.  Create a YUM Repository Definition File
 
-    The following script creates a file containing repository definitions for the Intel® Manager for Lustre\* Agent software and the Lustre\* packages downloaded in the previous section. Review the content and adjust according to the requirements of the target environment. Run the script on the upgraded Intel® Manager for Lustre\* host:
+    The following script creates a file containing repository definitions for the Integrated Manager for Lustre\* Agent software and the Lustre\* packages downloaded in the previous section. Review the content and adjust according to the requirements of the target environment. Run the script on the upgraded Integrated Manager for Lustre\* host:
 
     ```bash
     hn=`hostname --fqdn`
     cat >/var/lib/chroma/repo/Manager-for-Lustre.repo <<__EOF
     [iml-agent]
-    name=Intel Manager for Lustre Agent
+    name=Integrated Manager for Lustre Agent
     baseurl=https://$hn/repo/iml-agent/7
     enabled=1
     gpgcheck=0
@@ -340,15 +340,15 @@ Also note that the manager server distribution includes a default repository def
 
     This file needs to be distributed to each of the Lustre\* servers during the upgrade process to facilitate installation of the software.
 
-    Make sure that the `$hn` variable matches the host name that will be used by the Lustre\* servers to access the Intel® Manager for Lustre\* host.
+    Make sure that the `$hn` variable matches the host name that will be used by the Lustre\* servers to access the Integrated Manager for Lustre\* host.
 
 ## Upgrade the Lustre\* Servers
 
 Lustre\* server upgrades can be coordinated as either an online roll-out, leveraging the failover HA mechanism to migrate services between nodes and minimize disruption, or as an offline service outage, which has the advantage of usually being faster to deploy overall, with generally lower risk.
 
-The upgrade procedure documented here shows how to execute the upgrade while the file system is online. It assumes that the Lustre\* servers have been installed in pairs, where each server pair forms an independent high-availability cluster built on Pacemaker and Corosync. Intel® Manager for Lustre\* deploys these configurations and includes its own resource agent for managing Lustre\* assets, called `ocf:chroma:Target`. Intel® Manager for Lustre\* can also configure STONITH agents to provide node fencing in the event of a cluster partition or loss of quorum.
+The upgrade procedure documented here shows how to execute the upgrade while the file system is online. It assumes that the Lustre\* servers have been installed in pairs, where each server pair forms an independent high-availability cluster built on Pacemaker and Corosync. Integrated Manager for Lustre\* deploys these configurations and includes its own resource agent for managing Lustre\* assets, called `ocf:chroma:Target`. Integrated Manager for Lustre\* can also configure STONITH agents to provide node fencing in the event of a cluster partition or loss of quorum.
 
-The cluster configuration deployed by Intel® Manager for Lustre\* is straightforward and easy to reproduce from backups, and is further simplified by the `pcs` cluster management application that ships with RHEL and CentOS.
+The cluster configuration deployed by Integrated Manager for Lustre\* is straightforward and easy to reproduce from backups, and is further simplified by the `pcs` cluster management application that ships with RHEL and CentOS.
 
 This documentation will demonstrate how to upgrade a single Lustre\* server HA pair. The process needs to be repeated for all servers in the cluster. It is possible to execute this upgrade while services are still online, with only minor disruption during critical phases. Nevertheless, where possible it is recommended that the upgrade operation is conducted during a planned maintenance window with the file system stopped.
 
@@ -362,7 +362,7 @@ The software upgrade process requires super-user privileges to run. Login as the
 
 Upgrade one server at a time in each cluster pair, starting with Node 1, and make sure the upgrade is complete on one server before moving on to the second server in the pair.
 
-1.  As a precaution, create a backup of the existing configuration for each server. The following shell script can be used to capture the essential configuration information that is relevant to Intel® Manager for Lustre\* managed mode servers:
+1.  As a precaution, create a backup of the existing configuration for each server. The following shell script can be used to capture the essential configuration information that is relevant to Integrated Manager for Lustre\* managed mode servers:
 
     ```bash
     #!/bin/sh
@@ -398,7 +398,7 @@ Upgrade one server at a time in each cluster pair, starting with Node 1, and mak
     tar zcf $BCKROOT.tgz `basename $BCKROOT`
     ```
 
-    **Note:** This is not intended to be a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre\* servers managed by Intel® Manager for Lustre\* that are difficult to re-create if deleted.
+    **Note:** This is not intended to be a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre\* servers managed by Integrated Manager for Lustre\* that are difficult to re-create if deleted.
 
     **_Do not skip the backup. Subsequent process steps rely on the content of the backup to restore the Lustre\* services to operation._**
 
@@ -512,7 +512,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     systemctl start ntpd
     ```
 
-1.  Restore the LNet configuration (file name may vary, depending on how LNet was configured and any customization that may have been carried out). The following example assumes that the server has a configuration that was created by Intel® Manager for Lustre\*:
+1.  Restore the LNet configuration (file name may vary, depending on how LNet was configured and any customization that may have been carried out). The following example assumes that the server has a configuration that was created by Integrated Manager for Lustre\*:
 
     ```bash
     cp $HOME/bck-`hostname`-*/etc/modprobe.d/iml_lnet_module_parameters.conf /etc/modprobe.d/.
@@ -527,30 +527,30 @@ The `pcs config export` command can be useful as a cross reference when restorin
     yum -y install epel-release
     ```
 
-#### Install the Intel® Manager for Lustre\* Agent on Node 1
+#### Install the Integrated Manager for Lustre\* Agent on Node 1
 
 1.  Login to node 1.
-1.  Install the Intel® Manager for Lustre\* COPR Repository definition, which contains some dependencies for the Intel® Manager for Lustre\* Agent:
+1.  Install the Integrated Manager for Lustre\* COPR Repository definition, which contains some dependencies for the Integrated Manager for Lustre\* Agent:
 
     ```bash
     yum-config-manager --add-repo \
     https://copr.fedorainfracloud.org/coprs/managerforlustre/manager-for-lustre/repo/epel-7/managerforlustre-manager-for-lustre-epel-7.repo
     ```
 
-1.  Install the DNF project COPR Repository definition. DNF is a package manager, and is used as a replacement for YUM in many distributions, such as Fedora. It does not replace YUM in CentOS, but Intel® Manager for Lustre\* does make use of some of the newer features in DNF for some of its tasks:
+1.  Install the DNF project COPR Repository definition. DNF is a package manager, and is used as a replacement for YUM in many distributions, such as Fedora. It does not replace YUM in CentOS, but Integrated Manager for Lustre\* does make use of some of the newer features in DNF for some of its tasks:
 
     ```bash
     yum-config-manager --add-repo \
     https://copr.fedorainfracloud.org/coprs/ngompa/dnf-el7/repo/epel-7/ngompa-dnf-el7-epel-7.repo
     ```
 
-1.  Restore the Intel® Manager for Lustre\* Agent configuration and certificates to the node:
+1.  Restore the Integrated Manager for Lustre\* Agent configuration and certificates to the node:
 
     ```bash
     cp -a $HOME/bck-`hostname`-*/var/lib/chroma /var/lib/.
     ```
 
-1.  Install the Intel® Manager for Lustre\* Agent repository definition:
+1.  Install the Integrated Manager for Lustre\* Agent repository definition:
 
     ```bash
     curl -o /etc/yum.repos.d/Manager-for-Lustre.repo \
@@ -560,9 +560,9 @@ The `pcs config export` command can be useful as a cross reference when restorin
     https://<admin server>/repo/Manager-for-Lustre.repo
     ```
 
-    Replace `<admin server>` in the `https` URL with the appropriate Intel® Manager for Lustre\* hostname (normally the fully-qualified domain name).
+    Replace `<admin server>` in the `https` URL with the appropriate Integrated Manager for Lustre\* hostname (normally the fully-qualified domain name).
 
-1.  Install The Intel® Manager for Lustre\* Agent and Diagnostics packages
+1.  Install The Integrated Manager for Lustre\* Agent and Diagnostics packages
 
     ```bash
     yum -y install chroma-\*
@@ -586,7 +586,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
 1.  For systems that have **both** LDISKFS and ZFS OSDs:
 
-    **Note:** This is the configuration that Intel® Manager for Lustre\* installs for all managed-mode Lustre\* storage clusters. Use this configuration for the highest level of compatibility with Intel® Manager for Lustre\*.
+    **Note:** This is the configuration that Integrated Manager for Lustre\* installs for all managed-mode Lustre\* storage clusters. Use this configuration for the highest level of compatibility with Integrated Manager for Lustre\*.
 
     1.  Install the Lustre\* `e2fsprogs` distribution:
 
@@ -976,13 +976,13 @@ The `pcs config export` command can be useful as a cross reference when restorin
     pcs property set maintenance-mode=true
     ```
 
-1.  Add the basic Intel® Manager for Lustre\* STONITH fencing configuration for the `fence_chroma` resource (this is the same for all Intel® Manager for Lustre\* managed resources, irrespective of the underlying fencing mechanism):
+1.  Add the basic Integrated Manager for Lustre\* STONITH fencing configuration for the `fence_chroma` resource (this is the same for all Integrated Manager for Lustre\* managed resources, irrespective of the underlying fencing mechanism):
 
     ```bash
     pcs stonith create st-fencing fence_chroma
     ```
 
-1.  Add the resources for each Lustre\* storage target. This requires the original resource name and target identifier assigned by Intel® Manager for Lustre\*. Both can be retrieved from the backup copy of the Pacemaker CIB XML file. The syntax of the command to create a resource is as follows:
+1.  Add the resources for each Lustre\* storage target. This requires the original resource name and target identifier assigned by Integrated Manager for Lustre\*. Both can be retrieved from the backup copy of the Pacemaker CIB XML file. The syntax of the command to create a resource is as follows:
 
     ```bash
     pcs resource create <resource name> ocf:chroma:Target \
@@ -1008,7 +1008,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     {printf "pcs resource create %s %s:%s:%s \\\n%s \\\nop monitor interval=5 timeout=60 \\\nstop interval=0 timeout=300 \\\nstart interval=0 timeout=300 \\\n--disabled\n\n", rn, c[3],p[2],t[2],$2; rn=""}'
     ```
 
-    The above script has hard-coded timeouts, which are taken from Intel® Manager for Lustre\*'s default settings. Adjust the values according to need, if the defaults are unsuitable.
+    The above script has hard-coded timeouts, which are taken from Integrated Manager for Lustre\*'s default settings. Adjust the values according to need, if the defaults are unsuitable.
 
     Copy and paste the output of the script into the command line to execute.
 
@@ -1109,7 +1109,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     systemctl enable chroma-agent
     ```
 
-1.  Start the Lustre\* kernel modules (the Intel® Manager for Lustre\* `ocf:chroma:Target` resource agent expects the Lustre\* kernel modules to be loaded, or it will abort):
+1.  Start the Lustre\* kernel modules (the Integrated Manager for Lustre\* `ocf:chroma:Target` resource agent expects the Lustre\* kernel modules to be loaded, or it will abort):
 
     ```bash
     modprobe lustre
@@ -1233,7 +1233,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
     Restoring the `/etc/ssh` configuration and root user ssh keys is optional but will make the process of upgrading easier.
 
-1.  Restore the LNet configuration (file name may vary, depending on how LNet was configured and any customization that may have been carried out). The following example assumes that the server has a configuration that was created by Intel® Manager for Lustre\*:
+1.  Restore the LNet configuration (file name may vary, depending on how LNet was configured and any customization that may have been carried out). The following example assumes that the server has a configuration that was created by Integrated Manager for Lustre\*:
 
     ```bash
     cp $HOME/bck-`hostname`-*/etc/modprobe.d/iml_lnet_module_parameters.conf /etc/modprobe.d/.
@@ -1248,30 +1248,30 @@ The `pcs config export` command can be useful as a cross reference when restorin
     yum -y install epel-release
     ```
 
-#### Install the Intel® Manager for Lustre\* Agent on Node 2
+#### Install the Integrated Manager for Lustre\* Agent on Node 2
 
 1.  Login to node 2.
-1.  Install the Intel® Manager for Lustre\* COPR Repository definition, which contains some dependencies for the Intel® Manager for Lustre\* Agent:
+1.  Install the Integrated Manager for Lustre\* COPR Repository definition, which contains some dependencies for the Integrated Manager for Lustre\* Agent:
 
     ```bash
     yum-config-manager --add-repo \
     https://copr.fedorainfracloud.org/coprs/managerforlustre/manager-for-lustre/repo/epel-7/managerforlustre-manager-for-lustre-epel-7.repo
     ```
 
-1.  Install the DNF project COPR Repository definition. DNF is a package manager, and is used as a replacement for YUM in many distributions, such as Fedora. It does not replace YUM in CentOS, but Intel® Manager for Lustre\* does make use of some of the newer features in DNF for some of its tasks:
+1.  Install the DNF project COPR Repository definition. DNF is a package manager, and is used as a replacement for YUM in many distributions, such as Fedora. It does not replace YUM in CentOS, but Integrated Manager for Lustre\* does make use of some of the newer features in DNF for some of its tasks:
 
     ```bash
     yum-config-manager --add-repo \
     https://copr.fedorainfracloud.org/coprs/ngompa/dnf-el7/repo/epel-7/ngompa-dnf-el7-epel-7.repo
     ```
 
-1.  Restore the Intel® Manager for Lustre\* Agent configuration and certificates to the node:
+1.  Restore the Integrated Manager for Lustre\* Agent configuration and certificates to the node:
 
     ```bash
     cp -a $HOME/bck-`hostname`-*/var/lib/chroma /var/lib/.
     ```
 
-1.  Install the Intel® Manager for Lustre\* Agent repository definition:
+1.  Install the Integrated Manager for Lustre\* Agent repository definition:
 
     ```bash
     curl -o /etc/yum.repos.d/Manager-for-Lustre.repo \
@@ -1281,9 +1281,9 @@ The `pcs config export` command can be useful as a cross reference when restorin
     https://<admin server>/repo/Manager-for-Lustre.repo
     ```
 
-    Replace `<admin server>` in the `https` URL with the appropriate Intel® Manager for Lustre\* hostname (normally the fully-qualified domain name).
+    Replace `<admin server>` in the `https` URL with the appropriate Integrated Manager for Lustre\* hostname (normally the fully-qualified domain name).
 
-1.  Install The Intel® Manager for Lustre\* Agent and Diagnostics packages
+1.  Install The Integrated Manager for Lustre\* Agent and Diagnostics packages
 
     ```bash
     yum -y install chroma-\*
@@ -1307,7 +1307,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
 1.  For systems that have **both** LDISKFS and ZFS OSDs:
 
-    **Note:** This is the configuration that Intel® Manager for Lustre\* installs for all managed-mode Lustre\* storage clusters. Use this configuration for the highest level of compatibility with Intel® Manager for Lustre\*.
+    **Note:** This is the configuration that Integrated Manager for Lustre\* installs for all managed-mode Lustre\* storage clusters. Use this configuration for the highest level of compatibility with Integrated Manager for Lustre\*.
 
     1.  Install the Lustre\* `e2fsprogs` distribution:
 
@@ -1643,7 +1643,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     systemctl enable chroma-agent
     ```
 
-1.  Start the Lustre\* kernel modules (the Intel® Manager for Lustre\* `ocf:chroma:Target` resource agent expects the Lustre\* kernel modules to be loaded, or it will abort):
+1.  Start the Lustre\* kernel modules (the Integrated Manager for Lustre\* `ocf:chroma:Target` resource agent expects the Lustre\* kernel modules to be loaded, or it will abort):
 
     ```bash
     modprobe lustre
@@ -1696,11 +1696,11 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
 **Note:** This guide does not enable Pacemaker and Corosync to start automatically on system boot. By not starting the services at boot time, the administrator has the opportunity to review the server configuration and run-time prior to re-introducing a node to the cluster framework.
 
-When creating new file systems, Intel® Manager for Lustre\* will enable Pacemaker and Corosync to load on boot, and it is a supported configuration; however,disabling automatic startup can simplify maintenance and debugging procedures and can be less disruptive to the cluster should one of the nodes start to experience intermittent but frequent failures.
+When creating new file systems, Integrated Manager for Lustre\* will enable Pacemaker and Corosync to load on boot, and it is a supported configuration; however,disabling automatic startup can simplify maintenance and debugging procedures and can be less disruptive to the cluster should one of the nodes start to experience intermittent but frequent failures.
 
 ## Cluster Power Management Configuration
 
-The power management controls for node fencing in Pacemaker are managed using Intel® Manager for Lustre\*'s `st-fencing` resource, which uses the `stonith:fence_chroma` agent. Intel® Manager for Lustre\* stores the fencing configuration variables as node attributes in the Pacemaker cluster configuration, and the variables can be retrieved using the `pcs property show` command:
+The power management controls for node fencing in Pacemaker are managed using Integrated Manager for Lustre\*'s `st-fencing` resource, which uses the `stonith:fence_chroma` agent. Integrated Manager for Lustre\* stores the fencing configuration variables as node attributes in the Pacemaker cluster configuration, and the variables can be retrieved using the `pcs property show` command:
 
 ```bash
 pcs property show
@@ -1758,6 +1758,6 @@ awk '/Node Attributes/{na=1;next} na==1 && /^[ \t]+/{sub(/:/,"",$1);printf "pcs 
 
 **Note:** The power control configuration could be restored at an earlier phase in the process, but it is conducted last in order to minimize the chance of accidentally executing a STONITH action on one of the nodes during the upgrade process. The workflow outlined in this document is meant to allow operators to upgrade their Lustre\* environment with the least amount of disruption, so the final power control setup is left to the end.
 
-Please also refer to the Intel® Manager for Lustre\* documentation and online help for instructions on how to configure cluster power management for the Lustre\* servers. If there are any issues with restoring the fencing agents for each cluster, it may be necessary to remove the original configuration from the Intel® Manager for Lustre\* UI and re-add.
+Please also refer to the Integrated Manager for Lustre\* documentation and online help for instructions on how to configure cluster power management for the Lustre\* servers. If there are any issues with restoring the fencing agents for each cluster, it may be necessary to remove the original configuration from the Integrated Manager for Lustre\* UI and re-add.
 
 \* Other names and brands may be claimed as the property of others.

@@ -1,15 +1,15 @@
-# <a name="1.0"></a> Packaging Guide for Intel® Manager for Lustre* software
+# <a name="1.0"></a> Packaging Guide for Integrated Manager for Lustre* software
 
 [**Software API Documentation Table of Contents**](./api_TOC.md)
 
 Introduction
 ------------
 
-Intel® Manager for Lustre* software is delivered as a single unified installer file, including
+Integrated Manager for Lustre* software is delivered as a single unified installer file, including
 both the central management component and the packages deployed to storage servers.  Because
 storage servers sometimes requires additional packages (such as drivers) or customized packages 
 (such as custom Lustre* builds), a mechanism is included whereby these packages can be included
-in a Intel® Manager for Lustre* software installation.
+in a Integrated Manager for Lustre* software installation.
 
 Bundles
 -------
@@ -43,14 +43,14 @@ The format of the ``meta`` file is as follows:
 ```
 
 
-The ``name`` attribute serves as a unique identifier for a bundle within a Intel® Manager for Lustre* software
+The ``name`` attribute serves as a unique identifier for a bundle within a Integrated Manager for Lustre* software
 installation.  It is wise to include the name of your organization in this string to reduce
 the likelihood of name collisions.
 
 The ``version`` attribute is provided to allow identification of a bundle by version.
 
 The `description` attribute is a human-readable description of the bundle.  This may be visible
-to system administrators of the Intel® Manager for Lustre* software installation, so it should be something
+to system administrators of the Integrated Manager for Lustre* software installation, so it should be something
 meaningful to that audience.
 
 Creating a Bundle
@@ -64,7 +64,7 @@ Creating a Bundle
 6. Create an archive of your bundle with ``-bundle.tar.gz`` appended to the name of your bundle.  For example, ````tar czf acme_drivers-bundle.tar.gz *.rpm meta repodata````
 
 **Warning:**
-> Do not create bundles with the same name as the built-in bundles, as these will be overwritten by updates to MIntel® Manager for Lustre* software
+> Do not create bundles with the same name as the built-in bundles, as these will be overwritten by updates to Integrated Manager for Lustre* software
 
 Installing a Bundle
 -------------------
@@ -137,7 +137,7 @@ A server profile is simply a JSON file defining various options.  For example, t
 
 
 * **name:**
-  An ID.  This must be unique within a Intel® Manager for Lustre* software installation. To avoid name collisions, it is recommended
+  An ID.  This must be unique within a Integrated Manager for Lustre* software installation. To avoid name collisions, it is recommended
   to include the name of your organization.
 
 * **bundles:**

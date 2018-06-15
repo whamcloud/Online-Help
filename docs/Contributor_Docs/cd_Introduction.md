@@ -4,7 +4,7 @@
 
 ![beginning](md_Graphics/start_sm.jpg)
 
-### **IML** stands for Intel Manager for Lustre.
+### **IML** stands for Integrated Manager for Lustre.
 ### **IML** is responsible for the installation, configuration, monitoring, and overall management of [Lustre®](http://lustre.org/). 
 
 The Lustre® file system is an open-source, parallel file system, generally used for large-scale cluster computing. 
