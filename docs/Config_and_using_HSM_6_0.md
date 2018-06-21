@@ -129,7 +129,7 @@ root@client1234 #: lfs hsm_archive /mnt/lustre/path/to/big_file
 root@client1234 #: lfs hsm_release /mnt/lustre/path/to/big_file
 ```
 
-After this command completes, the file’s data exists in the HSM archive, but the file has been moved off of Lustre main storage. You may notice that the available space in the lustre* file system has increased (if the file is large enough and the file system small enough - otherwise the change won’t register in the graphs). 
+After this command completes, the file’s data exists in the HSM archive, but the file has been moved off of Lustre main storage. You may notice that the available space in the Lustre file system has increased (if the file is large enough and the file system small enough - otherwise the change won’t register in the graphs). 
 
 If you want the file to be copied back to the file system, issue an `lfs` restore command (below). Alternatively, wait for the next read attempt of that file by a client, and an implicit restore will return the file back to the file system. 
 
