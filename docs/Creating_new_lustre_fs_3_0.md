@@ -1,4 +1,4 @@
-# Creating a new Lustre\* file system
+# Creating a new Lustre file system
 
 [**Online Help Table of Contents**](IML_Help_TOC.md)
 
@@ -26,7 +26,7 @@ This chapter describes how to create a new Lustre file system, to be managed fro
 
 ## IMPORTANT PREREQUISITES to creating an HA Lustre file system
 
-A high-availability Lustre file system managed by Integrated Manager for Lustre software requires that your entire storage system configuration and all interfaces comply with a pre-defined configuration. Integrated Manager for Lustre software performs LNet configuration assuming that each server is connected to a high-performance data network, which is the Lustre network LNet.  For detailed information, see [The High Availability Configuration Spec](Install_Guide/ig_ch_03_building.md). If the system will leverage ZFS you may also want to read [Creating and Managing ZFS-based Lustre\* file systems](Create_and_manage_ZFS_based_LFS_8_0.md).
+A high-availability Lustre file system managed by Integrated Manager for Lustre software requires that your entire storage system configuration and all interfaces comply with a pre-defined configuration. Integrated Manager for Lustre software performs LNet configuration assuming that each server is connected to a high-performance data network, which is the Lustre network LNet.  For detailed information, see [The High Availability Configuration Spec](Install_Guide/ig_ch_03_building.md). If the system will leverage ZFS you may also want to read [Creating and Managing ZFS-based Lustre file systems](Create_and_manage_ZFS_based_LFS_8_0.md).
 
 [Top of page](#creating-a-new-lustre-file-system)
 
@@ -296,7 +296,7 @@ To view the file system configuration:
 
 [Top of page](#creating-a-new-lustre-file-system)
 
-## Mount the Lustre\* file system
+## Mount the Lustre file system
 
 A compute client must mount the Lustre file system to be able to access data in the file system. Before attempting to mount the file system on your Lustre clients, make sure the Integrated Manager for Lustre client software has been installed on each client node. See [Configuring Clients](Install_Guide/ig_ch_07_configure_clients.md) for more information.
 

@@ -12,9 +12,9 @@
 
 ## Document Purpose
 
-This document provides detailed instructions for installing Integrated Manager for Lustre\* software. This document:
+This document provides detailed instructions for installing Integrated Manager for Lustre software. This document:
 
-* Introduces Integrated Manager for Lustre\* software and its capabilities
+* Introduces Integrated Manager for Lustre software and its capabilities
 
 * Introduces Integrated Manager for Lustre software and its
   capabilities to configure and support real-time management of
@@ -30,18 +30,18 @@ This document provides detailed instructions for installing Integrated Manager f
   establishing yum repositories, configuring LNET, and also
   discusses Linux\* kernel considerations
 
-* Describes how to install Integrated Manager for Lustre\* software
+* Describes how to install Integrated Manager for Lustre software
 
-* Describes how to configure Integrated Manager for Lustre\* software
+* Describes how to configure Integrated Manager for Lustre software
 
-* Describes how to add storage servers to the Lustre\* file system
+* Describes how to add storage servers to the Lustre file system
 
 * Provides troubleshooting information
 
 ## Intended Audience
 
 This guide is intended for partners who are designing storage solutions
-based on Integrated Manager for Lustre\* software. Readers are
+based on Integrated Manager for Lustre software. Readers are
 assumed to be full-time Linux system administrators or equivalent who
 have:
 
@@ -57,7 +57,7 @@ have:
   configuration requirements as defined in this guide.
 
 This document is _not intended for end users_ of storage solutions
-implemented using the Integrated Manager for Lustre\* software.
+implemented using the Integrated Manager for Lustre software.
 
 ## Conventions Used
 
@@ -83,7 +83,7 @@ Conventions used in this document include:
 * _Integrated Manager for Lustre_ software User Guide\* (a PDF verion on
   the online Help)
 
-* _Lustre\* Installation and Configuration using Integrated Manager for Lustre_ software and OpenZFS\*
+* _Lustre Installation and Configuration using Integrated Manager for Lustre_ software and OpenZFS\*
 
 * _Configuring LNet Routers for File Systems based on Integrated Manager for Lustre_ software\*
 

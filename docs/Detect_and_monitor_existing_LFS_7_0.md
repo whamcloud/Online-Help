@@ -35,7 +35,7 @@ The Lustre file system is now ready to be monitored in the manager GUI.
 
 This procedure applies to an existing file system that is monitored only. 
 
-To begin, first add the new OSS and OST(s) to your Lustre file system via the command line. See the *Lustre\* Operations Manual*, for detailed instructions for adding OSS and OST(s) to an existing file system. Then, to add one or more servers hosting the new OST(s) perform the following steps.
+To begin, first add the new OSS and OST(s) to your Lustre file system via the command line. See the *Lustre Operations Manual*, for detailed instructions for adding OSS and OST(s) to an existing file system. Then, to add one or more servers hosting the new OST(s) perform the following steps.
 
 1. At the menu bar, click the **Configuration** drop-down menu and click **Servers** to display the *Servers Configuration* window. 
     

@@ -289,7 +289,7 @@ recording information, and the RabbitMQ messaging system.
 To support the restoration of the Integrated Manager for Lustre software,
 be sure to regularly back-up the PostgresSQL database. This
 is necessary because the database persistently records Manager
-for Lustre\* software configuration information.
+for Lustre software configuration information.
 
 Also, be sure to archive the SSL certificates generated during the
 installation process. With these two items, along with the original
@@ -596,7 +596,7 @@ service httpd stop
 
 **Caution**: Do not conduct any further configuration of
 Integrated Manager for Lustre software. Do not attempt to re-discover Manager
-for Lustre\* assets or add any servers or storage to the instance until
+for Lustre assets or add any servers or storage to the instance until
 the recovery is complete and the Integrated Manager for Lustre software
 installation is verified as working to your satisfaction.
 

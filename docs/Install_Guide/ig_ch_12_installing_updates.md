@@ -44,7 +44,7 @@ server and then all file system managed servers, do the following:
     share a server with your candidate file system.
 
 3.  Perform the installation procedure herein: [Installing Manager
-    for Lustre\* software](./ig_ch_05_install.md/#installing-manager-for-lustre-software).
+    for Lustre software](./ig_ch_05_install.md/#installing-manager-for-lustre-software).
     The installation will detect that this is an update and install the
     appropriate files. Use that procedure to verify successful
     installation.

@@ -5,7 +5,7 @@
 ## <a name="1.1"></a>Introduction
 
 Storage plugins are responsible for delivering information about
-entities that are not part of the Linux\*/Lustre\* stack.  This primarily means
+entities that are not part of the Linux/Lustre stack.  This primarily means
 storage controllers and network devices, but the plugin system is generic and 
 does not limit the type of objects that can be reported.
 

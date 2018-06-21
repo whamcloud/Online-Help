@@ -23,7 +23,7 @@ To create and manage an OpenZFS-based Lustre file system that is highly-availabl
     
     **Note:**  Steps 2 and 3 below are performed automatically by Integrated Manager for Lustre software and do not need to be performed.  They are included here for topic coverage only. Continue with Step 4.
 
-1. Having added the servers, you now need to ensure that the server hostids are set before creating any zpools. Each server requires a unique hostid to be configured. Setting the hostid on each server will allow ZFS to apply an attribute on each zpool indicating which host currently has the pool imported. This provides some protection in ZFS against multiple simultaneous imports of zpools when the storage is connected to more than one server. To set the hostid, run the `genhostid` command on each host and reboot. In the document *Lustre\* Installation and Configuration using Integrated Manager for Lustre software and OpenZFS*, see the section *Protecting File System Volumes from Concurrent Access* for more information.
+1. Having added the servers, you now need to ensure that the server hostids are set before creating any zpools. Each server requires a unique hostid to be configured. Setting the hostid on each server will allow ZFS to apply an attribute on each zpool indicating which host currently has the pool imported. This provides some protection in ZFS against multiple simultaneous imports of zpools when the storage is connected to more than one server. To set the hostid, run the `genhostid` command on each host and reboot. In the document *Lustre Installation and Configuration using Integrated Manager for Lustre software and OpenZFS*, see the section *Protecting File System Volumes from Concurrent Access* for more information.
 
 1. As a further protection against “double-importing” ZFS pools, and to prevent conflicts with the Pacemaker resource management software, disable the ZFS Systemd target by entering the following command:
 	
@@ -95,7 +95,7 @@ To create and manage an OpenZFS-based Lustre file system that is highly-availabl
 		<dev C> <dev D>  <dev E> <dev F> ...
 		```
 
-**Note:** See the document *Lustre\* Installation and Configuration using Integrated Manager for Lustre software and OpenZFS* for descriptions of the ashift and recordsize properties. RAIDZ2 is the preferred vdev configuration for OSTs, and we recommend an arrangement of at least 11 disks (9+2) per RAIDZ2 vdev for best performance. The pool naming convention is based on the Lustre file system name and OST index number, starting at 0 (zero).
+**Note:** See the document *Lustre Installation and Configuration using Integrated Manager for Lustre software and OpenZFS* for descriptions of the ashift and recordsize properties. RAIDZ2 is the preferred vdev configuration for OSTs, and we recommend an arrangement of at least 11 disks (9+2) per RAIDZ2 vdev for best performance. The pool naming convention is based on the Lustre file system name and OST index number, starting at 0 (zero).
 
    The remainder of this procedure is performed at the Integrated Manager for Lustre software GUI. 
 1. For high-availability, configure your servers as primary and fail-over servers for each zpool.  Perform the steps in [Configure primary and fail-over servers](Creating_new_lustre_fs_3_0.md/#3.5).

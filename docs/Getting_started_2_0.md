@@ -7,7 +7,7 @@
 - [Creating user accounts](#creating-user-accounts)
 - [Setting up email notifications of alerts](#setting-up-email-notifications-of-alerts)
 
-A high-availability Lustre file system managed by Integrated Manager for Lustre software requires that your entire storage system configuration and all  interfaces comply with a pre-defined configuration.  For detailed information, see [High Availability Configuration Specification](Install_Guide/ig_ch_03_building.md). If the system will leverage ZFS you may also want to read [Creating and Managing ZFS-based Lustre\* file systems](Create_and_manage_ZFS_based_LFS_8_0.md).
+A high-availability Lustre file system managed by Integrated Manager for Lustre software requires that your entire storage system configuration and all  interfaces comply with a pre-defined configuration.  For detailed information, see [High Availability Configuration Specification](Install_Guide/ig_ch_03_building.md). If the system will leverage ZFS you may also want to read [Creating and Managing ZFS-based Lustre file systems](Create_and_manage_ZFS_based_LFS_8_0.md).
 
 **Note:** All references herein to the "manager" refer to the Integrated Manager for Lustre software.
 The Integrated Manager for Lustre software can be used to:

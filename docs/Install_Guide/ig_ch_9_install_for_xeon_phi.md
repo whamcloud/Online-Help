@@ -5,11 +5,11 @@
 
 **In this Chapter:**
 
-- [Install Lustre\* client on an Intel® Xeon Phi™ Coprocessor](#install-lustre-client-on-an-intel-xeon-phi-coprocessor)
+- [Install Lustre client on an Intel® Xeon Phi™ Coprocessor](#install-lustre-client-on-an-intel-xeon-phi-coprocessor)
 - [Configure Lustre for the Intel® Xeon Phi™ Coprocessor](#configure-lustre-for-the-intel-xeon-phi-coprocessor)
 
 
-Install Lustre\* client on an Intel® Xeon Phi™ Coprocessor
+Install Lustre client on an Intel® Xeon Phi™ Coprocessor
 ----------------------------------------------------------
 
 To install Lustre, install the following two RPMs on the Intel® Xeon

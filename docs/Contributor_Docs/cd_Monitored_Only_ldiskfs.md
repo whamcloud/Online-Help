@@ -55,7 +55,7 @@ There will be alerts and warnings about LNET. Ignore for now.
 
 ## Installing lustre on each MDS and OSS Server
 
-Lustre\* server can now be installed on each mds and oss node since the agent software has been deployed. To do this, follow these simple steps:
+Lustre server can now be installed on each mds and oss node since the agent software has been deployed. To do this, follow these simple steps:
 
 1.  Create the ldiskfs installer and install the necessary packages on the following servers: mds1, mds2, oss1, and oss2
     ```

@@ -11,11 +11,11 @@
 - [Building a Lustre Storage Solution over a ZFS File System](#building-a-lustre-storage-solution-over-a-zfs-file-system)
 
 Integrated Manager for Lustre software, when integrated with
-Linux, aggregates a range of storage hardware into a single Lustre\*
+Linux, aggregates a range of storage hardware into a single Lustre
 file system that is well proven for delivering fast IO to applications
 across high-speed network fabrics, such as InfiniBand\* and Ethernet.
 
-Lustre\* is a global, single-namespace file system architecture that
+Lustre is a global, single-namespace file system architecture that
 allows parallel access by many clients to all the data in the file
 system across many servers and storage devices. Designed to take
 advantage of the reliability features of enterprise-class storage
@@ -30,7 +30,7 @@ and all interfaces comply with the High Availability Configuration
 Specification presented in this guide.
 
 If you are creating a Lustre file system that will use OpenZFS as the
-backend, see the guide *Lustre\* Installation and Configuration using
+backend, see the guide *Lustre Installation and Configuration using
 Integrated Manager for Lustre software and OpenZFS*.
 
 What is Integrated Manager for Lustre software Software?
@@ -102,7 +102,7 @@ If your intent is to build a high-availability, Lustre storage solution
 over an existing ZFS, Integrated Manager for Lustre software supports this
 configuration. However, the installation and configuration of such a
 system is not described in this guide. Please see the document:
-*Lustre\* Installation and Configuration using
+*Lustre Installation and Configuration using
 Integrated Manager for Lustre software and OpenZFS*.
 
 [Top of page](#1.0)

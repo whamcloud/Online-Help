@@ -53,7 +53,7 @@ The servers on which the MGT, MDT, or OSTs are located can all be configured as 
 
 The following entries are key features provided by Integrated Manager for Lustre software:
 
-## GUI-based creation and management of Lustre\* file systems
+## GUI-based creation and management of Lustre file systems
 
 The Integrated Manager for Lustre software provides a powerful, yet easy-to-use GUI that enables rapid creation of Lustre file systems. The GUI supports easy configuration for high availability and expansion, and enables performance monitoring and management of multiple Lustre file systems. See [Creating a new Lustre file system](Creating_new_lustre_fs_3_0.md/#3.0).
 
@@ -137,7 +137,7 @@ Hive is a data warehouse infrastructure built on top of Hadoop for providing dat
 
 HBase is a non-relational, distributed database modeled after Google's BigTable and written in Java\*.  Hbase runs on top of HDFS (Hadoop Distributed File System). Intel® has tested the Hadoop adapter for Lustre provided with Integrated Manager for Lustre software for compatibility with Apache Hbase version 2.5.
 
-## Lustre\* {{site.lustre_version}}
+## Lustre {{site.lustre_version}}
 
 This release of Integrated Manager for Lustre software is based on the Intel® Foundation Edition for Lustre {{site.lustre_version}} release tree, representing a major update to the underlying Lustre version for the Integrated Manager for Lustre software (as of version {{site.version}}).
 
