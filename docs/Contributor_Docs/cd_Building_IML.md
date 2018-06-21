@@ -4,9 +4,10 @@
 
 ## Prerequisites
 
-Clone of the [intel-manager-for-lustre repository](https://github.com/intel-hpdd/intel-manager-for-lustre)
+Clone of the [integrated-manager-for-lustre repository](https://github.com/whamcloud/integrated-manager-for-lustre)
+
 ```
-git clone git@github.com:intel-hpdd/intel-manager-for-lustre.git
+git clone git@github.com:whamcloud/integrated-manager-for-lustre.git
 ```
 Install the YUM Copr plugin:
 ```

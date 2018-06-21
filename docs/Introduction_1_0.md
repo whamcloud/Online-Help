@@ -4,7 +4,7 @@
 
 **In this Chapter:**
 
-- [Overview of Integrated Manager for Lustre software](#overview-of-intel-manager-for-lustre-software)
+- [Overview of Integrated Manager for Lustre software](#overview-of-integrated-manager-for-lustre-software)
 - [Key Features](#key-features)
 - [Management mode versus Monitor-only mode](#management-mode-versus-monitor-only-mode)
 - [Overview of the graphical user interface](#overview-of-the-graphical-user-interface)
@@ -103,7 +103,7 @@ The Robinhood policy engine has been incorporated into Lustre and is included wi
 
 ## Apache Hadoop\* adapter software
 
-Integrated Manager for Lustre software is supported by the Apache Hadoop* adapter software, however the adapter software is a separate download. This Hadoop adapter for Lustre is compatible with the Apache Hadoop software, versions 2.3 and 2.5 as of this writing.  Hadoop software allows users who run MapReduce jobs to bypass storing data in HDFS, and store the MapReduce output directly to Lustre instead. This allows the analytical processes direct access to scientific output instead of transferring data from the compute cluster storage system to another file system. Optimizations have also been made to the shuffle step in MapReduce to take advantage of Lustre’s high-speed network access to data. Many workloads will see an overall reduction in end-to-end processing time by using the Hadoop adapter with the Integrated Manager for Lustre software file system.  For more information, see [Hadoop Adaptor for Lustre](https://github.com/intel-hpdd/lustre-connector-for-hadoop/blob/master/Installation%20of%20HAL%20on%20Apache%20Hadoop.md).
+Integrated Manager for Lustre software is supported by the Apache Hadoop* adapter software, however the adapter software is a separate download. This Hadoop adapter for Lustre is compatible with the Apache Hadoop software, versions 2.3 and 2.5 as of this writing.  Hadoop software allows users who run MapReduce jobs to bypass storing data in HDFS, and store the MapReduce output directly to Lustre instead. This allows the analytical processes direct access to scientific output instead of transferring data from the compute cluster storage system to another file system. Optimizations have also been made to the shuffle step in MapReduce to take advantage of Lustre’s high-speed network access to data. Many workloads will see an overall reduction in end-to-end processing time by using the Hadoop adapter with the Integrated Manager for Lustre software file system.  For more information, see [Hadoop Adaptor for Lustre](https://github.com/whamcloud/lustre-connector-for-hadoop/blob/master/Installation%20of%20HAL%20on%20Apache%20Hadoop.md).
 
 ## Automated Provisioning of Custom Lustre Service Nodes
 

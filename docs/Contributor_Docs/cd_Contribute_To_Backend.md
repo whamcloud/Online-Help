@@ -35,10 +35,10 @@ For the desciption that follows, it will be assumed that the Vagrant file and vi
 ```
 ## Contributing to the IML Backend
 ### Clone the desired Backend repository, for example, the main backend repository: 
- [intel-manager-for-lustre](https://github.com/intel-hpdd/intel-manager-for-lustre)
+ [integrated-manager-for-lustre](https://github.com/whamcloud/integrated-manager-for-lustre)
 ```
 cd ~/vagrant-projects/vhpc
-git clone git@github.com:intel-hpdd/intel-manager-for-lustre.git
+git clone git@github.com:whamcloud/integrated-manager-for-lustre.git
 ```
 ### Create a branch, always work on a branch.
 ```

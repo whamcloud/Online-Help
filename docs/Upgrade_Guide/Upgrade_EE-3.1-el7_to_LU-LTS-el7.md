@@ -95,7 +95,7 @@ The software upgrade process requires super-user privileges to run. Login as the
 
 1.  Download the latest Integrated Manager for Lustre\* software from the project's release page:
 
-    <https://github.com/intel-hpdd/intel-manager-for-lustre/releases>
+    <https://github.com/whamcloud/integrated-manager-for-lustre/releases>
 
 1.  Extract the Integrated Manager for Lustre\* bundle. For example:
 

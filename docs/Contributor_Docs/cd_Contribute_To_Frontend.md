@@ -33,10 +33,10 @@ For the desciption that follows, it will be assumed that the Vagrant file and vi
 ~/vagrant-projects/vhpc 
 ```
 ## Contributing to the IML Frontend
-### Clone the Frontend repo, aka, the [GUI](https://github.com/intel-hpdd/GUI) repo
+### Clone the Frontend repo, aka, the [GUI](https://github.com/whamcloud/GUI) repo
 ```
 cd ~/vagrant-projects/vhpc
-git clone git@github.com:intel-hpdd/GUI.git 
+git clone git@github.com:whamcloud/GUI.git 
 ```
 ### Create a branch, always work on a branch.
 ```

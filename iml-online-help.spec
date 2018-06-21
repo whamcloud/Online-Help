@@ -8,7 +8,7 @@ Release:    1%{?dist}
 Summary:    IML Online Help
 License:    MIT
 Group:      System Environment/Libraries
-URL:        https://github.com/intel-hpdd/%{base_name}
+URL:        https://github.com/whamcloud/%{base_name}
 Source0:    https://registry.npmjs.org/@iml/%{base_name}/-/%{base_name}-%{version}.tgz
 
 BuildArch:  noarch

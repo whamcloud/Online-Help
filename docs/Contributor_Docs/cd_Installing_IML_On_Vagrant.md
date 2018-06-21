@@ -6,7 +6,7 @@
 
 ## Prerequisites:
 
-Please refer to [https://github.com/intel-hpdd/vagrantfiles](https://github.com/intel-hpdd/vagrantfiles) on how to create a virtual HPC storage cluster with vagrant before attempting to install IML.
+Please refer to [https://github.com/whamcloud/vagrantfiles](https://github.com/whamcloud/vagrantfiles) on how to create a virtual HPC storage cluster with vagrant before attempting to install IML.
 
 ---
 
@@ -19,7 +19,7 @@ Create a project directory and fetch the Vagrantfile
 ```
 mkdir -p $HOME/vagrant-projects/projDir
 cd projDir
-git clone git@github.com:intel-hpdd/Vagrantfiles.git
+git clone git@github.com:whamcloud/Vagrantfiles.git
 cp Vagrantfiles/hpc-storage-sandbox-el7/* .
 ```
 
@@ -96,7 +96,7 @@ Run the install script
     vagrant plugin install vagrant-proxyconf    <--- Optional, for example, this may be needed if behind corporate firewall.
     ```
 
-2.  Obtain the IML tarball: [https://github.com/intel-hpdd/intel-manager-for-lustre/releases/download/v{{site.version}}/{{site.package_name}}.tar.gz](https://github.com/intel-hpdd/intel-manager-for-lustre/releases/download/v{{site.version}}/{{site.package_name}}.tar.gz).
+2.  Obtain the IML tarball: [https://github.com/whamcloud/integrated-manager-for-lustre/releases/download/v{{site.version}}/{{site.package_name}}.tar.gz](https://github.com/whamcloud/integrated-manager-for-lustre/releases/download/v{{site.version}}/{{site.package_name}}.tar.gz).
 
 3.  Exit from the vagrant box and scp the build to the /tmp directory in your admin node. For example, if your admin node is running on port 2200 (you can verify this with `vagrant ssh-config`) and the build is in your Downloads folder:
 

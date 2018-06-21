@@ -1,9 +1,9 @@
-#  <a name="Top"></a>Running Unit Tests for [intel-manager-for-lustre](https://github.com/intel-hpdd/intel-manager-for-lustre)
+#  <a name="Top"></a>Running Unit Tests for [intel-manager-for-lustre](https://github.com/whamcloud/integrated-manager-for-lustre)
 
 ![Unit Testing](md_Graphics/test.png)
 
 ## Prerequisites
-* To run the python unit tests for the [intel-manager-for-lustre](https://github.com/intel-hpdd/intel-manager-for-lustre) repo, it will be necessary to install a working version of IML.
+* To run the python unit tests for the [intel-manager-for-lustre](https://github.com/whamcloud/integrated-manager-for-lustre) repo, it will be necessary to install a working version of IML.
 
 * Create a **Vagrant** virtual cluster outlined here: [Install IML on a Vagrant Virtual Cluster](cd_Installing_IML_On_Vagrant.md).
 
@@ -37,11 +37,11 @@ To **deactivate** the virtual environment, type "deactivate":
     (myenv) # deactivate
     #
 
-## Clone the [intel-manager-for-lustre](https://github.com/intel-hpdd/intel-manager-for-lustre) code.
+## Clone the [intel-manager-for-lustre](https://github.com/whamcloud/integrated-manager-for-lustre) code.
 
-    # git clone git@github.com:intel-hpdd/intel-manager-for-lustre.git
+    # git clone git@github.com:whamcloud/integrated-manager-for-lustre.git
 
-## Or, copy the [intel-manager-for-lustre](https://github.com/intel-hpdd/intel-manager-for-lustre) code from the /vagrant shared drive:
+## Or, copy the [intel-manager-for-lustre](https://github.com/whamcloud/integrated-manager-for-lustre) code from the /vagrant shared drive:
 
     # cp -r /vagrant/intel-manager-for-lustre .
 

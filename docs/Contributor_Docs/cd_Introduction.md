@@ -22,7 +22,7 @@ The Lustre® file system is an open-source, parallel file system, generally used
 ## Source Code
 Before accessing our source code repository for the first time, new contributors should have a good understanding of the tools and processes in place.
 * Become very familiar with [git](cd_Git_Reference.md).
-* Become familiar with the [IML codebase](https://github.com/intel-hpdd).
+* Become familiar with the [IML codebase](https://github.com/whamcloud).
 * Learn the [IML contributor workflow](cd_Contributor_Workflow.md).
 * Understand How to Contribute to the [Frontend](cd_Contribute_To_Frontend.md) and/or [Backend](cd_Contribute_To_Backend.md) Code.
 * Be ready to learn new things.
@@ -32,19 +32,19 @@ IML consists of a **Frontend GUI** that is written primarily in **Node JS** and 
 
 ![iml_flow](md_Graphics/2017_0803_backend_frontend.png)
 
-The [IML codebase](https://github.com/intel-hpdd) consists of many repositories due to the varying needs and varying dependencies.
+The [IML codebase](https://github.com/whamcloud) consists of many repositories due to the varying needs and varying dependencies.
 
 ### The primary IML repos of importance for a contributor are:
 
 | Repo Name | Description |
 |-----------|-------------| 
-| [intel-manager-for-lustre](https://github.com/intel-hpdd/intel-manager-for-lustre) | Consider this as the *Top level* repo populated mostly with python code. |
-| [GUI](https://github.com/intel-hpdd/GUI) | The Graphical User Interface for the Single Page Application, IML. This is primarily nodejs code with angular and inferno libraries. |
-| [manager-for-lustre-dependencies](https://github.com/intel-hpdd/manager-for-lustre-dependencies) | Dependencies needed for IML that are not available elsewhere. |
-| [view-server](https://github.com/intel-hpdd/view-server) | Server client-side files. |
-| [socket-worker](https://github.com/intel-hpdd/socket-worker) | Off main thread data munging.|
-| [realtime](https://github.com/intel-hpdd/realtime) | WebSocket Proxy over RESTful API.  |
-| [Vagrantfiles](https://github.com/intel-hpdd/Vagrantfiles) | Configuration used to generate a virtual lustre clustre with vagrant and virtualBox.
+| [intel-manager-for-lustre](https://github.com/whamcloud/integrated-manager-for-lustre) | Consider this as the *Top level* repo populated mostly with python code. |
+| [GUI](https://github.com/whamcloud/GUI) | The Graphical User Interface for the Single Page Application, IML. This is primarily nodejs code with angular and inferno libraries. |
+| [manager-for-lustre-dependencies](https://github.com/whamcloud/manager-for-lustre-dependencies) | Dependencies needed for IML that are not available elsewhere. |
+| [view-server](https://github.com/whamcloud/view-server) | Server client-side files. |
+| [socket-worker](https://github.com/whamcloud/socket-worker) | Off main thread data munging.|
+| [realtime](https://github.com/whamcloud/realtime) | WebSocket Proxy over RESTful API.  |
+| [Vagrantfiles](https://github.com/whamcloud/Vagrantfiles) | Configuration used to generate a virtual lustre clustre with vagrant and virtualBox.
 
 
 ## Dependencies for IML

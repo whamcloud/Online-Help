@@ -23,7 +23,7 @@ brew install libvirt
 
 ## Clone the Source
 ```
-git clone git@github.com:intel-hpdd/intel-manager-for-lustre.git
+git clone git@github.com:whamcloud/integrated-manager-for-lustre.git
 ```
 
 ## Change Directory to the dowloaded repo.
@@ -64,7 +64,7 @@ To setup, install the following packages:
 
 ## Clone the Source
 ```
-git clone git@github.com:intel-hpdd/intel-manager-for-lustre.git
+git clone git@github.com:whamcloud/integrated-manager-for-lustre.git
 ```
 
 ## Change Directory to the dowloaded repo.
@@ -162,7 +162,7 @@ Install _libvirt_ and Vagrant if not already installed:
 
 ## Clone the Source
 ```
-git clone git@github.com:intel-hpdd/intel-manager-for-lustre.git
+git clone git@github.com:whamcloud/integrated-manager-for-lustre.git
 ```
 
 ## Change Directory to the dowloaded repo.

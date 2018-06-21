@@ -19,8 +19,8 @@ To synchronize your cloned master with the origin master and to rebase your chan
 
 ## Create a Pull Request
 * In a Browser, go to the correct repo: 
-    * Frontend: [https://github.com/intel-hpdd/GUI](https://github.com/intel-hpdd/GUI)
-    * Backend: [https://github.com/intel-hpdd/intel-manager-for-lustre](https://github.com/intel-hpdd/intel-manager-for-lustre)
+    * Frontend: [https://github.com/whamcloud/GUI](https://github.com/whamcloud/GUI)
+    * Backend: [https://github.com/whamcloud/integrated-manager-for-lustre](https://github.com/whamcloud/integrated-manager-for-lustre)
 
 * Click on the **Branches** tab.
 * Find the branch named **my-fix**

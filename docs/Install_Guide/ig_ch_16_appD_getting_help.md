@@ -101,10 +101,10 @@ You can submit a ticket using the GitHub issue tracking system. Attach the
 sos report to the ticket.
 
 1.  Look through existing issues to see if any relevant answers exist:
-    <https://github.com/intel-hpdd/intel-manager-for-lustre/issues>
+    <https://github.com/whamcloud/integrated-manager-for-lustre/issues>
 
 2.  If still required, log in to the GitHub issue tracker at:
-    <https://github.com/intel-hpdd/intel-manager-for-lustre/issues/new>
+    <https://github.com/whamcloud/integrated-manager-for-lustre/issues/new>
 
 3.  Fill in the issue details, paying attention to the suggested template.
 

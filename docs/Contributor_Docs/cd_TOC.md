@@ -30,7 +30,7 @@
 
 1.  [Running Unit Tests for intel-manager-for-lustre Repo ](cd_intel-manager-for-lustre_Unit_Testing.md)
 
-1.  [Create a Cluster of Virtual Machines with Vagrant](https://github.com/intel-hpdd/Vagrantfiles/blob/master/README.md)
+1.  [Create a Cluster of Virtual Machines with Vagrant](https://github.com/whamcloud/Vagrantfiles/blob/master/README.md)
 
 1.  [Install IML on a Vagrant Virtual Cluster](cd_Installing_IML_On_Vagrant.md)
 
@@ -38,7 +38,7 @@
 
 1.  [Running SSI Tests](cd_Running_SSI_Tests.md)
 
-1.  [Create a Sample Storage plugin](https://github.com/intel-hpdd/sample-storage-plugin)
+1.  [Create a Sample Storage plugin](https://github.com/whamcloud/sample-storage-plugin)
 
 1.  [IML Lustre Target Sequence Diagrams](cd_Lustre_Target_Sequence_Diagrams.md)
 

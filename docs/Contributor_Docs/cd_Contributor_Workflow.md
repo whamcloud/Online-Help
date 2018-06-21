@@ -11,7 +11,7 @@
 
 ### Clone the desired repository locally, for example, GUI.git
 ```
-git clone git@github.com:intel-hpdd/GUI.git
+git clone git@github.com:whamcloud/GUI.git
 ```
 ## 2. Add - Modify - Delete Code
 ### List the current branches
@@ -74,7 +74,7 @@ git push origin my-new-branch
 ## 3. Code Review
 ### Create a pull request in github
 
-Browse to [https://github.com/intel-hpdd](https://github.com/intel-hpdd)
+Browse to [https://github.com/whamcloud](https://github.com/whamcloud)
 
 * Go to the desired repository where the new branch was pushed.
 * Click on the **branches** tab.
@@ -109,7 +109,7 @@ Whamcloud provides a Jenkins build server that performs automated tests and gene
 
 ## 6. Fedora Copr Automated Build System
 A number of software dependencies for IML reside in the github repository: 
-[manager-for-lustre-dependecies](https://github.com/intel-hpdd/manager-for-lustre-dependencies).
+[manager-for-lustre-dependecies](https://github.com/whamcloud/manager-for-lustre-dependencies).
 
 The dependencies are reflected in our [copr](https://copr.fedorainfracloud.org/coprs/managerforlustre/manager-for-lustre/) project.
 

@@ -6,7 +6,7 @@
 
 ## Prerequisites:
 
-Please refer to [https://github.com/intel-hpdd/vagrantfiles](https://github.com/intel-hpdd/vagrantfiles) on how to create a virtual HPC storage cluster with vagrant before attempting to install IML.
+Please refer to [https://github.com/whamcloud/vagrantfiles](https://github.com/whamcloud/vagrantfiles) on how to create a virtual HPC storage cluster with vagrant before attempting to install IML.
 
 ## Download IML build:
 
@@ -17,7 +17,7 @@ Note: use vagrant ssh-config to get the port each server is running on. The comm
     vagrant plugin install vagrant-shell-commander
     ```
 2.  Download the latest IML build (tarball).
-    from: [https://github.com/intel-hpdd/intel-manager-for-lustre/releases/download/v{{site.version}}/{{site.package_name}}.tar.gz](https://github.com/intel-hpdd/intel-manager-for-lustre/releases/download/v{{site.version}}/{{site.package_name}}.tar.gz)
+    from: [https://github.com/whamcloud/integrated-manager-for-lustre/releases/download/v{{site.version}}/{{site.package_name}}.tar.gz](https://github.com/whamcloud/integrated-manager-for-lustre/releases/download/v{{site.version}}/{{site.package_name}}.tar.gz)
 
 ## Installing IML:
 

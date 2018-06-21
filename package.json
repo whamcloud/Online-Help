@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/intel-hpdd/Online-Help.git"
+    "url": "https://github.com/whamcloud/Online-Help.git"
   },
   "author": "IML Team",
   "devDependencies": {

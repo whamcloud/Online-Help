@@ -6,7 +6,7 @@ As part of this, it's moving into repos that focus on a single area of responsib
 
 These repos are generally hosted in [Copr](https://copr.fedorainfracloud.org/) in either our [prod](https://copr.fedorainfracloud.org/coprs/managerforlustre/manager-for-lustre/) or [devel](https://copr.fedorainfracloud.org/coprs/managerforlustre/manager-for-lustre-devel/) projects.
 
-To accomodate this, we are currently using a meta repo [module-tools](https://github.com/intel-hpdd/module-tools), that seeks to abstract
+To accomodate this, we are currently using a meta repo [module-tools](https://github.com/whamcloud/module-tools), that seeks to abstract
 common tasks when building / testing smaller repos.
 
 ## Tasks
@@ -40,7 +40,7 @@ we currently need to build each RPM and indicate to the manager to use these rep
     ```
 
 1.  Check the builds in your Copr repo to make sure it was successful.
-1.  Create a new PR in the [IML](https://github.com/intel-hpdd/intel-manager-for-lustre) repo with the following pragma in the commit message:
+1.  Create a new PR in the [IML](https://github.com/whamcloud/integrated-manager-for-lustre) repo with the following pragma in the commit message:
 
     ```shell
     COPR Module: COPR_OWNER/COPR_PROJECT # can be specified more than once
