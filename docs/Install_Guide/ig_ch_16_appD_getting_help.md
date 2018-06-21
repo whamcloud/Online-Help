@@ -2,7 +2,7 @@
 
 [**Software Installation Guide Table of Contents**](ig_TOC.md)
 
-*For partners*: If you encounter a problem with Integrated Manager for Lustre* software or storage, and you
+*For partners*: If you encounter a problem with Integrated Manager for Lustre software or storage, and you
 require support from your technical support representative, then
 to help expedite resolution of the problem, please do the following:
 
@@ -14,7 +14,7 @@ Run iml diagnostics
 ----------------------
 
 Run iml-diagnostics on any of the servers that you suspect may be
-having problems, and on the server hosting the Integrated Manager for Lustre*
+having problems, and on the server hosting the Integrated Manager for Lustre
 software dashboard. Iml-Diagnostics generates a compressed
 tar.xz file that you should attach to your GitHub issue.
 To run iml-diagnostics:

@@ -1,4 +1,4 @@
-# <a name="1.0"></a>Installing Integrated Manager for Lustre* software on Intel® Xeon Phi™ Coprocessors
+# <a name="1.0"></a>Installing Integrated Manager for Lustre software on Intel® Xeon Phi™ Coprocessors
 
 [**Software Installation Guide Table of Contents**](ig_TOC.md)
 
@@ -6,13 +6,13 @@
 **In this Chapter:**
 
 - [Install Lustre\* client on an Intel® Xeon Phi™ Coprocessor](#install-lustre-client-on-an-intel-xeon-phi-coprocessor)
-- [Configure Lustre* for the Intel® Xeon Phi™ Coprocessor](#configure-lustre-for-the-intel-xeon-phi-coprocessor)
+- [Configure Lustre for the Intel® Xeon Phi™ Coprocessor](#configure-lustre-for-the-intel-xeon-phi-coprocessor)
 
 
 Install Lustre\* client on an Intel® Xeon Phi™ Coprocessor
 ----------------------------------------------------------
 
-To install Lustre*, install the following two RPMs on the Intel® Xeon
+To install Lustre, install the following two RPMs on the Intel® Xeon
 Phi™ coprocessor (not on the host).
 
 
@@ -25,13 +25,13 @@ Phi™ coprocessor (not on the host).
 
 In case of issues with dependencies, add the –nodeps option.
 
-After restarting the MPSS service, the Lustre* client will appear on the
+After restarting the MPSS service, the Lustre client will appear on the
 coprocessor card.
 
-Configure Lustre* for the Intel® Xeon Phi™ Coprocessor
+Configure Lustre for the Intel® Xeon Phi™ Coprocessor
 -----------------------------------------------------
 
-Configuring Lustre* for the Xeon Phi Coprocessor is easy. You only need
+Configuring Lustre for the Xeon Phi Coprocessor is easy. You only need
 to specify the LNET configuration in `/etc/modprobe.d/lustre.conf` file.
 
 To check configuration, enter the following commands.

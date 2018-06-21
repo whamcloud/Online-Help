@@ -2,15 +2,15 @@
 
 [**Online Help Table of Contents**](IML_Help_TOC.md)
 
-This chapter describes how to create a new Lustre* file system, to be managed from the Integrated Manager for Lustre* software, and how to mount file system clients.
+This chapter describes how to create a new Lustre file system, to be managed from the Integrated Manager for Lustre software, and how to mount file system clients.
 
-**Note:** All references herein to the manager refer to the Integrated Manager for Lustre* software.
+**Note:** All references herein to the manager refer to the Integrated Manager for Lustre software.
 
-**Note:** The procedure for creating a Lustre* file system *based on ZFS zpools* is different. For that information see [Creating and Managing ZFS-based Lustre* file systems](Create_and_manage_ZFS_based_LFS_8_0.md/#8.0).
+**Note:** The procedure for creating a Lustre file system *based on ZFS zpools* is different. For that information see [Creating and Managing ZFS-based Lustre file systems](Create_and_manage_ZFS_based_LFS_8_0.md/#8.0).
 
 **In this section:**
 
-- [IMPORTANT PREREQUISITES to creating an HA Lustre* file system](#important-prerequisites-to-creating-an-ha-lustre-file-system)
+- [IMPORTANT PREREQUISITES to creating an HA Lustre file system](#important-prerequisites-to-creating-an-ha-lustre-file-system)
 - [IMPORTANT INFORMATION about reconfiguring your file system](#important-information-about-reconfiguring-your-file-system)
 - [High-availability file system support](#high-availability-file-system-support)
 - [Add one or more HA servers](#add-one-or-more-ha-servers)
@@ -18,39 +18,39 @@ This chapter describes how to create a new Lustre* file system, to be managed fr
 - [Add power distribution units](#add-power-distribution-units)
 - [Assign PDU outlets to servers](#assign-pdu-outlets-to-servers)
 - [Assign BMC outlets to servers](#assign-bmc-outlets-to-servers)
-- [Create the new Lustre* file system](#create-the-new-lustre-file-system)
+- [Create the new Lustre file system](#create-the-new-lustre-file-system)
 - [View the new file system](#view-the-new-file-system)
-- [Mount the Lustre* file system](#mount-the-lustre-file-system)
+- [Mount the Lustre file system](#mount-the-lustre-file-system)
   - [Mount the entire file system](#mount-the-entire-file-system)
   - [Mount a file system sub-directory](#mount-a-file-system-sub-directory)
 
-## IMPORTANT PREREQUISITES to creating an HA Lustre* file system
+## IMPORTANT PREREQUISITES to creating an HA Lustre file system
 
-A high-availability Lustre* file system managed by Integrated Manager for Lustre* software requires that your entire storage system configuration and all interfaces comply with a pre-defined configuration. Integrated Manager for Lustre* software performs LNet configuration assuming that each server is connected to a high-performance data network, which is the Lustre* network LNet.  For detailed information, see [The High Availability Configuration Spec](Install_Guide/ig_ch_03_building.md). If the system will leverage ZFS you may also want to read [Creating and Managing ZFS-based Lustre\* file systems](Create_and_manage_ZFS_based_LFS_8_0.md).
+A high-availability Lustre file system managed by Integrated Manager for Lustre software requires that your entire storage system configuration and all interfaces comply with a pre-defined configuration. Integrated Manager for Lustre software performs LNet configuration assuming that each server is connected to a high-performance data network, which is the Lustre network LNet.  For detailed information, see [The High Availability Configuration Spec](Install_Guide/ig_ch_03_building.md). If the system will leverage ZFS you may also want to read [Creating and Managing ZFS-based Lustre\* file systems](Create_and_manage_ZFS_based_LFS_8_0.md).
 
 [Top of page](#creating-a-new-lustre-file-system)
 
 ## IMPORTANT INFORMATION about reconfiguring your file system
 
-**Caution:** When initially setting up your storage system, take care in selecting block device names because these cannot be changed after the file system has been created using  Integrated Manager for Lustre* software. **You should NOT make configuration changes to file system servers or their respective volumes/targets outside of Integrated Manager for Lustre* software**. Doing so will defeat the ability of Integrated Manager for Lustre* software to monitor or manage the file system, and will make the file system unavailable to clients. **Re-labeling these device names during multipath configuration will break the HA configuration established by Integrated Manager for Lustre* software**.
+**Caution:** When initially setting up your storage system, take care in selecting block device names because these cannot be changed after the file system has been created using  Integrated Manager for Lustre software. **You should NOT make configuration changes to file system servers or their respective volumes/targets outside of Integrated Manager for Lustre software**. Doing so will defeat the ability of Integrated Manager for Lustre software to monitor or manage the file system, and will make the file system unavailable to clients. **Re-labeling these device names during multipath configuration will break the HA configuration established by Integrated Manager for Lustre software**.
 
-**Caution:** A known issue can result in a server being made unavailable. This can happen if the server has been added to a Lustre* file system, (using Integrated Manager for Lustre* software) and then the user decides to Force Remove the server from the file system. **The Force Remove command should only be performed if the Remove command has been unsuccessful.** Force Remove will remove the server from the Integrated Manager for Lustre* software configuration, but not remove Integrated Manager for Lustre* software from the server. All targets that depend on the server will also be removed without any attempt to unconfigure them.
+**Caution:** A known issue can result in a server being made unavailable. This can happen if the server has been added to a Lustre file system, (using Integrated Manager for Lustre software) and then the user decides to Force Remove the server from the file system. **The Force Remove command should only be performed if the Remove command has been unsuccessful.** Force Remove will remove the server from the Integrated Manager for Lustre software configuration, but not remove Integrated Manager for Lustre software from the server. All targets that depend on the server will also be removed without any attempt to unconfigure them.
 
 [Top of page](#creating-a-new-lustre-file-system)
 
 ## High-availability file system support
 
-Integrated Manager for Lustre* software includes several capabilities for configuring and managing highly-available Lustre* file systems.
+Integrated Manager for Lustre software includes several capabilities for configuring and managing highly-available Lustre file systems.
 
-Generally, high availability (HA) means that the file system is able to tolerate server hardware failure without loss of service. The key components of this solution are the software components Corosync and Pacemaker. Corosync is responsible for maintaining intra-cluster control and heartbeat communications, and Pacemaker is responsible for managing HA resources (e.g., Lustre* targets).
+Generally, high availability (HA) means that the file system is able to tolerate server hardware failure without loss of service. The key components of this solution are the software components Corosync and Pacemaker. Corosync is responsible for maintaining intra-cluster control and heartbeat communications, and Pacemaker is responsible for managing HA resources (e.g., Lustre targets).
 
-To support automatic server failover, each HA server must have a dedicated crossover connection to the other server that will be its HA peer. During file system creation, each HA server is designated as a primary server for one or more targets, and as a failover, peer server for its peer server's targets. This crossover connection is configured as a redundant Corosync communications interface in order to reduce the likelihood of false failover events. Integrated Manager for Lustre* software uses a managed server profile to automatically configure Corosync and Pacemaker. The managed server profile is used to configure primary and failover servers. See the following figure.
+To support automatic server failover, each HA server must have a dedicated crossover connection to the other server that will be its HA peer. During file system creation, each HA server is designated as a primary server for one or more targets, and as a failover, peer server for its peer server's targets. This crossover connection is configured as a redundant Corosync communications interface in order to reduce the likelihood of false failover events. Integrated Manager for Lustre software uses a managed server profile to automatically configure Corosync and Pacemaker. The managed server profile is used to configure primary and failover servers. See the following figure.
 
 ![Lustre Configuration](md_Graphics/lustre-configuration5_zoom40.png)
 
-Physically, HA peer servers must be cabled to provide equal access to the pool of storage targets allocated to those peers. For example: server 1 and server 2 are cabled as HA peers. Targets A and B have been configured with server 1 as their primary server and server 2 as their failover server. Targets C and D have been configured with server 2 as their primary server and server 1 as their failover server. If server 1 becomes unavailable, server 2 must have access to the block storage devices underlying targets A and B in order to mount them and make them available to Lustre* clients. The end result is that server 1 is powered off and server 2 is now exporting targets A, B, C, and D to Lustre* clients.
+Physically, HA peer servers must be cabled to provide equal access to the pool of storage targets allocated to those peers. For example: server 1 and server 2 are cabled as HA peers. Targets A and B have been configured with server 1 as their primary server and server 2 as their failover server. Targets C and D have been configured with server 2 as their primary server and server 1 as their failover server. If server 1 becomes unavailable, server 2 must have access to the block storage devices underlying targets A and B in order to mount them and make them available to Lustre clients. The end result is that server 1 is powered off and server 2 is now exporting targets A, B, C, and D to Lustre clients.
 
-To support HA failover, each HA server must be able to automatically power-off its peer server if a failover is required. The process of powering off a faulty server is known as "node fencing" (also called "server fencing"), and ensures that a shared storage device is not mounted by more than one server at a time. Lustre* includes protection against multiple simultaneous device mounts, but automatically powering off the faulty server ensures that failover works properly. Integrated Manager for Lustre* software supports the use of remotely-operable Power Distribution Units (PDUs) for this purpose. Alternative to the configuration of PDUs, Integrated Manager for Lustre* software also supports the Intelligent Management Platform Interface (IPMI) and associating baseboard management controllers (BMCs) with servers, to support server monitoring and control.
+To support HA failover, each HA server must be able to automatically power-off its peer server if a failover is required. The process of powering off a faulty server is known as "node fencing" (also called "server fencing"), and ensures that a shared storage device is not mounted by more than one server at a time. Lustre includes protection against multiple simultaneous device mounts, but automatically powering off the faulty server ensures that failover works properly. Integrated Manager for Lustre software supports the use of remotely-operable Power Distribution Units (PDUs) for this purpose. Alternative to the configuration of PDUs, Integrated Manager for Lustre software also supports the Intelligent Management Platform Interface (IPMI) and associating baseboard management controllers (BMCs) with servers, to support server monitoring and control.
 
 **Note:** See [The High Availability Configuration Spec](Install_Guide/ig_ch_03_building.md) for physical design and configuration guidelines required to support high availability.
 
@@ -104,12 +104,12 @@ To add a server to be used for the file system:
 1. At the *Add Server - Add Server Profiles* window, select the desired profile from the drop-down menu. Note that one profile type is selected for all servers you are adding in this process. The common profiles are listed next, but your software may have more server profiles.
     - **Monitored Storage Server:** This is for servers that are not correctly configured for HA/failover (as far as this software is concerned). A monitored storage server is monitored only; the manager GUI performs no server configuration or management. Chart metrics for filesystem operations will still show for monitored filesystems on the dashboard page.
     - **Managed Storage Server:** As above, this allows the manager GUI to configure Corosync and Pacemaker, configure NTP, etc., so that the manager software can monitor and manage the server. Managed storage servers must be physically configured for high-availability/server failover.
-    - **POSIX HSM Agent Node:** An HSM Agent node is used in hierarchical storage management to run an instance of Copytool. Copytool transfers certain files between the Lustre* file system and the archive. Archived files are deleted from the Lustre* file system. See [Configuring and using Hierarchical Storage Management](Config_and_using_HSM_6_0.md/#6.0)
+    - **POSIX HSM Agent Node:** An HSM Agent node is used in hierarchical storage management to run an instance of Copytool. Copytool transfers certain files between the Lustre file system and the archive. Archived files are deleted from the Lustre file system. See [Configuring and using Hierarchical Storage Management](Config_and_using_HSM_6_0.md/#6.0)
     - **Robinhood Policy Engine Server:** This server hosts the Robinhood policy engine, which enables automation of hierarchical storage management activities. See [Configuring and using Hierarchical Storage Management](Config_and_using_HSM_6_0.md/#6.0).
 
         ![Select Server Profile](md_Graphics/add_server_select_profile.png)
 
-1. Select the desired profile and click **Proceed**. The manager does an audit of the storage resources on each server. The manager then provisions the server by loading appropriate Lustre* modules and making sure the Lustre* networking layer is functioning. When all checks are completed, LNet State indicates LNet Up and each server is fully qualified as a Lustre* server. Under the Status column, a green check mark is displayed for each new server. If server provisioning does not succeed, the Status will indicate a exclamation mark (!) and the LNet State may indicate Unconfigured. To learn the cause of the problem, click the exclamation mark for the failed server to see Alerts. For more information, click **Status** at the top menu bar. The *Status* window also lets you view related logs.
+1. Select the desired profile and click **Proceed**. The manager does an audit of the storage resources on each server. The manager then provisions the server by loading appropriate Lustre modules and making sure the Lustre networking layer is functioning. When all checks are completed, LNet State indicates LNet Up and each server is fully qualified as a Lustre server. Under the Status column, a green check mark is displayed for each new server. If server provisioning does not succeed, the Status will indicate a exclamation mark (!) and the LNet State may indicate Unconfigured. To learn the cause of the problem, click the exclamation mark for the failed server to see Alerts. For more information, click **Status** at the top menu bar. The *Status* window also lets you view related logs.
 
     **Note:** A certain profile may not be compatible with a server as the server is configured. If the profile you select is not compatible with the server(s) you specified, a warning is displayed: *Incompatible*. Each incompatible server is represented by a red box. To learn why a server is incompatible, click on a red box. A pop-up window reveals the problem. You can resolve the problem and the red box will change to green, indicating profile compatibility with the server.
 
@@ -231,7 +231,7 @@ To associate BMCs with servers:
 
 [Top of page](#creating-a-new-lustre-file-system)
 
-## Create the new Lustre* file system
+## Create the new Lustre file system
 
 Now that the necessary steps are complete, a filesystem can be created. To create the file system:
 
@@ -242,7 +242,7 @@ Now that the necessary steps are complete, a filesystem can be created. To creat
     ![Filesystem Name](md_Graphics/add_filesystem_step_1.png)
 
 1. If this file system is to utilize Hierarchical Storage Management, click the check-box **Enable HSM**.
-1. At step 2, Choose a management target (MGT). Integrated Manager for Lustre* software does not support an MGT larger than 10 gigabytes. *If a management target has been created previously*, the following options will be available. Use one of these options to select the MGT:
+1. At step 2, Choose a management target (MGT). Integrated Manager for Lustre software does not support an MGT larger than 10 gigabytes. *If a management target has been created previously*, the following options will be available. Use one of these options to select the MGT:
     - If the MGT is to be installed on an existing server in the file system, you can select the target to be used from the *Use existing MGT* drop-down list.
     - If a new MGT is to be created, click **Select Storage** to display a list of available servers and then click the server to be used.
 
@@ -254,7 +254,7 @@ Now that the necessary steps are complete, a filesystem can be created. To creat
 
     ![MDT](md_Graphics/add_filesystem_step_3.png)
 
-1. Notice the check-box labeled **Add Additional MDTs (DNE)**. After selecting the primary MDT, you can also add additional MDTs. DNE stands for Distributed Namespace. DNE allows the Lustre* namespace to be divided across multiple metadata servers. This enables the size of the namespace and metadata throughput to be scaled with the number of servers. The primary metadata target in a Lustre* file system is MDT 0, and added MDTs are consecutively indexed as MDT 1, MDT 2, and so on.
+1. Notice the check-box labeled **Add Additional MDTs (DNE)**. After selecting the primary MDT, you can also add additional MDTs. DNE stands for Distributed Namespace. DNE allows the Lustre namespace to be divided across multiple metadata servers. This enables the size of the namespace and metadata throughput to be scaled with the number of servers. The primary metadata target in a Lustre file system is MDT 0, and added MDTs are consecutively indexed as MDT 1, MDT 2, and so on.
 
     To add an additional MDT, click the check-box. Then at the drop-down menu, select the additional MDT target or targets to be used. At the end of this process, after creating the file system, you will enter a command to configure this MDT.
 
@@ -265,7 +265,7 @@ Now that the necessary steps are complete, a filesystem can be created. To creat
 
 1. Click **Create File System** now to create the file system.
 1. To follow the process as the file system is created, click **Status** on the top menu bar and select **Commands**. After the file system creation has completed successfully, perform the remaining steps if applicable.
-1. If you selected to add additional MDT(s), log into a client node and mount the Lustre* file system. Using the command line, enter the following command for each additional MDT:
+1. If you selected to add additional MDT(s), log into a client node and mount the Lustre file system. Using the command line, enter the following command for each additional MDT:
 
     ```bash
     lfs mkdir -i n <lustre_mount_point>/<parent_folder_to_contain_this_MDT>
@@ -278,7 +278,7 @@ Now that the necessary steps are complete, a filesystem can be created. To creat
     mkdir <lustre_mount_point>/<parent_folder_to_contain_this_MDT>/<subdirectory_name>
     ```
 
-**Note:** Integrated Manager for Lustre* software will automatically assign OST indices in a distributed fashion across servers to permit striping.
+**Note:** Integrated Manager for Lustre software will automatically assign OST indices in a distributed fashion across servers to permit striping.
 
 **Note:** If you plan to enable HSM for this file system, see the chapter [Configuring and using Hierarchical Storage Management](Config_and_using_HSM_6_0.md/#6.0) to setup HSM.
 
@@ -298,7 +298,7 @@ To view the file system configuration:
 
 ## Mount the Lustre\* file system
 
-A compute client must mount the Lustre* file system to be able to access data in the file system. Before attempting to mount the file system on your Lustre* clients, make sure the Integrated Manager for Lustre* client software has been installed on each client node. See [Configuring Clients](Install_Guide/ig_ch_07_configure_clients.md) for more information.
+A compute client must mount the Lustre file system to be able to access data in the file system. Before attempting to mount the file system on your Lustre clients, make sure the Integrated Manager for Lustre client software has been installed on each client node. See [Configuring Clients](Install_Guide/ig_ch_07_configure_clients.md) for more information.
 
 A client can mount the entire file system, or mount a file system sub-directory.
 
@@ -310,7 +310,7 @@ A client can mount the entire file system, or mount a file system sub-directory.
 To obtain the command used to mount an entire file system:
 
 1. Using the Dashboard menu bar, click the **Configuration** drop-down menu and click **File Systems**.
-1. Each Lustre* file system created using Integrated Manager for Lustre* software is listed. Select the file system to be mounted. The browser will navigate to the filesystem detail page.
+1. Each Lustre file system created using Integrated Manager for Lustre software is listed. Select the file system to be mounted. The browser will navigate to the filesystem detail page.
 1. Click the **View Client Mount Information** button. The mount command will be displayed.
 
     ```bash

@@ -1,4 +1,4 @@
-# <a name="1.0"></a>Scheduler Plugin Developer's Guide for Integrated Manager for Lustre* software
+# <a name="1.0"></a>Scheduler Plugin Developer's Guide for Integrated Manager for Lustre software
 
 [**Software API Documentation Table of Contents**](./api_TOC.md)
 

@@ -8,30 +8,30 @@
 * [Integrated Manager for Lustre\* software Configuration Settings](#manager-for-lustre-software-configuration-settings)
 * [Editing Integrated Manager for Lustre\* software Configuration Settings](#editing-manager-for-lustre-software-configuration-settings)
 
-This section describes how to install the Integrated Manager for Lustre* software
-and the Integrated Manager for Lustre* software on the _manager
+This section describes how to install the Integrated Manager for Lustre software
+and the Integrated Manager for Lustre software on the _manager
 server._
 
-After the Integrated Manager for Lustre* software is
-installed, point your web browser to the Integrated Manager for Lustre* software
+After the Integrated Manager for Lustre software is
+installed, point your web browser to the Integrated Manager for Lustre software
 dashboard. Use Chrome\* or Firefox\*. A display monitor with a minimum
 resolution of 1024 X 768 pixels is recommended, to adequately display
 the Integrated Manager for Lustre\* software GUI.
 
-**Note**: Later, when adding storage servers to your Lustre* file system,
-the Integrated Manager for Lustre* software agent, Integrated Manager for Lustre*
+**Note**: Later, when adding storage servers to your Lustre file system,
+the Integrated Manager for Lustre software agent, Integrated Manager for Lustre
 software, and specific dependencies (e.g.: for Corosync and Pacemaker)
 are automatically deployed to the storage server. This avoids the need
-to manually install the Integrated Manager for Lustre* software on storage
+to manually install the Integrated Manager for Lustre software on storage
 servers and avoids possible errors.
 
-**Note**: Some installations may opt to deploy and configure a Lustre*
-file system manually, without Integrated Manager for Lustre* software.
-Other installations may opt to deploy and configure a Lustre* file system
-and then later install Integrated Manager for Lustre* software to be used
+**Note**: Some installations may opt to deploy and configure a Lustre
+file system manually, without Integrated Manager for Lustre software.
+Other installations may opt to deploy and configure a Lustre file system
+and then later install Integrated Manager for Lustre software to be used
 in Monitor-only mode. The overall release tarball is {{site.package_name}}.tar.gz.
-To deploy and configure Lustre* manually, see [Installing and Configuring
-Lustre* Manually](ig_ch_08_manual_install).
+To deploy and configure Lustre manually, see [Installing and Configuring
+Lustre Manually](ig_ch_08_manual_install).
 
 For information regarding installing and configuring Lustre, see Part II
 of the _Lustre_ Operations Manual\*. This information is available at the
@@ -84,7 +84,7 @@ To install the software, complete these steps:
 
     * _Option 2:_ To use the Integrated Manager for Lustre\* software server’s clock as the time source, press the **&lt;Enter&gt;** key.
 
-1.  Using ifconfig, obtain the IP address of the administrative network interface for the server hosting Integrated Manager for Lustre* software. The default network interface for Integrated Manager for Lustre* software is eth0.
+1.  Using ifconfig, obtain the IP address of the administrative network interface for the server hosting Integrated Manager for Lustre software. The default network interface for Integrated Manager for Lustre software is eth0.
 
 1.  Open a web browser and access the Integrated Manager for Lustre\* software GUI using the server IP address obtained in the previous step. Enter in the address field of your browser:
 
@@ -101,8 +101,8 @@ software GUI. A certificate can be downloaded from (example only):
 
 https://&lt;manager-addr&gt;/certificate/
 
-After Integrated Manager for Lustre* software is installed, point your web
-browser to the Integrated Manager for Lustre* software dashboard. Use Chrome\* or
+After Integrated Manager for Lustre software is installed, point your web
+browser to the Integrated Manager for Lustre software dashboard. Use Chrome\* or
 Firefox\*.
 
 ## Integrated Manager for Lustre\* software Configuration Settings
@@ -121,7 +121,7 @@ settings following the descriptions.
 
 **Default:** False (Uppercase first letter required.)
 
-**Description:** The default state is False, allowing automatic monitoring of power control devices. When set to True, this setting disables the manager software’s monitoring of your power control devices (eg, BMC, PDU outlets, etc.) This is necessary for sites where the manager server does not have access to the power control devices itself. However, Integrated Manager for Lustre* software will then NO LONGER REPORT ANY FAILURE IN ANY POWER CONTROL DEVICES. If power control becomes non-operational, automatic failover will not occur on failure, and manual intervention will be required to restore service to your file system. If you chose to set this value to True, we recommend implementing an alternate mechanism to monitor your power control devices, outside of Integrated Manager for Lustre* software.
+**Description:** The default state is False, allowing automatic monitoring of power control devices. When set to True, this setting disables the manager software’s monitoring of your power control devices (eg, BMC, PDU outlets, etc.) This is necessary for sites where the manager server does not have access to the power control devices itself. However, Integrated Manager for Lustre software will then NO LONGER REPORT ANY FAILURE IN ANY POWER CONTROL DEVICES. If power control becomes non-operational, automatic failover will not occur on failure, and manual intervention will be required to restore service to your file system. If you chose to set this value to True, we recommend implementing an alternate mechanism to monitor your power control devices, outside of Integrated Manager for Lustre software.
 
 **Other Settings**:
 
@@ -180,8 +180,8 @@ In this example, the first letter of False must be capitalized.
 ```
 
 For configuring user accounts, see the online Help in the
-Integrated Manager for Lustre* software. The online Help also provides
-instructions for creating, monitoring, and managing your Lustre*
+Integrated Manager for Lustre software. The online Help also provides
+instructions for creating, monitoring, and managing your Lustre
 file systems.
 
 [Top of page](#1.0)

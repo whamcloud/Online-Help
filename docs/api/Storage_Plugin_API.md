@@ -1,4 +1,4 @@
-# <a name="1.0"></a>Storage Plugin Developer's Guide for Integrated Manager for Lustre* software
+# <a name="1.0"></a>Storage Plugin Developer's Guide for Integrated Manager for Lustre software
 
 [**Software API Documentation Table of Contents**](./api_TOC.md)
 
@@ -41,7 +41,7 @@ the resources, used for associating problems with one resource with another reso
 takes the form of an "affects" relationship between resources, for example the health of 
 a physical disk affects the health of its pool, and the health of a pool affects LUNs
 in that pool.  These relationships allow the effects of issues to be traced all the 
-way up to the Lustre* file system level and an appropriate drill-down user interface to be provided.
+way up to the Lustre file system level and an appropriate drill-down user interface to be provided.
 
 The API may change over time.  To ensure plugins are able to run against a particular
 version of the API, each plugin module must declare the version of the API it intends to use.
@@ -156,7 +156,7 @@ a chain of relationships might be *Fan->Enclosure->Physical disk->Pool->LUN*. Th
 
 Although plugins will run without any parent relationships, it is important
 to populate them so that hardware issues can be associated with the relevant
-Lustre* target or file system.
+Lustre target or file system.
 
 Alert Conditions
 ----------------
@@ -847,12 +847,12 @@ Advanced: Using Custom Block Device Identifiers
 -----------------------------------------------
 
 A best effort is made to extract standard SCSI identifiers from block devices that
-are encountered on Lustre* servers.  However, in some cases:
+are encountered on Lustre servers.  However, in some cases:
 
 * The SCSI identifier may be missing
 * The storage controller may not provide the SCSI identifier
 
-Storage plugins may provide additional code to run on Lustre* servers that extracts additional
+Storage plugins may provide additional code to run on Lustre servers that extracts additional
 information from block devices.
 
 Agent Plugins
@@ -937,7 +937,7 @@ Advanced: Reporting Hosts
 -------------------------
 
 Your storage hardware may be able to provide server addresses, for example
-if the storage hardware hosts virtual machines that act as Lustre* servers.
+if the storage hardware hosts virtual machines that act as Lustre servers.
 
 To report these hosts from a storage plugin, create resources of a class with
 subclasses `resources.VirtualMachine`.
@@ -976,7 +976,7 @@ of access to a storage device.  For example:
   may be preferable to a device node on a host connected to the other port.
 * If a LUN is accessible via two device nodes on a single server, one may be preferable to the other.
 
-This type of information allows the manager server to make an intelligent selection of primary/secondary Lustre* servers.
+This type of information allows the manager server to make an intelligent selection of primary/secondary Lustre servers.
 
 To express this information, create a PathWeight resource that is a parent of the device node and has as its
 parent the LUN.

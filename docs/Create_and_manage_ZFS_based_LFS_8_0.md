@@ -1,29 +1,29 @@
 <a id="8.0"></a>
-# Creating and Managing ZFS-based Lustre* file systems
+# Creating and Managing ZFS-based Lustre file systems
 
 [**Online Help Table of Contents**](IML_Help_TOC.md)
 
-Integrated Manager for Lustre* software is able to create and manage Lustre* file systems that are based on OpenZFS object storage device (OSD) volumes. The software installs the necessary packages, formats Lustre* targets from ZFS pools, and creates the high-availability software framework for managing availability for Lustre* + ZFS servers.  The following topics are covered:
+Integrated Manager for Lustre software is able to create and manage Lustre file systems that are based on OpenZFS object storage device (OSD) volumes. The software installs the necessary packages, formats Lustre targets from ZFS pools, and creates the high-availability software framework for managing availability for Lustre + ZFS servers.  The following topics are covered:
 
-- [Create a ZFS-based Lustre* file system](#8.1)
+- [Create a ZFS-based Lustre file system](#8.1)
 - [Importing and exporting ZFS pools in a shared-storage high-availability cluster](#8.2)
-- [Removing a ZFS-based Lustre* file system](#8.3)
+- [Removing a ZFS-based Lustre file system](#8.3)
 - [Destroy an individual zpool](#8.4)
 - [Destroy all of the ZFS pools in a shared-storage](#8.5)
 
 
 
-## <a id="8.1"></a>Create a ZFS-based Lustre* file system
+## <a id="8.1"></a>Create a ZFS-based Lustre file system
 
-The procedures in this section assume that you have first assembled and configured the physical hardware: servers, storage devices, network interfaces, etc., and installed Integrated Manager for Lustre* software as instructed in the *Integrated Manager for Lustre* software Installation Guide*.  
+The procedures in this section assume that you have first assembled and configured the physical hardware: servers, storage devices, network interfaces, etc., and installed Integrated Manager for Lustre software as instructed in the *Integrated Manager for Lustre software Installation Guide*.  
 
-To create and manage an OpenZFS-based Lustre* file system that is highly-available and managed by Integrated Manager for Lustre* software, perform these steps:
+To create and manage an OpenZFS-based Lustre file system that is highly-available and managed by Integrated Manager for Lustre software, perform these steps:
 
-1. Add all of the physical servers that will comprise your ZFS-based Lustre* file system. To do this, perform the steps in [Add one or more HA servers](Creating_new_lustre_fs_3_0.md/#3.4). Add each server as a *Managed Storage Server*.
+1. Add all of the physical servers that will comprise your ZFS-based Lustre file system. To do this, perform the steps in [Add one or more HA servers](Creating_new_lustre_fs_3_0.md/#3.4). Add each server as a *Managed Storage Server*.
     
-    **Note:**  Steps 2 and 3 below are performed automatically by Integrated Manager for Lustre* software and do not need to be performed.  They are included here for topic coverage only. Continue with Step 4.
+    **Note:**  Steps 2 and 3 below are performed automatically by Integrated Manager for Lustre software and do not need to be performed.  They are included here for topic coverage only. Continue with Step 4.
 
-1. Having added the servers, you now need to ensure that the server hostids are set before creating any zpools. Each server requires a unique hostid to be configured. Setting the hostid on each server will allow ZFS to apply an attribute on each zpool indicating which host currently has the pool imported. This provides some protection in ZFS against multiple simultaneous imports of zpools when the storage is connected to more than one server. To set the hostid, run the `genhostid` command on each host and reboot. In the document *Lustre\* Installation and Configuration using Integrated Manager for Lustre* software and OpenZFS*, see the section *Protecting File System Volumes from Concurrent Access* for more information.
+1. Having added the servers, you now need to ensure that the server hostids are set before creating any zpools. Each server requires a unique hostid to be configured. Setting the hostid on each server will allow ZFS to apply an attribute on each zpool indicating which host currently has the pool imported. This provides some protection in ZFS against multiple simultaneous imports of zpools when the storage is connected to more than one server. To set the hostid, run the `genhostid` command on each host and reboot. In the document *Lustre\* Installation and Configuration using Integrated Manager for Lustre software and OpenZFS*, see the section *Protecting File System Volumes from Concurrent Access* for more information.
 
 1. As a further protection against “double-importing” ZFS pools, and to prevent conflicts with the Pacemaker resource management software, disable the ZFS Systemd target by entering the following command:
 	
@@ -33,7 +33,7 @@ To create and manage an OpenZFS-based Lustre* file system that is highly-availab
     
     This will stop the operating system from attempting to auto-import ZFS storage pools during system boot. Disabling the ZFS target affects all ZFS storage pools, including any that are not being used for Lustre.
 
-1. ZFS pool configuration is executed directly on each of the Lustre* server HA pairs using the command line tools supplied with the ZFS software. The storage devices for each ZFS pool must be connected to, and accessible from, each Lustre* server in the HA pair. For each ZFS pool, it is easiest to nominate a primary server and use that host to create the zpool. Log into each primary host and use this zpool command to create each storage pool.  The general syntax for creating a zpool is as follows:
+1. ZFS pool configuration is executed directly on each of the Lustre server HA pairs using the command line tools supplied with the ZFS software. The storage devices for each ZFS pool must be connected to, and accessible from, each Lustre server in the HA pair. For each ZFS pool, it is easiest to nominate a primary server and use that host to create the zpool. Log into each primary host and use this zpool command to create each storage pool.  The general syntax for creating a zpool is as follows:
 	
 	```
 	zpool create [-f] -O canmount=off \
@@ -50,11 +50,11 @@ To create and manage an OpenZFS-based Lustre* file system that is highly-availab
 
     In addition to zpool properties, there are also properties that can be applied to the ZFS datasets in a pool.  ZFS dataset properties are set in the zpool command using a capital letter -O, rather than the lower case letter -o flag used for the cachefile and ashift settings. The -O flag is used to set properties to the root file system data set in the pool, rather than for properties of the pool itself. The following ZFS dataset properties are of particular importance:
     
-    - `canmount=off`: prevent the dataset from being mounted using the standard zfs mount command. Essential for Lustre* OSDs, which must be mounted and unmounted using the `mount.lustre` (or `mount -t lustre`) command.
+    - `canmount=off`: prevent the dataset from being mounted using the standard zfs mount command. Essential for Lustre OSDs, which must be mounted and unmounted using the `mount.lustre` (or `mount -t lustre`) command.
     - `recordsize`: this sets a suggested block size for the file system. The block size cannot exceed this value. The default value, 128KB, is fine for MGT and MDT OSDs. For OSTs, where large block IO is the dominant workload, set the recordsize=1M, which is the maximum currently allowed in ZFS on Linux version 0.6.5. Future versions of ZFS are expected to be able to further increase this value.
     - `mountpoint=none`: in monitored mode, the management software requires that ZfsDatasets have the following property values to prevent undesired automatic mounting.
 
-    For more details, refer to the section ZFS OSDs, in the guide titled Lustre* Installation and Configuration using Integrated Manager for Lustre* software and OpenZFS, as well as the system man pages for zfs(8) and zpool(8).
+    For more details, refer to the section ZFS OSDs, in the guide titled Lustre Installation and Configuration using Integrated Manager for Lustre software and OpenZFS, as well as the system man pages for zfs(8) and zpool(8).
 
     Following are three examples of typical pool configurations, one each for MGT, MDT and OST respectively:
     
@@ -79,7 +79,7 @@ To create and manage an OpenZFS-based Lustre* file system that is highly-availab
 	mirror <dev A> <dev B> [ mirror <dev C> <dev D> ] ...
 	```
 	
-	**Note:** The naming convention for the pool name is intended to reflect the Lustre* file system name (\<fsname\>) and the MDT index number (\<n\> usually 0, unless DNE is used). The number of mirrors used for the MDT depends on the requirements of the installation and can be scaled up accordingly.
+	**Note:** The naming convention for the pool name is intended to reflect the Lustre file system name (\<fsname\>) and the MDT index number (\<n\> usually 0, unless DNE is used). The number of mirrors used for the MDT depends on the requirements of the installation and can be scaled up accordingly.
     
    - ZFS pool for OST (typically a RAIDZ2 pool, balancing reliability against optimal capacity):
    
@@ -95,20 +95,20 @@ To create and manage an OpenZFS-based Lustre* file system that is highly-availab
 		<dev C> <dev D>  <dev E> <dev F> ...
 		```
 
-**Note:** See the document *Lustre\* Installation and Configuration using Integrated Manager for Lustre* software and OpenZFS* for descriptions of the ashift and recordsize properties. RAIDZ2 is the preferred vdev configuration for OSTs, and we recommend an arrangement of at least 11 disks (9+2) per RAIDZ2 vdev for best performance. The pool naming convention is based on the Lustre* file system name and OST index number, starting at 0 (zero).
+**Note:** See the document *Lustre\* Installation and Configuration using Integrated Manager for Lustre software and OpenZFS* for descriptions of the ashift and recordsize properties. RAIDZ2 is the preferred vdev configuration for OSTs, and we recommend an arrangement of at least 11 disks (9+2) per RAIDZ2 vdev for best performance. The pool naming convention is based on the Lustre file system name and OST index number, starting at 0 (zero).
 
-   The remainder of this procedure is performed at the Integrated Manager for Lustre* software GUI. 
+   The remainder of this procedure is performed at the Integrated Manager for Lustre software GUI. 
 1. For high-availability, configure your servers as primary and fail-over servers for each zpool.  Perform the steps in [Configure primary and fail-over servers](Creating_new_lustre_fs_3_0.md/#3.5).
 1. If you are using power distribution units (PDUs) for power control, then for each server, perform the steps in [Add power distribution units](Creating_new_lustre_fs_3_0.md/#3.6).  Then perform the steps in [Assign PDU outlets to servers](Creating_new_lustre_fs_3_0.md/#3.7) for each server.
 1. If you are using Baseboard Management Controllers (BMCs) for power control, then perform the steps in [Assign BMCs to servers](Creating_new_lustre_fs_3_0.md/#3.8) for each server.  
-1. Perform the steps in [Create the new Lustre* file system](Creating_new_lustre_fs_3_0.md/#3.0), using the zpools you created in step 4 above as object storage targets (volumes), rather than direct block devices.  Each ZFS pool that you created will appear as a target, with the Type identified as a **ZfsPool**.
+1. Perform the steps in [Create the new Lustre file system](Creating_new_lustre_fs_3_0.md/#3.0), using the zpools you created in step 4 above as object storage targets (volumes), rather than direct block devices.  Each ZFS pool that you created will appear as a target, with the Type identified as a **ZfsPool**.
 
 [Top of page](#8.0)
 
 <a id="8.2"></a>
 ## Importing and exporting ZFS pools in a shared-storage high-availability cluster
 
-ZFS file system datasets are always members of a pool, and the pool must be imported to a host before any action can be taken to alter its content. In a shared-storage, high-availability cluster, some pools may be imported on different hosts. This is a common and recommended practice that balances distribution of Lustre* OSDs equitably across the HA cluster nodes. 
+ZFS file system datasets are always members of a pool, and the pool must be imported to a host before any action can be taken to alter its content. In a shared-storage, high-availability cluster, some pools may be imported on different hosts. This is a common and recommended practice that balances distribution of Lustre OSDs equitably across the HA cluster nodes. 
 
 One must always manage ZFS pools and their contents from the host where the pool is imported, but it is easy to overlook and miss ZFS pools that are exported. Use the combined output of ```zpool list``` and ```zpool import``` to gain a complete list of all storage pools available to a host, and import any pools that require administration.
 
@@ -176,12 +176,12 @@ In the example, there are two exported pools. Note that the second pool in the l
 [Top of page](#8.0)
 
 <a id="8.3"></a>
-## Removing a ZFS-based Lustre* file system
+## Removing a ZFS-based Lustre file system
 
-When removing a Lustre* file system, the Integrated Manager for Lustre* software does not destroy the data content held on Lustre* OSDs. This allows the operator an opportunity to recover data from the OSDs if the file system was removed from IML accidentally. As a consequence, after the file system is removed from the manager, the OSD volumes may need to be cleaned up as a separate operation before they are ready to be re-used.
+When removing a Lustre file system, the Integrated Manager for Lustre software does not destroy the data content held on Lustre OSDs. This allows the operator an opportunity to recover data from the OSDs if the file system was removed from IML accidentally. As a consequence, after the file system is removed from the manager, the OSD volumes may need to be cleaned up as a separate operation before they are ready to be re-used.
 
-LDISKFS volumes do not require any special treatment; they can simply be reformatted, either by hand or by re-adding the volumes into a new Lustre* file system via  Integrated Manager for Lustre* software. The manager software will detect the pre-existing Lustre* data, and ask the user to confirm that the volume is to be re-used.
-ZFS OSDs require some additional work. ZFS OSDs are file system datasets inside zpools. After a file system is removed using Integrated Manager for Lustre* software, any ZFS OSDs from that file system will still be present in the ZFS storage pools (zpools), and cannot be re-used directly. To reuse the storage in a zpool, the existing OSD datasets must first be removed, using the zfs destroy command.  This is described in these sections:
+LDISKFS volumes do not require any special treatment; they can simply be reformatted, either by hand or by re-adding the volumes into a new Lustre file system via  Integrated Manager for Lustre software. The manager software will detect the pre-existing Lustre data, and ask the user to confirm that the volume is to be re-used.
+ZFS OSDs require some additional work. ZFS OSDs are file system datasets inside zpools. After a file system is removed using Integrated Manager for Lustre software, any ZFS OSDs from that file system will still be present in the ZFS storage pools (zpools), and cannot be re-used directly. To reuse the storage in a zpool, the existing OSD datasets must first be removed, using the zfs destroy command.  This is described in these sections:
 
 - [Destroy an individual zpool](#8.4)
 - <a href="#8.5">Destroy all of the ZFS pools in a shared-storage high-availability cluster

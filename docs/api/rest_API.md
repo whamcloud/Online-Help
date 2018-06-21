@@ -1,10 +1,10 @@
-# <a name="1.0"></a>REST API for Integrated Manager for Lustre* software software
+# <a name="1.0"></a>REST API for Integrated Manager for Lustre software software
 
 [**Software API Documentation Table of Contents**](./api_TOC.md)
 
 ## <a name="1.1"></a>Introduction
 The manager server web interface and command line interface (CLI) included with the 
-Integrated Manager for Lustre* software are built on the REST API, which is accessed
+Integrated Manager for Lustre software are built on the REST API, which is accessed
 via HTTP.  This API is available for integration with third party applications.  The 
 types of operations possible using the API include creating a file system, checking
 the system for alert conditions, and downloading performance metrics.  All functionality
@@ -14,8 +14,8 @@ applications.
 
 The API is based on the [REST](http://en.wikipedia.org/wiki/Representational_state_transfer)
 style, and uses [JSON](http://en.wikipedia.org/wiki/JSON) serialization.  Some of the
-resources exposed in the API correspond to functionality within the Lustre* file system, while
-others refer to functionality specific to the Integrated Manager for Lustre* software.
+resources exposed in the API correspond to functionality within the Lustre file system, while
+others refer to functionality specific to the Integrated Manager for Lustre software.
 
 This document consists of a series of sections explaining how to use the API, followed
 by an [Example client](#1.7), and a detailed [API Reference](#1.8) describing all
@@ -23,17 +23,17 @@ available functionality.
 
 ### <a name="1.1.1"></a>Prerequisites
 
-- Familiarity with managing Lustre* using the manager server web interface provided with the Integrated Manager for Lustre* software.
+- Familiarity with managing Lustre using the manager server web interface provided with the Integrated Manager for Lustre software.
 - Familiarity with HTTP, including the meanings and conventions around the methods (e.g. GET, POST, DELETE) and status codes (e.g. 404, 200).
 - Competence in using a suitable high level programming language to write your API client and the libraries used with your language for HTTP network operations and JSON serialization.
 
-## <a name="1.2"></a>Overview of Lustre* File Systems in the API
+## <a name="1.2"></a>Overview of Lustre File Systems in the API
 
 
 ### <a name="1.2.1"></a>Terminology
 
 
-The terminology used in this document differs somewhat from that used when administering a Lustre* file system manually. This document avoids referring to a host as an object storage server (OSS), metdata server (MDS), or management server (MGS) because, in a Lustre* file system created using the Integrated Manager for Lustre* software, a host can serve targets of any of these types.
+The terminology used in this document differs somewhat from that used when administering a Lustre file system manually. This document avoids referring to a host as an object storage server (OSS), metdata server (MDS), or management server (MGS) because, in a Lustre file system created using the Integrated Manager for Lustre software, a host can serve targets of any of these types.
  
 Lustre-specific terms used in this API include:
 
@@ -199,7 +199,7 @@ On resources that support the DELETE method, this method may be used to remove r
 from the storage server.  Some objects can always be removed immediately, while
 others take some time to remove and the operation may not succeed.  For example,
 removing a file system requires removing the configuration of its targets from
-the Lustre* servers: if a DELETE is sent for such an object then the operation
+the Lustre servers: if a DELETE is sent for such an object then the operation
 will be run asynchronously (see [Asynchronous Actions](#1.4.1))
 
 ### <a name="1.4.1"></a>Asynchronous Actions

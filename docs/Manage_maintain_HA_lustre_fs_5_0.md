@@ -3,9 +3,9 @@
 
 [**Online Help Table of Contents**](IML_Help_TOC.md)
 
-**Warning:** After you have created a Lustre file system using Integrated Manager for Lustre* software, you should not make any configuration changes outside of Integrated Manager for Lustre* software, to file system servers, their respective targets, or network connectivity. Doing so will likely defeat the ability of Integrated Manager for Lustre* software to monitor or manage the file system, and will make all or portions of the file system unavailable to clients.
+**Warning:** After you have created a Lustre file system using Integrated Manager for Lustre software, you should not make any configuration changes outside of Integrated Manager for Lustre software, to file system servers, their respective targets, or network connectivity. Doing so will likely defeat the ability of Integrated Manager for Lustre software to monitor or manage the file system, and will make all or portions of the file system unavailable to clients.
 
-Before performing any upgrades or maintenance on a primary HA server, all file system targets attached to that server must be manually failed over to the secondary server, using the Manager Lustre* software. DO NOT independently shut the server down. 
+Before performing any upgrades or maintenance on a primary HA server, all file system targets attached to that server must be manually failed over to the secondary server, using the Manager Lustre software. DO NOT independently shut the server down. 
 
 In addition to the links below, see [Advanced topics](Advanced_Topics_10_0.md/#10.0).
 
@@ -54,7 +54,7 @@ To add another object storage target:
 1. In the file system table displayed, click on the file system name to display the file system window.
 1. Under *Object Storage Targets*, click **+ Create new OST**.
 1. Each available target device is displayed, with its Capacity, Type, HA-status, and server pair, if configured. Select the OST or OSTs to be added and click **OK**. The new OSTs will be displayed in the table of OSTs for the file system. 
-**Note:** Integrated Manager for Lustre* software will automatically assign OST indices in a distributed fashion across servers to permit striping. 
+**Note:** Integrated Manager for Lustre software will automatically assign OST indices in a distributed fashion across servers to permit striping. 
 
 [Top of page](#5.0)
 
@@ -144,7 +144,7 @@ $ chroma target-failback <target name, e.g. lustre-OST0000>
 
 ## <a id="5.8"></a>Intentionally failover of all targets from a primary to a secondary server
 
-**Warning:** After you have created a Lustre* file system using Integrated Manager for Lustre* software, you should not normally make any configuration changes outside of Integrated Manager for Lustre* software, to file system servers, their respective targets, or network connectivity. Doing so will diminish or defeat the ability of Integrated Manager for Lustre* software to monitor or manage the file system, and will make all or portions of the file system unavailable to clients. 
+**Warning:** After you have created a Lustre file system using Integrated Manager for Lustre software, you should not normally make any configuration changes outside of Integrated Manager for Lustre software, to file system servers, their respective targets, or network connectivity. Doing so will diminish or defeat the ability of Integrated Manager for Lustre software to monitor or manage the file system, and will make all or portions of the file system unavailable to clients. 
 
 The following process is recommended only if the affected server has become unresponsive to commands and must be powered down or power cycled in order to perform recovery. This requires that you first failover all connected targets from the affected server to the secondary server.  
 
@@ -174,9 +174,9 @@ To prompt the manager software to detect new NIDs and update file system targets
 
 You can also directly edit the NID configuration for a server, but to do this, the server cannot belong to an existing Lustre file system. See [NID Configuration](Graphical_User_Interface_9_0.md/#9.3.1.1e).
 
-**WARNING:** For Lustre* file systems created and managed by Integrated Manager for Lustre* software, the only supported command line interface is the CLI provided by Integrated Manager for Lustre* software. Modifying such a Lustre* file system manually from a UNIX shell will interfere with the ability of Integrated Manager for Lustre* software to manage and monitor the file system. 
+**WARNING:** For Lustre file systems created and managed by Integrated Manager for Lustre software, the only supported command line interface is the CLI provided by Integrated Manager for Lustre software. Modifying such a Lustre file system manually from a UNIX shell will interfere with the ability of Integrated Manager for Lustre software to manage and monitor the file system. 
 
-Lustre* commands can, however, be used to manage metadata or object storage servers in an existing Lustre* storage system that has been set up outside the manager and is being monitored, *but not managed*, by Integrated Manager for Lustre* software. 
+Lustre commands can, however, be used to manage metadata or object storage servers in an existing Lustre storage system that has been set up outside the manager and is being monitored, *but not managed*, by Integrated Manager for Lustre software. 
 
 [Top of page](#5.0)
 
@@ -201,7 +201,7 @@ To perform any of these commands:
 
 ## <a id="5.11"></a>Reconfiguring Corosync and Pacemaker for a server
 
-Pacemaker and Corosync configuration is required for each server if you are creating or expanding a high-availability file system.  Integrated Manager for Lustre* software automatically configures Corosync and Pacemaker for each managed HA server that you add, so that manual configuration of Pacemaker and Corosync should not normally be required. See [Add one or more HA servers](Creating_new_lustre_fs_3_0.md/#3.4). 
+Pacemaker and Corosync configuration is required for each server if you are creating or expanding a high-availability file system.  Integrated Manager for Lustre software automatically configures Corosync and Pacemaker for each managed HA server that you add, so that manual configuration of Pacemaker and Corosync should not normally be required. See [Add one or more HA servers](Creating_new_lustre_fs_3_0.md/#3.4). 
 
 An administrator may need to reset or configure Pacemaker or Corosync when performing maintenance on a server, altering the server's configuration, or troubleshooting problems with those services.  See [Pacemaker configuration](Graphical_User_Interface_9_0.md/#9.3.1.1b) and [Corosync configuration](Graphical_User_Interface_9_0.md/#9.3.1.1c) for more information.
 
@@ -209,7 +209,7 @@ An administrator may need to reset or configure Pacemaker or Corosync when perfo
 
 ## <a id="5.12"></a>Reconfiguring NIDs for a server
 
-Integrated Manager for Lustre* software automatically configures NIDs for each managed server that you add, so that manual NID configuration should not normally be required. However, an administrator may need to reconfigure NIDs for a server when performing maintenance on a server, altering the server's configuration, or troubleshooting problems network interfaces.  See [NID Configuration](Graphical_User_Interface_9_0.md/#9.3.1.1e).
+Integrated Manager for Lustre software automatically configures NIDs for each managed server that you add, so that manual NID configuration should not normally be required. However, an administrator may need to reconfigure NIDs for a server when performing maintenance on a server, altering the server's configuration, or troubleshooting problems network interfaces.  See [NID Configuration](Graphical_User_Interface_9_0.md/#9.3.1.1e).
 
 [Top of page](#5.0)
 
@@ -228,7 +228,7 @@ To remove (decommission) a server for an OST:
 
 **Note:** To remove the record associated with the server from the manager without attempting to contact the server, click the **Actions** drop-down menu and click **Force Remove**. Any targets that depend on this server will also be removed without any attempt to unconfigure them. **This action should only be used if the server is permanently unavailable**. 
 
-**Warning:** The **Force Remove** command will remove the server from the Integrated Manager for Lustre* software configuration, but not remove Integrated Manager for Lustre* software from the server. All targets that depend on the server will also be removed without any attempt to unconfigure them. To completely remove the Integrated Manager for Lustre* software from the server (allowing it to be added to another Lustre file system), first contact technical support.
+**Warning:** The **Force Remove** command will remove the server from the Integrated Manager for Lustre software configuration, but not remove Integrated Manager for Lustre software from the server. All targets that depend on the server will also be removed without any attempt to unconfigure them. To completely remove the Integrated Manager for Lustre software from the server (allowing it to be added to another Lustre file system), first contact technical support.
 
 **Note:** Each server is also separately listed at **Configuration > Servers**, however the server configuration regarding which file system, target, and HA status is not shown on the *Servers* window.
 

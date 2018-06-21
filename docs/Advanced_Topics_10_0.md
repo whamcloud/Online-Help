@@ -31,14 +31,14 @@ To access these settings:
 
 **Timeout Settings**
 
-These setting are pre-set to default values. Most of these settings are automatically adaptive so that a superuser should not need to change them. These settings are the same timeout settings discussed in the Lustre* Operations Manual.
+These setting are pre-set to default values. Most of these settings are automatically adaptive so that a superuser should not need to change them. These settings are the same timeout settings discussed in the Lustre Operations Manual.
 
 - *at_early_margin* - Time in seconds of an advance queued request timeout at which the server sends a request to the client to extend the timeout time. The default value is 5.
 - *at_extra* - Incremental time in seconds that a server requests the client to add to the timeout time when the server determines that a queued request is about to timeout. The default value is 30.
 - *at_history* - Time period in seconds within which adaptive timeouts remember the slowest event that occurred. The default value is 600.
 - *at_max* - Adaptive timeout upper limit in seconds. The default value is 600. Set to 0 to disable adaptive timeouts.
 - *at_min* - Adaptive timeout lower limit or minimum processing time reported by a server, in seconds. Default value is 0.
-- *Idlm_timeout* - Lustre* distributed lock manager timeout: Time in seconds that a server will wait for a client to reply to an initial AST (local cancellation request). The default value is 20 seconds for an OST and 6 seconds for an MDT. 
+- *Idlm_timeout* - Lustre distributed lock manager timeout: Time in seconds that a server will wait for a client to reply to an initial AST (local cancellation request). The default value is 20 seconds for an OST and 6 seconds for an MDT. 
 - *timeout* - Time in seconds that a client waits for a server to complete an RPC. The default value is 100.
 
 [Top of page](#10.0)
@@ -60,7 +60,7 @@ Perform the following steps to configure the management target:
 
 You can add additional MDTs when creating the file system and later, after the file system has been created. 
 
-DNE stands for Distributed Namespace. DNE allows the Lustre* namespace to be divided across multiple metadata targets. This enables the size of the namespace and metadata throughput to be scaled with the size of the file system and the number of servers. The primary metadata target in a Lustre* file system is MDT0. Added MDTs are indexed as MDT1, MDT2, and so on. 
+DNE stands for Distributed Namespace. DNE allows the Lustre namespace to be divided across multiple metadata targets. This enables the size of the namespace and metadata throughput to be scaled with the size of the file system and the number of servers. The primary metadata target in a Lustre file system is MDT0. Added MDTs are indexed as MDT1, MDT2, and so on. 
 
 To add additional MDT(s):
 
@@ -68,7 +68,7 @@ To add additional MDT(s):
 1. Under **Current File Systems**, select the file system you wish to modify.
 1. Under **Metadata Target**, click **+ Create MDT (DNE**).
 1. At the **Create MDT** pop-up window, select the volume you wish to use as this new MDT. Click **Create**. After a moment, the new MDT will be listed on the file system window, under Metadata Target. You can create additional MDTs; simply repeat steps 3 and 4. When you have created the desired MDT(s), perform step 5.
-1. Log into a client node and mount the Lustre* file system. Then at the command line, for each added MDT beyond the primary MDT, enter the following command:
+1. Log into a client node and mount the Lustre file system. Then at the command line, for each added MDT beyond the primary MDT, enter the following command:
 ```
 lfs mkdir -i n <lustre_mount_point>/<parent_folder_to_contain this_MDT>
 ```

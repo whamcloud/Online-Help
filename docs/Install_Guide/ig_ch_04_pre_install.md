@@ -27,8 +27,8 @@ LNET provides the client network infrastructure required by the Lustre\*
 file system. It supports many commonly used network types such as
 InfiniBand and Ethernet.
 
-Basic LNET configuration can be performed using the Integrated Manager for Lustre* software GUI.
-This is done before creating the Lustre* file system. In
+Basic LNET configuration can be performed using the Integrated Manager for Lustre software GUI.
+This is done before creating the Lustre file system. In
 this early version of GUI-based LNET configuration, it is intended that
 the file system will exist on a _single_ LNET and that all servers and
 clients are on this LNET. In this case, you can perform LNET
@@ -41,9 +41,9 @@ If you wish to configure more advanced features (such as routes and IP
 networks), then you should do this manually, in a separate file
 contained in the /etc/modprobe.d directory. Please see the configuration
 guide _Configuring LNet Routers for File Systems based on Integrated Manager for Lustre_ software*
-and also see the Lustre* Operations Manual, Chapter 9
+and also see the Lustre Operations Manual, Chapter 9
 
-* Configuring Lustre* Networking*:
+* Configuring Lustre Networking*:
   [https://build.hpdd.intel.com/job/lustre-manual/lastSuccessfulBuild/artifact/lustre_manual.xhtml#dbdoclet.50438216_15201](https://build.hpdd.intel.com/job/lustre-manual/lastSuccessfulBuild/artifact/lustre_manual.xhtml#dbdoclet.50438216_15201)
 
 ## Server Configuration
@@ -52,10 +52,10 @@ The following are pre-installation configuration requirements for
 servers. These requirements apply to ALL servers unless specifically
 noted.
 
-**Note**: If you are installing Lustre* on servers that have been
+**Note**: If you are installing Lustre on servers that have been
 previously configured as ZFS file system servers, first re-provision all
 servers with the correct, supported operating system. Then install
-Lustre* as described herein. _Any existing file system data will be
+Lustre as described herein. _Any existing file system data will be
 lost_.
 
 1.  Red Hat Enterprise Linux or CentOS Linux version {{site.centos_version}} must be
@@ -122,10 +122,10 @@ lost_.
     should also be able to ssh between the Lustre\* servers and the
     manager server without having to enter a password.
 
-**Note**: If a storage node (a Lustre*
+**Note**: If a storage node (a Lustre
 server) is to be used as a metadata server (MDS), to properly enforce
-Lustre* file permissions, the MDS _must have access_ to the same UID/GID
-database as the Lustre* clients. For example, if the Lustre* clients are
+Lustre file permissions, the MDS _must have access_ to the same UID/GID
+database as the Lustre clients. For example, if the Lustre clients are
 using LDAP to provide network-wide user account information, the MDS
 must be configured to check LDAP for user account information. If a pair
 of nodes has been configured as HA peers for an MDT, LDAP must be
@@ -137,8 +137,8 @@ nodes.
 
 ## Client Requirements
 
-A client accessing your Lustre* file system (created with Manager
-for Lustre\* software) must be running Integrated Manager for Lustre* software {{site.version}}
+A client accessing your Lustre file system (created with Manager
+for Lustre\* software) must be running Integrated Manager for Lustre software {{site.version}}
 client software. See [Configuring Clients](ig_ch_07_configure_clients.md) for
 instructions on installing software and configuring clients.
 
@@ -153,11 +153,11 @@ existing Linux\* kernel on all servers.
 
 ## Firewall Considerations
 
-Integrated Manager for Lustre* software runs on
+Integrated Manager for Lustre software runs on
 servers running RHEL or CentOS, version {{site.centos_version}}. The *firewalled* package
 needs to be installed and configured for *all file system servers
-before* installing Integrated Manager for Lustre* software. The Integrated Manager for
-Lustre* software installation process will then modify the firewall
-configuration as needed for Integrated Manager for Lustre* software to operate.
+before* installing Integrated Manager for Lustre software. The Integrated Manager for
+Lustre software installation process will then modify the firewall
+configuration as needed for Integrated Manager for Lustre software to operate.
 
 [Top of page](#1.0)

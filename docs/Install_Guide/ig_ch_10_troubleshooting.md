@@ -84,10 +84,10 @@ is based on UTC and the time zone settings on both the server and the
 browser host.
 
 ***Problem:*** **You are unable to manage a storage server from the
-Command Center after entering a Lustre* command (such as umount/mkfs) on
+Command Center after entering a Lustre command (such as umount/mkfs) on
 the server command line.**
 
-***Solution:*** A storage server cannot be managed using Lustre* commands
+***Solution:*** A storage server cannot be managed using Lustre commands
 on the storage server command line. 
 
 ***Problem:* You need to take a server out of service temporarily for a
@@ -109,7 +109,7 @@ these steps in the Command Center Manager user interface:
     menu **Failback** button.
 
 For more details about manually performing failover and failback
-operations, see the Integrated Manager for Lustre* software online Help topic,
+operations, see the Integrated Manager for Lustre software online Help topic,
 *Managing storage*.
 
 ***Problem:*** **You need to restart cleanly after a power outage to
@@ -126,19 +126,19 @@ start*.***
 
 ***Solution:*** File system targets use a network address or network ID
 (NID) to refer to the server they are associated with. A storage server
-NID may change if the network connecting the Lustre* servers and clients
-is modified. If a Lustre* server NID changes, the server NID record in
+NID may change if the network connecting the Lustre servers and clients
+is modified. If a Lustre server NID changes, the server NID record in
 the Command Center must be updated.
 
-For a procedure to update server NIDS, see the Integrated Manager for Lustre* software
+For a procedure to update server NIDS, see the Integrated Manager for Lustre software
 online Help topic, *Handling network address changes*.
 
 ***Problem:*** **You are unable to create or read a file from a client
 and a “*Permission denied”* message is displayed.**
 
-***Solution:*** To properly enforce Lustre* file permissions, the MDS
-must have access to the same UID/GID database as the Lustre* clients. For
-example, if the Lustre* clients are using LDAP to provide network-wide
+***Solution:*** To properly enforce Lustre file permissions, the MDS
+must have access to the same UID/GID database as the Lustre clients. For
+example, if the Lustre clients are using LDAP to provide network-wide
 user account information, the MDS must be configured to check LDAP for
 user account information. If a pair of nodes has been configured as HA
 peers for an MDT, then LDAP must be configured on both nodes to ensure

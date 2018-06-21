@@ -1,4 +1,4 @@
-# <a name="1.0"></a>Appendix C - Backup and Recovery of Servers Managed by Integrated Manager for Lustre* software
+# <a name="1.0"></a>Appendix C - Backup and Recovery of Servers Managed by Integrated Manager for Lustre software
 
 [**Software Installation Guide Table of Contents**](ig_TOC.md)
 
@@ -14,13 +14,13 @@
 - [Security configuration](#security-configuration)
 - [Creating a Backup Manifest for a Metadata Server or Object Storage Server](#creating-a-backup-manifest-for-a-metadata-server-or-object-storage-server)
 - [Chroma Agent Configuration](#chroma-agent-configuration)
-- [Integrated Manager for Lustre* software YUM Repository Configuration](#manager-for-lustre-yum-repository-configuration)
+- [Integrated Manager for Lustre software YUM Repository Configuration](#manager-for-lustre-yum-repository-configuration)
 - [Network Configuration](#network-configuration)
 - [SELinux Configuration](#selinux-configuration)
-- [Lustre* LNET Configuration](#lustre-lnet-configuration)
+- [Lustre LNET Configuration](#lustre-lnet-configuration)
 - [Pacemaker and Corosync High Availability Framework](#pacemaker-and-corosync-high-availability-framework)
 - [System Services Startup Scripts (rc.sysinit)](#system-services-startup-scripts)
-- [Sample Automated Backup Script for Manager Lustre* Servers](#sample-automated-backup-script-for-manager-lustre-servers)
+- [Sample Automated Backup Script for Manager Lustre Servers](#sample-automated-backup-script-for-manager-lustre-servers)
 - [Restoring a Server from Backup](#restoring-a-server-from-backup)
 
 
@@ -34,7 +34,7 @@ Introduction
 ------------
 
 This appendix provides guidance on how to conduct bare-metal recovery of
-a Lustre* server from a combination of the original installation media
+a Lustre server from a combination of the original installation media
 and a backup manifest for the servers. This content describes the
 essential files required to recover the service to the point of the last
 successful backup. From this, readers can create processes that are
@@ -43,14 +43,14 @@ compatible with their own environments.
 **Note**: Backup and restoration of file system data is beyond the scope
 of this procedure.
 
-Integrated Manager for Lustre* software provides a way to configure Lustre
+Integrated Manager for Lustre software provides a way to configure Lustre
 servers as metadata and object storage servers. Such servers are
 configured into high availability cluster pairs as defined in this
 section: [Building the System – The High Availability Configuration
 Spec](ig_ch_03_building.md/#building-the-system-the-high-availability-configuration-spec).
 
-For a high-availability Lustre* file system configured and managed by
-Integrated Manager for Lustre* software, there must be at least one cluster
+For a high-availability Lustre file system configured and managed by
+Integrated Manager for Lustre software, there must be at least one cluster
 pair hosting the Management Server (MGS) and a Metadata Server (MDS) for
 the file system. With the introduction of Distributed Namespace (DNE),
 there may be additional metadata server pairs, hosting further MDS
@@ -58,10 +58,10 @@ resources.
 
 In such an HA file system, there must also be at least one Object
 Storage Server (OSS) high availability cluster pair. There may be a
-large number of OSS pairs in a single Lustre* file system.
+large number of OSS pairs in a single Lustre file system.
 
-The process described herein assumes that Integrated Manager for Lustre*
-software has provisioned Lustre* servers and that a Lustre* file system
+The process described herein assumes that Integrated Manager for Lustre
+software has provisioned Lustre servers and that a Lustre file system
 has been successfully created. This process is restricted to coverage of
 managed servers and applies equally to Metadata and Object Storage
 servers.
@@ -71,11 +71,11 @@ Backup Overview
 
 Just as for any critical server infrastructure, it is essential to
 maintain a comprehensive and consistent backup of the system
-configuration for all of the servers managed by Integrated Manager for Lustre* software server
+configuration for all of the servers managed by Integrated Manager for Lustre software server
 software, and to maintain a repeatable and reliable method for
 recovering file system services in the event of a failure.
 
-Backup and recovery of Integrated Manager for Lustre* software MDS and OSS server software
+Backup and recovery of Integrated Manager for Lustre software MDS and OSS server software
 involves the following components:
 
 -   Operating system installation and configuration, to include:
@@ -113,7 +113,7 @@ involves the following components:
 
         -   SSH keys (host and user)
 
--   Integrated Manager for Lustre* software installation and configuration
+-   Integrated Manager for Lustre software installation and configuration
 
     -   Additional packages required by Lustre
 
@@ -139,8 +139,8 @@ bandwidth-constrained).
 ### Example Backup Checklist
 
 The following is an example checklist of high level tasks to perform in
-executing a backup. Perform these tasks after creating an Integrated Manager for Lustre*
-software file system using the Integrated Manager for Lustre* software dashboard.
+executing a backup. Perform these tasks after creating an Integrated Manager for Lustre
+software file system using the Integrated Manager for Lustre software dashboard.
 
 -   Save Kickstart Template from OS Installation (or create one)
 
@@ -157,7 +157,7 @@ software file system using the Integrated Manager for Lustre* software dashboard
 
 -   Save NTP configuration
 
--   Save Integrated Manager for Lustre* software agent configuration
+-   Save Integrated Manager for Lustre software agent configuration
 
 -   Save the LNET configuration
 
@@ -172,7 +172,7 @@ servers running RHEL {{site.centos_version}} is very similar, but this appendix 
 been revised or tested for RHEL {{site.centos_version}}.
 
 Red Hat Enterprise Linux or CentOS Linux, version {{site.centos_version}} must be
-installed on all Lustre* servers. The OS must be deployed in a consistent
+installed on all Lustre servers. The OS must be deployed in a consistent
 and repeatable manner. All servers should be running the same OS and
 version. For Red Hat Enterprise Linux and CentOS Linux, template-driven
 provisioning using Kickstart has proven to be reliable and
@@ -201,9 +201,9 @@ and reliably backed up
 
 The following example Kickstart template describes a basic platform with
 a small set of packages and two network interfaces: one for provisioning
-the OS and connection to the Integrated Manager for Lustre* software management network,
-the other might be used for Lustre* communications traffic (if Ethernet
-is being used for Lustre* networking).
+the OS and connection to the Integrated Manager for Lustre software management network,
+the other might be used for Lustre communications traffic (if Ethernet
+is being used for Lustre networking).
 
 An *example* Kickstart template:
 
@@ -245,7 +245,7 @@ effort, the entire operating system installation can be fully automated.
 ### Host Name Resolution
 
 The hosts database /etc/hosts often contains the names and IP addresses
-for all of the members of the Lustre* server infrastructure; include a
+for all of the members of the Lustre server infrastructure; include a
 copy of this file in the operating system manifest. The file
 /etc/resolv.conf contains the list of DNS name servers in use on the
 network; include a copy of this file in the manifest as well.
@@ -255,7 +255,7 @@ network; include a copy of this file in the manifest as well.
 
 The YUM configuration file /etc/yum.conf and files located at
 /etc/yum.repos.d/\* must be configured so that package dependencies for
-Integrated Manager for Lustre* software can be automatically installed.
+Integrated Manager for Lustre software can be automatically installed.
 
 ### Identity configuration
 
@@ -285,7 +285,7 @@ an example server configuration, for the purpose of demonstration.
 Procedures for copying the resulting data off the server to a reliable
 medium are not covered here, but can be a simple secure copy (e.g. scp)
 from the source to a destination system (such as the server running the
-Integrated Manager for Lustre* software GUI), or an integrated enterprise backup
+Integrated Manager for Lustre software GUI), or an integrated enterprise backup
 platform.
 
 Backups must be run for each server in the file system and, minimally,
@@ -293,7 +293,7 @@ must be run each time a configuration change is made.
 
 ### Chroma Agent Configuration
 
-The Integrated Manager for Lustre* software client agent, called chroma-agent, keeps
+The Integrated Manager for Lustre software client agent, called chroma-agent, keeps
 a set of configuration files in /var/lib/chroma. It is essential that
 all files in this directory are saved. In addition to SSL authentication
 keys, the directory contains configuration information pertinent to the
@@ -304,11 +304,11 @@ configuration used to manage the resources in Pacemaker.
 
 /var/lib/chroma/\*
 
-### Integrated Manager for Lustre* software YUM Repository Configuration
+### Integrated Manager for Lustre software YUM Repository Configuration
 
-Integrated Manager for Lustre* software is distributed as RPM packages. These
+Integrated Manager for Lustre software is distributed as RPM packages. These
 are hosted in YUM repositories on the manager server running the
-Integrated Manager for Lustre* software and GUI.
+Integrated Manager for Lustre software and GUI.
 
 \# YUM Configuration for IML Repositories:
 
@@ -336,12 +336,12 @@ SELinux during provisioning of the server. For RHEL and CentOS systems,
 there is a configuration setting for disabling SELinux in the file:
 /etc/selinux/config
 
-### Lustre* LNET Configuration
+### Lustre LNET Configuration
 
-This is normally set by the Integrated Manager for Lustre* software, but can be
+This is normally set by the Integrated Manager for Lustre software, but can be
 recovered by making a copy of the following file.
 ```
-# Lustre* LNet Configuration:
+# Lustre LNet Configuration:
 /etc/modprobe.d/iml_lnet_module_parameters.conf
 ```
 
@@ -390,9 +390,9 @@ if (length(on)>0)
 ```
 
 <a id="sample-automated-backup-script-for-manager-lustre-servers"></a>
-### Sample Automated Backup Script for Integrated Manager for Lustre* software Servers
+### Sample Automated Backup Script for Integrated Manager for Lustre software Servers
 
-For a server managed by Integrated Manager for Lustre* software, this script can
+For a server managed by Integrated Manager for Lustre software, this script can
 be used as the basis for automating the backup of server configuration
 information.
 
@@ -463,7 +463,7 @@ tar zcf $BCKROOT.tgz `basename $BCKROOT`
 ### Restoring a Server from Backup
 
 The following process restores a server managed by Integrated Manager for
-Lustre* software to production state. This is done using backup
+Lustre software to production state. This is done using backup
 resources created as described in the previous sections. This process is
 for a single server, but can be repeated for each storage server in a
 cluster. When a pair of servers must both be restored, it is recommended
@@ -474,7 +474,7 @@ has been extracted in to a directory referenced by the variable
 \$BACKUP\_ROOT. It is also assumed that basic network connectivity has
 been restored, sufficient to allow access to the operating system YUM
 repositories, as well as the repositories of the manager server running
-the Integrated Manager for Lustre* software GUI.
+the Integrated Manager for Lustre software GUI.
 
 #### Restore Process
 
@@ -504,7 +504,7 @@ the Integrated Manager for Lustre* software GUI.
     > Restart network interfaces, if required for the server to make the
     > connection to the IML server.
 
-1.  Re-install the Integrated Manager for Lustre* software server packages:
+1.  Re-install the Integrated Manager for Lustre software server packages:
 
     ```bash
     yum -y install --enablerepo=lustre,iml-agent,e2fsprogs \
@@ -540,9 +540,9 @@ cp $BACKUP_ROOT/etc/corosync/corosync.conf /etc/corosync/.
 
     `sh \$BACKUP\_ROOT/chkconfig-output-\$HOSTNAME.sh`
 
-1.  Create the directories for the Lustre* storage mount points. For
+1.  Create the directories for the Lustre storage mount points. For
     example, the following script extracts the directory paths for the
-    Lustre* storage from the chroma-agent configuration, and creates the
+    Lustre storage from the chroma-agent configuration, and creates the
     directories:
 
     ```bash
@@ -562,7 +562,7 @@ cp $BACKUP_ROOT/etc/corosync/corosync.conf /etc/corosync/.
 1.  Reboot.
 
 1.  When the system has completed booting, verify that the server is
-    running the Integrated Manager for Lustre* software Linux kernel, and that LNET
+    running the Integrated Manager for Lustre software Linux kernel, and that LNET
     is properly configured. For example:
 
     ```
@@ -626,7 +626,7 @@ cp $BACKUP_ROOT/etc/corosync/corosync.conf /etc/corosync/.
 
 1.  If the resources are running on their non-preferred servers (i.e.,
     on the failover hosts), then use the following commands to force a
-    failback (or use Integrated Manager for Lustre* software GUI to manage the
+    failback (or use Integrated Manager for Lustre software GUI to manage the
     resources):
 
     ```
@@ -642,7 +642,7 @@ subsequent failover trigger.
     for Pacemaker to disable the constraints around the fencing agents.
     This can make it easier to restore services to a running condition
     on one server while still working to rebuild the second. However,
-    we do not support Integrated Manager for Lustre* software installations that
+    we do not support Integrated Manager for Lustre software installations that
     do not have fencing agents configured, so only use this process with
     caution, and only if required to support an emergency recovery. Once
     full service is restored, this configuration change must be
@@ -654,7 +654,7 @@ subsequent failover trigger.
 
 The cluster configuration has now been recovered to the running state
 based on the last backup taken. Note that this process assumes that the
-Lustre* storage for the MGT, MDTs and OSTs remains intact during the
+Lustre storage for the MGT, MDTs and OSTs remains intact during the
 outage and throughout the server recovery.
 
 [Top of page](#1.0)

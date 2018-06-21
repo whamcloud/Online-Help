@@ -6,12 +6,12 @@
 The following topics are discussed in this chapter:
 
 - [Unexpected file system events](#12.1)
-- [Running Integrated Manager for Lustre* software diagnostics](#12.2)
+- [Running Integrated Manager for Lustre software diagnostics](#12.2)
 
 
 ## <a id="12.1"></a>Unexpected file system events
 
-This section discusses several unwanted file system events and how Integrated Manager for Lustre* software responds to them.
+This section discusses several unwanted file system events and how Integrated Manager for Lustre software responds to them.
 
 <table border="1">
     <thead>
@@ -69,7 +69,7 @@ manually fail the target over to the peer server. </td>
     <tbody>
         <tr>
             <td>Immediate file system consequences:</td>
-            <td>No direct file system impact; the file system remains operational. However, Manger for Lustre* software can no longer manage or monitor the server.</td>
+            <td>No direct file system impact; the file system remains operational. However, Manger for Lustre software can no longer manage or monitor the server.</td>
         </tr>
         <tr>
             <td>Manager software / Peer server response:</td>
@@ -107,7 +107,7 @@ manually fail the target over to the peer server. </td>
 <table border="1">
     <thead>
         <tr>
-        <th colspan="2">The Integrated Manager for Lustre* software loses connection with a server’s power control device (IPMI or PDU)</th>
+        <th colspan="2">The Integrated Manager for Lustre software loses connection with a server’s power control device (IPMI or PDU)</th>
         </tr>
     </thead>
     <tbody>
@@ -238,9 +238,9 @@ manually fail the target over to the peer server. </td>
 
 [Top of page](#12.0)
 
-## <a id="12.2"></a>Running Integrated Manager for Lustre* software diagnostics
+## <a id="12.2"></a>Running Integrated Manager for Lustre software diagnostics
 
-If Integrated Manager for Lustre* software is not operating normally and you require support, you may be asked to run iml-diagnostics on any servers that are suspected of having problems, and/or on the server hosting the Integrated Manager for Lustre* software dashboard. The results of running the diagnostics should be attached to the ticket you are filing describing the problem. These diagnostics are described next.
+If Integrated Manager for Lustre software is not operating normally and you require support, you may be asked to run iml-diagnostics on any servers that are suspected of having problems, and/or on the server hosting the Integrated Manager for Lustre software dashboard. The results of running the diagnostics should be attached to the ticket you are filing describing the problem. These diagnostics are described next.
 
 **Run diagnostics**
 

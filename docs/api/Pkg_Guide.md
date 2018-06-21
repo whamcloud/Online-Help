@@ -1,15 +1,15 @@
-# <a name="1.0"></a> Packaging Guide for Integrated Manager for Lustre* software
+# <a name="1.0"></a> Packaging Guide for Integrated Manager for Lustre software
 
 [**Software API Documentation Table of Contents**](./api_TOC.md)
 
 Introduction
 ------------
 
-Integrated Manager for Lustre* software is delivered as a single unified installer file, including
+Integrated Manager for Lustre software is delivered as a single unified installer file, including
 both the central management component and the packages deployed to storage servers.  Because
 storage servers sometimes requires additional packages (such as drivers) or customized packages 
-(such as custom Lustre* builds), a mechanism is included whereby these packages can be included
-in a Integrated Manager for Lustre* software installation.
+(such as custom Lustre builds), a mechanism is included whereby these packages can be included
+in a Integrated Manager for Lustre software installation.
 
 Bundles
 -------
@@ -43,14 +43,14 @@ The format of the ``meta`` file is as follows:
 ```
 
 
-The ``name`` attribute serves as a unique identifier for a bundle within a Integrated Manager for Lustre* software
+The ``name`` attribute serves as a unique identifier for a bundle within a Integrated Manager for Lustre software
 installation.  It is wise to include the name of your organization in this string to reduce
 the likelihood of name collisions.
 
 The ``version`` attribute is provided to allow identification of a bundle by version.
 
 The `description` attribute is a human-readable description of the bundle.  This may be visible
-to system administrators of the Integrated Manager for Lustre* software installation, so it should be something
+to system administrators of the Integrated Manager for Lustre software installation, so it should be something
 meaningful to that audience.
 
 Creating a Bundle
@@ -64,7 +64,7 @@ Creating a Bundle
 6. Create an archive of your bundle with ``-bundle.tar.gz`` appended to the name of your bundle.  For example, ````tar czf acme_drivers-bundle.tar.gz *.rpm meta repodata````
 
 **Warning:**
-> Do not create bundles with the same name as the built-in bundles, as these will be overwritten by updates to Integrated Manager for Lustre* software
+> Do not create bundles with the same name as the built-in bundles, as these will be overwritten by updates to Integrated Manager for Lustre software
 
 Installing a Bundle
 -------------------
@@ -137,7 +137,7 @@ A server profile is simply a JSON file defining various options.  For example, t
 
 
 * **name:**
-  An ID.  This must be unique within a Integrated Manager for Lustre* software installation. To avoid name collisions, it is recommended
+  An ID.  This must be unique within a Integrated Manager for Lustre software installation. To avoid name collisions, it is recommended
   to include the name of your organization.
 
 * **bundles:**
@@ -145,7 +145,7 @@ A server profile is simply a JSON file defining various options.  For example, t
   to packages in all the bundles referenced here.
 
 * **packages:**
-  A dict wherein the keys are the names of a bundle, and the values are a list of names of associated RPM packages.  These are the packages to be installed on storage servers using this profile.  Note that it is usually not necessary to list all packages: ``yum`` is used to install packages, so dependencies are respected.  For example, when installing ``lustre`` we do not also name ``e2fsprogs`` because it is a dependency of ``lustre`` and therefore installed automatically.  The reason we name ``lustre-modules`` even though it too is a dependency of ``lustre`` is that naming a package here causes any exact-version dependencies (such as the dependency on a particular version of ``kernel`` to be respected even if they involve installing a downgraded package).  This mechanism is an ML modification to the default ``yum`` behaviour, included to handle Lustre*'s need for older kernel versions.
+  A dict wherein the keys are the names of a bundle, and the values are a list of names of associated RPM packages.  These are the packages to be installed on storage servers using this profile.  Note that it is usually not necessary to list all packages: ``yum`` is used to install packages, so dependencies are respected.  For example, when installing ``lustre`` we do not also name ``e2fsprogs`` because it is a dependency of ``lustre`` and therefore installed automatically.  The reason we name ``lustre-modules`` even though it too is a dependency of ``lustre`` is that naming a package here causes any exact-version dependencies (such as the dependency on a particular version of ``kernel`` to be respected even if they involve installing a downgraded package).  This mechanism is an ML modification to the default ``yum`` behaviour, included to handle Lustre's need for older kernel versions.
 
 * **ui_name:**
   A string for presentation to users of the web interface and command line interface to ML.  This should be short (a few words at most) and meaningful to system administrators.
@@ -175,18 +175,18 @@ To make a named storage profile the default, enter this command on the ML manage
  chroma-config profile default <profile name>
 ```
 
-Example: deploying a custom build of Lustre* and some additional drivers
+Example: deploying a custom build of Lustre and some additional drivers
 -----------------------------------------------------------------------
 
 For this example, we will create:
 
-- A bundle containing the custom Lustre* packages
+- A bundle containing the custom Lustre packages
 - A bundle containing the additional driver packages
 - A server profile referencing packages in the custom bundles
 
 Assuming that this profile is for use with Acme storage servers, our custom bundles might
 be called acme_lustre and acme_drivers.  The acme_lustre bundle would contain packages with
-the usual Lustre* package names, while the acme_drivers bundle would contain some new packages, which
+the usual Lustre package names, while the acme_drivers bundle would contain some new packages, which
 might be called acme-core and acme-scsi.
    
 ```json
@@ -196,7 +196,7 @@ might be called acme-core and acme-scsi.
   "packages": {"acme_lustre": ["lustre-modules", "lustre"],
               "acme_drivers": ["acme-core", "acme-scsi"]},
   "ui_name": "Acme storage server",
-  "ui_description": "A storage server using Acme SCSI drivers, using Acme Lustre* extensions",
+  "ui_description": "A storage server using Acme SCSI drivers, using Acme Lustre extensions",
   "managed": true
 }
 ```

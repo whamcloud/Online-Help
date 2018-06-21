@@ -16,15 +16,15 @@ This document provides detailed instructions for installing Integrated Manager f
 
 * Introduces Integrated Manager for Lustre\* software and its capabilities
 
-* Introduces Integrated Manager for Lustre* software and its
+* Introduces Integrated Manager for Lustre software and its
   capabilities to configure and support real-time management of
-  Lustre* file systems, using a GUI-based dashboard
+  Lustre file systems, using a GUI-based dashboard
 
 * Provides detailed instructions about how to configure the components
   to create a file system that meets the High Availability
   Configuration Specification (discussed herein). Conformance with
   this specification permits configuration, monitoring, and
-  management of the Lustre* file system using the Integrated Manager for Lustre* software.
+  management of the Lustre file system using the Integrated Manager for Lustre software.
 
 * Describes the pre-installation tasks such as configuring servers,
   establishing yum repositories, configuring LNET, and also
@@ -98,7 +98,7 @@ Conventions used in this document include:
 
 * _Configuring Snapshots for File Systems based on Integrated Manager for Lustre_ software\*
 
-* _Upgrading a Lustre_ file system to Integrated Manager for Lustre* software (Lustre* only)\*
+* _Upgrading a Lustre_ file system to Integrated Manager for Lustre software (Lustre only)\*
 
 * _Creating a Scalable File Service for Windows Networks using Integrated Manager for Lustre_ software\*
 

@@ -3,7 +3,7 @@
 
 [**Online Help Table of Contents**](IML_Help_TOC.md)
 
-This section details the Integrated Manager for Lustre* software graphical user interface.  Click the desired topic.
+This section details the Integrated Manager for Lustre software graphical user interface.  Click the desired topic.
 
 - [Dashboard window](#9.1)
 - [Dashboard charts](#9.2)
@@ -29,7 +29,7 @@ To view charts for OSTs and MDT(s), select the specific file system. Then select
 At the top, the Dashboard lists the file system(s) being managed or monitored-only. The following information is provided for each file system:
 
 - *File System name*: The name assigned to this file system during its creation on the Configuration window.
-- *Type*: Monitored or Managed. "Managed" file systems are configured and managed for high availability (HA). Managed file systems are both monitored and managed, whereas "monitored" file systems are monitored-only and do not support failover via Integrated Manager for Lustre* software.
+- *Type*: Monitored or Managed. "Managed" file systems are configured and managed for high availability (HA). Managed file systems are both monitored and managed, whereas "monitored" file systems are monitored-only and do not support failover via Integrated Manager for Lustre software.
 - S*pace Used / Total*: This indicates the amount of file system capacity consumed, versus the total file system capacity. 
 - *Files Used / Total*: This indicates the total number of inodes consumed by file creation versus the total number of inodes established for this file system.
 - Clients: Indicates the number of clients accessing the file system at this moment.
@@ -70,7 +70,7 @@ Click **Update** to apply your choices and **Cancel** to close.
 
 ## <a id="9.2"></a>Dashboard charts
 
-Several Dashboard charts provide quick, detailed, visual representation of the performance of your Lustre* file system(s).  You can configure certain data display parameters for each chart, and your chart configuration will persist until you reload/refresh the Dashboard page, using the browser. 
+Several Dashboard charts provide quick, detailed, visual representation of the performance of your Lustre file system(s).  You can configure certain data display parameters for each chart, and your chart configuration will persist until you reload/refresh the Dashboard page, using the browser. 
 
 Charts are presented as:
 
@@ -521,7 +521,7 @@ Under **Server Actions**, you can perform the commands listed next. Note that th
 
 - **Detect File Systems**: Detect an existing file system to be monitored at the manager GUI.
 - **Re-write Target Configuration**: Update each target with the current NID for the server with which it is associated. This is necessary after making changes to server/target configurations and is done after rescanning NIDs. Also see [Handling network address changes](Manage_maintain_HA_lustre_fs_5_0.md/#5.9) (updating NIDs).
-- **Install Updates**: When an updated release of Integrated Manager for Lustre* software is installed on the *manager* server, a notification is displayed in the manager GUI indicating that updated software is also available for installation on a managed server or servers and the *Install Updates* button becomes enabled. After clicking the **Install Updates** button, a list of servers (default: all) to be included in this update operation is displayed in the Update dialog. Clicking the **Run** button in this dialog will cause the updated packages to be installed on the managed servers.
+- **Install Updates**: When an updated release of Integrated Manager for Lustre software is installed on the *manager* server, a notification is displayed in the manager GUI indicating that updated software is also available for installation on a managed server or servers and the *Install Updates* button becomes enabled. After clicking the **Install Updates** button, a list of servers (default: all) to be included in this update operation is displayed in the Update dialog. Clicking the **Run** button in this dialog will cause the updated packages to be installed on the managed servers.
 
 
 
@@ -563,7 +563,7 @@ Click the **Actions** menu to access the following commands that are available f
 
 **<a id="9.3.1.1b"></a>Pacemaker configuration**
 
-Pacemaker configuration and enabling is performed automatically by Integrated Manager for Lustre* software. However, an administrator may need to reset or configure Pacemaker when performing maintenance on a server, altering the server's configuration, or troubleshooting problems with Pacemaker.
+Pacemaker configuration and enabling is performed automatically by Integrated Manager for Lustre software. However, an administrator may need to reset or configure Pacemaker when performing maintenance on a server, altering the server's configuration, or troubleshooting problems with Pacemaker.
 
 Click the **Actions** menu to access the following commands:
 
@@ -575,7 +575,7 @@ Click the **Actions** menu to access the following commands:
 
 **<a id="9.3.1.1c"></a>Corosync configuration**
 
-Corosync configuration and enabling is performed automatically by Integrated Manager for Lustre* software. However, an administrator may need to reset or configure Corosync when performing maintenance on a server, altering the server's configuration, or troubleshooting problems with Corosync.
+Corosync configuration and enabling is performed automatically by Integrated Manager for Lustre software. However, an administrator may need to reset or configure Corosync when performing maintenance on a server, altering the server's configuration, or troubleshooting problems with Corosync.
 
 Click the **Actions** menu to access the following commands:
 
@@ -601,7 +601,7 @@ Click the **Actions** menu to access the following commands:
 
 **<a id="9.3.1.1e"></a>NID configuration**
 
-An administrator may need to reconfigure NIDs for a server when performing maintenance on a server, altering the server's configuration, or troubleshooting problems with network interfaces. For each interface, you can set the network driver and assign the Lustre* network. To be able to edit NID configuration, the file system first needs to be taken offline. Perform these steps:
+An administrator may need to reconfigure NIDs for a server when performing maintenance on a server, altering the server's configuration, or troubleshooting problems with network interfaces. For each interface, you can set the network driver and assign the Lustre network. To be able to edit NID configuration, the file system first needs to be taken offline. Perform these steps:
 
 1. At the menu bar, click **Configuration > File Systems**.
 1. For the listed file system, select **Stop** under *Actions*.
@@ -628,7 +628,7 @@ The *File Systems* window accessed from the *Configuration* menu is shown next.
 
 The *File Systems* window lets you configure, view and manage multiple file systems. 
 
-Click **Create File System** (or **Create More File Systems**) to begin the process of creating a new file system. See [Create a new Lustre* file system](Creating_new_lustre_fs_3_0.md/#3.0).
+Click **Create File System** (or **Create More File Systems**) to begin the process of creating a new file system. See [Create a new Lustre file system](Creating_new_lustre_fs_3_0.md/#3.0).
 
 Under Current File Systems, for each file system you can:
 
@@ -670,7 +670,7 @@ If a copytool has been added but never configured or started, then click **Actio
 - **Configure** - Configure this copytool on the worker. Do not start the copytool. Status will show as Configured.
 - **Force Remove** - Remove this copytool from the manager database without deconfiguring this copytool on the worker node. It will no longer appear on this HSM window. This is NOT the best way to remove a copytool, because a later attempt to add this copytool back will fail unless it is manually reconfigured. Only consider using Force Remove if Remove has failed. 
 
-To learn about HSM capabilities supported in Integrated Manager for Lustre* software, see [Configuring and using Hierarchical Storage Management](Config_and_using_HSM_6_0.md/#6.0).
+To learn about HSM capabilities supported in Integrated Manager for Lustre software, see [Configuring and using Hierarchical Storage Management](Config_and_using_HSM_6_0.md/#6.0).
 
 
 ### <a id="9.3.5"></a>Storage window
@@ -704,7 +704,7 @@ See [Creating User Accounts](Getting_started_2_0.md/#2.1) for more information.
 The *Volumes* window accessed from the Configuration menu is shown next.
 ![md_Graphics/config_volumes.png][f9.21]
 
-The *Volumes* window is used to add volumes to a file system. Volumes (also called LUNs or block devices) are the underlying units of storage used to create Lustre* file systems. Each Lustre* target corresponds to a single volume. Only volumes that are not already in use as Lustre* targets or local file systems are shown. If servers in the volume have been configured for high availability, primary and secondary servers can be designated for a Lustre* volume. A volume may be accessible on one or more servers via different device nodes, and it may be accessible via multiple device nodes on the same host.
+The *Volumes* window is used to add volumes to a file system. Volumes (also called LUNs or block devices) are the underlying units of storage used to create Lustre file systems. Each Lustre target corresponds to a single volume. Only volumes that are not already in use as Lustre targets or local file systems are shown. If servers in the volume have been configured for high availability, primary and secondary servers can be designated for a Lustre volume. A volume may be accessible on one or more servers via different device nodes, and it may be accessible via multiple device nodes on the same host.
 
 On the *Volume* window, you can do the following:
 
@@ -754,7 +754,7 @@ On the [Read/Write Heat Map](#9.2.1) (on the Dashboard), you can also click a he
 The *Logs* window is shown next.
 ![md_Graphics/logs.png][f9.23]
 
-The **Logs** window displays log information and allows filtering of events by date range, host, service, and messages from Lustre* or all sources. The Logs window also features auto-complete search functions and linkable host names.
+The **Logs** window displays log information and allows filtering of events by date range, host, service, and messages from Lustre or all sources. The Logs window also features auto-complete search functions and linkable host names.
 
 The logs window also features querying with auto-complete and linkable host names. 
 

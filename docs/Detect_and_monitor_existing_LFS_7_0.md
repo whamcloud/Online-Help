@@ -1,11 +1,11 @@
 <a id="7.0"></a>
-# Detecting and monitoring existing Lustre* file systems
+# Detecting and monitoring existing Lustre file systems
 
 [**Online Help Table of Contents**](IML_Help_TOC.md)
 
-A Lustre* file system that was created without using Integrated Manager for Lustre* software can be monitored, *but not managed*, from the manager GUI. 
+A Lustre file system that was created without using Integrated Manager for Lustre software can be monitored, *but not managed*, from the manager GUI. 
 
-Before an existing Lustre* file system can be monitored at the manager GUI, the servers must be added and then the file system detected by the manager. 
+Before an existing Lustre file system can be monitored at the manager GUI, the servers must be added and then the file system detected by the manager. 
 
 - [Detect file system](#7.1)
 - [Add OSTs and OSSs to a monitored file system](#7.2)
@@ -13,7 +13,7 @@ Before an existing Lustre* file system can be monitored at the manager GUI, the 
 
 ## <a id="7.1"></a>Detect file system
 
-To make the Lustre* file system appear on the Dashboard and Configuration > File System windows in the manager GUI, complete these steps:
+To make the Lustre file system appear on the Dashboard and Configuration > File System windows in the manager GUI, complete these steps:
 
 1. At the menu bar, click **Configuration > Servers** and click **Detect File Systems**. A dialogue window listing hosts is displayed. 
 1. Select ALL of the servers on which the targets for the file system to be detected are running. Do this for the MGS and all OSSs for this file system, including those OSSs that were already present in this file system. Do NOT add servers that you don't want to add to this file system. 
@@ -27,7 +27,7 @@ You can add more servers and add more targets to an existing monitored-only file
 
 **Note:** To view the *Command Detail* after detection completes, click on **Notifications** on the left side of the screen and select **Commands** at the bottom of the notifications list. To the right of the Detecting file systems command, click **Open**. 
 
-The Lustre* file system is now ready to be monitored in the manager GUI.
+The Lustre file system is now ready to be monitored in the manager GUI.
 
 [Top of page](#7.0)
 
@@ -35,7 +35,7 @@ The Lustre* file system is now ready to be monitored in the manager GUI.
 
 This procedure applies to an existing file system that is monitored only. 
 
-To begin, first add the new OSS and OST(s) to your Lustre* file system via the command line. See the *Lustre\* Operations Manual*, for detailed instructions for adding OSS and OST(s) to an existing file system. Then, to add one or more servers hosting the new OST(s) perform the following steps.
+To begin, first add the new OSS and OST(s) to your Lustre file system via the command line. See the *Lustre\* Operations Manual*, for detailed instructions for adding OSS and OST(s) to an existing file system. Then, to add one or more servers hosting the new OST(s) perform the following steps.
 
 1. At the menu bar, click the **Configuration** drop-down menu and click **Servers** to display the *Servers Configuration* window. 
     
@@ -65,7 +65,7 @@ To begin, first add the new OSS and OST(s) to your Lustre* file system via the c
     <a id="f7.1">
     ![md_Graphics/monitored_profile.png][f7.1]
     </a>
-1. Click **Proceed**. The manager does an audit of the storage resources on each server. The manager then provisions the server by loading appropriate Lustre* modules and making sure the Lustre* networking layer is functioning. When all checks are completed, *LNet State* indicates *LNet Up* and each server is fully qualified as a Lustre* server. Under the *Status* column, a green check mark is displayed for each new server. If server provisioning does not succeed, the *Status* will indicate a exclamation mark (!) and the *LNet State* may indicate *Unconfigured*. To learn the cause of the problem, click the exclamation mark for the failed server to see *Alerts*. For more information, click **Status** at the top menu bar. The *Status* window also lets you view related logs.
+1. Click **Proceed**. The manager does an audit of the storage resources on each server. The manager then provisions the server by loading appropriate Lustre modules and making sure the Lustre networking layer is functioning. When all checks are completed, *LNet State* indicates *LNet Up* and each server is fully qualified as a Lustre server. Under the *Status* column, a green check mark is displayed for each new server. If server provisioning does not succeed, the *Status* will indicate a exclamation mark (!) and the *LNet State* may indicate *Unconfigured*. To learn the cause of the problem, click the exclamation mark for the failed server to see *Alerts*. For more information, click **Status** at the top menu bar. The *Status* window also lets you view related logs.
 1. You can proceed to add more servers. Otherwise, click **Close**.
 1. When all the servers for a monitor-only file system have been added and configured using the manager GUI, at the menu bar, click **Configuration > Servers** and click **Detect File Systems**. A windows shows all detected hosts.
 1. Select ALL of the servers on which the targets for the file system to be detected are running. Do this for all OSSs for this file system, including those that were already present in this file system. Do NOT add servers that you don't want to add to this file system.
