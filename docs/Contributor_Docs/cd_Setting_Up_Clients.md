@@ -5,8 +5,8 @@
 In your vagrant folder, run the following script to prepare both client c1 and c2:
 ```
 vagrant sh -c '\
-sudo yum-config-manager --add-repo https://downloads.hpdd.intel.com/public/lustre/{{site.lustre_package_name}}/el7/client/&& \
-sudo ed <<EOF /etc/yum.repos.d/downloads.hpdd.intel.com_public_lustre_{{site.lustre_package_name}}_el7_client_.repo
+sudo yum-config-manager --add-repo https://downloads.whamcloud.com/public/lustre/{{site.lustre_package_name}}/el7/client/&& \
+sudo ed <<EOF /etc/yum.repos.d/downloads.whamcloud.com_public_lustre_{{site.lustre_package_name}}_el7_client_.repo
 /enabled/a
 gpgcheck=0
 gpgkey=http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-7

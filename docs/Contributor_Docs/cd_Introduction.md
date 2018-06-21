@@ -38,7 +38,7 @@ The [IML codebase](https://github.com/whamcloud) consists of many repositories d
 
 | Repo Name | Description |
 |-----------|-------------| 
-| [intel-manager-for-lustre](https://github.com/whamcloud/integrated-manager-for-lustre) | Consider this as the *Top level* repo populated mostly with python code. |
+| [integrated-manager-for-lustre](https://github.com/whamcloud/integrated-manager-for-lustre) | Consider this as the *Top level* repo populated mostly with python code. |
 | [GUI](https://github.com/whamcloud/GUI) | The Graphical User Interface for the Single Page Application, IML. This is primarily nodejs code with angular and inferno libraries. |
 | [manager-for-lustre-dependencies](https://github.com/whamcloud/manager-for-lustre-dependencies) | Dependencies needed for IML that are not available elsewhere. |
 | [view-server](https://github.com/whamcloud/view-server) | Server client-side files. |

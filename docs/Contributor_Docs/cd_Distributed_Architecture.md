@@ -8,7 +8,7 @@
 
 IML is composed of a series of modules and services. Many modules are hosted as [separate repositories](https://github.com/whamcloud), and many are hosted in a [single repo](https://github.com/whamcloud/integrated-manager-for-lustre).
 
-For brevity, we will refer to the separate repos as just _repos_, and the intel-manager-for-lustre repo as a 
+For brevity, we will refer to the separate repos as just _repos_, and the integrated-manager-for-lustre repo as a
 _monorepo_
 
 #### Repos

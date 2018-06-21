@@ -28,7 +28,7 @@ Integrated Manager for Lustre software greatly simplifies the creation and manag
 Integrated Manager for Lustre software, when integrated with Linux, aggregates a range of storage hardware into a single Lustre file system that is well-proven for delivering fast IO to applications across high-speed network fabrics such as InfiniBand* and Ethernet.
 An existing Lustre file system that has been set up outside of Integrated Manager for Lustre software can be monitored, but not managed by the manager. In this case, Lustre commands can be used to manage metadata or object storage servers in the Lustre file system.
 
-[Top of Page](#introducing-intel-manager-for-lustre-software)
+[Top of Page](#introducing-integrated-manager-for-lustre-software)
 
 ## Overview of Integrated Manager for Lustre software
 
@@ -47,7 +47,7 @@ The servers on which the MGT, MDT, or OSTs are located can all be configured as 
 
 ![Lustre Configuration](md_Graphics/lustre-configuration5_zoom40.png)
 
-[Top of Page](#introducing-intel-manager-for-lustre-software)
+[Top of Page](#introducing-integrated-manager-for-lustre-software)
 
 ## Key Features
 
@@ -177,7 +177,7 @@ Dynamic LNet configuration (DLC) is a powerful extension of the LNet software to
 
 Kerberos provides a means for authentication and authorization of participants on a computer network, as well as providing secure communications through authentication. This functionality has been applied to Integrated Manager for Lustre software for the purposes of establishing trust between Lustre servers and clients, and optionally, supporting encrypted network communications.
 
-[Top of Page](#introducing-intel-manager-for-lustre-software)
+[Top of Page](#introducing-integrated-manager-for-lustre-software)
 
 ## Management mode versus Monitor-only mode
 
@@ -199,7 +199,7 @@ Monitor-only mode can be used to establish monitoring for file systems that donâ
 
 **Note:** RAID-based fault tolerance for storage devices are implemented independent of Integrated Manager for Lustre software.
 
-[Top of Page](#introducing-intel-manager-for-lustre-software)
+[Top of Page](#introducing-integrated-manager-for-lustre-software)
 
 ## Overview of the graphical user interface
 
@@ -309,4 +309,4 @@ You can access the Integrated Manager for Lustre software GUI from your smart ph
 3. ![Vertical Menu Bar](md_Graphics/vertical_menu_bar.png)
 4. To hide the menu bar, click ![Mobile Button](md_Graphics/mobile_button.png) again.
 
-[Top of Page](#introducing-intel-manager-for-lustre-software)
+[Top of Page](#introducing-integrated-manager-for-lustre-software)

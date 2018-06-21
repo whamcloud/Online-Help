@@ -28,7 +28,7 @@ git clone git@github.com:whamcloud/integrated-manager-for-lustre.git
 
 ## Change Directory to the dowloaded repo.
 ```
-cd intel-manager-for-lustre
+cd integrated-manager-for-lustre
 ```
 
 ## Start the SSI Tests.
@@ -46,7 +46,7 @@ make ssi_tests
 
 Using Cygwin (*nix like interface on Windows), Vagrant and Virtualbox installed on Windows, run the IML source Makefile 'ssi_tests' target.
 
-This will, in turn, first destroy any existing HPC cluster created by the makefile, then run the base Vagrantfile _intel-manager-for-lustre/Vagrantfile_ (with command _vagrant up_) to bring up a functional HPC cluster, before proceeding to run the tests.
+This will, in turn, first destroy any existing HPC cluster created by the makefile, then run the base Vagrantfile _integrated-manager-for-lustre/Vagrantfile_ (with command _vagrant up_) to bring up a functional HPC cluster, before proceeding to run the tests.
 
 ## Minimal Setup Specifications:
 
@@ -69,7 +69,7 @@ git clone git@github.com:whamcloud/integrated-manager-for-lustre.git
 
 ## Change Directory to the dowloaded repo.
 ```
-cd intel-manager-for-lustre
+cd integrated-manager-for-lustre
 ```
 
 ## Start the SSI Tests.
@@ -167,7 +167,7 @@ git clone git@github.com:whamcloud/integrated-manager-for-lustre.git
 
 ## Change Directory to the dowloaded repo.
 ```
-cd intel-manager-for-lustre
+cd integrated-manager-for-lustre
 ```
 
 ## Start the SSI Tests.

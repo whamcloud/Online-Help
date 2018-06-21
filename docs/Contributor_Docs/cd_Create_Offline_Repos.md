@@ -11,7 +11,7 @@ The following is a procedure for creating local repos using a CentOS 7 VM.
 1. Copy the `storage_server.repo` to `etc.yum.repos.d`:
 
     ```
-    cp ./intel-manager-for-lustre/chroma-manager/storage_server.repo  /etc/yum.repos.d/
+    cp ./integrated-manager-for-lustre/chroma-manager/storage_server.repo  /etc/yum.repos.d/
     ```
 
 1. Create a dir to hold local repos and cd to it:
