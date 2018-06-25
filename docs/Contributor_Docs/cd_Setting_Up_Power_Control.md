@@ -1,6 +1,6 @@
 # <a name="Top"></a>Setting up Power Control
 
-Power control can be configured once all of the managed servers have been added successfully and the network interfaces have been updated. To do this, ensure `/usr/local/bin` is added to PATH in ~/.bashrc:
+Power control can be configured once all of the managed servers have been added successfully and the network interfaces have been updated. To do this, ensure `/usr/local/bin` is added to the PATH environment variable on the admin / host node. This can be added to a shell initialization script that will be sourced when a new session is created (such as ~/.bash_profile):
 
 ```bash
  export PATH="$PATH:/usr/local/bin"
