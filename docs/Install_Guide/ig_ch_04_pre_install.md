@@ -8,7 +8,7 @@
 * [LNET Configuration](#lnet-configuration)
 * [Server Configuration](#server-configuration)
 * [Client Requirements](#client-requirements)
-* [Linux\* Kernel Rebuilds and Patches](#linux-kernel-rebuilds-and-patches)
+* [Linux Kernel Rebuilds and Patches](#linux-kernel-rebuilds-and-patches)
 * [Firewall Considerations](#firewall-considerations)
 
 ## What Not to Do
