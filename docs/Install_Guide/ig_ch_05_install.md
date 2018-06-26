@@ -44,7 +44,7 @@ browser.
 
 You will need the following information to perform this installation:
 
-* The name, email address, and password you wish to use for the first Integrated Manager for Lustre software superuser. The email address must use an FQDN.
+* The name, email address, and password you wish to use for the first Integrated Manager for Lustre software superuser. The email address must use a FQDN.
 * (Optional) The fully qualified domain name (FQDN) of the NTP server (internal or external) used for your site. If no NTP server is set, the Integrated Manager for Lustre software server's clock will act as the time source for the entire storage cluster.
 
 To install the software, complete these steps:
@@ -52,17 +52,17 @@ To install the software, complete these steps:
 1. Download the installation archive to a directory on the manager server (e.g. /tmp).
 1. Unpack the installation archive using tar: {{site.package_name}}.tar.gz:
 
-```bash
-# cd /tmp; mkdir install
-# tar –C install –xzf {{site.package_name}}.tar.gz
-```
+    ```bash
+    # cd /tmp; mkdir install
+    # tar –C install –xzf {{site.package_name}}.tar.gz
+    ```
 
-1.  To install the Integrated Manager for Lustre software, run:
+1. To install the Integrated Manager for Lustre software, run:
 
-```bash
-# cd /tmp/install/{{site.package_name}}.tar.gz
-# ./install
-```
+    ```bash
+    # cd /tmp/install/{{site.package_name}}.tar.gz
+    # ./install
+    ```
 
 1. When the following prompts appear, enter your parameters for the first superuser of Integrated Manager for Lustre software:
 
@@ -78,32 +78,32 @@ To install the software, complete these steps:
 
     When configuration is complete, a message is displayed indicating the installation was successful.
 
-1.  When the prompt **NTP Server \[localhost\]** appears, respond with **one of these options**:
+1. When the prompt **NTP Server \[localhost\]** appears, respond with **one of these options**:
 
     * _Option 1:_ To designate the NTP server (internal or external) used for your site, enter the FQDN or IP address of the NTP server and press the **&lt;Enter&gt;** key.
 
     * _Option 2:_ To use the Integrated Manager for Lustre software server’s clock as the time source, press the **&lt;Enter&gt;** key.
 
-1.  Using ifconfig, obtain the IP address of the administrative network interface for the server hosting Integrated Manager for Lustre software. The default network interface for Integrated Manager for Lustre software is eth0.
+1. Using ifconfig, obtain the IP address of the administrative network interface for the server hosting Integrated Manager for Lustre software. The default network interface for Integrated Manager for Lustre software is eth0.
 
-1.  Open a web browser and access the Integrated Manager for Lustre software GUI using the server IP address obtained in the previous step. Enter in the address field of your browser:
+1. Open a web browser and access the Integrated Manager for Lustre software GUI using the server IP address obtained in the previous step. Enter in the address field of your browser:
 
-https://&lt;command_center_server_IP_address&gt;
+    `https://<command_center_server_IP_address>`
 
-**Note**: If the IP address of the server has an associated FQDN, you can connect to the Integrated Manager for Lustre software GUI user interface using:
+    **Note**: If the IP address of the server has an associated FQDN, you can connect to the Integrated Manager for Lustre software GUI user interface using:
 
-https://&lt;command_center_server_fqdn&gt;
+    `https://<command_center_server_fqdn>`
 
-**Note**: The GUI uses a self-signed SSL certificate to secure
-communications between the browser and the server. You will need to
-accept this certificate in order to connect to the Integrated Manager for Lustre
-software GUI. A certificate can be downloaded from (example only):
+    **Note**: The GUI uses a self-signed SSL certificate to secure
+    communications between the browser and the server. You will need to
+    accept this certificate in order to connect to the Integrated Manager for Lustre
+    software GUI. A certificate can be downloaded from (example only):
 
-https://&lt;manager-addr&gt;/certificate/
+    `https://<manager-addr>/certificate/`
 
-After Integrated Manager for Lustre software is installed, point your web
-browser to the Integrated Manager for Lustre software dashboard. Use Chrome\* or
-Firefox\*.
+    After Integrated Manager for Lustre software is installed, point your web
+    browser to the Integrated Manager for Lustre software dashboard. Use Chrome or
+    Firefox.
 
 ## Integrated Manager for Lustre software Configuration Settings
 
@@ -111,28 +111,28 @@ The following Integrated Manager for Lustre software configuration
 settings can be modified. See the instructions for modifying these
 settings following the descriptions.
 
-**ALLOW_ANONYMOUS_READ**
+### `ALLOW_ANONYMOUS_READ`
 
-**Default:** True (Uppercase first letter required.)
+**Default:** `True` (Uppercase first letter required.)
 
 **Description:** Allows anonymous (unauthenticated) users to view statistics, logs and status of a system in the Integrated Manager for Lustre software GUI but not to make any changes. If set to False, anonymous users will be presented with a login prompt and no data.
 
-**DISABLE_POWER_CONTROL_DEVICE_MONITORING**
+### `DISABLE_POWER_CONTROL_DEVICE_MONITORING`
 
-**Default:** False (Uppercase first letter required.)
+**Default:** `False` (Uppercase first letter required.)
 
-**Description:** The default state is False, allowing automatic monitoring of power control devices. When set to True, this setting disables the manager software’s monitoring of your power control devices (eg, BMC, PDU outlets, etc.) This is necessary for sites where the manager server does not have access to the power control devices itself. However, Integrated Manager for Lustre software will then NO LONGER REPORT ANY FAILURE IN ANY POWER CONTROL DEVICES. If power control becomes non-operational, automatic failover will not occur on failure, and manual intervention will be required to restore service to your file system. If you chose to set this value to True, we recommend implementing an alternate mechanism to monitor your power control devices, outside of Integrated Manager for Lustre software.
+**Description:** The default state is `False`, allowing automatic monitoring of power control devices. When set to True, this setting disables the manager software’s monitoring of your power control devices (eg, BMC, PDU outlets, etc.) This is necessary for sites where the manager server does not have access to the power control devices itself. However, Integrated Manager for Lustre software will then **NO LONGER REPORT ANY FAILURE IN ANY POWER CONTROL DEVICES**. If power control becomes non-operational, automatic failover will not occur on failure, and manual intervention will be required to restore service to your file system. If you chose to set this value to True, we recommend implementing an alternate mechanism to monitor your power control devices, outside of Integrated Manager for Lustre software.
 
 **Other Settings**:
 
-| Setting                     | Default                                  | Description                                                                      |
-| --------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------- |
-| **`EMAIL_HOST`**           | None                                     | SMTP server hostname (Example: 'server1.test.com')                               |
-| **`EMAIL_PORT`**           | 25                                       | SMTP server port number.                                                         |
-| **`EMAIL_HOST_USER`**     | ' '                                      | SMTP server username (or ' ').                                                   |
-| **`EMAIL_HOST_PASSWORD`** | ' '                                      | SMTP server username (or ' ').                                                   |
-| **`EMAIL_USE_TLS`**       | False (Uppercase first letter required.) | True indicates that TLS/SSL is to be used. False indicates it is not to be used. |
-| **`EMAIL_SENDER`**         | `noreply@<command_center server_fqdn>`   | The address that appears in the _From_ field on alert emails.                    |
+| Setting                     | Default                                    | Description                                                                        |
+| --------------------------- | ------------------------------------------ | ---------------------------------------------------------------------------------- |
+| **`EMAIL_HOST`**            | `None`                                     | SMTP server hostname (Example: `'server1.test.com'`)                               |
+| **`EMAIL_PORT`**            | `25`                                       | SMTP server port number.                                                           |
+| **`EMAIL_HOST_USER`**       | `' '`                                      | SMTP server username (or `' '`).                                                   |
+| **`EMAIL_HOST_PASSWORD`**   | `' '`                                      | SMTP server username (or `' '`).                                                   |
+| **`EMAIL_USE_TLS`**         | `False` (Uppercase first letter required.) | `True` indicates that TLS/SSL is to be used. False indicates it is not to be used. |
+| **`EMAIL_SENDER`**          | `noreply@<command_center server_fqdn>`     | The address that appears in the _From_ field on alert emails.                      |
 
 ### Editing Integrated Manager for Lustre software Configuration Settings
 
