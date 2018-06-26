@@ -126,7 +126,7 @@ Integrated Manager for Lustre software graphical user interface.
 Manager Server Requirements
 ---------------------------
 
-The *manager server* is a dedicated server on which the Manager
+The *manager server* is a dedicated server on which the Integrated Manager
 for Lustre software is installed. This is unique from the *management*
 *server*. Requirements for the manager server are listed next.
 

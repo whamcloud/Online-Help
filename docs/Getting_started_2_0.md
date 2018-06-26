@@ -9,11 +9,10 @@
 
 A high-availability Lustre file system managed by Integrated Manager for Lustre software requires that your entire storage system configuration and all  interfaces comply with a pre-defined configuration.  For detailed information, see [High Availability Configuration Specification](Install_Guide/ig_ch_03_building.md). If the system will leverage ZFS you may also want to read [Creating and Managing ZFS-based Lustre file systems](Create_and_manage_ZFS_based_LFS_8_0.md).
 
-**Note:** All references herein to the "manager" refer to the Integrated Manager for Lustre software.
 The Integrated Manager for Lustre software can be used to:
 
-- Create, monitor and manage high-availability Lustre file systems, including systems running Open ZFS as the back-end.
-- Monitor existing Lustre file systems that have not been configured from the manager GUI.
+- Create, monitor and manage high-availability Lustre file systems, including systems running ZFS as the back-end.
+- Monitor existing Lustre file systems that have not been created by IML.
 
 See the following information to get started:
 

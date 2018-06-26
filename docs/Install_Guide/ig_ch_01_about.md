@@ -1,4 +1,4 @@
-# <a name="1.0"></a>About this Document
+# About this Document
 
 [**Software Installation Guide Table of Contents**](ig_TOC.md)
 
@@ -40,9 +40,10 @@ This document provides detailed instructions for installing Integrated Manager f
 
 ## Intended Audience
 
-This guide is intended for partners who are designing storage solutions
-based on Integrated Manager for Lustre software. Readers are
-assumed to be full-time Linux system administrators or equivalent who
+This guide is intended for users who are designing storage solutions
+based on Integrated Manager for Lustre software.
+
+Readers are assumed to be full-time Linux system administrators or equivalent who
 have:
 
 * experience administering file systems and are familiar with storage
@@ -73,15 +74,6 @@ Conventions used in this document include:
   value
 
 ## Related Documentation
-
-* _Integrated Manager for Lustre_ software, Version {{site.version}}
-  Release Notes\*
-
-* _Integrated Manager for Lustre_ software Online Help\* (accessible from
-  within the GUI)
-
-* _Integrated Manager for Lustre_ software User Guide\* (a PDF verion on
-  the online Help)
 
 * _Lustre Installation and Configuration using Integrated Manager for Lustre_ software and OpenZFS\*
 

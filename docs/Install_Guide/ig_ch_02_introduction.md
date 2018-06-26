@@ -1,4 +1,4 @@
-# <a name="1.0"></a>Introducing the Integrated Manager for Lustre software
+# Introducing the Integrated Manager for Lustre software
 
 [**Software Installation Guide Table of Contents**](ig_TOC.md)
 
