@@ -1,4 +1,4 @@
-# <a name="1.0"></a>Integrated Manager for Lustre software Installation
+# Integrated Manager for Lustre software Installation
 
 [**Software Installation Guide Table of Contents**](ig_TOC.md)
 
@@ -14,7 +14,7 @@ server._
 
 After the Integrated Manager for Lustre software is
 installed, point your web browser to the Integrated Manager for Lustre software
-dashboard. Use Chrome\* or Firefox\*. A display monitor with a minimum
+dashboard. Use Chrome or Firefox. A display monitor with a minimum
 resolution of 1024 X 768 pixels is recommended, to adequately display
 the Integrated Manager for Lustre software GUI.
 
@@ -34,11 +34,11 @@ To deploy and configure Lustre manually, see [Installing and Configuring
 Lustre Manually](ig_ch_08_manual_install).
 
 For information regarding installing and configuring Lustre, see Part II
-of the _Lustre_ Operations Manual\*. This information is available at the
+of the _Lustre_ Operations Manual. This information is available at the
 following URL. If this page does not load, copy and paste it into your
 browser.
 
-[https://build.hpdd.intel.com/job/lustre-manual/lastSuccessfulBuild/artifact/lustre_manual.xhtml#part.installconfig](https://build.hpdd.intel.com/job/lustre-manual/lastSuccessfulBuild/artifact/lustre_manual.xhtml#part.installconfig)
+[http://doc.lustre.org/lustre_manual.xhtml#part.installconfig](http://doc.lustre.org/lustre_manual.xhtml#part.installconfig)
 
 ## Installing Integrated Manager for Lustre software
 
@@ -49,22 +49,22 @@ You will need the following information to perform this installation:
 
 To install the software, complete these steps:
 
-1.  Download the installation archive to a directory on the manager server (e.g. /tmp).
-1.  Unpack the installation archive using tar: {{site.package_name}}.tar.gz:
+1. Download the installation archive to a directory on the manager server (e.g. /tmp).
+1. Unpack the installation archive using tar: {{site.package_name}}.tar.gz:
 
-```
+```bash
 # cd /tmp; mkdir install
 # tar –C install –xzf {{site.package_name}}.tar.gz
 ```
 
 1.  To install the Integrated Manager for Lustre software, run:
 
-```
+```bash
 # cd /tmp/install/{{site.package_name}}.tar.gz
 # ./install
 ```
 
-1.  When the following prompts appear, enter your parameters for the first superuser of Integrated Manager for Lustre software:
+1. When the following prompts appear, enter your parameters for the first superuser of Integrated Manager for Lustre software:
 
     **Username:** _&lt;Enter the name of the superuser&gt;_
 
@@ -127,61 +127,57 @@ settings following the descriptions.
 
 | Setting                     | Default                                  | Description                                                                      |
 | --------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------- |
-| **`EMAIL\_HOST`**           | None                                     | SMTP server hostname (Example: 'server1.test.com')                               |
-| **`EMAIL\_PORT`**           | 25                                       | SMTP server port number.                                                         |
-| **`EMAIL\_HOST\_USER`**     | ' '                                      | SMTP server username (or ' ').                                                   |
-| **`EMAIL\_HOST\_PASSWORD`** | ' '                                      | SMTP server username (or ' ').                                                   |
-| **`EMAIL\_USE\_TLS`**       | False (Uppercase first letter required.) | True indicates that TLS/SSL is to be used. False indicates it is not to be used. |
-| **`EMAIL\_SENDER`**         | `noreply@<command_center server_fqdn>`   | The address that appears in the _From_ field on alert emails.                    |
+| **`EMAIL_HOST`**           | None                                     | SMTP server hostname (Example: 'server1.test.com')                               |
+| **`EMAIL_PORT`**           | 25                                       | SMTP server port number.                                                         |
+| **`EMAIL_HOST_USER`**     | ' '                                      | SMTP server username (or ' ').                                                   |
+| **`EMAIL_HOST_PASSWORD`** | ' '                                      | SMTP server username (or ' ').                                                   |
+| **`EMAIL_USE_TLS`**       | False (Uppercase first letter required.) | True indicates that TLS/SSL is to be used. False indicates it is not to be used. |
+| **`EMAIL_SENDER`**         | `noreply@<command_center server_fqdn>`   | The address that appears in the _From_ field on alert emails.                    |
 
 ### Editing Integrated Manager for Lustre software Configuration Settings
 
 To change these configuration settings:
 
-1.  Use a text editor to create or modify a file `local_settings.py`in the directory `/usr/share/chroma-manager/`
+1. Use a text editor to create or modify a file `local_settings.py` in the directory `/usr/share/chroma-manager/`
 
-        For example, add the following setting to the ```local_settings.py```
+   For example, add the following setting to the `local_settings.py` file to restrict view of system statistics, logs, and status to only users who are logged in:
 
-    file to restrict view of system statistics, logs, and status to only users who are logged in:
+    ```python
+    ALLOW_ANONYMOUS_READ=False
+    ```
 
-```
-ALLOW_ANONYMOUS_READ=False
-```
+    In this example, the first letter of False must be capitalized.
 
-In this example, the first letter of False must be capitalized.
+    **Note**: Entries must follow Python syntax rules. For example, all strings must be enclosed in single or double quotes (double quotes must be used if the string includes a single quote). For example, `EMAIL_HOST=server1.test.com` will result in an error, while `EMAIL_HOST='server1.test.com'` is a valid entry.
 
-**Note**: Entries must follow Python\* syntax rules. For example, all strings must be enclosed in single or double quotes (double quotes must be used if the string includes a single quote). For example, EMAIL_HOST=server1.test.com will result in an error, while EMAIL_HOST='server1.test.com' is a valid entry.
+    **Warning**: If you edit the file `settings.py` instead of creating a `local_settings.py` file, your changes will be overwritten without warning when the Integrated Manager for Lustre software is updated.
 
-**Warning**: If you edit the file settings.py instead of creating a local_settings.py file, your changes will be overwritten without warning when the Integrated Manager for Lustre software is updated.
-
-1.  To configure email alerts, complete one of the options below. By default, email alerts from the Integrated Manager for Lustre software are disabled (EMAIL_HOST set to None).
+1. To configure email alerts, complete one of the options below. By default, email alerts from the Integrated Manager for Lustre software are disabled (EMAIL_HOST set to None).
 
     * _Option 1: Set up an external mail server._ Create or modify the file
-      `/usr/share/chroma-manager/local\_settings.py` to provide appropriate values for these settings:
+      `/usr/share/chroma-manager/local_settings.py` to provide appropriate values for these settings:
 
-          a.  Set EMAIL\_SENDER to an address suitable for your site.
+        a.  Set `EMAIL_SENDER` to an address suitable for your site.
 
-          b.  Modify EMAIL\_HOST (and other server settings if necessary) to point to an existing SMTP server on your network.
+        b.  Modify `EMAIL_HOST` (and other server settings if necessary) to point to an existing SMTP server on your network.
 
     * _Option 2: Use a local mail server._ If a suitable SMTP server is not available, you can configure the Integrated Manager for Lustre software server to act as an SMTP server:
 
-      a. Set EMAIL_SENDER to an address suitable for your site.
+      a. Set `EMAIL_SENDER` to an address suitable for your site.
 
       b. Set up a local mail daemon using standard procedures for Red Hat Enterprise Linux or CentOS such as those described in the Red Hat documentation at:
       [Mail Servers](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/ch-Mail_Servers.html)
 
       c. Set EMAIL_HOST to `localhost`
 
-1)  Run the chroma configuration tool
+1. Run the chroma configuration tool
     in order to load changes made to `local_settings.py`.
 
-```
-# chroma-config restart
-```
+    ```bash
+    # chroma-config restart
+    ```
 
 For configuring user accounts, see the online Help in the
 Integrated Manager for Lustre software. The online Help also provides
 instructions for creating, monitoring, and managing your Lustre
 file systems.
-
-[Top of page](#1.0)
