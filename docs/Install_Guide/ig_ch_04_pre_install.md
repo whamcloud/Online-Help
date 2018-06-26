@@ -41,10 +41,7 @@ If you wish to configure more advanced features (such as routes and IP
 networks), then you should do this manually, in a separate file
 contained in the /etc/modprobe.d directory. Please see the configuration
 guide _Configuring LNet Routers for File Systems based on Integrated Manager for Lustre_ software*
-and also see the Lustre Operations Manual, Chapter 9
-
-* Configuring Lustre Networking*:
-  [https://build.hpdd.intel.com/job/lustre-manual/lastSuccessfulBuild/artifact/lustre_manual.xhtml#dbdoclet.50438216_15201](https://build.hpdd.intel.com/job/lustre-manual/lastSuccessfulBuild/artifact/lustre_manual.xhtml#dbdoclet.50438216_15201)
+and also see the [Lustre Operations Manual, Chapter 9](http://doc.lustre.org/lustre_manual.xhtml#configuringlnet)
 
 ## Server Configuration
 
