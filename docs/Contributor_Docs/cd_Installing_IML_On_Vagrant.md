@@ -82,19 +82,3 @@ The vagrant file indicates that the lustre network will run on 10.73.20.x. If `L
 ## Setting up Power Control
 
 [Follow these instructions to configure the Power Control.](cd_Setting_Up_Power_Control.md)
-
-## Creating a Filesystem
-
-To create a filesystem, simply navigate to `Configure->File Systems` and click the `Create` button. Make the following selections:
-
-* Management Target / MGS -> mds1 (512 MB)
-* Metadata Target / MDS -> mds2
-* Object Storage Targets -> Select ALL OSS nodes
-
-After the selections have been made, click the button to create the filesystem. If you have any issues creating the filesystem there is a good chance that the interface for 10.73.20.x is not assigned to Lustre Network 0. If this happens, stop the filesystem and update the interfaces accordingly.
-
-## [Setting up Clients](cd_Setting_Up_Clients.md)
-
----
-
-[Top of page](#Top)
