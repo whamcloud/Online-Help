@@ -29,8 +29,7 @@ servers and avoids possible errors.
 file system manually, without Integrated Manager for Lustre software.
 Other installations may opt to deploy and configure a Lustre file system
 and then later install Integrated Manager for Lustre software to be used
-in Monitor-only mode. The overall release tarball is {{site.package_name}}.tar.gz.
-To deploy and configure Lustre manually, see [Installing and Configuring
+in Monitor-only mode. To deploy and configure Lustre manually, see [Installing and Configuring
 Lustre Manually](ig_ch_08_manual_install).
 
 For information regarding installing and configuring Lustre, see Part II
@@ -49,22 +48,18 @@ You will need the following information to perform this installation:
 
 To install the software, complete these steps:
 
-1. Download the installation archive to a directory on the manager server (e.g. /tmp).
-1. Unpack the installation archive using tar: {{site.package_name}}.tar.gz:
+1. Pull the repo file for a tagged release from github:
 
     ```bash
-    # cd /tmp; mkdir install
-    # tar –C install –xzf {{site.package_name}}.tar.gz
+    yum-config-manager --add-repo=yum-config-manager --add-repo=https://raw.githubusercontent.com/whamcloud/integrated-manager-for-lustre/master/chroma_support.repo
     ```
-
-1. To install the Integrated Manager for Lustre software, run:
+1. Install the manager via `yum`:
 
     ```bash
-    # cd /tmp/install/{{site.package_name}}.tar.gz
-    # ./install
+    yum install -y python2-iml-manager
     ```
 
-1. When the following prompts appear, enter your parameters for the first superuser of Integrated Manager for Lustre software:
+1. Once the install completes run `chroma-config setup`. When the following prompts appear, enter your parameters for the first superuser of Integrated Manager for Lustre software:
 
     **Username:** _&lt;Enter the name of the superuser&gt;_
 
@@ -115,7 +110,7 @@ settings following the descriptions.
 
 **Default:** `True` (Uppercase first letter required.)
 
-**Description:** Allows anonymous (unauthenticated) users to view statistics, logs and status of a system in the Integrated Manager for Lustre software GUI but not to make any changes. If set to False, anonymous users will be presented with a login prompt and no data.
+**Description:** Allows anonymous (unauthenticated) users to view statistics, logs and status of a system in the Integrated Manager for Lustre software GUI but not to make any changes. If                                                                                                                                                                                  set to False, anonymous users will be presented with a login prompt and no data.
 
 ### `DISABLE_POWER_CONTROL_DEVICE_MONITORING`
 
