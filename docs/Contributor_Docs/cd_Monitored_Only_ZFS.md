@@ -4,55 +4,9 @@
 
 ![zfs](md_Graphics/monitored_filesystem_sm.jpg)
 
-## Prerequisites:
+## Prerequisites
 
-Please refer to https://github.com/whamcloud/vagrantfiles on how to create a virtual HPC storage cluster with vagrant before attempting to install IML.
-
-## Download IML build, create zfs installer, and install zfs packages:
-
-Note: use vagrant ssh-config to get the port each server is running on. The commands below use ports that are specific to my vagrant environment.
-
-1.  Verify the following vagrant plugins are installed:
-    ```
-    vagrant plugin install vagrant-shell-commander
-    ```
-2.  Download the latest IML build (tarball).
-    from: [https://github.com/whamcloud/integrated-manager-for-lustre/releases/download/v{{site.version}}/{{site.package_name}}.tar.gz](https://github.com/whamcloud/integrated-manager-for-lustre/releases/download/v{{site.version}}/{{site.package_name}}.tar.gz)
-
-## Installing IML:
-
-1.  Copy the IML build to the /tmp directory in your admin node:
-    ```
-    scp -P 2222 ~/Downloads/{{site.package_name}}.tar.gz vagrant@127.0.0.1:/tmp/.
-    # password is "vagrant"
-    ```
-2.  ssh into the admin box and install the build:
-    ```
-    vagrant ssh
-    [vagrant@adm ~]$ sudo su - # (or "sudo -s")
-    [vagrant@adm ~]# cd /tmp
-    [vagrant@adm ~]# tar xvf <buildname>.tar.gz
-    [vagrant@adm ~]# cd <build folder>
-    [vagrant@adm ~]# ./install --no-dbspace-check
-    ```
-3.  Update the /etc/hosts file on your computer to include the following line:
-    ```
-    127.0.0.1 adm.lfs.local
-    ```
-4.  Test that a connection can be made to IML by going to the following link in your browser:
-    https://adm.lfs.local:8443
-
-## Adding and Configuring Servers
-
-You should now be able to see IML when navigating to https://adm.lfs.local:8443. Click on the login link at the top right and log in as the admin. Next, go to the server configuration page and add the following servers:
-
-```
-mds[1,2].lfs.local,oss[1,2].lfs.local
-# Make sure to select "Monitored Server Profile" for the servers profile
-```
-
-This will take some time (around 5 to 10 minutes) but all four servers should add successfully.
-There will be alerts and warnings about LNET. Ignore for now.
+Create and setup your Vagrant cluster as described in [Installing IML on Vagrant](cd_Installing_IML_On_Vagrant.md)
 
 ## Installing lustre on each MDS and OSS Server
 
@@ -72,18 +26,10 @@ ZFS can now be installed on each mds and oss node since the agent software has b
 
 ## Configuring each MDS and OSS server
 
-Each server will need to know which interface should be assigned the lustre network.
-Run the following commands:
+Configure the Lustre network on each of the servers:
 
-```
-   vagrant sh -c '
-   systemctl stop firewalld; systemctl disable firewalld;
-   systemctl start ntpd;
-   modprobe lnet
-   lnetctl lnet configure
-   lnetctl net add --net tcp0 --if enp0s9
-   /sbin/modprobe zfs;
-   genhostid' mds1 mds2 oss1 oss2
+```bash
+vagrant provision <node-name> --provision-with configure-lustre-network
 ```
 
 The IML GUI should show that the LNET and NID Configuration is updated (IP Address 10.73.20.x to use `Lustre Network 0`). All alerts are cleared.
