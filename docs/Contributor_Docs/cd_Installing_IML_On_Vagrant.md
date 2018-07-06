@@ -67,9 +67,9 @@ Please refer to [https://github.com/whamcloud/vagrantfiles](https://github.com/w
 
 You should now be able to see IML when navigating to [https://localhost:8443](https://localhost:8443). Click on the login link at the top right and log in as the admin user (password: lustre). After logging in, go to the servers page by selecting the following:
 
-> Configuratin -> Servers
+> Configuration -> Servers
 
-Click the `Add Servers` button and enter the following pdsh expression:
+Click the `Add Servers` button and enter the following hostlist expression:
 
 ```bash
 mds[1,2].local,oss[1,2].local
