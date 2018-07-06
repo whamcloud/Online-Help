@@ -75,15 +75,15 @@ This will take some time (around 20 to 30 minutes) but all four servers should a
 
 ## Configuring Interfaces
 
-Once all servers have been added, each server will need to know which interface should be assigned the lustre network. This can be done manually or automated by a provisioning script. Select one of the methods below.
+Once all servers have been added, each server will need to know which interface should be assigned the lustre network. This can be done manually or automated by a provisioning script depending on the type of filesystem being created.
 
-### 1. Manually Configure Interfaces
+### 1. Managed ldiskfs and ZFS filesystems
 
 On the servers page, navigate to each server's detail page by clicking on the server link. Scroll to the bottom of the server detail page where you will see a list of network interfaces. Click on the `Configure` button and you will be given the option to change the network driver and the network for each interface.
 
 The vagrant file indicates that the lustre network will run on 10.73.20.x. If `Lustre Network 0` is specified for a different IP address, you will need to change its interface to `Not Lustre Network` and update the network for 10.73.20.x to use `Lustre Network 0`. It is very important that Lustre Network 0 is specified on the correct interface; otherwise, creating a filesystem will fail. Make sure that all servers have been updated where appropriate.
 
-### 2. Automatically Configure Interfaces with Provisioning Script
+### 2. Monitor only ldiskfs and ZFS filesystems
 
 The interfaces can be configured automatically by running the following script:
 
