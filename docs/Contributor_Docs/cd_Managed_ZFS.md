@@ -14,35 +14,13 @@ Create and setup your Vagrant cluster as described in [Installing IML on Vagrant
 
 ## Creating Zpools
 
-Now that all managed servers have been added and the power control has been configured, the zpools can be created.
+Now that all managed servers have been added and the power control has been configured, the zpools can be created. Navigate to the volumes page and run the following provision script:
 
-1. ssh into `mds1` and switch to the root account with `sudo -i`.
-1. In the GUI, navigate to *Configuration->Volumes*. Setup your web browser and console next to each other such that the result of running commands in your console can be viewed on the browser in real time.
-1. Create the MGS. On the volumes page, look for the mds with a file size of 512MB. This should be easy to spot as the other mds has a capacity of 5GB. Notice the numbers that come after `VBOX_HARDDISK`. This is the diskSerial. Enter the following command:
+```bash
+vagrant provision mds1 mds2 oss1 oss2 --provision-with create-zpools
+```
 
-    ```bash
-    root@mds1 by-id]# zpool create mgs -o cachefile=none -o multihost=on /dev/disk/by-id/ata-VBOX_HARDDISK_MGS00000000000000000
-    ```
-
-1. Create the MDS. On the volumes page, look for the mds with a file size of 5GB. This should be the only mds left. Take note of the diskSerial for this mds and enter the following command:
-
-    ```bash
-    [root@mds1 by-id]# zpool create mds -o cachefile=none -o multihost=on /dev/disk/by-id/ata-VBOX_HARDDISK_MDT00000000000000000
-    ```
-
-1. Create OSS1. Exit out of `mds1` and ssh into `oss1`. On the volumes page, look for all occurrences of `oss1` and take note of their diskSerial's. Enter the following command:
-
-    ```bash
-    [root@oss1 ~]# zpool create oss1 -o cachefile=none -o multihost=on raidz2 /dev/disk/by-id/ata-VBOX_HARDDISK_OST0PORT100000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OST2PORT300000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OST4PORT500000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OST6PORT700000000000
-    ```
-
-1. Create OSS2. On the volumes page, look for all occurrences of `oss2` and take note of their diskSerial's. Enter the following command:
-
-    ```bash
-    [root@oss1 ~]# zpool create oss2 -o cachefile=none -o multihost=on raidz2 /dev/disk/by-id/ata-VBOX_HARDDISK_OST1PORT200000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OST3PORT400000000000  /dev/disk/by-id/ata-VBOX_HARDDISK_OST5PORT600000000000 /dev/disk/by-id/ata-VBOX_HARDDISK_OST7PORT800000000000
-    ```
-
-Watch the volumes page and wait for the volumes associated with the targets to change. You should see four resultant volumes: `mgs`, `mds`, `oss1`, `oss2`.
+Watch the volumes page and wait for the volumes associated with the targets to change. Four volumes should appear: `mgs`, `mds`, `oss1`, `oss2`.
 
 ## Creating a Filesystem
 
