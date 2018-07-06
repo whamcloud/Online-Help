@@ -8,6 +8,10 @@
 
 Create and setup your Vagrant cluster as described in [Installing IML on Vagrant](cd_Installing_IML_On_Vagrant.md)
 
+## Setting up Power Control
+
+[Follow these instructions to configure the Power Control.](cd_Setting_Up_Power_Control.md)
+
 ## Creating Zpools
 
 Now that all managed servers have been added and the power control has been configured, the zpools can be created.
