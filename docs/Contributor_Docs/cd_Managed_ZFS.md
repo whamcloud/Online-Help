@@ -17,7 +17,7 @@ Create and setup your Vagrant cluster as described in [Installing IML on Vagrant
 Now that all managed servers have been added and the power control has been configured, the zpools can be created. Navigate to the volumes page and run the following provision script:
 
 ```bash
-vagrant provision mds1 mds2 oss1 oss2 --provision-with create-managed-zfs-fs
+vagrant provision mds1 mds2 oss1 oss2 --provision-with create-zpools
 ```
 
 Watch the volumes page and wait for the volumes associated with the targets to change. Four volumes should appear: `mgs`, `mds`, `oss1`, `oss2`.
