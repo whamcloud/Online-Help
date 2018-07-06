@@ -102,12 +102,10 @@ To add a server to be used for the file system:
     ![Continue Server Configuration](md_Graphics/add_server_unconfigured.png)
 
 1. At the *Add Server - Add Server Profiles* window, select the desired profile from the drop-down menu. Note that one profile type is selected for all servers you are adding in this process. The common profiles are listed next, but your software may have more server profiles.
-    - **Monitored Storage Server:** This is for servers that are not correctly configured for HA/failover (as far as this software is concerned). A monitored storage server is monitored only; the manager GUI performs no server configuration or management. Chart metrics for filesystem operations will still show for monitored filesystems on the dashboard page.
-    - **Managed Storage Server:** As above, this allows the manager GUI to configure Corosync and Pacemaker, configure NTP, etc., so that the manager software can monitor and manage the server. Managed storage servers must be physically configured for high-availability/server failover.
-    - **POSIX HSM Agent Node:** An HSM Agent node is used in hierarchical storage management to run an instance of Copytool. Copytool transfers certain files between the Lustre file system and the archive. Archived files are deleted from the Lustre file system. See [Configuring and using Hierarchical Storage Management](Config_and_using_HSM_6_0.md/#6.0)
-    - **Robinhood Policy Engine Server:** This server hosts the Robinhood policy engine, which enables automation of hierarchical storage management activities. See [Configuring and using Hierarchical Storage Management](Config_and_using_HSM_6_0.md/#6.0).
 
-        ![Select Server Profile](md_Graphics/add_server_select_profile.png)
+{% include profile-list.md whitespace="    " %}
+
+    ![Select Server Profile](md_Graphics/add_server_select_profile.png)
 
 1. Select the desired profile and click **Proceed**. The manager does an audit of the storage resources on each server. The manager then provisions the server by loading appropriate Lustre modules and making sure the Lustre networking layer is functioning. When all checks are completed, LNet State indicates LNet Up and each server is fully qualified as a Lustre server. Under the Status column, a green check mark is displayed for each new server. If server provisioning does not succeed, the Status will indicate a exclamation mark (!) and the LNet State may indicate Unconfigured. To learn the cause of the problem, click the exclamation mark for the failed server to see Alerts. For more information, click **Status** at the top menu bar. The *Status* window also lets you view related logs.
 

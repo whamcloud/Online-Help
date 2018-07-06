@@ -65,13 +65,21 @@ Please refer to [https://github.com/whamcloud/vagrantfiles](https://github.com/w
 
 ## Adding Servers
 
-You should now be able to see IML when navigating to [https://localhost:8443](https://localhost:8443). Click on the login link at the top right and log in as the admin user (password: lustre). Next, go to the server configuration page and add the following servers:
+You should now be able to see IML when navigating to [https://localhost:8443](https://localhost:8443). Click on the login link at the top right and log in as the admin user (password: lustre). After logging in, go to the servers page by selecting the following:
+
+> Configuration -> Servers
+
+Click the `Add Servers` button and enter the following hostlist expression:
 
 ```bash
 mds[1,2].local,oss[1,2].local
 ```
 
-This will take some time (around 20 to 30 minutes) but all four servers should add successfully.
+Click the `Next` button and all servers will be verified for installation. After verifying all servers, proceed to the profile selection screen. Select the appropriate profile based on the setup type:
+
+{% include profile-list.md %}
+
+Finally, select the `Proceed` button and the servers will be configured based upon the selected profile.
 
 ## Configuring Interfaces
 
