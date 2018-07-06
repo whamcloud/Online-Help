@@ -15,6 +15,3 @@ test_dependencies:
 
 test: test_dependencies
 	@nosetests $(NOSE_ARGS)
-
-install_build_deps:
-	echo "Nothing to install"

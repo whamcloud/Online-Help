@@ -1,19 +1,27 @@
 PREREQ :=
 
+# default to failsafe
+DRYRUN := true
 ifeq ($(DRYRUN),true)
 	ECHO := echo
+$(warning Not actually executing commands.  \
+Pass DRYRUN=false to make to execute commands.)
 else
 	ECHO :=
 endif
 
 ifneq ($(filter iml_%,$(MAKECMDGOALS)),)
   COPR_CONFIG := --config include/copr-mfl
-  OWNER_PROJECT = managerforlustre/manager-for-lustre
+  OWNER_PROJECT = managerforlustre/manager-for-lustre-devel
 else
   PREREQ += create_copr_project
   # local settings
   -include copr-local.mk
 
+  ifeq ($(COPR_PROJECT),)
+    PREREQ += create_copr_project
+    COPR_PROJECT := $(NAME)
+  endif
   ifneq ($(filter copr_%,$(MAKECMDGOALS)),)
     ifndef COPR_OWNER
       $(error COPR_OWNER needs to be set in copr-local.mk)
@@ -25,15 +33,26 @@ else
   OWNER_PROJECT = $(COPR_OWNER)/$(COPR_PROJECT)
 endif
 
-ifeq ($(shell grep -q ^%patch $(RPM_SPEC); echo $${PIPESTATUS[0]}),0)
+ifeq ($(shell if grep -q ^%patch $(RPM_SPEC) ||   \
+                 [ "$$(grep ^Source $(RPM_SPEC) | \
+                       wc -l)" -gt 1 ]; then      \
+                  echo SRPM;                      \
+              else                                \
+                  echo SPEC;                      \
+             fi),SRPM)
   PREREQ += $(TARGET_SRPM)
 else
-  PREREQ += $(RPM_SPEC)
+  ifeq ($(UNPUBLISHED),true)
+    PREREQ += $(TARGET_SRPM)
+  else
+    PREREQ += $(RPM_SPEC)
+  endif
 endif
 
+
 delete_copr_project:
-	if copr-cli list | grep $(NAME); then                     \
-	    $(ECHO) copr-cli $(COPR_CONFIG) delete $(NAME);               \
+	if copr-cli list | grep $(NAME); then               \
+	    $(ECHO) copr-cli $(COPR_CONFIG) delete $(NAME); \
 	fi
 
 create_copr_project: delete_copr_project
@@ -50,15 +69,15 @@ copr_build iml_copr_build: $(PREREQ)
 	#$(COPR_OWNER)/$(COPR_PROJECT)
 	$(ECHO) copr-cli $(COPR_CONFIG) build $(OWNER_PROJECT) $(filter-out \
 		create_copr_project,$^)
-else ifeq ($(BUILD_METHOD),Registry)
-copr_build iml_copr_build: $(PREREQ)
-	$(ECHO) copr-cli $(COPR_CONFIG) build $(OWNER_PROJECT) $(filter-out \
-		create_copr_project,$^)
-else
+else ifeq ($(BUILD_METHOD),SCM)
 copr_build iml_copr_build: $(PREREQ)
 	$(ECHO) copr-cli $(COPR_CONFIG) buildmock $(OWNER_PROJECT)       \
 		 --scm-type git                                  \
-		 --scm-url https://github.com/intel-hpdd/$(NAME)
+		 --scm-url https://github.com/whamcloud/$(NAME)
+else
+copr_build iml_copr_build: $(PREREQ)
+	$(ECHO) copr-cli $(COPR_CONFIG) build $(OWNER_PROJECT) $(filter-out \
+		create_copr_project,$^)
 endif
 
 .PHONY: copr_build iml_copr_build

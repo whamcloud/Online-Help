@@ -4,7 +4,6 @@ CLEAN        += $(NAME)-$(PACKAGE_VERSION).tgz \
 include include/common.mk
 
 TARGET_RPMS = $(NAME)-$(PACKAGE_VERSION)-$(PACKAGE_RELEASE)$(RPM_DIST).noarch.rpm
-BUILD_METHOD := Registry
 
 include include/rpm-common.mk
 include include/copr.mk

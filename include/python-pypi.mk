@@ -24,3 +24,6 @@ $(RPM_SOURCES):
 	    echo "Failed to fetch $@.";                        \
 	    exit 1;                                            \
 	fi
+
+install_build_deps:
+	echo "Nothing to install"
