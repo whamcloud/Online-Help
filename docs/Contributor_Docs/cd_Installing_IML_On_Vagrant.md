@@ -91,10 +91,7 @@ The interfaces can be configured automatically by running the following script:
  vagrant provision mds1 mds2 oss1 oss2 --provision-with configure-lustre-network
 ```
 
-## Setting up Power Control
-
-[Follow these instructions to configure the Power Control.](cd_Setting_Up_Power_Control.md)
-
 ---
 
 [Top of page](#installing-iml-on-vagrant)
+=======
