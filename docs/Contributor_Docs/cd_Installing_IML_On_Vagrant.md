@@ -94,4 +94,3 @@ The interfaces can be configured automatically by running the following script:
 ---
 
 [Top of page](#installing-iml-on-vagrant)
-=======
