@@ -1,6 +1,7 @@
 %define base_name online-help
 %define managerdir /iml-manager/
 %define backcompatdir /usr/lib%{managerdir}
+%{?!package_release: %global package_release @RELEASE@}
 
 Name:       iml-%{base_name}
 Version:    2.4.1
