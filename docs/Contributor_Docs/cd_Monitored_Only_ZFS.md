@@ -18,7 +18,7 @@ vagrant provision mds1 mds2 oss1 oss2 --provision-with install-lustre-zfs
 
 ## Creating pools
 
-Run the folling provision script to create pools on each mds and oss node:
+Run the following provision script to create pools on each mds and oss node:
 
 ```bash
 vagrant provision mds1 mds2 oss1 oss2 --provision-with create-pools
