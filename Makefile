@@ -32,7 +32,6 @@ vendor/cache: Gemfile Gemfile.lock install_build_deps
 	touch $@
 
 install_build_deps:
-	yum -y install https://rpm.nodesource.com/pub_8.x/el/7/x86_64/nodesource-release-el7-1.noarch.rpm
 	yum -y install nodejs rubygem-bundler ruby-devel gcc autoconf \
 		       automake libtool yum-plugin-copr zlib-devel
 	#yum -y copr enable managerforlustre/CentOS_Ruby22
