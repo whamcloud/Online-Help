@@ -32,6 +32,7 @@ vendor/cache: Gemfile Gemfile.lock
 	touch $@
 
 install_build_deps:
+	yum -y install epel-release
 	yum -y install npm rubygem-bundler ruby-devel gcc autoconf \
 		       automake libtool yum-plugin-copr zlib-devel
 	#yum -y copr enable managerforlustre/CentOS_Ruby22
