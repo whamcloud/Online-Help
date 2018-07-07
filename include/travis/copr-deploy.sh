@@ -16,6 +16,7 @@ build() {
     yum -y install rpm-build rpmdevtools copr-cli yum-utils git make python-setuptools npm
     echo 'travis_fold:end:yum'
     cd "${1:-/build}"
+    make install_build_deps
     make DRYRUN=false iml_copr_build
 
 }
@@ -26,6 +27,7 @@ build_srpm() {
     yum -y install rpm-build rpmdevtools copr-cli yum-utils git make python-setuptools npm
     echo 'travis_fold:end:yum'
     cd "${1:-/build}"
+    make install_build_deps
     make DRYRUN=false UNPUBLISHED=true iml_copr_build
 }
 
