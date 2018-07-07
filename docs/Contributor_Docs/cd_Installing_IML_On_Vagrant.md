@@ -99,6 +99,16 @@ The interfaces can be configured automatically by running the following script:
  vagrant provision mds1 mds2 oss1 oss2 --provision-with configure-lustre-network
 ```
 
+## Continue with Setup
+
+Select the following options to continue setting up the filesystem:
+
+### [Monitored ZFS](cd_Monitored_Only_ZFS.md)
+
+### [Monitored ldiskfs](cd_Monitored_Only_ldiskfs.md)
+
+### [Managed ZFS](cd_Managed_ZFS.md)
+
 ---
 
 [Top of page](#installing-iml-on-vagrant)
