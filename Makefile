@@ -32,7 +32,7 @@ vendor/cache: Gemfile Gemfile.lock
 	touch $@
 
 install_build_deps:
-	yum -y install nodejs rubygem-bundler ruby-devel gcc autoconf \
+	yum -y install npm rubygem-bundler ruby-devel gcc autoconf \
 		       automake libtool yum-plugin-copr zlib-devel
 	#yum -y copr enable managerforlustre/CentOS_Ruby22
 	curl https://copr.fedorainfracloud.org/coprs/managerforlustre/CentOS_Ruby22/repo/epel-7/managerforlustre-CentOS_Ruby22-epel-7.repo -o /etc/yum.repos.d/ruby.repo
