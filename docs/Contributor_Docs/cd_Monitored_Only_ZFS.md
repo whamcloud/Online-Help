@@ -16,17 +16,25 @@ ZFS can now be installed on each mds and oss node.
 vagrant provision mds1 mds2 oss1 oss2 --provision-with install-lustre-zfs
 ```
 
+## Creating pools
+
+Run the following provision script to create pools on each mds and oss node:
+
+```bash
+vagrant provision mds1 mds2 oss1 oss2 --provision-with create-pools
+```
+
 ## Creating a monitored only zfs based Lustre filesystem
 
 Run the following vagrant provision script to setup the ZFS monitored only filesystem:
 
 ```bash
-vagrant provision mds1 mds2 oss1 oss2 --provision-with create-monitored-zfs-filesystem
+vagrant provision mds1 mds2 oss1 oss2 --provision-with create-zfs-fs
 ```
 
 After the provisioning script runs successfully, use the IML GUI to scan for the filesystem:
 
-> Configuration -> Servers -> `Detect File Systems`. 
+> Configuration -> Servers -> `Detect File Systems`.
 
 Click the `Select All` button to select all servers and finally, click on the `Detect File Systems` button to initiate the scan. The filesystem will be listed on the `filesystems` page when the scan completes.
 
