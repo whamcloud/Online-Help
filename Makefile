@@ -27,7 +27,7 @@ $(subst .html,%html,$(HTML_FILES)): vendor/cache $(SOURCES)
 view: targetdir
 	google-chrome-stable --new-window file://$$PWD/targetdir/index.html
 
-vendor/cache: Gemfile Gemfile.lock
+vendor/cache: Gemfile Gemfile.lock install_build_deps
 	bundle install --path vendor/cache
 	touch $@
 
