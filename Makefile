@@ -2,6 +2,11 @@ NAME            := iml-online-help
 PACKAGE_VERSION := 2.4.1
 PACKAGE_RELEASE := 1
 
+ifeq ($(UNPUBLISHED),true)
+  SCM_COMMIT_NUMBER	:= $(shell git rev-list HEAD | wc -l)
+  PACKAGE_RELEASE := $(SCM_COMMIT_NUMBER).$(PACKAGE_RELEASE)
+endif
+
 BASEURL ?= $(PWD)/targetdir
 
 MD_FILES    := $(shell find docs -name \*.md)
