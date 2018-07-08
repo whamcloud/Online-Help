@@ -4,7 +4,7 @@
 
 **In this Chapter:**
 
-* [Installing Integrated Manager for Lustre software](#installing-manager-for-lustre-software)
+* [Installing Integrated Manager for Lustre software](#installing-integrated-manager-for-lustre-software)
 * [Integrated Manager for Lustre software Configuration Settings](#manager-for-lustre-software-configuration-settings)
 * [Editing Integrated Manager for Lustre software Configuration Settings](#editing-manager-for-lustre-software-configuration-settings)
 
