@@ -256,7 +256,7 @@ Now that the necessary steps are complete, a filesystem can be created. To creat
 
     To add an additional MDT, click the check-box. Then at the drop-down menu, select the additional MDT target or targets to be used. At the end of this process, after creating the file system, you will enter a command to configure this MDT.
 
-    **Note:** You can also add additional MDTs after the file system has been created; see [Add additional Metadata Targets](Advanced_Topics_10_0.md/#10.3). Any added MDT you create will be unavailable for use as an OST.
+    **Note:** You can also add additional MDTs after the file system has been created; see [Add additional Metadata Targets](Advanced_Topics_11_0.md/#10.3). Any added MDT you create will be unavailable for use as an OST.
 1. At step 4, choose the object storage targets (OSTs) for the file system by checking the boxes next to the targets to be included in the system.
 
     ![OST](md_Graphics/add_filesystem_step_4.png)
