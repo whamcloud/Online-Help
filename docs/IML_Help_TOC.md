@@ -14,6 +14,7 @@
 - [Detecting and monitoring existing Lustre file systems](Detect_and_monitor_existing_LFS_7_0.md)
 - [Creating and Managing ZFS-based Lustre file systems](Create_and_manage_ZFS_based_LFS_8_0.md)
 - [Graphical User Interface](Graphical_User_Interface_9_0.md)
+- [How to create offline repos for IML {{site.version}}](cd_Create_Offline_Repos.md)
 - [Advanced topics](Advanced_Topics_10_0.md)
 - [Using the Integrated Manager for Lustre software command line interface](Using_IML_CLI_11_0.md)
 - [Errors and troubleshooting](Errors_Troubleshooting_12_0.md)
