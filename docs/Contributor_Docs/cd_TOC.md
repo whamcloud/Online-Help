@@ -59,13 +59,3 @@
 1.  [How to debug rust tests](cd_Debugging_Rust_Tests.md)
 
 1.  [How to debug a running nodejs process in vagrant](cd_Debugging_Node_In_Vagrant.md)
-
----
-
-## Resources
-
-1.  [Things to Learn](cd_Things_To_Learn.md)
-
-1.  [Git Reference](cd_Git_Reference.md)
-
-1.  [NPM and Yarn](cd_NPM_And_Yarn.md)
