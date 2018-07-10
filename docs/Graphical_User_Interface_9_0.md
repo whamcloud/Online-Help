@@ -53,7 +53,7 @@ This window identifies the:
 - Overall file system capacity and free space
 
 
-This window also identifies the volume(s), primary server(s), and failover server(s) for the MGS, MDT(s) and all OST(s). From this window you can [Update Advanced Settings](Advanced_Topics_10_0.md/#10.1) and
+This window also identifies the volume(s), primary server(s), and failover server(s) for the MGS, MDT(s) and all OST(s). From this window you can [Update Advanced Settings](Advanced_Topics_11_0.md/#10.1) and
  [View Client Mount Information](Creating_new_lustre_fs_3_0.md/#3.11).
 
 

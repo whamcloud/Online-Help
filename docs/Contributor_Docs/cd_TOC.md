@@ -54,8 +54,6 @@
 
 1.  [Setup Power Control on a Vagrant virtual cluster](cd_Setting_Up_Power_Control.md)
 
-1.  [How to create offline repos for IML {{site.version}}](cd_Create_Offline_Repos.md)
-
 1.  [How to debug rust tests](cd_Debugging_Rust_Tests.md)
 
 1.  [How to debug a running nodejs process in vagrant](cd_Debugging_Node_In_Vagrant.md)

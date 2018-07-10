@@ -1,8 +1,6 @@
-# <a name="Top"></a>How to create offline repos for IML {{site.version}}
+# How to create offline repos for IML {{site.version}}
 
-[**Software Contributor Documentation Table of Contents**](cd_TOC.md)
-
-![zfs](md_Graphics/installing_sm.jpg)
+[**Online Help Table of Contents**](IML_Help_TOC.md)
 
 The following is a procedure for creating local repos using a CentOS 7 VM.
 
@@ -83,4 +81,4 @@ The following is a procedure for creating local repos using a CentOS 7 VM.
 
 
 ---
-[Top of page](#Top)
+[Top of page](#how-to-create-offline-repos-for-iml-{{site.version | remove: '.'}})
