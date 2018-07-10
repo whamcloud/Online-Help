@@ -23,15 +23,7 @@ python scripts/fake_ipmi_vbox.py
     # Enter your computer password
 ```
 
-**Note** There is currently a bug that causes the fake_ipmi_vbox.py script to fail on the first run; the process will hang indefinitely. 
-
-To fix this, hit `ctrl+Z` to suspend the process. 
-
-Next, run `ps aux | grep "fake_ipmi"` to get the process number and kill the process by executing, `kill -9 <processId>`. 
-
-Once the process has been destroyed,
-
-Navigate to `Configuration->Power Control`. Add the following entries for each server:
+Once completed, navigate to `Configuration->Power Control`. Add the following entries for each server:
 
 |Server|	PDU |
 |--------|-------|
