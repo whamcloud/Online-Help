@@ -21,7 +21,7 @@ The Lustre® file system is an open-source, parallel file system, generally used
 
 ## Source Code
 Before accessing our source code repository for the first time, new contributors should have a good understanding of the tools and processes in place.
-* Become very familiar with [git](cd_Git_Reference.md).
+* Become very familiar with [git](https://git-scm.com/docs){:target="_blank"}.
 * Become familiar with the [IML codebase](https://github.com/whamcloud).
 * Learn the [IML contributor workflow](cd_Contributor_Workflow.md).
 * Understand How to Contribute to the [Frontend](cd_Contribute_To_Frontend.md) and/or [Backend](cd_Contribute_To_Backend.md) Code.
