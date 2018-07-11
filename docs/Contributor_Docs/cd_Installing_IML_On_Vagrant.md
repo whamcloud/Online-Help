@@ -51,14 +51,7 @@ Please refer to [https://github.com/whamcloud/vagrantfiles](https://github.com/w
 1. Install IML via `yum`
 
     ```bash
-    yum-config-manager --add-repo=yum-config-manager --add-repo=https://raw.githubusercontent.com/whamcloud/integrated-manager-for-lustre/master/chroma_support.repo
-    yum install -y python2-iml-manager
-    ```
-
-1. Run the setup command
-
-    ```bash
-    chroma-config setup admin lustre localhost
+    vagrant provision adm --provision-with install-iml-devel-copr
     ```
 
 1. Test that a connection can be made to IML by going to the following link in your browser: [https://localhost:8443](https://localhost:8443)
