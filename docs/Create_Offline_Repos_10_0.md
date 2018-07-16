@@ -4,7 +4,7 @@
 
 The following is a procedure for creating local repos using a CentOS 7 VM.
 
-1.  Check out a local copy of IML from github.
+1.  Check out a local copy of [IML from github](https://github.com/whamcloud/integrated-manager-for-lustre).
 
 1.  Navigate to the IML project dir.
 
