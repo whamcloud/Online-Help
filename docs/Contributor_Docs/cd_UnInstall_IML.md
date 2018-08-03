@@ -55,7 +55,7 @@
     1.  Stop the agent
 
         ```bash
-        systemctl stop chroma-agent
+        systemctl disable --now iml-storage-server.target
         ```
 
     1.  Remove the agent
