@@ -2,6 +2,7 @@
 
 prepare() {
 
+
     # shellcheck disable=SC2154
     openssl aes-256-cbc -K "$encrypted_253525cedcf6_key" -iv "$encrypted_253525cedcf6_iv" -in include/copr-mfl.enc -out include/copr-mfl -d
     curl -O https://raw.githubusercontent.com/m3t/travis_wait/master/travis_wait
