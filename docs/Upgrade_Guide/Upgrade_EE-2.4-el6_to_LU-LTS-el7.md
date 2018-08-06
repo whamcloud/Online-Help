@@ -1,5 +1,7 @@
 # Upgrading Intel® EE for Lustre 2.4.2.7 to Lustre {{site.lustre_version}} LTS and Integrated Manager for Lustre {{site.version}}
 
+[**Upgrade Guide**](ug_TOC.md)
+
 ## Introduction
 
 This document provides a description of how to upgrade an existing Lustre server file system installation from Intel® EE for Lustre version 2.4.2.7 running on the RHEL/CentOS 6 OS distribution to Lustre {{site.lustre_version}} LTS and Integrated Manager for Lustre version {{site.version}} running on RHEL/CentOS {{site.centos_version}}.
@@ -1037,8 +1039,8 @@ The `pcs config export` command can be useful as a cross reference when restorin
 1.  Set the location constraints for each resource:
 
     ```bash
-    pcs constraint location <resource> prefers <primary node name>=20
-    pcs constraint location <resource> prefers <secondary node name>=10
+    cibadmin -o constraints -C -X '<rsc_location id="<resource>-primary" node="<primary node name>" rsc="<resource>" score="20" />'
+    cibadmin -o constraints -C -X '<rsc_location id="<resource>-secondary" node="<secondary node name>" rsc="<resource>" score="10" />'
     ```
 
     The information for each constraint is acquired from the CIB XML backup as follows:
@@ -1053,12 +1055,12 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
     ```bash
     # Constraints for an MGS resource called MGS_32834e:
-    pcs constraint location MGS_32834e prefers ct6-mds1.lfs.intl=20
-    pcs constraint location MGS_32834e prefers ct6-mds2.lfs.intl=10
+    cibadmin -o constraints -C -X '<rsc_location id="MGS_32834e-primary" node="ct6-mds1.lfs.intl" rsc="MGS_32834e" score="20" />'
+    cibadmin -o constraints -C -X '<rsc_location id="MGS_32834e-secondary" node="ct6-mds2.lfs.intl" rsc="MGS_32834e" score="10" />'
 
     # Constraints for an MDT resource called demo-MDT0000_802c1b:
-    pcs constraint location demo-MDT0000_802c1b prefers ct6-mds2.lfs.intl=20
-    pcs constraint location demo-MDT0000_802c1b prefers ct6-mds1.lfs.intl=10
+    cibadmin -o constraints -C -X '<rsc_location id="demo-MDT0000_802c1b-primary" node="ct6-mds2.lfs.intl" rsc="demo-MDT0000_802c1b" score="20" />'
+    cibadmin -o constraints -C -X '<rsc_location id="demo-MDT0000_802c1b-secondary" node="ct6-mds1.lfs.intl" rsc="demo-MDT0000_802c1b" score="10" />'
     ```
 
 1.  Create the mount points for the storage targets. If not, the resource agent, `ocf:chroma:Target` will fail. The expected mount points can be derived from the target configuration files in `/var/lib/chroma/targets/*`, or the backup copes of these files using the following script:
