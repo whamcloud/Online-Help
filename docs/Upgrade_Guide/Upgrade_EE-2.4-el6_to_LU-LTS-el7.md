@@ -246,19 +246,19 @@ Also note that the manager server distribution includes a default repository def
     cat >/tmp/lustre-repo.conf <<\__EOF
     [lustre-server]
     name=lustre-server
-    baseurl=https://downloads.hpdd.intel.com/public/lustre/latest-release/el7/server
+    baseurl=https://downloads.whamcloud.com/public/lustre/latest-release/el7/server
     exclude=*debuginfo*
     gpgcheck=0
 
     [lustre-client]
     name=lustre-client
-    baseurl=https://downloads.hpdd.intel.com/public/lustre/latest-release/el7/client
+    baseurl=https://downloads.whamcloud.com/public/lustre/latest-release/el7/client
     exclude=*debuginfo*
     gpgcheck=0
 
     [e2fsprogs-wc]
     name=e2fsprogs-wc
-    baseurl=https://downloads.hpdd.intel.com/public/e2fsprogs/latest/el7
+    baseurl=https://downloads.whamcloud.com/public/e2fsprogs/latest/el7
     exclude=*debuginfo*
     gpgcheck=0
     __EOF
@@ -414,10 +414,10 @@ pcs config export pcs-commands | pcs-commands-verbose
 
 However, it is **_not_** a suitable replacement for a backup of the running configuration, and there are several issues with the resulting output. In particular:
 
-* The generated commands assume that all of the nodes in the pacemaker cluster have been reinitialized and are being upgraded simultaneously. This means that servers cannot be upgraded one at a time, and will require a full outage of the nodes in the HA cluster.
-* If moving from an older OS version to a newer one, some of the naming conventions have changed and will not be captured in the command list. Specifically, the node names in the "backup" may not have fully qualified domain names. It is recommended that clusters use fully qualified domain names, so this has to be factored into the restore process and edits made to the output.
-* The command does not correctly export node attributes.
-* The command output uses colour formatting when available, even when the output is directed to a file. This can lead to files that contain spurious escape sequences, causing syntax errors.
+- The generated commands assume that all of the nodes in the pacemaker cluster have been reinitialized and are being upgraded simultaneously. This means that servers cannot be upgraded one at a time, and will require a full outage of the nodes in the HA cluster.
+- If moving from an older OS version to a newer one, some of the naming conventions have changed and will not be captured in the command list. Specifically, the node names in the "backup" may not have fully qualified domain names. It is recommended that clusters use fully qualified domain names, so this has to be factored into the restore process and edits made to the output.
+- The command does not correctly export node attributes.
+- The command output uses colour formatting when available, even when the output is directed to a file. This can lead to files that contain spurious escape sequences, causing syntax errors.
 
 The `pcs config export` command can be useful as a cross reference when restoring the desired configuration, but it is not used in the procedures documented here because of the issues indicated above.
 
