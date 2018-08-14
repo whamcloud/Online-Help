@@ -12,7 +12,7 @@ endif
 
 ifneq ($(filter iml_%,$(MAKECMDGOALS)),)
   COPR_CONFIG := --config include/copr-mfl
-  OWNER_PROJECT = managerforlustre/manager-for-lustre-devel
+  OWNER_PROJECT = managerforlustre/manager-for-lustre
 else
   PREREQ += create_copr_project
   # local settings
