@@ -4,7 +4,7 @@
 %{?!package_release: %global package_release @RELEASE@}
 
 Name:       iml-%{base_name}
-Version:    2.4.1
+Version:    2.5.0
 Release:    %{package_release}%{?dist}
 Summary:    IML Online Help
 License:    MIT
@@ -39,6 +39,9 @@ rm -rf %{buildroot}
 %{backcompatdir}
 
 %changelog
+* Tue Aug 14 2018 Joe Grund <jgrund@ddn.com> - 2.5.0-1
+- Bump IML refs to 4.0.7.
+
 * Fri Mar 16 2018 Joe Grund <joe.grund@intel.com> - 2.4.1-1
 - Remove *.md files
 - Move deployment dir to datadir.
