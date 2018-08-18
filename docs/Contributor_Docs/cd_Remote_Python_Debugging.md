@@ -16,16 +16,16 @@ pip install remote-pdb
 
 1. Locate the source for the service that is running. The source is most like under `/usr/lib/python2.7/site-packages/<service>`. Once located, open the file of interest and add the following lines to set a breakpoint:
 
-    ```python
-from remote_pdb import RemotePdb
-RemotePdb('127.0.0.1', 4444).set_trace()
-    ```
+   ```python
+   from remote_pdb import RemotePdb
+   RemotePdb('127.0.0.1', 4444).set_trace()
+   ```
 
 1. Restart the service:
 
-    ```bash
-systemctl restart <servicename>
-    ```
+   ```bash
+   systemctl restart <servicename>
+   ```
 
 ## Connecting To The Service
 
