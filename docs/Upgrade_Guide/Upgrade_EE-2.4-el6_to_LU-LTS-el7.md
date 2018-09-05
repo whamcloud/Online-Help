@@ -1043,7 +1043,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     cibadmin -o constraints -C -X '<rsc_location id="<resource>-secondary" node="<secondary node name>" rsc="<resource>" score="10" />'
     ```
 
-    The information for each constraint is acquired from the CIB XML backup as follows:
+    Note that the id **must** have either `-primary` or `-secondary` following the resource's HA label. The information for each constraint is acquired from the CIB XML backup as follows:
 
     ```bash
     pcs -f $HOME/bck-`hostname`-*/cluster-cfg-`hostname`.xml constraint show
