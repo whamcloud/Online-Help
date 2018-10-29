@@ -984,7 +984,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     pcs stonith create st-fencing fence_chroma
     ```
 
-1.  Add the resources for each Lustre storage target. This requires the original resource name and target identifier assigned by Intel® Manager for Lustre. Both can be retrieved from the backup copy of the Pacemaker CIB XML file. **Replace `<resource name>` and `<target id>` in the script below with the appropriate values.** The syntax of the command to create a resource is as follows:
+1.  Add the resources for each Lustre storage target. This requires the original resource name and target identifier assigned by Integrated Manager for Lustre. Both can be retrieved from the backup copy of the Pacemaker CIB XML file. **Replace `<resource name>` and `<target id>` in the script below with the appropriate values.** The syntax of the command to create a resource is as follows:
 
     ```bash
     pcs resource create <resource name> ocf:chroma:Target \
