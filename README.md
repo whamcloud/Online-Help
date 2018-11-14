@@ -2,10 +2,10 @@
 
 ## IML Intro Video
 
-<div style="position: relative">
-  <img style="" src="docs/md_Graphics/iml_overview_title.png">
+<div role="img" aria-label="IML Intro Video" style="position: relative">
+  <img style="" alt="IML Overview Image" src="docs/md_Graphics/iml_overview_title.png">
   <a href="https://vimeo.com/user91737155/review/300826941/0f2d85591e" target="_blank">
-    <img style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" src="docs/md_Graphics/play_button.png" />
+    <img style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" alt="Play Button" src="docs/md_Graphics/play_button.png" />
   </a>
 </div>
 ## **Help Docs**
