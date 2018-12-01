@@ -4,6 +4,12 @@
 
 The following is a procedure for creating local repos using a CentOS 7 VM.
 
+1.  Install git and createrepo if they are not present:
+
+    ```bash
+    yum install -y git createrepo
+    ```
+
 1.  Check out a local copy of [IML from github](https://github.com/whamcloud/integrated-manager-for-lustre).
 
 1.  Navigate to the IML project dir.
@@ -17,10 +23,10 @@ The following is a procedure for creating local repos using a CentOS 7 VM.
 1.  Copy the `storage_server.repo` to `etc.yum.repos.d`:
 
     ```bash
-    cp ./integrated-manager-for-lustre/chroma-manager/storage_server.repo  /etc/yum.repos.d/
+    cp ./chroma-manager/storage_server.repo  /etc/yum.repos.d/
     ```
 
-1.  Create a dir to hold local repos and cd to it:
+1.  Create a dir to hold local repos and navigate to it:
 
     ```bash
     mkdir local_repos;
@@ -30,36 +36,36 @@ The following is a procedure for creating local repos using a CentOS 7 VM.
 1.  Run `reposync` for the repos we want to sync (You will see a few kmod-\* repos fail, this is expected):
 
     ```bash
-    sudo reposync -n --repoid=ngompa-dnf-el7 --repoid=e2fsprogs --repoid=managerforlustre-manager-for-lustre --repoid=lustre-client --repoid=lustre
+    reposync -n --repoid=ngompa-dnf-el7 --repoid=e2fsprogs --repoid=managerforlustre-manager-for-lustre --repoid=lustre-client --repoid=lustre
     ```
 
 1.  (Optional) You may want to sync EPEL and or CentOS Extras as well if you don't have them where you are deploying to:
 
     ```bash
-    sudo reposync -n --repoid=epel --repoid=extras
+    reposync -n --repoid=epel --repoid=extras
     ```
 
 1.  Use `createrepo` to create repomd (xml-rpm-metadata) repositories:
 
     ```bash
-    sudo createrepo ./ngompa-dnf-el7/
-    sudo createrepo ./e2fsprogs/
-    sudo createrepo ./lustre -x '*kmod-spl*' -x '*kmod-zfs*'
-    sudo createrepo ./lustre-client
-    sudo createrepo ./managerforlustre-manager-for-lustre/
+    createrepo ./ngompa-dnf-el7/
+    createrepo ./e2fsprogs/
+    createrepo ./lustre -x '*kmod-spl*' -x '*kmod-zfs*'
+    createrepo ./lustre-client
+    createrepo ./managerforlustre-manager-for-lustre/
     ```
 
 1.  (Optional) use `createrepo` for EPEL and CentOS Extras if you ran `reposync` for them earlier:
 
     ```bash
-    sudo createrepo ./epel
-    sudo createrepo ./extras
+    createrepo ./epel
+    createrepo ./extras
     ```
 
-1.  Tar the resulting dir:
+1.  Navigate out of local_repos and tar the resulting dir:
 
     ```bash
-    tar -czvf ../local_repos.tar.gz ./
+    tar -czvf local_repos.tar.gz ./local_repos
     ```
 
 1.  Take the IML tarball + the `local_repos.tar.gz` and move them onto the node planned for install.

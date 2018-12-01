@@ -10,11 +10,11 @@ jobs:
     - stage: test
       env: Type='mock build test'
       script:
-      - ./include/travis/run_in_centos7_docker.sh include/travis/mock_build_test.sh
+        - ./include/travis/run_in_centos7_docker.sh include/travis/mock_build_test.sh
     - stage: cd
       git:
         depth: 999999
-      env: 'Type=Continuous Deployment'
+      env: "Type=Continuous Deployment"
       script:
         - include/travis/copr-deploy.sh prepare
         - ./travis_wait "./include/travis/run_in_centos7_docker.sh include/travis/copr-deploy.sh build_srpm"
@@ -28,7 +28,7 @@ jobs:
         - nvm use 8
         - npm install -g npm@latest
         - bundle install --jobs=3 --retry=3
-      script: 
+      script:
         - node --version
         - npm --version
         - npm run postversion
@@ -42,7 +42,7 @@ jobs:
     - stage: deploy-copr
       env: Type='Copr deploy'
       before_deploy:
-      - include/travis/copr-deploy.sh prepare
+        - include/travis/copr-deploy.sh prepare
       deploy:
         skip_cleanup: true
         provider: script
@@ -54,6 +54,6 @@ stages:
   - name: cd
     if: branch = master AND type = push AND fork = false
   - name: deploy-npm
-    if: branch =~ ^v\d+\.\d+\.\d+$
+    if: branch =~ ^v\d+\.\d+\.\d+-1.*$
   - name: deploy-copr
     if: branch =~ ^v\d+\.\d+\.\d+-.+$

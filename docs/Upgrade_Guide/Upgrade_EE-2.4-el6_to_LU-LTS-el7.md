@@ -1,5 +1,7 @@
 # Upgrading Intel® EE for Lustre 2.4.2.7 to Lustre {{site.lustre_version}} LTS and Integrated Manager for Lustre {{site.version}}
 
+[**Upgrade Guide**](ug_TOC.md)
+
 ## Introduction
 
 This document provides a description of how to upgrade an existing Lustre server file system installation from Intel® EE for Lustre version 2.4.2.7 running on the RHEL/CentOS 6 OS distribution to Lustre {{site.lustre_version}} LTS and Integrated Manager for Lustre version {{site.version}} running on RHEL/CentOS {{site.centos_version}}.
@@ -244,19 +246,19 @@ Also note that the manager server distribution includes a default repository def
     cat >/tmp/lustre-repo.conf <<\__EOF
     [lustre-server]
     name=lustre-server
-    baseurl=https://downloads.hpdd.intel.com/public/lustre/latest-release/el7/server
+    baseurl=https://downloads.whamcloud.com/public/lustre/latest-release/el7/server
     exclude=*debuginfo*
     gpgcheck=0
 
     [lustre-client]
     name=lustre-client
-    baseurl=https://downloads.hpdd.intel.com/public/lustre/latest-release/el7/client
+    baseurl=https://downloads.whamcloud.com/public/lustre/latest-release/el7/client
     exclude=*debuginfo*
     gpgcheck=0
 
     [e2fsprogs-wc]
     name=e2fsprogs-wc
-    baseurl=https://downloads.hpdd.intel.com/public/e2fsprogs/latest/el7
+    baseurl=https://downloads.whamcloud.com/public/e2fsprogs/latest/el7
     exclude=*debuginfo*
     gpgcheck=0
     __EOF
@@ -412,10 +414,10 @@ pcs config export pcs-commands | pcs-commands-verbose
 
 However, it is **_not_** a suitable replacement for a backup of the running configuration, and there are several issues with the resulting output. In particular:
 
-* The generated commands assume that all of the nodes in the pacemaker cluster have been reinitialized and are being upgraded simultaneously. This means that servers cannot be upgraded one at a time, and will require a full outage of the nodes in the HA cluster.
-* If moving from an older OS version to a newer one, some of the naming conventions have changed and will not be captured in the command list. Specifically, the node names in the "backup" may not have fully qualified domain names. It is recommended that clusters use fully qualified domain names, so this has to be factored into the restore process and edits made to the output.
-* The command does not correctly export node attributes.
-* The command output uses colour formatting when available, even when the output is directed to a file. This can lead to files that contain spurious escape sequences, causing syntax errors.
+- The generated commands assume that all of the nodes in the pacemaker cluster have been reinitialized and are being upgraded simultaneously. This means that servers cannot be upgraded one at a time, and will require a full outage of the nodes in the HA cluster.
+- If moving from an older OS version to a newer one, some of the naming conventions have changed and will not be captured in the command list. Specifically, the node names in the "backup" may not have fully qualified domain names. It is recommended that clusters use fully qualified domain names, so this has to be factored into the restore process and edits made to the output.
+- The command does not correctly export node attributes.
+- The command output uses colour formatting when available, even when the output is directed to a file. This can lead to files that contain spurious escape sequences, causing syntax errors.
 
 The `pcs config export` command can be useful as a cross reference when restoring the desired configuration, but it is not used in the procedures documented here because of the issues indicated above.
 
@@ -982,7 +984,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
     pcs stonith create st-fencing fence_chroma
     ```
 
-1.  Add the resources for each Lustre storage target. This requires the original resource name and target identifier assigned by Integrated Manager for Lustre. Both can be retrieved from the backup copy of the Pacemaker CIB XML file. The syntax of the command to create a resource is as follows:
+1.  Add the resources for each Lustre storage target. This requires the original resource name and target identifier assigned by Integrated Manager for Lustre. Both can be retrieved from the backup copy of the Pacemaker CIB XML file. **Replace `<resource name>` and `<target id>` in the script below with the appropriate values.** The syntax of the command to create a resource is as follows:
 
     ```bash
     pcs resource create <resource name> ocf:chroma:Target \
@@ -1037,11 +1039,11 @@ The `pcs config export` command can be useful as a cross reference when restorin
 1.  Set the location constraints for each resource:
 
     ```bash
-    pcs constraint location <resource> prefers <primary node name>=20
-    pcs constraint location <resource> prefers <secondary node name>=10
+    cibadmin -o constraints -C -X '<rsc_location id="<resource>-primary" node="<primary node name>" rsc="<resource>" score="20" />'
+    cibadmin -o constraints -C -X '<rsc_location id="<resource>-secondary" node="<secondary node name>" rsc="<resource>" score="10" />'
     ```
 
-    The information for each constraint is acquired from the CIB XML backup as follows:
+    Note that the id **must** have either `-primary` or `-secondary` following the resource's HA label. The information for each constraint is acquired from the CIB XML backup as follows:
 
     ```bash
     pcs -f $HOME/bck-`hostname`-*/cluster-cfg-`hostname`.xml constraint show
@@ -1053,12 +1055,12 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
     ```bash
     # Constraints for an MGS resource called MGS_32834e:
-    pcs constraint location MGS_32834e prefers ct6-mds1.lfs.intl=20
-    pcs constraint location MGS_32834e prefers ct6-mds2.lfs.intl=10
+    cibadmin -o constraints -C -X '<rsc_location id="MGS_32834e-primary" node="ct6-mds1.lfs.intl" rsc="MGS_32834e" score="20" />'
+    cibadmin -o constraints -C -X '<rsc_location id="MGS_32834e-secondary" node="ct6-mds2.lfs.intl" rsc="MGS_32834e" score="10" />'
 
     # Constraints for an MDT resource called demo-MDT0000_802c1b:
-    pcs constraint location demo-MDT0000_802c1b prefers ct6-mds2.lfs.intl=20
-    pcs constraint location demo-MDT0000_802c1b prefers ct6-mds1.lfs.intl=10
+    cibadmin -o constraints -C -X '<rsc_location id="demo-MDT0000_802c1b-primary" node="ct6-mds2.lfs.intl" rsc="demo-MDT0000_802c1b" score="20" />'
+    cibadmin -o constraints -C -X '<rsc_location id="demo-MDT0000_802c1b-secondary" node="ct6-mds1.lfs.intl" rsc="demo-MDT0000_802c1b" score="10" />'
     ```
 
 1.  Create the mount points for the storage targets. If not, the resource agent, `ocf:chroma:Target` will fail. The expected mount points can be derived from the target configuration files in `/var/lib/chroma/targets/*`, or the backup copes of these files using the following script:

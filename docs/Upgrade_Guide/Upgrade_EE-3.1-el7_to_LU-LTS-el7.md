@@ -1,5 +1,7 @@
 # Upgrading Intel® EE for Lustre 3.1.1.0 to Lustre {{site.lustre_version}} LTS and Integrated Manager for Lustre {{site.version}}
 
+[**Upgrade Guide**](ug_TOC.md)
+
 ## Introduction
 
 This document provides a description of how to upgrade an existing Lustre server file system installation from Intel® EE for Lustre version 3.1.1.0 running on the RHEL/CentOS 7.x OS distribution to Lustre {{site.lustre_versionx}} LTS and Integrated Manager for Lustre version {{site.version}} running on RHEL/CentOS {{site.centos_version}}.

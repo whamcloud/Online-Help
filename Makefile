@@ -1,13 +1,11 @@
 NAME            := iml-online-help
-PACKAGE_VERSION := 2.4.1
+PACKAGE_VERSION := 2.5.1
 PACKAGE_RELEASE := 1
 
 ifeq ($(UNPUBLISHED),true)
   SCM_COMMIT_NUMBER	:= $(shell git rev-list HEAD | wc -l)
   PACKAGE_RELEASE := $(SCM_COMMIT_NUMBER).$(PACKAGE_RELEASE)
 endif
-
-BASEURL ?= $(PWD)/targetdir
 
 MD_FILES    := $(shell find docs -name \*.md)
 OTHER_FILES := $(shell find docs -name \*.png -name \*.css)
@@ -20,12 +18,9 @@ DISTCLEAN   += vendor
 # the ".html" for "%html" to effectively turn this into a multiple
 # matching target pattern rule
 $(subst .html,%html,$(HTML_FILES)): vendor/cache $(SOURCES)
-	bundle exec jekyll build --destination targetdir --baseurl \
-	    $(BASEURL) --incremental
+	bundle exec jekyll build --destination targetdir --baseurl '/help' \
+	    --incremental
 	find targetdir -name \*.md -print0 | xargs -0 rm -f
-
-view: targetdir
-	google-chrome-stable --new-window file://$$PWD/targetdir/index.html
 
 vendor/cache: Gemfile Gemfile.lock
 	bundle install --path vendor/cache
