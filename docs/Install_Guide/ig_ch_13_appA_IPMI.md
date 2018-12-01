@@ -5,7 +5,7 @@
 Procedures provided in this appendix can be used to establish a level of
 confidence that your IPMI implementation is functional. Note that IPMI
 implementations can be problematic, and while these procedures can
-provide a level of confidence, absolute assurance from Intel® that
+provide a level of confidence, absolute assurance that
 your particular IPMI implementation will operate error-free is not
 possible.
 

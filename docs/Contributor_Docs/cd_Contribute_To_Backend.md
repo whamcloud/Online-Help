@@ -20,7 +20,7 @@
 
     ![plugin_django](md_Graphics/plugin_django.png)
 * To modify and test any Backend changes to IML, it will be necessary to install a working version of IML.
-    * Create a **Vagrant** virtual cluster outined here: [Install IML on a Vagrant Virtual Cluster](cd_Installing_IML_On_Vagrant.md).
+    * Create a **Vagrant** virtual cluster outlined here: [Install IML on a Vagrant Virtual Cluster](cd_Installing_IML_On_Vagrant.md).
 
     * Be sure to follow the steps for **Adding Servers**.
 
@@ -35,14 +35,14 @@ For the desciption that follows, it will be assumed that the Vagrant file and vi
 ```
 ## Contributing to the IML Backend
 ### Clone the desired Backend repository, for example, the main backend repository: 
- [intel-manager-for-lustre](https://github.com/intel-hpdd/intel-manager-for-lustre)
+ [integrated-manager-for-lustre](https://github.com/whamcloud/integrated-manager-for-lustre)
 ```
 cd ~/vagrant-projects/vhpc
-git clone git@github.com:intel-hpdd/intel-manager-for-lustre.git
+git clone git@github.com:whamcloud/integrated-manager-for-lustre.git
 ```
 ### Create a branch, always work on a branch.
 ```
-cd intel-manager-for-lustre
+cd integrated-manager-for-lustre
 git checkout -b  my-fix
 ```
 ### Validate that the correct branch has been selected.
@@ -51,7 +51,7 @@ git branch
 ```
 ### Work on the branch.
 ```
-Use VS Code and open ~/vagrant-projects/vhpc/intel-manager-for-lustre
+Use VS Code and open ~/vagrant-projects/vhpc/integrated-manager-for-lustre
 ```
 ## As an Example, make a small python code change.
 The code that will be changed will modify the description displayed when rebooting a server. See the form below and observe the line that states: 
@@ -62,7 +62,7 @@ The code that will be changed will modify the description displayed when rebooti
 
 In VS Code, locate and edit the following file: **host.py**
 ```
-intel-manager-for-lustre 
+integrated-manager-for-lustre
   > chroma-manager
     > chroma_core
       > models
@@ -95,9 +95,9 @@ Log in as root
 ### Stop the IML running services
 * chroma-config stop
 
-Go to the cloned **intel-manager-for-lustre** repo on the /vagrant mount point where the code edits were made.
+Go to the cloned **integrated-manager-for-lustre** repo on the /vagrant mount point where the code edits were made.
 ```
-cd /vagrant/intel-manager-for-lustre
+cd /vagrant/integrated-manager-for-lustre
 ```
 
 ### Preserve the original files that came with the initial IML install.
@@ -112,7 +112,7 @@ mv host.pyo host.pyo-orig
 
 ### Create symbolic links to point to the changes.
 ```
-ln -s /vagrant/intel-manager-for-lustre/chroma-manager/chroma_core/models/host.py host.py 
+ln -s /vagrant/integrated-manager-for-lustre/chroma-manager/chroma_core/models/host.py host.py 
 ```
 
 ### Start the IML services
@@ -168,7 +168,7 @@ It is possible that the browser cache may require refreshing for the change to t
 
 ### On your local machine, i.e., not the vagrant VM:
 
-* cd ~/vagrant-projects/vhpc/intel-manager-for-lustre
+* cd ~/vagrant-projects/vhpc/integrated-manager-for-lustre
 
 Ensure you are on the proper branch
 * git branch

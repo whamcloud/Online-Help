@@ -21,7 +21,7 @@
     
 * To modify and test any Frontend changes to IML, it will be necessary to install a working version of IML.
 
-    * Create a **Vagrant** virtual cluster outined here: [Install IML on a Vagrant Virtual Cluster](cd_Installing_IML_On_Vagrant.md).
+    * Create a **Vagrant** virtual cluster outlined here: [Install IML on a Vagrant Virtual Cluster](cd_Installing_IML_On_Vagrant.md).
 
     * Create a Shared Mount from the guest machine to the vagrant virtual machine.
         * Follow these [Instructions](cd_Create_Vagrant_Mount.md)
@@ -33,10 +33,10 @@ For the desciption that follows, it will be assumed that the Vagrant file and vi
 ~/vagrant-projects/vhpc 
 ```
 ## Contributing to the IML Frontend
-### Clone the Frontend repo, aka, the [GUI](https://github.com/intel-hpdd/GUI) repo
+### Clone the Frontend repo, aka, the [GUI](https://github.com/whamcloud/GUI) repo
 ```
 cd ~/vagrant-projects/vhpc
-git clone git@github.com:intel-hpdd/GUI.git 
+git clone git@github.com:whamcloud/GUI.git 
 ```
 ### Create a branch, always work on a branch.
 ```

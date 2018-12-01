@@ -172,7 +172,7 @@ rpm -qR lustre-client-modules | grep 'kernel'
 # Use Grub to set the desired kernel
 ```
 awk -F\' '$1=="menuentry " {print i++ " : " $2}' /etc/grub2.cfg
-# 0 : CentOS Linux (3.10.0-693.2.2.el7_lustre.x86_64) 7 (Core)
+# 0 : CentOS Linux ({{site.lustre_kernel_version}}_lustre.x86_64) 7 (Core)
 # 1 : CentOS Linux (3.10.0-514.6.1.el7.x86_64) 7 (Core)
 # 2 : CentOS Linux (0-rescue-8018a73b69a84a48bde20d088bca3238) 7 (Core)
 
@@ -190,11 +190,11 @@ rpm -q kernel
 
 ### Example Output:
 ```
-kernel-2.6.32-431.1.2.0.1.el6.x86_64
-kernel-2.6.32-431.5.1.el6_lustre.x86_64
+kernel-{{site.lustre_kernel_version}}.x86_64
+kernel-{{site.lustre_kernel_version}}_lustre.x86_64
 
 This can take a while.
-yum remove kernel-2.6.32-431.5.1.el6_lustre.x86_64
+yum remove kernel-{{site.lustre_kernel_version}}_lustre.x86_64
 ```
 
 ---
