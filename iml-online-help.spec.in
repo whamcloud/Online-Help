@@ -4,7 +4,7 @@
 %{?!package_release: %global package_release @RELEASE@}
 
 Name:       iml-%{base_name}
-Version:    2.5.1
+Version:    2.5.2
 Release:    %{package_release}%{?dist}
 Summary:    IML Online Help
 License:    MIT
@@ -39,6 +39,10 @@ rm -rf %{buildroot}
 %{backcompatdir}
 
 %changelog
+* Wed Dec 12 2018 Joe Grund <jgrund@whamcloud.com> - 2.5.2-1
+- Bump IML refs to 4.0.9
+- Bump Lustre refs
+
 * Fri Aug 31 2018 Joe Grund <jgrund@whamcloud.com> - 2.5.1-1
 - Bump IML refs to 4.0.8.
 
