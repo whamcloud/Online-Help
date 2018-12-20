@@ -8,7 +8,7 @@ Sometimes it is helpful to remotely debug a running python process. To perform r
 
 ```bash
 yum install -y epel-release
-yum install -y python-pip telnet
+yum install -y python-pip socat
 pip install remote-pdb
 ```
 
@@ -32,7 +32,7 @@ pip install remote-pdb
 When the current line of execution hits the breakpoint the service will pause and no further execution will take place. When this happens, the pdb session can be established by doing:
 
 ```bash
-telnet 127.0.0.1 4444
+socat readline tcp:127.0.0.1:4444
 ```
 
 Once connected, pdb can be used to control the execution of the service.
