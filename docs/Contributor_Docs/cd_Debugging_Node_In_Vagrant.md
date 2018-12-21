@@ -7,24 +7,48 @@ running on a vagrant node.
 
 This guide will walk through that process.
 
-1.  Install `node-inspector` on the vagrant node.
+Once the process is in debug mode, Connections are possible via the browser or cli.
 
-    ```bash
-    npm i -g node-inspector
-    ```
+## Browser
 
-1.  Put the process into debug mode by sending a `USR1` signal:
+1. Put the process into debug mode by sending a `USR1` signal:
 
-    ```bash
-    systemctl kill -s SIGUSR1 SERVICE_NAME_HERE
-    ```
+   ```bash
+   systemctl kill -s SIGUSR1 SERVICE_NAME_HERE
+   ```
 
-1.  start `node-inspector`:
+1. Install `node-inspector` on the vagrant node.
 
-    ```bash
-    node-inspector
-    ```
+   ```bash
+   npm i -g node-inspector
+   ```
 
-1.  On the host, connect to `node-inspector` using the ip address the vagrant node is running on (likely 0.0.0.0) and the port node-inspector has started on (likely 8080) using chrome.
+1. start `node-inspector`:
 
-1.  This should load the app in an old version of devtools and will halt the code at first execution.
+   ```bash
+   node-inspector
+   ```
+
+1. On the host, connect to `node-inspector` using the ip address the vagrant node is running on (likely 0.0.0.0) and the port node-inspector has started on (likely 8080) using chrome.
+
+1. This should load the app in an old version of devtools and will halt the code at first execution.
+
+## CLI
+
+1. Put the process into debug mode by sending a `USR1` signal:
+
+   ```bash
+   systemctl kill -s SIGUSR1 SERVICE_NAME_HERE
+   ```
+
+1. Get the status output of the main service and note the main PID.
+
+   ```bash
+   systemctl status SERVICE_NAME_HERE
+   ```
+
+1. Start the debugger
+
+   ```bash
+   node debug -p PID_HERE
+   ```
