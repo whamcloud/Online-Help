@@ -21,20 +21,16 @@ chroma-manager.conf template in `/etc/httpd/conf.d/`. Before upgrading
 your installation or restarting your manager node, make sure you backup
 any modifications to this file first. Note that IML >= 3.x replaces apache with nginx.
 
-1.  If your currently installed software version is between 2.0.0.0, update to
+1.  If your currently installed software version is 2.0.0.0 , update to
+    version 2.0.1.1 first. Then perform the following consecutive
+    updates in the remaining steps.
+
+1.  If your currently installed software version is 2.0.1.1, update to
     version 2.2.0.2 first. Then perform the following consecutive
     updates in the remaining steps.
 
-1.  If your currently installed software version is 2.2.0.2, update to
-    version 2.3 first. Then perform the following consecutive
-    updates in the remaining steps.
-
-1.  If your currently installed software version is 2.3,
-    update to version 2.4.2.7 first. Then perform the following consecutive
-    updates in the remaining steps.
-
-1.  If your currently installed software version is 2.4.2.7,
-    update directly to version {{site.version}} using [these instructions.](../Upgrade_Guide/Upgrade_EE-2.4-el6_to_LU-LTS-el7.md)
+1.  If your currently installed software version is 2.2.0.2 or later,
+    update directly to version {{site.version}}.
 
 ### IML 3.x.x Upgrades
 
