@@ -8,12 +8,6 @@ for Lustre software.
 **Note**: Updates are only supported for official releases. Updates
 from, or to, test releases are not specifically supported.
 
-Upgrading Integrated Manager for Lustre software and restarting the manager
-server will overwrite any changes previously made to the
-chroma-manager.conf template in `/etc/httpd/conf.d/`. Before upgrading
-your installation or restarting your manager node, make sure you backup
-any modifications to this file first.
-
 Due to a dependency in the update process in previous releases, please
 take note of the following update path. Please perform the following
 update in the order listed, based on your currently installed version of
@@ -21,27 +15,21 @@ Integrated Manager for Lustre software.
 
 ### IML 2.x.x Upgrades
 
-1.  If your currently installed software version is 2.0.0.0 , update to
-    version 2.0.1.1 first. Then perform the following consecutive
-    updates in the remaining steps.
+Upgrading Integrated Manager for Lustre software and restarting the manager
+server will overwrite any changes previously made to the
+chroma-manager.conf template in `/etc/httpd/conf.d/`. Before upgrading
+your installation or restarting your manager node, make sure you backup
+any modifications to this file first. Note that IML >= 3.x replaces apache with nginx.
 
-1.  If your currently installed software version is 2.0.1.1, update to
+1.  If your currently installed software version is between 2.0.0.0, update to
     version 2.2.0.2 first. Then perform the following consecutive
     updates in the remaining steps.
 
-1.  If your currently installed software version is 2.2.0.2,
-    update to version 2.3 first. Then perform the following consecutive
+1.  If your currently installed software version is 2.2.0.2, update to
+    version 2.3 first. Then perform the following consecutive
     updates in the remaining steps.
 
 1.  If your currently installed software version is 2.3,
-    update to version 2.4 first. Then perform the following consecutive
-    updates in the remaining steps.
-
-1.  If your currently installed software version is 2.4,
-    update to version 2.4.1.4 first. Then perform the following consecutive
-    updates in the remaining steps.
-
-1.  If your currently installed software version is 2.4.1.4,
     update to version 2.4.2.7 first. Then perform the following consecutive
     updates in the remaining steps.
 
@@ -50,15 +38,13 @@ Integrated Manager for Lustre software.
 
 ### IML 3.x.x Upgrades
 
-1.  If your currently installed software version is 3.0.0.0 , update to
-    version 3.0.1.4 first. Then perform the following consecutive
-    updates in the remaining steps.
+Upgrading Integrated Manager for Lustre software and restarting the manager
+server will overwrite any changes previously made to the
+chroma-manager.conf template in `/etc/nginx/conf.d/`. Before upgrading
+your installation or restarting your manager node, make sure you backup
+any modifications to this file first.
 
-1.  If your currently installed software version is 3.0.1.4, update to
-    version 3.1.0.2 first. Then perform the following consecutive
-    updates in the remaining steps.
-
-1.  If your currently installed software version is 3.1.0.2, update to
+1.  If your currently installed software version is between 3.0.x and 3.1.0.2, update to
     version 3.1.1 first. Then perform the following consecutive
     updates in the remaining steps.
 
@@ -69,10 +55,6 @@ Performing a version downgrade or rollback is not supported.
 
 To install an update of Integrated Manager for Lustre software on the manager
 server and then all file system managed servers, do the following:
-
-<div style="margin: 0 auto; width: 640px;">
-  <iframe src="https://player.vimeo.com/video/309949163" width="640" height="480" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-</div>
 
 1.  Stop the file system. To do this, click **Configuration** &gt;
     **File Systems**. Then under **Actions**, click **Stop**.
