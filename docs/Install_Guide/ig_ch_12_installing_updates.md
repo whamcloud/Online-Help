@@ -13,13 +13,17 @@ take note of the following update path. Please perform the following
 update in the order listed, based on your currently installed version of
 Integrated Manager for Lustre software.
 
-### IML 2.x.x Upgrades
-
 Upgrading Integrated Manager for Lustre software and restarting the manager
 server will overwrite any changes previously made to the
-chroma-manager.conf template in `/etc/httpd/conf.d/`. Before upgrading
-your installation or restarting your manager node, make sure you backup
-any modifications to this file first. Note that IML >= 3.x replaces apache with nginx.
+chroma-manager.conf template. Depending on the version of IML that is running,
+this template will reside in one of two places:
+
+1. Apache Config Directory: `/etc/httpd/conf.d/chroma-manager.conf`
+1. Nginx Config Directory: `/etc/nginx/conf.d/chroma-manager.conf`
+
+Make sure to backup this configuration file before performing any upgrades or restarting the manager node.
+
+### IML 2.x.x Upgrades
 
 1.  If your currently installed software version is 2.0.0.0 , update to
     version 2.0.1.1 first. Then perform the following consecutive
@@ -33,12 +37,6 @@ any modifications to this file first. Note that IML >= 3.x replaces apache with 
     update directly to version {{site.version}}.
 
 ### IML 3.x.x Upgrades
-
-Upgrading Integrated Manager for Lustre software and restarting the manager
-server will overwrite any changes previously made to the
-chroma-manager.conf template in `/etc/nginx/conf.d/`. Before upgrading
-your installation or restarting your manager node, make sure you backup
-any modifications to this file first.
 
 1.  If your currently installed software version is between 3.0.x and 3.1.0.2, update to
     version 3.1.1 first. Then perform the following consecutive
