@@ -24,7 +24,7 @@
 
 1.  [How to Contribute To the **Backend**](cd_Contribute_To_Backend.md)
 
-1.  [How to use module-tools](cd_module_tools)
+1.  [How to use module-tools](cd_module_tools.md)
 
 1.  [How to Create **Frontend** Unit Tests](cd_Create_Frontend_Unit_Tests.md)
 
@@ -44,23 +44,24 @@
 
 1.  [Managing Import Export Sequences of zpools within ZFS HA](cd_Managing_Import_Export_Sequences_Of_Zpools_Within_Zfs_HA.md)
 
-1. [Create a Monitored only ldiskfs Filesystem on a Vagrant virtual cluster](cd_Monitored_Only_ldiskfs.md)
+1.  [Create a Monitored only ldiskfs Filesystem on a Vagrant virtual cluster](cd_Monitored_Only_ldiskfs.md)
 
-1. [Models and Database Migrations](cd_Models_And_DB_Migrations.md)
+1.  [Models and Database Migrations](cd_Models_And_DB_Migrations.md)
 
 ---
+
 ## Resources
 
 1. [Create a Monitored only ZFS Filesystem on a Vagrant virtual cluster](cd_Monitored_Only_ZFS.md)
 
-1.  [Creating a Managed Lustre ZFS Filesystem on a Vagrant virtual cluster](cd_Managed_ZFS.md)
+1. [Creating a Managed Lustre ZFS Filesystem on a Vagrant virtual cluster](cd_Managed_ZFS.md)
 
-1.  [Setting up Lustre Clients](cd_Setting_Up_Clients.md)
+1. [Setting up Lustre Clients](cd_Setting_Up_Clients.md)
 
-1.  [Setup Power Control on a Vagrant virtual cluster](cd_Setting_Up_Power_Control.md)
+1. [Setup Power Control on a Vagrant virtual cluster](cd_Setting_Up_Power_Control.md)
 
-1.  [How to debug rust tests](cd_Debugging_Rust_Tests.md)
+1. [How to debug rust tests](cd_Debugging_Rust_Tests.md)
 
-1.  [How to debug a running nodejs process in vagrant](cd_Debugging_Node_In_Vagrant.md)
+1. [How to debug a running nodejs process in vagrant](cd_Debugging_Node_In_Vagrant.md)
 
-1.  [How To Debug A Running Python Process](cd_Remote_Python_Debugging.md)
+1. [How To Debug A Running Python Process](cd_Remote_Python_Debugging.md)

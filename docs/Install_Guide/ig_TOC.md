@@ -1,4 +1,5 @@
 # Integrated Manager for Lustre software
+
 # **Software Installation Guide**
 
 [**Help Docs Table of Contents**](../../README.md)
@@ -16,9 +17,7 @@
 - [Installing Integrated Manager for Lustre software on Intel® Xeon Phi™ Coprocessors](ig_ch_9_install_for_xeon_phi.md)
 - [General Troubleshooting](ig_ch_10_troubleshooting.md)
 - [Updating the Operating System](ig_ch_11_updating.md)
-- [Installing Updates to Integrated Manager for Lustre software](ig_ch_12_installing_updates.md)
-- [Appendix A - IPMI Checks](ig_ch_13_appA_IPMI.md)
-- [Appendix B - Backing up and Restoring Integrated Manager for Lustre software Server Software](ig_ch_14_appB_backup_restore.md)
-- [Appendix C - Backup and Recovery of Servers Managed by Integrated Manager for Lustre software](ig_ch_15_appC_backup_recovery.md)
-- [Getting Help](ig_ch_16_appD_getting_help.md)
-
+- [Appendix A - IPMI Checks](ig_ch_12_appA_IPMI.md)
+- [Appendix B - Backing up and Restoring Integrated Manager for Lustre software Server Software](ig_ch_13_appB_backup_restore.md)
+- [Appendix C - Backup and Recovery of Servers Managed by Integrated Manager for Lustre software](ig_ch_14_appC_backup_recovery.md)
+- [Getting Help](ig_ch_15_appD_getting_help.md)
