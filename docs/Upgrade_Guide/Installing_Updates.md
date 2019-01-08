@@ -1,6 +1,6 @@
-# <a name="1.0"></a>Installing Updates to Integrated Manager for Lustre software
+# Installing Updates to Integrated Manager for Lustre software
 
-[**Software Installation Guide Table of Contents**](ig_TOC.md)
+[**Upgrade Guide**](ug_TOC.md)
 
 **Note**: Perform any OS update prior to updating the Integrated Manager
 for Lustre software.
@@ -8,27 +8,42 @@ for Lustre software.
 **Note**: Updates are only supported for official releases. Updates
 from, or to, test releases are not specifically supported.
 
-Upgrading Integrated Manager for Lustre software and restarting the manager
-server will overwrite any changes previously made to the
-chroma-manager.conf template in `/etc/httpd/conf.d/`. Before upgrading
-your installation or restarting your manager node, make sure you backup
-any modifications to this file first.
-
 Due to a dependency in the update process in previous releases, please
 take note of the following update path. Please perform the following
 update in the order listed, based on your currently installed version of
 Integrated Manager for Lustre software.
 
+Upgrading Integrated Manager for Lustre software and restarting the manager
+server will overwrite any changes previously made to the
+chroma-manager.conf template. Depending on the version of IML that is running,
+this template will reside in one of two places:
+
+1. Apache Config Directory: `/etc/httpd/conf.d/chroma-manager.conf`
+1. Nginx Config Directory: `/etc/nginx/conf.d/chroma-manager.conf`
+
+Make sure to backup this configuration file before performing any upgrades or restarting the manager node.
+
+### IML 2.x.x Upgrades
+
 1.  If your currently installed software version is 2.0.0.0 , update to
     version 2.0.1.1 first. Then perform the following consecutive
     updates in the remaining steps.
 
-2.  If your currently installed software version is 2.0.1.1, update to
+1.  If your currently installed software version is 2.0.1.1, update to
     version 2.2.0.2 first. Then perform the following consecutive
     updates in the remaining steps.
 
-3.  If your currently installed software version is 2.2.0.2 or later,
+1.  If your currently installed software version is 2.2.0.2 or later,
     update directly to version {{site.version}}.
+
+### IML 3.x.x Upgrades
+
+1.  If your currently installed software version is between 3.0.x and 3.1.0.2, update to
+    version 3.1.1 first. Then perform the following consecutive
+    updates in the remaining steps.
+
+1.  If your currently installed software version is 3.1.1,
+    update directly to version {{site.version}} using [these instructions.](../Upgrade_Guide/Upgrade_EE-3.1-el7_to_LU-LTS-el7.md)
 
 Performing a version downgrade or rollback is not supported.
 
@@ -44,7 +59,7 @@ server and then all file system managed servers, do the following:
     share a server with your candidate file system.
 
 3.  Perform the installation procedure herein: [Installing Manager
-    for Lustre software](./ig_ch_05_install.md/#installing-manager-for-lustre-software).
+    for Lustre software](../Install_Guide/ig_ch_05_install.md/#installing-integrated-manager-for-lustre-software).
     The installation will detect that this is an update and install the
     appropriate files. Use that procedure to verify successful
     installation.
@@ -55,7 +70,7 @@ server and then all file system managed servers, do the following:
     i.e., force a fresh reload of the updated dashboard.
 
 5.  With the updated release of Integrated Manager for Lustre software
-    installed at the manager server, a notification is displayed on the
+    installed on the manager server, a notification is displayed on the
     Servers page that an update is available for installation on managed
     servers. On the **Servers** page, click **Install Updates**.
 
@@ -68,4 +83,4 @@ server and then all file system managed servers, do the following:
 7.  When all servers have been updated, restart the file system(s) that
     were stopped for this update.
 
-[Top of page](#1.0)
+[Top of page](#installing-updates-to-integrated-manager-for-lustre-software)

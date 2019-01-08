@@ -4,9 +4,9 @@
 
 **In this Chapter:**
 
-* [Installing Integrated Manager for Lustre software](#installing-integrated-manager-for-lustre-software)
-* [Integrated Manager for Lustre software Configuration Settings](#manager-for-lustre-software-configuration-settings)
-* [Editing Integrated Manager for Lustre software Configuration Settings](#editing-manager-for-lustre-software-configuration-settings)
+- [Installing Integrated Manager for Lustre software](#installing-integrated-manager-for-lustre-software)
+- [Integrated Manager for Lustre software Configuration Settings](#manager-for-lustre-software-configuration-settings)
+- [Editing Integrated Manager for Lustre software Configuration Settings](#editing-manager-for-lustre-software-configuration-settings)
 
 This section describes how to install the Integrated Manager for Lustre software
 and the Integrated Manager for Lustre software on the _manager
@@ -30,7 +30,7 @@ file system manually, without Integrated Manager for Lustre software.
 Other installations may opt to deploy and configure a Lustre file system
 and then later install Integrated Manager for Lustre software to be used
 in Monitor-only mode. To deploy and configure Lustre manually, see [Installing and Configuring
-Lustre Manually](ig_ch_08_manual_install).
+Lustre Manually](ig_ch_08_manual_install.md).
 
 For information regarding installing and configuring Lustre, see Part II
 of the _Lustre_ Operations Manual. This information is available at the
@@ -43,62 +43,63 @@ browser.
 
 You will need the following information to perform this installation:
 
-* The name, email address, and password you wish to use for the first Integrated Manager for Lustre software superuser. The email address must use a FQDN.
-* (Optional) The fully qualified domain name (FQDN) of the NTP server (internal or external) used for your site. If no NTP server is set, the Integrated Manager for Lustre software server's clock will act as the time source for the entire storage cluster.
+- The name, email address, and password you wish to use for the first Integrated Manager for Lustre software superuser. The email address must use a FQDN.
+- (Optional) The fully qualified domain name (FQDN) of the NTP server (internal or external) used for your site. If no NTP server is set, the Integrated Manager for Lustre software server's clock will act as the time source for the entire storage cluster.
 
 To install the software, complete these steps:
 
 1. Pull the repo file for a tagged release from github:
 
-    ```bash
-    yum-config-manager --add-repo=yum-config-manager --add-repo=https://raw.githubusercontent.com/whamcloud/integrated-manager-for-lustre/master/chroma_support.repo
-    ```
+   ```bash
+   yum-config-manager --add-repo=yum-config-manager --add-repo=https://raw.githubusercontent.com/whamcloud/integrated-manager-for-lustre/master/chroma_support.repo
+   ```
+
 1. Install the manager via `yum`:
 
-    ```bash
-    yum install -y python2-iml-manager
-    ```
+   ```bash
+   yum install -y python2-iml-manager
+   ```
 
 1. Once the install completes run `chroma-config setup`. When the following prompts appear, enter your parameters for the first superuser of Integrated Manager for Lustre software:
 
-    **Username:** _&lt;Enter the name of the superuser&gt;_
+   **Username:** _&lt;Enter the name of the superuser&gt;_
 
-    **Password:** _&lt;Enter a password&gt;_
+   **Password:** _&lt;Enter a password&gt;_
 
-    **Confirm password:** _&lt;Enter the password again&gt;_
+   **Confirm password:** _&lt;Enter the password again&gt;_
 
-    **Email:** _&lt;Enter an email address for the superuser&gt;_
+   **Email:** _&lt;Enter an email address for the superuser&gt;_
 
-    **Note**: Additional Integrated Manager for Lustre software superusers as well as file system administrators and users can be created in the manager GUI.
+   **Note**: Additional Integrated Manager for Lustre software superusers as well as file system administrators and users can be created in the manager GUI.
 
-    When configuration is complete, a message is displayed indicating the installation was successful.
+   When configuration is complete, a message is displayed indicating the installation was successful.
 
 1. When the prompt **NTP Server \[localhost\]** appears, respond with **one of these options**:
 
-    * _Option 1:_ To designate the NTP server (internal or external) used for your site, enter the FQDN or IP address of the NTP server and press the **&lt;Enter&gt;** key.
+   - _Option 1:_ To designate the NTP server (internal or external) used for your site, enter the FQDN or IP address of the NTP server and press the **&lt;Enter&gt;** key.
 
-    * _Option 2:_ To use the Integrated Manager for Lustre software server’s clock as the time source, press the **&lt;Enter&gt;** key.
+   - _Option 2:_ To use the Integrated Manager for Lustre software server’s clock as the time source, press the **&lt;Enter&gt;** key.
 
 1. Using ifconfig, obtain the IP address of the administrative network interface for the server hosting Integrated Manager for Lustre software. The default network interface for Integrated Manager for Lustre software is eth0.
 
 1. Open a web browser and access the Integrated Manager for Lustre software GUI using the server IP address obtained in the previous step. Enter in the address field of your browser:
 
-    `https://<command_center_server_IP_address>`
+   `https://<command_center_server_IP_address>`
 
-    **Note**: If the IP address of the server has an associated FQDN, you can connect to the Integrated Manager for Lustre software GUI user interface using:
+   **Note**: If the IP address of the server has an associated FQDN, you can connect to the Integrated Manager for Lustre software GUI user interface using:
 
-    `https://<command_center_server_fqdn>`
+   `https://<command_center_server_fqdn>`
 
-    **Note**: The GUI uses a self-signed SSL certificate to secure
-    communications between the browser and the server. You will need to
-    accept this certificate in order to connect to the Integrated Manager for Lustre
-    software GUI. A certificate can be downloaded from (example only):
+   **Note**: The GUI uses a self-signed SSL certificate to secure
+   communications between the browser and the server. You will need to
+   accept this certificate in order to connect to the Integrated Manager for Lustre
+   software GUI. A certificate can be downloaded from (example only):
 
-    `https://<manager-addr>/certificate/`
+   `https://<manager-addr>/certificate/`
 
-    After Integrated Manager for Lustre software is installed, point your web
-    browser to the Integrated Manager for Lustre software dashboard. Use Chrome or
-    Firefox.
+   After Integrated Manager for Lustre software is installed, point your web
+   browser to the Integrated Manager for Lustre software dashboard. Use Chrome or
+   Firefox.
 
 ## Integrated Manager for Lustre software Configuration Settings
 
@@ -110,7 +111,7 @@ settings following the descriptions.
 
 **Default:** `True` (Uppercase first letter required.)
 
-**Description:** Allows anonymous (unauthenticated) users to view statistics, logs and status of a system in the Integrated Manager for Lustre software GUI but not to make any changes. If                                                                                                                                                                                  set to False, anonymous users will be presented with a login prompt and no data.
+**Description:** Allows anonymous (unauthenticated) users to view statistics, logs and status of a system in the Integrated Manager for Lustre software GUI but not to make any changes. If set to False, anonymous users will be presented with a login prompt and no data.
 
 ### `DISABLE_POWER_CONTROL_DEVICE_MONITORING`
 
@@ -120,14 +121,14 @@ settings following the descriptions.
 
 **Other Settings**:
 
-| Setting                     | Default                                    | Description                                                                        |
-| --------------------------- | ------------------------------------------ | ---------------------------------------------------------------------------------- |
-| **`EMAIL_HOST`**            | `None`                                     | SMTP server hostname (Example: `'server1.test.com'`)                               |
-| **`EMAIL_PORT`**            | `25`                                       | SMTP server port number.                                                           |
-| **`EMAIL_HOST_USER`**       | `' '`                                      | SMTP server username (or `' '`).                                                   |
-| **`EMAIL_HOST_PASSWORD`**   | `' '`                                      | SMTP server username (or `' '`).                                                   |
-| **`EMAIL_USE_TLS`**         | `False` (Uppercase first letter required.) | `True` indicates that TLS/SSL is to be used. False indicates it is not to be used. |
-| **`EMAIL_SENDER`**          | `noreply@<command_center server_fqdn>`     | The address that appears in the _From_ field on alert emails.                      |
+| Setting                   | Default                                    | Description                                                                        |
+| ------------------------- | ------------------------------------------ | ---------------------------------------------------------------------------------- |
+| **`EMAIL_HOST`**          | `None`                                     | SMTP server hostname (Example: `'server1.test.com'`)                               |
+| **`EMAIL_PORT`**          | `25`                                       | SMTP server port number.                                                           |
+| **`EMAIL_HOST_USER`**     | `' '`                                      | SMTP server username (or `' '`).                                                   |
+| **`EMAIL_HOST_PASSWORD`** | `' '`                                      | SMTP server username (or `' '`).                                                   |
+| **`EMAIL_USE_TLS`**       | `False` (Uppercase first letter required.) | `True` indicates that TLS/SSL is to be used. False indicates it is not to be used. |
+| **`EMAIL_SENDER`**        | `noreply@<command_center server_fqdn>`     | The address that appears in the _From_ field on alert emails.                      |
 
 ### Editing Integrated Manager for Lustre software Configuration Settings
 
@@ -137,40 +138,40 @@ To change these configuration settings:
 
    For example, add the following setting to the `local_settings.py` file to restrict view of system statistics, logs, and status to only users who are logged in:
 
-    ```python
-    ALLOW_ANONYMOUS_READ=False
-    ```
+   ```python
+   ALLOW_ANONYMOUS_READ=False
+   ```
 
-    In this example, the first letter of False must be capitalized.
+   In this example, the first letter of False must be capitalized.
 
-    **Note**: Entries must follow Python syntax rules. For example, all strings must be enclosed in single or double quotes (double quotes must be used if the string includes a single quote). For example, `EMAIL_HOST=server1.test.com` will result in an error, while `EMAIL_HOST='server1.test.com'` is a valid entry.
+   **Note**: Entries must follow Python syntax rules. For example, all strings must be enclosed in single or double quotes (double quotes must be used if the string includes a single quote). For example, `EMAIL_HOST=server1.test.com` will result in an error, while `EMAIL_HOST='server1.test.com'` is a valid entry.
 
-    **Warning**: If you edit the file `settings.py` instead of creating a `local_settings.py` file, your changes will be overwritten without warning when the Integrated Manager for Lustre software is updated.
+   **Warning**: If you edit the file `settings.py` instead of creating a `local_settings.py` file, your changes will be overwritten without warning when the Integrated Manager for Lustre software is updated.
 
 1. To configure email alerts, complete one of the options below. By default, email alerts from the Integrated Manager for Lustre software are disabled (EMAIL_HOST set to None).
 
-    * _Option 1: Set up an external mail server._ Create or modify the file
-      `/usr/share/chroma-manager/local_settings.py` to provide appropriate values for these settings:
+   - _Option 1: Set up an external mail server._ Create or modify the file
+     `/usr/share/chroma-manager/local_settings.py` to provide appropriate values for these settings:
 
-        a.  Set `EMAIL_SENDER` to an address suitable for your site.
+     a. Set `EMAIL_SENDER` to an address suitable for your site.
 
-        b.  Modify `EMAIL_HOST` (and other server settings if necessary) to point to an existing SMTP server on your network.
+     b. Modify `EMAIL_HOST` (and other server settings if necessary) to point to an existing SMTP server on your network.
 
-    * _Option 2: Use a local mail server._ If a suitable SMTP server is not available, you can configure the Integrated Manager for Lustre software server to act as an SMTP server:
+   - _Option 2: Use a local mail server._ If a suitable SMTP server is not available, you can configure the Integrated Manager for Lustre software server to act as an SMTP server:
 
-      a. Set `EMAIL_SENDER` to an address suitable for your site.
+     a. Set `EMAIL_SENDER` to an address suitable for your site.
 
-      b. Set up a local mail daemon using standard procedures for Red Hat Enterprise Linux or CentOS such as those described in the Red Hat documentation at:
-      [Mail Servers](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/ch-Mail_Servers.html)
+     b. Set up a local mail daemon using standard procedures for Red Hat Enterprise Linux or CentOS such as those described in the Red Hat documentation at:
+     [Mail Servers](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/ch-Mail_Servers.html)
 
-      c. Set EMAIL_HOST to `localhost`
+     c. Set EMAIL_HOST to `localhost`
 
 1. Run the chroma configuration tool
-    in order to load changes made to `local_settings.py`.
+   in order to load changes made to `local_settings.py`.
 
-    ```bash
-    # chroma-config restart
-    ```
+   ```bash
+   # chroma-config restart
+   ```
 
 For configuring user accounts, see the online Help in the
 Integrated Manager for Lustre software. The online Help also provides
