@@ -34,6 +34,6 @@ Make sure you are in the integrated-manager-for-lustre repo and perform the foll
    scripts/jenkins_build
    ```
 
-This will generate several files in the `dist` and `artifacts` directories. The `artifacts` directory will contain a tar file for both the manager and the agent.
+This will produce `iml-4.0.x.0.tar.gz` in the `chroma-bundles` directory.
 
 [Top](#building-iml-at-40x)
