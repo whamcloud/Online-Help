@@ -4,7 +4,7 @@
 
 ## Overview
 
-There are pragas available for Jenkins (EFS, SSI, Upgrade) testing that wil effect the test run.
+There are pragmas available for Jenkins (EFS, SSI, Upgrade) testing that wil effect the test run.
 
 ### Using an additional repo on the agent
 
@@ -22,4 +22,4 @@ Environment: NOSE_ARGS=-x TESTS=tests/integration/shared_storage_configuration/t
 
 ---
 
-[Top of page](#Top)
+[Top of page](#available-jenkins-pragmas)
