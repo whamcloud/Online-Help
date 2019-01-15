@@ -67,3 +67,5 @@
 1. [How to debug a running nodejs process in vagrant](cd_Debugging_Node_In_Vagrant.md)
 
 1. [How To Debug A Running Python Process](cd_Remote_Python_Debugging.md)
+
+1. [Jenkins Pragmas](cd_Jenkins_Pragmas.md)
