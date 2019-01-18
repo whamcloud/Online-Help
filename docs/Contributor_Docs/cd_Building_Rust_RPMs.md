@@ -46,7 +46,7 @@ Creating a specfile can be sped up by using [`rust2rpm`](https://pagure.io/fedor
    %cargo_bundle_crates -l 1
    ```
 
-### Building the SRPM
+## Building the SRPM
 
 1. Install the [`rust-bundled-packaging`](https://github.com/awslabs/rust-bundled-packaging) RPM, built on iml copr:
 
