@@ -38,6 +38,9 @@ rm -rf %{buildroot}
 %{backcompatdir}
 
 %changelog
+* Mon Jan 28 2019 Joe Grund <jgrund@whamcloud.com> - 2.5.2-1
+- Bump IML refs to 4.0.9
+
 * Fri Aug 31 2018 Joe Grund <jgrund@whamcloud.com> - 2.5.1-1
 - Bump IML refs to 4.0.8.
 
