@@ -1,6 +1,6 @@
 # How to create offline repos for IML {{site.version}}
 
-[**Online Help Table of Contents**](IML_Help_TOC.md)
+[**Software Installation Guide Table of Contents**](ig_TOC.md)
 
 The following is a procedure for creating local repos using a CentOS 7 VM.
 
