@@ -20,6 +20,7 @@ others) are performed automatically, or will conflict with the software:
 * Do **not** install or configure Lustre, Corosync, or Pacemaker. Install Integrated Manager for Lustre software only as described in this guide.
 * Do **not** configure NTP on storage servers.
 * Do **not** install CMAN (Cluster Manager) or other packages that use the Red Hat fence agents. Integrated Manager for Lustre software will have package conflicts. Remove all such packages from all systems.
+* Do **not** enable FIPS mode on the servers.  This mode is incompatible with the Manager, and the default Lustre distribution does have signed kernel modules.
 
 ## LNET Configuration
 

@@ -164,6 +164,8 @@ security vulnerabilities in the Red Hat software.
 
   - rhel-x86_64-server-7
 
+- Red Hat Enterprse Linux must **NOT** have FIPS mode enabled.
+
 - yum needs to be functional (with any needed proxies) and default yum
   repositories must be fully configured. Run yum update to verify that
   yum updates occur successfully.
@@ -212,6 +214,8 @@ requirements.
   - rhel-x86_64-server-ha-7
 
   - rhel-x86_64-server-7
+
+- Red Hat Enterprse Linux must **NOT** have FIPS mode enabled. Lustre does not currently supply signed kernel modules.
 
 - A dedicated Ethernet port capable of one gigabit/sec. This port connects to the Management network.
 - yum needs to be functional, with any needed proxies, and default yum repositories must be fully configured. Run yum update to verify that yum updates occur successfully.
