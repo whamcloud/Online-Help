@@ -1,6 +1,6 @@
 # Integrated Manager for Lustre software
 
-# **Software Installation Guide**
+## **Software Installation Guide**
 
 [**Help Docs Table of Contents**](../../README.md)
 
@@ -8,7 +8,8 @@
 
 - [About this Document](ig_ch_01_about.md)
 - [Introducing the Integrated Manager for Lustre software](ig_ch_02_introduction.md)
-- [How to create offline repos for IML {{site.version}}](Create_Offline_Repos_10_0.md)
+- [How to create offline repos](Create_Offline_Repos_10_0.md)
+- [Server Profile Packaging Guide](Pkg_Guide.md)
 - [Building the System – The High Availability Configuration Spec](ig_ch_03_building.md)
 - [Pre-Installation Tasks](ig_ch_04_pre_install.md)
 - [Integrated Manager for Lustre software Installation](ig_ch_05_install.md)
