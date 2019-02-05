@@ -12,11 +12,18 @@ Creating a specfile can be sped up by using [`rust2rpm`](https://pagure.io/fedor
 
 ### Steps (Assuming RHEL 7)
 
+1. Install cargo:
+
+   ```bash
+   yum install -y epel-release
+   yum install -y cargo
+   ```
+
 1. Install Python 3 and activate:
 
    ```bash
-    yum install centos-release-scl
-    yum install rh-python36
+    yum install -y centos-release-scl
+    yum install -y rh-python36
     scl enable rh-python36 bash
    ```
 
@@ -51,7 +58,9 @@ Creating a specfile can be sped up by using [`rust2rpm`](https://pagure.io/fedor
 1. Install the [`rust-bundled-packaging`](https://github.com/awslabs/rust-bundled-packaging) RPM, built on iml copr:
 
    ```bash
-   yum -y copr enable managerforlustre/manager-for-lustre-devel
+   yum install -y yum-plugin-copr
+   yum -y copr enable -y managerforlustre/buildtools
+   yum install -y rust-bundled-packaging spectool
    ```
 
 1. If the package being used is in a workspace, you will need to copy the dir elsewhere. This is so the package is built in a standalone way. If so, copy the dir outside the tree so it's not associated with the workspace. If you are not in a workspace, skip this step.
