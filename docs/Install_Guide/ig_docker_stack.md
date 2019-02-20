@@ -2,7 +2,7 @@
 
 [**Software Installation Guide Table of Contents**](ig_TOC.md)
 
-Starting with Integrated Manager for Lustre 5, the IML manager is available via docker using [docker stack](https://docs.docker.com/get-started/part5/). N.B. docker-compose is also supported but is only intended for development use.
+Starting with Integrated Manager for Lustre 5, the IML manager is available via docker using [docker stack](https://docs.docker.com/get-started/part5/). N.B. docker-compose is also supported but is *only intended for development use*.
 
 ## Setup
 
