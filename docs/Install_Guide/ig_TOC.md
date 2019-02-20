@@ -17,6 +17,7 @@
 - [Configuring Clients](ig_ch_07_configure_clients.md)
 - [Installing and Configuring Lustre Manually](ig_ch_08_manual_install.md)
 - [Installing Integrated Manager for Lustre software on Intel® Xeon Phi™ Coprocessors](ig_ch_9_install_for_xeon_phi.md)
+- [Installing Integrated Manager for Lustre using Docker stack](ig_docker_stack.md)
 - [General Troubleshooting](ig_ch_10_troubleshooting.md)
 - [Updating the Operating System](ig_ch_11_updating.md)
 - [Appendix A - IPMI Checks](ig_ch_12_appA_IPMI.md)
