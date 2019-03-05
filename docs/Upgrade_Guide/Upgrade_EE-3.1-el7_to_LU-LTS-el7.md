@@ -196,6 +196,7 @@ Also note that the manager server distribution includes a default repository def
     baseurl=https://$hn/repo/iml-agent/7
     enabled=1
     gpgcheck=0
+    repo_gpgcheck=0
     sslverify = 1
     sslcacert = /var/lib/chroma/authority.crt
     sslclientkey = /var/lib/chroma/private.pem
@@ -207,6 +208,7 @@ Also note that the manager server distribution includes a default repository def
     baseurl=https://$hn/repo/lustre-server
     enabled=1
     gpgcheck=0
+    repo_gpgcheck=0
     sslverify = 1
     sslcacert = /var/lib/chroma/authority.crt
     sslclientkey = /var/lib/chroma/private.pem
@@ -218,6 +220,7 @@ Also note that the manager server distribution includes a default repository def
     baseurl=https://$hn/repo/lustre-client
     enabled=1
     gpgcheck=0
+    repo_gpgcheck=0
     sslverify = 1
     sslcacert = /var/lib/chroma/authority.crt
     sslclientkey = /var/lib/chroma/private.pem
@@ -229,6 +232,7 @@ Also note that the manager server distribution includes a default repository def
     baseurl=https://$hn/repo/e2fsprogs-wc
     enabled=1
     gpgcheck=0
+    repo_gpgcheck=0
     sslverify = 1
     sslcacert = /var/lib/chroma/authority.crt
     sslclientkey = /var/lib/chroma/private.pem
