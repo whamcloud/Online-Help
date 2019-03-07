@@ -14,9 +14,9 @@ in a Integrated Manager for Lustre software installation.
 ## Server Profiles
 
 A server profile is metadata describing the packaging and deployment options for
-a class of storage servers. Where bundles contain collections of packages,
-server profiles contain the instruction for the packages to be deployed to a
-particular class of servers.
+a class of storage servers. Where repos contain collections of packages, server
+profiles contain the instruction for the packages to be deployed to a particular
+class of servers.
 
 ## Creating a Server Profile
 
@@ -34,7 +34,6 @@ the JSON below is the default profile for a managed storage server:
   "corosync": false,
   "corosync2": true,
   "pacemaker": true,
-  "bundles": ["iml-agent", "external"],
   "ui_description": "A storage server suitable for creating new HA-enabled filesystem targets",
   "packages": [
     "python2-iml-agent-management",
@@ -67,18 +66,14 @@ to be installed on storage servers using this profile. Note that it is usually
 not necessary to list all packages: `yum` is used to install packages, so
 dependencies are respected. For example, when installing `lustre-ldiskfs-zfs` we
 do not also name `e2fsprogs` because it is a dependency of `lustre` which is a
-dependency of `lustre-ldiskfs-zfs` and therefore installed automatically. The
-reason we name `lustre-modules` even though it too is a dependency of `lustre`
-is that naming a package here causes any exact-version dependencies (such as the
-dependency on a particular version of `kernel` to be respected even if they
-involve installing a downgraded package).
+dependency of `lustre-ldiskfs-zfs` and therefore installed automatically.
 
 - **repolist:** A list of repoistory files that are needed by nodes that are
 configured with this profile. The names in this list should exist as
 `NAME.repo`.
 
 - **ui_name:** A string for presentation to users of the web interface and
-command line interface to ML. This should be short (a few words at most) and
+command line interface to IML. This should be short (a few words at most) and
 meaningful to system administrators.
 
 - **ui_description:** A string containing a more detailed explanation of what
@@ -86,12 +81,12 @@ this profile includes and what it is for. Like `ui_name`, this may be presented
 to users.
 
 - **managed:** A boolean. If true, servers using this profile will be fully
-managed by ML, including the creation and modification of filesystems. If false,
-servers using this profile will only be able to report monitoring data to ML.
+managed by IML, including the creation and modification of filesystems. If false,
+servers using this profile will only be able to report monitoring data to IML.
 
 ## Installing a server profile
 
-1. Copy your profile to the ML management server, e.g. copy `myprofile.json` to `/tmp/`
+1. Copy your profile to the IML management server, e.g. copy `myprofile.json` to `/tmp/`
 2. Register your profile using `chroma-config profile register /tmp/myprofile.json`
 3. Remove `myprofile.json`, as it has now been loaded into the database.
 
@@ -100,7 +95,7 @@ servers using this profile will only be able to report monitoring data to ML.
 You may wish to make a custom server profile the default, if all storage servers
 managed by the installation should be of that type.
 
-To make a named storage profile the default, enter this command on the ML
+To make a named storage profile the default, enter this command on the IML
 management server:
 
 ```bash
@@ -138,7 +133,8 @@ Alternatively, the repo can be installed elsewhere on the manager and then impor
 ## Locally Hosted Yum Repo
 
 To facilitate hosting local repos there is a process to install, create, and
-register a repo given a tarball of rpms.
+register a repo given a tarball of rpms. The tarball can be compressed with any
+compression type that can be auto detected with GNU tar.
 
 ```base
 	chroma-config repos install reponame /path/to/example.tar.bz2
@@ -156,7 +152,7 @@ Provided by the customer:
 
 Created during this example:
 
-- A server profile referencing packages in the custom bundles
+- A server profile referencing packages in the local repos
 
 Assuming that this profile is for use with Acme storage servers, our customer
 profile might be called `acme_storage`.  The following creates the local
