@@ -26,7 +26,7 @@
 
 1. [How to Contribute To the **Backend**](cd_Contribute_To_Backend.md)
 
-1. [How to use module-tools](cd_module_tools.md)
+1. [How to use the copr builder](cd_RPM_Builder_And_Copr.md)
 
 1. [How to Create **Frontend** Unit Tests](cd_Create_Frontend_Unit_Tests.md)
 
