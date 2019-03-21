@@ -161,29 +161,19 @@ In case you do not want to host the RPM on copr, the builder is capable of creat
 
 ```
 export SPEC=iml-foo-component.spec
-export PROD=False
 export LOCAL_ONLY=True
-docker run -it -e SPEC="$SPEC" -e PROD="$PROD" -e LOCAL_ONLY="$LOCAL_ONLY" -v $(pwd):/build:rw imlteam/copr
+docker run -it -e SPEC="$SPEC" -e LOCAL_ONLY="$LOCAL_ONLY" -v $(pwd):/build:rw imlteam/copr
 ```
 
 ## Installing the Component from Copr
 
-Navigate to the project in copr and select the Builds tab to monitor the progress:
-
-![Copr Builds](md_Graphics/copr_builds.png)
-
-Once the build completes, go to the project main page and select the Repo Download button (bottom right of image below):
-
-![Copr Main Project Page](md_Graphics/copr_project_main.png)
-
-This is the url that will be used to add the repo.
-
 ### Adding the Repo
 
-Once the build succeeds, the repo needs to be added to the node where the component should be installed. SSH into the node and add the repo using the url copied from copr:
+Once the build succeeds, the repo needs to be added to the node where the component should be installed. SSH into the node and add the repo using:
 
 ```
-yum-config-manager --add-repo <repo url>
+yum install -y yum-plugin-copr
+yum copr enable imldev/iml-turbo-boost
 ```
 
 ### Install the Package
