@@ -1,5 +1,5 @@
 NAME            := iml-online-help
-PACKAGE_VERSION := 2.5.2
+PACKAGE_VERSION := 2.5.3
 PACKAGE_RELEASE := 1
 
 ifeq ($(UNPUBLISHED),true)
