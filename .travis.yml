@@ -13,13 +13,6 @@ jobs:
         - export SPEC=iml-online-help.spec
         - docker run -it -e SPEC="$SPEC" -e LOCAL_ONLY="True" -v $(pwd):/build:rw imlteam/copr
         - ((`find _topdir/RPMS -name *.rpm | wc -l` > 0))
-    - stage: cd
-      git:
-        depth: 999999
-      env: "Type=Continuous Deployment"
-      script:
-        - include/travis/copr-deploy.sh prepare
-        - ./travis_wait "./include/travis/run_in_centos7_docker.sh include/travis/copr-deploy.sh build_srpm"
     - stage: deploy-npm
       name: "npm Deploy"
       language: ruby
@@ -51,12 +44,20 @@ jobs:
         - docker run -it -e OWNER="$OWNER" -e PROJECT="$PROJECT" -e PACKAGE="$PACKAGE" -e SPEC="$SPEC" -e PROD="True" -e KEY="$encrypted_253525cedcf6_key" -e IV="$encrypted_253525cedcf6_iv" -v $(pwd):/build:rw imlteam/copr
       on:
         all_branches: true
+    - stage: cd
+      name: "Continuous Deployment"
+      script:
+        - export OWNER=managerforlustre
+        - export PROJECT=manager-for-lustre-devel
+        - export PACKAGE=iml-online-help
+        - export SPEC=iml-online-help.spec
+        - docker run -it -e OWNER="$OWNER" -e PROJECT="$PROJECT" -e PACKAGE="$PACKAGE" -e SPEC="$SPEC" -e KEY="$encrypted_253525cedcf6_key" -e IV="$encrypted_253525cedcf6_iv" -v $(pwd):/build:rw imlteam/copr
         
 stages:
   - test
-  - name: cd
-    if: branch = master AND type = push AND fork = false
   - name: deploy-npm
     if: branch =~ ^v\d+\.\d+\.\d+-1.*$
   - name: deploy-copr
     if: branch =~ ^v\d+\.\d+\.\d+-.+$
+  - name: cd
+    if: branch = master AND type = push AND fork = false
