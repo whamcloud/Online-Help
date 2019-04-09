@@ -3,14 +3,17 @@
 %define backcompatdir /usr/lib%{managerdir}
 
 Name:       iml-%{base_name}
-Version:    @VERSION@
-Release:    @RELEASE@%{?dist}
+Version:    2.5.4
+# Release Start
+Release:    1%{?dist}
+# Release End
 Summary:    IML Online Help
 License:    MIT
 Group:      System Environment/Libraries
 URL:        https://github.com/whamcloud/%{base_name}
-Source0:    https://registry.npmjs.org/@iml/%{base_name}/-/%{base_name}-%{version}.tgz
+Source0:    %{name}-%{version}.tgz
 
+BuildRequires: nodejs-packaging
 BuildArch:  noarch
 
 %description
@@ -38,6 +41,9 @@ rm -rf %{buildroot}
 %{backcompatdir}
 
 %changelog
+* Tue Apr 09 2019 Will Johnson <wjohnson@whamcloud.com> - 2.5.4-1
+- Integrate deploy copr
+
 * Mon Apr 08 2019 Will Johnson <wjohnson@whamcloud.com> - 2.5.3-1
 - Bump IML refs to 4.0.10
 
