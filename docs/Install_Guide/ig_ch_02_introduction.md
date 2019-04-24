@@ -30,8 +30,8 @@ and all interfaces comply with the High Availability Configuration
 Specification presented in this guide.
 
 If you are creating a Lustre file system that will use OpenZFS as the
-backend, see the guide _Lustre Installation and Configuration using
-Integrated Manager for Lustre software and OpenZFS_.
+backend, see the guide Lustre Installation and Configuration using
+Integrated Manager for Lustre software and OpenZFS.
 
 ## What is Integrated Manager for Lustre software Software?
 
@@ -98,7 +98,7 @@ If your intent is to build a high-availability, Lustre storage solution
 over an existing ZFS, Integrated Manager for Lustre software supports this
 configuration. However, the installation and configuration of such a
 system is not described in this guide. Please see the document:
-_Lustre Installation and Configuration using
-Integrated Manager for Lustre software and OpenZFS_.
+Lustre Installation and Configuration using
+Integrated Manager for Lustre software and OpenZFS.
 
 [Top of page](#introducing-the-integrated-manager-for-lustre-software)
