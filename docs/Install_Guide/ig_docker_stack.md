@@ -2,13 +2,13 @@
 
 [**Software Installation Guide Table of Contents**](ig_TOC.md)
 
-Starting with Integrated Manager for Lustre 5, the IML manager is available via docker using [docker stack](https://docs.docker.com/get-started/part5/). N.B. docker-compose is also supported but is *only intended for development use*.
+Starting with Integrated Manager for Lustre 5, the IML manager is available via docker using [docker stack](https://docs.docker.com/get-started/part5/). N.B. docker-compose is also supported but is _only intended for development use_.
 
 ## Setup
 
 1. Install Docker on your node and init the swarm. The following assumes RHEL 7 as the host OS, but any docker compatible host should work.
 
-   ```shell
+   ```sh
     # This must be done due to: https://success.docker.com/article/ipvs-connection-timeout-issue
     echo net.ipv4.tcp_keepalive_time = 600 >> /etc/sysctl.conf
     sysctl -p
@@ -20,7 +20,7 @@ Starting with Integrated Manager for Lustre 5, the IML manager is available via 
 
 1. Pull the `docker-compose.yml` from the IML repo. This is used by `docker stack` to bring up IML.
 
-   ```shell
+   ```sh
     cd /tmp
     wget https://raw.githubusercontent.com/whamcloud/integrated-manager-for-lustre/master/docker/docker-compose.yml
    ```
@@ -39,19 +39,19 @@ Starting with Integrated Manager for Lustre 5, the IML manager is available via 
 
 1. Create a [docker secret](https://docs.docker.com/engine/swarm/secrets/) with a new root IML password
 
-   ```shell
+   ```sh
     echo <PASSWORD_HERE> | docker secret create iml_pw -
    ```
 
 1. Deploy the stack. This will bring up the manager within docker.
 
-   ```shell
+   ```sh
    docker stack deploy -c docker-compose.yml iml
    ```
 
 1. Add an entry to the host OS hostfile so that it's IP points to nginx.
 
-   ```shell
+   ```text
    <HOST_IP>	nginx
    ```
 
@@ -63,7 +63,7 @@ If you wish to stop the IML stack from running, do the following:
 
 1. Stop the stack
 
-   ```shell
+   ```sh
     docker stack rm iml
     # make sure all services have stopped
     docker stack ls iml
@@ -71,7 +71,7 @@ If you wish to stop the IML stack from running, do the following:
 
 1. Optionally stop and disable docker
 
-   ```shell
+   ```sh
     # Optionally stop docker
     systemctl stop docker
     # Optionally disable
@@ -84,12 +84,12 @@ If you wish to start the IML stack again, do the following:
 
 1. Optionally enable and start docker:
 
-   ```shell
+   ```sh
     systemctl enable --now docker
    ```
 
 1. re-deploy the stack
 
-   ```shell
+   ```sh
     docker stack deploy -c /tmp/docker-compose.yml iml
    ```
