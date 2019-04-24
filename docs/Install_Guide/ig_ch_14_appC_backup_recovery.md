@@ -636,13 +636,12 @@ cp $BACKUP_ROOT/etc/corosync/corosync.conf /etc/corosync/.
     failback (or use Integrated Manager for Lustre software GUI to manage the
     resources):
 
-        ```
-        pcs resource move <resource name>
-        pcs resource clear <resource name>
-        ```
+    ```sh
+    pcs resource move <resource name>
+    pcs resource clear <resource name>
+    ```
 
-        The resource clear command removes any constraints imposed by the
-
+    The resource clear command removes any constraints imposed by the
     move, so that the resource can be moved back again in the event of a
     subsequent failover trigger.
 
