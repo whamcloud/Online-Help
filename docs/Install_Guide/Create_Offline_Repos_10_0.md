@@ -2,96 +2,93 @@
 
 [**Software Installation Guide Table of Contents**](ig_TOC.md)
 
-The following is a procedure for creating local repos using a CentOS 7 VM.
+The following is a procedure for creating local repos using a CentOS 7 VM or container.
 
-1.  Install git and createrepo if they are not present:
+1. Install `createrepo` and `yum-plugin-copr` if they are not present:
 
-    ```bash
-    yum install -y git createrepo
-    ```
+   ```sh
+   yum install -y createrepo yum-plugin-copr
+   ```
 
-1.  Check out a local copy of [IML from github](https://github.com/whamcloud/integrated-manager-for-lustre).
+1. Add upstream repos needed for IML to you work node:
 
-1.  Navigate to the IML project dir.
+   ```sh
+   yum copr enable -y managerforlustre/manager-for-lustre
+   yum-config-manager --add-repo https://downloads.whamcloud.com/public/lustre/lustre-{{site.lustre_version}}/el7/client/
+   yum-config-manager --add-repo https://downloads.whamcloud.com/public/lustre/lustre-{{site.lustre_version}}/el7/server/
+   yum-config-manager --add-repo https://downloads.whamcloud.com/public/e2fsprogs/latest/el7/
+   ```
 
-1.  Switch to the tag or branch you want to create offline repos for. For example, if building offline repos for IML 4.0.6:
+1. Create a dir to hold local repos and navigate to it:
 
-    ```bash
-    git checkout v4.0.6.0
-    ```
+   ```sh
+   mkdir local_repos;
+   cd local_repos
+   ```
 
-1.  Copy the `storage_server.repo` to `etc.yum.repos.d`:
+1. Run `reposync` for the repos we want to sync:
 
-    ```bash
-    cp ./chroma-manager/storage_server.repo  /etc/yum.repos.d/
-    ```
+   ```sh
+   reposync -n --repoid=downloads.whamcloud.com_public_e2fsprogs_latest_el7_  \
+   --repoid=managerforlustre-manager-for-lustre \
+   --repoid=downloads.whamcloud.com_public_lustre_lustre-2.12.0_el7_client_ \
+   --repoid=downloads.whamcloud.com_public_lustre_lustre-2.12.0_el7_server_
+   ```
 
-1.  Create a dir to hold local repos and navigate to it:
+1. (Optional) You may want to sync EPEL and or CentOS Extras as well if you don't have them where you are deploying to. Make sure you are syncing versions that match your OS, you may need to use the CentOS vault for this.
 
-    ```bash
-    mkdir local_repos;
-    cd local_repos
-    ```
+   ```sh
+   reposync -n --repoid=epel --repoid=extras
+   ```
 
-1.  Run `reposync` for the repos we want to sync (You will see a few kmod-\* repos fail, this is expected):
+1. Use `createrepo` to create repomd (xml-rpm-metadata) repositories:
 
-    ```bash
-    reposync -n --repoid=ngompa-dnf-el7 --repoid=e2fsprogs --repoid=managerforlustre-manager-for-lustre --repoid=lustre-client --repoid=lustre
-    ```
+   ```sh
+   createrepo ./downloads.whamcloud.com_public_e2fsprogs_latest_el7_
+   createrepo ./downloads.whamcloud.com_public_lustre_lustre-2.12.0_el7_server_
+   createrepo ./downloads.whamcloud.com_public_lustre_lustre-2.12.0_el7_client_
+   createrepo ./managerforlustre-manager-for-lustre/
+   ```
 
-1.  (Optional) You may want to sync EPEL and or CentOS Extras as well if you don't have them where you are deploying to:
+1. (Optional) use `createrepo` for EPEL and CentOS Extras if you ran `reposync` for them earlier:
 
-    ```bash
-    reposync -n --repoid=epel --repoid=extras
-    ```
+   ```sh
+   createrepo ./epel
+   createrepo ./extras
+   ```
 
-1.  Use `createrepo` to create repomd (xml-rpm-metadata) repositories:
+1. Navigate out of local_repos and tar the resulting dir:
 
-    ```bash
-    createrepo ./ngompa-dnf-el7/
-    createrepo ./e2fsprogs/
-    createrepo ./lustre -x '*kmod-spl*' -x '*kmod-zfs*'
-    createrepo ./lustre-client
-    createrepo ./managerforlustre-manager-for-lustre/
-    ```
+   ```sh
+   tar -czvf local_repos.tar.gz ./local_repos
+   ```
 
-1.  (Optional) use `createrepo` for EPEL and CentOS Extras if you ran `reposync` for them earlier:
+1. Take the `local_repos.tar.gz` and move it to the manager node.
 
-    ```bash
-    createrepo ./epel
-    createrepo ./extras
-    ```
+1. Fetch the IML manager install repo as described in [The install guide](ig_ch_05_install.md#installing-integrated-manager-for-lustre-software). Do not install yet.
 
-1.  Navigate out of local_repos and tar the resulting dir:
+1. Expand the local_repos tarball. Update the `chroma_support.repo` so that each `baseurl` points to its corresponding `local_repos` subdir.
 
-    ```bash
-    tar -czvf local_repos.tar.gz ./local_repos
-    ```
+1. Install the manager as usual. Do not deploy agents.
 
-1.  Take the IML tarball + the `local_repos.tar.gz` and move them onto the node planned for install.
+1. Once installed, move the local_repos subdirs into `/var/lib/chroma/repo`.
 
-1.  Expand the IML tarball and the local_repos tarball. Once expanded, cd to the expanded IML dir and update the `chroma_support.repo` so that each `baseurl` points to its corresponding `local_repos` subdir.
+1. Update `/usr/share/chroma-manager/base.repo`, `/usr/share/chroma-manager/lustre-server.repo`, and `/usr/share/chroma-manager/lustre-client.repo` so that each `baseurl` points back to the url of the manager node, and ssl props are put in place. Example for `e2fsprogs`:
 
-1.  Install the manager as usual. Do not deploy agents.
+   ```text
+   [e2fsprogs]
+   name=Lustre e2fsprogs
+   baseurl=https://<MANAGER-URL-HERE>/repo/e2fsprogs/
+   enabled=1
+   gpgcheck=0
+   sslverify = 1
+   sslcacert = /var/lib/chroma/authority.crt
+   sslclientkey = /var/lib/chroma/private.pem
+   sslclientcert = /var/lib/chroma/self.crt
+   proxy=_none_
+   ```
 
-1.  Once installed, move the local_repos subdirs into `/var/lib/chroma/repo`.
-
-1.  Update `/usr/share/chroma-manager/storage_server.repo` so that each repo `baseurl` points back to the url of the manager node, and ssl props are put in place. Example for `e2fsprogs`:
-
-    ```bash
-    [e2fsprogs]
-    name=Lustre e2fsprogs
-    baseurl=https://<MANAGER-URL-HERE>/repo/e2fsprogs/
-    enabled=1
-    gpgcheck=0
-    sslverify = 1
-    sslcacert = /var/lib/chroma/authority.crt
-    sslclientkey = /var/lib/chroma/private.pem
-    sslclientcert = /var/lib/chroma/self.crt
-    proxy=_none_
-    ```
-
-1.  Deploy agents as usual.
+1. Deploy agents as usual.
 
 ---
 
