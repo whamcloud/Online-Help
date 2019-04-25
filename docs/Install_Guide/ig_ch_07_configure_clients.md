@@ -1,4 +1,4 @@
-# <a name="1.0"></a>Configuring Clients
+# Configuring Clients
 
 [**Software Installation Guide Table of Contents**](ig_TOC.md)
 
@@ -72,4 +72,4 @@ perform these steps:
 
 1. On the client, enter the mount command provided.
 
-[Top of page](#1.0)
+[Top of page](#configuring-clients)

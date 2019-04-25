@@ -97,7 +97,7 @@ To install the software, complete these steps:
 
    `https://<manager-addr>/certificate/`
 
-   Make sure to to trust this certificate for SSL traffic.
+   Make sure to trust this certificate for SSL traffic.
 
    After Integrated Manager for Lustre software is installed, point your web
    browser to the Integrated Manager for Lustre software dashboard. Use Chrome or
