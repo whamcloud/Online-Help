@@ -24,7 +24,7 @@ Lustre server upgrades can be coordinated as either an online roll-out, leveragi
 
 The upgrade procedure documented here shows how to execute the upgrade while the file system is online. It assumes that the Lustre servers have been installed in pairs, where each server pair forms an independent high-availability cluster built on Pacemaker and Corosync. Integrated Manager for Lustre deploys these configurations and includes its own resource agent for managing Lustre assets, called `ocf:chroma:Target`. Integrated Manager for Lustre can also configure STONITH agents to provide node fencing in the event of a cluster partition or loss of quorum.
 
-This documentation will demonstrate how to upgrade a singleLustre server HA pair. The process needs to be repeated for all servers in the cluster. It is possible to execute this upgrade while services are still online, with only minor disruption during critical phases. Nevertheless, where possible it is recommended that the upgrade operation is conducted during a planned maintenance window with the file system stopped.
+This documentation will demonstrate how to upgrade a single Lustre server HA pair. The process needs to be repeated for all server pairs in the cluster. It is possible to execute this upgrade while services are still online, with only minor disruption during critical phases. Nevertheless, where possible it is recommended that the upgrade operation is conducted during a planned maintenance window with the file system stopped.
 
 In the procedure, "Node 1" or "first node" will be used to refer to the first server in each HA cluster to upgrade, and "Node 2" or "second node" will be used to refer to the second server in each HA cluster pair.
 
