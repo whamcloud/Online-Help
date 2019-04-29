@@ -30,7 +30,6 @@
 - [Restart Integrated Manager for Lustre software](#restart-manager-for-lustre-software)
 - [Potential Issues](#potential-issues)
 
-
 An effective system recovery strategy requires that the administrator
 maintains a current backup of critical files and implements a reliable
 and repeatable method for restoring the platform to working condition.
@@ -73,60 +72,59 @@ the configuration information for Lustre file systems being managed
 and/or monitored by the manager software, from the last complete backup
 made of the manager software backup manifest.
 
-Backup Overview
----------------
+## Backup Overview
 
 Backup and recovery of the IML server software platform involves the
 following components:
 
--   Operating system installation and configuration, to include:
+- Operating system installation and configuration, to include:
 
-    -   File system layout
+  - File system layout
 
-    -   Core packages
+  - Core packages
 
-    -   Boot loader
+  - Boot loader
 
-    -   Date, time and language
+  - Date, time and language
 
-    -   Network configuration
+  - Network configuration
 
-    -   Name service (/etc/resolv.conf) and hosts table (/etc/hosts)
+  - Name service (/etc/resolv.conf) and hosts table (/etc/hosts)
 
-    -   Package Update management environment (RPM & YUM)
+  - Package Update management environment (RPM & YUM)
 
-    -   Identity configuration
+  - Identity configuration
 
-        -   User databases (/etc/passwd, /etc/shadow, /etc/group,
-            /etc/gshadow)
+    - User databases (/etc/passwd, /etc/shadow, /etc/group,
+      /etc/gshadow)
 
-        -   Name service switch (/etc/nsswitch.conf)
+    - Name service switch (/etc/nsswitch.conf)
 
-        -   Superuser privilege management (Sudo)
+    - Superuser privilege management (Sudo)
 
-    -   Security configuration
+  - Security configuration
 
-        -   IPTables
+    - IPTables
 
-        -   SELinux
+    - SELinux
 
-        -   PAM
+    - PAM
 
-        -   SSH keys (host and user)
+    - SSH keys (host and user)
 
--   Integrated Manager for Lustre software installation and
-    configuration
+- Integrated Manager for Lustre software installation and
+  configuration
 
-    -   Additional packages required by IML (installation will attempt
-        to automatically resolve package dependencies via YUM)
+  - Additional packages required by IML (installation will attempt
+    to automatically resolve package dependencies via YUM)
 
-    -   Messaging services
+  - Messaging services
 
-    -   NTP configuration
+  - NTP configuration
 
-    -   SSL Certificates
+  - SSL Certificates
 
-    -   Data Storage Management (PostgreSQL RDBMS)
+  - Data Storage Management (PostgreSQL RDBMS)
 
 Rather than rely upon a standard backup of the operating platform root
 disks, an alternative strategy of creating a repeatable build procedure
@@ -147,30 +145,28 @@ The following is an example checklist of high-level tasks to perform in
 executing a backup. Perform these tasks before restoring the
 Integrated Manager for Lustre software service.
 
--   Save the Kickstart Template from OS Installation (or create one)
+- Save the Kickstart Template from OS Installation (or create one)
 
+* Save OS network configuration (can be included in Kickstart
+  template)
 
--   Save OS network configuration (can be included in Kickstart
-    template)
+* Save YUM configuration
 
--   Save YUM configuration
+* Save user configuration
 
--   Save user configuration
+* Save SSH host keys \[optional\]
 
--   Save SSH host keys \[optional\]
+* Save SSH root user keys \[optional\]
 
--   Save SSH root user keys \[optional\]
+* Run IML Installer
 
--   Run IML Installer
+* Save NTP configuration
 
--   Save NTP configuration
+* Save Integrated Manager for Lustre software server SSL Certificates
 
--   Save Integrated Manager for Lustre software server SSL Certificates
+* Execute PostgreSQL Backup (execute on a regular schedule)
 
--   Execute PostgreSQL Backup (execute on a regular schedule)
-
-Operating System
-----------------
+## Operating System
 
 The operating system that hosts the IML software must be deployed in a
 consistent and repeatable manner. For Red Hat Enterprise Linux and
@@ -206,8 +202,7 @@ of packages and two network interfaces: one for provisioning the OS and
 connection to external infrastructure, and the other for connection to
 the Integrated Manager for Lustre software management network.
 
-An *example* Kickstart template:
-
+An _example_ Kickstart template:
 
 ```
 install
@@ -238,7 +233,6 @@ repo --name="CentOS" --baseurl=http://10.0.1.1/CS6.8/ --cost=100
 %end
 ```
 
-
 Kickstart templates are flexible and powerful, and can be extended with
 the addition of pre- and post-install scripts. With a modest amount of
 effort, the entire operating system installation can be fully automated.
@@ -252,6 +246,7 @@ contains the list of DNS name servers in use on the network; include a
 copy of this file in the manifest as well.
 
 <a id="package-update-management-environment"></a>
+
 ### Package Update management environment (RPM & YUM)
 
 The YUM configuration file /etc/yum.conf and files located at
@@ -263,12 +258,12 @@ Integrated Manager for Lustre software can be automatically installed.
 Ensure that any local user information is appropriately accounted for,
 including:
 
--   User databases (i.e., /etc/passwd, /etc/shadow, /etc/group,
-    /etc/gshadow)
+- User databases (i.e., /etc/passwd, /etc/shadow, /etc/group,
+  /etc/gshadow)
 
--   Superuser privilege management (Sudo)
+- Superuser privilege management (Sudo)
 
--   Name service switch (/etc/nsswitch.conf)
+- Name service switch (/etc/nsswitch.conf)
 
 ### Security configuration
 
@@ -306,8 +301,7 @@ level of risk of data loss. We strongly recommend that a point-in-time
 backup is taken directly after completing any major change management
 activity, such as adding new servers or file systems.
 
-Creating a Backup Manifest for the Integrated Manager for Lustre software Server
------------------------------------------------------------------------
+## Creating a Backup Manifest for the Integrated Manager for Lustre software Server
 
 This section provides a subset of the information required to rebuild a
 server from the base operating system install. We do not cover OS
@@ -320,11 +314,10 @@ or an integrated enterprise backup platform.
 
 ### Network Configuration Files
 
-
-```
+```bash
 mkdir -p $HOME/backup/etc/sysconfig
 
-cp -a /etc/sysconfig/network /etc/sysconfig/network-scripts/ifcfg-* 
+cp -a /etc/sysconfig/network /etc/sysconfig/network-scripts/ifcfg-*
 $HOME/backup/etc/sysconfig/.
 
 cp -p /etc/hosts $HOME/backup/etc/.
@@ -334,11 +327,9 @@ cp -p /etc/resolv.conf $HOME/backup/etc/.
 cp -p /etc/nsswitch.conf $HOME/backup/etc/.
 ```
 
-
 ### YUM Configuration
 
-
-```
+```bash
 mkdir -p $HOME/backup/etc
 
 cp /etc/yum.conf $HOME/backup/etc/.
@@ -346,11 +337,9 @@ cp /etc/yum.conf $HOME/backup/etc/.
 cp -a /etc/yum.repos.d/* $HOME/backup/etc/.
 ```
 
-
 ### User Configuration
 
-
-```
+```bash
 mkdir -p $HOME/backup/etc
 
 cp -p /etc/passwd $HOME/backup/etc/.
@@ -363,7 +352,6 @@ cp -p /etc/gshadow $HOME/backup/etc/.
 
 cp -p /etc/sudoers $HOME/backup/etc/.
 ```
-
 
 ### SSH Host keys (Optional)
 
@@ -382,13 +370,11 @@ order to prevent the SSH key pair from being misappropriated.
 Accordingly, this step is optional, but it can be useful if one wants to
 re-create the original server as closely as possible.
 
-
-```
+```bash
 mkdir -p $HOME/backup/etc/ssh
 
 cp -p /etc/ssh/ssh_host*key* $HOME/backup/etc/ssh/.
 ```
-
 
 ### SSH user keys (Optional)
 
@@ -404,23 +390,19 @@ redistributed to all hosts.
 
 For RSA keys:
 
-
-```
+```bash
 mkdir -m 0700 -p $HOME/backup/root/.ssh
 
 cp -p /root/.ssh/id_rsa* $HOME/backup/root/.ssh/.
 ```
 
-
 For DSA keys:
 
-
-```
+```bash
 mkdir -m 0700 -p $HOME/backup/root/.ssh
 
 cp /root/.ssh/id_dsa* $HOME/backup/etc/root/.ssh/.
 ```
-
 
 As with the SSH host keys, this practice is not generally recommended
 because the backup must be protected from compromise in order to prevent
@@ -434,13 +416,11 @@ The Integrated Manager for Lustre software installation program will
 generate an NTP configuration file. After installation completes, create
 a backup of the resulting file:
 
-
-```
+```bash
 mkdir -p $HOME/backup/etc
 
 cp /etc/ntp.conf $HOME/backup/etc/.
 ```
-
 
 ### Integrated Manager for Lustre software SSL Certificates
 
@@ -459,8 +439,7 @@ are the same. To support successfully restoring Integrated Manager for Lustre
 software and restoring communication with the agents, create a
 backup of the following certificate files located on the manager server.
 
-
-```
+```bash
 mkdir -p $HOME/backup/var/lib/chroma
 
 cp /var/lib/chroma/authority.crt ~/backup/var/lib/chroma/.
@@ -490,32 +469,30 @@ reliable mechanism for capturing a consistent backup of the databases
 managed by PostgreSQL. The approximate command, when executed as the
 root superuser on a RHEL or CentOS based operating system is:
 
-
-```
+```bash
 mkdir -p $HOME/backup
 
 su - postgres -c "/usr/bin/pg_dumpall --clean" | /bin/gzip >
 $HOME/backup/pgbackup-`date +\%Y-\%m-\%d-\%H:\%M:\%S`.sql.gz
 ```
 
-
 Note that while the command is executed as root, the database backup
 program is in fact run as the PostgreSQL superuser, called postgres. The
 /bin/su command creates a sub-shell that is owned by the postgres user
-and is then used to run /usr/bin/pg\_dumpall. The pg\_dumpall command
+and is then used to run /usr/bin/pg_dumpall. The pg_dumpall command
 creates a complete backup of the structure and content of every
 PostgreSQL database on the server and records the output as a set of SQL
 commands. The resulting text file can be compressed for more efficient
-storage. Note that the --clean flag supplied to the pg\_dumpall command
+storage. Note that the --clean flag supplied to the pg_dumpall command
 will add instructions to drop any existing structures in the target
 PostgreSQL instance upon restore. In other words, the PostgreSQL
 instance will be completely over-written during a restore of the
 database from this backup.
 
 **Caution**: It may be tempting to omit the --clean flag from the backup
-process, but this will complicate the restore process and *may lead to
-an inadvertent corruption of the target*. Therefore, always use the
---clean flag when taking a full backup of the Integrated Manager for 
+process, but this will complicate the restore process and _may lead to
+an inadvertent corruption of the target_. Therefore, always use the
+--clean flag when taking a full backup of the Integrated Manager for
 Lustre software database.
 
 The above command can be added to cron so that it runs on a regular
@@ -529,8 +506,7 @@ around this limitation by feeding the output into the split command.
 For other database backup strategies and discussions on the merits of
 the different approaches, refer to the PostgreSQL project documentation.
 
-Restoring the Integrated Manager for Lustre software Service
----------------------------------------------------------
+## Restoring the Integrated Manager for Lustre software Service
 
 Most of the effort expended in developing a recovery strategy for IT
 services is focused on the backup procedure described previously.
@@ -584,15 +560,13 @@ When installation completes, shutdown the Integrated Manager for Lustre
 software and its related services immediately, but keep the PostgreSQL
 database server running:
 
-
-```
+```bash
 service rabbitmq-server stop
 
 service chroma-supervisor stop
 
 service httpd stop
 ```
-
 
 **Caution**: Do not conduct any further configuration of
 Integrated Manager for Lustre software. Do not attempt to re-discover Manager
@@ -604,13 +578,11 @@ installation is verified as working to your satisfaction.
 
 Restore the backup of /etc/ntp.conf and restart NTP:
 
-
-```
+```bash
 cp $HOME/backup/etc/ntp.conf /etc/ntp.conf
 
 service ntpd restart
 ```
-
 
 ### Restore the Integrated Manager for Lustre software SSL certificates
 
@@ -688,7 +660,7 @@ when an attempt is made to connect through the client browser:
 
 If this occurs, log into the IML server and remove the following file:
 
-/var/log/chroma/client\_errors.log
+/var/log/chroma/client_errors.log
 
 The browser interface should now return to normal after refreshing the
 page.
@@ -708,7 +680,7 @@ after the service has been restored. To restore the connection, log into
 the affected Integrated Manager for Lustre software asset (e.g., the MDS or OSS) and
 restart the client agent service as follows. This is a one-time fix.
 
-```
+```bash
 service chroma-agent restart 
 ```
 

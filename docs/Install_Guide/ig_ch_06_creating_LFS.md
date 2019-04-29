@@ -8,15 +8,14 @@
 - [Administering a Lustre File System](#administering-a-lustre-file-system)
 
 After Integrated Manager for Lustre software is installed, point your web
-browser to the Integrated Manager for Lustre software dashboard. Use Chrome\* or
-Firefox\*.
+browser to the Integrated Manager for Lustre software dashboard. Use Chrome or
+Firefox.
 
 For complete instructions on adding servers, configuring LNET, assigning
 primary and failover servers, configuring PDUs or IPMI, and creating a
 Lustre file system, see the Integrated Manager for Lustre software online Help.
 
-Adding Storage Servers to a Lustre File System
-----------------------------------------------
+## Adding Storage Servers to a Lustre File System
 
 Adding a storage server consists of identifying the server to
 Integrated Manager for Lustre software, using either the manager GUI or the
@@ -27,7 +26,7 @@ or a server can be added to a managed, HA file system created using
 Integrated Manager for Lustre software.
 
 For managed, HA file systems, when the server is identified, the
-Integrated Manager for Lustre software agent,Integrated Manager for Lustre software,
+Integrated Manager for Lustre software agent, Integrated Manager for Lustre software,
 and specific dependencies (e.g. for Corosync and Pacemaker) are
 automatically deployed to the new storage server. This simplifies
 software installation and avoids possible errors.
@@ -55,8 +54,7 @@ disables SELinux on all storage servers, because the Lustre file system
 software is not compatible with SELinux. Installation also configures
 firewalls on the manager and storage servers.
 
-Administering a Lustre File System 
------------------------------------
+## Administering a Lustre File System
 
 **WARNING**: To manage Lustre file systems from the command line, you must use the Integrated Manager for Lustre software command line interface (CLI).
 

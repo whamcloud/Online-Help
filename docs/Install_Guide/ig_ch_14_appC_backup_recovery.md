@@ -23,15 +23,13 @@
 - [Sample Automated Backup Script for Manager Lustre Servers](#sample-automated-backup-script-for-manager-lustre-servers)
 - [Restoring a Server from Backup](#restoring-a-server-from-backup)
 
-
 **Note**: This appendix is outdated and in
 revision.  Procedures in this appendix were developed for servers
 running RHEL 6.7.  The process for servers running RHEL {{site.centos_version}} is very
-similar, but *this appendix has not yet been revised or tested for RHEL
-{{site.centos_version}}*.
+similar, but _this appendix has not yet been revised or tested for RHEL
+{{site.centos_version}}_.
 
-Introduction
-------------
+## Introduction
 
 This appendix provides guidance on how to conduct bare-metal recovery of
 a Lustre server from a combination of the original installation media
@@ -66,8 +64,7 @@ has been successfully created. This process is restricted to coverage of
 managed servers and applies equally to Metadata and Object Storage
 servers.
 
-Backup Overview
----------------
+## Backup Overview
 
 Just as for any critical server infrastructure, it is essential to
 maintain a comprehensive and consistent backup of the system
@@ -78,50 +75,51 @@ recovering file system services in the event of a failure.
 Backup and recovery of Integrated Manager for Lustre software MDS and OSS server software
 involves the following components:
 
--   Operating system installation and configuration, to include:
+- Operating system installation and configuration, to include:
 
-    -   File system layout
+  - File system layout
 
-    -   Core packages
+  - Core packages
 
-    -   Boot loader
+  - Boot loader
 
-    -   Date, time and language
+  - Date, time and language
 
-    -   Network configuration
+  - Network configuration
 
-    -   Name service (/etc/resolv.conf) and hosts table (/etc/hosts)
+  - Name service (/etc/resolv.conf) and hosts table (/etc/hosts)
 
-    -   Package Update management environment (RPM & YUM configuration)
+  - Package Update management environment (RPM & YUM configuration)
 
-    -   Identity configuration
+  - Identity configuration
 
-        -   User databases (/etc/passwd, /etc/shadow, /etc/group,
-            > /etc/gshadow)
+    - User databases (/etc/passwd, /etc/shadow, /etc/group,
 
-        -   Name service switch (/etc/nsswitch.conf)
+      > /etc/gshadow)
 
-        -   Superuser privilege management (Sudo)
+    - Name service switch (/etc/nsswitch.conf)
 
-    -   Security configuration
+    - Superuser privilege management (Sudo)
 
-        -   IPTables
+  - Security configuration
 
-        -   SELinux
+    - IPTables
 
-        -   PAM
+    - SELinux
 
-        -   SSH keys (host and user)
+    - PAM
 
--   Integrated Manager for Lustre software installation and configuration
+    - SSH keys (host and user)
 
-    -   Additional packages required by Lustre
+- Integrated Manager for Lustre software installation and configuration
 
-    -   NTP configuration
+  - Additional packages required by Lustre
 
-    -   SSL Certificates
+  - NTP configuration
 
-    -   High availability software configuration
+  - SSL Certificates
+
+  - High availability software configuration
 
 Rather than rely upon a standard backup of the operating platform root
 disks, an alternative strategy of creating a repeatable build procedure
@@ -142,29 +140,28 @@ The following is an example checklist of high level tasks to perform in
 executing a backup. Perform these tasks after creating an Integrated Manager for Lustre
 software file system using the Integrated Manager for Lustre software dashboard.
 
--   Save Kickstart Template from OS Installation (or create one)
+- Save Kickstart Template from OS Installation (or create one)
 
--   Save OS network configuration (can be included in Kickstart
-    template)
+- Save OS network configuration (can be included in Kickstart
+  template)
 
--   Save YUM configuration
+- Save YUM configuration
 
--   Save user configuration
+- Save user configuration
 
--   Save SSH host keys \[optional\]
+- Save SSH host keys \[optional\]
 
--   Save SSH root user keys \[optional\]
+- Save SSH root user keys \[optional\]
 
--   Save NTP configuration
+- Save NTP configuration
 
--   Save Integrated Manager for Lustre software agent configuration
+- Save Integrated Manager for Lustre software agent configuration
 
--   Save the LNET configuration
+- Save the LNET configuration
 
--   Save the Pacemaker + Corosync configuration
+- Save the Pacemaker + Corosync configuration
 
-Operating System
-----------------
+## Operating System
 
 **Note**: This appendix is outdated and in revision.  Procedures in this
 appendix were developed for servers running RHEL 6.7.  The process for
@@ -205,8 +202,7 @@ the OS and connection to the Integrated Manager for Lustre software management 
 the other might be used for Lustre communications traffic (if Ethernet
 is being used for Lustre networking).
 
-An *example* Kickstart template:
-
+An _example_ Kickstart template:
 
 ```
 install
@@ -237,7 +233,6 @@ repo --name="CentOS" --baseurl=http://10.0.1.1/CS6.4/ --cost=100
 %end
 ```
 
-
 Kickstart templates are flexible and powerful, and can be extended with
 the addition of pre-install and post-install scripts. With a modest amount of
 effort, the entire operating system installation can be fully automated.
@@ -251,6 +246,7 @@ copy of this file in the operating system manifest. The file
 network; include a copy of this file in the manifest as well.
 
 <a id="package-update-management-environment"></a>
+
 ### Package Update management environment (RPM & YUM)
 
 The YUM configuration file /etc/yum.conf and files located at
@@ -262,12 +258,12 @@ Integrated Manager for Lustre software can be automatically installed.
 Ensure that any local user information is appropriately accounted for,
 including:
 
--   User databases (i.e., /etc/passwd, /etc/shadow, /etc/group,
-    /etc/gshadow)
+- User databases (i.e., /etc/passwd, /etc/shadow, /etc/group,
+  /etc/gshadow)
 
--   Superuser privilege management (Sudo)
+- Superuser privilege management (Sudo)
 
--   Name service switch (/etc/nsswitch.conf)
+- Name service switch (/etc/nsswitch.conf)
 
 ### Security configuration
 
@@ -340,6 +336,7 @@ there is a configuration setting for disabling SELinux in the file:
 
 This is normally set by the Integrated Manager for Lustre software, but can be
 recovered by making a copy of the following file.
+
 ```
 # Lustre LNet Configuration:
 /etc/modprobe.d/iml_lnet_module_parameters.conf
@@ -351,6 +348,7 @@ The Corosync configuration is held in a plain text file, but the
 Pacemaker configuration is more complex and must be exported from the
 running cluster resource manager service. Fortunately, there is a simple
 command to export the Pacemaker configuration.
+
 ```
 # Corosync Configuration:
 /etc/corosync/corosync.conf
@@ -360,6 +358,7 @@ cibadmin --query > $HOME/cluster-cfg-$HOSTNAME.xml
 ```
 
 <a id="system-services-startup-scripts"></a>
+
 ### System Services Startup Scripts (rc.sysinit)
 
 The following awk script parses the output from the chkconfig command
@@ -390,6 +389,7 @@ if (length(on)>0)
 ```
 
 <a id="sample-automated-backup-script-for-manager-lustre-servers"></a>
+
 ### Sample Automated Backup Script for Integrated Manager for Lustre software Servers
 
 For a server managed by Integrated Manager for Lustre software, this script can
@@ -471,7 +471,7 @@ to reinstall the servers one-at-a-time.
 
 The following command line examples assume that the server configuration
 has been extracted in to a directory referenced by the variable
-\$BACKUP\_ROOT. It is also assumed that basic network connectivity has
+\$BACKUP_ROOT. It is also assumed that basic network connectivity has
 been restored, sufficient to allow access to the operating system YUM
 repositories, as well as the repositories of the manager server running
 the Integrated Manager for Lustre software GUI.
@@ -479,22 +479,26 @@ the Integrated Manager for Lustre software GUI.
 #### Restore Process
 
 1.  Restore the SELinux configuration.
+
     ```
     cp $BACKUP_ROOT/etc/selinux/config /etc/selinux/.
     ```
 
 1.  Restore the contents of /var/lib/chroma, which includes the SSL
     certificates and the chroma-agent configuration.
+
     ```
     cp -a $BACKUP_ROOT/var/lib/chroma /var/lib/.
     ```
 
 1.  Restore the YUM repository definition:
+
     ```
     cp $BACKUP_ROOT/etc/yum.repos.d/Intel-Lustre-Agent.repo /etc/yum.repos.d/.
     ```
 
 1.  Restore the network interface configuration:
+
     ```
     cp $BACKUP_ROOT/etc/sysconfig/network-scripts/ifcfg-* /etc/sysconfig/network-scripts/.
 
@@ -518,17 +522,20 @@ the Integrated Manager for Lustre software GUI.
     ```
 
 1.  Restore the RSyslog configuration and NTP Configuration:
+
 ```
 cp $BACKUP_ROOT/etc/rsyslog.conf $BACKUP_ROOT/etc/ntp.conf /etc/.
 ```
 
 1.  Restore the LNET Configuration:
+
 ```
 cp $BACKUP_ROOT/etc/modprobe.d/iml_lnet_module_parameters.conf
 /etc/modprobe.d/.
 ```
 
 1.  Restore the Corosync configuration:
+
 ```
 cp $BACKUP_ROOT/etc/corosync/corosync.conf /etc/corosync/.
 ```
@@ -568,8 +575,8 @@ cp $BACKUP_ROOT/etc/corosync/corosync.conf /etc/corosync/.
     ```
     [root@ee-mds1 ~]# uname -r
 
-    {{site.lustre_kernel_version}}_lustre.x86_64.rpm 
-    
+    {{site.lustre_kernel_version}}_lustre.x86_64.rpm
+
     [root@ee-mds1 ~]# modprobe -v lnet
 
     [root@ee-mds1 ~]# lctl network up
@@ -587,17 +594,17 @@ cp $BACKUP_ROOT/etc/corosync/corosync.conf /etc/corosync/.
     pcs status
     ```
 
-    a.  If the other server in the HA pair is already running, then the
-        Pacemaker configuration should have been copied over when Pacemaker
-        started on the node being recovered. The cluster status will show
-        the resources.
+    a. If the other server in the HA pair is already running, then the
+    Pacemaker configuration should have been copied over when Pacemaker
+    started on the node being recovered. The cluster status will show
+    the resources.
 
-    b.  If both servers in the HA pair have been re-installed, then the
-        Pacemaker configuration will need to be restored from the backup as
-        well. For example:
+    b. If both servers in the HA pair have been re-installed, then the
+    Pacemaker configuration will need to be restored from the backup as
+    well. For example:
 
     > cibadmin --replace --xml-file
-    > \$BACKUP\_ROOT/ee-cluster-cfg-\$HOSTNAME.xml
+    > \$BACKUP_ROOT/ee-cluster-cfg-\$HOSTNAME.xml
     >
     > This command will fail if a pre-existing configuration is detected. If
     > the configuration from the backup is absolutely required, then include
@@ -629,14 +636,14 @@ cp $BACKUP_ROOT/etc/corosync/corosync.conf /etc/corosync/.
     failback (or use Integrated Manager for Lustre software GUI to manage the
     resources):
 
-    ```
+    ```sh
     pcs resource move <resource name>
     pcs resource clear <resource name>
     ```
 
     The resource clear command removes any constraints imposed by the
-move, so that the resource can be moved back again in the event of a
-subsequent failover trigger.
+    move, so that the resource can be moved back again in the event of a
+    subsequent failover trigger.
 
 1.  It may be useful during the initial stages of the recovery process
     for Pacemaker to disable the constraints around the fencing agents.

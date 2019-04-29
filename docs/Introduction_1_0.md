@@ -25,7 +25,7 @@ Accordingly, as storage solutions continue to grow in complexity, powerful, yet 
 
 Integrated Manager for Lustre software greatly simplifies the creation and management of Lustre file systems, using either the graphical user interface (GUI) or a command line interface (CLI). The GUI dashboard lets you monitor one or more distributed Lustre file systems. Real-time storage-monitoring lets you track Lustre file system usage, performance metrics, events, and errors at the Lustre level. Plug-ins provided by storage solution providers enable monitoring of hardware-level performance data, disk errors and faults, and other hardware-related information.
 
-Integrated Manager for Lustre software, when integrated with Linux, aggregates a range of storage hardware into a single Lustre file system that is well-proven for delivering fast IO to applications across high-speed network fabrics such as InfiniBand* and Ethernet.
+Integrated Manager for Lustre software, when integrated with Linux, aggregates a range of storage hardware into a single Lustre file system that is well-proven for delivering fast IO to applications across high-speed network fabrics such as InfiniBand\* and Ethernet.
 An existing Lustre file system that has been set up outside of Integrated Manager for Lustre software can be monitored, but not managed by the manager. In this case, Lustre commands can be used to manage metadata or object storage servers in the Lustre file system.
 
 [Top of Page](#introducing-integrated-manager-for-lustre-software)
@@ -93,17 +93,13 @@ Integrated Manager for Lustre client software can be installed and configured to
 
 Integrated Manager for Lustre software includes support for hierarchical storage management. HSM provides a way to free up file system storage capacity by archiving the less-frequently accessed files into secondary, archival storage. You can configure the HSM framework directly from the Integrated Manager for Lustre software GUI.
 
-## Distributed Name Space
-
-Distributed Namespace (DNE) allows the Lustre metadata to be distributed across multiple servers. DNE1 has been incorporated into Integrated Manager for Lustre software, and this featured is supported in the Integrated Manager for Lustre software GUI.
-
 ## Robinhood Policy Engine
 
 The Robinhood policy engine has been incorporated into Lustre and is included with Integrated Manager for Lustre software. Integrated Manager for Lustre software performs the provisioning of the Robinhood agent server, which is performed via the manager GUI. Robinhood can be used with the HSM capabilities described above to automate HSM archiving and report generation.
 
 ## Apache Hadoop\* adapter software
 
-Integrated Manager for Lustre software is supported by the Apache Hadoop* adapter software, however the adapter software is a separate download. This Hadoop adapter for Lustre is compatible with the Apache Hadoop software, versions 2.3 and 2.5 as of this writing.  Hadoop software allows users who run MapReduce jobs to bypass storing data in HDFS, and store the MapReduce output directly to Lustre instead. This allows the analytical processes direct access to scientific output instead of transferring data from the compute cluster storage system to another file system. Optimizations have also been made to the shuffle step in MapReduce to take advantage of Lustre’s high-speed network access to data. Many workloads will see an overall reduction in end-to-end processing time by using the Hadoop adapter with the Integrated Manager for Lustre software file system.  For more information, see [Hadoop Adaptor for Lustre](https://github.com/whamcloud/lustre-connector-for-hadoop/blob/master/Installation%20of%20HAL%20on%20Apache%20Hadoop.md).
+Integrated Manager for Lustre software is supported by the Apache Hadoop\* adapter software, however the adapter software is a separate download. This Hadoop adapter for Lustre is compatible with the Apache Hadoop software, versions 2.3 and 2.5 as of this writing. Hadoop software allows users who run MapReduce jobs to bypass storing data in HDFS, and store the MapReduce output directly to Lustre instead. This allows the analytical processes direct access to scientific output instead of transferring data from the compute cluster storage system to another file system. Optimizations have also been made to the shuffle step in MapReduce to take advantage of Lustre’s high-speed network access to data. Many workloads will see an overall reduction in end-to-end processing time by using the Hadoop adapter with the Integrated Manager for Lustre software file system. For more information, see [Hadoop Adaptor for Lustre](https://github.com/whamcloud/lustre-connector-for-hadoop/blob/master/Installation%20of%20HAL%20on%20Apache%20Hadoop.md).
 
 ## Automated Provisioning of Custom Lustre Service Nodes
 
@@ -121,7 +117,7 @@ Integrated Manager for Lustre software supports ZFS as a back-end file system re
 
 ## Integrated Manager for Lustre software ZFS Snapshots
 
-The OpenZFS file system provides integrated support for snapshots, a data protection feature that enables an operator to checkpoint a file system volume.  In Integrated Manager for Lustre software, Intel® has developed a mechanism in Lustre that leverages ZFS to take a coordinated snapshot of an entire Lustre file system, if all of the storage targets in the file system are formatted using ZFS.
+The OpenZFS file system provides integrated support for snapshots, a data protection feature that enables an operator to checkpoint a file system volume. In Integrated Manager for Lustre software, Intel® has developed a mechanism in Lustre that leverages ZFS to take a coordinated snapshot of an entire Lustre file system, if all of the storage targets in the file system are formatted using ZFS.
 
 ## HPC Job Scheduler integration with MapReduce
 
@@ -135,7 +131,7 @@ Hive is a data warehouse infrastructure built on top of Hadoop for providing dat
 
 ## Apache Hbase compatibility
 
-HBase is a non-relational, distributed database modeled after Google's BigTable and written in Java\*.  Hbase runs on top of HDFS (Hadoop Distributed File System). Intel® has tested the Hadoop adapter for Lustre provided with Integrated Manager for Lustre software for compatibility with Apache Hbase version 2.5.
+HBase is a non-relational, distributed database modeled after Google's BigTable and written in Java\*. Hbase runs on top of HDFS (Hadoop Distributed File System). Intel® has tested the Hadoop adapter for Lustre provided with Integrated Manager for Lustre software for compatibility with Apache Hbase version 2.5.
 
 ## Lustre {{site.lustre_version}}
 
@@ -147,7 +143,7 @@ LFSCK is an administrative tool that was first introduced in Lustre software rel
 
 ## Distributed Namespace
 
-Distributed Namespace (DNE) allows the Lustre metadata to be distributed across multiple metadata servers.  Integrated Manager for Lustre software supports DNE1 (as of release 2.3.0.0), which supports the use of multiple MDTs. This enables the size of the Lustre namespace and metadata throughput to be scaled with the number of OSSs. This featured is supported in the Integrated Manager for Lustre software GUI.
+Distributed Namespace (DNE) allows the Lustre metadata to be distributed across multiple metadata servers. Integrated Manager for Lustre software supports DNE1 (as of release 2.3.0.0), which supports the use of multiple MDTs. This enables the size of the Lustre namespace and metadata throughput to be scaled with the number of OSSs. This featured is supported in the Integrated Manager for Lustre software GUI.
 
 ## DNE II Striped Directories Support (Preview)
 
@@ -163,7 +159,7 @@ Differentiated Storage Services (DSS) allows I/O data to be classified, sometime
 
 ## Support for Intel® Omni-Path Architecture
 
-Intel® Omni-Path fabric support is available for Integrated Manager for Lustre software systems running RHEL {{site.centos_version}}.  (Intel® OPA driver support requires RHEL 7.1 or newer, and so is not available for RHEL 6.x based systems.)
+Intel® Omni-Path fabric support is available for Integrated Manager for Lustre software systems running RHEL {{site.centos_version}}. (Intel® OPA driver support requires RHEL 7.1 or newer, and so is not available for RHEL 6.x based systems.)
 
 ## LNet Configuration
 
@@ -171,7 +167,7 @@ This feature assists in configuring LNet for a given server’s network interfac
 
 ## Dynamic LNet Configuration
 
-Dynamic LNet configuration (DLC) is a powerful extension of the LNet software to simplify system administration tasks for Lustre networking. DLC allows an operator to make changes to LNet (for example, network interfaces can be added and removed, or parameters changed,) without requiring that the kernel modules be removed and reloaded. Parameters can be altered while LNet is still running, meaning that tuning and optimization can be conducted while Lustre is still running on the target node.  Dynamic LNet configuration also applies to LNet routers, so that routes can be added, removed and updated without affecting other Lustre network traffic.
+Dynamic LNet configuration (DLC) is a powerful extension of the LNet software to simplify system administration tasks for Lustre networking. DLC allows an operator to make changes to LNet (for example, network interfaces can be added and removed, or parameters changed,) without requiring that the kernel modules be removed and reloaded. Parameters can be altered while LNet is still running, meaning that tuning and optimization can be conducted while Lustre is still running on the target node. Dynamic LNet configuration also applies to LNet routers, so that routes can be added, removed and updated without affecting other Lustre network traffic.
 
 ## Kerberos Network Authentication and Encryption
 
@@ -205,7 +201,7 @@ Monitor-only mode can be used to establish monitoring for file systems that don�
 
 This section provides an overview of the Integrated Manager for Lustre software GUI. For a complete description of the GUI, see [Graphical User Interface](Graphical_User_Interface_9_0.md/#9.0).
 
-The Integrated Manager for Lustre software GUI presents a set of intuitive windows that let you set up, configure, monitor, and manage Lustre file systems. The menu bar provides access to these capabilities.  Click the following links for overview information:
+The Integrated Manager for Lustre software GUI presents a set of intuitive windows that let you set up, configure, monitor, and manage Lustre file systems. The menu bar provides access to these capabilities. Click the following links for overview information:
 
 - [Menu bar](#menu-bar)
 - [Dashboard window](#dashboard-window)
@@ -225,7 +221,7 @@ The Following is the top menu bar. From here you can access the entire GUI, view
 
 ### Dashboard window
 
-The Dashboard displays a set of charts that provide usage and performance data at several levels in the file systems being monitored. At the top level, this window displays an aggregate view of all file systems. You can select to view and monitor individual file systems and servers in the Dashboard. To view a single file system, click *Configure Dashboard* and under *File System*, select the desired file system.
+The Dashboard displays a set of charts that provide usage and performance data at several levels in the file systems being monitored. At the top level, this window displays an aggregate view of all file systems. You can select to view and monitor individual file systems and servers in the Dashboard. To view a single file system, click _Configure Dashboard_ and under _File System_, select the desired file system.
 
 The following is a partial view of the Dashboard.
 
@@ -274,7 +270,7 @@ Clicking the Jobstats button on the top menu bar lists the top ten jobs currentl
 
 ### Logs window
 
-The Logs window displays log information and lets you filter events by date range, host, service, and messages from Lustre or all sources.  The logs window also features querying with auto-complete and linkable host names.
+The Logs window displays log information and lets you filter events by date range, host, service, and messages from Lustre or all sources. The logs window also features querying with auto-complete and linkable host names.
 
 ![Logs](md_Graphics/logs.png)
 
@@ -296,7 +292,7 @@ The Status window displays information alerts, commands that are executing, and 
 
 ### Alert Bar
 
-This red bar briefly appears if there are any active error or warning alerts on your system. Clicking *Details* opens the Status window and reveals the current, active alerts.
+This red bar briefly appears if there are any active error or warning alerts on your system. Clicking _Details_ opens the Status window and reveals the current, active alerts.
 
 ![Red Status Bar](md_Graphics/red_status_bar.png)
 

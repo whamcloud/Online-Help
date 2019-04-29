@@ -2,8 +2,7 @@
 
 [**Software Installation Guide Table of Contents**](ig_TOC.md)
 
-Consider the following tips before contacting technical support as you
-may find this information useful when debugging an issue:
+Consider the following tips before contacting support. You may find this information useful when debugging an issue:
 
 - Locate the logs in `/var/log/chroma`.
 
@@ -22,38 +21,38 @@ includes the following: “_Please correct the hostname resolution._"**
 **_Solution:_** Verify that hostname resolution is set up correctly
 using these commands:
 
-1.  Obtain the IP address for the network interface. The default network
-    interface is eth0. Enter (on one line):
+1. Obtain the IP address for the network interface. The default network
+   interface is eth0. Enter (on one line):
 
-    ```bash
-    # ifconfig <network\_interface\_name> | grep "inet addr" |\
-    awk -F" " {'print \$2'}
-    ```
+   ```bash
+   # ifconfig <network\_interface\_name> | grep "inet addr" |\
+   awk -F" " {'print \$2'}
+   ```
 
-    Use the output of this step in the next step.
+   Use the output of this step in the next step.
 
-1.  Obtain the hostname of the server by entering:
+1. Obtain the hostname of the server by entering:
 
-    ```bash
-    # getent hosts <network\_interface\_ip\_address>
-    ```
+   ```bash
+   # getent hosts <network\_interface\_ip\_address>
+   ```
 
-    Use the output of this step in the next step.
+   Use the output of this step in the next step.
 
-1.  Obtain the IP address of the server by entering:
+1. Obtain the IP address of the server by entering:
 
-    ```bash
-    # getent hosts <hostname>
-    ```
+   ```bash
+   # getent hosts <hostname>
+   ```
 
 If all these commands return the same _hostname_ and _IP address_, your
 hostname server is set up correctly.
 
 **_Problem:_** **An error message is displayed after you have modified
-the Command Center configuration file local_settings.py.**
+the `local_settings.py` configuration file.**
 
 **_Solution:_** To find the error, look for a line containing
-`local\_settings.py` and check the following text for clues to the
+`local_settings.py` and check the following text for clues to the
 error. In the example below, the value of the configuration setting
 ALLOW_ANONYMOUS_READ starts with a lower case letter.
 
@@ -103,11 +102,11 @@ After completing the repair and putting the server back in service,
 force a manual failback of a target to its primary server, by completing
 these steps in the Command Center Manager user interface:
 
-1.  Go to **Configuration** &gt; **File Systems** and select the file
-    system to be modified.
+1. Go to **Configuration** &gt; **File Systems** and select the file
+   system to be modified.
 
-2.  In the entry for the target to be failed back, click **Actions**
-    menu **Failback** button.
+1. In the entry for the target to be failed back, click **Actions**
+   menu **Failback** button.
 
 For more details about manually performing failover and failback
 operations, see the Integrated Manager for Lustre software online Help topic,

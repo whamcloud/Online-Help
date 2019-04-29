@@ -24,17 +24,16 @@ features including redundant servers with storage failover. Metadata and
 data are stored on separate servers to allow each system to be optimized
 for different workloads.
 
-A high-availability Lustre file system managed by Integrated Manager for Lustre 
+A high-availability Lustre file system managed by Integrated Manager for Lustre
 software requires that your entire storage system configuration
 and all interfaces comply with the High Availability Configuration
 Specification presented in this guide.
 
 If you are creating a Lustre file system that will use OpenZFS as the
-backend, see the guide *Lustre Installation and Configuration using
-Integrated Manager for Lustre software and OpenZFS*.
+backend, see the guide Lustre Installation and Configuration using
+Integrated Manager for Lustre software and OpenZFS.
 
-What is Integrated Manager for Lustre software Software?
------------------------------------------------------
+## What is Integrated Manager for Lustre software Software?
 
 Integrated Manager for Lustre software greatly simplifies configuring, creating,
 monitoring, and managing one or more Lustre file systems from either the
@@ -45,15 +44,14 @@ plugins might include real-time storage monitoring that let you track
 Lustre file system usage, performance metrics, events, and errors at the
 Lustre level.
 
-What is Management Mode?
-------------------------
+## What is Management Mode?
 
 The Integrated Manager for Lustre software lets you create and manage
 new high-availability (HA) Lustre file systems from its GUI. For each HA
 file system, the GUI and dashboard let you create, monitor, and manage
 all servers and their respective targets. The software lets you define
 failover servers to support HA. RAID-based fault tolerance for storage
-devices is implemented independent of Integrated Manager for Lustre software. 
+devices is implemented independent of Integrated Manager for Lustre software.
 Software RAID (MDRAID) disk discovery is not supported.
 
 To provide robust HA support, Integrated Manager for Lustre software
@@ -63,13 +61,12 @@ Manager (LVM) is not supported in [Management
 mode](#what-is-management-mode), but is supported in [Monitor
 mode](#what-is-monitor-only-mode).
 
-**Note**: Managed HA support *requires* that your entire storage system
-configuration and all interfaces be compliant with a *known
-configuration*. See the [High Availability Configuration
+**Note**: Managed HA support _requires_ that your entire storage system
+configuration and all interfaces be compliant with a _known
+configuration_. See the [High Availability Configuration
 Specification](ig_ch_03_building.md) for more information.
 
-What is Monitor-only Mode?
---------------------------
+## What is Monitor-only Mode?
 
 Monitor-only mode allows you to “discover” a working Lustre file system.
 Using Integrated Manager for Lustre software, you can then monitor the
@@ -95,14 +92,13 @@ supported in monitor-only mode. However, many of the features provided
 on the Configuration page are also directly useful for monitor-only file
 systems.
 
-Building a Lustre Storage Solution over a ZFS File System
----------------------------------------------------------
+## Building a Lustre Storage Solution over a ZFS File System
 
 If your intent is to build a high-availability, Lustre storage solution
 over an existing ZFS, Integrated Manager for Lustre software supports this
 configuration. However, the installation and configuration of such a
 system is not described in this guide. Please see the document:
-*Lustre Installation and Configuration using
-Integrated Manager for Lustre software and OpenZFS*.
+Lustre Installation and Configuration using
+Integrated Manager for Lustre software and OpenZFS.
 
-[Top of page](#1.0)
+[Top of page](#introducing-the-integrated-manager-for-lustre-software)
