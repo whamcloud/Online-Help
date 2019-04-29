@@ -48,10 +48,10 @@ You will need the following information to perform this installation:
 
 To install the software, complete these steps:
 
-1. Pull the repo file for a tagged release from github:
+1. Pull the repo file for a tagged release on github:
 
    ```bash
-   yum-config-manager --add-repo=yum-config-manager --add-repo=https://raw.githubusercontent.com/whamcloud/integrated-manager-for-lustre/master/chroma_support.repo
+   yum-config-manager --add-repo=yum-config-manager --add-repo=https://raw.githubusercontent.com/whamcloud/integrated-manager-for-lustre/v5.0.0/chroma_support.repo
    ```
 
 1. Install the manager via `yum`:
@@ -96,6 +96,8 @@ To install the software, complete these steps:
    software GUI. A certificate can be downloaded from (example only):
 
    `https://<manager-addr>/certificate/`
+
+   Make sure to trust this certificate for SSL traffic.
 
    After Integrated Manager for Lustre software is installed, point your web
    browser to the Integrated Manager for Lustre software dashboard. Use Chrome or
