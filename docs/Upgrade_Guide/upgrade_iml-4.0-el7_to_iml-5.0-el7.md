@@ -7,7 +7,7 @@ The first component in the environment to upgrade is the Integrated Manager for 
 1. Download the latest Integrated Manager for Lustre release repo:
 
    ```sh
-      yum-config-manager --add-repo=https://raw.githubusercontent.com/whamcloud/integrated-manager-for-lustre/v5.0.0P0/chroma_support.repo
+      yum-config-manager --add-repo=https://raw.githubusercontent.com/whamcloud/integrated-manager-for-lustre/v5.0.0/chroma_support.repo
    ```
 
 1. Install the updated manager via `yum`:
@@ -16,7 +16,20 @@ The first component in the environment to upgrade is the Integrated Manager for 
    yum install python2-iml-manager
    ```
 
+1. Stop the manager
+
+   ```sh
+   chroma-config stop
+   ```
+
 1. Run `chroma-config setup` to complete the installation.
+
+1. Start the manager
+
+   ```sh
+   chroma-config start
+   ```
+
 1. Perform a hard refresh on the browser and verify that IML loads correctly
 
 ## Upgrade the Lustre Servers
