@@ -34,11 +34,11 @@ jobs:
         api_key: "$NPM_TOKEN"
         on:
           all_branches: true
-    - stage: deploy-copr
+    - stage: deploy-copr-r5.0
       name: "Copr deploy"
       script:
         - export OWNER=managerforlustre
-        - export PROJECT=manager-for-lustre
+        - export PROJECT=manager-for-lustre-5.0
         - export PACKAGE=iml-online-help
         - export SPEC=iml-online-help.spec
         - docker run -it -e OWNER="$OWNER" -e PROJECT="$PROJECT" -e PACKAGE="$PACKAGE" -e SPEC="$SPEC" -e PROD="True" -e KEY="$encrypted_253525cedcf6_key" -e IV="$encrypted_253525cedcf6_iv" -v $(pwd):/build:rw imlteam/copr
@@ -57,7 +57,7 @@ stages:
   - test
   - name: deploy-npm
     if: branch =~ ^v\d+\.\d+\.\d+-1.*$
-  - name: deploy-copr
-    if: branch =~ ^v\d+\.\d+\.\d+-.+$
+  - name: deploy-copr-r5.0
+    if: branch =~ ^v\d+\.\d+\.\d+-.+-r5\.0$
   - name: cd
     if: branch = master AND type = push AND fork = false
