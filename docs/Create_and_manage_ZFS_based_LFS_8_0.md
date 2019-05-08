@@ -162,17 +162,8 @@ In the example, there are two exported pools. Note that the second pool in the l
 	```
 	[root@rh7z-oss1 ~]# zpool import demo-ost0pool
 	```
-	A simple approach to managing all of the pools of an HA cluster as a batch, is to export all of the pools from each host connected to common shared storage, and then import all of the pools into a single host, as follows:
-
-1. Export all of the pools on a host:
-	```
-	zpool export –a
-	```
-	Repeat this on every host in the HA framework
-2. On one host, import all of the zpools:
-	```
-	zpool import -a
-	```
+	A simple approach to managing all of the pools of an HA cluster as a batch, is to run ```partprobe``` on each host in the HA pair. Zpools do not have be exported or imported for this approach to work.
+	
 [Top of page](#8.0)
 
 <a id="8.3"></a>
