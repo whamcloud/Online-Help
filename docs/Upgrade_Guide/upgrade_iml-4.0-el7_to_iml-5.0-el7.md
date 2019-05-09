@@ -1,5 +1,7 @@
 # Upgrading Integrated Manager for Lustre 4.0.10.0 to Lustre {{site.lustre_version}} and Integrated Manager for Lustre {{site.version}}
 
+[**Upgrade Guide**](ug_TOC.md)
+
 ## Upgrade Integrated Manager for Lustre
 
 The first component in the environment to upgrade is the Integrated Manager for Lustre server and software. The manager server upgrade can be conducted without any impact to the Lustre file system services.
@@ -7,7 +9,7 @@ The first component in the environment to upgrade is the Integrated Manager for 
 1. Download the latest Integrated Manager for Lustre release repo:
 
    ```sh
-      yum-config-manager --add-repo=https://raw.githubusercontent.com/whamcloud/integrated-manager-for-lustre/v5.0.0/chroma_support.repo
+   yum-config-manager --add-repo=https://raw.githubusercontent.com/whamcloud/integrated-manager-for-lustre/v5.0.0/chroma_support.repo
    ```
 
 1. Install the updated manager via `yum`:
@@ -16,19 +18,7 @@ The first component in the environment to upgrade is the Integrated Manager for 
    yum install python2-iml-manager
    ```
 
-1. Stop the manager
-
-   ```sh
-   chroma-config stop
-   ```
-
 1. Run `chroma-config setup` to complete the installation.
-
-1. Start the manager
-
-   ```sh
-   chroma-config start
-   ```
 
 1. Perform a hard refresh on the browser and verify that IML loads correctly
 
@@ -48,6 +38,14 @@ IML requires that the filesystem(s) associated with each node to be upgraded mus
    1. Click the filesystem's `Actions` button
    1. Select _Stop_
 
+## Upgrade the OS on each server node
+
+In order to upgrade, make sure yum is configured on each server node to pull down CentOS 7.6 packages. Next, begin the upgrade.
+
+```bash
+yum -y upgrade --exclude=python2-iml*
+```
+
 ## Run the updates
 
 Next, navigate to the server page and proceed to update each of the servers:
@@ -65,14 +63,8 @@ Next, navigate to the server page and proceed to update each of the servers:
    chroma-agent convert_targets
    ```
 
-## Start the filesystem
-
-1. Navigate to _Configuration->Filesystems_
-1. For each filesystem listed:
-
-   1. Click the filesystem's `Actions` button
-   1. Select _Start_
-
 ## Summary
 
 The filesystem(s) should now be started. Connect a client and verify that it is able to access files on the filesystem.
+
+[top](#upgrading-integrated-manager-for-lustre-40100-to-lustre-2121-and-integrated-manager-for-lustre-5000)
