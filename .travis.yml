@@ -13,6 +13,13 @@ jobs:
         - export SPEC=iml-online-help.spec
         - docker run -it -e SPEC="$SPEC" -e LOCAL_ONLY="True" -v $(pwd):/build:rw imlteam/copr
         - ((`find _topdir/RPMS -name *.rpm | wc -l` > 0))
+    - stage: test
+      name: "link check"
+      language: node_js
+      node_js:
+        - "8"
+      script:
+        - npm run link-check
     - stage: deploy-npm
       name: "npm Deploy"
       language: ruby

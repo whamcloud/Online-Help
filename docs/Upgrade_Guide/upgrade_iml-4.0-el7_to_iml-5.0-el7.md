@@ -1,10 +1,16 @@
-# Upgrading Integrated Manager for Lustre 4.0.10.0 to Lustre {{site.lustre_version}} and Integrated Manager for Lustre {{site.version}}
+# Upgrading Integrated Manager for Lustre 4.0.x to Lustre {{site.lustre_version}} and Integrated Manager for Lustre {{site.version}}
 
 [**Upgrade Guide**](ug_TOC.md)
 
 ## Upgrade Integrated Manager for Lustre
 
 The first component in the environment to upgrade is the Integrated Manager for Lustre server and software. The manager server upgrade can be conducted without any impact to the Lustre file system services.
+
+1. Upgrade the manager node to CentOS {{site.centos_version}}
+
+   ```sh
+   yum upgrade --exclude=python2-iml*
+   ```
 
 1. Download the latest Integrated Manager for Lustre release repo:
 
@@ -26,7 +32,7 @@ The first component in the environment to upgrade is the Integrated Manager for 
 
 Lustre server upgrades can be coordinated as either an online roll-out, leveraging the failover HA mechanism to migrate services between nodes and minimize disruption, or as an offline service outage, which has the advantage of usually being faster to deploy overall, with generally lower risk.
 
-The upgrade procedure documented here describes the faster and more reliable approach, which requires that the filesystem be stopped. It assumes that the Lustre servers have been installed in pairs, where each server pair forms an independent high-availability cluster built on Pacemaker and Corosync. Integrated Manager for Lustre deploys these configurations and includes its own resource agent for managing Lustre assets, called `ocf:chroma:Target`. Integrated Manager for Lustre can also configure STONITH agents to provide node fencing in the event of a cluster partition or loss of quorum.
+The upgrade procedure documented here describes the faster and more reliable approach, which requires that the filesystem be stopped. It assumes that the Lustre servers have been installed in pairs, where each server pair forms an independent high-availability cluster built on Pacemaker and Corosync. Integrated Manager for Lustre deploys these configurations and uses both the stock Lustre resource agent and clusterlabs ZFS resource agent. Integrated Manager for Lustre can also configure STONITH agents to provide node fencing in the event of a cluster partition or loss of quorum.
 
 ## Stopping the filesystem
 

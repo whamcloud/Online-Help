@@ -10,7 +10,7 @@
     "build": "rm -rf targetdir && bundle exec jekyll build --destination targetdir --baseurl '/help' && find targetdir -name *.md -print0 | xargs -0 rm -f",
     "start": "bundle exec jekyll serve",
     "postversion": "npm run build",
-    "link-check": "find . -name '*.md' -path './docs/*' | xargs -n 1 -I % sh -c 'echo %; markdown-link-check %;'"
+    "link-check": "find . -name '*.md' -path './docs/*' | xargs -n 1 -I % sh -c 'echo %; markdown-link-check --config link-check-config.json %;'"
   },
   "publishConfig": {
     "access": "public"
