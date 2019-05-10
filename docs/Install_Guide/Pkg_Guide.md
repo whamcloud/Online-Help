@@ -1,12 +1,10 @@
-# <a name="1.0"></a> Server Profile Packaging Guide
+# Server Profile Packaging Guide
 
 [**Software Installation Guide Table of Contents**](ig_TOC.md)
 
 ## Introduction
 
-Integrated Manager for Lustre software is delivered as a single unified
-installer file, including both the central management component and the packages
-deployed to storage servers. Because storage servers sometimes requires
+Integrated Manager for Lustre software is delivered as a series of RPMs. Because storage servers sometimes require
 additional packages (such as drivers) or customized packages (such as custom
 Lustre builds), a mechanism is included whereby these packages can be included
 in a Integrated Manager for Lustre software installation.
@@ -44,10 +42,7 @@ the JSON below is the default profile for a managed storage server:
     "lustre-resource-agents",
     "lustre-ldiskfs-zfs"
   ],
-  "repolist": [
-    "base",
-    "lustre-server"
-  ],
+  "repolist": ["base", "lustre-server"],
   "validation": [
     {
       "test": "distro_version < 8 and distro_version >= 7",
@@ -58,31 +53,31 @@ the JSON below is the default profile for a managed storage server:
 ```
 
 - **name:** An ID. This must be unique within a Integrated Manager for Lustre software
-installation. To avoid name collisions, it is recommended to include the name
-of your organization.
+  installation. To avoid name collisions, it is recommended to include the name
+  of your organization.
 
 - **packages:** A list of names of required RPM packages. These are the packages
-to be installed on storage servers using this profile. Note that it is usually
-not necessary to list all packages: `yum` is used to install packages, so
-dependencies are respected. For example, when installing `lustre-ldiskfs-zfs` we
-do not also name `e2fsprogs` because it is a dependency of `lustre` which is a
-dependency of `lustre-ldiskfs-zfs` and therefore installed automatically.
+  to be installed on storage servers using this profile. Note that it is usually
+  not necessary to list all packages: `yum` is used to install packages, so
+  dependencies are respected. For example, when installing `lustre-ldiskfs-zfs` we
+  do not also name `e2fsprogs` because it is a dependency of `lustre` which is a
+  dependency of `lustre-ldiskfs-zfs` and therefore installed automatically.
 
 - **repolist:** A list of repoistory files that are needed by nodes that are
-configured with this profile. The names in this list should exist as
-`NAME.repo`.
+  configured with this profile. The names in this list should exist as
+  `NAME.repo`.
 
 - **ui_name:** A string for presentation to users of the web interface and
-command line interface to IML. This should be short (a few words at most) and
-meaningful to system administrators.
+  command line interface to IML. This should be short (a few words at most) and
+  meaningful to system administrators.
 
 - **ui_description:** A string containing a more detailed explanation of what
-this profile includes and what it is for. Like `ui_name`, this may be presented
-to users.
+  this profile includes and what it is for. Like `ui_name`, this may be presented
+  to users.
 
 - **managed:** A boolean. If true, servers using this profile will be fully
-managed by IML, including the creation and modification of filesystems. If false,
-servers using this profile will only be able to report monitoring data to IML.
+  managed by IML, including the creation and modification of filesystems. If false,
+  servers using this profile will only be able to report monitoring data to IML.
 
 ## Installing a server profile
 
@@ -98,14 +93,13 @@ managed by the installation should be of that type.
 To make a named storage profile the default, enter this command on the IML
 management server:
 
-```bash
+```sh
  chroma-config profile default <profile name>
 ```
 
-
 ## Yum Repo
 
-A server repo is a standard yum .repo file.  It can contain one or more yum
+A server repo is a standard yum .repo file. It can contain one or more yum
 repositories.
 
 ```
@@ -120,14 +114,14 @@ repo_gpgcheck=0
 To install custom repos, they can be installed in the standard location
 (`/usr/share/chroma-manager/`) and then have chroma-config scan for it.
 
-```bash
-	chroma-config repos scan 
+```sh
+chroma-config repos scan
 ```
 
 Alternatively, the repo can be installed elsewhere on the manager and then imported from there:
 
-```bash
-	chroma-config repos register /path/to/example.repo
+```sh
+chroma-config repos register /path/to/example.repo
 ```
 
 ## Locally Hosted Yum Repo
@@ -136,10 +130,9 @@ To facilitate hosting local repos there is a process to install, create, and
 register a repo given a tarball of rpms. The tarball can be compressed with any
 compression type that can be auto detected with GNU tar.
 
-```base
-	chroma-config repos install reponame /path/to/example.tar.bz2
+```sh
+chroma-config repos install reponame /path/to/example.tar.bz2
 ```
-
 
 ## Example: deploying a custom build of Lustre and some additional drivers
 
@@ -155,12 +148,12 @@ Created during this example:
 - A server profile referencing packages in the local repos
 
 Assuming that this profile is for use with Acme storage servers, our customer
-profile might be called `acme_storage`.  The following creates the local
+profile might be called `acme_storage`. The following creates the local
 repositories containing the customers extra driver rpms and custom lustre rpms.
 
-```bash
-	chroma-config repos install acme acme-1.0.0.tar.xz
-	chroma-config repos install acme-lustre-server custom-lustre-server.tar.gz
+```sh
+chroma-config repos install acme acme-1.0.0.tar.xz
+chroma-config repos install acme-lustre-server custom-lustre-server.tar.gz
 ```
 
 The following uses the above created repos in a custom profile.
@@ -168,16 +161,12 @@ The following uses the above created repos in a custom profile.
 ```json
 {
   "name": "acme_storage",
-  "repos": [
-	"base",
-	"acme",
-	"acme-lustre-server"
-	],
+  "repos": ["base", "acme", "acme-lustre-server"],
   "packages": [
     "python2-iml-agent-management",
-	"lustre-ldiskfs-zfs",
-	"acme-core",
-	"acme-scsi"
+    "lustre-ldiskfs-zfs",
+    "acme-core",
+    "acme-scsi"
   ],
   "ui_name": "Acme storage server",
   "ui_description": "A storage server using Acme SCSI drivers, using Acme Lustre extensions",
@@ -187,18 +176,14 @@ The following uses the above created repos in a custom profile.
 
 The above profile can then be registered.
 
-```bash
-	chroma-config profile register acme.profile
+```sh
+chroma-config profile register acme.profile
 ```
 
-## <a name="1.9"></a>Legal Information
+## Legal Information
 
 Copyright (c) 2019 DDN. All rights reserved.
 Use of this source code is governed by a MIT-style
 license that can be found in the LICENSE file.
 
-\* Other names and brands may be claimed as the property of others.  This
-product includes software developed by the OpenSSL Project for use in the
-OpenSSL Toolkit. (http://www.openssl.org/)
-
-[Top of page](#1.0)
+[Top of page](#server-profile-packaging-guide)

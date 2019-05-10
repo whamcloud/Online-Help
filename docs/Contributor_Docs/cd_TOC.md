@@ -44,8 +44,6 @@
 
 1. [IML Lustre Target Sequence Diagrams](cd_Lustre_Target_Sequence_Diagrams.md)
 
-1. [Managing Import Export Sequences of zpools within ZFS HA](cd_Managing_Import_Export_Sequences_Of_Zpools_Within_Zfs_HA.md)
-
 1. [Create a Monitored only ldiskfs Filesystem on a Vagrant virtual cluster](cd_Monitored_Only_ldiskfs.md)
 
 1. [Models and Database Migrations](cd_Models_And_DB_Migrations.md)
