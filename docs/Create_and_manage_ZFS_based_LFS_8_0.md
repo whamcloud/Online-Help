@@ -162,7 +162,7 @@ In the example, there are two exported pools. Note that the second pool in the l
 	```
 	[root@rh7z-oss1 ~]# zpool import demo-ost0pool
 	```
-	A simple approach to discovering all of the pools for all of the nodes in an HA cluster, is to run ```partprobe``` on each host. Zpools do not have be exported or imported for this approach to work.
+	A simple approach to discovering all of the pools for all of the nodes in an HA cluster, is to run ```partprobe``` on each host. Zpools do not have to be exported or imported for this approach to work.
 	
 [Top of page](#8.0)
 
