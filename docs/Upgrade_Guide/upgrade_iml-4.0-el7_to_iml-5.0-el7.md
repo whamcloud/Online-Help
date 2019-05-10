@@ -6,27 +6,80 @@
 
 The first component in the environment to upgrade is the Integrated Manager for Lustre server and software. The manager server upgrade can be conducted without any impact to the Lustre file system services.
 
-1. Upgrade the manager node to CentOS {{site.centos_version}}
+### Backup the Existing configuration.
 
-   ```sh
-   yum upgrade --exclude=python2-iml*
-   ```
+Prior to commencing the upgrade, it is essential that a backup of the existing configuration is completed. This will enable recovery of the original configuration in the event of a problem occurring during execution of the upgrade.
 
-1. Download the latest Integrated Manager for Lustre release repo:
+The following shell script can be used to capture the essential configuration information that is relevant to the Integrated Manager for Lustre software itself:
 
-   ```sh
-   yum-config-manager --add-repo=https://raw.githubusercontent.com/whamcloud/integrated-manager-for-lustre/v5.0.0/chroma_support.repo
-   ```
+```bash
+#!/bin/sh
+# EE Integrated Manager for Lustre (IML) server backup script
 
-1. Install the updated manager via `yum`:
+BCKNAME=bck-$HOSTNAME-`date +%Y%m%d-%H%M%S`
+BCKROOT=$HOME/$BCKNAME
+mkdir -p $BCKROOT
+tar cf - --exclude=/var/lib/chroma/repo \
+/var/lib/chroma \
+/etc/sysconfig/network \
+/etc/sysconfig/network-scripts/ifcfg-* \
+/etc/yum.conf \
+/etc/yum.repos.d \
+/etc/hosts \
+/etc/passwd \
+/etc/group \
+/etc/shadow \
+/etc/gshadow \
+/etc/sudoers \
+/etc/resolv.conf \
+/etc/nsswitch.conf \
+/etc/rsyslog.conf \
+/etc/ntp.conf \
+/etc/selinux/config \
+/etc/ssh \
+/root/.ssh \
+| (cd $BCKROOT && tar xf -)
 
-   ```sh
-   yum install python2-iml-manager
-   ```
+# IML Database
+su - postgres -c "/usr/bin/pg_dumpall --clean" | /bin/gzip > $BCKROOT/pgbackup-`date +\%Y-\%m-\%d-\%H:\%M:\%S`.sql.gz
 
-1. Run `chroma-config setup` to complete the installation.
+cd `dirname $BCKROOT`
+tar zcf $BCKROOT.tgz `basename $BCKROOT`
+```
 
-1. Perform a hard refresh on the browser and verify that IML loads correctly
+Copy the backup tarball to a safe location that is not on the server being upgraded.
+
+**Note:** This script is not intended to provide a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre servers managed by Integrated Manager for Lustre that are difficult to re-create if deleted.
+
+### Install the Integrated Manager for Lustre Upgrade
+
+The software upgrade process requires super-user privileges to run. Login as the `root` user or use `sudo` to elevate privileges as required.
+
+1.  If upgrading to EL {{site.centos_version}}, run the OS upgrade first. For example:
+
+    ```bash
+    yum clean all
+    yum update
+    reboot
+    ```
+
+    Refer to the operating system documentation for details on the correct procedure for upgrading between minor OS releases.
+
+1.  Download the latest Integrated Manager for Lustre release repo:
+
+    ```sh
+    yum-config-manager --add-repo=https://raw.githubusercontent.com/whamcloud/integrated-manager-for-lustre/v5.0.0/chroma_support.repo
+    ```
+
+1.  Install the updated manager via `yum`:
+
+    ```sh
+    yum install python2-iml-manager
+    ```
+
+1.  Run `chroma-config setup` to complete the installation.
+
+1.  Perform a hard refresh on the browser and verify that IML loads correctly
 
 ## Upgrade the Lustre Servers
 
@@ -73,4 +126,4 @@ Next, navigate to the server page and proceed to update each of the servers:
 
 The filesystem(s) should now be started. Connect a client and verify that it is able to access files on the filesystem.
 
-[top](#upgrading-integrated-manager-for-lustre-40100-to-lustre-2121-and-integrated-manager-for-lustre-5000)
+[top](#upgrading-integrated-manager-for-lustre-40x-to-lustre-{{site.lustre_version | remove: '.'}}-and-integrated-manager-for-lustre-{{site.version | remove: '.'}})
