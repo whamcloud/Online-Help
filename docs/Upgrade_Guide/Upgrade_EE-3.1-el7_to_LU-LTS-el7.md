@@ -1,10 +1,10 @@
-# Upgrading Intel® EE for Lustre 3.1.1.0 to Lustre {{site.lustre_version}} LTS and Integrated Manager for Lustre {{site.version}}
+# Upgrading Intel® EE for Lustre 3.1.1.0 to Lustre 2.10.7 LTS and Integrated Manager for Lustre 4.0.10.0
 
 [**Upgrade Guide**](ug_TOC.md)
 
 ## Introduction
 
-This document provides a description of how to upgrade an existing Lustre server file system installation from Intel® EE for Lustre version 3.1.1.0 running on the RHEL/CentOS 7.x OS distribution to Lustre {{site.lustre_versionx}} LTS and Integrated Manager for Lustre version {{site.version}} running on RHEL/CentOS {{site.centos_version}}.
+This document provides a description of how to upgrade an existing Lustre server file system installation from Intel® EE for Lustre version 3.1.1.0 running on the RHEL/CentOS 7.x OS distribution to Lustre 2.10.7 LTS and Integrated Manager for Lustre version 4.0.10.0 running on RHEL/CentOS 7.6.
 
 CentOS is used for the examples. RHEL users will need to refer to Red Hat for instructions on enabling the High Availability add-on needed to install Pacemaker, Corosync and related support tools.
 
@@ -85,7 +85,7 @@ The first component in the environment to upgrade is the Integrated Manager for 
 
 The software upgrade process requires super-user privileges to run. Login as the `root` user or use `sudo` to elevate privileges as required.
 
-1.  If upgrading from e.g. EL 7.3 to EL {{site.centos_version}}, run the OS upgrade first. For example:
+1.  If upgrading from e.g. EL 7.3 to EL 7.6, run the OS upgrade first. For example:
 
     ```bash
     yum clean all
@@ -103,7 +103,7 @@ The software upgrade process requires super-user privileges to run. Login as the
 
     ```bash
     cd $HOME
-    tar zxf {{site.package_name}}.tar.gz
+    tar zxf iml-4.0.10.0.tar.gz
     ```
 
 1.  As root, run the installer:
@@ -161,7 +161,7 @@ Also note that the manager server distribution includes a default repository def
     __EOF
     ```
 
-    **Note:** The above example references the latest Lustre release available. To use a specific version, replace `latest-release` in the `[lustre-server]` and `[lustre-client]` `baseurl` variables with the version required, e.g., `{{site.lustre_package_name}}`. Always use the latest `e2fsprogs` package unless directed otherwise.
+    **Note:** The above example references the latest Lustre release available. To use a specific version, replace `latest-release` in the `[lustre-server]` and `[lustre-client]` `baseurl` variables with the version required, e.g., `lustre-2.10.7`. Always use the latest `e2fsprogs` package unless directed otherwise.
 
     Also note that the `debuginfo` packages are excluded in the example repository definitions. This is simply to cut down on the size of the download. It is usually a good idea to pull in these files as well, to assist with debugging of issues.
 
@@ -338,7 +338,7 @@ The upgrade procedure documented here shows how to execute the upgrade while the
 #### [If Needed] Upgrade the OS on Node 1
 
 1.  Login to node 1.
-1.  If upgrading from e.g. EL 7.3 to EL {{site.centos_version}}, run the OS upgrade first. For example:
+1.  If upgrading from e.g. EL 7.3 to EL 7.6, run the OS upgrade first. For example:
 
     ```bash
     yum clean all
@@ -548,9 +548,9 @@ The upgrade procedure documented here shows how to execute the upgrade while the
 
         ```bash
         # dkms status
-        lustre, {{site.lustre_version}}, {{site.lustre_kernel_version}}_lustre.x86_64, x86_64: installed
-        spl, 0.7.1, {{site.lustre_kernel_version}}_lustre.x86_64, x86_64: installed
-        zfs, 0.7.1, {{site.lustre_kernel_version}}_lustre.x86_64, x86_64: installed
+        lustre, 2.10.7,3.10.0-957.1.3.el7_lustre.x86_64, x86_64: installed
+        spl, 0.7.1,3.10.0-957.1.3.el7_lustre.x86_64, x86_64: installed
+        zfs, 0.7.1,3.10.0-957.1.3.el7_lustre.x86_64, x86_64: installed
         ```
 
     1.  Load the Lustre and ZFS kernel modules to verify that the software has installed correctly:
@@ -625,16 +625,16 @@ The upgrade procedure documented here shows how to execute the upgrade while the
         kernel-tools-libs-devel
         ```
 
-        It may be necessary to specify the kernel package version number in order to ensure that a kernel that is compatible with Lustre is installed. For example, Lustre {{site.lustre_version}} has support for RHEL kernel {{site.lustre_kernel_version}}:
+        It may be necessary to specify the kernel package version number in order to ensure that a kernel that is compatible with Lustre is installed. For example, Lustre 2.10.7 has support for RHEL kernel3.10.0-957.1.3.el7:
 
         ```bash
         yum install \
-        kernel-{{site.lustre_kernel_version}} \
-        kernel-devel-{{site.lustre_kernel_version}} \
-        kernel-headers-{{site.lustre_kernel_version}} \
-        kernel-tools-{{site.lustre_kernel_version}} \
-        kernel-tools-libs-{{site.lustre_kernel_version}} \
-        kernel-tools-libs-devel-{{site.lustre_kernel_version}}
+        kernel-3.10.0-957.1.3.el7 \
+        kernel-devel-3.10.0-957.1.3.el7 \
+        kernel-headers-3.10.0-957.1.3.el7 \
+        kernel-tools-3.10.0-957.1.3.el7 \
+        kernel-tools-libs-3.10.0-957.1.3.el7 \
+        kernel-tools-libs-devel-3.10.0-957.1.3.el7
         ```
 
         **Note:** If the `kernel-tools` and `kernel-tools-libs` packages that have been installed on the host prior to running this command are at a higher revision than the kernel version supported by Lustre, they will need to be removed first:
@@ -768,7 +768,7 @@ Node 1 upgrade is complete.
 #### [If Needed] Upgrade the OS on Node 2
 
 1.  Login to node 2.
-1.  If upgrading from e.g. EL 7.3 to EL {{site.centos_version}}, run the OS upgrade first. For example:
+1.  If upgrading from e.g. EL 7.3 to EL 7.6, run the OS upgrade first. For example:
 
     ```bash
     yum clean all
@@ -946,9 +946,9 @@ Node 1 upgrade is complete.
 
         ```bash
         # dkms status
-        lustre, {{site.lustre_version}}, {{site.lustre_kernel_version}}_lustre.x86_64, x86_64: installed
-        spl, 0.7.1, {{site.lustre_kernel_version}}_lustre.x86_64, x86_64: installed
-        zfs, 0.7.1, {{site.lustre_kernel_version}}_lustre.x86_64, x86_64: installed
+        lustre, 2.10.7,3.10.0-957.1.3.el7_lustre.x86_64, x86_64: installed
+        spl, 0.7.1,3.10.0-957.1.3.el7_lustre.x86_64, x86_64: installed
+        zfs, 0.7.1,3.10.0-957.1.3.el7_lustre.x86_64, x86_64: installed
         ```
 
     1.  Load the Lustre and ZFS kernel modules to verify that the software has installed correctly:
@@ -1023,16 +1023,16 @@ Node 1 upgrade is complete.
         kernel-tools-libs-devel
         ```
 
-        It may be necessary to specify the kernel package version number in order to ensure that a kernel that is compatible with Lustre is installed. For example, Lustre {{site.lustre_version}} has support for RHEL kernel {{site.lustre_kernel_version}}:
+        It may be necessary to specify the kernel package version number in order to ensure that a kernel that is compatible with Lustre is installed. For example, Lustre 2.10.7 has support for RHEL kernel3.10.0-957.1.3.el7:
 
         ```bash
         yum install \
-        kernel-{{site.lustre_kernel_version}} \
-        kernel-devel-{{site.lustre_kernel_version}} \
-        kernel-headers-{{site.lustre_kernel_version}} \
-        kernel-tools-{{site.lustre_kernel_version}} \
-        kernel-tools-libs-{{site.lustre_kernel_version}} \
-        kernel-tools-libs-devel-{{site.lustre_kernel_version}}
+        kernel-3.10.0-957.1.3.el7 \
+        kernel-devel-3.10.0-957.1.3.el7 \
+        kernel-headers-3.10.0-957.1.3.el7 \
+        kernel-tools-3.10.0-957.1.3.el7 \
+        kernel-tools-libs-3.10.0-957.1.3.el7 \
+        kernel-tools-libs-devel-3.10.0-957.1.3.el7
         ```
 
         **Note:** If the `kernel-tools` and `kernel-tools-libs` packages that have been installed on the host prior to running this command are at a higher revision than the kernel version supported by Lustre, they will need to be removed first:
@@ -1093,9 +1093,9 @@ Node 1 upgrade is complete.
 
         ```bash
         # dkms status
-        lustre, {{site.lustre_version}}, {{site.lustre_kernel_version}}_lustre.x86_64, x86_64: installed
-        spl, 0.7.1, {{site.lustre_kernel_version}}_lustre.x86_64, x86_64: installed
-        zfs, 0.7.1, {{site.lustre_kernel_version}}_lustre.x86_64, x86_64: installed
+        lustre, 2.10.7,3.10.0-957.1.3.el7_lustre.x86_64, x86_64: installed
+        spl, 0.7.1,3.10.0-957.1.3.el7_lustre.x86_64, x86_64: installed
+        zfs, 0.7.1,3.10.0-957.1.3.el7_lustre.x86_64, x86_64: installed
         ```
 
     1.  Load the Lustre and ZFS kernel modules to verify that the software has installed correctly:

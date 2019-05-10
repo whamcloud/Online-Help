@@ -1,12 +1,12 @@
-# Upgrading Intel® EE for Lustre 2.4.2.7 to Lustre {{site.lustre_version}} LTS and Integrated Manager for Lustre {{site.version}}
+# Upgrading Intel® EE for Lustre 2.4.2.7 to Lustre 2.10.7 LTS and Integrated Manager for Lustre 4.0.10
 
 [**Upgrade Guide**](ug_TOC.md)
 
 ## Introduction
 
-This document provides a description of how to upgrade an existing Lustre server file system installation from Intel® EE for Lustre version 2.4.2.7 running on the RHEL/CentOS 6 OS distribution to Lustre {{site.lustre_version}} LTS and Integrated Manager for Lustre version {{site.version}} running on RHEL/CentOS {{site.centos_version}}.
+This document provides a description of how to upgrade an existing Lustre server file system installation from Intel® EE for Lustre version 2.4.2.7 running on the RHEL/CentOS 6 OS distribution to Lustre 2.10.7 LTS and Integrated Manager for Lustre version 4.0.10 running on RHEL/CentOS 7.6.
 
-Included in the process is a method for implementing migration of the server operating system from RHEL / CentOS 6.8 to version {{site.centos_version}}, which represents the most difficult part of the upgrade process.
+Included in the process is a method for implementing migration of the server operating system from RHEL / CentOS 6.8 to version 7.6, which represents the most difficult part of the upgrade process.
 
 CentOS is used for the examples. RHEL users will need to refer to Red Hat for instructions on enabling the High Availability add-on needed to install Pacemaker, Corosync and related support tools.
 
@@ -26,7 +26,7 @@ The reference platform used throughout the documentation has been installed and 
 
 1.  Upgrade the Integrated Manager for Lustre manager server
     1.  Backup the Integrated Manager for Lustre server (IML manager) configuration and database
-    1.  Install RHEL {{site.centos_version}} or CentOS {{site.centos_version}}
+    1.  Install RHEL 7.6 or CentOS 7.6
     1.  Install the latest version of the IML manager software for EL7
     1.  Restore the IML manager configuration and database
     1.  Start the IML manager services
@@ -176,7 +176,7 @@ The software upgrade process requires super-user privileges to run. Login as the
 
     ```bash
     cd $HOME
-    tar zxf {{site.package_name}}.tar.gz
+    tar zxf iml-4.0.10.tar.gz
     ```
 
 1.  As root, run the installer:
@@ -264,7 +264,7 @@ Also note that the manager server distribution includes a default repository def
     __EOF
     ```
 
-    **Note:** The above example references the latest Lustre release available. To use a specific version, replace `latest-release` in the `[lustre-server]` and `[lustre-client]` `baseurl` variables with the version required, e.g., `{{site.lustre_package_name}}`. Always use the latest `e2fsprogs` package unless directed otherwise.
+    **Note:** The above example references the latest Lustre release available. To use a specific version, replace `latest-release` in the `[lustre-server]` and `[lustre-client]` `baseurl` variables with the version required, e.g., `lustre-2.10.7`. Always use the latest `e2fsprogs` package unless directed otherwise.
 
     Also note that the `debuginfo` packages are excluded in the example repository definitions. This is simply to cut down on the size of the download. It is usually a good idea to pull in these files as well, to assist with debugging of issues.
 
@@ -665,9 +665,9 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
         ```bash
         # dkms status
-        lustre, {{site.lustre-version}}, {{site.lustre_kernel_version}}_lustre.x86_64, x86_64: installed
-        spl, 0.7.1, {{site.lustre_kernel_version}}_lustre.x86_64, x86_64: installed
-        zfs, 0.7.1, {{site.lustre_kernel_version}}_lustre.x86_64, x86_64: installed
+        lustre, 2.10.7,3.10.0-957.1.3.el7_lustre.x86_64, x86_64: installed
+        spl, 0.7.1, 3.10.0-957.1.3.el7_lustre.x86_64, x86_64: installed
+        zfs, 0.7.1, 3.10.0-957.1.3.el7_lustre.x86_64, x86_64: installed
         ```
 
     1.  Load the Lustre and ZFS kernel modules to verify that the software has installed correctly:
@@ -736,16 +736,16 @@ The `pcs config export` command can be useful as a cross reference when restorin
         kernel-tools-libs-devel
         ```
 
-        It may be necessary to specify the kernel package version number in order to ensure that a kernel that is compatible with Lustre is installed. For example, Lustre {{site.lustre_version}} has support for RHEL kernel {{site.lustre_kernel_version}}:
+        It may be necessary to specify the kernel package version number in order to ensure that a kernel that is compatible with Lustre is installed. For example, Lustre 2.10.7 has support for RHEL kernel 3.10.0-957.1.3.el7:
 
         ```bash
         yum install \
-        kernel-{{site.lustre_kernel_version}} \
-        kernel-devel-{{site.lustre_kernel_version}} \
-        kernel-headers-{{site.lustre_kernel_version}} \
-        kernel-tools-{{site.lustre_kernel_version}} \
-        kernel-tools-libs-{{site.lustre_kernel_version}} \
-        kernel-tools-libs-devel-{{site.lustre_kernel_version}}
+        kernel-3.10.0-957.1.3.el7 \
+        kernel-devel-3.10.0-957.1.3.el7 \
+        kernel-headers-3.10.0-957.1.3.el7 \
+        kernel-tools-3.10.0-957.1.3.el7 \
+        kernel-tools-libs-3.10.0-957.1.3.el7 \
+        kernel-tools-libs-devel-3.10.0-957.1.3.el7
         ```
 
         **Note:** If the `kernel-tools` and `kernel-tools-libs` packages that have been installed on the host prior to running this command are at a higher revision than the kernel version supported by Lustre, they will need to be removed first:
@@ -829,7 +829,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 1.  Modify or disable the firewall. According to Red Hat, the following ports need to be enabled:
     1.  TCP: ports 2224, 3121, 21064
     1.  UDP: ports 5405
-1.  In RHEL / CentOS {{site.centos_version}}, the firewall software can be configured to permit cluster traffic as follows:
+1.  In RHEL / CentOS 7.6, the firewall software can be configured to permit cluster traffic as follows:
 
     ```bash
     firewall-cmd --permanent --add-service=high-availability
@@ -1392,9 +1392,9 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
         ```bash
         # dkms status
-        lustre, {{site.lustre_version}}, {{site.lustre_kernel_version}}_lustre.x86_64, x86_64: installed
-        spl, 0.7.1, {{site.lustre_kernel_version}}_lustre.x86_64, x86_64: installed
-        zfs, 0.7.1, {{site.lustre_kernel_version}}_lustre.x86_64, x86_64: installed
+        lustre, 2.10.7, 3.10.0-957.1.3.el7_lustre.x86_64, x86_64: installed
+        spl, 0.7.1, 3.10.0-957.1.3.el7_lustre.x86_64, x86_64: installed
+        zfs, 0.7.1, 3.10.0-957.1.3.el7_lustre.x86_64, x86_64: installed
         ```
 
     1.  Load the Lustre and ZFS kernel modules to verify that the software has installed correctly:
@@ -1463,16 +1463,16 @@ The `pcs config export` command can be useful as a cross reference when restorin
         kernel-tools-libs-devel
         ```
 
-        It may be necessary to specify the kernel package version number in order to ensure that a kernel that is compatible with Lustre is installed. For example, Lustre {{site.lustre_version}} has support for RHEL kernel {{site.lustre_kernel_version}}:
+        It may be necessary to specify the kernel package version number in order to ensure that a kernel that is compatible with Lustre is installed. For example, Lustre 2.10.7 has support for RHEL kernel 3.10.0-957.1.3.el7:
 
         ```bash
         yum install \
-        kernel-{{site.lustre_kernel_version}} \
-        kernel-devel-{{site.lustre_kernel_version}} \
-        kernel-headers-{{site.lustre_kernel_version}} \
-        kernel-tools-{{site.lustre_kernel_version}} \
-        kernel-tools-libs-{{site.lustre_kernel_version}} \
-        kernel-tools-libs-devel-{{site.lustre_kernel_version}}
+        kernel-3.10.0-957.1.3.el7 \
+        kernel-devel-3.10.0-957.1.3.el7 \
+        kernel-headers-3.10.0-957.1.3.el7 \
+        kernel-tools-3.10.0-957.1.3.el7 \
+        kernel-tools-libs-3.10.0-957.1.3.el7 \
+        kernel-tools-libs-devel-3.10.0-957.1.3.el7
         ```
 
         **Note:** If the `kernel-tools` and `kernel-tools-libs` packages that have been installed on the host prior to running this command are at a higher revision than the kernel version supported by Lustre, they will need to be removed first:
@@ -1533,9 +1533,9 @@ The `pcs config export` command can be useful as a cross reference when restorin
 
         ```bash
         # dkms status
-        lustre, {{site.lustre_version}}, {{site.lustre_kernel_version}}_lustre.x86_64, x86_64: installed
-        spl, 0.7.1, {{site.lustre_kernel_version}}_lustre.x86_64, x86_64: installed
-        zfs, 0.7.1, {{site.lustre_kernel_version}}_lustre.x86_64, x86_64: installed
+        lustre, 2.10.7, 3.10.0-957.1.3.el7_lustre.x86_64, x86_64: installed
+        spl, 0.7.1, 3.10.0-957.1.3.el7_lustre.x86_64, x86_64: installed
+        zfs, 0.7.1, 3.10.0-957.1.3.el7_lustre.x86_64, x86_64: installed
         ```
 
     1.  Load the Lustre and ZFS kernel modules to verify that the software has installed correctly:
@@ -1571,7 +1571,7 @@ The `pcs config export` command can be useful as a cross reference when restorin
 1.  Modify or disable the firewall. According to Red Hat, the following ports need to be enabled:
     1.  TCP: ports 2224, 3121, 21064
     1.  UDP: ports 5405
-1.  In RHEL / CentOS {{site.centos_version}}, the firewall software can be configured to permit cluster traffic as follows:
+1.  In RHEL / CentOS 7.6, the firewall software can be configured to permit cluster traffic as follows:
 
     ```bash
     firewall-cmd --permanent --add-service=high-availability
