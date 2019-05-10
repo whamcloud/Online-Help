@@ -14,7 +14,7 @@ The following shell script can be used to capture the essential configuration in
 
 ```bash
 #!/bin/sh
-# EE Integrated Manager for Lustre (IML) server backup script
+# Integrated Manager for Lustre (IML) server backup script
 
 BCKNAME=bck-$HOSTNAME-`date +%Y%m%d-%H%M%S`
 BCKROOT=$HOME/$BCKNAME
