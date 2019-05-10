@@ -55,31 +55,27 @@ Copy the backup tarball to a safe location that is not on the server being upgra
 
 The software upgrade process requires super-user privileges to run. Login as the `root` user or use `sudo` to elevate privileges as required.
 
-1.  If upgrading to EL {{site.centos_version}}, run the OS upgrade first. For example:
+1. Download the latest Integrated Manager for Lustre release repo:
 
-    ```bash
-    yum clean all
-    yum update
-    reboot
-    ```
+   ```sh
+   yum-config-manager --add-repo=https://raw.githubusercontent.com/whamcloud/integrated-manager-for-lustre/v5.0.0/chroma_support.repo
+   ```
 
-    Refer to the operating system documentation for details on the correct procedure for upgrading between minor OS releases.
+1. Run the OS upgrade.
 
-1.  Download the latest Integrated Manager for Lustre release repo:
+   ```bash
+   yum clean all
+   yum update
+   reboot
+   ```
 
-    ```sh
-    yum-config-manager --add-repo=https://raw.githubusercontent.com/whamcloud/integrated-manager-for-lustre/v5.0.0/chroma_support.repo
-    ```
+   Refer to the operating system documentation for details on the correct procedure for upgrading between minor OS releases. Note that a mapping of new installs and upgrades will be displayed. Look through this chart carefully and verify that python2-iml-manager is marked for upgrade and that it will be upgraded to {{site.version}}.
 
-1.  Install the updated manager via `yum`:
+1. Run `chroma-config setup` to complete the installation.
 
-    ```sh
-    yum install python2-iml-manager
-    ```
+1. Restart the manager node.
 
-1.  Run `chroma-config setup` to complete the installation.
-
-1.  Perform a hard refresh on the browser and verify that IML loads correctly
+1. Perform a hard refresh on the browser and verify that IML loads correctly.
 
 ## Upgrade the Lustre Servers
 
