@@ -3,7 +3,7 @@
 %define backcompatdir /usr/lib%{managerdir}
 
 Name:       iml-%{base_name}
-Version:    2.5.4
+Version:    2.5.5
 # Release Start
 Release:    1%{?dist}
 # Release End
@@ -41,6 +41,9 @@ rm -rf %{buildroot}
 %{backcompatdir}
 
 %changelog
+* Mon May 13 2019 Joe Grund <jgrund@whamcloud.com> - 2.5.5-1
+- IML 5 documentation updates
+
 * Tue Apr 09 2019 Will Johnson <wjohnson@whamcloud.com> - 2.5.4-1
 - Integrate deploy copr
 
