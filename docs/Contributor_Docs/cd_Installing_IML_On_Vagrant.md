@@ -38,7 +38,7 @@ Please refer to [https://github.com/whamcloud/vagrantfiles](https://github.com/w
 1. Install IML via vagrant provisioning
 
    ```bash
-   vagrant provision adm --provision-with install-iml-devel-copr
+   vagrant provision adm --provision-with install-iml-5
    ```
 
 1. Test that a connection can be made to IML by going to the following link in your browser: [https://localhost:8443](https://localhost:8443)
