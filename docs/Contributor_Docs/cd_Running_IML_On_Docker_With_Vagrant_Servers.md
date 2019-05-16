@@ -4,7 +4,7 @@
 
 ## Overview
 
-IML is capable of running in a docker swarm (using docker stack) where each manager service is run in its own container. This approach allows IML to be deployed quickly onto the host node. The lustre servers however, need to be run on hardware or in a virtual machine. During development, it is common to deploy IML in a docker swarm and use virtuabox instances as servers. Setting up network communication between the docker swarm and the virtualbox nodes can be a bit tricky. This document describes the process of deploying IML to a docker swarm and how to connect it to virtualbox vm's when adding server nodes.
+IML is capable of running in a docker swarm (using docker stack) where each manager service is run in its own container. This approach allows IML to be deployed quickly onto the host node. The lustre servers however, need to be somewhere with a full kernel. During development, it is common to deploy IML in a docker swarm and use virtuabox instances as servers. Setting up network communication between the docker swarm and the virtualbox nodes can be a bit tricky. This document describes the process of deploying IML to a docker swarm and how to connect it to virtualbox vm's when adding server nodes.
 
 ## Preparing the Network
 
