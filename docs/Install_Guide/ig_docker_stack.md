@@ -30,11 +30,11 @@ Starting with Integrated Manager for Lustre 5, the IML manager is available via 
    ```yaml
    version: "3.7"
    services:
-   job-scheduler:
-     extra_hosts:
-       - "<STORAGE_SERVER_X_NAME>:<STORAGE_SERVER_X_IP>"
-       - "<STORAGE_SERVER_Y_NAME>:<STORAGE_SERVER_Y_IP>"
-       - ...
+     job-scheduler:
+       extra_hosts:
+         - "<STORAGE_SERVER_X_NAME>:<STORAGE_SERVER_X_IP>"
+         - "<STORAGE_SERVER_Y_NAME>:<STORAGE_SERVER_Y_IP>"
+         - ...
    ```
 
 1. Create a [docker secret](https://docs.docker.com/engine/swarm/secrets/) with a new root IML password
@@ -46,7 +46,7 @@ Starting with Integrated Manager for Lustre 5, the IML manager is available via 
 1. Deploy the stack. This will bring up the manager within docker.
 
    ```sh
-   docker stack deploy -c docker-compose.yml iml
+   docker stack deploy -c /tmp/docker-compose.yml -c /tmp/docker-compose.extra-hosts.yml iml
    ```
 
 1. Add an entry to the host OS hostfile so that it's IP points to nginx.
@@ -55,7 +55,7 @@ Starting with Integrated Manager for Lustre 5, the IML manager is available via 
    <HOST_IP>	nginx
    ```
 
-1. Login to the GUI via `https:://<HOSTNAME>` or `https:://<HOST_IP>` and proceed to deploy agents to storage servers.
+1. Login to the GUI via `https:://<HOSTNAME>:7443` or `https:://<HOST_IP>:7443` and proceed to deploy agents to storage servers.
 
 ## Stopping
 
@@ -91,5 +91,5 @@ If you wish to start the IML stack again, do the following:
 1. re-deploy the stack
 
    ```sh
-    docker stack deploy -c /tmp/docker-compose.yml iml
+    docker stack deploy -c /tmp/docker-compose.yml -c docker-compose.extra-hosts.yml iml
    ```

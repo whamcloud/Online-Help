@@ -48,6 +48,8 @@
 
 1. [Models and Database Migrations](cd_Models_And_DB_Migrations.md)
 
+1. [Running IML on docker with vagrant servers](cd_Running_IML_On_Docker_With_Vagrant_Servers.md)
+
 ---
 
 ## Resources
