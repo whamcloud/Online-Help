@@ -12,47 +12,34 @@ Please refer to [https://github.com/whamcloud/vagrantfiles](https://github.com/w
 
 1. Verify that the following vagrant plugins are installed:
 
-    ```bash
-    vagrant plugin list
+   ```bash
+   vagrant plugin list
 
-    vagrant plugin install vagrant-shell-commander
-    vagrant plugin install vagrant-vbguest
-    vagrant plugin install vagrant-proxyconf    <--- Optional, for example, this may be needed if behind corporate firewall.
-    ```
+   vagrant plugin install vagrant-shell-commander
+   vagrant plugin install vagrant-proxyconf    <--- Optional, for example, this may be needed if behind corporate firewall.
+   ```
 
 1. Clone the Vagrantfiles repo from github
 
-    ```bash
-    git clone git@github.com:whamcloud/Vagrantfiles.git
-    ```
+   ```bash
+   git clone git@github.com:whamcloud/Vagrantfiles.git
+   ```
 
 1. navigate to the `Vagrantfiles/iml-sandbox` directory
 
 1. Start the VM cluster
 
-    ```bash
-    vagrant up
-    ```
+   ```bash
+   vagrant up
+   ```
 
 ## Installing IML
 
-1. Login to the `adm` node
+1. Install IML via vagrant provisioning
 
-    ```bash
-    vagrant ssh adm
-    ```
-
-1. Become the _root_ user
-
-    ```bash
-    su -
-    ```
-
-1. Install IML via `yum`
-
-    ```bash
-    vagrant provision adm --provision-with install-iml-devel-copr
-    ```
+   ```bash
+   vagrant provision adm --provision-with install-iml-devel-copr
+   ```
 
 1. Test that a connection can be made to IML by going to the following link in your browser: [https://localhost:8443](https://localhost:8443)
 
