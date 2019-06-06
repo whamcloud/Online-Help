@@ -83,6 +83,48 @@ Lustre server upgrades can be coordinated as either an online roll-out, leveragi
 
 The upgrade procedure documented here describes the faster and more reliable approach, which requires that the filesystem be stopped. It assumes that the Lustre servers have been installed in pairs, where each server pair forms an independent high-availability cluster built on Pacemaker and Corosync. Integrated Manager for Lustre deploys these configurations and uses both the stock Lustre resource agent and clusterlabs ZFS resource agent. Integrated Manager for Lustre can also configure STONITH agents to provide node fencing in the event of a cluster partition or loss of quorum.
 
+### Backup Existing Server Data
+
+1.  As a precaution, create a backup of the existing configuration for each server. The following shell script can be used to capture the essential configuration information that is relevant to Integrated Manager for Lustre managed mode servers:
+
+    ```bash
+    #!/bin/sh
+    BCKNAME=bck-$HOSTNAME-`date +%Y%m%d-%H%M%S` BCKROOT=$HOME/$BCKNAME
+    mkdir -p $BCKROOT
+    tar cf - \
+    /var/lib/chroma \
+    /etc/sysconfig/network \
+    /etc/sysconfig/network-scripts/ifcfg-* \
+    /etc/yum.conf \
+    /etc/yum.repos.d \
+    /etc/hosts \
+    /etc/passwd \
+    /etc/group \
+    /etc/shadow \
+    /etc/gshadow \
+    /etc/sudoers \
+    /etc/resolv.conf \
+    /etc/nsswitch.conf \
+    /etc/rsyslog.conf \
+    /etc/ntp.conf \
+    /etc/selinux/config \
+    /etc/modprobe.d/iml_lnet_module_parameters.conf \
+    /etc/corosync/corosync.conf \
+    /etc/ssh \
+    /root/.ssh \
+    | (cd $BCKROOT && tar xf -)
+
+    # Pacemaker Configuration:
+    cibadmin --query > $BCKROOT/cluster-cfg-$HOSTNAME.xml
+
+    cd `dirname $BCKROOT`
+    tar zcf $BCKROOT.tgz `basename $BCKROOT`
+    ```
+
+    **Note:** This is not intended to be a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre servers managed by Integrated Manager for Lustre that are difficult to re-create if deleted. Make sure to backup any other important configuration files that may be on your system, such as multipath configurations.
+
+1.  Copy the backups for each server's configuration to a safe location that is not on the servers being upgraded.
+
 ## Stopping the filesystem
 
 IML requires that the filesystem(s) associated with each node to be upgraded must be stopped. Follow these steps:

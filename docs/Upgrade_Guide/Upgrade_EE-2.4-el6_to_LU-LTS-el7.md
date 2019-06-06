@@ -404,7 +404,7 @@ Upgrade one server at a time in each cluster pair, starting with Node 1, and mak
     tar zcf $BCKROOT.tgz `basename $BCKROOT`
     ```
 
-    **Note:** This is not intended to be a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre servers managed by Integrated Manager for Lustre that are difficult to re-create if deleted.
+    **Note:** This is not intended to be a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre servers managed by Integrated Manager for Lustre that are difficult to re-create if deleted. Make sure to backup any other important configuration files that may be on your system, such as multipath configurations.
 
     **_Do not skip the backup. Subsequent process steps rely on the content of the backup to restore the Lustre services to operation._**
 
