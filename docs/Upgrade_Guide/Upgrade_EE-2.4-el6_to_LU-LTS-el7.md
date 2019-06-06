@@ -406,6 +406,13 @@ Upgrade one server at a time in each cluster pair, starting with Node 1, and mak
 
     **Note:** This is not intended to be a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre servers managed by Integrated Manager for Lustre that are difficult to re-create if deleted. Make sure to backup any other important configuration files that may be on your system, such as multipath configurations.
 
+    The following files will need to be backed up if multipath is being used on the system:
+
+    ```sh
+    /etc/multipath/*
+    /etc/multipath.conf
+    ```
+
     **_Do not skip the backup. Subsequent process steps rely on the content of the backup to restore the Lustre services to operation._**
 
 1.  Copy the backups for each server's configuration to a safe location that is not on the servers being upgraded.
