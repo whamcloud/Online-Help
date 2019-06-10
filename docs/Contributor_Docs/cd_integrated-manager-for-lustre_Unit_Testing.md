@@ -4,7 +4,7 @@
 
 ## Overview
 
-The easiest way to get iml unit tests running locally is to start a postgres docker container with a volume that links to the IML repo. The repo can then be copied over to another directory in the container where the tests will run. The tests should not run on the volume itself or they will not work.
+The easiest way to get iml unit tests running locally is to start a postgres docker container with a volume that links to the IML repo. The unit tests can then be run inside the volume directory.
 
 ## Loading the docker container
 
@@ -13,7 +13,7 @@ The easiest way to get iml unit tests running locally is to start a postgres doc
 In a local terminal, navigate to the IML repo and run the following:
 
 ```sh
-docker run -dit --name unit-test -e POSTGRES_PASSWORD=lustre -v "$(pwd)":/iml postgres
+docker run -dit --name unit-test -e POSTGRES_PASSWORD=lustre -v "$(pwd)":/root/iml postgres
 ```
 
 ### Setting up the docker container
@@ -27,11 +27,10 @@ docker exec -it unit-test /bin/bash
 Setting up the container:
 
 ```sh
-cp -r /iml .
-cd ~/iml
 apt-get update
 apt-get install -y ed
 apt-get install -y python-pip
+cd ~/iml
 pip install -r requirements.txt
 pip install -r requirements.test
 psql -c "CREATE USER chroma;" -U postgres
@@ -43,6 +42,8 @@ echo -e "/^DEBUG =/s/= .*$/= True/\nwq" | ed settings.py 2>/dev/null
 ```
 
 ## Run the Desired Unit Tests
+
+All test commands should be run in the ~/iml directory.
 
 ### To Run all the tests under chroma_manager:
 
