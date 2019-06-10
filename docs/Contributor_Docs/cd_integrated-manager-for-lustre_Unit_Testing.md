@@ -1,136 +1,72 @@
-#  <a name="Top"></a>Running Unit Tests for [integrated-manager-for-lustre](https://github.com/whamcloud/integrated-manager-for-lustre)
+# Running Unit Tests for [integrated-manager-for-lustre](https://github.com/whamcloud/integrated-manager-for-lustre)
 
 ![Unit Testing](md_Graphics/test.png)
 
-## Prerequisites
-* To run the python unit tests for the [integrated-manager-for-lustre](https://github.com/whamcloud/integrated-manager-for-lustre) repo, it will be necessary to install a working version of IML.
+## Overview
 
-* Create a **Vagrant** virtual cluster outlined here: [Install IML on a Vagrant Virtual Cluster](cd_Installing_IML_On_Vagrant.md).
+The easiest way to get iml unit tests running locally is to start a postgres docker container with a volume that links to the IML repo. The unit tests can then be run inside the volume directory.
 
-## Log into the **adm** node
-Change directory to the location of the Vagrantfile and become the root user.
+## Loading the docker container
 
-    # vagrant ssh adm
-    # sudo -i
+### Initializing the docker container
 
-## Install Necessary Tools
-Install pip, virtualenv and other packages.
+In a local terminal, navigate to the IML repo and run the following:
 
-    # yum -y install python-pip systemd-devel libpqxx-devel graphviz-devel.x86_64
+```sh
+docker run -dit --name unit-test -e POSTGRES_PASSWORD=lustre -v "$(pwd)":/root/iml postgres
+```
 
-    # pip install -U pip psycopg2
-    # pip install virtualenv
+### Setting up the docker container
 
-## Create a Virtual environment
-This is an optional step if the desire is to build up the test area and then to eliminate the test area. Virtual environments are about isolation, and not polluting the system namespace. 
+Log into the docker container:
 
-Activate the virtual environment where dependencies will be added.
+```sh
+docker exec -it unit-test /bin/bash
+```
 
-    # virtualenv myenv
-    # cd myenv
-    
-    # source bin/activate
-    (myenv) # 
+Setting up the container:
 
-To **deactivate** the virtual environment, type "deactivate":
-
-    (myenv) # deactivate
-    #
-
-## Clone the [integrated-manager-for-lustre](https://github.com/whamcloud/integrated-manager-for-lustre) code.
-
-    # git clone git@github.com:whamcloud/integrated-manager-for-lustre.git
-
-## Or, copy the [integrated-manager-for-lustre](https://github.com/whamcloud/integrated-manager-for-lustre) code from the /vagrant shared drive:
-
-    # cp -r /vagrant/integrated-manager-for-lustre .
-
-## Generate the list of Necessary Dependencies
-
-    # cd integrated-manager-for-lustre
-    # make requirements
-
-## Install the Necessary Dependencies
-
-    # cd chroma-manager
-    # pip install -r requirements.txt
-
-**Note:** This may take a while to finish, i.e., tens of minutes. Be patient and allow the install to run to completion.
+```sh
+apt-get update
+apt-get install -y ed
+apt-get install -y python-pip
+cd ~/iml
+pip install -r requirements.txt
+pip install -r requirements.test
+psql -c "CREATE USER chroma;" -U postgres
+psql -c "ALTER USER chroma CREATEDB;" -U postgres
+psql -c "CREATE DATABASE chroma OWNER chroma;" -U postgres
+export IML_DISABLE_THREADS=1
+echo "CRYPTO_FOLDER='./'" > local_settings.py
+echo -e "/^DEBUG =/s/= .*$/= True/\nwq" | ed settings.py 2>/dev/null
+```
 
 ## Run the Desired Unit Tests
 
+All test commands should be run in the ~/iml directory.
+
 ### To Run all the tests under chroma_manager:
 
-    # python manage.py test tests/unit
-
-### To Run a Subset of Tests, Specify the Correct Path
-
-    # python manage.py test tests/unit/chroma_core/models
-
-```
-(myenv) root@adm>python manage.py test tests/unit/chroma_core/models
-nosetests tests/unit/chroma_core/models --logging-filter=-south --verbosity=1
-Creating test database for alias 'default'...
-Loaded 13 default power device types.
-Creating groups...
-***
-***
-***
-*** SECURITY WARNING: You are running in DEBUG mode and default users have been created
-***
-***
-***
-
-..........................SS...S...
-----------------------------------------------------------------------
-Ran 35 tests in 28.240s
-
-OK (SKIP=3)
-Destroying test database for alias 'default'...
-(myenv) root@adm>
+```sh
+python -W always manage.py test tests/unit/
 ```
 
-## If the Unit Tests are not Behaving
+### Running a subset of tests
 
-Evaluating database transactions will not work as expected if multiple threads are operating on the same database instance. 
-To remedy this, disable threading for the manager unit tests.
+```sh
+python -W always manage.py test tests/unit/chroma_core/models
+```
 
-    # export IML_DISABLE_THREADS=1
+### Running tests in a single file
 
-    Run the tests here.
-    For example,
+```sh
+python -W always manage.py test tests/unit/chroma_core/models/test_host.py
+```
 
-    # python manage.py test tests/unit
+### Running a specific test
 
-    # unset IML_DISABLE_THREADS
+```sh
+python -W always manage.py test tests/unit/chroma_core/models/test_host.py:TestHostListMixin:test_cached_hosts
+```
 
-## Other tests
-
-### Test 1
-
-    # export IML_DISABLE_THREADS=1
-
-    # mkdir -p /tmp/test_reports
-    # export WORKSPACE=/tmp/myworkspace
-
-    # python manage.py test --with-xunit --xunit-file=$WORKSPACE/test_reports/chroma-manager-unit-test-results.xml --with-coverage tests/unit/ <<EOC
-    yes
-    EOC
-
-    # unset IML_DISABLE_THREADS
-
-### Test 2
-
-    # export IML_DISABLE_THREADS=1
-
-    # mkdir -p /tmp/test_reports
-    # export WORKSPACE=/tmp/myworkspace
-
-    # python manage.py test --with-xunit --xunit-file=$WORKSPACE/test_reports/chroma-manager-unit-test-results.xml tests/unit/ <<EOC
-    yes
-    EOC
-
-    # unset IML_DISABLE_THREADS
-
----
-[Top of page](#Top)
+[Top of page](#running-unit-tests-for-integrated-manager-for-lustre)
