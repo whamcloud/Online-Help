@@ -1,10 +1,10 @@
-# Upgrading Intel® EE for Lustre 3.1.1.0 to Lustre 2.10.7 LTS and Integrated Manager for Lustre 4.0.10.0
+# Upgrading Intel® EE for Lustre 3.1.1.0 to Lustre 2.10.7 LTS and Integrated Manager for Lustre 4.0.10.1
 
 [**Upgrade Guide**](ug_TOC.md)
 
 ## Introduction
 
-This document provides a description of how to upgrade an existing Lustre server file system installation from Intel® EE for Lustre version 3.1.1.0 running on the RHEL/CentOS 7.x OS distribution to Lustre 2.10.7 LTS and Integrated Manager for Lustre version 4.0.10.0 running on RHEL/CentOS 7.6.
+This document provides a description of how to upgrade an existing Lustre server file system installation from Intel® EE for Lustre version 3.1.1.0 running on the RHEL/CentOS 7.x OS distribution to Lustre 2.10.7 LTS and Integrated Manager for Lustre version 4.0.10.1 running on RHEL/CentOS 7.6.
 
 CentOS is used for the examples. RHEL users will need to refer to Red Hat for instructions on enabling the High Availability add-on needed to install Pacemaker, Corosync and related support tools.
 
@@ -95,15 +95,49 @@ The software upgrade process requires super-user privileges to run. Login as the
 
     Refer to the operating system documentation for details on the correct procedure for upgrading between minor OS releases.
 
-1.  Download the latest Integrated Manager for Lustre software from the project's release page:
+1.  Verify that the manager-for-lustre copr repo is enabled and update required dependencies:
 
-    <https://github.com/whamcloud/integrated-manager-for-lustre/releases>
+    ```bash
+    yum repolist
+    ```
+
+    `managerforlustre-manager-for-lustre/x86_64` should be listed among the results. If not, enable the repo:
+
+    ```bash
+    yum copr enable managerforlustre/manager-for-lustre
+    ```
+
+    Install nodejs from the managerforlustre/manager-for-lustre repo:
+
+    ```bash
+    yum --disablerepo=* --enablerepo=managerforlustre-manager-for-lustre install nodejs-6.14.2-1.01.el7
+    ```
+
+    Update Django-south to python-django-south (**Note: This command is interactive; do not copy and paste**):
+
+    ```bash
+    yum shell
+    > remove Django-south
+    > install python-django-south-1.0.2-1.el7
+    > run
+    > exit
+    ```
+
+    Update rabbitmq-server:
+
+    ```bash
+    yum install rabbitmq-server-3.3.5-34.el7
+    ```
+
+1.  Download Integrated Manager for Lustre 4.0.10.1 from the project's release page:
+
+    [Integrated Manager for Lustre-4.0.10.1](https://github.com/whamcloud/integrated-manager-for-lustre/releases/download/v4.0.10.1/iml-4.0.10.1.tar.gz)
 
 1.  Extract the Integrated Manager for Lustre bundle. For example:
 
     ```bash
     cd $HOME
-    tar zxf iml-4.0.10.0.tar.gz
+    tar zxf iml-4.0.10.1.tar.gz
     ```
 
 1.  As root, run the installer:
