@@ -43,7 +43,7 @@ Make sure to backup this configuration file before performing any upgrades or re
     updates in the remaining steps.
 
 1.  If your currently installed software version is 3.1.1,
-    update directly to version 4.0.10.1 using [these instructions.](../Upgrade_Guide/Upgrade_EE-3.1-el7_to_LU-LTS-el7.md)
+    update directly to version 4.0.10.2 using [these instructions.](../Upgrade_Guide/Upgrade_EE-3.1-el7_to_LU-LTS-el7.md)
 
 ### IML 4.0.x Upgrades
 
