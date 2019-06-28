@@ -17,7 +17,7 @@ Make sure you are in the integrated-manager-for-lustre repo and perform the foll
 
    yum group install -y "Development Tools";
 
-   yum copr enable managerforlustre/manager-for-lustre -y;
+   yum copr enable managerforlustre/manager-for-lustre-4.0.10 -y;
 
    yum copr enable ngompa/dnf-el7 -y;
 
