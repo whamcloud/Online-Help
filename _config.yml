@@ -15,7 +15,7 @@ exclude:
   ]
 version: "5.0.0.0"
 package_name: "iml-5.0.0.0"
-lustre_version: "2.12.1"
+lustre_version: "2.12.2"
 lustre_package_name: "lustre-2.12.1"
 lustre_kernel_version: "3.10.0-957.10.1.el7"
 e2fsprogs_version: "1.44.5"
