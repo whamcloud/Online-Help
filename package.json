@@ -21,6 +21,6 @@
   },
   "author": "IML Team",
   "devDependencies": {
-    "markdown-link-check": "^3.7.2"
+    "markdown-link-check": "^3.7.3"
   }
 }
