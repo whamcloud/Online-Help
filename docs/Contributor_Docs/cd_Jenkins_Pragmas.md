@@ -12,6 +12,12 @@ There are pragmas available for Jenkins (EFS, SSI, Upgrade) testing that wil eff
 
 This will add the given copr repo to each agent node during testing. The pragma is additive, it will not overwrite the default agent repos.
 
+### Using an additional repo on the manager
+
+`COPR Module Manager: owner/project`
+
+This will add the given copr repo to the manager node during testing. The pragma is additive, it will not overwrite the default manager repos.
+
 ### Overwriting Environment vars
 
 This will overwrite the passed environment variables in a test script. It is typically used to run a subset of testing. Here's and example to run a single SSI test.
