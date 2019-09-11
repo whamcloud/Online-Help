@@ -33,6 +33,7 @@ apt-get install -y python-pip
 cd ~/iml
 pip install -r requirements.txt
 pip install -r requirements.test
+pip install ipdbplugin
 psql -c "CREATE USER chroma;" -U postgres
 psql -c "ALTER USER chroma CREATEDB;" -U postgres
 psql -c "CREATE DATABASE chroma OWNER chroma;" -U postgres
@@ -45,7 +46,7 @@ echo -e "/^DEBUG =/s/= .*$/= True/\nwq" | ed settings.py 2>/dev/null
 
 All test commands should be run in the ~/iml directory.
 
-### To Run all the tests under chroma_manager:
+### To Run all the tests under chroma_manager
 
 ```sh
 python -W always manage.py test tests/unit/
@@ -67,6 +68,18 @@ python -W always manage.py test tests/unit/chroma_core/models/test_host.py
 
 ```sh
 python -W always manage.py test tests/unit/chroma_core/models/test_host.py:TestHostListMixin:test_cached_hosts
+```
+
+### Dropping to debugger on test error
+
+```sh
+python manage.py test --ipdb --nocapture tests/unit
+```
+
+### Dropping to debugger on test failure
+
+```sh
+python manage.py test  --ipdb-failures --nocapture tests/unit
 ```
 
 [Top of page](#running-unit-tests-for-integrated-manager-for-lustre)
