@@ -29,7 +29,7 @@ servers and avoids possible errors.
 file system manually, without Integrated Manager for Lustre software.
 Other installations may opt to deploy and configure a Lustre file system
 and then later install Integrated Manager for Lustre software to be used
-in Monitor-only mode. To deploy and configure Lustre manually, see 
+in Monitor-only mode. To deploy and configure Lustre manually, see
 [Installing and Configuring Lustre Manually](ig_ch_08_manual_install.md).
 
 For information regarding installing and configuring Lustre, see Part II
@@ -51,7 +51,7 @@ To install the software, complete these steps:
 1. Pull the repo file for a tagged release on github:
 
    ```bash
-   yum-config-manager --add-repo=https://raw.githubusercontent.com/whamcloud/integrated-manager-for-lustre/v5.0.0/chroma_support.repo
+   yum-config-manager --add-repo=https://github.com/whamcloud/integrated-manager-for-lustre/releases/download/v5.1.0/chroma_support.repo
    ```
 
 1. Install the manager via `yum`:
