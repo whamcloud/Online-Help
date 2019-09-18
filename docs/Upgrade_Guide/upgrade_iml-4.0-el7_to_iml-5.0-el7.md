@@ -58,7 +58,7 @@ The software upgrade process requires super-user privileges to run. Login as the
 1. Download the latest Integrated Manager for Lustre release repo:
 
    ```sh
-   yum-config-manager --add-repo=https://raw.githubusercontent.com/whamcloud/integrated-manager-for-lustre/v5.0.0.0/chroma_support.repo
+   yum-config-manager --add-repo=https://github.com/whamcloud/integrated-manager-for-lustre/releases/download/v5.1.0/chroma_support.repo
    ```
 
 1. Run the OS upgrade.
