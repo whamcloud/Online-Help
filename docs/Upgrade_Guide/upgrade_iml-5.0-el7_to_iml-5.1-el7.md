@@ -1,4 +1,4 @@
-# Upgrading Integrated Manager for Lustre 4.0.x to Lustre {{site.lustre_version}} and Integrated Manager for Lustre {{site.version}}
+# Upgrading Integrated Manager for Lustre 5.0.0 to Lustre {{site.lustre_version}} and Integrated Manager for Lustre {{site.version}}
 
 [**Upgrade Guide**](ug_TOC.md)
 
@@ -61,7 +61,7 @@ The software upgrade process requires super-user privileges to run. Login as the
    yum-config-manager --add-repo=https://github.com/whamcloud/integrated-manager-for-lustre/releases/download/v5.1.0/chroma_support.repo
    ```
 
-1. Verify that the old iml-4.0.x repo file has been removed from the repolist and that the 5.1 repo has been added.
+1. Verify that the old iml-5.0 repo file has been removed from the repolist and that the 5.1 repo has been added.
 
    ```bash
    yum clean all
@@ -179,16 +179,8 @@ Next, navigate to the server page and proceed to update each of the servers:
 1. Click the _Install Updates_ button
 1. Select all storage servers for upgrade and begin the upgrade.
 
-## Setting up HA
-
-1. Once the upgrade completes, migrate the storage server to the new HA setup. Run the following on each storage server:
-
-   ```sh
-   chroma-agent convert_targets
-   ```
-
 ## Summary
 
-The filesystem(s) should now be started. Connect a client and verify that it is able to access files on the filesystem.
+Start the filesystem once the upgrade job for each server completes. Connect a client and verify that it is able to access files on the filesystem.
 
-[top](#upgrading-integrated-manager-for-lustre-40x-to-lustre-{{site.lustre_version | remove: '.'}}-and-integrated-manager-for-lustre-{{site.version | remove: '.'}})
+[top](upgrading-integrated-manager-for-lustre-500-to-lustre-{{site.lustre_version | remove: '.'}}-and-integrated-manager-for-lustre-{{site.version | remove: '.'}})
