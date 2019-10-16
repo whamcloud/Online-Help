@@ -43,10 +43,10 @@ vagrant up iscsi mds1 mds2 oss1 oss2
 Verify that an ssh connection can be established to each of the server nodes from the host:
 
 ```sh
- ssh -i ~/repos/Vagrantfiles/id_rsa root@10.73.10.11 "hostname"
- ssh -i ~/repos/Vagrantfiles/id_rsa root@10.73.10.12 "hostname"
- ssh -i ~/repos/Vagrantfiles/id_rsa root@10.73.10.21 "hostname"
- ssh -i ~/repos/Vagrantfiles/id_rsa root@10.73.10.22 "hostname"
+ ssh -i ~/repos/Vagrantfiles/iml-sandbox/id_rsa root@10.73.10.11 "hostname"
+ ssh -i ~/repos/Vagrantfiles/iml-sandbox/id_rsa root@10.73.10.12 "hostname"
+ ssh -i ~/repos/Vagrantfiles/iml-sandbox/id_rsa root@10.73.10.21 "hostname"
+ ssh -i ~/repos/Vagrantfiles/iml-sandbox/id_rsa root@10.73.10.22 "hostname"
 ```
 
 The server nodes should now be up and running.

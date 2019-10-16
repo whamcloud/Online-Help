@@ -4,7 +4,7 @@
 
 ## Upgrade Integrated Manager for Lustre
 
-The first component in the environment to upgrade is the Integrated Manager for Lustre server and software. The manager server upgrade can be conducted without any impact to the Lustre file system services.
+The first component in the environment to upgrade is the Integrated Manager for Lustre server and software. The manager server upgrade can be conducted without any impact to the Lustre filesystem services.
 
 ### Backup the Existing configuration
 
@@ -64,14 +64,13 @@ The software upgrade process requires super-user privileges to run. Login as the
 1. Verify that the old iml-4.0.x repo file has been removed from the repolist and that the 5.1 repo has been added.
 
    ```bash
-   yum clean all
    yum repolist
    ```
 
 1. Run the OS upgrade.
 
    ```bash
-   yum clean all
+   yum clean metadata
    yum update
    ```
 
@@ -82,7 +81,7 @@ Refer to the operating system documentation for details on the correct procedure
 1. Update the repos on each server node (run from the manager node):
 
    ```bash
-   iml update-repo <node name>
+   iml update-repo mds[1,2],oss[1,2]
    ```
 
 1. Perform a hard refresh on the browser and verify that IML loads correctly.
@@ -154,20 +153,10 @@ IML requires that the filesystem(s) associated with each node to be upgraded mus
 
 ## Upgrade the OS on each server node
 
-In order to upgrade, make sure yum is configured on each server node to pull down CentOS 7.6 packages. You may need to disable the CentOS base repo and enable the vault repos. For example:
+In order to upgrade, make sure yum is configured on each server node to pull down CentOS 7.6 packages. Next, from the manager node, upgrade the OS for each host:
 
 ```bash
-sed -i "s/enabled=[0-1]//g" /etc/yum.repos.d/CentOS-Base.repo
-sed -i "s/gpgcheck=\([0-1]\)/gpgcheck=\1\nenabled=0/g" /etc/yum.repos.d/CentOS-Base.repo
-yum-config-manager --add-repo=http://vault.centos.org/7.6.1810/os/x86_64/
-yum-config-manager --add-repo=http://vault.centos.org/7.6.1810/extras/x86_64/
-yum-config-manager --add-repo=http://vault.centos.org/7.6.1810/updates/x86_64/
-```
-
-Next, from the manager node, upgrade the OS for each host using a pdsh expression (you may need to install pdsh via yum).
-
-```bash
- pdsh -w root@mds[1,2] -w root@oss[1,2] "yum -y upgrade --exclude=python2-iml*"
+yum -y upgrade --exclude=python2-iml*
 ```
 
 ## Run the updates
