@@ -81,7 +81,7 @@ Refer to the operating system documentation for details on the correct procedure
 1. Update the repos on each server node (run from the manager node):
 
    ```bash
-   iml update-repo mds[1,2],oss[1,2]
+   iml update_repo --hosts mds[1,2],oss[1,2]
    ```
 
 1. Perform a hard refresh on the browser and verify that IML loads correctly.
