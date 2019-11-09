@@ -51,6 +51,16 @@ Copy the backup tarball to a safe location that is not on the server being upgra
 
 **Note:** This script is not intended to provide a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre servers managed by Integrated Manager for Lustre that are difficult to re-create if deleted.
 
+## Stopping the filesystem
+
+IML requires that the filesystem(s) associated with each node to be upgraded must be stopped. Follow these steps:
+
+1. Navigate to _Configuration->Filesystems_
+1. For each filesystem listed:
+
+   1. Click the filesystem's `Actions` button
+   1. Select _Stop_
+
 ### Install the Integrated Manager for Lustre Upgrade
 
 The software upgrade process requires super-user privileges to run. Login as the `root` user or use `sudo` to elevate privileges as required.
@@ -135,16 +145,6 @@ The upgrade procedure documented here describes the faster and more reliable app
 
 1. Copy the backups for each server's configuration to a safe location that is not on the servers being upgraded.
 
-## Stopping the filesystem
-
-IML requires that the filesystem(s) associated with each node to be upgraded must be stopped. Follow these steps:
-
-1. Navigate to _Configuration->Filesystems_
-1. For each filesystem listed:
-
-   1. Click the filesystem's `Actions` button
-   1. Select _Stop_
-
 ## Upgrade the OS on each server node
 
 In order to upgrade, make sure yum is configured on each server node to pull down CentOS 7.7 packages. Next, from the manager node, upgrade the OS for each host:
@@ -155,10 +155,10 @@ In order to upgrade, make sure yum is configured on each server node to pull dow
    yum -y upgrade
    ```
 
-1. Update the repos on each server node (run from the manager node):
+1. Update the repos on each server node. As an example, consider the following hosts: mds1.local, mds2.local, oss1.local, and oss2.local:
 
    ```bash
-   iml update_repo --hosts mds[1,2].local,oss[1,2].local
+   [root@manager]# iml update_repo --hosts mds[1,2].local,oss[1,2].local
    ```
 
 ## Run the updates
