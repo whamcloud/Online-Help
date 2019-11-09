@@ -78,12 +78,6 @@ Refer to the operating system documentation for details on the correct procedure
 
 1. Run `chroma-config setup` to complete the installation.
 
-1. Update the repos on each server node (run from the manager node):
-
-   ```bash
-   iml update_repo --hosts mds[1,2],oss[1,2]
-   ```
-
 1. Perform a hard refresh on the browser and verify that IML loads correctly.
 
 ## Upgrade the Lustre Servers
@@ -153,11 +147,19 @@ IML requires that the filesystem(s) associated with each node to be upgraded mus
 
 ## Upgrade the OS on each server node
 
-In order to upgrade, make sure yum is configured on each server node to pull down CentOS 7.6 packages. Next, from the manager node, upgrade the OS for each host:
+In order to upgrade, make sure yum is configured on each server node to pull down CentOS 7.7 packages. Next, from the manager node, upgrade the OS for each host:
 
-```bash
-yum -y upgrade --exclude=python2-iml*
-```
+1. Upgrade the OS
+
+   ```bash
+   yum -y upgrade
+   ```
+
+1. Update the repos on each server node (run from the manager node):
+
+   ```bash
+   iml update_repo --hosts mds[1,2].local,oss[1,2].local
+   ```
 
 ## Run the updates
 

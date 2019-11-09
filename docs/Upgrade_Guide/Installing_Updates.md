@@ -48,7 +48,7 @@ Make sure to backup this configuration file before performing any upgrades or re
 ### IML 4.0.x Upgrades
 
 1.  If your currently installed software version is 4.0.x,
-    update directly to version 5.1.0.0 using [these instructions.](../Upgrade_Guide/upgrade_iml-4.0-el7_to_iml-5.0-el7.md)
+    update directly to version 5.1.0.0 using [these instructions.](../Upgrade_Guide/upgrade_iml-4.0-el7_to_iml-5.1-el7.md)
 
 Performing a version downgrade or rollback is not supported.
 
