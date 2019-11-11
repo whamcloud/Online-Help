@@ -143,7 +143,7 @@ The upgrade procedure documented here describes the faster and more reliable app
    /etc/multipath.conf
    ```
 
-1. Copy the backups for each server's configuration to a safe location tha
+1. Copy the backups for each server's configuration to a safe location that is not on the server being upgraded.
 
 ## Ensure IML 5.0 packages are latest
 
