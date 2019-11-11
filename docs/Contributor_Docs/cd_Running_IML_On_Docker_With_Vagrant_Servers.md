@@ -116,7 +116,9 @@ Next, navigate to the `Servers` page and attempt to add the servers using the fo
 If IML is not able to communicate with the server vm's, log into the docker container and make sure the server can be pinged:
 
 ```sh
+{% raw %}
 docker ps --format '{{.Names}}' | grep "job-scheduler" | xargs -I {} docker exec {} sh -c 'ping mds1.local'
+{% endraw %}
 ```
 
 If the ping does not respond then there is an issue with the docker network. To resolve this, simply restart the docker daemon. It's also worthwhile to upgrade to the latest docker, virtual box, and vagrant versions.

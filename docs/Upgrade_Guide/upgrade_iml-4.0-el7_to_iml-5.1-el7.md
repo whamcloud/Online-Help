@@ -4,9 +4,9 @@
 
 ## Upgrade Integrated Manager for Lustre
 
-The first component in the environment to upgrade is the Integrated Manager for Lustre server and software. The manager server upgrade can be conducted without any impact to the Lustre file system services.
+The first component in the environment to upgrade is the Integrated Manager for Lustre server and software. The manager server upgrade can be conducted without any impact to the Lustre filesystem services.
 
-### Backup the Existing configuration.
+### Backup the Existing configuration
 
 Prior to commencing the upgrade, it is essential that a backup of the existing configuration is completed. This will enable recovery of the original configuration in the event of a problem occurring during execution of the upgrade.
 
@@ -51,6 +51,16 @@ Copy the backup tarball to a safe location that is not on the server being upgra
 
 **Note:** This script is not intended to provide a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre servers managed by Integrated Manager for Lustre that are difficult to re-create if deleted.
 
+## Stopping the filesystem
+
+IML requires that the filesystem(s) associated with each node to be upgraded must be stopped. Follow these steps:
+
+1. Navigate to _Configuration->Filesystems_
+1. For each filesystem listed:
+
+   1. Click the filesystem's `Actions` button
+   1. Select _Stop_
+
 ### Install the Integrated Manager for Lustre Upgrade
 
 The software upgrade process requires super-user privileges to run. Login as the `root` user or use `sudo` to elevate privileges as required.
@@ -61,19 +71,22 @@ The software upgrade process requires super-user privileges to run. Login as the
    yum-config-manager --add-repo=https://github.com/whamcloud/integrated-manager-for-lustre/releases/download/v5.1.0/chroma_support.repo
    ```
 
+1. Verify that the old iml-4.0.x repo file has been removed from the repolist and that the 5.1 repo has been added.
+
+   ```bash
+   yum repolist
+   ```
+
 1. Run the OS upgrade.
 
    ```bash
-   yum clean all
+   yum clean metadata
    yum update
-   reboot
    ```
 
-   Refer to the operating system documentation for details on the correct procedure for upgrading between minor OS releases. Note that a mapping of new installs and upgrades will be displayed. Look through this chart carefully and verify that python2-iml-manager is marked for upgrade and that it will be upgraded to {{site.version}}.
+Refer to the operating system documentation for details on the correct procedure for upgrading between minor OS releases. Note that a mapping of new installs and upgrades will be displayed. Look through this chart carefully and verify that python2-iml-manager is marked for upgrade and that it will be upgraded to {{site.version}}.
 
 1. Run `chroma-config setup` to complete the installation.
-
-1. Restart the manager node.
 
 1. Perform a hard refresh on the browser and verify that IML loads correctly.
 
@@ -85,70 +98,69 @@ The upgrade procedure documented here describes the faster and more reliable app
 
 ### Backup Existing Server Data
 
-1.  As a precaution, create a backup of the existing configuration for each server. The following shell script can be used to capture the essential configuration information that is relevant to Integrated Manager for Lustre managed mode servers:
+1. As a precaution, create a backup of the existing configuration for each server. The following shell script can be used to capture the essential configuration information that is relevant to Integrated Manager for Lustre managed mode servers:
 
-    ```bash
-    #!/bin/sh
-    BCKNAME=bck-$HOSTNAME-`date +%Y%m%d-%H%M%S` BCKROOT=$HOME/$BCKNAME
-    mkdir -p $BCKROOT
-    tar cf - \
-    /var/lib/chroma \
-    /etc/sysconfig/network \
-    /etc/sysconfig/network-scripts/ifcfg-* \
-    /etc/yum.conf \
-    /etc/yum.repos.d \
-    /etc/hosts \
-    /etc/passwd \
-    /etc/group \
-    /etc/shadow \
-    /etc/gshadow \
-    /etc/sudoers \
-    /etc/resolv.conf \
-    /etc/nsswitch.conf \
-    /etc/rsyslog.conf \
-    /etc/ntp.conf \
-    /etc/selinux/config \
-    /etc/modprobe.d/iml_lnet_module_parameters.conf \
-    /etc/corosync/corosync.conf \
-    /etc/ssh \
-    /root/.ssh \
-    | (cd $BCKROOT && tar xf -)
+   ```bash
+   #!/bin/sh
+   BCKNAME=bck-$HOSTNAME-`date +%Y%m%d-%H%M%S` BCKROOT=$HOME/$BCKNAME
+   mkdir -p $BCKROOT
+   tar cf - \
+   /var/lib/chroma \
+   /etc/sysconfig/network \
+   /etc/sysconfig/network-scripts/ifcfg-* \
+   /etc/yum.conf \
+   /etc/yum.repos.d \
+   /etc/hosts \
+   /etc/passwd \
+   /etc/group \
+   /etc/shadow \
+   /etc/gshadow \
+   /etc/sudoers \
+   /etc/resolv.conf \
+   /etc/nsswitch.conf \
+   /etc/rsyslog.conf \
+   /etc/ntp.conf \
+   /etc/selinux/config \
+   /etc/modprobe.d/iml_lnet_module_parameters.conf \
+   /etc/corosync/corosync.conf \
+   /etc/ssh \
+   /root/.ssh \
+   | (cd $BCKROOT && tar xf -)
 
-    # Pacemaker Configuration:
-    cibadmin --query > $BCKROOT/cluster-cfg-$HOSTNAME.xml
+   # Pacemaker Configuration:
+   cibadmin --query > $BCKROOT/cluster-cfg-$HOSTNAME.xml
 
-    cd `dirname $BCKROOT`
-    tar zcf $BCKROOT.tgz `basename $BCKROOT`
-    ```
+   cd `dirname $BCKROOT`
+   tar zcf $BCKROOT.tgz `basename $BCKROOT`
+   ```
 
-    **Note:** This is not intended to be a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre servers managed by Integrated Manager for Lustre that are difficult to re-create if deleted. Make sure to backup any other important configuration files that may be on your system, such as multipath configurations.
+   **Note:** This is not intended to be a comprehensive backup of the entire operating system configuration. It covers the essential components pertinent to Lustre servers managed by Integrated Manager for Lustre that are difficult to re-create if deleted. Make sure to backup any other important configuration files that may be on your system, such as multipath configurations.
 
-    The following files will need to be backed up if multipath is being used on the system:
+   The following files will need to be backed up if multipath is being used on the system:
 
-    ```sh
-    /etc/multipath/*
-    /etc/multipath.conf
-    ```
+   ```sh
+   /etc/multipath/*
+   /etc/multipath.conf
+   ```
 
-1.  Copy the backups for each server's configuration to a safe location that is not on the servers being upgraded.
-
-## Stopping the filesystem
-
-IML requires that the filesystem(s) associated with each node to be upgraded must be stopped. Follow these steps:
-
-1. Navigate to _Configuration->Filesystems_
-1. For each filesystem listed:
-
-   1. Click the filesystem's `Actions` button
-   1. Select _Stop_
+1. Copy the backups for each server's configuration to a safe location that is not on the servers being upgraded.
 
 ## Upgrade the OS on each server node
 
-In order to upgrade, make sure yum is configured on each server node to pull down CentOS 7.6 packages. Next, begin the upgrade.
+In order to upgrade, make sure yum is configured on each storage server node to pull down CentOS 7.7 packages. Next, from the manager node, upgrade the OS for each host:
 
-```bash
-yum -y upgrade --exclude=python2-iml*
-```
+1. Upgrade the OS
+
+   ```bash
+   yum clean metadata
+   yum update
+   ```
+
+1. Update the repos on each server node. As an example, consider the following hosts: mds1.local, mds2.local, oss1.local, and oss2.local:
+
+   ```bash
+   [root@manager]# iml update_repo --hosts mds[1,2].local,oss[1,2].local
+   ```
 
 ## Run the updates
 
