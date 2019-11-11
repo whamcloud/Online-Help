@@ -12,7 +12,7 @@ Prior to commencing the upgrade, it is essential that a backup of the existing c
 
 The following shell script can be used to capture the essential configuration information that is relevant to the Integrated Manager for Lustre software itself:
 
-```bash
+```sh
 #!/bin/sh
 # Integrated Manager for Lustre (IML) server backup script
 
@@ -53,7 +53,7 @@ Copy the backup tarball to a safe location that is not on the server being upgra
 
 ## Stopping the filesystem
 
-IML requires that the filesystem(s) associated with each node to be upgraded must be stopped. Follow these steps:
+IML **requires** that the filesystem(s) associated with each node to be upgraded **must** be stopped. Follow these steps:
 
 1. Navigate to _Configuration->Filesystems_
 1. For each filesystem listed:
@@ -65,21 +65,21 @@ IML requires that the filesystem(s) associated with each node to be upgraded mus
 
 The software upgrade process requires super-user privileges to run. Login as the `root` user or use `sudo` to elevate privileges as required.
 
-1. Download the latest Integrated Manager for Lustre release repo:
+1. Download the latest Integrated Manager for Lustre release repo on the manager node:
 
    ```sh
    yum-config-manager --add-repo=https://github.com/whamcloud/integrated-manager-for-lustre/releases/download/v5.1.0/chroma_support.repo
    ```
 
-1. Verify that the old iml-5.0 repo file has been removed from the repolist and that the 5.1 repo has been added.
+1. Verify that the old iml-5.0 repo file has been removed from the repolist and that the 5.1 repo has been added on the manager node.
 
-   ```bash
+   ```sh
    yum repolist
    ```
 
-1. Run the OS upgrade.
+1. Update packages on the manager node.
 
-   ```bash
+   ```sh
    yum clean metadata
    yum update
    ```
@@ -87,12 +87,6 @@ The software upgrade process requires super-user privileges to run. Login as the
 Refer to the operating system documentation for details on the correct procedure for upgrading between minor OS releases. Note that a mapping of new installs and upgrades will be displayed. Look through this chart carefully and verify that python2-iml-manager is marked for upgrade and that it will be upgraded to {{site.version}}.
 
 1. Run `chroma-config setup` to complete the installation.
-
-1. Update the repos on each server node. As an example, consider the following hosts: mds1.local, mds2.local, oss1.local, and oss2.local:
-
-   ```bash
-   [root@manager]# iml update_repo --hosts mds[1,2].local,oss[1,2].local
-   ```
 
 1. Perform a hard refresh on the browser and verify that IML loads correctly.
 
@@ -106,7 +100,7 @@ The upgrade procedure documented here describes the faster and more reliable app
 
 1. As a precaution, create a backup of the existing configuration for each server. The following shell script can be used to capture the essential configuration information that is relevant to Integrated Manager for Lustre managed mode servers:
 
-   ```bash
+   ```sh
    #!/bin/sh
    BCKNAME=bck-$HOSTNAME-`date +%Y%m%d-%H%M%S` BCKROOT=$HOME/$BCKNAME
    mkdir -p $BCKROOT
@@ -149,15 +143,27 @@ The upgrade procedure documented here describes the faster and more reliable app
    /etc/multipath.conf
    ```
 
-1. Copy the backups for each server's configuration to a safe location that is not on the servers being upgraded.
+1. Copy the backups for each server's configuration to a safe location tha
 
-## Upgrade the OS on each server node
+## Ensure IML 5.0 packages are latest
 
-In order to upgrade, make sure yum is configured on each server node to pull down CentOS 7.7 packages. Next, from the manager node, upgrade the OS for each host:
+It is **required** that the installed iml-device-scanner\* packages are version 2.2.2-1 and the iml-update-check package is version 1.0.2-2 for a successful upgrade.
 
-```bash
-yum -y upgrade --exclude=python2-iml*
-```
+## Upgrade the repos on each storage server node
+
+1. In order to upgrade, make sure yum is configured on each storage server node to pull down CentOS 7.7 packages.
+
+1. Update the repos on each storage server node. As an example, consider the following hosts: mds1.local, mds2.local, oss1.local, and oss2.local:
+
+   ```sh
+   [root@manager]# iml update_repo --hosts mds[1,2].local,oss[1,2].local
+   ```
+
+1. On each storage server, restart the `iml-storage-server.target`
+
+   ```sh
+   systemctl restart iml-storage-server.target
+   ```
 
 ## Run the updates
 
