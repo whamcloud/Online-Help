@@ -147,12 +147,13 @@ The upgrade procedure documented here describes the faster and more reliable app
 
 ## Upgrade the OS on each server node
 
-In order to upgrade, make sure yum is configured on each server node to pull down CentOS 7.7 packages. Next, from the manager node, upgrade the OS for each host:
+In order to upgrade, make sure yum is configured on each storage server node to pull down CentOS 7.7 packages. Next, from the manager node, upgrade the OS for each host:
 
 1. Upgrade the OS
 
    ```bash
-   yum -y upgrade
+   yum clean metadata
+   yum update
    ```
 
 1. Update the repos on each server node. As an example, consider the following hosts: mds1.local, mds2.local, oss1.local, and oss2.local:
