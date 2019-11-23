@@ -111,6 +111,21 @@ vagrant provision oss2 --provision-with configure-docker-network
 
 Next, navigate to the `Servers` page and attempt to add the servers using the following pdsh expression: `mds[1,2].local, oss[1,2].local`. The dialog should show all four hosts as having green boxes, indicating that the agent can be deployed.
 
+## Setting up Power Control
+
+Power control will be setup in the `power-control` container similarly to how it is setup in vagrant on the admin node (see [Setting Up Power Control](./cd_Setting_Up_Power_Control.md)). Run the `fake_ipmi_vbox.py` script with the `--skip-validation` flag and use the **Host-Only Network Adapter Address** (See [Adding the host-only network](#adding-the-host-only-network)). Perform the following from `integrated-manager-for-lustre/docker` on the host:
+
+```bash
+$ docker-compose run power-control /bin/sh
+sh-4.2# cd /usr/share/chroma-manager/
+sh-4.2# python scripts/fake_ipmi_vbox.py --skip-validation
+Enter the IP Address of your VM Host: 10.73.10.1 # Replace 10.73.10.1 with your Host-Only Network Adapter Address.
+    # Enter your computer username
+    # Enter your computer password
+```
+
+Continue following the instructions in [Setting Up Power Control](./cd_Setting_Up_Power_Control.md).
+
 ## Troubleshooting
 
 If IML is not able to communicate with the server vm's, log into the docker container and make sure the server can be pinged:
