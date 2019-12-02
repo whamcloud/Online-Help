@@ -12,6 +12,9 @@ Starting with Integrated Manager for Lustre 5, the IML manager is available via 
     # This must be done due to: https://success.docker.com/article/ipvs-connection-timeout-issue
     echo net.ipv4.tcp_keepalive_time = 600 >> /etc/sysctl.conf
     sysctl -p
+    wget http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.107-1.el7_6.noarch.rpm
+    yum install -y container-selinux-2.107-1.el7_6.noarch.rpm
+    rm -f container-selinux-2.107-1.el7_6.noarch.rpm
     yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
     yum install -y docker-ce
     systemctl enable --now docker
