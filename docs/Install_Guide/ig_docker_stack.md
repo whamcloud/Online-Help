@@ -9,11 +9,6 @@ Starting with Integrated Manager for Lustre 5, the IML manager is available via 
 1. Install Docker on your node and init the swarm. The following assumes RHEL 7 as the host OS, but any docker compatible host should work.
 
    ```sh
-    # This must be done due to: https://success.docker.com/article/ipvs-connection-timeout-issue
-    echo net.ipv4.tcp_keepalive_time = 600 >> /etc/sysctl.conf
-    sysctl -p
-    rpm --import http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-7
-    yum-config-manager --add-repo http://mirror.centos.org/centos/7/extras/x86_64/
     yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
     yum install -y docker-ce
     systemctl enable --now docker
@@ -23,7 +18,8 @@ Starting with Integrated Manager for Lustre 5, the IML manager is available via 
 1. Pull the `docker-compose.yml` from the IML repo. This is used by `docker stack` to bring up IML.
 
    ```sh
-    cd /tmp
+    mkdir -p /etc/iml-docker/
+    cd /etc/iml-docker/
     wget https://raw.githubusercontent.com/whamcloud/integrated-manager-for-lustre/master/docker/docker-compose.yml
    ```
 
@@ -38,7 +34,7 @@ Starting with Integrated Manager for Lustre 5, the IML manager is available via 
          - "<STORAGE_SERVER_Y_NAME>:<STORAGE_SERVER_Y_IP>"
          - ...
        environment:
-         - "NTP_SERVER_HOSTNAME=10.73.10.1"
+         - "NTP_SERVER_HOSTNAME=<NTP_TIMESERVER_ADDRESS>"
    ```
 
 1. Create a [docker secret](https://docs.docker.com/engine/swarm/secrets/) with a new root IML password
@@ -50,7 +46,7 @@ Starting with Integrated Manager for Lustre 5, the IML manager is available via 
 1. Deploy the stack. This will bring up the manager within docker.
 
    ```sh
-   docker stack deploy -c /tmp/docker-compose.yml -c /tmp/docker-compose.overrides.yml iml
+   docker stack deploy -c /etc/iml-docker/docker-compose.yml -c /etc/iml-docker/docker-compose.overrides.yml iml
    ```
 
 1. Add an entry to the host OS hostfile so that it's IP points to nginx.
@@ -95,5 +91,5 @@ If you wish to start the IML stack again, do the following:
 1. re-deploy the stack
 
    ```sh
-    docker stack deploy -c /tmp/docker-compose.yml -c docker-compose.overrides.yml iml
+    docker stack deploy -c /etc/iml-docker/docker-compose.yml -c /etc/iml-docker/docker-compose.overrides.yml iml
    ```
