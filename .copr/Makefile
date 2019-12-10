@@ -15,7 +15,7 @@ srpm:
 	curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -
 	\curl -sSL https://get.rvm.io | bash -s stable
 	bash -c 'source /etc/profile.d/rvm.sh && \
-	rvm install ruby-head && \
+	rvm install 2.6.5 && \
 	gem install bundler && \
 	cd ${TMPDIR}/scratch && \
 	bundle install && \

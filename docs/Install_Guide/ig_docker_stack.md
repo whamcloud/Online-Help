@@ -23,7 +23,7 @@ Starting with Integrated Manager for Lustre 5, the IML manager is available via 
     wget https://raw.githubusercontent.com/whamcloud/integrated-manager-for-lustre/master/docker/docker-compose.yml
    ```
 
-1. Create a new file `docker-compose.overrides.yml`, adjacent to docker-compose.yml. It should contain host to ip mappings for each storage server and any other neceesary overrides, so the job-scheduler can map them correctly:
+1. Create a new file `docker-compose.overrides.yml`, adjacent to docker-compose.yml. It should contain host to ip mappings for each storage server and any other necessary overrides, so the job-scheduler can map them correctly:
 
    ```yaml
    version: "3.7"
