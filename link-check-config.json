@@ -5,6 +5,9 @@
     },
     {
       "pattern": "^https://localhost*"
+    },
+    {
+      "pattern": "^http://git.savannah.gnu.org*"
     }
   ]
 }

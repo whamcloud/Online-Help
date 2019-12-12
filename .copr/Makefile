@@ -9,13 +9,14 @@ srpm:
 	mkdir -p ${TMPDIR}/scratch
 	if test -d ${BUILDROOT}/vendor; then cp -r ${BUILDROOT}/vendor ${TMPDIR}/scratch; fi
 	cp -r ${BUILDROOT}/docs ${BUILDROOT}/.github ${BUILDROOT}/_includes ${BUILDROOT}/_config.yml ${BUILDROOT}/Dockerfile ${BUILDROOT}/Gemfile ${BUILDROOT}/Gemfile.lock ${BUILDROOT}/iml-online-help.spec ${BUILDROOT}/LICENSE ${BUILDROOT}/package-lock.json ${BUILDROOT}/package.json ${BUILDROOT}/README.md ${TMPDIR}/scratch
+	yum -y install git
 	yum-builddep -y ${TMPDIR}/scratch/iml-online-help.spec
 	yum install -y which
 	curl -sSL https://rvm.io/mpapis.asc | gpg --import -
 	curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -
 	\curl -sSL https://get.rvm.io | bash -s stable
 	bash -c 'source /etc/profile.d/rvm.sh && \
-	rvm install ruby-head && \
+	rvm install 2.6.5 && \
 	gem install bundler && \
 	cd ${TMPDIR}/scratch && \
 	bundle install && \
