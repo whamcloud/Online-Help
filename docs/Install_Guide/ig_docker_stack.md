@@ -49,7 +49,7 @@ Starting with Integrated Manager for Lustre 5, the IML manager is available via 
    docker stack deploy -c /etc/iml-docker/docker-compose.yml -c /etc/iml-docker/docker-compose.overrides.yml iml
    ```
 
-1. Add an entry to the each storage server's hostfile that maps the docker OS host IP to nginx
+1. Add an entry to each storage server's hostfile that maps the docker OS host IP to nginx
 
    ```text
    <HOST_IP>	nginx
