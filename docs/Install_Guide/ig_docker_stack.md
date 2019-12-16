@@ -49,7 +49,7 @@ Starting with Integrated Manager for Lustre 5, the IML manager is available via 
    docker stack deploy -c /etc/iml-docker/docker-compose.yml -c /etc/iml-docker/docker-compose.overrides.yml iml
    ```
 
-1. Add the following executable script to `/usr/bin/iml`. This will allow for cli access outside the swarm.
+1. Add the following executable script to `/usr/bin/iml`. This will allow for `iml` CLI access outside the swarm.
 
    ```sh
    #! /usr/bin/env bash
