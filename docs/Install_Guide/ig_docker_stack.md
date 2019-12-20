@@ -76,7 +76,7 @@ If you wish to stop the IML stack from running, do the following:
    ```sh
     docker stack rm iml
     # make sure all services have stopped
-    docker stack ls iml
+    docker stack ps iml
    ```
 
 1. Optionally stop and disable docker
