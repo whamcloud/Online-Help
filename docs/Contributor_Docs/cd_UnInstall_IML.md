@@ -105,6 +105,7 @@ yum remove -y chroma-agent chroma-agent-management iml_sos_plugin iml-device-sca
 rm -rf /etc/yum.repos.d/Intel-Lustre-Agent.repo
 rm -rf /var/lib/chroma/
 rm -rf /var/lib/iml/
+rm -rf /etc/iml/
 rm -rf /etc/yum.repos.d/Intel-Lustre-Agent.repo
 rm -rf /usr/lib/python2.7/site-packages/chroma_agent*
 ```
