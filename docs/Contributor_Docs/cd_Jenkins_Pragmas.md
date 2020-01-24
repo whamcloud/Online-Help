@@ -23,7 +23,7 @@ This will add the given copr repo to the manager node during testing. The pragma
 This will overwrite the passed environment variables in a test script. It is typically used to run a subset of testing. Here's and example to run a single SSI test.
 
 ```text
-Environment: NOSE_ARGS=-x TESTS=tests/integration/shared_storage_configuration/test_managed_filesystem_with_failover.py:TestManagedFilesystemWithFailover.test_create_filesystem_with_failover_mds'
+Environment: NOSE_ARGS=-x TESTS='tests/integration/shared_storage_configuration/test_managed_filesystem_with_failover.py:TestManagedFilesystemWithFailover.test_create_filesystem_with_failover_mds'
 ```
 
 ---
