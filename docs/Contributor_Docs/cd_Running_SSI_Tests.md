@@ -161,7 +161,7 @@ Getaddrinfo seems not to be the root issue and ssh to vms was failing because of
 ## References
 
 - [https://stackoverflow.com/questions/4810996/how-to-resolve-configure-guessing-build-type-failure](https://stackoverflow.com/questions/4810996/how-to-resolve-configure-guessing-build-type-failure)
-- [http://web.cecs.pdx.edu/~pkwong/ECE103_files/Resources/Compiler/C_GNU/GCC_Installation/How_to_Install_Cygwin+GCC.htm](http://web.cecs.pdx.edu/~pkwong/ECE103_files/Resources/Compiler/C_GNU/GCC_Installation/How_to_Install_Cygwin+GCC.htm)
+- [https://cygwin.com/install.html](https://cygwin.com/install.html)
 
 - [https://sourceforge.net/p/pdsh/mailman/message/290492/](https://sourceforge.net/p/pdsh/mailman/message/290492/)
 
