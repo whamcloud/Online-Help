@@ -148,7 +148,7 @@ security vulnerabilities in the Red Hat software.
 - A one gigabit Ethernet port to connect to the management network.
 
 - RAID 1 is a minimum recommendation. RAID 10 may be optimal for heavy
-  workloads. Software RAID (MDRAID) disk discovery is not supported.
+  workloads.
 
 - Red Hat Enterprise Linux or CentOS Linux, version {{site.centos_version}} must be
   installed on all servers. All Lustre servers should be running the
