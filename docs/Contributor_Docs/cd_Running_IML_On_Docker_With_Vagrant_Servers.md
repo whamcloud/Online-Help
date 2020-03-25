@@ -74,7 +74,7 @@ Substitute `PATH_TO_IML_INSTALL` with the path to your local IML installation.
 
 ## Loading Server Nodes
 
-Now that the host-only network is configured, it's time to bring up the iscsi server and server nodes:
+Now that the host-only network is configured, it's time to bring up the iscsi server, server nodes and client node:
 
 ```sh
 vagrant up iscsi mds1 mds2 oss1 oss2 c1
