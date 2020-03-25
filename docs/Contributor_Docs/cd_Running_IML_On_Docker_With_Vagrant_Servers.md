@@ -42,31 +42,37 @@ Host mds1
 HostName 10.73.10.11
 User root
 IdentityFile $ID_FILE_PATH
+StrictHostKeyChecking no
 
 Host mds2
 HostName 10.73.10.12
 User root
 IdentityFile $ID_FILE_PATH
+StrictHostKeyChecking no
 
 Host oss1
 HostName 10.73.10.21
 User root
 IdentityFile $ID_FILE_PATH
+StrictHostKeyChecking no
 
 Host oss2
 HostName 10.73.10.22
 User root
 IdentityFile $ID_FILE_PATH
+StrictHostKeyChecking no
 
 Host c1
 HostName 10.73.10.31
 User root
 IdentityFile $ID_FILE_PATH
+StrictHostKeyChecking no
 
 Host c2
 HostName 10.73.10.32
 User root
 IdentityFile $ID_FILE_PATH
+StrictHostKeyChecking no
 EOF
 ```
 
@@ -94,7 +100,7 @@ The server nodes should now be up and running.
 
 ## Deploying Docker
 
-To setup a docker swarm using docker stack, following the instructions at [How to install IML using Docker stack](../Install_Guide/ig_docker_stack.md).
+Follow the instructions at [How to install IML using Docker stack](../Install_Guide/ig_docker_stack.md) to setup a docker swarm using docker stack.
 
 ## Overrides file
 
