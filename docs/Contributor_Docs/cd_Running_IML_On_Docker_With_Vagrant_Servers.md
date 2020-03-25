@@ -140,7 +140,7 @@ Next create some ldiskfs filesystems with the following provisioner
 vagrant provision --provision-with=install-ldiskfs-no-iml,configure-lustre-network,create-ldiskfs-fs,create-ldiskfs-fs2,mount-ldiskfs-fs,mount-ldiskfs-fs2
 ```
 
-Finally we can detect a filesystem by running this command on the host
+Finally, we can detect a filesystem by running this command on the host
 
 ```sh
 iml filesystem detect
