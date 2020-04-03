@@ -10,27 +10,15 @@
 
 ![gears](md_Graphics/gears_sm.jpg)
 
-1. [Introduction](cd_Introduction.md)
-
-1. [IML Screen Shots](cd_Screen_Shots.md)
-
-1. [IML Distributed Architecture](cd_Distributed_Architecture.md)
-
 1. [IML Contributor Workflow](cd_Contributor_Workflow.md)
 
 1. [Building IML](cd_Building_IML.md)
 
 1. [Building IML@4.0.x](cd_Building_IML_4.0.x.md)
 
-1. [How to Contribute to the **Frontend**](cd_Contribute_To_Frontend.md)
-
-1. [How to Contribute To the **Backend**](cd_Contribute_To_Backend.md)
-
 1. [How to use the copr builder](cd_RPM_Builder_And_Copr.md)
 
-1. [How to Create **Frontend** Unit Tests](cd_Create_Frontend_Unit_Tests.md)
-
-1. [Running Unit Tests for integrated-manager-for-lustre Repo ](cd_integrated-manager-for-lustre_Unit_Testing.md)
+1. [Running Unit Tests for integrated-manager-for-lustre Repo](cd_integrated-manager-for-lustre_Unit_Testing.md)
 
 1. [Create a Cluster of Virtual Machines with Vagrant](https://github.com/whamcloud/Vagrantfiles/blob/master/README.md)
 

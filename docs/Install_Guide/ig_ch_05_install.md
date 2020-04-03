@@ -51,7 +51,7 @@ To install the software, complete these steps:
 1. Pull the repo file for a tagged release on github:
 
    ```bash
-   yum-config-manager --add-repo=https://github.com/whamcloud/integrated-manager-for-lustre/releases/download/v5.1.0/chroma_support.repo
+   yum-config-manager --add-repo=https://github.com/whamcloud/integrated-manager-for-lustre/releases/download/v6.0.0/chroma_support.repo
    ```
 
 1. Install the manager via `yum`:

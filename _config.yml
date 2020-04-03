@@ -13,11 +13,11 @@ exclude:
     Gemfile.lock,
     travis_env,
   ]
-version: "5.1.0.0"
-package_name: "iml-5.1.0.0"
-lustre_version: "2.12.2"
-lustre_package_name: "lustre-2.12.2"
-lustre_kernel_version: "3.10.0-957.10.1.el7"
-e2fsprogs_version: "1.44.5"
-centos_version: "7.6"
+version: "6.0.0.0"
+package_name: "iml-6.0.0.0"
+lustre_version: "2.12.3"
+lustre_package_name: "lustre-2.12.3"
+lustre_kernel_version: "3.10.0-1062.1.1.el7"
+e2fsprogs_version: "1.45.2.wc1-0"
+centos_version: "7.7"
 repository: "whamcloud/Online-Help"
