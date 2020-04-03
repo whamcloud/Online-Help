@@ -10,8 +10,6 @@
 
 ![gears](md_Graphics/gears_sm.jpg)
 
-1. [Introduction](cd_Introduction.md)
-
 1. [IML Contributor Workflow](cd_Contributor_Workflow.md)
 
 1. [Building IML](cd_Building_IML.md)
