@@ -16,7 +16,6 @@
 - [Creating and Managing ZFS-based Lustre file systems](Create_and_manage_ZFS_based_LFS_8_0.md)
 - [Graphical User Interface](Graphical_User_Interface_9_0.md)
 - [Advanced topics](Advanced_Topics_11_0.md)
-- [Using the Integrated Manager for Lustre software command line interface](Using_IML_CLI_12_0.md)
 - [Errors and troubleshooting](Errors_Troubleshooting_13_0.md)
 - [Glossary](Glossary_14_0.md)
 - [Getting Help](Getting_help_15_0.md)
