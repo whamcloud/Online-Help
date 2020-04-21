@@ -82,9 +82,9 @@ The following is a procedure for creating local repos using a CentOS 7 VM or con
    enabled=1
    gpgcheck=0
    sslverify = 1
-   sslcacert = /var/lib/chroma/authority.crt
-   sslclientkey = /var/lib/chroma/private.pem
-   sslclientcert = /var/lib/chroma/self.crt
+   sslcacert = /etc/iml/authority.crt
+   sslclientkey = /etc/iml/private.pem
+   sslclientcert = /etc/iml/self.crt
    proxy=_none_
    ```
 
