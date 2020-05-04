@@ -199,7 +199,7 @@ Monitor-only mode can be used to establish monitoring for file systems that donâ
 
 ## Overview of the graphical user interface
 
-This section provides an overview of the Integrated Manager for Lustre software GUI. For a complete description of the GUI, see [Graphical User Interface](Graphical_User_Interface_9_0.md/#9.0).
+This section provides an overview of the Integrated Manager for Lustre software GUI. For a complete description of the GUI, see [Graphical User Interface](Graphical_User_Interface_9_0.md).
 
 The Integrated Manager for Lustre software GUI presents a set of intuitive windows that let you set up, configure, monitor, and manage Lustre file systems. The menu bar provides access to these capabilities. Click the following links for overview information:
 

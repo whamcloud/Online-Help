@@ -1,5 +1,3 @@
-<a id="9.0"></a>
-
 # Graphical User Interface
 
 [**Online Help Table of Contents**](IML_Help_TOC.md)
@@ -25,8 +23,6 @@ This help page details the graphical user interface for the Integrated Manager f
 - [Logs](#9.5)
 - [Activities](#9.6)
 
-
-
 ## <a id="9.1"></a>Dashboard
 
 Dashboard is the first view that you see on starting a new session in the GUI. You can also navigate to this view from any other view by clicking **Dashboard** at the top or on the breadcrumbs trail.
@@ -48,8 +44,7 @@ The Dashboard view displays four charts with usage and performance data aggregat
 
 Note that monitored filesystems do not support failover of their targets through the GUI.
 
-[Top of page](#9.0)
-
+[Top of page](#Graphical-User-Interface)
 
 ### <a id="10.1.1"></a>Login
 
@@ -58,7 +53,7 @@ If you are a filesystem administrator, log in to see a list of resources and the
 <a id="f11.1.2"></a>
 ![md_Graphics/dashboard-login.png][f11.1.2]
 
-[Top of page](#9.0)
+[Top of page](#Graphical-User-Interface)
 
 ### <a id="10.1.2"></a>Management menu
 
@@ -67,7 +62,7 @@ The Management menu appears at the top of the GUI page after [login](#10.1.1). F
 <a id="f11.1.3"></a>
 ![md_Graphics/mgmt-menu.png][f11.1.3]
 
-[Top of page](#9.0)
+[Top of page](#Graphical-User-Interface)
 
 ### <a id="9.8"></a>Breadcrumb navigation
 
@@ -81,9 +76,7 @@ You can click a breadcrumb to jump directly to the corresponding previous step. 
 
 If you create a cycle by clicking an item already seen and listed in breadcrumbs, the breadcrumbs automatically slice up to the current location, preventing an unnecessary build-up of items. If you drill down to an item and then refresh the page, the item becomes the only one in the breadcrumb list. Breadcrumb navigation is also reset if you click the Dashboard link at the top of the page.
 
-[Top of page](#9.0)
-
-
+[Top of page](#Graphical-User-Interface)
 
 ## <a id="10.2"></a>Servers
 
@@ -99,8 +92,7 @@ You can identify the listed filesystem servers by:
 - **Profile**: Currently either EXAScaler managed or monitored storage server. You define the profile when you add a server to the filesystem.
 - **LNet**: Current Lustre networking service status, either Up, Down, or Unloaded.
 
-[Top of page](#9.0)
-
+[Top of page](#Graphical-User-Interface)
 
 ### <a id="10.2.1"></a>Server actions
 
@@ -127,8 +119,7 @@ There is also a linked host name for each server. Click it, and you will jump to
 <a id="f11.2.1"></a>
 ![md_Graphics/server-details.png][f11.2.1]
 
-[Top of page](#9.0)
-
+[Top of page](#Graphical-User-Interface)
 
 ### <a id="10.2.2"></a>Server volumes
 
@@ -148,8 +139,7 @@ Volumes, also called LUNs or block devices, are the underlying units of storage 
 
 Currently, you can only see the volumes that are in use as filesystem targets. If a volume's server, also called host, is configured for HA, you can also see the volume's peer servers. You can see that a volume may be accessible on one or more servers via different device paths, such as _/dev/disk/by-id/scsi-360001ff0e06680000000002a880d000b_, and that a volume may also be accessible via multiple device paths on the same server. In a future version of the management interface, you will be able to set or change the volume's primary and peer servers.
 
-[Top of page](#9.0)
-
+[Top of page](#Graphical-User-Interface)
 
 ### <a id="10.2.3"></a>Server dashboard
 
@@ -160,10 +150,10 @@ Each server has a dashboard with four charts, which you can see if you log in to
 
 The server dashboard displays the following charts:
 
-- [**Read/Write Bandwidth**](id=10.2.3.1)
-- [**CPU Usage**](id=10.2.3.2)
-- [**Memory Usage**](id=10.2.3.3)
-- [**LNet Usage**](id=10.2.3.4)
+- [**Read/Write Bandwidth**](#10.2.3.1)
+- [**CPU Usage**](#10.2.3.2)
+- [**Memory Usage**](#10.2.3.3)
+- [**LNet Usage**](#10.2.3.4)
 
 #### <a id="10.2.3.1"></a>Server's read/write bandwidth
 
@@ -206,9 +196,7 @@ The LNet Usage chart on the server's dashboard shows packets received vs sent ov
 <a id="f11.2.8"></a>
 ![md_Graphics/server-lnet-chart.png][f11.2.8]
 
-[Top of page](#9.0)
-
-
+[Top of page](#Graphical-User-Interface)
 
 ## <a id="10.3"></a>Filesystems
 
@@ -225,8 +213,7 @@ Each filesystem listed in Filesystems view is identified by:
 - **Connected Clients**: Total of clients currently using the filesystem.
 - **Space Used / Total**: Used vs total filesystem capacity.
 
-[Top of page](#9.0)
-
+[Top of page](#Graphical-User-Interface)
 
 ### <a id="10.3.1"></a>Filesystem actions
 
@@ -235,8 +222,7 @@ There are several actions that you can perform on filesystems in Filesystems vie
 - **Stop**: Stop the filesystem's metadata and storage targets (MDTs and OSTs), which makes the filesystem unavailable to clients.
 - **Forget**: Remove the filesystem. The filesystem becomes unavailable to clients but you can reuse the volumes, and the contents, in another filesystem.
 
-[Top of page](#9.0)
-
+[Top of page](#Graphical-User-Interface)
 
 ### <a id="10.3.2"></a>Filesystem details
 
@@ -269,7 +255,7 @@ The following details identify MGTs, MDTs, and OSTs in addition to the name:
 - **Started On**: The server on which the target is currently running.
 - **Primary Server**: The primary server for the target to run on.
 - **Failover Server**: The peer server for the target to run on if the target is HA configured and the primary server becomes unavailable.
-- **Volume**: The [volume](id="10.2.2") for the target.
+- **Volume**: The [volume](#10.2.2) for the target.
 
 Here is how the details may look like for a metadata target:
 
@@ -288,8 +274,7 @@ You can perform actions on each target (MGT, MDT, or OST) that you view:
 - **Failback**: Migrate the target back to its primary server. Clients attempting to access data on the target while the migration is in process may experience delays until the migration completes. This action is displayed only after a target has failed over.
 - **Remove**: (for OSTs only) Remove the target, for example, if you need to replace it.
 
-[Top of page](#9.0)
-
+[Top of page](#Graphical-User-Interface)
 
 ### <a id="10.3.3"></a>Filesystem dashboard
 
@@ -305,8 +290,7 @@ To see the dashboard, log in to the GUI, expand the list of filesystems on the l
 <a id="f11.3.5"></a>
 ![md_Graphics/filesystem-dashboard.png][f11.3.5]
 
-[Top of page](#9.0)
-
+[Top of page](#Graphical-User-Interface)
 
 ### <a id="10.3.4"></a>MGT dashboard
 
@@ -321,8 +305,7 @@ To see the dashboard, log in to the GUI, navigate to a filesystem listed on the 
 <a id="f11.3.6"></a>
 ![md_Graphics/mgt-dashboard.png][f11.3.6]
 
-[Top of page](#9.0)
-
+[Top of page](#Graphical-User-Interface)
 
 ### <a id="10.3.5"></a>MDT dashboard
 
@@ -337,8 +320,7 @@ To see the dashboard, log in to the GUI, navigate to a filesystem listed on the 
 <a id="f11.3.7"></a>
 ![md_Graphics/mdt-dashboard.png][f11.3.7]
 
-[Top of page](#9.0)
-
+[Top of page](#Graphical-User-Interface)
 
 ### <a id="10.3.6"></a>OST dashboard
 
@@ -353,9 +335,7 @@ To see the dashboard, log in to the GUI, navigate to a filesystem listed on the 
 <a id="f11.3.8"></a>
 ![md_Graphics/ost-dashboard.png][f11.3.8]
 
-[Top of page](#9.0)
-
-
+[Top of page](#Graphical-User-Interface)
 
 ## <a id="9.3.6"></a>Users
 
@@ -374,9 +354,7 @@ Superusers also have these options by clicking a user's account:
 - **Password** - (Coming soon) Change the password.
 - **Email Notifications** - (Coming soon) Select events for email notifications. <!-- If nothing is selected, all events except for "Host contact alerts" are included. For more information, see [Setting up Email Notifications](Getting_started_2_0.md/#2.2). -->
 
-[Top of page](#9.0)
-
-
+[Top of page](#Graphical-User-Interface)
 
 ## <a id="9.5"></a>Logs
 
@@ -397,9 +375,7 @@ As an example of logged events, consider what happens if a failover takes place:
 
 An event is logged for each case above, and you can see it displayed in **Logs**.
 
-[Top of page](#9.0)
-
-
+[Top of page](#Graphical-User-Interface)
 
 ## <a id="9.6"></a>Activities
 
@@ -421,7 +397,7 @@ There are five types of activity messages:
 
 Before you see an unresolved filesystem error or warning in the Activity view, this error or warning pops up as a browser-level notification.
 
-[Top of page](#9.0)
+[Top of page](#Graphical-User-Interface)
 
 <!--
 **Running common searches**
@@ -463,9 +439,8 @@ active = true
 record_type = CorosyncNoPeersAlert
 severity in [ERROR, WARNING]
 ```
-[Top of page](#9.0)
+[Top of page](#Graphical-User-Interface)
 -->
-
 
 [f11.1]: md_Graphics/dashboard.png
 [f11.1.1]: md_Graphics/dashboard-sandwich.png
@@ -508,12 +483,15 @@ severity in [ERROR, WARNING]
 [f9.17]: md_Graphics/config_file_systems.png
 [f9.18]: md_Graphics/check_mark.png
 [f9.19]: md_Graphics/HSM_Operations.png -->
+
 [f9.20]: md_Graphics/config_users.png
+
 <!-- [f9.21]: md_Graphics/config_volumes.png
 [f9.22]: md_Graphics/config_mgts.png -->
 
 [f9.23]: md_Graphics/logs.png
 [f9.24]: md_Graphics/activities.png
+
 <!-- [f9.25]: md_Graphics/red_status_bar.png -->
 
 <!-- [f9.26]: md_Graphics/treeview.png -->
