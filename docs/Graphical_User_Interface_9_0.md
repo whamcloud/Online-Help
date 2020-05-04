@@ -390,7 +390,7 @@ You can identify each logged event by time, service, message, and host.
 
 As an example of logged events, consider what happens if a failover takes place:
 
-- A red alert appears briefly to notify you of related unresolved warnings.
+- A browser-level notification appears briefly to notify you of related unresolved warnings.
 - In the Activity view, another alert appears saying that the server has failed over. Other related alerts are also displayed.
 - In filesystem details, an alert is displayed and the server, on which the target is now running, is shown in the Started On column for that target.
 - The superuser receives a configured email alert.
@@ -419,9 +419,7 @@ There are five types of activity messages:
 - **Warning alerts**: Marked with yellow color, these messages usually indicate that the filesystem is operating in degraded mode; for example, when a target fails over, high availability is no longer true for that target. A warning message marks a status change that has a specific **Begin** and **End** time. A warning is active at the beginning of the status change and inactive at the end of the status change; for example, a warning message may inform you that an OST has gone offline, and that message is active until the OST becomes operational again. Not all warnings necessarily signify a degraded state; for example, a target recovery to a failover server signifies that the failover occurred successfully.
 - **Error alerts**: Marked with red color, these messages indicate that the filesystem is down or severely degraded, that one or more filesystem components are currently unavailable. For example, both primary and secondary servers for a target are not running. An error often has a remedial action you can take by clicking the button.
 
-Before you see an unresolved filesystem error or warning in the Activity view, this error or warning briefly pops up on the red bar across the page. Clicking **Details** on the bar will open the Status window and display the alerts.
-
-![md_Graphics/red_status_bar.png][f9.25]
+Before you see an unresolved filesystem error or warning in the Activity view, this error or warning pops up as a browser-level notification.
 
 [Top of page](#9.0)
 
@@ -516,7 +514,7 @@ severity in [ERROR, WARNING]
 
 [f9.23]: md_Graphics/logs.png
 [f9.24]: md_Graphics/activities.png
-[f9.25]: md_Graphics/red_status_bar.png
+<!-- [f9.25]: md_Graphics/red_status_bar.png -->
 
 <!-- [f9.26]: md_Graphics/treeview.png -->
 
