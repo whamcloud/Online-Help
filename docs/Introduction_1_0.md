@@ -8,16 +8,16 @@
 - [Key Features](#key-features)
 - [Management mode versus Monitor-only mode](#management-mode-versus-monitor-only-mode)
 - [Overview of the graphical user interface](#overview-of-the-graphical-user-interface)
-  - [Menu bar](#menu-bar)
-  - [Dashboard window](#dashboard-window)
-  - [Summary of charts](#summary-of-charts)
-  - [Configuration menu](#configuration-menu)
-  - [Job stats](#job-stats)
-  - [Logs window](#logs-window)
-  - [Help](#help)
-  - [Status Indicator and window](#status-indicator-and-window)
-  - [Alert Bar](#alert-bar)
-- [Access the Dashboard from a smart phone or tablet](#access-the-dashboard-from-a-smart-phone-or-tablet)
+  <!-- - [Menu bar](#menu-bar)-->
+  - [Dashboard](#dashboard)
+  - [Charts](#charts)
+  - [Management menu](#management-menu)
+  <!-- - [Job stats](#job-stats)-->
+  - [Logs](#logs)
+  <!-- - [Help](#help)-->
+  - [Activities](#activities)
+  <!-- - [Alert Bar](#alert-bar)-->
+- [Access the Dashboard from a smartphone or tablet](#access-the-dashboard-from-a-smartphone-or-tablet)
 
 Enterprises and institutions of all sizes use high performance computing to solve today's most intense computing challenges. Just as compute clusters exploit parallel processors and development tools, storage solutions must be parallel to deliver the sustained performance at the large scales that today's applications require. The Lustre file system is the ideal distributed, parallel file system for high performance computing.
 
@@ -32,14 +32,14 @@ An existing Lustre file system that has been set up outside of Integrated Manage
 
 ## Overview of Integrated Manager for Lustre software
 
-Integrated Manager for Lustre software is a global single-namespace file system architecture that allows parallel access by many clients to all the data in the file system across many servers and storage devices. Designed to take advantage of the reliability features of enterprise-class storage hardware, Integrated Manager for Lustre software supports availability features such as redundant servers with storage failover. Metadata and data are stored on separate servers to allow each system to be optimized for the different workloads. The components of a Integrated Manager for Lustre software, file storage system include the following:
+Integrated Manager for Lustre software is a global single-namespace file system architecture that allows parallel access by many clients to all the data in the file system across many servers and storage devices. Designed to take advantage of the reliability features of enterprise-class storage hardware, Integrated Manager for Lustre software supports availability features such as redundant servers with storage failover. Metadata and data are stored on separate servers to allow each system to be optimized for the different workloads. The components of an Integrated Manager for Lustre software file storage system include the following:
 
 - Integrated Manager for Lustre software server: The server that hosts the Integrated Manager for Lustre software and GUI, and is the server from which Lustre file systems are created, monitored, and managed. Connected to storage servers via the administrative LAN. This is distinct from the management server, which provides access to the management target.
 - Management server(s) (MGS): Provide access to the management target. Paired, redundant management servers provide server failover (high availability) in the event of a server failure.
 - Management target (MGT): The MGT stores configuration information for all the Lustre file systems in a cluster and provides this information to other Lustre components. Each Lustre object storage target (OST) contacts the MGT to provide information, and Lustre clients contact the MGT to retrieve information. The MGT can be no larger than 10 gigabytes.
-- Object storage servers (OSS): Storage servers provide access to the management target, metadata target and the storage targets. Paired, redundant storage servers provide server failover (high availability) in the event of a server failure.
+- Object storage servers (OSS): Storage servers provide access to the management target, the metadata target, and the storage targets. Paired, redundant storage servers provide server failover (high availability) in the event of a server failure.
 - Metadata server (MDS): Metadata servers contain one or more Metadata Targets (MDTs). The MDS is in charge of pathname and permission checks and is not responsible for file I/O operations.
-- Metadata target (MDT): The MDT stores metadata (such as file names, directories, permissions, and file layout) for attached storage and makes this available to clients. Typically, each file system has one MDT, however Integrated Manager for Lustre software supports multiple MDTs.
+- Metadata target (MDT): The MDT stores metadata (such as file names, directories, permissions, and file layout) for attached storage and makes this available to clients. Typically, each file system has one MDT, however the Integrated Manager for Lustre software supports multiple MDTs.
 - Object storage targets (OSTs) - User file data is stored in one or more objects that are located on separate OSTs in the file system. The number of objects per file is configurable by the user and can be tuned to optimize performance for a given workload.
 - Lustre clients - Lustre clients are computational, visualization, or desktop nodes that are running Lustre client software, allowing them to mount the Lustre file system.
 
@@ -51,29 +51,29 @@ The servers on which the MGT, MDT, or OSTs are located can all be configured as 
 
 ## Key Features
 
-The following entries are key features provided by Integrated Manager for Lustre software:
+The following entries are key features of Integrated Manager for Lustre software:
 
 ## GUI-based creation and management of Lustre file systems
 
-The Integrated Manager for Lustre software provides a powerful, yet easy-to-use GUI that enables rapid creation of Lustre file systems. The GUI supports easy configuration for high availability and expansion, and enables performance monitoring and management of multiple Lustre file systems. See [Creating a new Lustre file system](Creating_new_lustre_fs_3_0.md/#3.0).
+The Integrated Manager for Lustre software provides a powerful, yet easy-to-use GUI that <!--enables rapid creation of Lustre file systems. The GUI supports easy configuration for high availability and expansion, and -->enables performance monitoring and management of multiple Lustre file systems. <!--See [Creating a new Lustre file system](Creating_new_lustre_fs_3_0.md/#3.0).-->In future releases, the GUI is also going to support rapid creation of Lustre file systems as well as their easy configuration for high availability and expansion.
 
 ## Graphical charts display real-time performance metrics
 
-Fully-configurable color charts display a variety of real-time performance metrics for single or multiple file systems with detailed output for both individual servers and targets. These metrics are rendered using the following charts:
+Color charts display a variety of real-time performance metrics for single or multiple file systems with detailed output for both individual servers and targets. These metrics are rendered using the various [charts](#summary-of-charts).
 
-- [Read/Write Heat Map chart](Graphical_User_Interface_9_0.md/#9.2.1)
-- [OST Balance chart](Graphical_User_Interface_9_0.md/#9.2.2)
-- [Metadata Operations chart](Graphical_User_Interface_9_0.md/#9.2.3)
-- [Read/Write Bandwidth chart](Graphical_User_Interface_9_0.md/#9.2.4)
-- [Metadata Servers chart](Graphical_User_Interface_9_0.md/#9.2.5)
-- [Object Storage Servers chart](Graphical_User_Interface_9_0.md/#9.2.6)
-- [CPU Usage chart](Graphical_User_Interface_9_0.md/#9.2.7)
-- [Memory Usage chart](Graphical_User_Interface_9_0.md/#9.2.8)
-- [Space Usage chart](Graphical_User_Interface_9_0.md/#9.2.9)
-- [File Usage chart](Graphical_User_Interface_9_0.md/#9.2.10)
-- [Object Usage chart](Graphical_User_Interface_9_0.md/#9.2.11)
+<!-- - [Read/Write Heat Map chart](Graphical_User_Interface_9_0.md/#9.2.1) -->
+<!-- - [OST Balance chart](Graphical_User_Interface_9_0.md/#9.2.2)-->
+<!-- - [Metadata Operations chart](Graphical_User_Interface_9_0.md/#9.2.3)-->
+<!-- - [Read/Write Bandwidth chart](Graphical_User_Interface_9_0.md/#9.2.4)-->
+<!-- - [Metadata Servers chart](Graphical_User_Interface_9_0.md/#9.2.5)-->
+<!-- - [Object Storage Servers chart](Graphical_User_Interface_9_0.md/#9.2.6)-->
+<!-- - [CPU Usage chart](Graphical_User_Interface_9_0.md/#10.2.3.2)-->
+<!-- - [Memory Usage chart](Graphical_User_Interface_9_0.md/#10.2.3.3)-->
+<!-- - [Space Usage chart](Graphical_User_Interface_9_0.md/#9.2.9)-->
+<!-- - [File Usage chart](Graphical_User_Interface_9_0.md/#9.2.10)-->
+<!-- - [Object Usage chart](Graphical_User_Interface_9_0.md/#9.2.11)-->
 
-See [View charts on the Dashboard](Monitoring_lustre_fs_4_0_0.md/#4.1).
+<!--See [View charts on the Dashboard](Monitoring_lustre_fs_4_0_0.md/#4.1).-->
 
 ## Auto-configured high-availability clustering for server pairs
 
@@ -99,7 +99,7 @@ The Robinhood policy engine has been incorporated into Lustre and is included wi
 
 ## Apache Hadoop\* adapter software
 
-Integrated Manager for Lustre software is supported by the Apache Hadoop\* adapter software, however the adapter software is a separate download. This Hadoop adapter for Lustre is compatible with the Apache Hadoop software, versions 2.3 and 2.5 as of this writing. Hadoop software allows users who run MapReduce jobs to bypass storing data in HDFS, and store the MapReduce output directly to Lustre instead. This allows the analytical processes direct access to scientific output instead of transferring data from the compute cluster storage system to another file system. Optimizations have also been made to the shuffle step in MapReduce to take advantage of Lustre’s high-speed network access to data. Many workloads will see an overall reduction in end-to-end processing time by using the Hadoop adapter with the Integrated Manager for Lustre software file system. For more information, see [Hadoop Adaptor for Lustre](https://github.com/whamcloud/lustre-connector-for-hadoop/blob/master/Installation%20of%20HAL%20on%20Apache%20Hadoop.md).
+Integrated Manager for Lustre software is supported by the Apache Hadoop\* adapter software, however the adapter software is a separate download. This Hadoop adapter for Lustre is compatible with the Apache Hadoop software<!--, versions 2.3 and 2.5 as of this writing-->. Hadoop software allows users who run MapReduce jobs to bypass storing data in HDFS, and store the MapReduce output directly to Lustre instead. This allows the analytical processes direct access to scientific output instead of transferring data from the compute cluster storage system to another file system. Optimizations have also been made to the shuffle step in MapReduce to take advantage of Lustre’s high-speed network access to data. Many workloads will see an overall reduction in end-to-end processing time by using the Hadoop adapter with the Integrated Manager for Lustre software file system. For more information, see [Hadoop Adaptor for Lustre](https://github.com/whamcloud/lustre-connector-for-hadoop/blob/master/Installation%20of%20HAL%20on%20Apache%20Hadoop.md).
 
 ## Automated Provisioning of Custom Lustre Service Nodes
 
@@ -143,7 +143,7 @@ LFSCK is an administrative tool that was first introduced in Lustre software rel
 
 ## Distributed Namespace
 
-Distributed Namespace (DNE) allows the Lustre metadata to be distributed across multiple metadata servers. Integrated Manager for Lustre software supports DNE1 (as of release 2.3.0.0), which supports the use of multiple MDTs. This enables the size of the Lustre namespace and metadata throughput to be scaled with the number of OSSs. This featured is supported in the Integrated Manager for Lustre software GUI.
+Distributed Namespace (DNE) allows the Lustre metadata to be distributed across multiple metadata servers. Integrated Manager for Lustre software supports DNE1 (as of release 2.3.0.0), which supports the use of multiple MDTs. This enables the size of the Lustre namespace and metadata throughput to be scaled with the number of OSSs. This feature is going to be supported in future releases of the Integrated Manager for Lustre software GUI.
 
 ## DNE II Striped Directories Support (Preview)
 
@@ -201,40 +201,41 @@ Monitor-only mode can be used to establish monitoring for file systems that don�
 
 This section provides an overview of the Integrated Manager for Lustre software GUI. For a complete description of the GUI, see [Graphical User Interface](Graphical_User_Interface_9_0.md).
 
-The Integrated Manager for Lustre software GUI presents a set of intuitive windows that let you set up, configure, monitor, and manage Lustre file systems. The menu bar provides access to these capabilities. Click the following links for overview information:
+The Integrated Manager for Lustre software GUI presents a set of intuitive windows that let you <!--set up, configure, monitor, and manage-->monitor and manage Lustre file systems. File system setup and configuration are going to be added in future GUI releases. The Dashboard window provides access to these capabilities. Click the following links for overview information:
 
-- [Menu bar](#menu-bar)
-- [Dashboard window](#dashboard-window)
-- [Summary of charts](#summary-of-charts)
-- [Configuration menu](#configuration-menu)
-- [Jobs Stats](#jobs-status)
-- [Logs window](#logs-window)
-- [Help](#help)
-- [Status Indicator and window](#status-indicator-and-window)
-- [Alert bar](#alert-bar)
+<!-- - [Menu bar](#menu-bar)-->
+- [Dashboard](#dashboard)
+- [Charts](#charts)
+- [Management menu](#management-menu)
+<!-- - [Jobs Stats](#jobs-status)-->
+- [Logs](#logs)
+<!-- - [Help](#help)-->
+- [Activities](#activities)
+<!-- - [Alert bar](#alert-bar)-->
 
-### Menu bar
+<!--### Menu bar -->
 
-The Following is the top menu bar. From here you can access the entire GUI, view the collective status of all file systems and devices, and also access Help.
+<!--The Following is the top menu bar. From here you can access the entire GUI, view the collective status of all file systems and devices, and also access Help. -->
 
-![Top Bar](md_Graphics/top_bar.png)
+<!-- ![Top Bar](md_Graphics/top_bar.png) -->
 
-### Dashboard window
+### Dashboard
 
-The Dashboard displays a set of charts that provide usage and performance data at several levels in the file systems being monitored. At the top level, this window displays an aggregate view of all file systems. You can select to view and monitor individual file systems and servers in the Dashboard. To view a single file system, click _Configure Dashboard_ and under _File System_, select the desired file system.
+The Dashboard displays a set of charts that provide usage and performance data at several levels in the file systems being monitored. At the top level, this window displays an aggregate view of all file systems. You can select to view and monitor individual file systems and servers in the Dashboard. <!--To view a single file system, click _Configure Dashboard_ and under _File System_, select the desired file system.-->
 
 The following is a partial view of the Dashboard.
 
-![Dashboard](md_Graphics/dashboard_zoom92.png)
+![Dashboard](md_Graphics/dashboard.png)
 
-### Summary of charts
+### Charts
 
-The Dashboard window presents several charts that display rich visual information about the current and historical performance of each Lustre file system. Following is an example of the Read/Write Heat Map, which is a color-coded map revealing the level of read/write activity per OST, over time.
+The Dashboard presents several charts that display rich visual information about the current and historical performance of each Lustre file system. <!--Following is an example of the Read/Write Heat Map, which is a color-coded map revealing the level of read/write activity per OST, over time.-->
 
-![Read Write Heat Map Chart](md_Graphics/read-write-heat-map-chart_zoom91.png)
+<!-- ![Read Write Heat Map Chart](md_Graphics/read-write-heat-map-chart_zoom91.png) -->
 
-The following twelve charts are presented. For more information, see [View charts on the Dashboard](Monitoring_lustre_fs_4_0_0.md/#4.1).
+The following charts are available. <!--For more information, see [View charts on the Dashboard](Monitoring_lustre_fs_4_0_0.md/#4.1).-->For more information, see the overview of the [Graphical User Interface](Graphical_User_Interface_9_0.md).
 
+<!--
 - [Read/Write Heat Map chart](Graphical_User_Interface_9_0.md/#9.2.1)
 - [OST Balance chart](Graphical_User_Interface_9_0.md/#9.2.2)
 - [Metadata Operations chart](Graphical_User_Interface_9_0.md/#9.2.3)
@@ -246,63 +247,100 @@ The following twelve charts are presented. For more information, see [View chart
 - [Space Usage chart](Graphical_User_Interface_9_0.md/#9.2.9)
 - [File Usage chart](Graphical_User_Interface_9_0.md/#9.2.10)
 - [Object Usage chart](Graphical_User_Interface_9_0.md/#9.2.11)
+-->
+- On the main Dashboard (for all file systems):
+  - Filesystem Space Usage
+  - I/O Performance
+  - OST Balance
+  - LNet Performance
 
-### Configuration menu
+- On the Server dashboard:
+  - Read/Write Bandwidth
+  - CPU Usage
+  - Memory Usage
+  - LNet Usage
 
-The Configuration drop-down menu provides access to the following several windows, where you can create, configure, and manage file systems:
+- On the Filesystem dashboard:
+  - Filesystem Space Usage
+  - Filesystem Usage
+  - OST Balance
+  - MDT Usage
 
-- **Servers** - This window lets you add servers to the storage system and configure LNet for each server, provides server status information, and lets you start, stop, and remove servers.
-- **Power Control** - This window lets you configure power control for each server. Here, you can add baseboard management controllers to configure IPMI to support server failover and also assign PDU outlets.
-- **File Systems** - This window lists your current file systems and provides current configuration information. This window also provides access to step-by-step procedures to create and configure a file system and add system components. From this window, you can start, stop, or remove an entire file system, and you can start, stop, or remove management, metadata, or object storage targets.
-- **HSM** - Hierarchical Storage Management. This window displays HSM information for one or all Lustre file systems for which HSM has been configured. After configuration, the HSM Copytool chart displays a moving time-line of waiting copytool requests, current copytool operations, and the number of idle copytool workers.
-- **Storage** - This window lets you configure and view a custom storage system appliance provided by a storage solution provider. The features on this window are specific to the appliance provided by the storage solution provider.
+- On the MGT, MDT / OST dashboard:
+	- Metadata Operations / I/O Performance
+	- Space Usage
+	- File Usage
+
+### Management menu
+
+The Management menu provides access to the following several windows, where you can <!--create, configure,-->monitor and manage file systems:
+
+- **Servers** - This window lets you <!--add servers to-->view servers of the storage system <!--and configure LNet for each server,-->as well as provides server status information, and lets you start, stop, and remove servers.
+<!-- - **Power Control** - This window lets you configure power control for each server. Here, you can add baseboard management controllers to configure IPMI to support server failover and also assign PDU outlets.-->
+- **File Systems** - This window lists your current file systems and provides current configuration information. <!--This window also provides access to step-by-step procedures to create and configure a file system and add system components.--> From this window, you can start, stop, or remove an entire file system, and you can start, stop, or remove management, metadata, or object storage targets.
+<!-- - **HSM** - Hierarchical Storage Management. This window displays HSM information for one or all Lustre file systems for which HSM has been configured. After configuration, the HSM Copytool chart displays a moving time-line of waiting copytool requests, current copytool operations, and the number of idle copytool workers.-->
+<!-- - **Storage** - This window lets you configure and view a custom storage system appliance provided by a storage solution provider. The features on this window are specific to the appliance provided by the storage solution provider.-->
 - **Users** - This window lets you configure accounts for superusers and users.
-- **Volumes** - This window provides features to configure primary and failover servers in file systems with servers configured for high availability. Each Lustre target corresponds to a single volume. If servers in the volume have been physically connected and then configured for high availability (using this Volumes window and the Power Control window), then primary and failover servers can be designated for a Lustre target. Only volumes that are not already in use as Lustre targets on local file systems are shown. A volume may be accessible on one or more servers via different device nodes, and it may be accessible via multiple device nodes on the same host.
+- **Volumes** - This window provides features <!--to configure-->for primary and failover servers in file systems with servers configured for high availability. Each Lustre target corresponds to a single volume. If servers in the volume have been physically connected and then configured for high availability <!--(using this Volumes window and the Power Control window)-->, then primary and failover servers can be designated for a Lustre target. Only volumes that are not already in use as Lustre targets on local file systems are shown. A volume may be accessible on one or more servers via different device nodes, and it may be accessible via multiple device nodes on the same host.
 - **MGTs** - This window provides features to create and configure a management target.
 
+The following is a view of the Management menu:
+
+![Management menu](md_Graphics/mgmt-menu.png)
+
+<!--
 ### Job stats
 
 Clicking the Jobstats button on the top menu bar lists the top ten jobs currently in process. The listed jobs can be sorted by column and average duration can be selected. Column sorts and duration will be persistent when navigating away and back to the page.
 
 **Note:** Job stats need to be enabled before then can be viewed. See [View Job stats](Monitoring_lustre_fs_4_0_0.md/#4.3).
 
-![Job Stats](md_Graphics/job_stats.png)
+![Job Stats](md_Graphics/job_stats.png) -->
 
-### Logs window
+### Logs
 
-The Logs window displays log information and lets you filter events by date range, host, service, and messages from Lustre or all sources. The logs window also features querying with auto-complete and linkable host names.
+The Logs window displays log information and lets you filter events by date range, host, service, and messages from Lustre or all sources. The logs window also features <!--querying with auto-complete and--> linkable host names.
 
 ![Logs](md_Graphics/logs.png)
 
+<!--
 ### Help
 
 Help is context-sensitive; Clicking Help at the menu bar opens this Online Help to the related topic. Internet access is not required.
+-->
 
-### Status Indicator and window
+### Activities
 
-The Status indicator provides information about the functioning and health of each file system. Alerts are messages that indicate that the file system may be, or is, operating in a degraded mode.
+Activity messages provide information about the functioning and health of a managed filesystem.
+<!--The Status indicator provides information about the functioning and health of each file system. Alerts are messages that indicate that the file system may be, or is, operating in a degraded mode.-->
+![Activities](md_Graphics/activities.png)
 
+The counter next to the activity icon reflects the number of active issues with the cluster. The color of the icon will change between green, yellow, and red according to the severity of the highest active issue.
+
+There are five types of activity messages. Each has a color mark to represent severity, like grey for running commands, green for successfully executed commands, blue for info messages, yellow for warnings, and red for errors. See more information in the overview of the [Graphical User Interface](Graphical_User_Interface_9_0.md#9.6).
+<!--
 - A green light ![Status Light](md_Graphics/status_light.png) indicates that all is normal. Note that a green light does not indicate anything about file system performance.
 - A yellow light ![Yellow Status](md_Graphics/yellow_status.png) indicates that one or more warning alerts have been received. The file system may be operating in a degraded mode; for example a target has failed over, so performance may be degraded.
 - A red light ![Red Status](md_Graphics/red_status.png) indicates that one or more error alerts have been received. The file system may be down or is severely degraded.
 
-The Status window displays information alerts, commands that are executing, and events. For more information, see [Status window](Graphical_User_Interface_9_0.md/#9.6).
+The Status window displays information alerts, commands that are executing, and events. For more information, see [Status window](Graphical_User_Interface_9_0.md/#9.6). -->
 
 ![Status Page](md_Graphics/status_page.png)
 
+<!--
 ### Alert Bar
 
 This red bar briefly appears if there are any active error or warning alerts on your system. Clicking _Details_ opens the Status window and reveals the current, active alerts.
 
-![Red Status Bar](md_Graphics/red_status_bar.png)
+![Red Status Bar](md_Graphics/red_status_bar.png) -->
 
-## Access the Dashboard from a smart phone or tablet
+## Access the Dashboard from a smartphone or tablet
 
-You can access the Integrated Manager for Lustre software GUI from your smart phone or tablet. To access the GUI from your smart phone or tablet, your device needs to be running the latest version of Chrome or Firefox browser:
+You can access the Integrated Manager for Lustre software GUI from your smartphone or tablet. To access the GUI from your smartphone or tablet, your device needs to be running the latest version of Chrome or Firefox browser:
 
 1. Point your device's browser to the manager server running the Integrated Manager for Lustre software. The window will responsively fit within the device's screen.
-2. To view the menu bar, click ![Mobile Button](md_Graphics/mobile_button.png). The menu bar is now displayed vertically along the left side of the window.
-3. ![Vertical Menu Bar](md_Graphics/vertical_menu_bar.png)
+2. To view the menu bar, click ![Mobile Button](md_Graphics/mobile_button.png). <!--The menu bar is now displayed vertically along the left side of the window.-->
+<!--3. ![Vertical Menu Bar](md_Graphics/vertical_menu_bar.png)-->
 4. To hide the menu bar, click ![Mobile Button](md_Graphics/mobile_button.png) again.
 
 [Top of Page](#introducing-integrated-manager-for-lustre-software)
