@@ -3,7 +3,7 @@
 %define backcompatdir /usr/lib%{managerdir}
 
 Name:       iml-%{base_name}
-Version:    3.0.0
+Version:    3.1.0
 # Release Start
 Release:    1%{?dist}
 # Release End
