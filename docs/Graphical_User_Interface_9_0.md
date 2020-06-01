@@ -346,13 +346,13 @@ If you are a superuser, you can view, create, and manage users by clicking **Man
 The following types of users exist:
 
 - **Filesystem user** - Filesystem users have full GUI access except for the Management menu, which is hidden from view. The logged-in users cannot create or manage a filesystem, but can use Dashboard and Activity views to monitor filesystems.
-- **Superuser** - Superusers, such as filesystem administrators, have full access to the application, including the Management menu. The logged-in users can create, monitor, manage, and remove filesystems and their components. <!-- The users can also create, modify (change passwords), and delete other users, including superusers, but cannot delete its own account. For more information, see [Creating User Accounts](Getting_started_2_0.md/#2.1). -->
+- **Superuser** - Superusers, such as filesystem administrators, have full access to the application, including the Management menu. The logged-in users can create, monitor, manage, and remove filesystems and their components.
 
 Superusers also have these options by clicking a user's account:
 
 - **Details** - View and change the username, email, first and last names.
 - **Password** - (Coming soon) Change the password.
-- **Email Notifications** - (Coming soon) Select events for email notifications. <!-- If nothing is selected, all events except for "Host contact alerts" are included. For more information, see [Setting up Email Notifications](Getting_started_2_0.md/#2.2). -->
+- **Email Notifications** - (Coming soon) Select events for email notifications.
 
 [Top of page](#Graphical-User-Interface)
 
@@ -361,8 +361,6 @@ Superusers also have these options by clicking a user's account:
 To view logs, log in to the management interface, and then click **Logs** on the right. The view will expand and display a paginated list of logged events.
 
 ![md_Graphics/logs.png][f9.23]
-
-<!-- You can filter logs by date range, host, service, and messages from Lustre or all sources. You can also use auto-completion for search and host name links to jump to host information. -->
 
 You can identify each logged event by time, service, message, and host.
 
@@ -389,7 +387,7 @@ The counter next to the activity icon reflects the number of active issues with 
 
 There are five types of activity messages:
 
-- **Command running**: Marked with gray color, these messages inform you of commands currently in progress.<!-- These are the commands that you have entered into the manager GUI.-->
+- **Command running**: Marked with gray color, these messages inform you of commands currently in progress.
 - **Command successful**: Marked with green color, these messages identify successfully completed commands. To learn about the underlying commands and their syntax, click **Details**, and then click a command link.
 - **Info messages**: Marked with blue color, these messages inform you of normal transitions that occur at a single point in time during the creation or management of the filesystem, often in response to a command entered into the GUI. A single command may cause several such events to occur.
 - **Warning alerts**: Marked with yellow color, these messages usually indicate that the filesystem is operating in degraded mode; for example, when a target fails over, high availability is no longer true for that target. A warning message marks a status change that has a specific **Begin** and **End** time. A warning is active at the beginning of the status change and inactive at the end of the status change; for example, a warning message may inform you that an OST has gone offline, and that message is active until the OST becomes operational again. Not all warnings necessarily signify a degraded state; for example, a target recovery to a failover server signifies that the failover occurred successfully.
@@ -398,49 +396,6 @@ There are five types of activity messages:
 Before you see an unresolved filesystem error or warning in the Activity view, this error or warning pops up as a browser-level notification.
 
 [Top of page](#Graphical-User-Interface)
-
-<!--
-**Running common searches**
-
-At the Status window, under the **Common Searches** drop-down, select a search to run.
-
-You can modify any of the listed searches. To do this, select a search type, edit the string displayed in the Search bar, and click **Search** or press **Enter**.
-
-- **Search active alerts**: Display active alerts (warnings and errors) that reflect the current state of the filesystem. This search lists only warnings and errors that have not been resolved.
-- **Search alerts**: Display all alerts (warnings and errors) generated since the creation of the filesystem. This includes active (unresolved) and inactive (resolved) alerts.
-- **Search commands**: Display all commands, those successfully executed and those that are currently in process.
-- **Search events**: Display all information messages occurred since the creation of the filesystem.
--->
-
-<!--
-**Composing search queries**
-
-At the top of the Status window, start typing in the search bar and use auto-completion to finish your query.
-
-You can run searches as follows:
-
-1. Filter your search by keywords using the equals sign (=) or "in" keywords. Examples:
-    - `severity = ERROR`
-    - `severity in [WARNING, ERROR]`
-1. Join keyword filters using the "and" keyword. Example:
-    - `severity = ERROR and active = true`
-
-Below is a description of available keywords:
-
-|Keyword|Type|Description|
-|---|---|---|
-|active|boolean|Either 'true' for resolved record or 'false' unresolved record|
-|record_type|string|Record type, such as info messages, warning alerts, and so on|
-|severity|string|Either 'INFO', 'DEBUG', 'CRITICAL', 'WARNING', or 'ERROR'|
-
-Below is a query example:
-```
-active = true
-record_type = CorosyncNoPeersAlert
-severity in [ERROR, WARNING]
-```
-[Top of page](#Graphical-User-Interface)
--->
 
 [f11.1]: md_Graphics/dashboard.png
 [f11.1.1]: md_Graphics/dashboard-sandwich.png
@@ -465,35 +420,9 @@ severity in [ERROR, WARNING]
 [f11.3.7]: md_Graphics/mdt-dashboard.png
 [f11.3.8]: md_Graphics/ost-dashboard.png
 
-<!-- [f9.2]: md_Graphics/file_system_params.png
-[f9.3]: md_Graphics/read-write-heat-map-chart.png
-[f9.4]: md_Graphics/job_stats.png
-[f9.5]: md_Graphics/OST_Balance_Chart.png
-[f9.6]: md_Graphics/Metadata_Operations_chart.png
-[f9.7]: md_Graphics/read-write-bandwidth-hover.png
-[f9.8]: md_Graphics/Metadata_Servers_Chart.png
-[f9.9]: md_Graphics/Object_Storage_Servers_Chart.png
-[f9.10]: md_Graphics/CPU_Usage_Chart.png
-[f9.11]: md_Graphics/Memory_Usage_Chart.png
-[f9.12]: md_Graphics/Space_Usage_Chart.png
-[f9.13]: md_Graphics/File_Usage_Chart.png
-[f9.14]: md_Graphics/Object_Usage_Chart.png
-[f9.15]: md_Graphics/config_servers.png
-[f9.16]: md_Graphics/Power_Control_Tab.png
-[f9.17]: md_Graphics/config_file_systems.png
-[f9.18]: md_Graphics/check_mark.png
-[f9.19]: md_Graphics/HSM_Operations.png -->
-
 [f9.20]: md_Graphics/config_users.png
-
-<!-- [f9.21]: md_Graphics/config_volumes.png
-[f9.22]: md_Graphics/config_mgts.png -->
 
 [f9.23]: md_Graphics/logs.png
 [f9.24]: md_Graphics/activities.png
-
-<!-- [f9.25]: md_Graphics/red_status_bar.png -->
-
-<!-- [f9.26]: md_Graphics/treeview.png -->
 
 [f9.27]: md_Graphics/breadcrumbs.png
