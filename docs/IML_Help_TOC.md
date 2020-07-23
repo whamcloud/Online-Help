@@ -20,3 +20,4 @@
 - [Glossary](Glossary_14_0.md)
 - [Getting Help](Getting_help_15_0.md)
 - [Legal Information](Legal_information_16_0.md)
+- [Release History](Release_History.md)
