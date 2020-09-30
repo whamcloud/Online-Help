@@ -131,7 +131,7 @@ vagrant provision mds1 mds2 oss1 oss2 --provision-with configure-docker-network
 We can now deploy monitored servers with the following command on the host
 
 ```sh
-iml server add -h mds[1,2].local,oss[1,2].local -p  base_monitored
+iml server add mds[1,2].local,oss[1,2].local -p  base_monitored
 ```
 
 Next create some ldiskfs filesystems with the following provisioner
