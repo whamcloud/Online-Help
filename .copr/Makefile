@@ -12,6 +12,7 @@ srpm:
 	yum -y install git
 	yum-builddep -y ${TMPDIR}/scratch/iml-online-help.spec
 	yum install -y which
+	yum install -y npm
 	curl -sSL https://rvm.io/mpapis.asc | gpg --import -
 	curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -
 	\curl -sSL https://get.rvm.io | bash -s stable

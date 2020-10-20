@@ -141,11 +141,11 @@ _export PATH=\$PATH:/home/`username`/bin_
 
 downgrade from vagrant 1.9.7->1.9.6
 
-[https://github.com/mitchellh/vagrant/issues/8780](https://github.com/mitchellh/vagrant/issues/8780)
+[https://github.com/hashicorp/vagrant/issues/8780](https://github.com/hashicorp/vagrant/issues/8780)
 
-[https://github.com/mitchellh/vagrant/issues/8833](https://github.com/mitchellh/vagrant/issues/8833)
+[https://github.com/hashicorp/vagrant/issues/8833](https://github.com/hashicorp/vagrant/issues/8833)
 
-[https://github.com/mitchellh/vagrant/issues/8764](https://github.com/mitchellh/vagrant/issues/8764)
+[https://github.com/hashicorp/vagrant/issues/8764](https://github.com/hashicorp/vagrant/issues/8764)
 
 various commands failing within Makefile due to inability to parse output of vagrant cli calls
 this is a bug and workaround is to use version 1.9.6 rather than the most recent 1.9.7
