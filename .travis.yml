@@ -71,6 +71,16 @@ jobs:
         - docker run -it -e OWNER="$OWNER" -e PROJECT="$PROJECT" -e PACKAGE="$PACKAGE" -e SPEC="$SPEC" -e PROD="True" -e KEY="$encrypted_253525cedcf6_key" -e IV="$encrypted_253525cedcf6_iv" -v $(pwd):/build:rw imlteam/copr
       on:
         all_branches: true
+    - stage: deploy-copr-r6.2
+      name: "Copr deploy"
+      script:
+        - export OWNER=managerforlustre
+        - export PROJECT=manager-for-lustre-6.2
+        - export PACKAGE=iml-online-help
+        - export SPEC=iml-online-help.spec
+        - docker run -it -e OWNER="$OWNER" -e PROJECT="$PROJECT" -e PACKAGE="$PACKAGE" -e SPEC="$SPEC" -e PROD="True" -e KEY="$encrypted_253525cedcf6_key" -e IV="$encrypted_253525cedcf6_iv" -v $(pwd):/build:rw imlteam/copr
+      on:
+        all_branches: true
     - stage: cd
       name: "Continuous Deployment"
       script:
@@ -90,5 +100,7 @@ stages:
     if: branch =~ ^v\d+\.\d+\.\d+-.+-r6\.0$
   - name: deploy-copr-r6.1
     if: branch =~ ^v\d+\.\d+\.\d+-.+-r6\.1$
+  - name: deploy-copr-r6.2
+    if: branch =~ ^v\d+\.\d+\.\d+-.+-r6\.2$
   - name: cd
     if: branch = master AND type = push AND fork = false
