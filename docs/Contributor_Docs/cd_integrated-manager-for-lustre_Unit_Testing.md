@@ -37,6 +37,7 @@ pip install ipdbplugin
 psql -c "CREATE USER chroma;" -U postgres
 psql -c "ALTER USER chroma CREATEDB;" -U postgres
 psql -c "CREATE DATABASE chroma OWNER chroma;" -U postgres
+su - postgres -c "psql -h localhost -p 5432 -c 'CREATE EXTENSION IF NOT EXISTS btree_gist;' -d template1"
 export IML_DISABLE_THREADS=1
 echo "CRYPTO_FOLDER='./'" > local_settings.py
 echo -e "/^DEBUG =/s/= .*$/= True/\nwq" | ed settings.py 2>/dev/null
