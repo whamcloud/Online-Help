@@ -1,0 +1,24 @@
+name: devel-release
+on:
+  push:
+    branches:
+      - master
+jobs:
+  push_agent:
+    name: Push to Copr devel
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Push rpm
+        uses: ./.github/actions/copr
+        env:
+          PROD: false
+          OWNER: managerforlustre
+          PROJECT: manager-for-lustre-devel
+          PACKAGE: iml-online-help
+          SPEC: iml-online-help.spec
+          WORKSPACE: ${{ github.workspace }}
+          KEY: ${{ secrets.key }}
+          IV: ${{ secrets.iv }}

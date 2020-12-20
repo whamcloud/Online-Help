@@ -1,0 +1,24 @@
+name: prod-release
+on:
+  push:
+    tags:
+      - v3.3.0-1-r6.3
+jobs:
+  push_agent:
+    name: Push to Copr prod
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Push rpm
+        uses: ./.github/actions/copr
+        env:
+          PROD: true
+          OWNER: managerforlustre
+          PROJECT: manager-for-lustre-6.3
+          PACKAGE: iml-online-help
+          SPEC: iml-online-help.spec
+          WORKSPACE: ${{ github.workspace }}
+          KEY: ${{ secrets.key }}
+          IV: ${{ secrets.iv }}
