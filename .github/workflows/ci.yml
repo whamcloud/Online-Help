@@ -1,0 +1,40 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  check_rpm:
+    name: Check RPM Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Build rpm
+        uses: ./.github/actions/copr
+        env:
+          SPEC: iml-online-help.spec
+          LOCAL_ONLY: true
+          WORKSPACE: ${{ github.workspace }}
+  link_check:
+    name: Link Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: "2.6"
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "12"
+      - run: |
+          gem install bundler
+          bundle install --jobs=3 --retry=3
+          npm install
+          npm run postversion
