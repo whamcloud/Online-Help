@@ -7,3 +7,4 @@ vendor
 .jekyll-metadata
 _topdir/
 *.tgz
+.DS_Store

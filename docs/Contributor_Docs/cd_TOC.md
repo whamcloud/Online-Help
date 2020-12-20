@@ -10,8 +10,6 @@
 
 ![gears](md_Graphics/gears_sm.jpg)
 
-1. [IML Contributor Workflow](cd_Contributor_Workflow.md)
-
 1. [Building IML](cd_Building_IML.md)
 
 1. [Building IML@4.0.x](cd_Building_IML_4.0.x.md)
@@ -25,10 +23,6 @@
 1. [Install IML on a Vagrant Virtual Cluster](cd_Installing_IML_On_Vagrant.md)
 
 1. [How to Uninstall IML](cd_UnInstall_IML.md)
-
-1. [Running SSI Tests](cd_Running_SSI_Tests.md)
-
-1. [Create a Sample Storage plugin](https://github.com/whamcloud/sample-storage-plugin)
 
 1. [IML Lustre Target Sequence Diagrams](cd_Lustre_Target_Sequence_Diagrams.md)
 
@@ -55,7 +49,5 @@
 1. [How to debug a running nodejs process in vagrant](cd_Debugging_Node_In_Vagrant.md)
 
 1. [How To Debug A Running Python Process](cd_Remote_Python_Debugging.md)
-
-1. [Jenkins Pragmas](cd_Jenkins_Pragmas.md)
 
 1. [Building Rust RPMs](cd_Building_Rust_RPMs.md)
